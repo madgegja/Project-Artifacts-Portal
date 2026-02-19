@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOOMICS Global CS Flow Diagram</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 32px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+        .header .sub {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        .header .badge {
+            display: inline-block;
+            background: rgba(96,165,250,0.15);
+            border: 1px solid rgba(96,165,250,0.3);
+            color: #93c5fd;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        /* ===== FLOW CONTAINER ===== */
+        .flow-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* ===== FLOW ROW ===== */
+        .flow-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0;
+            position: relative;
+        }
+
+        /* ===== ARROW DOWN ===== */
+        .arrow-down {
+            display: flex;
+            justify-content: center;
+            padding: 8px 0;
+        }
+        .arrow-down svg {
+            width: 24px;
+            height: 32px;
+        }
+        .arrow-down .arrow-label {
+            font-size: 11px;
+            color: #64748b;
+            margin-left: 8px;
+            align-self: center;
+        }
+
+        /* ===== NODE STYLES ===== */
+        .node {
+            border-radius: 12px;
+            padding: 16px 24px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        .node:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .node .title {
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .node .desc {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        .node .emoji {
+            font-size: 22px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        /* Start node */
+        .node-start {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            border: 2px solid #60a5fa;
+            min-width: 260px;
+            box-shadow: 0 0 20px rgba(59,130,246,0.3);
+        }
+
+        /* Decision diamond */
+        .node-decision {
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            border: 2px solid #c084fc;
+            min-width: 300px;
+            border-radius: 16px;
+            box-shadow: 0 0 20px rgba(168,85,247,0.2);
+        }
+        .node-decision .title { font-size: 14px; }
+
+        /* Category cards */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .node-category {
+            border-radius: 12px;
+            padding: 14px 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+        .node-category:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+        .node-category .pct {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            opacity: 0.9;
+        }
+        .node-category .priority {
+            position: absolute;
+            top: 8px;
+            left: 10px;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 1px 6px;
+            border-radius: 4px;
+            background: rgba(0,0,0,0.3);
+        }
+        .node-category .emoji { font-size: 28px; margin-bottom: 8px; }
+        .node-category .title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+        .node-category .desc { font-size: 10px; opacity: 0.75; line-height: 1.4; }
+
+        /* Category colors */
+        .cat-subscription { background: linear-gradient(135deg, #dc2626, #ef4444); border: 1px solid #f87171; }
+        .cat-refund { background: linear-gradient(135deg, #ea580c, #f97316); border: 1px solid #fb923c; }
+        .cat-account { background: linear-gradient(135deg, #ca8a04, #eab308); border: 1px solid #facc15; color: #1a1a1a; }
+        .cat-account .desc { color: #333; }
+        .cat-payment { background: linear-gradient(135deg, #2563eb, #3b82f6); border: 1px solid #60a5fa; }
+        .cat-content { background: linear-gradient(135deg, #0891b2, #06b6d4); border: 1px solid #22d3ee; }
+        .cat-fraud { background: linear-gradient(135deg, #9333ea, #a855f7); border: 1px solid #c084fc; }
+        .cat-store { background: linear-gradient(135deg, #059669, #10b981); border: 1px solid #34d399; }
+        .cat-language { background: linear-gradient(135deg, #4f46e5, #6366f1); border: 1px solid #818cf8; }
+
+        /* Process node */
+        .node-process {
+            background: linear-gradient(135deg, #1e3a5f, #1e4976);
+            border: 1px solid #3b82f6;
+            min-width: 280px;
+        }
+
+        /* Escalation */
+        .node-escalation {
+            background: linear-gradient(135deg, #7f1d1d, #991b1b);
+            border: 2px solid #ef4444;
+            min-width: 300px;
+            box-shadow: 0 0 15px rgba(239,68,68,0.2);
+        }
+
+        /* End node */
+        .node-end {
+            background: linear-gradient(135deg, #065f46, #059669);
+            border: 2px solid #34d399;
+            min-width: 240px;
+            box-shadow: 0 0 15px rgba(52,211,153,0.2);
+        }
+
+        /* ===== YES/NO BRANCH ===== */
+        .branch-row {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            align-items: flex-start;
+        }
+        .branch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .branch-label {
+            font-size: 12px;
+            font-weight: 700;
+            padding: 3px 12px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+        .branch-yes { background: #166534; color: #4ade80; border: 1px solid #22c55e; }
+        .branch-no { background: #7f1d1d; color: #fca5a5; border: 1px solid #ef4444; }
+
+        /* ===== MARKET STRIP ===== */
+        .market-strip {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 8px 0;
+        }
+        .market-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            color: #cbd5e1;
+        }
+        .market-chip .flag { font-size: 14px; }
+        .market-chip .vol { color: #94a3b8; margin-left: 2px; }
+
+        /* ===== SECTION DIVIDER ===== */
+        .section-label {
+            text-align: center;
+            margin: 24px 0 16px;
+        }
+        .section-label span {
+            display: inline-block;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 6px 20px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #94a3b8;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ===== ESCALATION GRID ===== */
+        .escalation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .esc-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-size: 12px;
+        }
+        .esc-card .esc-title {
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .esc-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .esc-card li {
+            padding: 2px 0;
+            color: #cbd5e1;
+        }
+        .esc-card li::before {
+            content: "⚠️ ";
+            font-size: 11px;
+        }
+        .esc-resolve {
+            border-color: rgba(52,211,153,0.3);
+            background: rgba(52,211,153,0.05);
+        }
+        .esc-resolve .esc-title { color: #4ade80; }
+        .esc-escalate {
+            border-color: rgba(239,68,68,0.3);
+            background: rgba(239,68,68,0.05);
+        }
+        .esc-escalate .esc-title { color: #fca5a5; }
+
+        /* ===== STATS BAR ===== */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin: 24px 0;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stat-label {
+            font-size: 11px;
+            color: #64748b;
+            margin-top: 2px;
+        }
+
+        /* ===== CONNECTOR LINES ===== */
+        .connector-v {
+            width: 2px;
+            height: 24px;
+            background: linear-gradient(to bottom, #3b82f6, #60a5fa);
+            margin: 0 auto;
+        }
+        .connector-v.purple {
+            background: linear-gradient(to bottom, #a855f7, #c084fc);
+        }
+        .connector-v.green {
+            background: linear-gradient(to bottom, #10b981, #34d399);
+        }
+        .connector-v.red {
+            background: linear-gradient(to bottom, #ef4444, #f87171);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            color: #475569;
+            font-size: 12px;
+        }
+
+        /* ===== PRINT ===== */
+        @media print {
+            body { background: #fff; color: #1a1a1a; padding: 16px; }
+            .header h1 { -webkit-text-fill-color: #1e40af; }
+            .node { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+            .node-category { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>TOOMICS Global CS 운영 플로 다이어그램</h1>
+        <div class="sub">CS Ticket Processing Flow &mdash; 작성: 유종선</div>
+        <div class="badge">11,621건 &middot; 7개월 &middot; 10개 언어 &middot; 월 1,662건</div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-bar">
+        <div class="stat-item"><div class="stat-value">11,621</div><div class="stat-label">총 분석 티켓</div></div>
+        <div class="stat-item"><div class="stat-value">1,662</div><div class="stat-label">월평균</div></div>
+        <div class="stat-item"><div class="stat-value">4명</div><div class="stat-label">상담원</div></div>
+        <div class="stat-item"><div class="stat-value">~90%</div><div class="stat-label">1회 해결률</div></div>
+        <div class="stat-item"><div class="stat-value">41%</div><div class="stat-label">자동화 가능</div></div>
+    </div>
+
+    <div class="flow-container">
+
+        <!-- ===== STEP 1: 티켓 접수 ===== -->
+        <div class="section-label"><span>STEP 1 &mdash; 티켓 접수</span></div>
+
+        <div class="flow-row">
+            <div class="node node-start">
+                <span class="emoji">📨</span>
+                <div class="title">CS 티켓 접수</div>
+                <div class="desc">Zendesk &mdash; Web / Email / In-app</div>
+            </div>
+        </div>
+
+        <div class="connector-v"></div>
+
+        <!-- Market strip -->
+        <div class="market-strip">
+            <div class="market-chip"><span class="flag">🇺🇸</span> EN <span class="vol">37%</span></div>
+            <div class="market-chip"><span class="flag">🇫🇷</span> FR <span class="vol">17%</span></div>
+            <div class="market-chip"><span class="flag">🇪🇸</span> ES <span class="vol">13%</span></div>
+            <div class="market-chip"><span class="flag">🇧🇷</span> PT <span class="vol">9%</span></div>
+            <div class="market-chip"><span class="flag">🇩🇪</span> DE <span class="vol">8%</span></div>
+            <div class="market-chip"><span class="flag">🇹🇭</span> TH <span class="vol">5%</span></div>
+            <div class="market-chip"><span class="flag">🇯🇵</span> JP <span class="vol">5%</span></div>
+            <div class="market-chip"><span class="flag">🇨🇳</span> CN <span class="vol">4%</span></div>
+            <div class="market-chip"><span class="flag">🇮🇹</span> IT <span class="vol">3%</span></div>
+        </div>
+
+        <div class="connector-v"></div>
+
+        <!-- ===== STEP 2: 1차 확인 ===== -->
+        <div class="section-label"><span>STEP 2 &mdash; 1차 확인</span></div>
+
+        <div class="flow-row">
+            <div class="node node-decision">
+                <span class="emoji">🔍</span>
+                <div class="title">계정 확인 가능한가?</div>
+                <div class="desc">이메일 / 결제수단 / 소셜 로그인으로 검색</div>
+            </div>
+        </div>
+
+        <div class="connector-v purple" style="height:16px;"></div>
+
+        <div class="branch-row">
+            <div class="branch">
+                <div class="branch-label branch-no">❌ NO</div>
+                <div class="node node-process" style="min-width:240px;">
+                    <span class="emoji">📋</span>
+                    <div class="title">템플릿 1.1 발송</div>
+                    <div class="desc">계정 정보 요청<br>(이메일, 결제수단, 스크린샷)</div>
+                </div>
+                <div style="font-size:11px; color:#64748b; margin-top:8px;">↩ 고객 회신 후 STEP 2 복귀</div>
+            </div>
+            <div class="branch">
+                <div class="branch-label branch-yes">✅ YES</div>
+                <div class="node node-decision" style="min-width:260px;">
+                    <span class="emoji">🌐</span>
+                    <div class="title">문의 언어 = 마켓 언어?</div>
+                    <div class="desc">고객 언어와 마켓 매칭 확인</div>
+                </div>
+                <div style="margin-top:10px; display:flex; gap:24px; justify-content:center;">
+                    <div style="text-align:center;">
+                        <div class="branch-label branch-no" style="font-size:10px;">NO</div>
+                        <div style="font-size:11px; color:#fca5a5; margin-top:4px;">해당 마켓팀 라우팅</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <div class="branch-label branch-yes" style="font-size:10px;">YES</div>
+                        <div style="font-size:11px; color:#4ade80; margin-top:4px;">▼ 카테고리 분류</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="connector-v green" style="height:16px;"></div>
+
+        <!-- ===== STEP 3: 비공식 3자 필터 ===== -->
+        <div class="section-label"><span>STEP 3 &mdash; 비공식 요청 필터</span></div>
+
+        <div class="flow-row">
+            <div class="node node-decision" style="background: linear-gradient(135deg, #7f1d1d, #991b1b); border-color: #ef4444;">
+                <span class="emoji">🚫</span>
+                <div class="title">비공식 제3자 요청인가?</div>
+                <div class="desc">Minna Technologies / Ethoca 등 자동화 해지 요청</div>
+            </div>
+        </div>
+
+        <div class="connector-v red" style="height:16px;"></div>
+
+        <div class="branch-row">
+            <div class="branch">
+                <div class="branch-label branch-no" style="background:#7f1d1d;">🔴 YES &mdash; 비공식</div>
+                <div style="background:rgba(239,68,68,0.1); border:1px dashed #ef4444; border-radius:10px; padding:12px 18px; text-align:center;">
+                    <div style="font-size:20px; margin-bottom:4px;">🗑️</div>
+                    <div style="font-size:13px; font-weight:700; color:#fca5a5;">답변하지 않음</div>
+                    <div style="font-size:11px; color:#94a3b8;">티켓 무시 처리</div>
+                </div>
+            </div>
+            <div class="branch">
+                <div class="branch-label branch-yes">✅ NO &mdash; 정상 고객</div>
+                <div style="font-size:12px; color:#4ade80;">▼ 카테고리 분류 진행</div>
+            </div>
+        </div>
+
+        <div class="connector-v green" style="height:16px;"></div>
+
+        <!-- ===== STEP 4: 카테고리 분류 ===== -->
+        <div class="section-label"><span>STEP 4 &mdash; 카테고리 분류 &amp; 템플릿 응대</span></div>
+
+        <div class="category-grid">
+            <!-- Subscription -->
+            <div class="node-category cat-subscription">
+                <span class="priority">P1</span>
+                <span class="pct">48%</span>
+                <span class="emoji">📋</span>
+                <div class="title">구독 관리</div>
+                <div class="desc">
+                    해지 요청 / 자동갱신<br>
+                    iOS·Android 결제 확인<br>
+                    교차언어 VIP<br>
+                    <strong>섹션 2</strong>
+                </div>
+            </div>
+
+            <!-- Refund -->
+            <div class="node-category cat-refund">
+                <span class="priority">P2</span>
+                <span class="pct">25%</span>
+                <span class="emoji">💰</span>
+                <div class="title">환불 및 해지</div>
+                <div class="desc">
+                    환불 3조건 확인<br>
+                    부분/전액 환불<br>
+                    차지백 대응<br>
+                    <strong>섹션 3</strong>
+                </div>
+            </div>
+
+            <!-- Account -->
+            <div class="node-category cat-account">
+                <span class="priority">P3</span>
+                <span class="pct">13%</span>
+                <span class="emoji">👤</span>
+                <div class="title">계정 관리</div>
+                <div class="desc">
+                    비밀번호 리셋<br>
+                    소셜 로그인 복구<br>
+                    계정 삭제(GDPR)<br>
+                    <strong>섹션 4</strong>
+                </div>
+            </div>
+
+            <!-- Payment -->
+            <div class="node-category cat-payment">
+                <span class="priority">P4</span>
+                <span class="pct">5%</span>
+                <span class="emoji">💳</span>
+                <div class="title">결제 및 청구</div>
+                <div class="desc">
+                    이중 결제 조사<br>
+                    결제 실패<br>
+                    PG사 확인<br>
+                    <strong>섹션 5</strong>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="node-category cat-content">
+                <span class="priority">P5</span>
+                <span class="pct">5%</span>
+                <span class="emoji">📱</span>
+                <div class="title">콘텐츠 & 기술</div>
+                <div class="desc">
+                    콘텐츠 접근 불가<br>
+                    앱 오류<br>
+                    로딩/표시 이슈<br>
+                    <strong>섹션 6</strong>
+                </div>
+            </div>
+
+            <!-- Fraud -->
+            <div class="node-category cat-fraud">
+                <span class="priority">핵심</span>
+                <span class="pct">🚨</span>
+                <span class="emoji">🔍</span>
+                <div class="title">사기 탐지</div>
+                <div class="desc">
+                    Red Flag 9개 지표<br>
+                    제한 계정 처리<br>
+                    복수 계정 탐지<br>
+                    <strong>섹션 9</strong>
+                </div>
+            </div>
+
+            <!-- Store -->
+            <div class="node-category cat-store">
+                <span class="priority">—</span>
+                <span class="pct">🏪</span>
+                <span class="emoji">🛒</span>
+                <div class="title">TOOMICS STORE</div>
+                <div class="desc">
+                    코인 구매<br>
+                    상품 문의<br>
+                    스토어 관련<br>
+                    <strong>섹션 10</strong>
+                </div>
+            </div>
+
+            <!-- Language -->
+            <div class="node-category cat-language">
+                <span class="priority">—</span>
+                <span class="pct">🌐</span>
+                <span class="emoji">🗣️</span>
+                <div class="title">언어 & 접근</div>
+                <div class="desc">
+                    언어 버전 안내<br>
+                    지역 제한<br>
+                    콘텐츠 가용성<br>
+                    <strong>섹션 7</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="connector-v green" style="height:20px;"></div>
+
+        <!-- ===== STEP 5: 품질 체크 ===== -->
+        <div class="section-label"><span>STEP 5 &mdash; 품질 체크 &amp; 발송</span></div>
+
+        <div class="flow-row">
+            <div class="node node-process" style="min-width: 500px;">
+                <span class="emoji">✅</span>
+                <div class="title">품질 체크리스트 (섹션 11.2)</div>
+                <div class="desc" style="text-align:left; max-width:440px; margin:8px auto 0;">
+                    ✓ 올바른 인사말 &nbsp;&middot;&nbsp; ✓ 계정 정보 확인 &nbsp;&middot;&nbsp; ✓ 구체적 날짜 명시<br>
+                    ✓ VIP 만료일 안내 &nbsp;&middot;&nbsp; ✓ PII 노출 없음 &nbsp;&middot;&nbsp; ✓ 템플릿 커스터마이즈
+                </div>
+            </div>
+        </div>
+
+        <div class="connector-v green" style="height:16px;"></div>
+
+        <!-- ===== STEP 6: 에스컬레이션 판단 ===== -->
+        <div class="section-label"><span>STEP 6 &mdash; 에스컬레이션 판단</span></div>
+
+        <div class="flow-row">
+            <div class="node node-decision">
+                <span class="emoji">⚖️</span>
+                <div class="title">에스컬레이션 필요한가?</div>
+                <div class="desc">섹션 11.3 기준 확인</div>
+            </div>
+        </div>
+
+        <div class="connector-v purple" style="height:16px;"></div>
+
+        <div class="escalation-grid">
+            <div class="esc-card esc-resolve">
+                <div class="esc-title">✅ 직접 처리 가능</div>
+                <ul>
+                    <li style="list-style:none;">일반 해지/환불 요청</li>
+                    <li style="list-style:none;">계정 관리 (비번 리셋 등)</li>
+                    <li style="list-style:none;">기술 이슈 기본 안내</li>
+                    <li style="list-style:none;">$100 미만 결제 이슈</li>
+                </ul>
+            </div>
+            <div class="esc-card esc-escalate">
+                <div class="esc-title">🚨 팀 리드 에스컬레이션</div>
+                <ul>
+                    <li>법적 조치 위협 (특히 DE)</li>
+                    <li>복수 차지백 / 사기 의심</li>
+                    <li>$100+ 결제 불일치</li>
+                    <li>미디어/인플루언서 불만</li>
+                    <li>3개+ 계정 관련</li>
+                    <li>차지백 증거 제출 필요</li>
+                    <li>플랫폼 전체 기술 이슈</li>
+                    <li>새로운 사기 패턴</li>
+                    <li>정책 예외 필요</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="connector-v green" style="height:20px;"></div>
+
+        <!-- ===== STEP 7: 완료 ===== -->
+        <div class="section-label"><span>STEP 7 &mdash; 완료</span></div>
+
+        <div class="flow-row">
+            <div class="node node-end">
+                <span class="emoji">🎉</span>
+                <div class="title">응대 완료</div>
+                <div class="desc">티켓 종료 &middot; SLA 목표: P1 2h / P2 4h / P3 8h</div>
+            </div>
+        </div>
+
+        <!-- SLA Target bar -->
+        <div style="margin-top:20px;">
+            <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+                <div style="background:rgba(239,68,68,0.15); border:1px solid rgba(239,68,68,0.3); padding:8px 16px; border-radius:8px; text-align:center;">
+                    <div style="font-size:11px; color:#fca5a5;">🔴 P1 구독/결제</div>
+                    <div style="font-size:18px; font-weight:800; color:#ef4444;">2h</div>
+                </div>
+                <div style="background:rgba(249,115,22,0.15); border:1px solid rgba(249,115,22,0.3); padding:8px 16px; border-radius:8px; text-align:center;">
+                    <div style="font-size:11px; color:#fdba74;">🟠 P2 환불</div>
+                    <div style="font-size:18px; font-weight:800; color:#f97316;">4h</div>
+                </div>
+                <div style="background:rgba(234,179,8,0.15); border:1px solid rgba(234,179,8,0.3); padding:8px 16px; border-radius:8px; text-align:center;">
+                    <div style="font-size:11px; color:#fde047;">🟡 P3 계정</div>
+                    <div style="font-size:18px; font-weight:800; color:#eab308;">8h</div>
+                </div>
+                <div style="background:rgba(59,130,246,0.15); border:1px solid rgba(59,130,246,0.3); padding:8px 16px; border-radius:8px; text-align:center;">
+                    <div style="font-size:11px; color:#93c5fd;">🔵 P4 결제</div>
+                    <div style="font-size:18px; font-weight:800; color:#3b82f6;">8h</div>
+                </div>
+                <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); padding:8px 16px; border-radius:8px; text-align:center;">
+                    <div style="font-size:11px; color:#94a3b8;">⚪ P5 콘텐츠/기술</div>
+                    <div style="font-size:18px; font-weight:800; color:#cbd5e1;">12h</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>TOOMICS Global CS Operations &middot; 작성: 유종선 &middot; 2026-02-19 &middot; 데이터: 2025.07 ~ 2026.01</p>
+    </div>
+
+</body>
+</html>
