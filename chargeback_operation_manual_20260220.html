@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOOMICS 차지백 오퍼레이션 매뉴얼 | BizOps</title>
+<style>
+  @page { size: A4; margin: 12mm 14mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+    color: #1a1a2e;
+    background: #f0f2f5;
+    font-size: 11px;
+    line-height: 1.65;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .container { max-width: 900px; margin: 0 auto; background: #fff; box-shadow: 0 4px 24px rgba(0,0,0,0.08); border-radius: 12px; overflow: hidden; }
+  @media print { body { background: #fff; } .container { box-shadow: none; border-radius: 0; margin: 0; } .no-print { display: none !important; } .page-break { page-break-before: always; } }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #dc2626 100%);
+    color: #fff;
+    padding: 40px 48px 34px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before { content:''; position:absolute; top:-80px; right:-80px; width:300px; height:300px; background:radial-gradient(circle,rgba(220,38,38,0.15),transparent 70%); border-radius:50%; }
+  .header-badge { display:inline-block; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:20px; padding:4px 14px; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:12px; }
+  .header h1 { font-size:30px; font-weight:800; letter-spacing:-0.3px; margin-bottom:6px; position:relative; }
+  .header .sub { font-size:14px; opacity:0.85; font-weight:400; position:relative; }
+  .header-meta { display:flex; gap:24px; margin-top:20px; position:relative; }
+  .header-meta-item .label { font-size:10px; opacity:0.6; text-transform:uppercase; letter-spacing:1px; }
+  .header-meta-item .value { font-size:18px; font-weight:700; }
+  .header-meta-item .unit { font-size:12px; font-weight:400; opacity:0.7; }
+
+  /* Body */
+  .body { padding: 32px 40px 40px; }
+
+  /* TOC */
+  .toc { background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:24px 28px; margin-bottom:28px; }
+  .toc h2 { font-size:14px; font-weight:700; margin-bottom:12px; color:#0f172a; }
+  .toc-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px 24px; }
+  .toc a { color:#1e40af; text-decoration:none; font-size:12px; line-height:1.8; }
+  .toc a:hover { text-decoration:underline; }
+
+  /* Sections */
+  h2.section-title {
+    font-size:18px; font-weight:800; color:#0f172a;
+    border-left:4px solid #dc2626;
+    padding-left:14px;
+    margin: 32px 0 16px;
+  }
+  h3.sub-title {
+    font-size:14px; font-weight:700; color:#1e3a5f;
+    margin: 20px 0 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  h4.step-title {
+    font-size:12px; font-weight:700; color:#0f172a;
+    margin: 14px 0 6px;
+  }
+
+  /* KPI */
+  .kpi-row { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:24px; }
+  .kpi { background:linear-gradient(145deg,#fff,#f8fafc); border:1px solid #e2e8f0; border-radius:12px; padding:18px 16px; text-align:center; }
+  .kpi .icon { font-size:22px; margin-bottom:6px; }
+  .kpi .num { font-size:26px; font-weight:800; color:#0f172a; line-height:1.1; }
+  .kpi .num .sm { font-size:14px; font-weight:600; }
+  .kpi .desc { font-size:10.5px; color:#64748b; margin-top:3px; }
+
+  /* Cards */
+  .card { background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:20px 22px; margin-bottom:14px; }
+  .card.highlight { border-left:4px solid #dc2626; }
+  .card.blue { border-left:4px solid #2563eb; }
+  .card.green { border-left:4px solid #16a34a; }
+  .card.amber { border-left:4px solid #d97706; }
+  .card.purple { border-left:4px solid #7c3aed; }
+  .card.slate { border-left:4px solid #475569; }
+  .card.teal { border-left:4px solid #0d9488; }
+  .card.rose { border-left:4px solid #e11d48; }
+  .card.indigo { border-left:4px solid #4f46e5; }
+
+  /* Tables */
+  table { width:100%; border-collapse:separate; border-spacing:0; font-size:11px; margin:8px 0 14px; }
+  thead th { background:#0f172a; color:#e2e8f0; padding:8px 12px; text-align:left; font-size:10.5px; font-weight:600; text-transform:uppercase; letter-spacing:0.3px; }
+  thead th:first-child { border-radius:8px 0 0 0; }
+  thead th:last-child { border-radius:0 8px 0 0; }
+  tbody td { padding:8px 12px; border-bottom:1px solid #f1f5f9; vertical-align:top; }
+  tbody tr:hover { background:#f8fafc; }
+
+  /* Badge */
+  .badge { display:inline-block; padding:2px 8px; border-radius:6px; font-size:10px; font-weight:600; }
+  .badge.red { background:#fee2e2; color:#dc2626; }
+  .badge.blue { background:#dbeafe; color:#1d4ed8; }
+  .badge.green { background:#dcfce7; color:#16a34a; }
+  .badge.amber { background:#fef3c7; color:#b45309; }
+  .badge.purple { background:#ede9fe; color:#6d28d9; }
+  .badge.slate { background:#f1f5f9; color:#475569; }
+
+  /* Steps */
+  .step-list { counter-reset:step; padding-left:0; list-style:none; }
+  .step-list li { counter-increment:step; position:relative; padding:10px 10px 10px 42px; margin-bottom:8px; background:#f8fafc; border-radius:8px; border:1px solid #e2e8f0; font-size:11.5px; }
+  .step-list li::before { content:counter(step); position:absolute; left:10px; top:10px; width:24px; height:24px; background:#dc2626; color:#fff; border-radius:50%; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+  .step-list.blue li::before { background:#2563eb; }
+  .step-list.green li::before { background:#16a34a; }
+  .step-list.purple li::before { background:#7c3aed; }
+
+  /* Alert */
+  .alert { padding:14px 18px; border-radius:10px; margin:10px 0 14px; font-size:11.5px; }
+  .alert.warn { background:#fef3c7; border:1px solid #f59e0b; color:#92400e; }
+  .alert.danger { background:#fee2e2; border:1px solid #ef4444; color:#991b1b; }
+  .alert.info { background:#dbeafe; border:1px solid #3b82f6; color:#1e3a5f; }
+  .alert.success { background:#dcfce7; border:1px solid #22c55e; color:#166534; }
+  .alert strong { font-weight:700; }
+
+  /* Code block */
+  .code-block { background:#0f172a; color:#e2e8f0; padding:16px 20px; border-radius:8px; font-family:'Consolas','Courier New',monospace; font-size:11px; line-height:1.6; margin:8px 0 14px; overflow-x:auto; white-space:pre-wrap; }
+
+  /* Flow */
+  .flow { display:flex; align-items:center; gap:0; margin:14px 0 18px; flex-wrap:wrap; }
+  .flow-step { background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:10px 16px; font-size:11px; font-weight:600; color:#1e40af; text-align:center; min-width:100px; }
+  .flow-arrow { font-size:18px; color:#94a3b8; margin:0 4px; }
+  .flow-step.active { background:#dc2626; color:#fff; border-color:#dc2626; }
+
+  /* Collapsible */
+  details { margin:8px 0; }
+  details summary { cursor:pointer; font-weight:600; font-size:12px; color:#1e40af; padding:8px 0; }
+  details[open] summary { color:#dc2626; }
+  details .inner { padding:8px 16px; background:#f8fafc; border-radius:8px; border:1px solid #e2e8f0; margin-top:4px; }
+
+  /* Footer */
+  .footer { text-align:center; padding:28px 24px 16px; font-size:10px; color:#94a3b8; border-top:1px solid #e2e8f0; }
+  .footer a { color:#2563eb; text-decoration:none; }
+
+  /* PG tabs */
+  .pg-tabs { display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
+  .pg-tab { padding:8px 18px; border-radius:8px; font-size:12px; font-weight:700; cursor:default; }
+  .pg-tab.paypal { background:#003087; color:#fff; }
+  .pg-tab.cko { background:#0f172a; color:#00d632; }
+  .pg-tab.airwallex { background:#6366f1; color:#fff; }
+  .pg-tab.pwl { background:#f59e0b; color:#0f172a; }
+  .pg-tab.worldpay { background:#e11d48; color:#fff; }
+  .pg-tab.payletter { background:#0d9488; color:#fff; }
+  .pg-tab.mycard { background:#4f46e5; color:#fff; }
+  .pg-tab.opn { background:#475569; color:#fff; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-badge">CHARGEBACK OPERATION MANUAL</div>
+  <h1>TOOMICS 차지백 오퍼레이션 매뉴얼</h1>
+  <p class="sub">PG사별 소명 자료 작성 → 제출 → 회원 제재 전 프로세스 가이드</p>
+  <div class="header-meta">
+    <div class="header-meta-item">
+      <span class="label">버전</span>
+      <span class="value">1.1</span>
+    </div>
+    <div class="header-meta-item">
+      <span class="label">대상 PG</span>
+      <span class="value">8<span class="unit"> 사</span></span>
+    </div>
+    <div class="header-meta-item">
+      <span class="label">14개월 누적</span>
+      <span class="value">4,220<span class="unit"> 건</span></span>
+    </div>
+    <div class="header-meta-item">
+      <span class="label">작성</span>
+      <span class="value">BizOps</span>
+    </div>
+  </div>
+</div>
+
+<div class="body">
+
+<!-- TOC -->
+<div class="toc">
+  <h2>목차</h2>
+  <div class="toc-grid">
+    <a href="#sec1">1. 차지백 현황 개요</a>
+    <a href="#sec7">7. 소명 답변 템플릿 (영문)</a>
+    <a href="#sec2">2. 전체 프로세스 플로우</a>
+    <a href="#sec8">8. 회원 제재 절차</a>
+    <a href="#sec3">3. 소명 자료 작성 + 엑셀 템플릿</a>
+    <a href="#sec9">9. 환불 응대 템플릿 (다국어)</a>
+    <a href="#sec4">4. CKO (Checkout.com) 소명</a>
+    <a href="#sec10">10. 주의사항 & FAQ</a>
+    <a href="#sec5-paypal">5-1. PayPal 소명</a>
+    <a href="#sec11">11. 참고 링크</a>
+    <a href="#sec5-airwallex">5-2. Airwallex 소명</a>
+    <a href="#sec5-pwl">5-3. Paymentwall 소명</a>
+    <a href="#sec5-worldpay">5-4. WorldPay 소명</a>
+    <a href="#sec5-payletter">5-5. Payletter 소명</a>
+    <a href="#sec5-mycard">5-6. MyCard 소명</a>
+    <a href="#sec6">6. PG사별 접속 및 로그인</a>
+    <a href="#sec5-opn">5-7. OPN (Omise) 소명</a>
+  </div>
+</div>
+
+<!-- 1. 현황 -->
+<h2 class="section-title" id="sec1">1. 차지백 현황 개요</h2>
+
+<div class="kpi-row">
+  <div class="kpi">
+    <div class="icon">📊</div>
+    <div class="num">4,220</div>
+    <div class="desc">14개월 누적 (2025.01~2026.02)</div>
+  </div>
+  <div class="kpi">
+    <div class="icon">📈</div>
+    <div class="num">~310<span class="sm">/월</span></div>
+    <div class="desc">월평균 차지백 건수</div>
+  </div>
+  <div class="kpi">
+    <div class="icon">💳</div>
+    <div class="num">68<span class="sm">%</span></div>
+    <div class="desc">PayPal 점유율 (2,857건)</div>
+  </div>
+  <div class="kpi">
+    <div class="icon">⚠️</div>
+    <div class="num">31<span class="sm">%</span></div>
+    <div class="desc">Unauthorized 사유 비율</div>
+  </div>
+</div>
+
+<h3 class="sub-title">PG사별 건수 (8사)</h3>
+<table>
+  <thead><tr><th>PG사</th><th>건수</th><th>비율</th><th>비고</th></tr></thead>
+  <tbody>
+    <tr><td><strong>PayPal</strong></td><td><strong>2,857</strong></td><td>67.7%</td><td>최다, 메인/부계정 분리 운영</td></tr>
+    <tr><td><strong>CKO (Checkout.com)</strong></td><td><strong>970</strong></td><td>23.0%</td><td>OTP 로그인 필요, 소명 답변 4종</td></tr>
+    <tr><td><strong>Airwallex</strong></td><td><strong>174</strong></td><td>4.1%</td><td>개인계정 OTP, Challenge/Accept 분기</td></tr>
+    <tr><td><strong>Paymentwall</strong></td><td><strong>110</strong></td><td>2.6%</td><td>공용계정, 소명자료만 제출 (답변 없음)</td></tr>
+    <tr><td><strong>MyCard</strong></td><td><strong>57</strong></td><td>1.4%</td><td>대만(TW) 전용 PG, 포인트/e-Wallet 결제</td></tr>
+    <tr><td><strong>WorldPay</strong></td><td><strong>25</strong></td><td>0.6%</td><td>영국 본사 글로벌 매입사, 한국 Eximbay 통해 프로세싱</td></tr>
+    <tr><td><strong>Payletter</strong></td><td><strong>15</strong></td><td>0.4%</td><td>특이사항 없음</td></tr>
+    <tr><td><strong>OPN (Omise)</strong></td><td><strong>14</strong></td><td>0.3%</td><td>태국(TH) 전용 PG, 신용카드만 사용 중</td></tr>
+  </tbody>
+</table>
+
+<h3 class="sub-title">차지백 사유별 분포</h3>
+<table>
+  <thead><tr><th>사유</th><th>건수</th><th>비율</th><th>설명</th></tr></thead>
+  <tbody>
+    <tr><td><span class="badge red">Unauthorized</span></td><td>1,294</td><td>31%</td><td>"나는 이 결제를 승인하지 않았다" — 가장 많은 사유</td></tr>
+    <tr><td><span class="badge amber">Fraudulent</span></td><td>544</td><td>13%</td><td>사기 결제 신고</td></tr>
+    <tr><td><span class="badge blue">Canceled</span></td><td>309</td><td>7%</td><td>해지했는데 계속 결제됨 주장</td></tr>
+    <tr><td><span class="badge purple">Not as Described</span></td><td>234</td><td>6%</td><td>상품이 설명과 다르다</td></tr>
+    <tr><td><span class="badge green">Other</span></td><td>307</td><td>7%</td><td>기타</td></tr>
+  </tbody>
+</table>
+
+<h3 class="sub-title">상품별 / 통화별</h3>
+<table>
+  <thead><tr><th>상품</th><th>건수</th><th colspan="2">주요 통화별 누적 금액</th></tr></thead>
+  <tbody>
+    <tr><td>VIP 1개월</td><td>1,251</td><td>TWD 117,500</td><td>USD 35,308</td></tr>
+    <tr><td>VIP 6개월</td><td>605</td><td>JPY 41,675</td><td>EUR 9,281</td></tr>
+    <tr><td>VIP 3개월</td><td>556</td><td>BRL 13,835</td><td>THB 7,994</td></tr>
+    <tr><td>Coin 구매</td><td>276</td><td>GBP 205</td><td>—</td></tr>
+  </tbody>
+</table>
+
+<!-- 2. 전체 플로우 -->
+<h2 class="section-title" id="sec2">2. 전체 프로세스 플로우</h2>
+
+<div class="flow">
+  <div class="flow-step active">① PG사<br>접수 확인</div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-step">② 거래번호<br>복사</div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-step">③ 관리자에서<br>소명자료 다운</div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-step">④ 엑셀 편집<br>+ Receipt 첨부</div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-step">⑤ PDF 변환<br>+ 제출</div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-step">⑥ 회원 제재</div>
+</div>
+
+<div class="alert info">
+  <strong>핵심 원칙:</strong> 사용 내역이 있으면 → <strong>소명(Challenge)</strong> · 사용 내역이 없으면 → <strong>환불 수용(Accept)</strong>
+</div>
+
+<h3 class="sub-title">사용 내역 확인 분기</h3>
+<table>
+  <thead><tr><th style="width:15%;">판단</th><th style="width:25%;">조건</th><th style="width:30%;">처리</th><th style="width:30%;">비고</th></tr></thead>
+  <tbody>
+    <tr style="background:#F0FDF4;">
+      <td><strong>소명 (Challenge)</strong></td>
+      <td>사용 내역 있음 (콘텐츠 열람, 코인 사용 등)</td>
+      <td>섹션 3~5 절차에 따라 소명 자료 작성 → PG사 제출</td>
+      <td>대부분의 케이스</td>
+    </tr>
+    <tr style="background:#FEF2F2;">
+      <td><strong>수용 (Accept)</strong></td>
+      <td>사용 내역 없음 (미이용, 시스템 오류 등)</td>
+      <td>각 PG사 대시보드에서 Accept/환불 수용 처리</td>
+      <td>소명 자료 작성 불필요</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 class="sub-title">차지백 접수 기록 (★ 필수 업무)</h3>
+
+<div class="alert danger">
+  <strong>⚠ 핵심:</strong> 차지백 접수 건은 반드시 <strong>★차지백 접수 건수</strong> 구글시트에 기록해야 합니다.<br>
+  데이터 동기화를 위해 PG사 포탈에서 확인한 건은 <strong>당일 시트에 즉시 업데이트</strong>하세요.
+</div>
+
+<table>
+  <thead><tr><th style="width:20%;">단계</th><th style="width:50%;">내용</th><th style="width:30%;">비고</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>① PG사 확인</strong></td>
+      <td>각 PG사 대시보드에 정기적으로 접속하여 신규 차지백 건 확인</td>
+      <td>매일 확인 권장</td>
+    </tr>
+    <tr>
+      <td><strong>② 소명/Accept</strong></td>
+      <td>사용 내역 유무에 따라 소명(Challenge) 또는 환불 수용(Accept) 처리</td>
+      <td>기일 엄수</td>
+    </tr>
+    <tr>
+      <td><strong>③ 시트 기록</strong></td>
+      <td>
+        ★차지백 접수 건수 시트 → 해당 날짜 행에 기록:<br>
+        • 결제사별(Col 2~10), 금액별, 상품별, 사유별 <strong>접수 건수</strong> 입력
+      </td>
+      <td>접수 확인 즉시 기록</td>
+    </tr>
+    <tr>
+      <td><strong>④ 패소 시</strong></td>
+      <td>2차 소명(Pre-Arbitration) 가능 여부 확인 → PG사별 상이</td>
+      <td>CKO: 2차 소명 가능<br>기타: PG사 정책 확인</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 style="margin-top:14px; color:#334155;">★차지백 접수 건수 시트 구조 (31컬럼)</h4>
+<table>
+  <thead><tr><th>영역</th><th>컬럼</th><th>기록 시점</th></tr></thead>
+  <tbody>
+    <tr><td><strong>날짜 + 합계</strong></td><td>날짜, 합계</td><td>접수 시</td></tr>
+    <tr><td><strong>결제사별</strong> (9사)</td><td>PayPal, CKO, Airwallex, Paymentwall, WorldPay, Payletter, MyCard, OPN, Payverse</td><td>접수 시</td></tr>
+    <tr><td><strong>금액별</strong> (7통화)</td><td>USD, EUR, TWD, BRL, JPY, GBP, THB</td><td>접수 시</td></tr>
+    <tr><td><strong>상품별</strong></td><td>1개월, 3개월, 6개월, 12개월, 코인</td><td>접수 시</td></tr>
+    <tr><td><strong>사유별</strong></td><td>무단거래/미승인, 사기, 취소건결제, 상품못받음, 기타</td><td>접수 시</td></tr>
+    <tr><td><strong>메모</strong></td><td>비고 사항</td><td>필요 시</td></tr>
+  </tbody>
+</table>
+
+<!-- 3. 소명 자료 작성 (공통) -->
+<h2 class="section-title" id="sec3">3. 소명 자료 작성 (공통 — 전 PG사 동일)</h2>
+
+<div class="alert warn">
+  <strong>⚠️ 필수 권한:</strong> 투믹스글로벌 관리자 — 회원 정보, 결제 내역 발송 관리 권한 필요
+</div>
+
+<h3 class="sub-title">3-1. 소명 자료 다운로드</h3>
+<ol class="step-list">
+  <li>PG사 차지백 사이트에서 해당 회원의 <strong>거래 번호(Transaction Number)</strong> 복사</li>
+  <li>투믹스 글로벌 관리자 > <strong>Payments > 결제 내역 발송 관리</strong> 이동</li>
+  <li>Period를 <strong>결제일</strong>로 설정 (해당 차지백 거래의 결제 날짜 기준)</li>
+  <li>Search Terms에서 <strong>Transaction Number</strong> 선택 후 거래번호 붙여넣기 → 검색</li>
+  <li>결제 내역 선택 → <strong>Receipt 캡처</strong> 후 저장<br><span style="color:#64748b;">파일명: <code>Receipt_[거래번호]</code></span></li>
+  <li>회원 Info에서 자동결제 중이면 → <strong>관리자가 수동으로 자동결제 해지</strong></li>
+  <li>회원 Info > <strong>"차지백 소명자료"</strong> 버튼 클릭 > <strong>Chargeback explanation</strong> → 기간 설정 → <strong>Download</strong> 엑셀 파일 다운로드</li>
+</ol>
+
+<h3 class="sub-title">3-2. 소명 자료 작성 (표준 템플릿 사용)</h3>
+<ol class="step-list blue">
+  <li><code>chargeback_template.xlsx</code> 열기 → <strong>다른 이름으로 저장</strong> (원본 보존)</li>
+  <li><strong>STEP 1</strong> — 다운로드한 소명자료 엑셀 전체를 <strong>데이터 영역에 한 번에 붙여넣기</strong><br>
+    <span style="color:#64748b;">※ 붙여넣기 전 확인: 차지백 접수된 거래내역 외 삭제 (타 PG사 결제 포함), Accessed URLs · 1:1 history 삭제</span></li>
+  <li><strong>STEP 2</strong> — <strong>Proof of Delivery</strong> — 해당 Case(A~D) 1개만 남기고 나머지 행 삭제 → [대괄호] 부분 입력</li>
+  <li><strong>STEP 3</strong> — <strong>Invoice</strong> — VIP / Coin 중 해당 답변만 남기고 삭제 → [대괄호] 부분 입력</li>
+  <li><strong>STEP 4</strong> — Receipt 스크린샷 삽입</li>
+  <li>User Account > User id가 "숫자+"로 표시되면 → 셀 서식을 <strong>'숫자'</strong>로 변경</li>
+</ol>
+
+<h3 class="sub-title">3-3. PDF 변환</h3>
+<ol class="step-list green">
+  <li>소명 자료 작성 완료 후 <strong>PDF 파일로 변환</strong>하여 저장</li>
+  <li>파일명 규칙: <code>[PG사] Chargeback_[거래번호].pdf</code><br>
+    <span style="color:#64748b;">예: CKO Chargeback_pay_abc123.pdf, Paymentwall Chargeback_TXN456.pdf</span></li>
+</ol>
+
+<h3 class="sub-title">3-4. 소명 엑셀 구조 (Chargeback Explanation)</h3>
+<table>
+  <thead><tr><th>섹션</th><th>내용</th><th>비고</th></tr></thead>
+  <tbody>
+    <tr><td><strong>User Account</strong></td><td>User Number, User ID, Email</td><td>User ID 숫자 표시 확인</td></tr>
+    <tr><td><strong>Transaction</strong></td><td>상품, 결제수단, Region, 언어, 금액, Transaction ID, 결제일, IP</td><td>핵심 증거</td></tr>
+    <tr><td><strong>Coin Usage Record</strong></td><td>코인 사용/적립 내역</td><td>코인 결제 시 중요</td></tr>
+    <tr><td><strong>Usage History</strong></td><td>읽은 날짜, 언어, 시리즈명, 에피소드, Premium/Free, IP</td><td>콘텐츠 열람 증거 (핵심)</td></tr>
+    <tr><td><del>Accessed URLs</del></td><td><del>접속 URL 기록</del></td><td><strong>삭제</strong></td></tr>
+    <tr><td><del>1:1 history</del></td><td><del>CS 문의 내역</del></td><td><strong>삭제</strong></td></tr>
+  </tbody>
+</table>
+
+<!-- 3-5. 소명 엑셀 템플릿 -->
+<h3 class="sub-title">3-5. 소명 엑셀 템플릿 (chargeback_template.xlsx)</h3>
+
+<div class="alert info">
+  <strong>📋 파일 위치:</strong> <code>reports/chargeback_template.xlsx</code><br>
+  모든 PG사 공통, VIP/Coin 범용 — 하나의 템플릿으로 모든 차지백 소명 대응 가능
+</div>
+
+<p style="margin-bottom:8px;">관리자에서 다운로드한 소명자료 데이터를 <strong>아래 표준 템플릿 엑셀</strong>에 넣어서 소명 자료를 완성하는 구조입니다.</p>
+
+<table>
+  <thead><tr><th style="width:5%">#</th><th style="width:25%">섹션</th><th style="width:45%">내용</th><th style="width:25%">작성 방법</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>—</td>
+      <td><strong>Description</strong></td>
+      <td>Toomics 서비스 소개 (고정 텍스트)</td>
+      <td>수정 불필요 ✅</td>
+    </tr>
+    <tr style="background:#EFF6FF;">
+      <td>1~4</td>
+      <td><strong>소명 데이터</strong><br><span style="color:#1E40AF; font-size:9px;">한 번에 붙여넣기</span></td>
+      <td>
+        User Account · Transaction · Coin Usage · Usage History<br>
+        <span style="color:#64748b; font-size:9px;">관리자에서 다운로드한 소명자료 엑셀 전체를 하나의 영역에 한 번에 붙여넣기</span>
+      </td>
+      <td>관리자 소명자료 엑셀<br>전체 복사 → 붙여넣기</td>
+    </tr>
+    <tr style="background:#F0FDF4;">
+      <td>5</td>
+      <td><strong>Proof of Delivery</strong><br><span style="color:#166534; font-size:9px;">택1 후 나머지 삭제</span></td>
+      <td>
+        <strong>Case A</strong> — VIP 자동결제 (가장 많은 케이스)<br>
+        <strong>Case B</strong> — VIP 첫 결제 (1회 구매)<br>
+        <strong>Case C</strong> — Coin 결제<br>
+        <strong>Case D</strong> — 타 PG 해지 후 재구매
+      </td>
+      <td>[PG사명], [상품명], [결제일], [시간] 등 대괄호 부분만 입력</td>
+    </tr>
+    <tr style="background:#FEF2F2;">
+      <td>6</td>
+      <td><strong>Invoice or Receipt</strong><br><span style="color:#991B1B; font-size:9px;">VIP/Coin 택1</span></td>
+      <td>VIP 버전 / Coin 버전 중 선택</td>
+      <td>[PG사명], [상품명/코인 수], [결제일], [시간], [거래번호] 입력</td>
+    </tr>
+    <tr>
+      <td>—</td>
+      <td><strong>Receipt 이미지</strong></td>
+      <td>관리자 > Payments > 결제 내역 발송 관리에서 캡처</td>
+      <td>스크린샷 삽입 (건별)</td>
+    </tr>
+    <tr>
+      <td>—</td>
+      <td><strong>Recurring Transaction</strong></td>
+      <td>Terms of Use + Payment Page 동의 안내 (고정 텍스트)</td>
+      <td>수정 불필요 ✅</td>
+    </tr>
+    <tr>
+      <td>—</td>
+      <td><strong>Refund Policy</strong></td>
+      <td>환불 정책 안내 + Cancellation & Refund Policy 이미지</td>
+      <td>수정 불필요 ✅<br>이미지 고정 삽입됨</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 style="margin-top:16px; color:#334155;">사용 절차</h4>
+<ol class="step-list">
+  <li><code>chargeback_template.xlsx</code> 열기 → <strong>다른 이름으로 저장</strong> (원본 보존)</li>
+  <li><strong>STEP 1</strong> — 관리자에서 다운로드한 소명자료 엑셀 전체를 <strong>데이터 영역에 한 번에 붙여넣기</strong></li>
+  <li><strong>STEP 2</strong> — <strong>Proof of Delivery</strong> — 해당 Case(A~D) 1개만 남기고 나머지 행 삭제 → [대괄호] 부분 입력</li>
+  <li><strong>STEP 3</strong> — <strong>Invoice</strong> — VIP / Coin 중 해당 답변만 남기고 삭제 → [대괄호] 부분 입력</li>
+  <li><strong>STEP 4</strong> — Receipt 스크린샷 삽입</li>
+  <li><strong>STEP 5</strong> — PDF 변환 후 PG사 사이트에 업로드</li>
+</ol>
+
+<div class="alert warn">
+  <strong>💡 팁:</strong> Cancellation & Refund Policy 이미지는 엑셀 템플릿에 미리 삽입되어 있어 별도 첨부 불필요.<br>
+  Payment Plan 이미지는 프로모션에 따라 금액이 변동되므로 첨부하지 않음.
+</div>
+
+
+<!-- 4. CKO -->
+<div class="page-break"></div>
+<h2 class="section-title" id="sec4">4. CKO (Checkout.com) 소명 절차</h2>
+
+<div class="pg-tabs">
+  <div class="pg-tab cko">CKO / Checkout.com</div>
+  <span class="badge red" style="align-self:center;">전체의 23% · 970건</span>
+</div>
+
+<h3 class="sub-title">4-1. 접속 및 로그인</h3>
+<div class="card blue">
+  <strong>접속:</strong> <a href="https://identity.checkout.com/" target="_blank">https://identity.checkout.com/</a><br>
+  <strong>경로:</strong> Payments → Disputes → Unanswered<br><br>
+  <strong>로그인:</strong> Google Authenticator OTP 필요<br>
+  - 담당자 핸드폰에 Authenticator 앱 설치 후 OTP 코드 등록<br>
+  - 새 계정 발급 완료 (2024.12.04~)<br>
+  <br>
+  <div class="alert danger" style="margin:8px 0 0;">
+    <strong>⏰ 기일 엄수:</strong> 만료 일자 이전에 소명 자료 제출하지 않으면 건이 사라집니다.
+  </div>
+</div>
+
+<h3 class="sub-title">4-2. CKO 소명 답변 작성 (4종류)</h3>
+<p style="margin-bottom:10px;">CKO는 소명 자료 제출 시 <strong>4가지 카테고리별 답변</strong>을 작성해야 합니다.<br>해당 카테고리를 <strong>수동 선택</strong> 후 답변을 입력합니다.</p>
+
+<div class="alert warn">
+  <strong>⚠ CKO 전용 답변입니다.</strong> 타 PG사(WorldPay, Payletter 등) 사용 시 "Dear Checkout Team" → "Dear [PG사명] Team"으로, "checkout.com" → 해당 PG사명으로 변경 필수.<br>
+  범용 답변은 <strong>표준 엑셀 템플릿</strong>(<code>chargeback_template.xlsx</code>)에 포함되어 있습니다.
+</div>
+
+<div class="card highlight">
+  <h4 class="step-title">① Proof of delivery or services</h4>
+  <p style="margin-bottom:6px;">첨부: <code>CKO Chargeback_[거래번호].pdf</code></p>
+  <details>
+    <summary>자동결제 (가장 많은 케이스)</summary>
+    <div class="inner">
+      <div class="code-block">Dear Checkout Team, we would like to state that Toomics VIP Memberships are subscriptions that automatically get renewed. This is clearly stated in our Terms of Use (Under the Service section) and our Payment Page. Upon checking our records, we have found out that the user made a purchase of [상품] for the first time on [첫 결제일], and a renewal payment has followed on [갱신일], because the user never canceled the subscription before the expiration date.</div>
+      <div class="alert info" style="margin-top:6px;"><strong>수정 필요:</strong> [상품], [첫 결제일], [갱신일]을 실제 데이터로 교체</div>
+    </div>
+  </details>
+  <details>
+    <summary>첫 결제</summary>
+    <div class="inner">
+      <div class="code-block">Dear Checkout Team, we would like to state that this user has only made 1 purchase of a VIP membership on [결제일], and has been granted since that same day at [시간] KST. As the user has only purchased our membership once, there is no way the system could charge him a non-existing recurring membership. The user status is stated as "VIP Member" and the user has been reading content for several days since the first purchase. Please refer to the screenshot for further information.</div>
+    </div>
+  </details>
+  <details>
+    <summary>코인 결제</summary>
+    <div class="inner">
+      <div class="code-block">Dear Checkout Team, we would like to state that the [코인 수] coins that the user purchased on [결제일], has been granted since that same day at [시간] KST. The user status is also stated as "Coin Member". We would like to let you know that this user has read VIP content and used [사용 수] of the [코인 수] coins he/she purchased.</div>
+    </div>
+  </details>
+  <details>
+    <summary>다른 수단 해지 후 CKO 재구매</summary>
+    <div class="inner">
+      <div class="code-block">Dear Checkout Team, we would like to state that the VIP membership that the user purchased on [CKO 결제일], is a whole new transaction that has nothing to do with the transaction that the user actually canceled that was made through [이전 PG사]. Therefore, we can prove that the user actually made the last purchase by himself/herself. We would like to highlight that we have proceeded to cancel the VIP membership by ourselves, that's why the system has registered it at the end as "Admin".</div>
+    </div>
+  </details>
+</div>
+
+<div class="card blue">
+  <h4 class="step-title">② Invoice or Receipt</h4>
+  <p style="margin-bottom:6px;">첨부: <code>Receipt_[거래번호].png</code></p>
+  <details>
+    <summary>VIP 구매</summary>
+    <div class="inner">
+      <div class="code-block">The invoice we can refer to is the one given directly by the checkout.com platform, however, on our system is clearly shown that the payment of a [상품] went through on [결제일] at [시간] KST, and with the transaction number: [거래번호].</div>
+    </div>
+  </details>
+  <details>
+    <summary>코인 구매</summary>
+    <div class="inner">
+      <div class="code-block">The invoice we can refer to is the one given directly by the checkout.com platform, however, on our system is clearly shown that the payment of [코인 수] Coins went through on [결제일] at [시간] KST, and with the transaction number: [거래번호].</div>
+    </div>
+  </details>
+</div>
+
+<div class="card green">
+  <h4 class="step-title">③ Recurring Transaction Agreement</h4>
+  <p style="margin-bottom:6px;">Payment Plan 이미지는 프로모션에 따라 금액이 변동되므로 <strong>첨부하지 않음</strong></p>
+  <div class="code-block">We have clearly stated to our clients our Terms of Use and Privacy Policy (Under the Service section: toomics.com/en/help/access_terms) and also on our Payment Page (.toomics.com/en/mypage/payment). Therefore, when users purchase our products, they are practically agreeing with Toomics terms.</div>
+</div>
+
+<div class="card purple">
+  <h4 class="step-title">④ Refund or Cancellation Policy</h4>
+  <p style="margin-bottom:6px;">첨부: <code>Cancellation and Refund.jpg</code> (고정)</p>
+  <div class="code-block">It is clearly stated in our Terms of Use that a refund is only possible if:
+- It is requested within 14 days after the purchase (VIP) / within 7 days (Coins); AND
+- The user has not read VIP content whatsoever; OR
+- The user has not used any coins; OR
+- The user has not read all chapters of some particular title within 1 day (24 hours from start of usage).</div>
+</div>
+
+<!-- 5-1. PayPal -->
+<div class="page-break"></div>
+<h2 class="section-title" id="sec5-paypal">5-1. PayPal 소명 절차</h2>
+
+<div class="pg-tabs">
+  <div class="pg-tab paypal">PayPal</div>
+  <span class="badge red" style="align-self:center;">전체의 68% · 2,857건</span>
+</div>
+
+<h3 class="sub-title">접속 및 계정</h3>
+<table>
+  <thead><tr><th>구분</th><th>URL / 계정</th><th>비고</th></tr></thead>
+  <tbody>
+    <tr><td><strong>사이트</strong></td><td><a href="https://www.paypal.com/signin" target="_blank">https://www.paypal.com/signin</a></td><td>—</td></tr>
+    <tr><td><strong>메인 계정</strong></td><td>toomicsphone@gmail.com</td><td>Resolution Center에서 차지백 확인</td></tr>
+    <tr><td><strong>부계정</strong></td><td>toomicsglobal22@gmail.com</td><td>대량이체 후 인출용</td></tr>
+  </tbody>
+</table>
+
+<h3 class="sub-title">PayPal 소명 프로세스</h3>
+<ol class="step-list">
+  <li>PayPal Resolution Center에서 미응답 건(Open Cases) 확인</li>
+  <li>거래번호 복사 → 관리자에서 소명 자료 다운로드 (섹션 3 동일)</li>
+  <li>엑셀 편집 후 PDF 변환</li>
+  <li>PayPal Resolution Center에서 소명 자료(PDF) 업로드<br>
+    <span style="color:#64748b;">답변: "We disagreed with the case as the digital contents were received by the customer."</span></li>
+  <li>추가 설명 입력:<br>
+    <div class="code-block">The customer accessed our VIP webtoon series on our website. We have also found information of customer email address, registered IP, PayPal transaction ID, and date of access highlighted on the attachment. Please refer by checking on the Date of Access section as it indicates the date and time of access.</div>
+  </li>
+</ol>
+
+<div class="alert warn">
+  <strong>⚠️ PayPal 특이사항:</strong><br>
+  - Paymentwall과 달리 소명 답변 + 자료 모두 제출<br>
+  - 매일 각 계정에서 USD 20,000 수동 인출 필요 (월~금, 한국 일일 인출 한도)<br>
+  - toomicsphone@gmail.com 메일함 (Inbox > Important) 정기 체크 — 문서 요구 메일 확인
+</div>
+
+<!-- 5-2. Airwallex -->
+<h2 class="section-title" id="sec5-airwallex">5-2. Airwallex 소명 절차</h2>
+
+<div class="pg-tabs">
+  <div class="pg-tab airwallex">Airwallex</div>
+  <span class="badge purple" style="align-self:center;">전체의 4% · 174건</span>
+</div>
+
+<h3 class="sub-title">접속 및 로그인</h3>
+<div class="card purple">
+  <strong>접속:</strong> <a href="https://www.airwallex.com/app/login?region=kr" target="_blank">https://www.airwallex.com/app/login?region=kr</a><br>
+  <strong>로그인:</strong> 개인계정 + Google Authenticator OTP<br>
+  <strong>경로:</strong> Payments → Disputes → Chargeback → 신규 분쟁 클릭<br><br>
+  ※ 신규 계정 생성: 비즈옵스팀 팀장을 통해 발급 가능
+</div>
+
+<h3 class="sub-title">Challenge vs Accept 분기</h3>
+<table>
+  <thead><tr><th>사용 내역</th><th>선택</th><th>설명</th></tr></thead>
+  <tbody>
+    <tr><td><span class="badge green">있음</span></td><td><strong>Challenge (도전)</strong></td><td>소명자료 등록 진행</td></tr>
+    <tr><td><span class="badge red">없음</span></td><td><strong>Accept (수용)</strong></td><td>분쟁 금액 환불 처리</td></tr>
+  </tbody>
+</table>
+
+<h3 class="sub-title">Airwallex Challenge 소명 등록 단계</h3>
+<ol class="step-list purple">
+  <li><strong>Challenge</strong> 버튼 클릭 → 안내문 확인 → 다시 <strong>Challenge</strong> 클릭</li>
+  <li>이의 제기 사유 선택:<br>
+    ✅ "The customer has a purchasing history with me" (고객 구매 내역 있음)<br>
+    ✅ "Digital product or service" (디지털 상품) → <strong>Next</strong>
+  </li>
+  <li><strong>소명자료 PDF 업로드</strong> + 약관 이미지 업로드<br>
+    <div class="code-block">The customer has already accessed the VIP content provided by us; therefore, this transaction is not eligible for a refund. We kindly ask you to review the submitted supporting documents along with our Terms and Conditions. Toomics strictly complies with the Terms and Conditions agreed upon with its users.</div>
+  </li>
+  <li><strong>상품설명 PLAN 이미지</strong> 업로드 → Next<br>
+    <div class="code-block">We have clearly restated the detailed description and Terms and Conditions at the bottom of the product page for the customer's reference. Therefore, by proceeding with the purchase, the customer is deemed to have effectively agreed to Toomics' Terms and Conditions.</div>
+  </li>
+  <li><strong>영수증(Invoice) 이미지</strong> 업로드 → Next<br>
+    <div class="code-block">The receipt was provided directly by the payment platform, and our system clearly shows that the payment was successfully processed.</div>
+  </li>
+  <li>고객 정보 단계 → <strong>"이 단계에 대한 증빙 자료가 없습니다" 체크</strong> → Review</li>
+  <li>"증거 자료는 한 번만 제출 가능" 동의 체크 → <strong>Submit</strong></li>
+</ol>
+
+<div class="alert info">
+  <strong>참고:</strong> 발급 은행은 이의 제기 검토 후 <strong>115일 이내</strong> 결정.<br>
+  분쟁이 격상되면 <strong>USD $15 마스터카드 중재 전 수수료</strong> 추가 부과.
+</div>
+
+<div class="alert info">
+  <strong>파일 제한:</strong> PDF, Word, JPG, JPEG, PNG, BMP / 최대 <strong>10MB</strong> / 이미지 300×300 DPI 이하, 3천만 픽셀 미만
+</div>
+
+<!-- 5-3. Paymentwall -->
+<h2 class="section-title" id="sec5-pwl">5-3. Paymentwall 소명 절차</h2>
+
+<div class="pg-tabs">
+  <div class="pg-tab pwl">Paymentwall</div>
+  <span class="badge amber" style="align-self:center;">전체의 3% · 110건</span>
+</div>
+
+<div class="card amber">
+  <strong>접속:</strong> <a href="https://api.paymentwall.com/" target="_blank">https://api.paymentwall.com/</a><br>
+  <strong>경로:</strong> Resolution Center → Chargebacks<br>
+  <strong>로그인:</strong> 공용계정 사용 가능
+</div>
+
+<div class="alert success">
+  <strong>✅ Paymentwall 특이사항:</strong> 소명 자료는 CKO와 동일하게 작성하되, <strong>답변 작성은 없음</strong>.<br>
+  파일명: <code>Paymentwall Chargeback_[거래번호].pdf</code> → 업로드만 하면 완료.
+</div>
+
+<!-- 5-4. WorldPay -->
+<div class="page-break"></div>
+<h2 class="section-title" id="sec5-worldpay">5-4. WorldPay 소명 절차</h2>
+
+<div class="pg-tabs">
+  <div class="pg-tab worldpay">WorldPay</div>
+  <span class="badge red" style="align-self:center;">전체의 0.6% · 25건</span>
+</div>
+
+<div class="card rose">
+  <strong>접속:</strong> WorldPay 대시보드 (사내 접속 정보 시트 참조)<br>
+  <strong>로그인:</strong> 담당자 계정<br>
+  <strong>경로:</strong> 대시보드 → Disputes / Chargebacks 메뉴<br><br>
+  <strong>특이사항:</strong><br>
+  - 영국 본사 글로벌 매입사, 한국 <strong>Eximbay</strong>를 통해 프로세싱<br>
+  - Toomics Global UK Limited 명의로 계약<br>
+  - UK/EEA 발 카드 결제 중심으로 수수료 구조가 유리<br>
+  - 2024년 기술 연동 완료, 소규모 차지백 발생 중
+</div>
+
+<h3 class="sub-title">WorldPay 소명 프로세스</h3>
+<ol class="step-list">
+  <li>WorldPay 대시보드에서 신규 차지백/분쟁 건 확인</li>
+  <li>거래번호 복사 → 투믹스 관리자에서 소명 자료 다운로드 (섹션 3 동일)</li>
+  <li>엑셀 편집 후 PDF 변환 — 파일명: <code>WorldPay Chargeback_[거래번호].pdf</code></li>
+  <li>WorldPay 대시보드에서 소명 자료(PDF) 업로드 + 소명 답변 입력</li>
+  <li>회원 제재 처리 (섹션 8 참고)</li>
+</ol>
+
+<div class="alert info">
+  <strong>참고:</strong> WorldPay는 건수가 적으나 (월 ~2건), 결제 검증 로직 이슈 (403 Forbidden)가 간헐적으로 발생할 수 있습니다.<br>
+  결제 완료 상태이나 관리자에서 결제시도 상태로 남는 케이스는 개발팀에 에스컬레이션 합니다.
+</div>
+
+<!-- 5-5. Payletter -->
+<h2 class="section-title" id="sec5-payletter">5-5. Payletter 소명 절차</h2>
+
+<div class="pg-tabs">
+  <div class="pg-tab payletter">Payletter</div>
+  <span class="badge green" style="align-self:center;">전체의 0.4% · 15건</span>
+</div>
+
+<div class="card teal">
+  <strong>접속:</strong> Payletter 가맹점 대시보드 (사내 접속 정보 시트 참조)<br>
+  <strong>로그인:</strong> 담당자 계정<br>
+  <strong>경로:</strong> 거래 관리 → 분쟁/차지백 메뉴<br><br>
+  <strong>특이사항:</strong> 특이사항 없음. 기본 프로세스와 동일하게 처리.
+</div>
+
+<h3 class="sub-title">Payletter 소명 프로세스</h3>
+<ol class="step-list">
+  <li>Payletter 대시보드에서 차지백/분쟁 건 확인</li>
+  <li>거래번호 복사 → 투믹스 관리자에서 소명 자료 다운로드 (섹션 3 동일)</li>
+  <li>엑셀 편집 후 PDF 변환 — 파일명: <code>Payletter Chargeback_[거래번호].pdf</code></li>
+  <li>Payletter 대시보드에서 소명 자료(PDF) 업로드</li>
+  <li>회원 제재 처리 (섹션 8 참고)</li>
+</ol>
+
+
+<!-- 5-6. MyCard -->
+<h2 class="section-title" id="sec5-mycard">5-6. MyCard 소명 절차</h2>
+
+<div class="pg-tabs">
+  <div class="pg-tab mycard">MyCard</div>
+  <span class="badge blue" style="align-self:center;">전체의 1.4% · 57건</span>
+</div>
+
+<div class="card indigo">
+  <strong>접속:</strong> MyCard 가맹점 대시보드 (사내 접속 정보 시트 참조)<br>
+  <strong>로그인:</strong> 담당자 계정<br>
+  <strong>경로:</strong> 거래 관리 → 분쟁/차지백 메뉴<br><br>
+  <strong>특이사항:</strong><br>
+  - 대만(TW) 전용 PG사 — TWD(대만달러) 결제 전용<br>
+  - MyCard Point, MyCard e-Wallet, MyCard Savings Point 등 다양한 결제 수단 지원<br>
+  - 통신사 결제(CHT, FET, TWM 등) 및 편의점 결제도 MyCard 경유<br>
+  - 8개 PG 중 5번째 규모 (월 ~4건)
+</div>
+
+<h3 class="sub-title">MyCard 소명 프로세스</h3>
+<ol class="step-list">
+  <li>MyCard 대시보드에서 차지백/분쟁 건 확인</li>
+  <li>거래번호 복사 → 투믹스 관리자에서 소명 자료 다운로드 (섹션 3 동일)</li>
+  <li>엑셀 편집 후 PDF 변환 — 파일명: <code>MyCard Chargeback_[거래번호].pdf</code></li>
+  <li>MyCard 대시보드에서 소명 자료(PDF) 업로드</li>
+  <li>회원 제재 처리 (섹션 8 참고)</li>
+</ol>
+
+
+<!-- 5-7. OPN (Omise) -->
+<h2 class="section-title" id="sec5-opn">5-7. OPN (Omise) 소명 절차</h2>
+
+<div class="pg-tabs">
+  <div class="pg-tab opn">OPN (Omise)</div>
+  <span class="badge slate" style="align-self:center;">전체의 0.3% · 14건</span>
+</div>
+
+<div class="card slate">
+  <strong>접속:</strong> OPN 대시보드 (사내 접속 정보 시트 참조)<br>
+  <strong>로그인:</strong> 담당자 계정<br>
+  <strong>경로:</strong> Charges → Disputes 메뉴<br><br>
+  <strong>특이사항:</strong><br>
+  - 태국(TH) 전용 PG — <strong>신용카드만 사용 중</strong><br>
+  - 태국 시장 전용이므로 차지백 건수 최소 (월 ~1건)<br>
+  - 소명 자료 제출 방식은 기본 프로세스와 동일
+</div>
+
+<h3 class="sub-title">OPN 소명 프로세스</h3>
+<ol class="step-list">
+  <li>OPN 대시보드에서 차지백/분쟁 건 확인</li>
+  <li>거래번호 복사 → 투믹스 관리자에서 소명 자료 다운로드 (섹션 3 동일)</li>
+  <li>엑셀 편집 후 PDF 변환 — 파일명: <code>OPN Chargeback_[거래번호].pdf</code></li>
+  <li>OPN 대시보드에서 소명 자료(PDF) 업로드</li>
+  <li>회원 제재 처리 (섹션 8 참고)</li>
+</ol>
+
+
+<!-- 6. PG사별 접속 정보 -->
+<div class="page-break"></div>
+<h2 class="section-title" id="sec6">6. PG사별 접속 및 로그인 요약</h2>
+<table>
+  <thead><tr><th>PG사</th><th>URL</th><th>인증</th><th>경로</th></tr></thead>
+  <tbody>
+    <tr><td><strong>CKO</strong></td><td>identity.checkout.com</td><td>Google Authenticator OTP</td><td>Payments → Disputes → Unanswered</td></tr>
+    <tr><td><strong>PayPal</strong></td><td>paypal.com/signin</td><td>메인/부계정 PW</td><td>Resolution Center → Open Cases</td></tr>
+    <tr><td><strong>Airwallex</strong></td><td>airwallex.com/app/login</td><td>개인계정 + OTP</td><td>Payments → Disputes → Chargeback</td></tr>
+    <tr><td><strong>Paymentwall</strong></td><td>api.paymentwall.com</td><td>공용계정</td><td>Resolution Center → Chargebacks</td></tr>
+    <tr><td><strong>WorldPay</strong></td><td>WorldPay 대시보드</td><td>담당자 계정</td><td>Disputes / Chargebacks</td></tr>
+    <tr><td><strong>Payletter</strong></td><td>Payletter 대시보드</td><td>담당자 계정</td><td>거래 관리 → 분쟁</td></tr>
+    <tr><td><strong>MyCard</strong></td><td>MyCard 대시보드</td><td>담당자 계정</td><td>거래 관리 → 분쟁</td></tr>
+    <tr><td><strong>OPN</strong></td><td>OPN 대시보드</td><td>담당자 계정</td><td>Charges → Disputes</td></tr>
+  </tbody>
+</table>
+
+<div class="alert info">
+  <strong>ℹ️ WorldPay · Payletter · MyCard · OPN</strong> 접속 URL은 보안 상 매뉴얼에 미기재.<br>
+  사내 접속 정보 시트(공유 문서) 또는 기존 담당자에게 확인 바랍니다.
+</div>
+
+<!-- 7. 소명 답변 템플릿 -->
+<h2 class="section-title" id="sec7">7. 소명 답변 템플릿 요약</h2>
+<table>
+  <thead><tr><th>카테고리</th><th>CKO</th><th>PayPal</th><th>Airwallex</th><th>PWL</th><th>WorldPay</th><th>Payletter</th><th>MyCard</th><th>OPN</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Proof of delivery</strong></td>
+      <td>✅ 4종</td>
+      <td>✅ 1종</td>
+      <td>✅ 1종</td>
+      <td>❌</td>
+      <td>✅ 공통</td>
+      <td>✅ 공통</td>
+      <td>✅ 공통</td>
+      <td>✅ 공통</td>
+    </tr>
+    <tr>
+      <td><strong>Invoice/Receipt</strong></td>
+      <td>✅ 2종</td>
+      <td>✅ 첨부</td>
+      <td>✅ 1종</td>
+      <td>❌</td>
+      <td>✅ 첨부</td>
+      <td>✅ 첨부</td>
+      <td>✅ 첨부</td>
+      <td>✅ 첨부</td>
+    </tr>
+    <tr>
+      <td><strong>Recurring Agreement</strong></td>
+      <td>✅ 고정</td>
+      <td>—</td>
+      <td>✅ 상품</td>
+      <td>❌</td>
+      <td>—</td>
+      <td>—</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><strong>Refund Policy</strong></td>
+      <td>✅ 고정</td>
+      <td>—</td>
+      <td>—</td>
+      <td>❌</td>
+      <td>—</td>
+      <td>—</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><strong>소명 자료 PDF</strong></td>
+      <td>✅ 필수</td>
+      <td>✅ 필수</td>
+      <td>✅ 필수</td>
+      <td>✅ 필수</td>
+      <td>✅ 필수</td>
+      <td>✅ 필수</td>
+      <td>✅ 필수</td>
+      <td>✅ 필수</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="alert info">
+  <strong>참고:</strong> WorldPay, Payletter, MyCard, OPN은 소명 자료 PDF + 기본 소명 답변(공통 양식) 제출 구조입니다.<br>
+  CKO처럼 세분화된 카테고리별 답변은 불필요하며, 기본 소명 답변과 PDF 증빙 업로드로 처리합니다.<br>
+  <strong>공통 양식 = 표준 엑셀 템플릿</strong>(<code>chargeback_template.xlsx</code>)의 Proof of Delivery + Invoice 답변을 사용합니다.
+</div>
+
+<!-- 8. 회원 제재 -->
+<h2 class="section-title" id="sec8">8. 회원 제재 절차</h2>
+
+<h3 class="sub-title">8-1. 투믹스 관리자에서 제재 (2025.05.28~)</h3>
+<ol class="step-list">
+  <li><strong>사유 판단:</strong> Fraudulent(사기) → 제재 / 기타 사유 → 의심 처리</li>
+  <li>관리자 > 회원 Info > <strong>Basic Info(기본정보)</strong> 페이지</li>
+  <li><strong>+Restrict User (회원제재)</strong> 클릭</li>
+  <li>Restriction Status → +Restrict User → <strong>Fraudulent Payment(부정결제)</strong> → PG사 선택 → <strong>Apply(적용)</strong></li>
+</ol>
+
+<h3 class="sub-title">8-2. CKO PG사이트에서 추가 제재</h3>
+<ol class="step-list blue">
+  <li>CKO 사이트 > <strong>Payments → Payment details</strong></li>
+  <li><strong>Add decline list</strong>에서 가능한 체크박스 모두 선택</li>
+  <li><strong>Add attributes to decline list</strong> 클릭 → 완료</li>
+</ol>
+
+<div class="alert warn">
+  <strong>⚠️ 주의:</strong> CKO는 관리자 제재 + PG사이트 제재 <strong>둘 다</strong> 진행해야 합니다.
+</div>
+
+<!-- 9. 환불 응대 템플릿 -->
+<h2 class="section-title" id="sec9">9. 환불 응대 CS 템플릿 (다국어)</h2>
+<p style="margin-bottom:12px;">차지백 처리 후 환불 완료 시 고객에게 발송하는 CS 응대 템플릿입니다.</p>
+
+<table>
+  <thead><tr><th>언어</th><th>적용 마켓</th><th>핵심 내용</th></tr></thead>
+  <tbody>
+    <tr><td>English</td><td>EN</td><td>환불 완료 (7 working days) + VIP 해지 + 추가 결제 없음 안내</td></tr>
+    <tr><td>Francais</td><td>FR</td><td>동일 구조 — 7 jours ouvrables</td></tr>
+    <tr><td>Espanol (LA)</td><td>ES (중남미)</td><td>동일 구조 — 7 dias habiles</td></tr>
+    <tr><td>Espanol (ES)</td><td>ES (스페인)</td><td>스페인 현지화 톤</td></tr>
+    <tr><td>Portugues (BR)</td><td>PT (브라질)</td><td>동일 구조</td></tr>
+    <tr><td>Portugues (PT)</td><td>PT (포르투갈)</td><td>포르투갈 현지화</td></tr>
+    <tr><td>Deutsch</td><td>DE</td><td>동일 구조</td></tr>
+    <tr><td>繁體中文</td><td>CN (TW)</td><td>계정 제한 안내 포함</td></tr>
+    <tr><td>Italiano</td><td>IT</td><td>코인 환불 전용 버전</td></tr>
+  </tbody>
+</table>
+
+<details>
+  <summary>영문 환불 응대 템플릿 전문 보기</summary>
+  <div class="inner">
+    <div class="code-block">Hello, this is Toomics.
+Thank you for contacting us and apologies for the delay.
+We are sorry to see you go :(
+
+Please note that we have refunded your purchase and it will take about 7 working days for it to process and get back to you. If you would like to know your refund status, please contact your card issuing bank or company for more accurate information.
+
+Furthermore, we have canceled your VIP Membership. There will be no following recurring payments made on your account.
+
+We hope this helps and we are sorry for not meeting your expectations.
+If you require any assistance or have any questions, please contact us again. We will gladly help you. :)
+
+We hope to see you again in the future!
+Kind regards,
+Toomics</div>
+  </div>
+</details>
+
+<!-- 10. 주의사항 -->
+<h2 class="section-title" id="sec10">10. 주의사항 & FAQ</h2>
+
+<div class="card highlight">
+  <h4 class="step-title">필수 주의사항</h4>
+  <table>
+    <tbody>
+      <tr><td style="width:30%;"><strong>기일 엄수</strong></td><td>만료 전 미제출 시 건이 소멸 → 자동 패소 처리</td></tr>
+      <tr><td><strong>CKO 이중 제재</strong></td><td>관리자 제재 + CKO decline list 둘 다 필수</td></tr>
+      <tr><td><strong>User ID 표시</strong></td><td>숫자+ 표기 시 반드시 셀 서식을 '숫자'로 변경</td></tr>
+      <tr><td><strong>자동결제 해지</strong></td><td>소명 자료 다운 전 반드시 관리자에서 자동결제 해지 확인</td></tr>
+      <tr><td><strong>FastStone Capture</strong></td><td>스크롤 캡처 시 사용 권장 (라이선스 보유)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card blue">
+  <h4 class="step-title">FAQ</h4>
+  <table>
+    <tbody>
+      <tr><td style="width:40%;"><strong>Q: 사용 내역이 전혀 없는 경우?</strong></td><td>→ Accept (환불 수용) 처리. 소명 불필요.</td></tr>
+      <tr><td><strong>Q: Airwallex에서 분쟁 격상되면?</strong></td><td>→ 분쟁 금액 재공제 + USD $15 중재 수수료 부과</td></tr>
+      <tr><td><strong>Q: PayPal 인출 한도 초과하면?</strong></td><td>→ 금액이 되돌아옴. 일 USD 20,000 한도 준수</td></tr>
+      <tr><td><strong>Q: Paymentwall 답변은 왜 안 쓰나?</strong></td><td>→ Paymentwall은 소명 자료(PDF)만 제출하는 구조</td></tr>
+      <tr><td><strong>Q: 제재 기준은?</strong></td><td>→ Fraudulent(사기): 즉시 제재 / 그 외: 의심 처리 후 판단</td></tr>
+      <tr><td><strong>Q: WorldPay 결제 검증 오류 시?</strong></td><td>→ 대시보드 결제완료 ↔ 관리자 결제시도 불일치는 개발팀 에스컬레이션</td></tr>
+      <tr><td><strong>Q: 소규모 PG 차지백 대응은?</strong></td><td>→ WorldPay/Payletter/MyCard/OPN도 동일한 소명 자료 + PDF 제출 프로세스 적용</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 11. 참고 링크 -->
+<h2 class="section-title" id="sec11">11. 참고 링크</h2>
+<table>
+  <thead><tr><th>자료</th><th>링크</th></tr></thead>
+  <tbody>
+    <tr><td>Confluence: 차지백 소명 자료 제출</td><td><a href="https://toomics.atlassian.net/wiki/spaces/Tlos64YMyGN2/pages/121143470" target="_blank">열기</a></td></tr>
+    <tr><td>Confluence: Airwallex Disputes</td><td><a href="https://toomics.atlassian.net/wiki/spaces/Tlos64YMyGN2/pages/269910540/AIRWALLEX+Disputes" target="_blank">열기</a></td></tr>
+    <tr><td>Confluence: Worldpay</td><td><a href="https://toomics.atlassian.net/wiki/spaces/Tlos64YMyGN2/pages/32407560/Worldpay" target="_blank">열기</a></td></tr>
+    <tr><td>Confluence: Payletter</td><td><a href="https://toomics.atlassian.net/wiki/spaces/Tlos64YMyGN2/pages/21203903/Payletter" target="_blank">열기</a></td></tr>
+    <tr><td>Confluence: MyCard</td><td><a href="https://toomics.atlassian.net/wiki/spaces/Tlos64YMyGN2/pages/21269326/MyCard" target="_blank">열기</a></td></tr>
+    <tr><td>Confluence: 결제 수단 리스트</td><td><a href="https://toomics.atlassian.net/wiki/spaces/Tlos64YMyGN2/pages/264503447" target="_blank">열기</a></td></tr>
+    <tr><td>Google Docs: PayPal 차지백 가이드</td><td><a href="https://docs.google.com/document/d/1h4ZYqAcG27T2xZfHXane14vTrSjk6L5PCQ8YP2GWZpw/edit" target="_blank">열기</a></td></tr>
+    <tr><td>Google Docs: CKO 차지백 가이드</td><td><a href="https://docs.google.com/document/d/1-0nl-wQfkIVbCMAdkvjl2emeKR8YyP--/edit" target="_blank">열기</a></td></tr>
+    <tr><td>차지백 접수 건수 (구글 스프레드시트)</td><td><a href="https://docs.google.com/spreadsheets/d/1u2OgvNyKDCGCucGmRKxPHmJ5cA4-F5uLzYeZehKssEg" target="_blank">열기</a></td></tr>
+    <tr><td>투믹스 이용약관</td><td><a href="https://toomics.com/en/help/access_terms" target="_blank">열기</a></td></tr>
+    <tr><td>투믹스 결제 페이지</td><td><a href="https://toomics.com/en/mypage/payment" target="_blank">열기</a></td></tr>
+  </tbody>
+</table>
+
+</div><!-- body -->
+
+<!-- FOOTER -->
+<div class="footer">
+  TOOMICS Global BizOps Team · Chargeback Operation Manual v1.1 · Generated 2026-02-20<br>
+  <a href="https://toomics.atlassian.net/wiki/spaces/Tlos64YMyGN2/pages/121143470">Confluence 원본</a> ·
+  <a href="https://tg-bizops.github.io/BizOPS/cs_manual_KO_20260219.html">CS 매뉴얼</a>
+</div>
+
+</div><!-- container -->
+</body>
+</html>
