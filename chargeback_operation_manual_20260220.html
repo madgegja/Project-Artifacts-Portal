@@ -548,15 +548,16 @@
     <tr><td><strong>Paymentwall</strong></td><td>3% · 110건</td><td>✅ 필수</td><td>❌ 답변 없음</td><td>PDF 업로드만</td></tr>
     <tr><td><strong>WorldPay</strong></td><td>0.6% · 25건</td><td>✅ 필수</td><td>✅ 공통 답변</td><td>Eximbay 경유</td></tr>
     <tr><td><strong>Payletter</strong></td><td>0.4% · 15건</td><td>✅ 필수</td><td>✅ 공통 답변</td><td>—</td></tr>
-    <tr><td><strong>MyCard</strong></td><td>1.4% · 57건</td><td>✅ 필수</td><td>✅ 공통 답변</td><td>TW 전용</td></tr>
+    <tr><td><strong>MyCard</strong></td><td>1.4% · 57건</td><td>❌ 불필요</td><td>❌ MyCard 지정 양식</td><td>⚠️ 이메일 기반, 14일 환불 기한, 2차 차지백 없음</td></tr>
     <tr><td><strong>OPN</strong></td><td>0.3% · 14건</td><td>✅ 필수</td><td>✅ 공통 답변</td><td>TH 전용</td></tr>
   </tbody>
 </table>
 
 <div class="alert info">
-  <strong>📋 공통 프로세스 (전 PG사 동일):</strong><br>
+  <strong>📋 공통 프로세스 (MyCard 제외):</strong><br>
   ① PG사 대시보드에서 신규 차지백 확인 → ② 거래번호 복사 → ③ 투믹스 관리자에서 소명 자료 다운로드 (섹션 3) → ④ 공통 엑셀 템플릿 작성 → ⑤ PDF 변환 → ⑥ PG사 대시보드에 업로드 → ⑦ 회원 제재<br>
-  <strong>파일명 규칙:</strong> <code>[PG사] Chargeback_[거래번호].pdf</code>
+  <strong>파일명 규칙:</strong> <code>[PG사] Chargeback_[거래번호].pdf</code><br>
+  ⚠️ <strong>MyCard는 별도 프로세스</strong>: 이메일 접수 → MyCard 지정 양식 회신 → 환불/거부 후속 처리 (<a href="#sec4-mycard">섹션 4-7 참고</a>)
 </div>
 
 <!-- 4-1. CKO -->
@@ -739,24 +740,61 @@
 <span class="badge blue">전체의 1.4% · 57건</span>
 
 <div class="card indigo">
-  <strong>접속:</strong> MyCard 가맹점 대시보드 (사내 접속 정보 시트 참조)<br>
-  <strong>로그인:</strong> 담당자 계정<br>
-  <strong>경로:</strong> 거래 관리 → 분쟁/차지백 메뉴<br><br>
+  <strong>⚠️ MyCard는 다른 PG사와 프로세스가 완전히 다릅니다.</strong><br><br>
   <strong>특이사항:</strong><br>
   - 대만(TW) 전용 PG사 — TWD(대만달러) 결제 전용<br>
-  - MyCard Point, MyCard e-Wallet, MyCard Savings Point 등 다양한 결제 수단 지원<br>
-  - 통신사 결제(CHT, FET, TWM 등) 및 편의점 결제도 MyCard 경유<br>
-  - 8개 PG 중 5번째 규모 (월 ~4건)
+  - <strong>MyCard가 이메일로 차지백을 접수</strong> (대시보드 확인 방식 ❌)<br>
+  - <strong>MyCard 지정 양식</strong>에 기본정보/환불 가능 여부를 기입하여 회신 (공통 엑셀 템플릿 ❌)<br>
+  - <strong>14일 환불 기한</strong>: 14일 경과 시 이용내역이 없어도 환불 거부<br>
+  - <strong>2차 차지백 없음</strong>: 투믹스가 제출한 내용대로 MyCard가 후속 처리<br>
+  - MyCard Point, MyCard e-Wallet, Savings Point, 통신사/편의점 결제 지원
 </div>
 
-<h4 class="step-title">MyCard 소명 프로세스</h4>
+<h4 class="step-title">MyCard 차지백 프로세스 (이메일 기반)</h4>
 <ol class="step-list">
-  <li>MyCard 대시보드에서 차지백/분쟁 건 확인</li>
-  <li>거래번호 복사 → 투믹스 관리자에서 소명 자료 다운로드 (섹션 3 동일)</li>
-  <li>엑셀 편집 후 PDF 변환 — 파일명: <code>MyCard Chargeback_[거래번호].pdf</code></li>
-  <li>MyCard 대시보드에서 소명 자료(PDF) 업로드</li>
-  <li>회원 제재 처리 (섹션 7 참고)</li>
+  <li><strong>MyCard → 투믹스 이메일 발송</strong><br>
+    MyCard(<code>mycard.cs@soft-world.com.tw</code>)에서 Zendesk(<code>bizops@toomics.com</code>)로 차지백 접수 메일 발송.<br>
+    첨부파일: <strong>MyCard 지정 양식</strong> (거래 기본정보 + 환불 가능 여부 기입란)<br>
+    ⏰ <strong>회신 기한: 1일 이내</strong> (금류端에서 조회 기한이 있으므로 신속 회신 필요)
+  </li>
+  <li><strong>투믹스 → 환불 가능 여부 판단 + 양식 작성 후 회신</strong><br>
+    투믹스 관리자에서 회원 이용내역 조회 → 아래 기준으로 환불 여부 결정:
+    <table style="width:100%; margin:10px 0; font-size:13px;">
+      <thead><tr><th style="width:30%">조건</th><th style="width:20%">환불 여부</th><th>조치</th></tr></thead>
+      <tbody>
+        <tr><td>결제일로부터 14일 이내 + 이용내역 없음</td><td style="color:#16a34a;"><strong>환불 O</strong></td><td>MyCard 양식에 "환불 가능" 기입 → 회신</td></tr>
+        <tr><td>결제일로부터 14일 이내 + 이용내역 있음</td><td style="color:#dc2626;"><strong>환불 X</strong></td><td>MyCard 양식에 "환불 불가 (이용내역 존재)" 기입 → 회신</td></tr>
+        <tr><td>결제일로부터 14일 경과</td><td style="color:#dc2626;"><strong>환불 X</strong></td><td>이용내역 유무 관계없이 환불 거부 (14일 기한 초과)</td></tr>
+      </tbody>
+    </table>
+  </li>
+  <li><strong>관리자에서 후속 처리</strong>
+    <table style="width:100%; margin:10px 0; font-size:13px;">
+      <thead><tr><th style="width:30%">환불 결과</th><th>관리자 조치</th></tr></thead>
+      <tbody>
+        <tr><td style="color:#16a34a;"><strong>환불 O</strong></td><td>① 결제 취소 + ② 회원 제재 (섹션 7 참고)</td></tr>
+        <tr><td style="color:#dc2626;"><strong>환불 X</strong></td><td>① 구독 취소만 진행 (결제 취소 없음, 제재 없음)</td></tr>
+      </tbody>
+    </table>
+  </li>
+  <li><strong>MyCard 후속 처리 (투믹스 개입 불필요)</strong><br>
+    MyCard가 투믹스 회신 내용대로 후속 작업 진행. <strong>2차 차지백 없이 종결.</strong>
+  </li>
 </ol>
+
+<div class="card" style="background:#fef3c7; border-left:4px solid #f59e0b;">
+  <strong>📌 MyCard vs 다른 PG사 핵심 차이점</strong><br>
+  <table style="width:100%; margin:10px 0; font-size:13px;">
+    <thead><tr><th style="width:35%">항목</th><th style="width:30%">MyCard</th><th>다른 PG사 (CKO, PayPal 등)</th></tr></thead>
+    <tbody>
+      <tr><td>접수 방식</td><td><strong>MyCard가 이메일 발송</strong></td><td>PG사 대시보드에서 확인</td></tr>
+      <tr><td>소명 양식</td><td><strong>MyCard 지정 양식</strong></td><td>공통 엑셀 템플릿 (chargeback_template.xlsx)</td></tr>
+      <tr><td>소명 PDF</td><td><strong>불필요</strong></td><td>필수 (PDF 업로드)</td></tr>
+      <tr><td>환불 기준</td><td><strong>14일 기한</strong> (경과 시 무조건 거부)</td><td>이용내역 기반 판단</td></tr>
+      <tr><td>2차 차지백</td><td><strong>없음</strong> (투믹스 결정 존중)</td><td>카드사 최종 판정 가능</td></tr>
+    </tbody>
+  </table>
+</div>
 
 
 <!-- 4-8. OPN (Omise) -->
@@ -795,7 +833,7 @@
     <tr><td><strong>Paymentwall</strong></td><td>api.paymentwall.com</td><td>공용계정</td><td>Resolution Center → Chargebacks</td></tr>
     <tr><td><strong>WorldPay</strong></td><td>WorldPay 대시보드</td><td>담당자 계정</td><td>Disputes / Chargebacks</td></tr>
     <tr><td><strong>Payletter</strong></td><td>Payletter 대시보드</td><td>담당자 계정</td><td>거래 관리 → 분쟁</td></tr>
-    <tr><td><strong>MyCard</strong></td><td>MyCard 대시보드</td><td>담당자 계정</td><td>거래 관리 → 분쟁</td></tr>
+    <tr><td><strong>MyCard</strong></td><td colspan="3">⚠️ 대시보드 미사용 — MyCard가 이메일(<code>mycard.cs@soft-world.com.tw</code>)로 접수, MyCard 지정 양식으로 회신</td></tr>
     <tr><td><strong>OPN</strong></td><td>OPN 대시보드</td><td>담당자 계정</td><td>Charges → Disputes</td></tr>
   </tbody>
 </table>
@@ -855,14 +893,15 @@
     <tr><td><strong>Paymentwall</strong></td><td>✅</td><td>—</td><td>—</td><td>—</td><td>—</td><td>PDF만 업로드 (답변 없음)</td></tr>
     <tr><td><strong>WorldPay</strong></td><td>✅</td><td>✅ 택1</td><td>✅ 첨부</td><td>—</td><td>—</td><td>공통 양식</td></tr>
     <tr><td><strong>Payletter</strong></td><td>✅</td><td>✅ 택1</td><td>✅ 첨부</td><td>—</td><td>—</td><td>공통 양식</td></tr>
-    <tr><td><strong>MyCard</strong></td><td>✅</td><td>✅ 택1</td><td>✅ 첨부</td><td>—</td><td>—</td><td>공통 양식</td></tr>
+    <tr style="background:#FEF3C7;"><td><strong>MyCard</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>⚠️ 공통 템플릿 미사용 (MyCard 지정 양식으로 이메일 회신)</td></tr>
     <tr><td><strong>OPN</strong></td><td>✅</td><td>✅ 택1</td><td>✅ 첨부</td><td>—</td><td>—</td><td>공통 양식</td></tr>
   </tbody>
 </table>
 
 <div class="alert info">
   <strong>📋 요약:</strong> CKO만 4개 카테고리 전부 입력, Airwallex는 7단계 UI에서 입력, Paymentwall은 PDF만.<br>
-  나머지 PG사(PayPal, WorldPay, Payletter, MyCard, OPN)는 <strong>공통 템플릿의 Proof of Delivery + Invoice 답변</strong>을 사용합니다.<br>
+  나머지 PG사(PayPal, WorldPay, Payletter, OPN)는 <strong>공통 템플릿의 Proof of Delivery + Invoice 답변</strong>을 사용합니다.<br>
+  ⚠️ <strong>MyCard는 예외</strong> — 공통 템플릿 미사용, MyCard 지정 양식으로 이메일 회신 (섹션 4-7 참고)<br>
   🔗 <a href="https://tg-bizops.github.io/BizOPS/chargeback_sample_template.html" target="_blank"><strong>템플릿 미리보기</strong></a> · <a href="https://tg-bizops.github.io/BizOPS/chargeback_template.xlsx" target="_blank"><strong>템플릿 다운로드</strong></a>
 </div>
 
@@ -941,7 +980,8 @@ Toomics</div>
       <tr><td><strong>Q: Paymentwall 답변은 왜 안 쓰나?</strong></td><td>→ Paymentwall은 소명 자료(PDF)만 제출하는 구조</td></tr>
       <tr><td><strong>Q: 제재 기준은?</strong></td><td>→ Fraudulent(사기): 즉시 제재 / 그 외: 의심 처리 후 판단</td></tr>
       <tr><td><strong>Q: WorldPay 결제 검증 오류 시?</strong></td><td>→ 대시보드 결제완료 ↔ 관리자 결제시도 불일치는 개발팀 에스컬레이션</td></tr>
-      <tr><td><strong>Q: 소규모 PG 차지백 대응은?</strong></td><td>→ WorldPay/Payletter/MyCard/OPN도 동일한 소명 자료 + PDF 제출 프로세스 적용</td></tr>
+      <tr><td><strong>Q: 소규모 PG 차지백 대응은?</strong></td><td>→ WorldPay/Payletter/OPN은 동일한 소명 자료 + PDF 제출 프로세스 적용. <strong>MyCard는 예외</strong> (이메일 기반, MyCard 지정 양식)</td></tr>
+      <tr><td><strong>Q: MyCard 14일 기한 초과 시?</strong></td><td>→ 이용내역 유무와 관계없이 환불 거부. MyCard 양식에 "환불 불가 (14일 기한 초과)" 기입 후 회신</td></tr>
     </tbody>
   </table>
 </div>
