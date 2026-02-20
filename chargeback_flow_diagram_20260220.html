@@ -269,6 +269,106 @@
   .pg-mycard { background: linear-gradient(135deg, #3730a3, #4f46e5); border: 1px solid #818cf8; }
   .pg-opn { background: linear-gradient(135deg, #334155, #475569); border: 1px solid #94a3b8; }
 
+  /* ===== MYCARD FLOW ===== */
+  .mycard-flow-box {
+    max-width: 920px;
+    margin: 0 auto;
+    background: rgba(251,191,36,0.04);
+    border: 2px solid rgba(251,191,36,0.2);
+    border-radius: 16px;
+    padding: 28px 24px 24px;
+    position: relative;
+  }
+  .mycard-flow-box::before {
+    content: '⚠️ 별도 프로세스';
+    position: absolute;
+    top: -12px;
+    left: 24px;
+    background: #0f172a;
+    padding: 2px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fbbf24;
+    border: 1px solid rgba(251,191,36,0.3);
+    border-radius: 6px;
+  }
+  .mycard-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .mycard-header .mh-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #fbbf24;
+    margin-bottom: 4px;
+  }
+  .mycard-header .mh-tags {
+    font-size: 11px;
+    color: #94a3b8;
+  }
+  .mycard-header .mh-tags span {
+    display: inline-block;
+    background: rgba(251,191,36,0.1);
+    border: 1px solid rgba(251,191,36,0.2);
+    padding: 2px 10px;
+    border-radius: 10px;
+    margin: 3px 3px;
+    font-size: 10px;
+    color: #fcd34d;
+  }
+  .mycard-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .mc-step {
+    background: rgba(251,191,36,0.06);
+    border: 1px solid rgba(251,191,36,0.15);
+    border-radius: 10px;
+    padding: 14px 10px;
+    text-align: center;
+    position: relative;
+  }
+  .mc-step .mc-num {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    width: 22px;
+    height: 22px;
+    background: #d97706;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #0f172a;
+  }
+  .mc-step .mc-icon { font-size: 20px; margin-bottom: 6px; display: block; }
+  .mc-step .mc-title { font-size: 12px; font-weight: 700; color: #fcd34d; margin-bottom: 4px; }
+  .mc-step .mc-desc { font-size: 10px; color: #cbd5e1; line-height: 1.5; }
+  .mc-arrow {
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #d97706;
+    font-size: 16px;
+    font-weight: 800;
+    z-index: 1;
+  }
+  .mycard-note {
+    margin-top: 14px;
+    text-align: center;
+    font-size: 11px;
+    color: #94a3b8;
+    background: rgba(251,191,36,0.06);
+    border-radius: 8px;
+    padding: 8px 12px;
+  }
+  .mycard-note strong { color: #fcd34d; }
+
   /* ===== TEMPLATE GRID ===== */
   .template-grid {
     display: grid;
@@ -496,7 +596,7 @@
     <span class="step-num">1</span>
     <span class="emoji">🔔</span>
     <div class="title">PG사 차지백 접수 확인</div>
-    <div class="desc">각 PG사 대시보드 매일 접속 → 신규 차지백 건 확인</div>
+    <div class="desc">7사: 대시보드 매일 접속 → 신규 건 확인<br>MyCard: 이메일 접수 (별도 프로세스 ↓)</div>
   </div>
 </div>
 
@@ -530,11 +630,11 @@
     <div class="title">Paymentwall</div>
     <div class="desc">110건 · 공용계정<br>답변 없음, 자료만 제출</div>
   </div>
-  <div class="pg-card pg-mycard">
-    <span class="pct">1.4%</span>
+  <div class="pg-card pg-mycard" style="border-color:#fbbf24;box-shadow:0 0 12px rgba(251,191,36,0.15);">
+    <span class="pct" style="color:#fbbf24;">1.4%</span>
     <div class="emoji">🇹🇼</div>
-    <div class="title">MyCard</div>
-    <div class="desc">57건 · TW 전용<br>포인트/e-Wallet</div>
+    <div class="title" style="color:#fbbf24;">MyCard ⚠️</div>
+    <div class="desc">57건 · TW 전용<br>📧 이메일 기반 별도 프로세스</div>
   </div>
   <div class="pg-card pg-worldpay">
     <span class="pct">0.6%</span>
@@ -556,8 +656,58 @@
   </div>
 </div>
 
+<!-- ==================== MyCard 별도 프로세스 ==================== -->
+<div class="section-label"><span style="background:rgba(251,191,36,0.12);border-color:rgba(251,191,36,0.3);color:#fbbf24;">🎮 MyCard 별도 프로세스 (이메일 기반)</span></div>
+
+<div class="mycard-flow-box">
+  <div class="mycard-header">
+    <div class="mh-title">🎮 MyCard — 다른 PG사와 프로세스가 완전히 다릅니다</div>
+    <div class="mh-tags">
+      <span>대시보드 ❌</span>
+      <span>공통 템플릿 ❌</span>
+      <span>📧 이메일 기반</span>
+      <span>14일 환불 기한</span>
+      <span>2차 차지백 없음</span>
+    </div>
+  </div>
+
+  <div class="mycard-steps">
+    <div class="mc-step">
+      <span class="mc-num">1</span>
+      <span class="mc-arrow">→</span>
+      <span class="mc-icon">📩</span>
+      <div class="mc-title">MyCard 이메일 접수</div>
+      <div class="mc-desc">MyCard가<br><code style="font-size:9px;color:#fbbf24;">cs@toomicsglobal.com</code><br>(중국어 CS)로 발송<br>BizOps CC</div>
+    </div>
+    <div class="mc-step">
+      <span class="mc-num">2</span>
+      <span class="mc-arrow">→</span>
+      <span class="mc-icon">📋</span>
+      <div class="mc-title">환불 판단 + 양식 회신</div>
+      <div class="mc-desc">14일 기한 + 이용내역 확인<br>MyCard 지정 양식에 기입<br>⏰ <strong style="color:#fbbf24;">3 Working Day</strong></div>
+    </div>
+    <div class="mc-step">
+      <span class="mc-num">3</span>
+      <span class="mc-arrow">→</span>
+      <span class="mc-icon">⚙️</span>
+      <div class="mc-title">관리자 후속 처리</div>
+      <div class="mc-desc">환불O → 결제취소 + 제재<br>환불X → 구독 취소만</div>
+    </div>
+    <div class="mc-step">
+      <span class="mc-num">4</span>
+      <span class="mc-icon">✅</span>
+      <div class="mc-title">MyCard 종결</div>
+      <div class="mc-desc">MyCard가 후속 처리<br><strong style="color:#4ade80;">2차 차지백 없이 종결</strong></div>
+    </div>
+  </div>
+
+  <div class="mycard-note">
+    📌 MyCard는 아래 <strong>STEP 2~4 공통 프로세스를 거치지 않습니다</strong> · 접수 기록(STEP 5)은 동일하게 구글시트에 기록
+  </div>
+</div>
+
 <!-- ==================== SECTION 2: 분기 ==================== -->
-<div class="section-label"><span>STEP 2 · 사용 내역 확인 분기</span></div>
+<div class="section-label"><span>STEP 2 · 사용 내역 확인 분기 (MyCard 제외)</span></div>
 
 <div class="flow-row">
   <div class="node node-process">
@@ -636,7 +786,7 @@
 </div>
 
 <!-- ==================== SECTION 3: 소명 자료 작성 ==================== -->
-<div class="section-label"><span>STEP 3 · 소명 자료 작성 (전 PG사 공통)</span></div>
+<div class="section-label"><span>STEP 3 · 소명 자료 작성 (7사 공통 · MyCard 제외)</span></div>
 
 <div class="flow-row">
   <div class="node node-process">
@@ -669,7 +819,7 @@
 </div>
 
 <!-- ==================== SECTION 4: PG사 제출 ==================== -->
-<div class="section-label"><span>STEP 4 · PG사별 소명 제출</span></div>
+<div class="section-label"><span>STEP 4 · PG사별 소명 제출 (MyCard 제외)</span></div>
 
 <div class="flow-row">
   <div class="node node-action">
@@ -709,7 +859,7 @@
       <div class="tmpl-desc">소명 자료 PDF만 업로드<br>답변 작성 없음</div>
     </div>
     <div class="tmpl-card" style="width:100%;">
-      <div class="tmpl-title">WorldPay · Payletter · MyCard · OPN</div>
+      <div class="tmpl-title">WorldPay · Payletter · OPN</div>
       <div class="tmpl-desc">기본 소명 자료 PDF + 공통 양식 제출<br>표준 엑셀 템플릿 사용</div>
     </div>
   </div>
@@ -794,6 +944,10 @@
   <div class="tmpl-card tmpl-blue">
     <div class="tmpl-title">💰 PayPal 인출</div>
     <div class="tmpl-desc">매일 각 계정에서<br>USD 20,000 수동 인출 (월~금)</div>
+  </div>
+  <div class="tmpl-card" style="border-color:rgba(251,191,36,0.3);background:rgba(251,191,36,0.05);">
+    <div class="tmpl-title" style="color:#fbbf24;">🎮 MyCard 기한</div>
+    <div class="tmpl-desc">확인 후 3 Working Day 이내 회신<br>14일 기한 초과 시 무조건 환불 거부</div>
   </div>
 </div>
 
