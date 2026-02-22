@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TOOMICS CS AI 챗봇 운영비용 분석 | 2026-02-22</title>
+<title>TOOMICS CS AI 챗봇 운영 분석 | 2026-02-22</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
   @page { size: A3 portrait; margin: 10mm; }
@@ -439,6 +439,69 @@
     flex-shrink: 0;
   }
 
+  /* ── CX Before/After comparison ── */
+  .cx-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+  .cx-card {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border: 1px solid rgba(51,65,85,0.6);
+    border-radius: 16px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cx-card.before {
+    border-color: rgba(239,68,68,0.3);
+  }
+  .cx-card.after {
+    border-color: rgba(16,185,129,0.3);
+  }
+  .cx-card .cx-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .cx-card.before .cx-badge {
+    background: rgba(239,68,68,0.15);
+    color: #f87171;
+  }
+  .cx-card.after .cx-badge {
+    background: rgba(16,185,129,0.15);
+    color: #34d399;
+  }
+  .cx-card h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin-bottom: 16px;
+  }
+  .cx-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: #94a3b8;
+    line-height: 1.6;
+  }
+  .cx-item .cx-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .cx-item strong {
+    color: #cbd5e1;
+  }
+
   /* ── Conclusion Card ── */
   .conclusion {
     background: linear-gradient(135deg, #0c4a6e 0%, #164e63 50%, #1e3a5f 100%);
@@ -466,7 +529,7 @@
   }
   .conclusion-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 24px;
     margin-bottom: 20px;
     position: relative;
@@ -475,7 +538,7 @@
     text-align: center;
   }
   .conclusion-item .val {
-    font-size: 36px;
+    font-size: 32px;
     font-weight: 800;
     color: #fbbf24;
     line-height: 1.2;
@@ -509,8 +572,9 @@
   @media (max-width: 1024px) {
     .kpi-grid { grid-template-columns: repeat(2, 1fr); }
     .chart-grid { grid-template-columns: 1fr; }
-    .conclusion-grid { grid-template-columns: 1fr; gap: 16px; }
+    .conclusion-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .token-grid { grid-template-columns: 1fr; }
+    .cx-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
     .kpi-grid { grid-template-columns: 1fr; }
@@ -519,6 +583,7 @@
     section { padding: 0 16px; }
     table { font-size: 12px; }
     thead th, tbody td { padding: 8px 10px; }
+    .conclusion-grid { grid-template-columns: 1fr; }
   }
 
   /* ── Animations ── */
@@ -526,7 +591,7 @@
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  .kpi-card, .chart-box, .table-wrap, .insight-box, .token-detail, .channel-box {
+  .kpi-card, .chart-box, .table-wrap, .insight-box, .token-detail, .channel-box, .cx-card {
     animation: fadeUp 0.5s ease-out both;
   }
   .kpi-card:nth-child(1) { animation-delay: 0.1s; }
@@ -541,9 +606,9 @@
 
   <!-- ══════════════ HERO HEADER ══════════════ -->
   <header class="hero">
-    <div class="hero-badge">Cost Analysis Report</div>
-    <h1>TOOMICS CS AI 챗봇 운영비용 분석</h1>
-    <p class="subtitle">실제 CS 데이터 기반 비용 절감 예상 통계</p>
+    <div class="hero-badge">Operational Analysis Report</div>
+    <h1>TOOMICS CS AI 챗봇 운영 분석</h1>
+    <p class="subtitle">실제 CS 데이터 기반 AI 챗봇 시스템 운영 현황</p>
     <div class="meta">
       <span>&#128202; 데이터: 11,621건 (7개월 &times; 10개 마켓)</span>
       <span>&#128197; 분석 기간: 2025.07 ~ 2026.01</span>
@@ -555,37 +620,37 @@
   <!-- ══════════════ KPI CARDS ══════════════ -->
   <div class="kpi-grid">
     <div class="kpi-card">
-      <div class="kpi-icon">&#128176;</div>
-      <div class="kpi-value">&#8361;6,200,000</div>
-      <div class="kpi-label">월간 예상 순 절감액</div>
-      <div class="kpi-sub">~2인분 인건비 &minus; AI 운영비</div>
+      <div class="kpi-icon">&#128233;</div>
+      <div class="kpi-value">963건/월</div>
+      <div class="kpi-label">월 처리 대상</div>
+      <div class="kpi-sub">비이메일 채널 (Web 47% + API 11%)</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-icon">&#9201;</div>
-      <div class="kpi-value">85시간+/월</div>
-      <div class="kpi-label">절감 시간</div>
-      <div class="kpi-sub">비이메일 L3 자동 + L2 효율화</div>
+      <div class="kpi-icon">&#9889;</div>
+      <div class="kpi-value">&lt;3초</div>
+      <div class="kpi-label">AI 응답 속도</div>
+      <div class="kpi-sub">기존 7~29일 &rarr; 즉시 응답</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-icon">&#128101;</div>
-      <div class="kpi-value">~2인분</div>
-      <div class="kpi-label">인력 절감 효과</div>
-      <div class="kpi-sub">6~7명 필요 &rarr; 4~5명 운영 가능</div>
+      <div class="kpi-icon">&#129302;</div>
+      <div class="kpi-value">38%</div>
+      <div class="kpi-label">AI 자동 처리율</div>
+      <div class="kpi-sub">~366건/월 L3 셀프서비스</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-icon">&#128200;</div>
-      <div class="kpi-value">366건/월</div>
-      <div class="kpi-label">챗봇 자동 처리</div>
-      <div class="kpi-sub">비이메일 963건 중 38% (L3)</div>
+      <div class="kpi-value">~&#8361;260K</div>
+      <div class="kpi-label">AI 월 운영비</div>
+      <div class="kpi-sub">Pro Max + API 토큰 + 서버</div>
     </div>
   </div>
 
-  <!-- ══════════════ SECTION 1: 현재 CS 운영 비용 ══════════════ -->
+  <!-- ══════════════ SECTION 1: 접수 채널 분석 ══════════════ -->
   <section>
     <div class="section-header">
       <div class="section-num">1</div>
-      <h2>현재 CS 운영 비용 분석</h2>
-      <span class="desc">As-Is 상담원 기반 운영</span>
+      <h2>접수 채널 분석</h2>
+      <span class="desc">채널별 분포 + AI 운영 비용</span>
     </div>
 
     <!-- Channel Split -->
@@ -613,34 +678,9 @@
       </div>
     </div>
 
+    <!-- AI 챗봇 운영 비용 (단일 full-width) -->
     <div class="chart-grid">
-      <!-- 1.1 상담원 인건비 -->
-      <div class="chart-box">
-        <h3>&#128101; 상담원 인건비 (필요 인원 기준) <span class="chart-badge">AS-IS</span></h3>
-        <div class="table-wrap" style="border:none; margin-bottom:0;">
-          <table>
-            <thead>
-              <tr><th style="width:55%;">항목</th><th>수치</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>필요 상담원</td><td class="num"><strong style="color:#fbbf24;">최소 6~7명</strong></td></tr>
-              <tr><td>산출 기준</td><td class="num">6명 (보수적)</td></tr>
-              <tr><td>월평균 티켓 (전체)</td><td class="num">1,662건</td></tr>
-              <tr><td>상담원당 처리량</td><td class="num">~277건/월</td></tr>
-              <tr><td>건당 평균 처리시간</td><td class="num">10분</td></tr>
-              <tr><td>상담원 1인 월급 (추정)</td><td class="num">&#8361;3,500,000</td></tr>
-              <tr class="highlight-row"><td>총 월간 인건비</td><td class="num">&#8361;21,000,000</td></tr>
-              <tr class="highlight-row"><td>건당 비용</td><td class="num">&#8361;12,636</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div style="margin-top:14px; font-size:11px; color:#64748b; line-height:1.7; padding:10px 12px; background:rgba(15,23,42,0.5); border-radius:8px;">
-          <strong style="color:#94a3b8;">&#128204; 6~7명 필요 사유:</strong> 글로벌 10개 마켓 시간대 커버 (KST/EST/CET), 피크타임 대응, 휴가/교육 기간 커버, 실제 가용률 60~70% 감안
-        </div>
-      </div>
-
-      <!-- 1.2 AI 챗봇 운영 비용 -->
-      <div class="chart-box">
+      <div class="chart-box full">
         <h3>&#129302; AI 챗봇 운영 비용 (예상) <span class="chart-badge">TO-BE</span></h3>
         <div class="table-wrap" style="border:none; margin-bottom:0;">
           <table>
@@ -713,108 +753,19 @@
         별도 <strong>Claude Pro Max $100/월</strong> 정액제 구독료를 포함합니다.
       </div>
     </div>
-
-    <div class="insight-box">
-      <h4>&#128161; 비용 차이 핵심</h4>
-      <p>현재 필요 인건비 <span class="big">&#8361;21,000,000</span> &rarr; AI 도입 후 <span class="big">&#8361;14,850,000</span> &nbsp;&nbsp;|&nbsp;&nbsp; AI 전체 운영비는 월 &#8361;260,000 (Pro Max $100 구독 포함)으로 상담원 1인 월급의 <strong>7.4%</strong>에 불과합니다. AI가 비이메일 채널의 <strong>~2인분 업무를 대체</strong>하여 상담원은 이메일 + 에스컬레이션에 집중할 수 있습니다.</p>
-    </div>
   </section>
 
-  <!-- ══════════════ SECTION 2: 비용 절감 분석 ══════════════ -->
+  <!-- ══════════════ SECTION 2: 카테고리별 자동화 분석 ══════════════ -->
   <section>
     <div class="section-header">
       <div class="section-num">2</div>
-      <h2>비용 절감 분석</h2>
-      <span class="desc">Before vs After (채널별 분리)</span>
-    </div>
-
-    <div class="chart-grid">
-      <div class="chart-box">
-        <h3>&#128202; Before vs After 월간 비용 <span class="chart-badge">Stacked Bar</span></h3>
-        <div class="chart-canvas-wrap">
-          <canvas id="chartBeforeAfter" height="300"></canvas>
-        </div>
-      </div>
-      <div class="chart-box">
-        <h3>&#127856; 절감 분포 <span class="chart-badge">Doughnut</span></h3>
-        <div class="chart-canvas-wrap">
-          <canvas id="chartSavingsDist" height="300"></canvas>
-        </div>
-      </div>
-    </div>
-
-    <!-- Before/After breakdown table -->
-    <div class="sub-title">AI 도입 후 비용 상세 내역 (채널별)</div>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>구분</th>
-            <th>건수</th>
-            <th>건당 비용</th>
-            <th>소계</th>
-            <th>설명</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="background:rgba(245,158,11,0.04);">
-            <td><span class="tag tag-yellow">이메일 (상담원)</span></td>
-            <td class="num">699건</td>
-            <td class="num">&#8361;12,636</td>
-            <td class="num">&#8361;8,833,000</td>
-            <td style="color:#64748b;font-size:12px;">이메일 접수 &rarr; 상담원 전담 처리</td>
-          </tr>
-          <tr>
-            <td><span class="tag tag-green">챗봇 L3 (자동)</span></td>
-            <td class="num">366건</td>
-            <td class="num">&#8361;59</td>
-            <td class="num">&#8361;22,000</td>
-            <td style="color:#64748b;font-size:12px;">AI 완전 자동 응답 (셀프서비스)</td>
-          </tr>
-          <tr>
-            <td><span class="tag tag-blue">챗봇 L2 (상담원+AI)</span></td>
-            <td class="num">472건</td>
-            <td class="num">&#8361;8,845</td>
-            <td class="num">&#8361;4,175,000</td>
-            <td style="color:#64748b;font-size:12px;">AI 초안 작성 &rarr; 상담원 시간 30% 절감</td>
-          </tr>
-          <tr>
-            <td><span class="tag tag-red">챗봇 L1 (상담원전담)</span></td>
-            <td class="num">125건</td>
-            <td class="num">&#8361;12,636</td>
-            <td class="num">&#8361;1,580,000</td>
-            <td style="color:#64748b;font-size:12px;">Fraud/Content/Other &rarr; 에스컬레이션</td>
-          </tr>
-          <tr style="background:rgba(139,92,246,0.04);">
-            <td><span class="tag" style="background:rgba(139,92,246,0.15);color:#a78bfa;">AI 운영비</span></td>
-            <td class="num">-</td>
-            <td class="num">-</td>
-            <td class="num">&#8361;260,000</td>
-            <td style="color:#64748b;font-size:12px;">Pro Max &#8361;140K + API &#8361;70K + 서버 &#8361;50K</td>
-          </tr>
-          <tr class="highlight-row">
-            <td>합계</td>
-            <td class="num">1,662건</td>
-            <td class="num">-</td>
-            <td class="num">&#8361;14,870,000</td>
-            <td style="font-size:12px;">필요 인건비 &#8361;21M 대비 <strong>29% 절감</strong></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- ══════════════ SECTION 3: 카테고리별 분석 ══════════════ -->
-  <section>
-    <div class="section-header">
-      <div class="section-num">3</div>
-      <h2>카테고리별 비용 분석</h2>
+      <h2>카테고리별 자동화 분석</h2>
       <span class="desc">7대 카테고리 상세</span>
     </div>
 
     <div class="chart-grid">
       <div class="chart-box full">
-        <h3>&#128200; 카테고리별 비용 절감 비교 <span class="chart-badge">Horizontal Bar</span></h3>
+        <h3>&#128200; 카테고리별 자동화율 비교 <span class="chart-badge">Horizontal Bar</span></h3>
         <div class="chart-canvas-wrap">
           <canvas id="chartCategory" height="260"></canvas>
         </div>
@@ -827,230 +778,82 @@
           <tr>
             <th>카테고리</th>
             <th>월평균</th>
-            <th>현재 비용</th>
-            <th>AI 후 비용</th>
-            <th>절감액</th>
-            <th>절감율</th>
+            <th>비중</th>
+            <th>자동화율</th>
+            <th>처리 방식</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td><strong>Subscription</strong></td>
             <td class="num">700건</td>
-            <td class="num">&#8361;8,845,000</td>
-            <td class="num">&#8361;2,090,000</td>
-            <td class="num" style="color:#34d399;">&#8361;6,755,000</td>
-            <td class="pct"><span class="tag tag-green">76%</span></td>
+            <td class="pct">48%</td>
+            <td class="pct"><span class="tag tag-green">95% (L3)</span></td>
+            <td style="color:#64748b;font-size:12px;">구독 해지 안내 자동 &rarr; 과금 분쟁만 에스컬레이션</td>
           </tr>
           <tr>
             <td><strong>Refund</strong></td>
             <td class="num">367건</td>
-            <td class="num">&#8361;4,637,000</td>
-            <td class="num">&#8361;2,650,000</td>
-            <td class="num" style="color:#34d399;">&#8361;1,987,000</td>
-            <td class="pct"><span class="tag tag-green">43%</span></td>
+            <td class="pct">25%</td>
+            <td class="pct"><span class="tag tag-blue">30% (L2+L3)</span></td>
+            <td style="color:#64748b;font-size:12px;">iOS 환불 리디렉트 자동 / 적격성 판단은 상담원</td>
           </tr>
           <tr>
             <td><strong>Account</strong></td>
             <td class="num">189건</td>
-            <td class="num">&#8361;2,388,000</td>
-            <td class="num">&#8361;1,250,000</td>
-            <td class="num" style="color:#34d399;">&#8361;1,138,000</td>
-            <td class="pct"><span class="tag tag-green">48%</span></td>
+            <td class="pct">13%</td>
+            <td class="pct"><span class="tag tag-blue">40% (L2+L3)</span></td>
+            <td style="color:#64748b;font-size:12px;">비밀번호 리셋, 인증 안내 자동 / GDPR 삭제 에스컬레이션</td>
           </tr>
           <tr>
             <td><strong>Payment</strong></td>
             <td class="num">86건</td>
-            <td class="num">&#8361;1,087,000</td>
-            <td class="num">&#8361;590,000</td>
-            <td class="num" style="color:#34d399;">&#8361;497,000</td>
-            <td class="pct"><span class="tag tag-green">46%</span></td>
+            <td class="pct">5%</td>
+            <td class="pct"><span class="tag tag-blue">35% (L2+L3)</span></td>
+            <td style="color:#64748b;font-size:12px;">결제 방법 안내, 실패 트러블슈팅 / 이중과금 에스컬레이션</td>
           </tr>
           <tr>
             <td><strong>Content</strong></td>
             <td class="num">57건</td>
-            <td class="num">&#8361;720,000</td>
-            <td class="num">&#8361;720,000</td>
-            <td class="num" style="color:#64748b;">&#8361;0</td>
-            <td class="pct"><span class="tag tag-red">0%</span></td>
+            <td class="pct">4%</td>
+            <td class="pct"><span class="tag tag-red">0% (L1)</span></td>
+            <td style="color:#64748b;font-size:12px;">전체 에스컬레이션 &mdash; 자동화 영구 배제</td>
           </tr>
           <tr>
             <td><strong>Technical</strong></td>
             <td class="num">32건</td>
-            <td class="num">&#8361;404,000</td>
-            <td class="num">&#8361;240,000</td>
-            <td class="num" style="color:#34d399;">&#8361;164,000</td>
-            <td class="pct"><span class="tag tag-green">41%</span></td>
+            <td class="pct">3%</td>
+            <td class="pct"><span class="tag tag-blue">25% (L2+L3)</span></td>
+            <td style="color:#64748b;font-size:12px;">캐시 삭제, 앱 업데이트 안내 / 버그 리포트 에스컬레이션</td>
           </tr>
           <tr>
             <td><strong>Other</strong></td>
             <td class="num">30건</td>
-            <td class="num">&#8361;379,000</td>
-            <td class="num">&#8361;379,000</td>
-            <td class="num" style="color:#64748b;">&#8361;0</td>
-            <td class="pct"><span class="tag tag-red">0%</span></td>
+            <td class="pct">2%</td>
+            <td class="pct"><span class="tag tag-red">0% (L1)</span></td>
+            <td style="color:#64748b;font-size:12px;">전체 에스컬레이션 &mdash; 자동화 영구 배제</td>
           </tr>
           <tr class="highlight-row">
             <td>합계</td>
             <td class="num">1,461건</td>
-            <td class="num">&#8361;18,460,000</td>
-            <td class="num">&#8361;7,919,000</td>
-            <td class="num">&#8361;10,541,000</td>
-            <td class="pct">57%</td>
+            <td class="pct">100%</td>
+            <td class="pct">38%</td>
+            <td style="font-size:12px;">L3 366건 자동 + L2 472건 AI 보조 + L1 125건 상담원 전담</td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <div class="insight-box">
-      <h4>&#128269; 카테고리별 절감 인사이트</h4>
-      <p><strong>Subscription 카테고리가 절감의 64%</strong>를 차지합니다. 구독 해지 안내의 95%가 동일 템플릿 기반으로 자동화 적합성이 가장 높으며, 전체 티켓의 48%를 차지하는 최대 카테고리입니다. <strong>Content</strong>과 <strong>Other</strong>는 정책상 자동화 영구 배제 영역으로 절감율 0%입니다.</p>
+      <h4>&#128269; 카테고리별 자동화 인사이트</h4>
+      <p><strong>Subscription 카테고리가 자동화의 핵심</strong>입니다. 구독 해지 안내의 95%가 동일 템플릿 기반으로 자동화 적합성이 가장 높으며, 전체 티켓의 48%를 차지하는 최대 카테고리입니다. <strong>Content</strong>과 <strong>Other</strong>는 정책상 자동화 영구 배제 영역으로 자동화율 0%입니다.</p>
     </div>
   </section>
 
-  <!-- ══════════════ SECTION 4: ROI 분석 ══════════════ -->
+  <!-- ══════════════ SECTION 3: 상담원 템플릿 자동화 분석 ══════════════ -->
   <section>
     <div class="section-header">
-      <div class="section-num">4</div>
-      <h2>ROI 분석</h2>
-      <span class="desc">12개월 투자 대비 수익률</span>
-    </div>
-
-    <div class="chart-grid">
-      <div class="chart-box full">
-        <h3>&#128200; 12개월 누적 절감 & 손익분기 <span class="chart-badge">Line Chart</span></h3>
-        <div class="chart-canvas-wrap">
-          <canvas id="chartROI" height="220"></canvas>
-        </div>
-      </div>
-    </div>
-
-    <div class="chart-grid">
-      <div class="chart-box">
-        <h3>&#128176; ROI 핵심 수치</h3>
-        <div class="table-wrap" style="border:none; margin-bottom:0;">
-          <table>
-            <thead>
-              <tr><th>항목</th><th>수치</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>개발 비용 (추정)</td><td class="num">&#8361;15,000,000</td></tr>
-              <tr><td>월간 순 절감액</td><td class="num">&#8361;6,200,000</td></tr>
-              <tr class="highlight-row"><td>손익분기점 (BEP)</td><td class="num">약 2.4개월</td></tr>
-              <tr><td>6개월 누적 절감</td><td class="num">&#8361;37,200,000</td></tr>
-              <tr><td>12개월 누적 절감</td><td class="num">&#8361;74,400,000</td></tr>
-              <tr class="highlight-row"><td>12개월 ROI</td><td class="num" style="color:#fbbf24; font-size:18px;">396%</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="chart-box">
-        <h3>&#128161; ROI 해석</h3>
-        <div style="padding:8px 0;">
-          <div style="margin-bottom:20px;">
-            <div style="font-size:13px; color:#94a3b8; margin-bottom:8px;">투자 회수 타임라인</div>
-            <div style="background:#0f172a; border-radius:10px; padding:16px; text-align:center;">
-              <div style="display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap;">
-                <div style="text-align:center;">
-                  <div style="font-size:11px; color:#64748b;">Month 1</div>
-                  <div style="font-size:20px; font-weight:800; color:#ef4444;">-&#8361;8.8M</div>
-                  <div style="font-size:10px; color:#64748b;">투자 미회수</div>
-                </div>
-                <div style="color:#475569; font-size:20px;">&rarr;</div>
-                <div style="text-align:center;">
-                  <div style="font-size:11px; color:#64748b;">Month 2.4</div>
-                  <div style="font-size:20px; font-weight:800; color:#fbbf24;">&#8361;0</div>
-                  <div style="font-size:10px; color:#fbbf24;">BEP 달성</div>
-                </div>
-                <div style="color:#475569; font-size:20px;">&rarr;</div>
-                <div style="text-align:center;">
-                  <div style="font-size:11px; color:#64748b;">Month 12</div>
-                  <div style="font-size:20px; font-weight:800; color:#34d399;">+&#8361;59.4M</div>
-                  <div style="font-size:10px; color:#34d399;">순이익</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div style="font-size:13px; color:#94a3b8; line-height:1.8;">
-            <div style="margin-bottom:8px;"><span style="color:#34d399; font-weight:700;">&#9679;</span> 개발 비용 &#8361;15M은 <strong style="color:#fbbf24;">2.4개월</strong> 만에 회수</div>
-            <div style="margin-bottom:8px;"><span style="color:#34d399; font-weight:700;">&#9679;</span> 3개월 차부터 <strong style="color:#34d399;">매월 순이익 &#8361;6.2M</strong> 발생</div>
-            <div style="margin-bottom:8px;"><span style="color:#34d399; font-weight:700;">&#9679;</span> 12개월 기준 투자 대비 <strong style="color:#fbbf24;">396% 수익률</strong></div>
-            <div><span style="color:#34d399; font-weight:700;">&#9679;</span> Phase 3/4 확장 시 절감 폭 추가 증대</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════ SECTION 5: 확장 시나리오 ══════════════ -->
-  <section>
-    <div class="section-header">
-      <div class="section-num">5</div>
-      <h2>확장 시나리오</h2>
-      <span class="desc">Phase 3/4 예측</span>
-    </div>
-
-    <div class="chart-grid">
-      <div class="chart-box">
-        <h3>&#128640; Phase별 확장 예측 <span class="chart-badge">Grouped Bar</span></h3>
-        <div class="chart-canvas-wrap">
-          <canvas id="chartPhase" height="280"></canvas>
-        </div>
-      </div>
-      <div class="chart-box">
-        <h3>&#128203; Phase별 핵심 지표 비교</h3>
-        <div class="table-wrap" style="border:none; margin-bottom:0;">
-          <table>
-            <thead>
-              <tr>
-                <th>지표</th>
-                <th>Phase 1<br><span style="font-weight:400;font-size:10px;color:#64748b;">현재</span></th>
-                <th>Phase 3<br><span style="font-weight:400;font-size:10px;color:#64748b;">목표</span></th>
-                <th>Phase 4<br><span style="font-weight:400;font-size:10px;color:#64748b;">목표</span></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>자동화율</td>
-                <td class="pct"><span class="tag tag-blue">38%</span></td>
-                <td class="pct"><span class="tag tag-green">50%</span></td>
-                <td class="pct"><span class="tag tag-green">60%+</span></td>
-              </tr>
-              <tr>
-                <td>자동 처리 (챗봇)</td>
-                <td class="num">366건/월</td>
-                <td class="num">~500건/월</td>
-                <td class="num">~650건+/월</td>
-              </tr>
-              <tr>
-                <td>월 절감액</td>
-                <td class="num" style="color:#38bdf8;">&#8361;6.2M</td>
-                <td class="num" style="color:#34d399;">&#8361;8.5M</td>
-                <td class="num" style="color:#fbbf24;">&#8361;10.5M</td>
-              </tr>
-              <tr>
-                <td>연간 절감</td>
-                <td class="num" style="color:#38bdf8;">&#8361;74M</td>
-                <td class="num" style="color:#34d399;">&#8361;102M</td>
-                <td class="num" style="color:#fbbf24;">&#8361;126M</td>
-              </tr>
-              <tr>
-                <td>인력 절감</td>
-                <td class="num">~2인분</td>
-                <td class="num">~2.5인분</td>
-                <td class="num">~3인분</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════ SECTION 6: 상담원 템플릿 자동화 ══════════════ -->
-  <section>
-    <div class="section-header">
-      <div class="section-num">6</div>
+      <div class="section-num">3</div>
       <h2>상담원 템플릿 자동화 분석</h2>
       <span class="desc">실제 상담 데이터 기반</span>
     </div>
@@ -1124,39 +927,100 @@
     </div>
   </section>
 
+  <!-- ══════════════ SECTION 4: CX 부가가치 ══════════════ -->
+  <section>
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <h2>CX 부가가치</h2>
+      <span class="desc">고객 경험 개선 Before vs After</span>
+    </div>
+
+    <div class="cx-grid">
+      <div class="cx-card before">
+        <div class="cx-badge">Before &mdash; 상담원 기반 운영</div>
+        <h4>기존 CS 운영의 한계</h4>
+        <div class="cx-item">
+          <span class="cx-icon">&#9203;</span>
+          <div><strong>응답 지연 7~29일</strong><br>계정 미식별 시 교차 확인에 평균 7~29일 소요, 고객 이탈 원인 #1</div>
+        </div>
+        <div class="cx-item">
+          <span class="cx-icon">&#128337;</span>
+          <div><strong>운영 시간 제한</strong><br>KST 업무 시간 기반 &mdash; 글로벌 10개 마켓 시간대 커버 불가</div>
+        </div>
+        <div class="cx-item">
+          <span class="cx-icon">&#128200;</span>
+          <div><strong>동일 템플릿 반복</strong><br>상담원 답변의 83%가 정형 템플릿 &mdash; 반복 업무로 피로도 증가</div>
+        </div>
+        <div class="cx-item">
+          <span class="cx-icon">&#128101;</span>
+          <div><strong>피크타임 병목</strong><br>월요일/결제일 집중으로 대기 시간 급증, 고객 불만 발생</div>
+        </div>
+      </div>
+      <div class="cx-card after">
+        <div class="cx-badge">After &mdash; AI 챗봇 도입 후</div>
+        <h4>AI 도입 후 CX 개선 효과</h4>
+        <div class="cx-item">
+          <span class="cx-icon">&#9889;</span>
+          <div><strong>응답 시간 &lt;3초</strong><br>L3 셀프서비스 366건/월 즉시 자동 응답 &mdash; 고객 대기 시간 제로</div>
+        </div>
+        <div class="cx-item">
+          <span class="cx-icon">&#127760;</span>
+          <div><strong>24/7/365 가용성</strong><br>시간대/공휴일 무관 즉시 대응 &mdash; 글로벌 10개 마켓 완전 커버</div>
+        </div>
+        <div class="cx-item">
+          <span class="cx-icon">&#128202;</span>
+          <div><strong>티켓 자연 감소</strong><br>셀프서비스로 38% 자동 해결 &rarr; 상담원 대기열 감소 &rarr; 남은 건도 빠르게 처리</div>
+        </div>
+        <div class="cx-item">
+          <span class="cx-icon">&#11088;</span>
+          <div><strong>상담 품질 향상</strong><br>상담원이 복잡한 건(환불 적격성, Fraud, 법적 문의)에 집중 &rarr; 전문성 강화</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      <h4>&#128161; CX 개선 핵심 요약</h4>
+      <p>AI 챗봇은 단순 반복 업무(구독 해지 안내, 비밀번호 리셋, FAQ 등)를 <strong>즉시 자동 처리</strong>하여 고객 대기 시간을 최소화하고, 상담원은 <strong>고부가가치 업무</strong>(환불 심사, Fraud 대응, 법적 문의)에 전념할 수 있습니다. 결과적으로 <strong>전체 CS 품질이 상승</strong>하며 고객 만족도와 리텐션 개선이 기대됩니다.</p>
+    </div>
+  </section>
+
   <!-- ══════════════ CONCLUSION ══════════════ -->
   <div class="conclusion">
     <h2>&#127942; 핵심 결론</h2>
     <div class="conclusion-grid">
       <div class="conclusion-item">
-        <div class="val">29%</div>
-        <div class="lbl">월간 비용 절감율</div>
+        <div class="val">38%</div>
+        <div class="lbl">AI 자동 처리율</div>
       </div>
       <div class="conclusion-item">
-        <div class="val">2.4개월</div>
-        <div class="lbl">손익분기점 (BEP)</div>
+        <div class="val">&lt;3초</div>
+        <div class="lbl">AI 응답 속도</div>
       </div>
       <div class="conclusion-item">
-        <div class="val">396%</div>
-        <div class="lbl">12개월 ROI</div>
+        <div class="val">~&#8361;260K</div>
+        <div class="lbl">AI 월 운영비</div>
+      </div>
+      <div class="conclusion-item">
+        <div class="val">24/7</div>
+        <div class="lbl">서비스 가용성</div>
       </div>
     </div>
     <div style="text-align:center; position:relative;">
-      <p style="font-size:15px; color:#cbd5e1; line-height:1.8; max-width:700px; margin:0 auto;">
-        AI 챗봇 도입으로 <strong style="color:#fbbf24;">~2인분</strong>의 업무를 대체하며,<br>
-        월 <strong style="color:#fbbf24;">&#8361;6,200,000</strong> 절감, 연간 <strong style="color:#fbbf24;">&#8361;74,400,000</strong> 절감 효과가 예상됩니다.<br>
-        개발 투자금 &#8361;15,000,000은 <strong style="color:#38bdf8;">약 2.4개월</strong> 만에 회수되며,<br>
-        Phase 3/4 확장 시 연간 <strong style="color:#34d399;">&#8361;126,000,000</strong>까지 절감 가능합니다.
+      <p style="font-size:15px; color:#cbd5e1; line-height:1.8; max-width:720px; margin:0 auto;">
+        AI 챗봇 도입으로 비이메일 채널 <strong style="color:#fbbf24;">963건/월</strong> 중 <strong style="color:#fbbf24;">38%</strong>(366건)를 즉시 자동 처리하며,<br>
+        기존 7~29일 걸리던 응답을 <strong style="color:#38bdf8;">&lt;3초</strong>로 단축합니다.<br>
+        AI 전체 운영비는 월 <strong style="color:#fbbf24;">~&#8361;260,000</strong> (Pro Max + API + 서버)이며,<br>
+        <strong style="color:#34d399;">24시간 365일</strong> 글로벌 10개 마켓을 커버하여 CS 품질을 근본적으로 개선합니다.
       </p>
     </div>
     <div class="note" style="margin-top:20px;">
-      &#9888;&#65039; 본 분석은 실제 CS 데이터(11,621건) 기반 추정치이며, 이메일 42%는 상담원 전담, 비이메일 58%를 챗봇 처리 기준으로 산출합니다.
+      &#9888;&#65039; 본 분석은 실제 CS 데이터(11,621건) 기반이며, 이메일 42%는 상담원 전담, 비이메일 58%를 챗봇 처리 기준으로 산출합니다.
     </div>
   </div>
 
   <!-- ══════════════ FOOTER ══════════════ -->
   <div class="footer">
-    <strong>TOOMICS CS AI 챗봇 운영비용 분석 리포트</strong><br>
+    <strong>TOOMICS CS AI 챗봇 운영 분석 리포트</strong><br>
     작성자: <strong>유종선 (Chongsun Yu)</strong> &nbsp;|&nbsp; 작성일: 2026-02-22<br>
     데이터 출처: Zendesk 추출 11,621건 (2025.07 ~ 2026.01, 10개 마켓)<br>
     &copy; 2026 Toomics Global. Internal Use Only.
@@ -1182,146 +1046,33 @@ Chart.defaults.plugins.tooltip.cornerRadius = 8;
 Chart.defaults.animation.duration = 1200;
 Chart.defaults.animation.easing = 'easeOutQuart';
 
-const wonFormat = (val) => {
-  if (val >= 1000000) return '\u20A9' + (val / 1000000).toFixed(1) + 'M';
-  if (val >= 1000) return '\u20A9' + (val / 1000).toFixed(0) + 'K';
-  return '\u20A9' + val.toLocaleString();
-};
-
 // ═══════════════════════════════════════════════
-// CHART 1: Before vs After (Stacked Bar)
-// ═══════════════════════════════════════════════
-(function() {
-  const ctx = document.getElementById('chartBeforeAfter').getContext('2d');
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Before AI\n(6\uBA85 \uD544\uC694)', 'After AI\n(Phase 1)'],
-      datasets: [
-        {
-          label: '\uC0C1\uB2F4\uC6D0 \uC804\uB2F4 (\uC774\uBA54\uC77C+L1)',
-          data: [21000000, 10413000],
-          backgroundColor: '#f59e0b',
-          borderRadius: 4,
-        },
-        {
-          label: '\uC0C1\uB2F4\uC6D0+AI (L2)',
-          data: [0, 4175000],
-          backgroundColor: '#0ea5e9',
-          borderRadius: 4,
-        },
-        {
-          label: 'AI \uC6B4\uC601\uBE44 (L3 \uC790\uB3D9+\uACE0\uC815)',
-          data: [0, 282000],
-          backgroundColor: '#10b981',
-          borderRadius: 4,
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { position: 'bottom' },
-        tooltip: {
-          callbacks: {
-            label: (ctx) => ctx.dataset.label + ': ' + wonFormat(ctx.raw)
-          }
-        }
-      },
-      scales: {
-        x: { stacked: true, grid: { display: false } },
-        y: {
-          stacked: true,
-          ticks: { callback: (v) => wonFormat(v) },
-          grid: { color: 'rgba(51,65,85,0.3)' }
-        }
-      }
-    }
-  });
-})();
-
-// ═══════════════════════════════════════════════
-// CHART 2: Savings Distribution (Doughnut)
-// ═══════════════════════════════════════════════
-(function() {
-  const ctx = document.getElementById('chartSavingsDist').getContext('2d');
-  new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: ['L3 \uC790\uB3D9 \uCC98\uB9AC \uC808\uAC10', 'L2 \uD6A8\uC728 \uD5A5\uC0C1 \uC808\uAC10', 'AI \uC6B4\uC601\uBE44'],
-      datasets: [{
-        data: [4603000, 1789000, 282000],
-        backgroundColor: ['#10b981', '#0ea5e9', '#ef4444'],
-        borderColor: '#1e293b',
-        borderWidth: 3,
-        hoverOffset: 8
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      cutout: '55%',
-      plugins: {
-        legend: { position: 'bottom' },
-        tooltip: {
-          callbacks: {
-            label: (ctx) => {
-              const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
-              const pct = ((ctx.raw / total) * 100).toFixed(1);
-              return ctx.label + ': ' + wonFormat(ctx.raw) + ' (' + pct + '%)';
-            }
-          }
-        }
-      }
-    },
-    plugins: [{
-      id: 'doughnutCenter',
-      afterDraw(chart) {
-        const { ctx: c, chartArea: { width, height, top, left } } = chart;
-        const cx = left + width / 2;
-        const cy = top + height / 2;
-        c.save();
-        c.textAlign = 'center';
-        c.textBaseline = 'middle';
-        c.fillStyle = '#f1f5f9';
-        c.font = "800 22px 'Malgun Gothic'";
-        c.fillText('\u20A96.1M', cx, cy - 10);
-        c.fillStyle = '#94a3b8';
-        c.font = "500 11px 'Malgun Gothic'";
-        c.fillText('\uC6D4 \uC21C\uC808\uAC10', cx, cy + 12);
-        c.restore();
-      }
-    }]
-  });
-})();
-
-// ═══════════════════════════════════════════════
-// CHART 3: Category Cost (Horizontal Bar)
+// CHART 1: Category Automation Rate (Horizontal Bar)
 // ═══════════════════════════════════════════════
 (function() {
   const ctx = document.getElementById('chartCategory').getContext('2d');
   const categories = ['Subscription', 'Refund', 'Account', 'Payment', 'Content', 'Technical', 'Other'];
-  const currentCost = [8845000, 4637000, 2388000, 1087000, 720000, 404000, 379000];
-  const afterCost   = [2090000, 2650000, 1250000, 590000, 720000, 240000, 379000];
+  const automationRates = [95, 30, 40, 35, 0, 25, 0];
+  const monthlyVolumes = [700, 367, 189, 86, 57, 32, 30];
+
   new Chart(ctx, {
     type: 'bar',
     data: {
       labels: categories,
       datasets: [
         {
-          label: '\uD604\uC7AC \uBE44\uC6A9',
-          data: currentCost,
-          backgroundColor: 'rgba(245,158,11,0.7)',
-          borderColor: '#f59e0b',
-          borderWidth: 1,
-          borderRadius: 4,
-        },
-        {
-          label: 'AI \uD6C4 \uBE44\uC6A9',
-          data: afterCost,
-          backgroundColor: 'rgba(14,165,233,0.7)',
-          borderColor: '#0ea5e9',
+          label: '\uC790\uB3D9\uD654\uC728 (%)',
+          data: automationRates,
+          backgroundColor: automationRates.map(v =>
+            v >= 50 ? 'rgba(16,185,129,0.7)' :
+            v > 0 ? 'rgba(14,165,233,0.7)' :
+            'rgba(239,68,68,0.4)'
+          ),
+          borderColor: automationRates.map(v =>
+            v >= 50 ? '#10b981' :
+            v > 0 ? '#0ea5e9' :
+            '#ef4444'
+          ),
           borderWidth: 1,
           borderRadius: 4,
         }
@@ -1332,123 +1083,40 @@ const wonFormat = (val) => {
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
-        legend: { position: 'bottom' },
+        legend: { display: false },
         tooltip: {
           callbacks: {
-            label: (ctx) => ctx.dataset.label + ': ' + wonFormat(ctx.raw)
+            label: function(ctx) {
+              const idx = ctx.dataIndex;
+              return '\uC790\uB3D9\uD654\uC728: ' + ctx.raw + '% (\uC6D4 ' + monthlyVolumes[idx] + '\uAC74)';
+            }
           }
         }
       },
       scales: {
         x: {
-          ticks: { callback: (v) => wonFormat(v) },
+          max: 100,
+          ticks: { callback: (v) => v + '%' },
           grid: { color: 'rgba(51,65,85,0.3)' }
         },
         y: { grid: { display: false } }
       }
-    }
-  });
-})();
-
-// ═══════════════════════════════════════════════
-// CHART 4: ROI Line Chart (12 months)
-// ═══════════════════════════════════════════════
-(function() {
-  const ctx = document.getElementById('chartROI').getContext('2d');
-  const months = ['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10','M11','M12'];
-  const monthlySaving = 6200000;
-  const cumSavings = months.map((_, i) => monthlySaving * (i + 1));
-  const devCost = 15000000;
-  const netProfit = cumSavings.map(v => v - devCost);
-
-  const gradSavings = ctx.createLinearGradient(0, 0, 0, 400);
-  gradSavings.addColorStop(0, 'rgba(14,165,233,0.3)');
-  gradSavings.addColorStop(1, 'rgba(14,165,233,0.0)');
-
-  const gradProfit = ctx.createLinearGradient(0, 0, 0, 400);
-  gradProfit.addColorStop(0, 'rgba(16,185,129,0.25)');
-  gradProfit.addColorStop(1, 'rgba(16,185,129,0.0)');
-
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: months,
-      datasets: [
-        {
-          label: '\uB204\uC801 \uC808\uAC10\uC561',
-          data: cumSavings,
-          borderColor: '#0ea5e9',
-          backgroundColor: gradSavings,
-          fill: true,
-          tension: 0.3,
-          pointRadius: 4,
-          pointHoverRadius: 7,
-          pointBackgroundColor: '#0ea5e9',
-          borderWidth: 2.5,
-        },
-        {
-          label: '\uC21C\uC774\uC775 (\uC808\uAC10 - \uAC1C\uBC1C\uBE44)',
-          data: netProfit,
-          borderColor: '#10b981',
-          backgroundColor: gradProfit,
-          fill: true,
-          tension: 0.3,
-          pointRadius: 4,
-          pointHoverRadius: 7,
-          pointBackgroundColor: '#10b981',
-          borderWidth: 2.5,
-        },
-        {
-          label: '\uAC1C\uBC1C \uD22C\uC790\uAE08 (\u20A915M)',
-          data: Array(12).fill(devCost),
-          borderColor: '#ef4444',
-          borderDash: [8, 4],
-          borderWidth: 2,
-          pointRadius: 0,
-          fill: false,
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      interaction: { intersect: false, mode: 'index' },
-      plugins: {
-        legend: { position: 'bottom' },
-        tooltip: {
-          callbacks: {
-            label: (ctx) => ctx.dataset.label + ': ' + wonFormat(ctx.raw)
-          }
-        }
-      },
-      scales: {
-        x: { grid: { color: 'rgba(51,65,85,0.2)' } },
-        y: {
-          ticks: { callback: (v) => wonFormat(v) },
-          grid: { color: 'rgba(51,65,85,0.3)' }
-        }
-      }
     },
     plugins: [{
-      id: 'bepAnnotation',
-      afterDraw(chart) {
-        const { ctx: c, chartArea, scales: { x, y } } = chart;
-        // BEP at approximately month 2.4
-        const bepX = x.getPixelForValue(1) + (x.getPixelForValue(2) - x.getPixelForValue(1)) * 0.4;
-        const bepY = y.getPixelForValue(15000000);
+      id: 'barLabels',
+      afterDatasetsDraw(chart) {
+        const { ctx: c, scales: { x, y } } = chart;
+        const dataset = chart.data.datasets[0];
         c.save();
-        c.beginPath();
-        c.setLineDash([4, 3]);
-        c.strokeStyle = '#fbbf24';
-        c.lineWidth = 1.5;
-        c.moveTo(bepX, chartArea.top);
-        c.lineTo(bepX, chartArea.bottom);
-        c.stroke();
-        c.setLineDash([]);
-        c.fillStyle = '#fbbf24';
-        c.font = "700 11px 'Malgun Gothic'";
+        c.font = "700 12px 'Malgun Gothic'";
         c.textAlign = 'left';
-        c.fillText('BEP (2.4\uAC1C\uC6D4)', bepX + 6, chartArea.top + 16);
+        c.textBaseline = 'middle';
+        dataset.data.forEach((val, i) => {
+          const xPos = x.getPixelForValue(val) + 8;
+          const yPos = y.getPixelForValue(i);
+          c.fillStyle = val >= 50 ? '#34d399' : val > 0 ? '#38bdf8' : '#f87171';
+          c.fillText(val + '%', xPos, yPos);
+        });
         c.restore();
       }
     }]
@@ -1456,70 +1124,7 @@ const wonFormat = (val) => {
 })();
 
 // ═══════════════════════════════════════════════
-// CHART 5: Phase Expansion (Grouped Bar)
-// ═══════════════════════════════════════════════
-(function() {
-  const ctx = document.getElementById('chartPhase').getContext('2d');
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['\uC790\uB3D9 \uCC98\uB9AC (\uAC74/\uC6D4)', '\uC6D4 \uC808\uAC10\uC561 (\uB9CC\uC6D0)', '\uC5F0\uAC04 \uC808\uAC10 (\uB9CC\uC6D0)'],
-      datasets: [
-        {
-          label: 'Phase 1 (\uD604\uC7AC)',
-          data: [366, 620, 7440],
-          backgroundColor: 'rgba(14,165,233,0.7)',
-          borderColor: '#0ea5e9',
-          borderWidth: 1,
-          borderRadius: 4,
-        },
-        {
-          label: 'Phase 3 (\uBAA9\uD45C)',
-          data: [500, 850, 10200],
-          backgroundColor: 'rgba(16,185,129,0.7)',
-          borderColor: '#10b981',
-          borderWidth: 1,
-          borderRadius: 4,
-        },
-        {
-          label: 'Phase 4 (\uBAA9\uD45C)',
-          data: [650, 1050, 12600],
-          backgroundColor: 'rgba(251,191,36,0.7)',
-          borderColor: '#fbbf24',
-          borderWidth: 1,
-          borderRadius: 4,
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { position: 'bottom' },
-        tooltip: {
-          callbacks: {
-            label: function(ctx) {
-              const idx = ctx.dataIndex;
-              const v = ctx.raw;
-              if (idx === 0) return ctx.dataset.label + ': ' + v + '\uAC74';
-              return ctx.dataset.label + ': \u20A9' + (v * 10000).toLocaleString();
-            }
-          }
-        }
-      },
-      scales: {
-        x: { grid: { display: false } },
-        y: {
-          grid: { color: 'rgba(51,65,85,0.3)' },
-          ticks: { callback: (v) => v.toLocaleString() }
-        }
-      }
-    }
-  });
-})();
-
-// ═══════════════════════════════════════════════
-// CHART 6: Template Automation (Horizontal Stacked)
+// CHART 2: Template Automation (Horizontal Stacked)
 // ═══════════════════════════════════════════════
 (function() {
   const ctx = document.getElementById('chartTemplate').getContext('2d');
