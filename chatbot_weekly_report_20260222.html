@@ -336,34 +336,38 @@
         <h3>Phase 로드맵</h3>
         <div class="timeline">
           <div class="timeline-item done">
-            <div class="tl-label">Phase 1</div>
-            <div class="tl-title">프레임워크</div>
-            <div class="tl-period">2/10~2/14 완료</div>
-          </div>
-          <div class="timeline-arrow">→</div>
-          <div class="timeline-item done">
-            <div class="tl-label">Phase 2</div>
-            <div class="tl-title">프로토타입 서버</div>
-            <div class="tl-period">2/14~2/20 완료</div>
+            <div class="tl-label">Phase 1~2</div>
+            <div class="tl-title">프로토타입</div>
+            <div class="tl-period">2/10~2/20 완료</div>
           </div>
           <div class="timeline-arrow">→</div>
           <div class="timeline-item current">
-            <div class="tl-label">Phase 2.5</div>
-            <div class="tl-title">90/10 하이브리드</div>
-            <div class="tl-period">2/20~ 진행중</div>
+            <div class="tl-label">Phase 3</div>
+            <div class="tl-title">프로토타입 고도화</div>
+            <div class="tl-period">진행 예정</div>
           </div>
           <div class="timeline-arrow">→</div>
           <div class="timeline-item future">
-            <div class="tl-label">Phase 3</div>
-            <div class="tl-title">고도화/배포</div>
-            <div class="tl-period">예정</div>
+            <div class="tl-label">Phase 4</div>
+            <div class="tl-title">개발팀 협의</div>
+            <div class="tl-period">프로덕션 도입 논의</div>
           </div>
+          <div class="timeline-arrow">→</div>
+          <div class="timeline-item future">
+            <div class="tl-label">Phase 5</div>
+            <div class="tl-title">실서비스 적용</div>
+            <div class="tl-period">협의 후 결정</div>
+          </div>
+        </div>
+        <div style="margin-top:12px;padding:10px 14px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.1);border-radius:8px;font-size:11px;color:var(--text2);line-height:1.7;">
+          <strong style="color:var(--blue);">현재 상태:</strong> 프로토타입 완료 → 고도화 진행 예정<br>
+          <strong style="color:var(--muted);">다음 단계:</strong> 프로토타입 고도화 완료 후, 개발팀과 실 프로덕트 도입 논의 진행
         </div>
       </div>
 
       <!-- Right: Completed Items -->
       <div class="progress-card">
-        <h3>주요 완료 항목</h3>
+        <h3>주요 완료 항목 (프로토타입)</h3>
         <ul class="check-list">
           <li class="done">CS 데이터 분석 (11,621건 × 7개월 × 10마켓)</li>
           <li class="done">7대 카테고리 × 23 Sub-Intent 분류 체계</li>
@@ -371,9 +375,9 @@
           <li class="done">의도 분류 + Fraud 탐지 + 다국어 감지</li>
           <li class="done">L1/L2/L3 에스컬레이션 파이프라인</li>
           <li class="done">89개 테스트 전체 통과</li>
-          <li class="current">v3 90/10 하이브리드 응답 아키텍처 구현</li>
-          <li class="todo">Phase 2 마켓 확장 (TH, JP, CN, IT, KR)</li>
-          <li class="todo">프로덕션 배포 (Docker + CI/CD)</li>
+          <li class="current">프로토타입 고도화 (90/10 하이브리드 아키텍처)</li>
+          <li class="todo">개발팀 협의 — 실 프로덕트 도입 방향 논의</li>
+          <li class="todo">필요 시 추가 개발 및 실서비스 적용</li>
         </ul>
       </div>
     </div>
@@ -552,14 +556,13 @@
         </table>
       </div>
       <div class="ra-card">
-        <h3><span class="dot" style="background:var(--green); display:inline-block; width:8px; height:8px; border-radius:50%;"></span> 다음 주 계획</h3>
+        <h3><span class="dot" style="background:var(--green); display:inline-block; width:8px; height:8px; border-radius:50%;"></span> 향후 계획</h3>
         <ul class="check-list">
-          <li class="current">v3 90/10 하이브리드 응답 아키텍처 구현 완료</li>
-          <li class="todo">STEP A(분류) + STEP B(자연어 글루) 2단계 API 분리</li>
-          <li class="todo">자연어 글루 금지 패턴 필터 구현</li>
-          <li class="todo">비대칭 장애 대응 (STEP B 실패 → 템플릿만 발송)</li>
-          <li class="todo">전체 테스트 재검증 + 파이프라인 시뮬레이션</li>
-          <li class="todo">운영 서버 배포 테스트</li>
+          <li class="current">프로토타입 고도화 (90/10 하이브리드 아키텍처)</li>
+          <li class="todo">응답 품질 검증 + 파이프라인 시뮬레이션</li>
+          <li class="todo">추가 마켓 확장 검토 (TH, JP, CN, IT, KR)</li>
+          <li class="todo">개발팀과 실 프로덕트 도입 방향 협의</li>
+          <li class="todo">협의 결과에 따른 추가 개발 범위 확정</li>
         </ul>
       </div>
     </div>
