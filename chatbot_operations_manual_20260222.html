@@ -681,6 +681,7 @@
   <nav class="toc" id="toc">
     <h3>&#128203; 목차 (Table of Contents)</h3>
     <div class="toc-grid">
+      <a href="#sec-core"><span class="toc-num">★</span> 스마트 레이어링 — 핵심 가치</a>
       <a href="#sec-1"><span class="toc-num">1</span> 문서 개요</a>
       <a href="#sec-2"><span class="toc-num">2</span> 시스템 아키텍처</a>
       <a href="#sec-3"><span class="toc-num">3</span> 파이프라인 처리 흐름</a>
@@ -693,6 +694,88 @@
       <a href="#sec-10"><span class="toc-num">10</span> 품질 규칙</a>
     </div>
   </nav>
+
+  <!-- ============================== ★ 스마트 레이어링 — 핵심 가치 ============================== -->
+  <section id="sec-core">
+    <div class="section-header">
+      <span class="section-number" style="background:linear-gradient(135deg,#10b981,#22d3ee);">★</span>
+      <h2>스마트 레이어링 — 반복 왕복 단계 자동화</h2>
+    </div>
+
+    <div class="card" style="border-color:rgba(14,165,233,0.2);background:linear-gradient(135deg,rgba(14,165,233,0.04),rgba(16,185,129,0.03));">
+      <div style="text-align:center;margin-bottom:20px;">
+        <div style="font-size:12px;color:var(--accent-cyan);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;">CORE INSIGHT — 실데이터 11,621건 분석 결과</div>
+        <div style="font-size:22px;font-weight:800;color:var(--text-primary);line-height:1.4;">
+          CS 상담의 <span style="color:var(--accent-cyan);font-size:30px;">83%</span>가
+          <span style="color:var(--accent-amber);">반복적이지만 반드시 거쳐야 하는</span> 왕복 단계입니다
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:20px;">
+        <div style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.2);border-radius:12px;padding:14px 8px;text-align:center;">
+          <div style="font-size:24px;font-weight:800;color:#38bdf8;">45%</div>
+          <div style="font-size:11px;color:#94a3b8;margin-top:4px;">결제정보 요청</div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px;">변수 0개, 고정 템플릿</div>
+        </div>
+        <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:14px 8px;text-align:center;">
+          <div style="font-size:24px;font-weight:800;color:#34d399;">18%</div>
+          <div style="font-size:11px;color:#94a3b8;margin-top:4px;">구독취소 확인</div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px;">변수 2개 (날짜)</div>
+        </div>
+        <div style="background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.2);border-radius:12px;padding:14px 8px;text-align:center;">
+          <div style="font-size:24px;font-weight:800;color:#fbbf24;">10%</div>
+          <div style="font-size:11px;color:#94a3b8;margin-top:4px;">환불 처리</div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px;">변수 0개, 고정</div>
+        </div>
+        <div style="background:rgba(244,114,182,0.08);border:1px solid rgba(244,114,182,0.2);border-radius:12px;padding:14px 8px;text-align:center;">
+          <div style="font-size:24px;font-weight:800;color:#f472b6;">7%</div>
+          <div style="font-size:11px;color:#94a3b8;margin-top:4px;">환불 거절</div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px;">변수 1개 (종료일)</div>
+        </div>
+        <div style="background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.2);border-radius:12px;padding:14px 8px;text-align:center;">
+          <div style="font-size:24px;font-weight:800;color:#a78bfa;">3%</div>
+          <div style="font-size:11px;color:#94a3b8;margin-top:4px;">계정 삭제</div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px;">변수 0개, 체크리스트</div>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr><th style="width:18%;">구분</th><th style="width:41%;">Before — 반복 왕복 3~5회</th><th style="width:41%;">After — 스마트 레이어링</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>처리 방식</strong></td>
+            <td style="color:var(--accent-red);">문의→정보요청→회신대기→확인→안내 (3~5회 반복)</td>
+            <td style="color:var(--accent-green);">AI가 반복 단계 즉시 처리 → 왕복 0회</td>
+          </tr>
+          <tr>
+            <td><strong>해결 소요</strong></td>
+            <td style="color:var(--accent-red);">평균 7~29일 (회신 대기 반복)</td>
+            <td style="color:var(--accent-green);">&lt;3초 (AI 즉시 응답)</td>
+          </tr>
+          <tr>
+            <td><strong>미해결 건</strong></td>
+            <td>다시 처음부터 정보 수집 반복</td>
+            <td style="color:var(--accent-green);">맥락 요약 티켓 → 상담원 즉시 처리</td>
+          </tr>
+          <tr>
+            <td><strong>상담원 역할</strong></td>
+            <td>83% 반복 템플릿 복붙 + 17% 판단 업무</td>
+            <td style="color:var(--accent-green);">반복 단계 자동화 → 판단·고부가가치 업무 집중</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:16px;padding:14px 20px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.1);border-radius:10px;text-align:center;font-size:14px;color:#cbd5e1;line-height:1.7;">
+        <strong style="color:var(--accent-green);">선순환 구조:</strong>
+        반복 단계 AI 자동화 → <strong style="color:var(--accent-green);">고객 대기 제로</strong> →
+        <strong style="color:var(--accent-cyan);">운영 효율 극대화</strong> →
+        <strong style="color:var(--accent-amber);">상담원 고부가가치 집중</strong> →
+        <strong style="color:var(--accent-green);">전체 CS 품질 향상</strong>
+      </div>
+    </div>
+  </section>
 
   <!-- ============================== 1. 문서 개요 ============================== -->
   <section id="sec-1">
@@ -1661,23 +1744,23 @@ Ai-Chat-bot-project/
     </div>
 
     <div class="card">
-      <h3>&#128231; 마켓별 지원 이메일</h3>
+      <h3>&#128231; 마켓별 지원 채널</h3>
       <table>
         <thead>
-          <tr><th>마켓</th><th>지원 이메일</th></tr>
+          <tr><th>마켓</th><th>지원 채널</th></tr>
         </thead>
         <tbody>
-          <tr><td>EN</td><td><code>en.help@toomicsglobal.com</code></td></tr>
-          <tr><td>FR</td><td><code>fr.help@toomicsglobal.com</code></td></tr>
-          <tr><td>ES</td><td><code>es.help@toomicsglobal.com</code></td></tr>
-          <tr><td>DE</td><td><code>de.help@toomicsglobal.com</code></td></tr>
-          <tr><td>IT</td><td><code>it.help@toomicsglobal.com</code></td></tr>
-          <tr><td>JP</td><td><code>jp.help@toomicsglobal.com</code></td></tr>
+          <tr><td>EN</td><td>Zendesk 채널 (영어)</td></tr>
+          <tr><td>FR</td><td>Zendesk 채널 (프랑스어)</td></tr>
+          <tr><td>ES</td><td>Zendesk 채널 (스페인어)</td></tr>
+          <tr><td>DE</td><td>Zendesk 채널 (독일어)</td></tr>
+          <tr><td>IT</td><td>Zendesk 채널 (이탈리아어)</td></tr>
+          <tr><td>JP</td><td>Zendesk 채널 (일본어)</td></tr>
         </tbody>
       </table>
       <div class="info-box info-box-blue">
         <span class="info-icon">&#128233;</span>
-        <div>결제 알림 발신 주소: <code>no-reply@toomics.com</code> (제목: "[Payment Statement] TOOMICS Purchase Information")</div>
+        <div>각 마켓별 Zendesk 티켓 시스템을 통해 접수됩니다.</div>
       </div>
     </div>
   </section>
