@@ -1096,7 +1096,7 @@ Ai-Chat-bot-project/
             <td>57건</td>
             <td><strong>4%</strong></td>
             <td style="color:#f87171;">0%</td>
-            <td><span class="badge badge-l1">전체 L1</span> <span style="font-size:11px; color:#f87171;">(자동화 배제)</span></td>
+            <td><span class="badge badge-l2">전체 L2</span> <span style="font-size:11px; color:#fbbf24;">(정보 수집 → 에스컬레이션)</span></td>
             <td>4개</td>
           </tr>
           <tr>
@@ -1120,7 +1120,7 @@ Ai-Chat-bot-project/
 
       <div class="info-box info-box-red">
         <span class="info-icon">&#128683;</span>
-        <div><strong>Content / Other 카테고리</strong>는 어떤 Phase에서도 자동 응답을 하지 않습니다. 전체 L1 에스컬레이션 (자동화 영구 배제).</div>
+        <div><strong>Content</strong> 카테고리는 AI가 정보 수집 후 L2 에스컬레이션합니다. <strong>Other</strong> 카테고리는 전체 L1 에스컬레이션 (자동화 영구 배제).</div>
       </div>
     </div>
   </section>
@@ -1361,11 +1361,11 @@ Ai-Chat-bot-project/
 
     <!-- Content -->
     <details>
-      <summary><span class="badge badge-l1" style="margin-right:4px">전체 L1</span> Content (콘텐츠) -- 4개 Sub-Intent | 월 57건 | 4% | &#128683; 자동화 배제</summary>
+      <summary><span class="badge badge-l2" style="margin-right:4px">전체 L2</span> Content (콘텐츠) -- 4개 Sub-Intent | 월 57건 | 4% | 정보 수집 → 에스컬레이션</summary>
       <div class="details-content">
-        <div class="info-box info-box-red">
-          <span class="info-icon">&#128683;</span>
-          <div><strong>자동화 영구 배제:</strong> Content 카테고리 전체는 인간 판단이 필수입니다. 작품 에러, 번역 품질, 콘텐츠 투고 등 자동 응답 불가.</div>
+        <div class="info-box" style="background:rgba(251,191,36,0.06);border-left:4px solid #fbbf24;">
+          <span class="info-icon">&#128221;</span>
+          <div><strong>정보 수집 후 에스컬레이션:</strong> AI가 작품명·챕터·기기 등 필요 정보를 먼저 수집한 뒤, 상담원에게 전달합니다. 셀프서비스 자동 처리는 없습니다.</div>
         </div>
         <table>
           <thead>
@@ -1375,28 +1375,28 @@ Ai-Chat-bot-project/
             <tr>
               <td><code>content_error</code></td>
               <td>작품 에러</td>
-              <td><span class="badge badge-l1">L1</span></td>
+              <td><span class="badge badge-l2">L2</span></td>
               <td>챕터 누락, 빈 페이지, 이미지 깨짐 등 작품 표시 오류</td>
               <td><span class="keyword-tag">missing chapter</span><span class="keyword-tag">blank page</span><span class="keyword-tag">broken image</span></td>
             </tr>
             <tr>
               <td><code>translation_error</code></td>
               <td>번역/맞춤법 에러</td>
-              <td><span class="badge badge-l1">L1</span></td>
+              <td><span class="badge badge-l2">L2</span></td>
               <td>잘못된 번역, 오타, 문법 오류 신고</td>
               <td><span class="keyword-tag">wrong translation</span><span class="keyword-tag">typo</span><span class="keyword-tag">spelling</span><span class="keyword-tag">grammar</span></td>
             </tr>
             <tr>
               <td><code>content_request</code></td>
               <td>작품 요청/제안</td>
-              <td><span class="badge badge-l1">L1</span></td>
+              <td><span class="badge badge-l2">L2</span></td>
               <td>작품 추가 요청, 업데이트 일정 문의, 신작 요청</td>
               <td><span class="keyword-tag">add this manga</span><span class="keyword-tag">when new chapter</span><span class="keyword-tag">update schedule</span></td>
             </tr>
             <tr>
               <td><code>content_feedback</code></td>
               <td>작품 피드백/평점</td>
-              <td><span class="badge badge-l1">L1</span></td>
+              <td><span class="badge badge-l2">L2</span></td>
               <td>작품에 대한 의견, 평가, 리뷰</td>
               <td><span class="keyword-tag">great story</span><span class="keyword-tag">terrible</span><span class="keyword-tag">rating</span><span class="keyword-tag">review</span></td>
             </tr>
@@ -1820,10 +1820,10 @@ Ai-Chat-bot-project/
 
       <ul class="exclusion-list">
         <li>
-          <span class="exclusion-icon">&#10006;</span>
+          <span class="exclusion-icon">&#128221;</span>
           <div>
-            <strong style="color:var(--text-primary);">Content 카테고리 전체</strong><br>
-            작품 업데이트 일정, 번역/맞춤법 에러, 챕터 누락, 이미지 깨짐, 작품 투고/제안, 작품 피드백/평점. 인간 판단 필수.
+            <strong style="color:var(--text-primary);">Content 카테고리 → L2 (정보 수집 후 에스컬레이션)</strong><br>
+            작품 에러, 번역 오류, 이미지 깨짐 등 → AI가 작품명·챕터·기기 정보를 먼저 수집 후 상담원에게 전달. 셀프서비스 자동 처리는 없음.
           </div>
         </li>
         <li>
