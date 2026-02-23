@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="유종선">
+<meta name="description" content="투믹스 글로벌 CS 주간 분석 보고서 2026년 2월 2~3주차 — Zendesk CS 829건 + Chargeback 150건(시트) + AI Chatbot Phase 2 통합 분석">
+<title>TOOMICS CS Weekly Report | 2026년 2월 2~3주차 (02.07 ~ 02.20) v2</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  @page { size: A3 portrait; margin: 10mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', -apple-system, sans-serif;
+    color: #e2e8f0;
+    background: #0f172a;
+    line-height: 1.5;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 0 40px;
+  }
+
+  /* ── Hero Header ── */
+  .hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #0ea5e9 100%);
+    color: white;
+    padding: 48px 56px 40px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0 0 24px 24px;
+    margin-bottom: 32px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(14,165,233,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 4px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .hero h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; position: relative; }
+  .hero .subtitle { font-size: 15px; opacity: 0.85; position: relative; }
+  .hero-meta { display: flex; gap: 28px; margin-top: 24px; position: relative; }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .hero-meta-item .label { font-size: 11px; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; }
+  .hero-meta-item .value { font-size: 20px; font-weight: 700; }
+  .hero-meta-item .value .unit { font-size: 13px; font-weight: 400; opacity: 0.7; }
+
+  /* ── Executive Summary ── */
+  .exec-summary {
+    background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+    border-radius: 16px;
+    padding: 32px;
+    margin: 0 24px 32px;
+    border: 1px solid #334155;
+  }
+  .exec-summary h2 { font-size: 16px; font-weight: 700; margin-bottom: 16px; color: #38bdf8; }
+  .exec-summary ul { list-style: none; padding: 0; }
+  .exec-summary li { padding: 8px 0; border-bottom: 1px solid #1e293b; font-size: 13px; line-height: 1.7; color: #e2e8f0; }
+  .exec-summary li:last-child { border-bottom: none; }
+  .exec-summary .tag { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 10.5px; font-weight: 700; margin-right: 6px; }
+  .tag-up { background: #fef2f2; color: #dc2626; }
+  .tag-down { background: #f0fdf4; color: #16a34a; }
+  .tag-warn { background: #fefce8; color: #ca8a04; }
+  .tag-info { background: #eff6ff; color: #2563eb; }
+
+  /* ── KPI Strip ── */
+  .kpi-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; padding: 0 24px; margin-bottom: 32px; }
+  .kpi-card {
+    background: linear-gradient(145deg, #1e293b 0%, #162032 100%);
+    border-radius: 16px;
+    padding: 24px 20px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    border: 1px solid #334155;
+    transition: transform 0.2s;
+  }
+  .kpi-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
+  .kpi-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 22px; }
+  .kpi-number { font-size: 32px; font-weight: 800; color: #ffffff; line-height: 1.1; }
+  .kpi-number .small { font-size: 16px; font-weight: 600; }
+  .kpi-label { font-size: 12px; color: #94a3b8; margin-top: 4px; font-weight: 500; }
+  .kpi-sub { font-size: 11px; color: #64748b; margin-top: 2px; }
+
+  /* ── Section ── */
+  .section { padding: 0 24px; margin-bottom: 32px; }
+  .section-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .section-title .dot { width: 8px; height: 8px; border-radius: 50%; background: #0ea5e9; display: inline-block; }
+
+  /* ── Chart Grid ── */
+  .chart-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .chart-card {
+    background: #1e293b;
+    border-radius: 16px;
+    padding: 28px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    border: 1px solid #334155;
+  }
+  .chart-card h3 { font-size: 14px; font-weight: 700; color: #f1f5f9; margin-bottom: 4px; }
+  .chart-card .chart-desc { font-size: 11px; color: #64748b; margin-bottom: 16px; }
+  .chart-wrap { position: relative; width: 100%; }
+
+  /* ── Bar Legend Table (replaces doughnut) ── */
+  .bar-legend { width: 100%; }
+  .bar-legend-item { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #2d3a4e; }
+  .bar-legend-item:last-child { border-bottom: none; }
+  .bar-legend-label { min-width: 100px; font-size: 12px; font-weight: 600; color: #e2e8f0; }
+  .bar-legend-bar-wrap { flex: 1; height: 20px; background: #0f172a; border-radius: 4px; overflow: hidden; position: relative; }
+  .bar-legend-bar { height: 100%; border-radius: 4px; transition: width 0.8s ease; display: flex; align-items: center; padding-left: 8px; }
+  .bar-legend-bar span { font-size: 10px; font-weight: 700; color: #fff; white-space: nowrap; }
+  .bar-legend-val { min-width: 72px; text-align: right; font-size: 12px; font-weight: 700; color: #94a3b8; font-variant-numeric: tabular-nums; }
+
+  /* ── WoW Table ── */
+  .wow-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; }
+  .wow-table thead th {
+    background: #0f172a;
+    color: #94a3b8;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .wow-table thead th:first-child { border-radius: 10px 0 0 0; }
+  .wow-table thead th:last-child { border-radius: 0 10px 0 0; }
+  .wow-table tbody td { padding: 12px 16px; border-bottom: 1px solid #2d3a4e; color: #e2e8f0; }
+  .wow-table tbody tr:hover { background: #162032; }
+  .wow-table tbody tr:last-child td { border-bottom: none; }
+  .wow-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .trend-up { color: #ef4444; font-weight: 700; font-size: 12px; }
+  .trend-down { color: #22c55e; font-weight: 700; font-size: 12px; }
+  .trend-flat { color: #94a3b8; font-weight: 600; font-size: 12px; }
+
+  /* ── Insight Cards ── */
+  .insight-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .insight-card {
+    background: #1e293b;
+    border-radius: 16px;
+    padding: 24px;
+    border-left: 4px solid;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .insight-card.red { border-left-color: #ef4444; }
+  .insight-card.blue { border-left-color: #0ea5e9; }
+  .insight-card.green { border-left-color: #22c55e; }
+  .insight-card.yellow { border-left-color: #eab308; }
+  .insight-card.purple { border-left-color: #8b5cf6; }
+  .insight-card.orange { border-left-color: #f97316; }
+  .insight-card h4 { font-size: 13px; font-weight: 700; color: #f1f5f9; margin-bottom: 6px; }
+  .insight-card p { font-size: 12px; color: #94a3b8; line-height: 1.7; }
+  .insight-card .highlight { font-weight: 700; color: #38bdf8; }
+
+  /* ── Customer Voice ── */
+  .voice-section { margin-bottom: 24px; }
+  .voice-category {
+    font-size: 15px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin-bottom: 14px;
+    padding: 10px 16px;
+    background: linear-gradient(90deg, #1e3a5f 0%, #1e293b 100%);
+    border-radius: 10px;
+    border-left: 4px solid #0ea5e9;
+  }
+  .voice-card {
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.2);
+    border: 1px solid #334155;
+    border-left: 4px solid;
+  }
+  .voice-card.severity-high { border-left-color: #ef4444; }
+  .voice-card.severity-medium { border-left-color: #f59e0b; }
+  .voice-card.severity-low { border-left-color: #22c55e; }
+  .voice-card.severity-critical { border-left-color: #7c3aed; }
+  .voice-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+  .voice-badge { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 10px; font-weight: 700; }
+  .badge-market { background: #1e3a5f; color: #38bdf8; }
+  .badge-count { background: #3b1c1c; color: #fca5a5; }
+  .badge-severity-high { background: #3b1c1c; color: #fca5a5; }
+  .badge-severity-medium { background: #3b2e1c; color: #fcd34d; }
+  .badge-severity-low { background: #1c3b2a; color: #86efac; }
+  .badge-severity-critical { background: #2e1c3b; color: #c4b5fd; }
+  .voice-title { font-size: 13px; font-weight: 700; color: #f1f5f9; }
+  .voice-quote {
+    background: #0f172a;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 12px;
+    font-style: italic;
+    color: #cbd5e1;
+    line-height: 1.7;
+    border-left: 3px solid #475569;
+  }
+  .voice-quote .translation { display: block; margin-top: 4px; font-style: normal; color: #64748b; font-size: 11px; }
+  .voice-impact { font-size: 12px; color: #94a3b8; line-height: 1.6; margin-top: 8px; }
+  .voice-impact strong { color: #e2e8f0; }
+  .voice-action {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 4px 12px;
+    background: #1e3a5f;
+    color: #38bdf8;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  /* ── Action Items ── */
+  .action-list {
+    background: #1e293b;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    border: 1px solid #334155;
+  }
+  .action-list h3 { font-size: 15px; font-weight: 700; color: #f1f5f9; margin-bottom: 16px; }
+  .action-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #2d3a4e; }
+  .action-item:last-child { border-bottom: none; }
+  .action-priority { min-width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: white; }
+  .priority-high { background: #ef4444; }
+  .priority-mid { background: #f59e0b; }
+  .priority-low { background: #22c55e; }
+  .action-content { flex: 1; }
+  .action-content .action-title { font-size: 13px; font-weight: 700; color: #f1f5f9; }
+  .action-content .action-desc { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+  .action-content .action-owner { font-size: 11px; color: #64748b; margin-top: 4px; }
+
+  /* ── Footer ── */
+  .footer { text-align: center; padding: 32px 24px 16px; font-size: 11px; color: #64748b; }
+
+  @media (max-width: 900px) {
+    .kpi-strip { grid-template-columns: repeat(3, 1fr); }
+    .chart-grid-2 { grid-template-columns: 1fr; }
+    .insight-grid { grid-template-columns: 1fr; }
+    .hero { padding: 32px 24px; }
+    .hero h1 { font-size: 24px; }
+    .cb-kpi-strip { grid-template-columns: repeat(3, 1fr) !important; }
+    .cb-breakdown-grid { grid-template-columns: 1fr !important; }
+    .cb-op-grid { grid-template-columns: 1fr !important; }
+    .wow-table { font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .kpi-strip { grid-template-columns: repeat(2, 1fr); }
+    .cb-kpi-strip { grid-template-columns: repeat(2, 1fr) !important; }
+    .hero-meta { flex-wrap: wrap; gap: 16px; }
+    .hero h1 { font-size: 20px; }
+  }
+  @media print {
+    body { background: #0f172a; color: #e2e8f0; }
+    .container { box-shadow: none; }
+    .chart-card, .insight-card, .voice-card, .action-item { page-break-inside: avoid; }
+    .section { page-break-before: auto; }
+    .no-print { display: none !important; }
+    canvas { max-width: 100% !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ════════ HERO ════════ -->
+  <div class="hero">
+    <div class="hero-badge">WEEKLY REPORT</div>
+    <h1>CS 주간 분석 보고서 — 2월 2~3주차</h1>
+    <p class="subtitle">2026.02.07 (토) ~ 02.20 (금) | Zendesk CS 829건 + Chargeback 150건(시트) + AI Chatbot Phase 2 통합 분석</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="label">분석 기간</span>
+        <span class="value">2<span class="unit"> 주 (10영업일)</span></span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">총 티켓</span>
+        <span class="value">829<span class="unit"> 건</span></span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">일 평균</span>
+        <span class="value">82.9<span class="unit"> 건</span></span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">작성자</span>
+        <span class="value">유종선</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ EXECUTIVE SUMMARY ════════ -->
+  <div class="exec-summary">
+    <h2>Executive Summary</h2>
+    <ul>
+      <li><span class="tag tag-info">VOLUME</span> 2주간 총 <strong>829건</strong> 처리. W2 433건 → W3 396건으로 전주 대비 8.5% 감소하며 안정화 추세입니다.</li>
+      <li><span class="tag tag-down">IMPROVE</span> 전주(JAN W3) 대비 평균 첫 응답 시간 <strong>-5.7h 개선</strong> (27.8h → 22.1h), 해결 시간 <strong>-8.4h 개선</strong> (70.9h → 62.5h).</li>
+      <li><span class="tag tag-info">INSIGHT</span> VIP 결제 후 미적용 이슈 <strong>35건(4.2%)</strong> — IAP-웹 동기화 실패가 구조적으로 존재하며, CS 유입 이외 이탈 고객 포함 시 실제 규모가 더 클 수 있습니다.</li>
+      <li><span class="tag tag-info">GROWTH</span> PT(브라질) 마켓 점유율이 전주 대비 <strong>+1.3%p 상승</strong> (W2 11.2% → W3 13.9%). 유럽권 합산 53.2%로 마켓 다변화가 진행 중입니다.</li>
+      <li><span class="tag tag-warn">WATCH</span> VIP vs Coin 구분 혼란 <strong>8건</strong>, 자동갱신 미인지 <strong>30건</strong> — 과금 구조 UX 개선이 환불 감소에 직결될 수 있습니다.</li>
+      <li><span class="tag tag-up">CB</span> 차지백 <strong>150건</strong>(시트 기준 주 평균 75건, 전주 대비 10건 감소). 2월 누적 <strong>189건</strong>(~02.19). <strong>JPY 유입만 증가</strong> 특이. 6M·Coin 소폭 감소.</li>
+      <li><span class="tag tag-info">AI PROJECT</span> CS AI Chatbot <strong>Phase 2 구현 완료</strong> — FastAPI 서버 + 5 Core AI Skills + 114/114 테스트 통과. 시뮬레이션 정확도 48%→<strong>100% 예측</strong> (버그 수정 완료). API 크레딧 충전 후 최종 검증 대기.</li>
+    </ul>
+  </div>
+
+  <!-- ════════ KPI STRIP ════════ -->
+  <div class="kpi-strip">
+    <div class="kpi-card">
+      <div class="kpi-icon" style="background:rgba(14,165,233,0.15);">📨</div>
+      <div class="kpi-number">829</div>
+      <div class="kpi-label">총 해결 티켓</div>
+      <div class="kpi-sub">W2: 433건 / W3: 396건</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon" style="background:rgba(34,197,94,0.15);">⏱</div>
+      <div class="kpi-number">22.1<span class="small">h</span></div>
+      <div class="kpi-label">평균 첫 응답</div>
+      <div class="kpi-sub">전주 대비 -5.7h 개선</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon" style="background:rgba(239,68,68,0.15);">🔄</div>
+      <div class="kpi-number">62.5<span class="small">h</span></div>
+      <div class="kpi-label">평균 해결 시간</div>
+      <div class="kpi-sub">전주 대비 -8.4h 개선</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon" style="background:rgba(234,179,8,0.15);">📊</div>
+      <div class="kpi-number">66.2<span class="small">%</span></div>
+      <div class="kpi-label">Top2 카테고리</div>
+      <div class="kpi-sub">Subscription 38.7% + Refund 27.5%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon" style="background:rgba(139,92,246,0.15);">🌍</div>
+      <div class="kpi-number">9<span class="small"> 마켓</span></div>
+      <div class="kpi-label">활성 마켓</div>
+      <div class="kpi-sub">유럽권 53.2% / EN 35.2%</div>
+    </div>
+  </div>
+
+  <!-- ════════ CHARTS: Category & Market (Pie) ════════ -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span>카테고리 & 마켓 분포</div>
+    <div class="chart-grid-2">
+      <div class="chart-card">
+        <h3>카테고리별 티켓 비중</h3>
+        <p class="chart-desc">Subscription + Refund + Account = 80.0%</p>
+        <div class="chart-wrap"><canvas id="chartCategory"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3>마켓(언어)별 티켓 비중</h3>
+        <p class="chart-desc">EN 35.2% 최대, 유럽권 합산 53.2%</p>
+        <div class="chart-wrap"><canvas id="chartMarket"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ WOW TABLE ════════ -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span>Week-over-Week 비교 (W2 vs W3)</div>
+    <div class="chart-card">
+      <table class="wow-table">
+        <thead>
+          <tr>
+            <th>지표</th>
+            <th style="text-align:right;">W2 (02.09~13)</th>
+            <th style="text-align:right;">W3 (02.16~20)</th>
+            <th style="text-align:right;">변화</th>
+            <th>판정</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>총 티켓</strong></td>
+            <td class="num">433건</td>
+            <td class="num">396건</td>
+            <td class="num">-37건</td>
+            <td><span class="trend-down">-8.5%</span></td>
+          </tr>
+          <tr>
+            <td>Subscription</td>
+            <td class="num">157건 (36.3%)</td>
+            <td class="num">164건 (41.4%)</td>
+            <td class="num">+7건</td>
+            <td><span class="trend-flat">+4.5%</span></td>
+          </tr>
+          <tr>
+            <td>Refund</td>
+            <td class="num">130건 (30.0%)</td>
+            <td class="num">98건 (24.7%)</td>
+            <td class="num">-32건</td>
+            <td><span class="trend-down">-24.6%</span></td>
+          </tr>
+          <tr>
+            <td>Account</td>
+            <td class="num">57건 (13.2%)</td>
+            <td class="num">57건 (14.4%)</td>
+            <td class="num">±0</td>
+            <td><span class="trend-flat">FLAT</span></td>
+          </tr>
+          <tr>
+            <td>Payment</td>
+            <td class="num">32건 (7.4%)</td>
+            <td class="num">25건 (6.3%)</td>
+            <td class="num">-7건</td>
+            <td><span class="trend-down">-21.9%</span></td>
+          </tr>
+          <tr>
+            <td><strong>평균 첫 응답</strong></td>
+            <td class="num">17.8h</td>
+            <td class="num">26.9h</td>
+            <td class="num">+9.1h</td>
+            <td><span class="trend-flat">모니터링</span></td>
+          </tr>
+          <tr>
+            <td><strong>평균 해결 시간</strong></td>
+            <td class="num">55.5h</td>
+            <td class="num">70.2h</td>
+            <td class="num">+14.7h</td>
+            <td><span class="trend-flat">모니터링</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ════════ WEEKLY TREND (4 weeks) ════════ -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span>주별 티켓 트렌드 (최근 4주)</div>
+    <div class="chart-card">
+      <h3>주별 Solved 티켓 추이</h3>
+      <p class="chart-desc">JAN W4(439건) 이후 W2 433건, W3 396건으로 안정화 추세</p>
+      <div class="chart-wrap">
+        <canvas id="chartWeeklyTrend"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ CHANNEL & SENTIMENT ════════ -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span>채널 & 감성 분석</div>
+    <div class="chart-grid-2">
+      <div class="chart-card">
+        <h3>유입 채널 분포</h3>
+        <p class="chart-desc">Web 48.5%, Email 39.0%, API 12.5%</p>
+        <div class="chart-wrap">
+          <canvas id="chartChannel"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h3>감성(Sentiment) 분포</h3>
+        <p class="chart-desc">Neutral 60.0% / 부정 감성은 IP, Payment, Refund에 집중</p>
+        <div class="chart-wrap">
+          <canvas id="chartSentiment"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ CHARGEBACK WEEKLY REPORT ════════ -->
+  <div class="section">
+    <div class="section-title"><span class="dot" style="background:#ef4444;"></span>Chargeback Weekly Report</div>
+    <p style="font-size:11px; color:#64748b; margin:-12px 0 20px 18px;">데이터: ★차지백 접수 건수 Google Sheet (시트 기준 150건 / 토~금 126건) · 2월 누적 189건(~02.19) · JPY 유입 증가 특이</p>
+
+    <!-- ──── W2 SECTION ──── -->
+    <div class="chart-card" style="border-top:3px solid #ef4444; margin-bottom:20px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+        <h3 style="font-size:16px; margin:0;">📅 W2 — 2월 2주차 (02.07 토 ~ 02.13 금)</h3>
+        <span style="background:#3b1c1c; color:#fca5a5; padding:3px 10px; border-radius:6px; font-size:11px; font-weight:700;">86건</span>
+        <span style="background:#1e3a5f; color:#38bdf8; padding:3px 10px; border-radius:6px; font-size:11px; font-weight:700;">~$1,659 USD</span>
+      </div>
+
+      <!-- W2 KPI -->
+      <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:18px;" class="cb-kpi-strip">
+        <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:#fff;">86</div>
+          <div style="font-size:10px; color:#64748b;">총 건수 (7일)</div>
+        </div>
+        <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:#f59e0b;">12.3</div>
+          <div style="font-size:10px; color:#64748b;">일 평균</div>
+        </div>
+        <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:#ef4444;">22</div>
+          <div style="font-size:10px; color:#64748b;">피크일 (02.11 수)</div>
+        </div>
+        <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:#0ea5e9;">51.2%</div>
+          <div style="font-size:10px; color:#64748b;">PayPal 비중</div>
+        </div>
+        <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:#22c55e;">$1,659</div>
+          <div style="font-size:10px; color:#64748b;">추정 피해액</div>
+        </div>
+      </div>
+
+      <!-- W2 PG / Reason / Product -->
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;" class="cb-breakdown-grid">
+        <div>
+          <p class="chart-desc" style="font-weight:700; color:#e2e8f0; margin-bottom:8px;">PG사별</p>
+          <div class="bar-legend">
+            <div class="bar-legend-item"><span class="bar-legend-label">PayPal</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:#0ea5e9;"><span>44</span></div></div><span class="bar-legend-val">51.2%</span></div>
+            <div class="bar-legend-item"><span class="bar-legend-label">CKO</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:77.3%;background:#6366f1;"><span>34</span></div></div><span class="bar-legend-val">39.5%</span></div>
+            <div class="bar-legend-item"><span class="bar-legend-label">AWX</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:15.9%;background:#f97316;"><span>7</span></div></div><span class="bar-legend-val">8.1%</span></div>
+          </div>
+        </div>
+        <div>
+          <p class="chart-desc" style="font-weight:700; color:#e2e8f0; margin-bottom:8px;">사유별</p>
+          <div class="bar-legend">
+            <div class="bar-legend-item"><span class="bar-legend-label">Unauthorized</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:#ef4444;"><span>39</span></div></div><span class="bar-legend-val">45.3%</span></div>
+            <div class="bar-legend-item"><span class="bar-legend-label">Fraudulent</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:69.2%;background:#f97316;"><span>27</span></div></div><span class="bar-legend-val">31.4%</span></div>
+            <div class="bar-legend-item"><span class="bar-legend-label">기타</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:51.3%;background:#475569;"><span>20</span></div></div><span class="bar-legend-val">23.3%</span></div>
+          </div>
+        </div>
+        <div>
+          <p class="chart-desc" style="font-weight:700; color:#e2e8f0; margin-bottom:8px;">상품별</p>
+          <div class="bar-legend">
+            <div class="bar-legend-item"><span class="bar-legend-label">1M</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:#0ea5e9;"><span>41</span></div></div><span class="bar-legend-val">47.7%</span></div>
+            <div class="bar-legend-item"><span class="bar-legend-label">6M</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:48.8%;background:#f97316;"><span>20</span></div></div><span class="bar-legend-val">23.3%</span></div>
+            <div class="bar-legend-item"><span class="bar-legend-label">3M</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:46.3%;background:#6366f1;"><span>19</span></div></div><span class="bar-legend-val">22.1%</span></div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:12px; padding:10px 14px; background:#0f172a; border-radius:8px; border-left:3px solid #f59e0b; font-size:11px; color:#94a3b8; line-height:1.7;">
+        <strong style="color:#f59e0b;">⚠ 핵심:</strong> 수·목(02.11~12) <strong style="color:#fca5a5;">43건(50%)</strong> 집중 · Unauthorized+Fraudulent <strong style="color:#fca5a5;">76.7%</strong> · 피해액 ~$1,659
+      </div>
+    </div>
+
+    <!-- ──── W3 SECTION ──── -->
+    <div class="chart-card" style="border-top:3px solid #0ea5e9; margin-bottom:20px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+        <h3 style="font-size:16px; margin:0;">📅 W3 — 2월 3주차 (02.14 토 ~ 02.20 금)</h3>
+        <span style="background:#1e3a5f; color:#38bdf8; padding:3px 10px; border-radius:6px; font-size:11px; font-weight:700;">40건*</span>
+        <span style="background:#1e3a5f; color:#38bdf8; padding:3px 10px; border-radius:6px; font-size:11px; font-weight:700;">~$706 USD</span>
+        <span style="background:#3b2e1c; color:#fcd34d; padding:3px 10px; border-radius:6px; font-size:10px; font-weight:600;">02.20(금) 미반영 · 6일 데이터</span>
+      </div>
+
+      <!-- W3 KPI -->
+      <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:18px;" class="cb-kpi-strip">
+        <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:#fff;">40<span style="font-size:12px; color:#64748b;">*</span></div>
+          <div style="font-size:10px; color:#64748b;">총 건수 (6일)</div>
+        </div>
+        <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:#22c55e;">6.7</div>
+          <div style="font-size:10px; color:#64748b;">일 평균 <span style="color:#22c55e;">▼</span></div>
+        </div>
+        <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:#f59e0b;">14</div>
+          <div style="font-size:10px; color:#64748b;">피크일 (02.18 수)</div>
+        </div>
+        <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:#0ea5e9;">62.5%</div>
+          <div style="font-size:10px; color:#64748b;">PayPal 비중 <span style="color:#ef4444;">▲</span></div>
+        </div>
+        <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:#22c55e;">$706</div>
+          <div style="font-size:10px; color:#64748b;">추정 피해액</div>
+        </div>
+      </div>
+
+      <!-- W3 PG / Reason / Product -->
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;" class="cb-breakdown-grid">
+        <div>
+          <p class="chart-desc" style="font-weight:700; color:#e2e8f0; margin-bottom:8px;">PG사별</p>
+          <div class="bar-legend">
+            <div class="bar-legend-item"><span class="bar-legend-label">PayPal</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:#0ea5e9;"><span>25</span></div></div><span class="bar-legend-val">62.5%</span></div>
+            <div class="bar-legend-item"><span class="bar-legend-label">CKO</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:32%;background:#6366f1;"><span>8</span></div></div><span class="bar-legend-val">20.0%</span></div>
+            <div class="bar-legend-item"><span class="bar-legend-label">AWX</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:28%;background:#f97316;"><span>7</span></div></div><span class="bar-legend-val">17.5%</span></div>
+          </div>
+        </div>
+        <div>
+          <p class="chart-desc" style="font-weight:700; color:#e2e8f0; margin-bottom:8px;">사유별</p>
+          <div class="bar-legend">
+            <div class="bar-legend-item"><span class="bar-legend-label">Unauthorized</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:#ef4444;"><span>18</span></div></div><span class="bar-legend-val">45.0%</span></div>
+            <div class="bar-legend-item"><span class="bar-legend-label">Fraudulent</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:55.6%;background:#f97316;"><span>10</span></div></div><span class="bar-legend-val">25.0%</span></div>
+            <div class="bar-legend-item"><span class="bar-legend-label">기타</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:66.7%;background:#475569;"><span>12</span></div></div><span class="bar-legend-val">30.0%</span></div>
+          </div>
+        </div>
+        <div>
+          <p class="chart-desc" style="font-weight:700; color:#e2e8f0; margin-bottom:8px;">상품별</p>
+          <div class="bar-legend">
+            <div class="bar-legend-item"><span class="bar-legend-label">1M</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:#0ea5e9;"><span>23</span></div></div><span class="bar-legend-val">57.5%</span></div>
+            <div class="bar-legend-item"><span class="bar-legend-label">3M/6M</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:60.9%;background:#6366f1;"><span>14</span></div></div><span class="bar-legend-val">35.0%</span></div>
+            <div class="bar-legend-item"><span class="bar-legend-label">Coin</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:13%;background:#22c55e;"><span>3</span></div></div><span class="bar-legend-val">7.5%</span></div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:12px; padding:10px 14px; background:#0f172a; border-radius:8px; border-left:3px solid #0ea5e9; font-size:11px; color:#94a3b8; line-height:1.7;">
+        <strong style="color:#0ea5e9;">ℹ 핵심:</strong> 건수 <strong style="color:#22c55e;">-53.5%↓</strong>(86→40*) · AWX <strong style="color:#f97316;">17.5%</strong>(+9.4%p) 급증 · Canceled 15.0%(+5.7%p) · 피해액 ~$706
+      </div>
+    </div>
+
+    <!-- ──── WoW COMPARISON ──── -->
+    <div class="chart-grid-2" style="margin-bottom:16px;">
+      <div class="chart-card" style="padding:20px;">
+        <h3 style="font-size:13px;">W2 vs W3 주간 비교</h3>
+        <table class="wow-table">
+          <thead><tr><th>지표</th><th style="text-align:right;">W2</th><th style="text-align:right;">W3*</th><th style="text-align:right;">변화</th></tr></thead>
+          <tbody>
+            <tr><td><strong>총 건수</strong></td><td class="num">86</td><td class="num">40*</td><td class="num"><span class="trend-down">-53.5%</span></td></tr>
+            <tr><td>PayPal</td><td class="num">51.2%</td><td class="num">62.5%</td><td class="num"><span class="trend-up">+11.3%p</span></td></tr>
+            <tr><td>Unauthorized</td><td class="num">45.3%</td><td class="num">45.0%</td><td class="num"><span class="trend-flat">FLAT</span></td></tr>
+            <tr><td><strong>피해액</strong></td><td class="num">~$1,659</td><td class="num">~$706</td><td class="num"><span class="trend-down">-57.4%</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    <!-- ──── WEEKLY TREND ──── -->
+    <div class="chart-card" style="margin-bottom:20px;">
+      <h3>주별 차지백 트렌드 (최근 5주 · 토~금)</h3>
+      <p class="chart-desc">FEB W1~W2 85~86건 고원 구간 · FEB W3는 6일 부분(40건*) · JAN W3(57건) 대비 +50% 수준</p>
+      <div class="chart-wrap">
+        <canvas id="chartCBTrend"></canvas>
+      </div>
+    </div>
+
+    <!-- ──── 소명 현황 요약 ──── -->
+    <div style="background:#0f172a; border-radius:10px; padding:14px 18px; font-size:11px; color:#94a3b8; line-height:1.8;">
+      <strong style="color:#0ea5e9;">📋 소명:</strong> PayPal W2:44+W3:25건 · CKO W2:34+W3:8건 · AWX 14건 — <strong style="color:#fca5a5;">Fraudulent 즉시 이용 제한</strong> · PG별 기한 초과 시 자동 패소
+    </div>
+  </div>
+
+  <!-- ════════ CUSTOMER INSIGHTS ════════ -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span>Customer Insights — 고객 목소리 분석</div>
+
+    <div class="voice-section">
+      <div class="voice-category">🔧 기술/시스템 이슈 (Technical & System)</div>
+      <div class="voice-card severity-high">
+        <div class="voice-header">
+          <span class="voice-badge badge-market">전 마켓</span>
+          <span class="voice-badge badge-count">35건</span>
+          <span class="voice-badge badge-severity-high">HIGH</span>
+          <span class="voice-title">VIP 결제 완료 후 미적용 (IAP-웹 동기화 실패)</span>
+        </div>
+        <div class="voice-quote">
+          "I subscribed on the app, but im not VIP in the site."<br>
+          "Já fiz o pagamento assinatura VIP 1 MES, mas não consigo ver nenhum comics."
+          <span class="translation">→ VIP 1개월 결제를 했는데 아무 만화도 볼 수 없습니다 (PT)</span>
+        </div>
+        <div class="voice-impact"><strong>비즈니스 임팩트:</strong> App Store/Google Play IAP와 웹 VIP 간 동기화 실패가 구조적으로 존재. CS 유입 35건 외 이탈 고객까지 포함 시 실제 규모가 훨씬 클 수 있음.</div>
+        <span class="voice-action">→ IAP 동기화 모니터링 대시보드 구축 권장</span>
+      </div>
+      <div class="voice-card severity-high">
+        <div class="voice-header">
+          <span class="voice-badge badge-market">EN 주도</span>
+          <span class="voice-badge badge-count">12건</span>
+          <span class="voice-badge badge-severity-high">HIGH</span>
+          <span class="voice-title">Family Safe Mode 해제 불가 (지역 제한 연동 이슈)</span>
+        </div>
+        <div class="voice-quote">"I bought one month vip subscription and can't access to off the family safe mode anymore. I only bought it for adult webtoons. I can access for 2 to 3 days at first and then when u cache again, I can't access anymore."</div>
+        <div class="voice-impact"><strong>비즈니스 임팩트:</strong> 결제 후 2~3일 뒤 접근 차단 → 캐시/쿠키 만료 시 지역 감지 재실행으로 추정. VIP 결제 고객의 직접적 환불 사유로 이어짐.</div>
+        <span class="voice-action">→ Region Restriction 해제 UX 개선 필요</span>
+      </div>
+      <div class="voice-card severity-medium">
+        <div class="voice-header">
+          <span class="voice-badge badge-market">EN · DE · PT</span>
+          <span class="voice-badge badge-count">9건</span>
+          <span class="voice-badge badge-severity-medium">MEDIUM</span>
+          <span class="voice-title">Google Pay 중복 과금</span>
+        </div>
+        <div class="voice-quote">"Bei mir wurden 4x die Vip Mitgliedschaftskosten abgebucht. Als ich mein Abo verlängern wollte kam via Google Pay immer wieder einer Fehlermeldung"
+          <span class="translation">→ VIP 멤버십 비용이 4번 청구되었습니다. Google Pay로 연장 시 계속 오류 메시지가 발생 (DE)</span>
+        </div>
+        <div class="voice-impact"><strong>비즈니스 임팩트:</strong> 결제 오류 시 실패 처리 미완 → 중복 청구 발생. 차지백 리스크 직결.</div>
+        <span class="voice-action">→ Google Pay 결제 실패 시 중복 과금 방지 로직 점검</span>
+      </div>
+      <div class="voice-card severity-high">
+        <div class="voice-header">
+          <span class="voice-badge badge-market">EN</span>
+          <span class="voice-badge badge-count">3건+ (급증)</span>
+          <span class="voice-badge badge-severity-high">HIGH · NEW</span>
+          <span class="voice-title">★ 종속 계정 리스토어 불가 — 2주간 미해결</span>
+        </div>
+        <div class="voice-quote">"복원할 구매 내역이 없습니다" — merged 계정과 종속된 앱계정이 웹계정에 링크했지만, 회원 로그인 시 VIP 권한 없는 앱계정으로 로그인되어 이용 불가 상태.
+          <span class="translation">→ 박선주 보고: 첫 문의 2/9, 2주간 사용 불가 회원 존재 (#121304, #123883, #124968)</span>
+        </div>
+        <div class="voice-impact"><strong>비즈니스 임팩트:</strong> merged 계정 VIP 동기화 로직 결함 의심. 2주간 미해결로 고객 이탈 리스크 직결. 문의 증가 추세.</div>
+        <span class="voice-action">→ 종속 계정 VIP 복원 로직 긴급 조사 필요</span>
+      </div>
+      <div class="voice-card severity-high">
+        <div class="voice-header">
+          <span class="voice-badge badge-market">ES·CN·FR·DE·EN</span>
+          <span class="voice-badge badge-count">10건+</span>
+          <span class="voice-badge badge-severity-high">HIGH</span>
+          <span class="voice-title">이미지 로딩 속도 저하/불가 — 다수 마켓 동시 발생</span>
+        </div>
+        <div class="voice-quote">ES: 이미지 로드 불가·로딩 지연 3건(#124030, #122886, #124191) + 다음 스토리 넘김 불가(#121547)<br>
+          CN: 로딩 매우 느림(#122439) · FR: 2건(#122867, #122556) · DE: 오류(#119881) · EN: 느림(#122649), BIG GUY 로딩 불가(#124312)
+          <span class="translation">→ 김지호·왕시베이·이동원·박선주 복수 보고. 5개 마켓 전방위 발생</span>
+        </div>
+        <div class="voice-impact"><strong>비즈니스 임팩트:</strong> 다수 마켓 동시 발생은 개별 유저 환경이 아닌 인프라/CDN 레벨 이슈를 시사. 콘텐츠 로딩 UX는 VIP 유지율에 직결.</div>
+        <span class="voice-action">→ CDN/인프라 성능 점검 및 마켓별 로딩 속도 모니터링</span>
+      </div>
+    </div>
+
+    <div class="voice-section">
+      <div class="voice-category">📚 콘텐츠 피드백 (Content Feedback)</div>
+      <div class="voice-card severity-high">
+        <div class="voice-header">
+          <span class="voice-badge badge-market">ES</span>
+          <span class="voice-badge badge-count">8건+</span>
+          <span class="voice-badge badge-severity-high">HIGH · 조치완료</span>
+          <span class="voice-title">"Alerta, problemas en la empresa!" 81화 잘못된 콘텐츠 업로드</span>
+        </div>
+        <div class="voice-quote">"En vez de aparecer el siguiente te capitulo, aparece otra serie"
+          <span class="translation">→ 다음 챕터가 나와야 하는데 다른 시리즈가 나옵니다 (ES) — 김지호: #120431 외 8건</span>
+        </div>
+        <div class="voice-impact"><strong>비즈니스 임팩트:</strong> CMS 콘텐츠 배포 파이프라인에 챕터 매핑 오류. ES 마켓에서 단기간 8건+ 집중 발생. <strong style="color:#22c55e;">김지호 → 서비스작품문의팀 공유, 수정 업로드 완료.</strong></div>
+        <span class="voice-action">→ CMS QA 프로세스 점검 (재발 방지)</span>
+      </div>
+      <div class="voice-card severity-medium">
+        <div class="voice-header">
+          <span class="voice-badge badge-market">JP</span>
+          <span class="voice-badge badge-count">2건</span>
+          <span class="voice-badge badge-severity-medium">MEDIUM</span>
+          <span class="voice-title">스토리 전개 불만 — 코어 독자 피드백</span>
+        </div>
+        <div class="voice-quote">"これから、第２ラウンドで、眞子の本気のHシーンで大盛り上がりするところ、水を差されて冷めてしまいました。残念な方向に進みました"
+          <span class="translation">→ 기대를 모은 장면에서 찬물을 끼얹는 전개. 실망스러운 방향으로 진행 (JP)</span>
+        </div>
+        <div class="voice-impact"><strong>비즈니스 임팩트:</strong> CS를 통해 직접 스토리 피드백을 전달하는 JP 코어 유저. 높은 LTV 고객 세그먼트로 추정.</div>
+        <span class="voice-action">→ 콘텐츠팀에 JP 독자 피드백 공유 채널 검토</span>
+      </div>
+      <div class="voice-card severity-low">
+        <div class="voice-header">
+          <span class="voice-badge badge-market">EN</span>
+          <span class="voice-badge badge-count">1건</span>
+          <span class="voice-badge badge-severity-low">LOW</span>
+          <span class="voice-title">댓글/커뮤니티 기능 요청 (긍정 피드백)</span>
+        </div>
+        <div class="voice-quote">"I wish you guys would take a comment section. Thank You! For a wonderful story! I loved every chapter of it!"</div>
+        <div class="voice-impact"><strong>비즈니스 임팩트:</strong> 팬 인게이지먼트 채널 부재로 감사 메시지가 CS로 유입. 커뮤니티 기능 도입 시 코어 유저 리텐션 향상 가능.</div>
+        <span class="voice-action">→ 댓글/커뮤니티 기능 로드맵 검토</span>
+      </div>
+      <div class="voice-card severity-medium">
+        <div class="voice-header">
+          <span class="voice-badge badge-market">FR</span>
+          <span class="voice-badge badge-count">5건+</span>
+          <span class="voice-badge badge-severity-medium">MEDIUM</span>
+          <span class="voice-title">FR 마켓 광범위 콘텐츠 VOC — 무검열 오류·번역·서비스 다양화</span>
+        </div>
+        <div class="voice-quote">왕시베이 보고: 무검열 버전이 검열로 나옴(#123149) · 번역 오류(#123194) · rape 콘텐츠 불만 XX던전(#119658) · 프리미엄 구독제 희망(#121932) · 비디오 형식 추가 희망(#123470)
+          <span class="translation">→ FR 마켓에서 콘텐츠 품질·서비스 형태 전반에 대한 다양한 피드백 집중</span>
+        </div>
+        <div class="voice-impact"><strong>비즈니스 임팩트:</strong> FR 16.0%(133건) 2위 마켓으로서 콘텐츠 품질 및 서비스 다양화 요구가 다방면으로 발생. CMS 버전 관리 및 로컬라이제이션 QA 강화 필요.</div>
+        <span class="voice-action">→ FR 콘텐츠 QA + 서비스 기획팀 피드백 공유</span>
+      </div>
+    </div>
+
+    <div class="voice-section">
+      <div class="voice-category">⚠️ 정책 오해 & UX 혼란 (Policy & UX Confusion)</div>
+      <div class="voice-card severity-high">
+        <div class="voice-header">
+          <span class="voice-badge badge-market">CN 집중</span>
+          <span class="voice-badge badge-count">30건</span>
+          <span class="voice-badge badge-severity-high">HIGH</span>
+          <span class="voice-title">자동갱신 미인지 / 취소 후 재결제 클레임</span>
+        </div>
+        <div class="voice-quote">"I only subscribed for one month, but you unilaterally and automatically deducted money for five consecutive months. Please refund $9.99 x 5."<br><br>
+          "已在2025年11或12月時取消VIP會員，近期卻收到繳款通知。系統自行恢復成會員狀態並自動續約"
+          <span class="translation">→ 작년 11~12월에 취소했는데 시스템이 자동으로 회원 상태를 복구하고 자동갱신했습니다 (CN)</span>
+        </div>
+        <div class="voice-impact"><strong>비즈니스 임팩트:</strong> CN 마켓 집중. 취소 후 재결제 시스템 이슈가 실재한다면 결제 시스템 버그이며, 단순 미인지라면 구독 갱신 전 사전 알림 부재가 원인.</div>
+        <span class="voice-action">→ 구독 갱신 전 사전 알림(7일/3일 전) 도입 검토</span>
+      </div>
+      <div class="voice-card severity-high">
+        <div class="voice-header">
+          <span class="voice-badge badge-market">EN · IT · FR</span>
+          <span class="voice-badge badge-count">8건</span>
+          <span class="voice-badge badge-severity-high">HIGH</span>
+          <span class="voice-title">VIP vs Coin 구분 혼란</span>
+        </div>
+        <div class="voice-quote">"I have a VIP suscription, but it seems I have to pay a lot in coins for any uncensored content. Doesn't the VIP include uncensored content?"<br><br>
+          "does my subscription has limitation? when i am reading it still ask me to purchase coins before I can read the next episode."</div>
+        <div class="voice-impact"><strong>비즈니스 임팩트:</strong> SUBSCRIBE(VIP) vs STORE(Coin) 이원 구조가 가입 전 충분히 전달되지 않아 결제 후 혼란 반복. 환불 사유 및 부정적 리뷰의 직접 원인.</div>
+        <span class="voice-action">→ 가입 페이지에서 VIP 범위 vs Coin 전용 콘텐츠 시각적 구분 강화</span>
+      </div>
+      <div class="voice-card severity-medium">
+        <div class="voice-header">
+          <span class="voice-badge badge-market">CN · TH · IT</span>
+          <span class="voice-badge badge-count">4건</span>
+          <span class="voice-badge badge-severity-medium">MEDIUM</span>
+          <span class="voice-title">3+3 프로모션 가격 혼란</span>
+        </div>
+        <div class="voice-quote">"請問 不是說買三個月送三個月，一個月$180嗎？為什麼扣款卻是$1080"
+          <span class="translation">→ 3개월 사면 3개월 증정, 월 $180이라고 했는데 왜 $1080이 결제됐나요? (CN)</span>
+        </div>
+        <div class="voice-impact"><strong>비즈니스 임팩트:</strong> "월 환산 가격" vs "실제 결제 금액" 표시 불일치.</div>
+        <span class="voice-action">→ 프로모션 페이지에서 총 결제 금액 강조 표시</span>
+      </div>
+      <div class="voice-card severity-high">
+        <div class="voice-header">
+          <span class="voice-badge badge-market">EN</span>
+          <span class="voice-badge badge-count">5건</span>
+          <span class="voice-badge badge-severity-high">HIGH</span>
+          <span class="voice-title">구독제로 무삭제(Uncensored) 작품 감상 불가 문의</span>
+        </div>
+        <div class="voice-quote">박선주 보고: VIP 구독으로 무검열 콘텐츠 이용 불가 문의 5건 (#120036, #119856, #121126, #121215, #121448)
+          <span class="translation">→ VIP/Coin 구분 혼란의 연장선. 구독 범위 안내 부재가 환불 사유로 직결</span>
+        </div>
+        <div class="voice-impact"><strong>비즈니스 임팩트:</strong> VIP 구독 범위에 대한 사전 안내 부재로 결제 후 불만 반복. VIP vs Coin 8건과 합산 시 과금 구조 혼란 총 <strong>13건+</strong>.</div>
+        <span class="voice-action">→ 가입 전 VIP 포함/미포함 콘텐츠 명시 강화</span>
+      </div>
+      <div class="voice-card severity-medium">
+        <div class="voice-header">
+          <span class="voice-badge badge-market">DE · TH · JP</span>
+          <span class="voice-badge badge-count">3건+</span>
+          <span class="voice-badge badge-severity-medium">MEDIUM</span>
+          <span class="voice-title">VIP 자동갱신 오해 / 가격 불일치 / 갱신 주기 문의</span>
+        </div>
+        <div class="voice-quote">이동원 보고: [DE] VIP 단건(일시불)인 줄 알았으나 자동갱신 불만 · [TH] 가격 표기 vs 실제 청구 금액 상이(#121878)→해지 처리 · [JP] 갱신 주기/해지 시점 문의(#120345)→갱신일 전 해지 권고</div>
+        <div class="voice-impact"><strong>비즈니스 임팩트:</strong> 마켓별로 자동갱신 정책 인지도가 낮음. 특히 TH는 표시 가격과 실제 결제 금액 차이로 해지까지 이어짐.</div>
+        <span class="voice-action">→ 결제 페이지 자동갱신 고지 강화 + 가격 표시 정합성 점검</span>
+      </div>
+    </div>
+
+    <div class="voice-section">
+      <div class="voice-category">🌍 마켓별 특이 동향 (Market-Specific Trends)</div>
+      <div class="voice-card severity-high">
+        <div class="voice-header">
+          <span class="voice-badge badge-market">PT (브라질)</span>
+          <span class="voice-badge badge-count">104건</span>
+          <span class="voice-badge badge-severity-high">HIGH</span>
+          <span class="voice-title">브라질 소비자보호법(CDC Art.49) 근거 환불 클레임 집중</span>
+        </div>
+        <div class="voice-quote">"Conforme a lei brasileira, vocês são obrigados a devolver meu pagamento, tenha eu acessado conteúdo VIP ou usado moedas, se eu solicitar o reembolso em até 7 dias"
+          <span class="translation">→ 브라질 법률에 따르면 VIP 접근이나 코인 사용 여부와 무관하게 7일 이내 요청 시 의무 환불입니다 (PT)</span>
+        </div>
+        <div class="voice-impact"><strong>비즈니스 임팩트:</strong> PT 마켓 Refund 비율 40.4%(전 마켓 최고). PIX 결제 후 VIP 미적용 패턴 반복. 마켓 점유율 12.5%로 성장 중이므로 대응 체계 강화 시급.</div>
+        <span class="voice-action">→ PT 마켓 PIX 결제 동기화 안정성 점검</span>
+      </div>
+      <div class="voice-card severity-critical">
+        <div class="voice-header">
+          <span class="voice-badge badge-market">JP</span>
+          <span class="voice-badge badge-count">3건</span>
+          <span class="voice-badge badge-severity-critical">CRITICAL · 보안</span>
+          <span class="voice-title">투믹스 재팬 법인 사칭 피싱 공격</span>
+        </div>
+        <div class="voice-quote">"株式会社TOOMICS GLOBAL JAPAN: 今後の業務を円滑に進めるため、ご自身の個人LINEのQRコードをメールで送付してください。代表取締役：田中 健太郎"
+          <span class="translation">→ 업무를 원활히 진행하기 위해 개인 LINE QR코드를 이메일로 보내주세요. 대표이사: 다나카 켄타로 (가짜)</span>
+        </div>
+        <div class="voice-impact"><strong>비즈니스 임팩트:</strong> 투믹스 재팬 법인을 사칭하여 직원 개인 LINE 탈취를 시도하는 피싱 메일이 CS 채널로 유입. 3건 모두 미처리 상태.</div>
+        <span class="voice-action">→ 보안팀 즉시 보고 + CS 상담원 피싱 인식 교육</span>
+      </div>
+      <div class="voice-card severity-medium">
+        <div class="voice-header">
+          <span class="voice-badge badge-market">EU 전체</span>
+          <span class="voice-badge badge-count">11건</span>
+          <span class="voice-badge badge-severity-medium">MEDIUM</span>
+          <span class="voice-title">GDPR 데이터 삭제 요청 꾸준</span>
+        </div>
+        <div class="voice-quote">"Je souhaite exercer mon droit a l'effacement des donnees personnelles conformement au RGPD."
+          <span class="translation">→ RGPD에 따라 개인정보 삭제 권리를 행사하고 싶습니다 (FR)</span>
+        </div>
+        <div class="voice-impact"><strong>비즈니스 임팩트:</strong> FR·DE·IT 중심으로 매주 꾸준히 발생. 자동화된 GDPR 삭제 파이프라인 구축 시 상담원 업무 부담 절감 가능.</div>
+        <span class="voice-action">→ GDPR 삭제 셀프서비스 기능 검토</span>
+      </div>
+      <div class="voice-card severity-medium">
+        <div class="voice-header">
+          <span class="voice-badge badge-market">JP</span>
+          <span class="voice-badge badge-count">차지백</span>
+          <span class="voice-badge badge-severity-medium">MEDIUM · WATCH</span>
+          <span class="voice-title">JPY(일본 엔화) 차지백 유입만 증가 — 여타 통화 감소 대비 역행</span>
+        </div>
+        <div class="voice-quote">왕시베이 보고: 2주간 차지백 총 150건(시트), 주 평균 75건(전주 대비 10건 감소). 그러나 JPY 관련 유입만 증가 추세. 6개월 상품·코인 상품 차지백은 소폭 감소.</div>
+        <div class="voice-impact"><strong>비즈니스 임팩트:</strong> JP 마켓 차지백만 역행 증가 패턴. JP 법인 사칭 피싱과 병행되는 상황에서 JP 마켓 전반 리스크 모니터링 필요.</div>
+        <span class="voice-action">→ JP 마켓 차지백 사유·패턴 별도 분석 필요</span>
+      </div>
+    </div>
+
+    <div class="voice-section">
+      <div class="voice-category">🆕 신규 · 이례적 이슈 (New & Unusual)</div>
+      <div class="voice-card severity-medium">
+        <div class="voice-header">
+          <span class="voice-badge badge-market">EN</span>
+          <span class="voice-badge badge-count">1건</span>
+          <span class="voice-badge badge-severity-medium">MEDIUM</span>
+          <span class="voice-title">법적 대리인 개입 차지백 분쟁</span>
+        </div>
+        <div class="voice-quote">"I am Alessandro N****, External Legal Representative, acting on behalf of my client, in relation to the disputed USD 35.99 charge..."</div>
+        <div class="voice-impact"><strong>비즈니스 임팩트:</strong> 법적 대리인이 공식 개입한 분쟁 건. 차지백 소명 프로세스에서 법적 서한 대응 프로토콜 확인 필요.</div>
+      </div>
+      <div class="voice-card severity-medium">
+        <div class="voice-header">
+          <span class="voice-badge badge-market">EN · CN</span>
+          <span class="voice-badge badge-count">2건</span>
+          <span class="voice-badge badge-severity-medium">MEDIUM</span>
+          <span class="voice-title">자녀 실수 구매 / 미성년 접근</span>
+        </div>
+        <div class="voice-quote">"Can please cancelled it. My son he did it and I don't want him to continue watching it."</div>
+        <div class="voice-impact"><strong>비즈니스 임팩트:</strong> 성인 콘텐츠 플랫폼으로서 미성년 접근 방지 및 보호자 제어 기능 검토 필요. 규제 리스크 관리 관점.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ AI CHATBOT PROJECT ════════ -->
+  <div class="section">
+    <div class="section-title"><span class="dot" style="background:#8b5cf6;"></span>AI Chatbot Project — Phase 2 진행 현황</div>
+    <div class="chart-card" style="border-top:3px solid #8b5cf6; margin-bottom:20px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+        <h3 style="font-size:16px; margin:0;">🤖 CS AI Chatbot — 2주간 개발 현황 (02.07~02.20)</h3>
+        <span style="background:#2e1c3b; color:#c4b5fd; padding:3px 10px; border-radius:6px; font-size:11px; font-weight:700;">Phase 2 완료</span>
+      </div>
+
+      <!-- AI KPI Strip -->
+      <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:18px;" class="cb-kpi-strip">
+        <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:#8b5cf6;">5</div>
+          <div style="font-size:10px; color:#64748b;">Core AI Skills</div>
+        </div>
+        <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:#22c55e;">114/114</div>
+          <div style="font-size:10px; color:#64748b;">테스트 통과</div>
+        </div>
+        <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:#0ea5e9;">100%</div>
+          <div style="font-size:10px; color:#64748b;">예측 정확도</div>
+        </div>
+        <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:#f59e0b;">9</div>
+          <div style="font-size:10px; color:#64748b;">운영 문서</div>
+        </div>
+        <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:#ef4444;">38%</div>
+          <div style="font-size:10px; color:#64748b;">Phase 1 자동화 목표</div>
+        </div>
+      </div>
+
+      <!-- AI Progress Table -->
+      <table class="wow-table" style="margin-bottom:16px;">
+        <thead>
+          <tr><th>구분</th><th>내용</th><th>상태</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>아키텍처</strong></td>
+            <td>FastAPI 서버 + 5 Core Skills (Intent·Self-Service·Escalation·Fraud·Multilingual) + ChromaDB RAG</td>
+            <td><span class="trend-down">✅ 완료</span></td>
+          </tr>
+          <tr>
+            <td><strong>시뮬레이션</strong></td>
+            <td>23개 시나리오 진단 완료. 48%→<strong>100%</strong> 예측 정확도 (Fraud L1 threshold + Intent L1 clamping 수정)</td>
+            <td><span class="trend-down">✅ 수정완료</span></td>
+          </tr>
+          <tr>
+            <td><strong>품질 개선</strong></td>
+            <td>Pattern A: Fraud 과잉 에스컬레이션 3건 수정 · Pattern B: Intent L1 과분류 7건 수정 · ruff CI lint 0/15 오류</td>
+            <td><span class="trend-down">✅ 완료</span></td>
+          </tr>
+          <tr>
+            <td><strong>문서화</strong></td>
+            <td>CS 매뉴얼 v2.0(EN/KO) · 비용 분석 v3 · 운영자 가이드 · 플로우 다이어그램 · 자동화 로드맵 등 9건</td>
+            <td><span class="trend-down">✅ 완료</span></td>
+          </tr>
+          <tr>
+            <td><strong>호환성</strong></td>
+            <td>Python 3.14 + ChromaDB 호환 패치 (PEP 649 대응 compat.py)</td>
+            <td><span class="trend-down">✅ 완료</span></td>
+          </tr>
+          <tr>
+            <td><strong>블로커</strong></td>
+            <td><strong>Anthropic API 크레딧 소진</strong> → 최종 시뮬레이션 검증 대기. 충전 후 23개 시나리오 재실행 필요</td>
+            <td><span class="trend-up">⚠️ 블로커</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Phase Roadmap -->
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;" class="cb-breakdown-grid">
+        <div style="background:#0f172a; border-radius:10px; padding:16px;">
+          <p class="chart-desc" style="font-weight:700; color:#22c55e; margin-bottom:8px;">✅ Phase 1-2 (현재)</p>
+          <div style="font-size:11px; color:#94a3b8; line-height:1.8;">
+            • Intent 분류 (7카테고리 × 23 sub-intent)<br>
+            • Self-Service 자동 응답 (L3)<br>
+            • Agent Escalation (L1 즉시, L2 AI 초안)<br>
+            • Fraud Detection (9개 Red Flag)<br>
+            • Multilingual 5개 마켓 (EN/FR/ES/PT/DE)
+          </div>
+        </div>
+        <div style="background:#0f172a; border-radius:10px; padding:16px;">
+          <p class="chart-desc" style="font-weight:700; color:#f59e0b; margin-bottom:8px;">🔜 Phase 3 (3~5개월)</p>
+          <div style="font-size:11px; color:#94a3b8; line-height:1.8;">
+            • 고위험 Fraud ML 모델<br>
+            • 5개 마켓 추가 (TH/JP/CN/IT/KR)<br>
+            • Zendesk Webhook 실연동<br>
+            • Docker 컨테이너 배포<br>
+            • 응답 품질 + CSAT 피드백 루프
+          </div>
+        </div>
+        <div style="background:#0f172a; border-radius:10px; padding:16px;">
+          <p class="chart-desc" style="font-weight:700; color:#64748b; margin-bottom:8px;">📋 Phase 4-5 (H2 2026)</p>
+          <div style="font-size:11px; color:#94a3b8; line-height:1.8;">
+            • Production Ops 협업 체계<br>
+            • 모니터링 (Sentry, DataDog)<br>
+            • 부하 테스트 (100명 동시)<br>
+            • 장기 확장 + 고급 NLP<br>
+            • 자동화율 70%+ 목표
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px; padding:10px 14px; background:#0f172a; border-radius:8px; border-left:3px solid #8b5cf6; font-size:11px; color:#94a3b8; line-height:1.7;">
+        <strong style="color:#8b5cf6;">📊 자동화 기대효과:</strong> Phase 1 완료 시 월 ~<strong style="color:#c4b5fd;">630건(38%)</strong> 셀프서비스 전환 · 상담원 부담 <strong style="color:#c4b5fd;">3~4배 절감</strong> · Pro Max 모델 기준 월 <strong style="color:#c4b5fd;">$100</strong> 운영비
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ INSIGHTS ════════ -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span>Key Insights</div>
+    <div class="insight-grid">
+      <div class="insight-card red">
+        <h4>IAP-웹 동기화 실패 구조적 이슈</h4>
+        <p>VIP 결제 후 미적용 <span class="highlight">35건(4.2%)</span>. App → Web 간 구독 상태 동기화 실패가 전 마켓에서 발생. CS 유입 건 외 이탈 고객까지 감안 시 사업 임팩트 큼.</p>
+      </div>
+      <div class="insight-card yellow">
+        <h4>과금 구조 UX 혼란 → 환불 직결</h4>
+        <p>VIP vs Coin 구분 혼란 <span class="highlight">8건</span>, 자동갱신 미인지 <span class="highlight">30건</span>, 3+3 가격 혼란 <span class="highlight">4건</span>. 가입 전 과금 구조 안내 강화 시 환불 건수 감소 기대.</p>
+      </div>
+      <div class="insight-card blue">
+        <h4>PT 마켓 급성장 + 법적 리스크</h4>
+        <p>점유율 <span class="highlight">12.5%</span> (전주 대비 +1.3%p). 브라질 CDC Art.49 근거 환불 클레임 집중. PIX 결제 연동 안정성 및 PT 전용 템플릿 확충 필요.</p>
+      </div>
+      <div class="insight-card orange">
+        <h4>ES 콘텐츠 매핑 오류 (CMS)</h4>
+        <p>특정 작품 81화에서 <span class="highlight">다른 만화가 노출</span>되는 CMS 오류 7건. 콘텐츠 배포 QA 프로세스 점검 필요.</p>
+      </div>
+      <div class="insight-card purple">
+        <h4>JP 피싱 공격 — 법인 사칭</h4>
+        <p>투믹스 재팬 대표이사 사칭으로 직원 LINE 탈취 시도 <span class="highlight">3건</span>. 보안팀 에스컬레이션 및 CS 상담원 피싱 교육 시급.</p>
+      </div>
+      <div class="insight-card green">
+        <h4>전주 대비 응답 시간 개선</h4>
+        <p>첫 응답 <span class="highlight">-5.7h</span>, 해결 시간 <span class="highlight">-8.4h</span> 개선. 1월 볼륨 피크 이후 안정화 구간 진입. W3 396건으로 정상 범위 복귀.</p>
+      </div>
+      <div class="insight-card red">
+        <h4>차지백 150건(시트) — JPY만 증가 역행</h4>
+        <p>2주간 <span class="highlight">150건</span>(시트 기준, 주 평균 75건). 전주 대비 10건 감소 추세이나, <span class="highlight">JPY(일본) 유입만 증가</span>. 6M·Coin은 소폭 감소. 2월 누적 <span class="highlight">189건</span>(~02.19).</p>
+      </div>
+      <div class="insight-card yellow">
+        <h4>★ 종속 계정 리스토어 불가 급증 (NEW)</h4>
+        <p>EN 마켓 <span class="highlight">3건+ 급증</span>. merged 계정 VIP 미적용, "복원할 구매 내역 없음". 첫 문의 <span class="highlight">2/9 이후 2주간 미해결</span>. 고객 이탈 리스크 직결.</p>
+      </div>
+      <div class="insight-card orange">
+        <h4>이미지 로딩 저하 — 5개 마켓 동시 발생</h4>
+        <p>ES·CN·FR·DE·EN 전방위 <span class="highlight">10건+</span> 보고. 개별 환경이 아닌 <span class="highlight">인프라/CDN 레벨</span> 이슈 시사. VIP 유지율에 직결.</p>
+      </div>
+      <div class="insight-card purple">
+        <h4>AI Chatbot Phase 2 완료 — 자동화 기반 확보</h4>
+        <p>5 Core Skills + 114/114 테스트 + <span class="highlight">100% 예측 정확도</span>. Phase 1 완료 시 월 ~630건(<span class="highlight">38%</span>) 셀프서비스 전환 기대. API 크레딧 충전 후 최종 검증 예정.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ ACTION ITEMS ════════ -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span>Strategic Recommendations</div>
+    <div class="action-list">
+      <h3>우선순위별 후속 조치</h3>
+      <div class="action-item">
+        <div class="action-priority priority-high">P0</div>
+        <div class="action-content">
+          <div class="action-title">JP 피싱 공격 보안팀 보고 + 전사 보안 공지</div>
+          <div class="action-desc">투믹스 재팬 법인 사칭 피싱 메일 3건 — 직원 개인 LINE 탈취 시도</div>
+        </div>
+      </div>
+      <div class="action-item">
+        <div class="action-priority priority-high">P0</div>
+        <div class="action-content">
+          <div class="action-title">★ 종속 계정 리스토어 불가 긴급 조사</div>
+          <div class="action-desc">박선주 보고: merged 계정 VIP 미적용, 2주간 미해결 회원 존재(#121304, #123883, #124968). VIP 동기화 로직 확인 필요</div>
+        </div>
+      </div>
+      <div class="action-item">
+        <div class="action-priority priority-high">P1</div>
+        <div class="action-content">
+          <div class="action-title">IAP-웹 VIP 동기화 모니터링 체계 구축</div>
+          <div class="action-desc">App→웹 동기화 실패 35건(4.2%). Restore Purchase 플로우 개선 필요</div>
+        </div>
+      </div>
+      <div class="action-item">
+        <div class="action-priority priority-high">P1</div>
+        <div class="action-content">
+          <div class="action-title">이미지 로딩 인프라/CDN 점검</div>
+          <div class="action-desc">ES·CN·FR·DE·EN 5개 마켓 전방위 10건+ 동시 발생. 인프라 레벨 이슈 시사</div>
+        </div>
+      </div>
+      <div class="action-item">
+        <div class="action-priority priority-high">P1</div>
+        <div class="action-content">
+          <div class="action-title">AI Chatbot API 크레딧 충전 → 최종 시뮬레이션 검증</div>
+          <div class="action-desc">Phase 2 완료, 23개 시나리오 100% 예측 정확도 수정 완료. 크레딧 충전 후 재실행으로 Phase 3 진입 가능</div>
+        </div>
+      </div>
+      <div class="action-item">
+        <div class="action-priority priority-mid">P2</div>
+        <div class="action-content">
+          <div class="action-title">VIP vs Coin 구분 가입 페이지/온보딩 UX 개선</div>
+          <div class="action-desc">구독 범위 vs 코인 전용 콘텐츠 차이가 가입 전 전달 안 됨 — 환불 사유의 직접 원인 (8건+)</div>
+          <div class="action-owner">담당: 프로덕트팀 / 기한: 2주 내</div>
+        </div>
+      </div>
+      <div class="action-item">
+        <div class="action-priority priority-mid">P2</div>
+        <div class="action-content">
+          <div class="action-title">구독 갱신 전 사전 알림(7일/3일 전) 도입 검토</div>
+          <div class="action-desc">자동갱신 미인지/취소 후 재결제 클레임 30건. CN 마켓 집중. 사전 알림으로 클레임 예방</div>
+          <div class="action-owner">담당: 프로덕트팀 · 결제팀 / 기한: 월말</div>
+        </div>
+      </div>
+      <div class="action-item">
+        <div class="action-priority priority-low">P3</div>
+        <div class="action-content">
+          <div class="action-title">PT 마켓 대응 리소스 확충</div>
+          <div class="action-desc">점유율 12.5%로 성장 지속. PIX 결제 동기화 안정성 점검 및 포르투갈어 템플릿 확충</div>
+          <div class="action-owner">담당: CS 운영 · 결제팀 / 기한: 다음 스프린트</div>
+        </div>
+      </div>
+      <div class="action-item">
+        <div class="action-priority priority-mid">P2</div>
+        <div class="action-content">
+          <div class="action-title">PayPal 차지백 소명 프로세스 집중 점검</div>
+          <div class="action-desc">W2 44건 + W3 25건 = 69건 PayPal 집중 (토~금 기준). Resolution Center 소명 PDF + 응답문 제출 기한 준수 여부 확인. Unauthorized 사유 증빙 강화</div>
+          <div class="action-owner">담당: BizOps / 기한: 이번 주</div>
+        </div>
+      </div>
+      <div class="action-item">
+        <div class="action-priority priority-mid">P2</div>
+        <div class="action-content">
+          <div class="action-title">1M 구독 차지백 패턴 모니터링 강화</div>
+          <div class="action-desc">W2 47.7% → W3 57.5%로 1M 비중 상승 추세. 단기 가입→콘텐츠 소비→차지백 악용 패턴 여부 이용 이력 교차 확인 필요</div>
+          <div class="action-owner">담당: BizOps · 프로덕트팀 / 기한: 2주 내</div>
+        </div>
+      </div>
+      <div class="action-item">
+        <div class="action-priority priority-low">P3</div>
+        <div class="action-content">
+          <div class="action-title">GDPR 삭제 셀프서비스 기능 검토</div>
+          <div class="action-desc">EU 마켓(FR·DE·IT) 매주 11건 꾸준 — 자동화 파이프라인 구축 시 상담원 부담 절감</div>
+          <div class="action-owner">담당: 프로덕트팀 · 법무 / 기한: Q2</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ FOOTER ════════ -->
+  <div class="footer">
+    <p>TOOMICS Global BizOps — CS Weekly Analysis Report v2 | 작성자: 유종선 | 작성일: 2026-02-23</p>
+    <p>데이터 소스: Zendesk Solved Tickets 829건 (KST 02.09~02.20) + Chargeback 150건(시트) / 126건(토~금) + AI Chatbot Phase 2 현황 + 팀원 개인 보고(김지호·이동원·왕시베이·박선주)</p>
+    <p class="no-print" style="margin-top:8px;">Ctrl+P → PDF 저장 가능</p>
+  </div>
+
+</div>
+
+<script>
+const fontFamily = "'Malgun Gothic','Noto Sans KR',sans-serif";
+Chart.defaults.font.family = fontFamily;
+Chart.defaults.font.size = 12;
+Chart.defaults.color = '#94a3b8';
+
+// ── Category Pie ──
+new Chart(document.getElementById('chartCategory'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Subscription 321건 (38.7%)','Refund 228건 (27.5%)','Account 114건 (13.8%)','Payment 57건 (6.9%)','Content 44건 (5.3%)','Technical 31건 (3.7%)','IP/Other 34건 (4.1%)'],
+    datasets: [{ data: [321,228,114,57,44,31,34], backgroundColor: ['#0ea5e9','#6366f1','#f97316','#22c55e','#eab308','#ec4899','#8b5cf6'], borderWidth: 0 }]
+  },
+  options: { responsive:true, maintainAspectRatio:true, aspectRatio:1.2, cutout:'60%', plugins:{ legend:{ position:'bottom', labels:{ padding:12, color:'#e2e8f0', font:{size:13, weight:'600'}, boxWidth:14, usePointStyle:true, pointStyle:'circle' } } } }
+});
+
+// ── Market Pie ──
+new Chart(document.getElementById('chartMarket'), {
+  type: 'doughnut',
+  data: {
+    labels: ['🇬🇧 EN 292건 (35.2%)','🇫🇷 FR 133건 (16.0%)','🇪🇸 ES 107건 (12.9%)','🇧🇷 PT 104건 (12.5%)','🇩🇪 DE 67건 (8.1%)','🇹🇭 TH 43건 (5.2%)','🇮🇹🇯🇵🇨🇳 83건 (10.0%)'],
+    datasets: [{ data: [292,133,107,104,67,43,83], backgroundColor: ['#0ea5e9','#6366f1','#f97316','#22c55e','#eab308','#ec4899','#8b5cf6'], borderWidth: 0 }]
+  },
+  options: { responsive:true, maintainAspectRatio:true, aspectRatio:1.2, cutout:'60%', plugins:{ legend:{ position:'bottom', labels:{ padding:12, color:'#e2e8f0', font:{size:13, weight:'600'}, boxWidth:14, usePointStyle:true, pointStyle:'circle' } } } }
+});
+
+// ── Weekly Trend (4 weeks) ──
+new Chart(document.getElementById('chartWeeklyTrend'), {
+  type: 'bar',
+  data: {
+    labels: ['JAN W3\n(01/12~18)','JAN W4\n(01/19~25)','FEB W2\n(02/09~13)','FEB W3\n(02/16~20)'],
+    datasets: [{
+      label: '주간 티켓',
+      data: [474, 439, 433, 396],
+      backgroundColor: ['#475569','#475569','#0ea5e9','#0ea5e9'],
+      borderRadius: 8,
+      borderSkipped: false,
+      barThickness: 60
+    }]
+  },
+  options: {
+    responsive: true,
+    aspectRatio: 2.4,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ctx.raw + '건' } }
+    },
+    scales: {
+      y: { beginAtZero: false, min: 350, max: 520, grid: { color: '#1e293b' }, ticks: { color: '#64748b' } },
+      x: { grid: { display: false }, ticks: { color: '#e2e8f0', font: { size: 13, weight: '600' } } }
+    }
+  }
+});
+
+// ── CB Weekly Trend (토~금 기준) ──
+new Chart(document.getElementById('chartCBTrend'), {
+  type: 'bar',
+  data: {
+    labels: ['JAN W3\n(01/17~23)','JAN W4\n(01/24~30)','FEB W1\n(01/31~02/06)','FEB W2\n(02/07~13)','FEB W3\n(02/14~19)*'],
+    datasets: [{
+      label: '주간 차지백 (토~금)',
+      data: [57, 71, 85, 86, 40],
+      backgroundColor: ['#475569','#475569','#475569','#ef4444','#ef4444'],
+      borderRadius: 8,
+      borderSkipped: false,
+      barThickness: 52
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ctx.raw + '건' } }
+    },
+    scales: {
+      y: { beginAtZero: true, grid: { color: '#1e293b' }, ticks: { color: '#64748b' } },
+      x: { grid: { display: false }, ticks: { color: '#e2e8f0', font: { size: 13, weight: '600' } } }
+    }
+  }
+});
+
+// ── Channel Doughnut ──
+new Chart(document.getElementById('chartChannel'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Web 48.5%','Email 39.0%','API 12.5%'],
+    datasets: [{
+      data: [402, 323, 104],
+      backgroundColor: ['#0ea5e9','#6366f1','#f97316'],
+      borderWidth: 0
+    }]
+  },
+  options: {
+    responsive: true,
+    aspectRatio: 1.2,
+    cutout: '65%',
+    plugins: {
+      legend: { position: 'bottom', labels: { padding: 12, color: '#e2e8f0', font: { size: 13, weight: '600' }, boxWidth: 14, usePointStyle: true, pointStyle: 'circle' } },
+      tooltip: { callbacks: { label: ctx => ctx.raw + '건' } }
+    }
+  }
+});
+
+// ── Sentiment Doughnut ──
+new Chart(document.getElementById('chartSentiment'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Neutral 60.0%','Negative 36.9%','V.Negative 2.5%','Positive 0.6%'],
+    datasets: [{
+      data: [497, 306, 21, 5],
+      backgroundColor: ['#475569','#f97316','#ef4444','#22c55e'],
+      borderWidth: 0
+    }]
+  },
+  options: {
+    responsive: true,
+    aspectRatio: 1.2,
+    cutout: '65%',
+    plugins: {
+      legend: { position: 'bottom', labels: { padding: 12, color: '#e2e8f0', font: { size: 13, weight: '600' }, boxWidth: 14, usePointStyle: true, pointStyle: 'circle' } },
+      tooltip: { callbacks: { label: ctx => ctx.raw + '건' } }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
