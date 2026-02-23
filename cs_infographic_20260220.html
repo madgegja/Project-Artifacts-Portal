@@ -697,7 +697,7 @@
         data: [48, 25, 13, 5, 4, 3, 2],
         backgroundColor: [colors.blue, colors.red, colors.purple, colors.amber, colors.teal, colors.pink, colors.slate],
         borderWidth: 3,
-        borderColor: '#ffffff',
+        borderColor: '#F8FAFC',
         hoverOffset: 8
       }]
     },
@@ -719,7 +719,7 @@
         data: [4285, 1941, 1552, 982, 957, 559, 550, 478, 316],
         backgroundColor: [colors.blue, colors.purple, colors.amber, colors.red, colors.teal, colors.pink, colors.indigo, colors.orange, colors.lime],
         borderWidth: 3,
-        borderColor: '#ffffff',
+        borderColor: '#F8FAFC',
         hoverOffset: 8
       }]
     },
@@ -757,12 +757,12 @@
     options: {
       responsive: true,
       scales: {
-        y: { beginAtZero: false, min: 1200, grid: { color: '#1E293B' } },
+        y: { beginAtZero: false, min: 1200, grid: { color: '#E2E8F0' } },
         x: { grid: { display: false } }
       },
       plugins: {
         legend: { display: false },
-        tooltip: { callbacks: { label: ctx => ctx.parsed.y.toLocaleString() + '건' } }
+        tooltip: { backgroundColor: '#FFFFFF', titleColor: '#1E293B', bodyColor: '#1E293B', borderColor: '#E2E8F0', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.parsed.y.toLocaleString() + '건' } }
       }
     }
   });
@@ -796,12 +796,12 @@
     options: {
       responsive: true,
       scales: {
-        y: { beginAtZero: false, grid: { color: '#1E293B' } },
+        y: { beginAtZero: false, grid: { color: '#E2E8F0' } },
         x: { grid: { display: false } }
       },
       plugins: {
         legend: { position: 'bottom', labels: { padding: 14 } },
-        tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y + '건' } }
+        tooltip: { backgroundColor: '#FFFFFF', titleColor: '#1E293B', bodyColor: '#1E293B', borderColor: '#E2E8F0', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y + '건' } }
       }
     }
   });
@@ -834,7 +834,7 @@
       responsive: true,
       scales: {
         x: { stacked: true, grid: { display: false } },
-        y: { stacked: true, grid: { color: '#1E293B' } }
+        y: { stacked: true, grid: { color: '#E2E8F0' } }
       },
       plugins: {
         legend: { position: 'bottom', labels: { padding: 14 } },
@@ -863,12 +863,12 @@
     options: {
       responsive: true,
       scales: {
-        y: { beginAtZero: true, grid: { color: '#1E293B' } },
+        y: { beginAtZero: true, grid: { color: '#E2E8F0' } },
         x: { grid: { display: false } }
       },
       plugins: {
         legend: { display: false },
-        tooltip: { callbacks: { label: ctx => ctx.parsed.y + '건' } }
+        tooltip: { backgroundColor: '#FFFFFF', titleColor: '#1E293B', bodyColor: '#1E293B', borderColor: '#E2E8F0', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.parsed.y + '건' } }
       }
     }
   });

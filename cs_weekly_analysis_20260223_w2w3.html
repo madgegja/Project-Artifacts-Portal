@@ -1232,11 +1232,11 @@ new Chart(document.getElementById('chartWeeklyTrend'), {
     aspectRatio: 2.4,
     plugins: {
       legend: { display: false },
-      tooltip: { callbacks: { label: ctx => ctx.raw + '건' } }
+      tooltip: { backgroundColor: '#FFFFFF', titleColor: '#1E293B', bodyColor: '#1E293B', borderColor: '#E2E8F0', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.raw + '건' } }
     },
     scales: {
-      y: { beginAtZero: false, min: 350, max: 520, grid: { color: '#FFFFFF' }, ticks: { color: '#64748B' } },
-      x: { grid: { display: false }, ticks: { color: '#e2e8f0', font: { size: 13, weight: '600' } } }
+      y: { beginAtZero: false, min: 350, max: 520, grid: { color: '#E2E8F0' }, ticks: { color: '#64748B' } },
+      x: { grid: { display: false }, ticks: { color: '#475569', font: { size: 13, weight: '600' } } }
     }
   }
 });
@@ -1259,11 +1259,11 @@ new Chart(document.getElementById('chartCBTrend'), {
     responsive: true,
     plugins: {
       legend: { display: false },
-      tooltip: { callbacks: { label: ctx => ctx.raw + '건' } }
+      tooltip: { backgroundColor: '#FFFFFF', titleColor: '#1E293B', bodyColor: '#1E293B', borderColor: '#E2E8F0', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.raw + '건' } }
     },
     scales: {
-      y: { beginAtZero: true, grid: { color: '#FFFFFF' }, ticks: { color: '#64748B' } },
-      x: { grid: { display: false }, ticks: { color: '#e2e8f0', font: { size: 13, weight: '600' } } }
+      y: { beginAtZero: true, grid: { color: '#E2E8F0' }, ticks: { color: '#64748B' } },
+      x: { grid: { display: false }, ticks: { color: '#475569', font: { size: 13, weight: '600' } } }
     }
   }
 });
@@ -1285,7 +1285,7 @@ new Chart(document.getElementById('chartChannel'), {
     cutout: '65%',
     plugins: {
       legend: { position: 'bottom', labels: { padding: 12, color: '#e2e8f0', font: { size: 13, weight: '600' }, boxWidth: 14, usePointStyle: true, pointStyle: 'circle' } },
-      tooltip: { callbacks: { label: ctx => ctx.raw + '건' } }
+      tooltip: { backgroundColor: '#FFFFFF', titleColor: '#1E293B', bodyColor: '#1E293B', borderColor: '#E2E8F0', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.raw + '건' } }
     }
   }
 });
@@ -1307,7 +1307,7 @@ new Chart(document.getElementById('chartSentiment'), {
     cutout: '65%',
     plugins: {
       legend: { position: 'bottom', labels: { padding: 12, color: '#e2e8f0', font: { size: 13, weight: '600' }, boxWidth: 14, usePointStyle: true, pointStyle: 'circle' } },
-      tooltip: { callbacks: { label: ctx => ctx.raw + '건' } }
+      tooltip: { backgroundColor: '#FFFFFF', titleColor: '#1E293B', bodyColor: '#1E293B', borderColor: '#E2E8F0', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.raw + '건' } }
     }
   }
 });
