@@ -94,7 +94,7 @@
       <tr><td>세션 저장</td><td>Redis 8.6</td><td>대화 세션 관리 (TTL 30분)</td></tr>
       <tr><td>티켓 관리</td><td>Zendesk API v2</td><td>에스컬레이션 티켓 자동 생성</td></tr>
       <tr><td>프로세스</td><td>systemd</td><td>서비스 관리 + 자동 재시작</td></tr>
-    </table>
+    </table></div>
   </div>
 </section>
 
@@ -229,7 +229,7 @@
       <tr><td>Step 4.7</td><td>결제 카테고리 (L2만) → 결제 정보 요청</td><td>—</td></tr>
       <tr><td>Step 5</td><td>라우팅 (L1/L2/L3)</td><td>—</td></tr>
       <tr><td>Step 6</td><td>세션 업데이트 + 응답 반환 (L3: 5분 후 Solved 티켓)</td><td>기본 에러 메시지 + L1</td></tr>
-    </table>
+    </table></div>
   </div>
 </section>
 
@@ -242,7 +242,7 @@
       <tr><td>claude-max-api-proxy</td><td>:3456</td><td><code>systemctl --user restart claude-max-api</code></td><td><code>/v1/models</code></td></tr>
       <tr><td>Redis</td><td>:6379</td><td>수동 시작 (<code>~/.local/bin/redis-server</code>)</td><td><code>redis-cli ping</code></td></tr>
       <tr><td>nginx</td><td>:443</td><td><code>systemctl restart nginx</code></td><td>브라우저 접속</td></tr>
-    </table>
+    </table></div>
   </div>
 
   <div class="card card-amber">
@@ -319,7 +319,7 @@ Ai-Chat-bot-project/
       <tr><td>Redis 연결</td><td><code>redis-cli ping</code></td><td>PONG</td></tr>
       <tr><td>Zendesk 연동</td><td><code>GET /api/v2/users/me</code></td><td>HTTP 200</td></tr>
       <tr><td>에러율</td><td>로그 <code>ERROR</code> 레벨</td><td>&lt; 1%</td></tr>
-    </table>
+    </table></div>
   </div>
 </section>
 
