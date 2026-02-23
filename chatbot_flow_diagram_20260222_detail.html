@@ -817,14 +817,15 @@
 
             <!-- STEP 1.5: 결제 정보 수집 체크 -->
             <div class="node node-gray" style="max-width: 560px;">
-                <div class="step-label">Step 1.5 (조건부)</div>
+                <div class="step-label">Step 1.5 (조건부 — L2만)</div>
                 <div class="title">계정 식별 체크</div>
                 <div class="desc">
-                    Subscription / Refund / Payment 카테고리 최초 감지 시<br>
+                    Subscription / Refund / Payment 카테고리 <strong>L2</strong> 감지 시<br>
                     <strong>결제 정보 요청</strong> (최근 결제일, 금액, 끝 4자리, 등록 이메일)<br>
+                    L3 셀프서비스는 안내 가이드만 제공하므로 결제 정보 수집 없이 즉시 응답<br>
                     전체 CS 답변의 ~45%가 이 패턴 &mdash; 계정 교차 참조 필수
                 </div>
-                <div class="file-ref">pipeline.py &rarr; PAYMENT_INFO_MESSAGES</div>
+                <div class="file-ref">pipeline.py &rarr; PAYMENT_INFO_MESSAGES (L2 only)</div>
             </div>
 
             <div class="arrow-down">
@@ -1014,16 +1015,16 @@
                     </div>
                     <div class="node node-orange">
                         <div class="step-label">Step 4B</div>
-                        <div class="title">L2 &mdash; AI 초안 + 상담원 검토</div>
+                        <div class="title">L2 &mdash; AI 초안 + 상담원 검토 (2턴)</div>
                         <div class="desc" style="text-align: left;">
-                            AI가 응답 초안 생성<br>
-                            상담원이 검토/수정 후 발송
+                            1턴: 매뉴얼 가이드 발송 (티켓 보류)<br>
+                            2턴: 고객 응답 수신 → 전체 맥락 티켓 생성
                         </div>
                         <ul class="output-list">
-                            <li>RAG 검색 (ChromaDB 벡터)</li>
-                            <li>매뉴얼 기반 AI 초안 생성</li>
-                            <li>추가 문의 정보 수집 안내</li>
-                            <li>Zendesk 티켓 생성 (normal)</li>
+                            <li>1턴: 매뉴얼 기반 안내 + 정보 수집 요청</li>
+                            <li>2턴: 고객 추가 정보 수신</li>
+                            <li>Zendesk 티켓 생성 (전체 대화 맥락 + AI 초안)</li>
+                            <li>10분 미응답 시 타임아웃 티켓 자동 생성</li>
                             <li>"추가 지원이 필요하시면 알려주세요"</li>
                         </ul>
                         <div class="file-ref">app/services/self_service.py (L2 모드)</div>
@@ -1043,8 +1044,8 @@
                         <div class="step-label">Step 4C</div>
                         <div class="title">L3 &mdash; 셀프서비스 자동 처리</div>
                         <div class="desc" style="text-align: left;">
-                            검증된 셀프서비스 안내 자동 발송<br>
-                            티켓 제출 옵션 항상 포함
+                            검증된 셀프서비스 안내 즉시 발송 (결제정보 수집 없음)<br>
+                            5분 비활성 후 Zendesk Solved 티켓 자동 생성
                         </div>
                         <ul class="output-list">
                             <li>RAG 검색 (ChromaDB 벡터)</li>
@@ -1052,6 +1053,7 @@
                             <li>단계별 가이드 자동 생성</li>
                             <li>해당 마켓 도메인 URL 포함</li>
                             <li>"CS 티켓 제출" 옵션 제공</li>
+                            <li>5분 후 Zendesk Solved 티켓 (자동 처리율 측정)</li>
                         </ul>
                         <div class="file-ref">app/services/self_service.py (L3 모드)</div>
                     </div>

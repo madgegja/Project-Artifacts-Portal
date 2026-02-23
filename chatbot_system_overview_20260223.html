@@ -200,7 +200,7 @@
         <li>세션 TTL: 30분 (설정 가능)</li>
         <li>대화 히스토리, Fraud 누적 점수 저장</li>
         <li>Content 상세정보 수집 상태 추적</li>
-        <li>결제 정보 수집 + Intent 복원 메커니즘</li>
+        <li>결제 정보 수집 (L2만) + Intent 복원 메커니즘</li>
       </ul>
     </div>
   </div>
@@ -216,13 +216,14 @@
       <tr><td>Step 2</td><td>미지원 언어 → L1 에스컬레이션</td><td>—</td></tr>
       <tr><td>Step 2.5</td><td>Content 상세정보 수집 완료 → L2</td><td>—</td></tr>
       <tr><td>Step 2.6</td><td>결제 정보 수집 완료 → Intent 복원</td><td>—</td></tr>
+      <tr><td>Step 2.7</td><td>L2 가이드 후 고객 2차 응답 → 전체 맥락 티켓 생성</td><td>—</td></tr>
       <tr><td>Step 3</td><td>Fraud + Intent 병렬 분석</td><td>Fraud: 기본값, Intent: 키워드 폴백 또는 L1</td></tr>
       <tr><td>Step 4</td><td>Fraud 강제 L1 판단</td><td>—</td></tr>
       <tr><td>Step 4.5</td><td>반복 응답 감지 → L2</td><td>—</td></tr>
       <tr><td>Step 4.6</td><td>Content 최초 → 상세정보 요청</td><td>—</td></tr>
-      <tr><td>Step 4.7</td><td>결제 카테고리 → 결제 정보 요청</td><td>—</td></tr>
+      <tr><td>Step 4.7</td><td>결제 카테고리 (L2만) → 결제 정보 요청</td><td>—</td></tr>
       <tr><td>Step 5</td><td>라우팅 (L1/L2/L3)</td><td>—</td></tr>
-      <tr><td>Step 6</td><td>세션 업데이트 + 응답 반환</td><td>기본 에러 메시지 + L1</td></tr>
+      <tr><td>Step 6</td><td>세션 업데이트 + 응답 반환 (L3: 5분 후 Solved 티켓)</td><td>기본 에러 메시지 + L1</td></tr>
     </table>
   </div>
 </section>

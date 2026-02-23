@@ -72,7 +72,7 @@
   </div>
 
   <div class="highlight-box">
-    <strong>💡 시연 팁:</strong> 데모 페이지와 Zendesk를 양쪽에 나란히 두면, 챗봇 대화 → 즉시 Zendesk 티켓 확인이 가능하여 인상적입니다.
+    <strong>💡 시연 팁:</strong> 데모 페이지와 Zendesk를 양쪽에 나란히 두면, L2 챗봇 대화(2턴) → Zendesk 티켓 확인이 가능하여 인상적입니다.
   </div>
 </section>
 
@@ -108,7 +108,7 @@
       <code style="background:#1e293b; padding:4px 8px; border-radius:4px;">"I want to cancel my subscription"</code>
     </div>
     <div class="narration">
-      "보시다시피, AI가 자동으로 영어를 감지하고 구독 카테고리로 분류했습니다. 계정을 찾기 위해 결제 정보를 먼저 요청합니다. 이런 간단한 건은 L3(셀프서비스)로 처리되어 Zendesk 티켓이 생성되지 않습니다. 상담원 개입 없이 해결되는 거죠."
+      "보시다시피, AI가 자동으로 영어를 감지하고 구독 카테고리로 분류했습니다. L3(셀프서비스) 건이므로 결제 정보 요청 없이 즉시 해지 가이드(Web/iOS/Android)를 안내합니다. 고객이 추가 문의 없이 5분이 지나면, Zendesk에 Solved 상태의 티켓이 자동 생성되어 자동 처리율을 정확히 측정할 수 있습니다."
     </div>
     <div class="highlight-box">
       <strong>포인트:</strong> "전체 문의의 약 40~50%가 이렇게 자동으로 해결됩니다. 상담원은 복잡한 건에만 집중할 수 있습니다."
@@ -149,7 +149,7 @@
       <code style="background:#1e293b; padding:4px 8px; border-radius:4px;">"Title: Dark Moon, Chapter 5, page 3 has wrong translation"</code>
     </div>
     <div class="narration">
-      "고객에게 안내 메시지를 보내면서, 동시에 Zendesk에 티켓을 자동 생성합니다. Zendesk를 확인해 보겠습니다."
+      "고객에게 매뉴얼 기반 안내 메시지를 보냅니다. L2는 고객의 2차 응답을 받은 후에 전체 대화 맥락이 포함된 Zendesk 티켓을 생성합니다. Zendesk를 확인해 보겠습니다."
     </div>
     <div class="action">
       <strong>🖱️ 액션:</strong> Zendesk 탭으로 전환 → 최신 티켓 열기<br>
@@ -228,7 +228,7 @@
     </div>
     <div class="card card-amber">
       <h3>Zendesk에 티켓이 안 보일 때</h3>
-      <p>L3는 티켓이 생성되지 않음 → L2/L1 시나리오로 전환하여 시연</p>
+      <p>L3는 5분 후 Zendesk Solved 티켓이 자동 생성됨 → L2/L1 시나리오로 전환하여 시연</p>
       <p>태그: <code>chatbot_escalation</code>으로 검색</p>
     </div>
   </div>

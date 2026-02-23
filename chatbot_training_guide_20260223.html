@@ -286,7 +286,7 @@
       <tr><th>상황</th><th>처리</th><th>이유</th></tr>
       <tr><td>미지원 언어 감지</td><td>인사말 + 즉시 L1</td><td>해당 언어 상담원 연결 필요</td></tr>
       <tr><td>Content 카테고리</td><td>상세정보 요청 → L2</td><td>작품명/회차/문제 수집 후 QA팀 전달</td></tr>
-      <tr><td>결제 카테고리 (L3)</td><td>결제 정보 요청 → 원래 플로우</td><td>계정 식별을 위한 결제 정보 필요</td></tr>
+      <tr><td>결제 카테고리 (L3)</td><td>즉시 셀프서비스 가이드 제공</td><td>L3는 안내만 제공하므로 계정 식별 불필요</td></tr>
       <tr><td>동일 의도 2회 반복</td><td>L3 → L2 자동 에스컬레이션</td><td>셀프서비스 해결 불가 판단</td></tr>
     </table>
   </div>
@@ -315,13 +315,15 @@
     <table>
       <tr><th>항목</th><th>내용</th></tr>
       <tr><td><strong>트리거</strong></td><td>Content/Other 카테고리, 복잡한 환불, 반복 문의, Intent L1 클램핑</td></tr>
-      <tr><td><strong>고객 응답</strong></td><td>✅ 매뉴얼 기반 안내 + "티켓 제출" 안내 (90/10 하이브리드)</td></tr>
+      <tr><td><strong>1차 응답</strong></td><td>✅ 매뉴얼 기반 안내 발송 (90/10 하이브리드) — 티켓 생성 보류</td></tr>
+      <tr><td><strong>2차 응답</strong></td><td>고객 추가 응답 수신 → 전체 대화 맥락 포함 Zendesk 티켓 생성</td></tr>
       <tr><td><strong>AI 초안</strong></td><td>✅ 운영 매뉴얼 기반 이메일 초안 생성 (Zendesk 티켓에 포함)</td></tr>
-      <tr><td><strong>Zendesk 티켓</strong></td><td>✅ 자동 생성 (맥락 요약 + 대화 로그 + AI 초안)</td></tr>
+      <tr><td><strong>Zendesk 티켓</strong></td><td>✅ 고객 2차 응답 후 생성 (맥락 요약 + 전체 대화 로그 + AI 초안)</td></tr>
+      <tr><td><strong>타임아웃</strong></td><td>10분 미응답 시 현재 맥락으로 티켓 자동 생성</td></tr>
       <tr><td><strong>우선순위</strong></td><td>🟡 High/Normal</td></tr>
       <tr><td><strong>상담원 액션</strong></td><td>AI 초안 검토 → [AGENT:] 플레이스홀더 채우기 → 수정/발송</td></tr>
     </table>
-    <p style="margin-top: 12px; color: var(--accent-amber);"><strong>💡 AI 초안은 "출발점"입니다. 반드시 검토 후 발송하세요.</strong></p>
+    <p style="margin-top: 12px; color: var(--accent-amber);"><strong>💡 L2는 2턴 구조입니다: 가이드 발송 → 고객 응답 대기 → 전체 맥락 티켓 생성. AI 초안은 "출발점"이며 반드시 검토 후 발송하세요.</strong></p>
   </div>
 
   <div class="card card-green">
@@ -331,10 +333,10 @@
       <tr><td><strong>트리거</strong></td><td>명확한 카테고리 + 낮은 Fraud 점수 + 자동화 가능 의도</td></tr>
       <tr><td><strong>고객 응답</strong></td><td>✅ 매뉴얼 기반 자동 응답 (구독 취소 방법, 비밀번호 재설정 등)</td></tr>
       <tr><td><strong>AI 초안</strong></td><td>해당 없음 (상담원 개입 불필요)</td></tr>
-      <tr><td><strong>Zendesk 티켓</strong></td><td>❌ 생성하지 않음 (고객이 직접 해결)</td></tr>
+      <tr><td><strong>Zendesk 티켓</strong></td><td>✅ 5분 비활성 후 Solved 상태 자동 생성 (자동 처리율 측정용)</td></tr>
       <tr><td><strong>상담원 액션</strong></td><td>없음 (모니터링만)</td></tr>
     </table>
-    <p style="margin-top: 12px; color: var(--accent-green);"><strong>✅ L3는 고객이 스스로 해결합니다. 동일 문의 2회 반복 시 자동으로 L2로 에스컬레이션됩니다.</strong></p>
+    <p style="margin-top: 12px; color: var(--accent-green);"><strong>✅ L3는 고객이 스스로 해결합니다. 5분 후 Zendesk Solved 티켓이 자동 생성됩니다. 동일 문의 2회 반복 시 자동으로 L2로 에스컬레이션됩니다.</strong></p>
   </div>
 </section>
 
@@ -588,7 +590,7 @@ Toomics Support</span></div>
 
   <div class="card card-blue">
     <h4>Q7. 고객이 결제 정보를 제공하지 않으면?</h4>
-    <p>결제 카테고리(Refund/Subscription/Payment)의 L3 플로우에서 결제 정보를 사전 수집합니다. 미제공 시 다음 메시지에서 다시 요청하며, 2회 이상 미제공 시 L2로 에스컬레이션됩니다.</p>
+    <p>L3 셀프서비스는 안내 가이드만 제공하므로 결제 정보 수집 없이 즉시 응답합니다. 결제 정보 수집은 L2(상담원이 계정별 조치 필요 시)에서만 수행됩니다. L3 응답 후 5분간 추가 문의가 없으면 Zendesk에 Solved 상태 티켓이 자동 생성되어 자동 처리율을 정확히 측정합니다.</p>
   </div>
 
   <div class="card card-blue">

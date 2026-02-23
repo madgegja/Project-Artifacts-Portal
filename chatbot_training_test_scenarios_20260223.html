@@ -108,10 +108,10 @@
         <li><strong>카테고리:</strong> Subscription / cancel_subscription</li>
         <li><strong>에스컬레이션:</strong> L3 (셀프서비스)</li>
         <li><strong>Fraud 점수:</strong> 0</li>
-        <li><strong>응답 내용:</strong> 결제 정보 요청 메시지 (계정 식별용)</li>
-        <li><strong>Zendesk 티켓:</strong> 생성되지 않음 (L3)</li>
+        <li><strong>응답 내용:</strong> 구독 해지 가이드 (Web/iOS/Android 3가지 방법 안내)</li>
+        <li><strong>Zendesk 티켓:</strong> 5분 비활성 후 Solved 상태 자동 생성</li>
       </ul>
-      <p><strong>🔍 확인 포인트:</strong> 결제 정보(최근 결제일, 금액, 카드 끝 4자리, 이메일) 요청이 나오는지 확인</p>
+      <p><strong>🔍 확인 포인트:</strong> 결제 정보 요청 없이 즉시 해지 가이드가 나오는지, My Page → Subscription Management 경로가 포함되는지 확인</p>
     </div>
   </div>
 
@@ -121,7 +121,7 @@
       <div><span class="scenario-number">2</span> <strong style="margin-left:8px; font-size:1.1rem;">환불 요청 (일반) — 2턴 대화</strong></div>
       <div><span class="tag tag-cat">Refund</span> <span class="tag tag-lang">EN</span> <span class="level-badge level-l3">L3</span> → <span class="level-badge level-l2">L2</span></div>
     </div>
-    <p><strong>목적:</strong> 결제 정보 수집 → 원래 플로우 복원 확인</p>
+    <p><strong>목적:</strong> L2 2턴 구조 확인 — 매뉴얼 가이드 발송 → 고객 응답 → 티켓 생성</p>
 
     <div class="msg-customer">
       <strong>👤 1턴 — 고객:</strong><br>
@@ -129,7 +129,7 @@
     </div>
     <div class="msg-bot">
       <strong>🤖 1턴 — 봇 (예상):</strong><br>
-      결제 정보 요청 (계정 식별용)
+      환불 정책 안내 (14일/미열람/미사용 3조건) + 결제 정보 요청 — 티켓 생성 보류
     </div>
     <div class="msg-customer">
       <strong>👤 2턴 — 고객:</strong><br>
@@ -140,9 +140,9 @@
       <h4>✅ 예상 결과 (2턴)</h4>
       <ul>
         <li><strong>카테고리:</strong> Refund / simple_refund</li>
-        <li><strong>에스컬레이션:</strong> 결제 정보 수집 후 원래 Intent 기반 라우팅</li>
-        <li><strong>응답 내용:</strong> 환불 정책 안내 (14일/미열람/미사용 3조건)</li>
-        <li><strong>Zendesk 티켓:</strong> 라우팅 결과에 따라 생성 가능</li>
+        <li><strong>에스컬레이션:</strong> L2 (고객 2차 응답 후 전체 맥락 포함 티켓 생성)</li>
+        <li><strong>응답 내용:</strong> 확인 안내 + 티켓 제출 알림</li>
+        <li><strong>Zendesk 티켓:</strong> ✅ 2턴 후 생성 (전체 대화 로그 + AI 초안 포함)</li>
       </ul>
     </div>
   </div>
@@ -226,8 +226,8 @@
       <ul>
         <li><strong>언어:</strong> KR (한국어)</li>
         <li><strong>카테고리:</strong> Subscription / cancel_subscription</li>
-        <li><strong>응답 언어:</strong> 한국어로 결제 정보 요청</li>
-        <li><strong>응답 내용:</strong> "가장 최근 결제일", "결제 금액", "끝 4자리", "이메일 주소" 요청</li>
+        <li><strong>응답 언어:</strong> 한국어</li>
+        <li><strong>응답 내용:</strong> 구독 해지 가이드 (웹사이트/iOS/Android 방법 안내, 한국어)</li>
       </ul>
     </div>
   </div>
@@ -308,19 +308,17 @@
     <p><strong>목적:</strong> 동일 의도 2회 반복 시 자동 L2 에스컬레이션 확인</p>
 
     <div class="msg-customer"><strong>👤 1턴:</strong><br>How do I cancel my subscription?</div>
-    <div class="msg-bot"><strong>🤖 1턴:</strong><br>결제 정보 요청</div>
-    <div class="msg-customer"><strong>👤 2턴:</strong><br>Feb 15, $9.99, card 1234, email test@test.com</div>
-    <div class="msg-bot"><strong>🤖 2턴:</strong><br>구독 취소 방법 안내 (L3)</div>
-    <div class="msg-customer"><strong>👤 3턴:</strong><br>I still can't cancel, please help me cancel my subscription!</div>
+    <div class="msg-bot"><strong>🤖 1턴:</strong><br>구독 해지 가이드 (Web/iOS/Android) — L3 셀프서비스</div>
+    <div class="msg-customer"><strong>👤 2턴:</strong><br>I still can't cancel, please help me cancel my subscription!</div>
 
     <div class="expected">
-      <h4>✅ 예상 결과 (3턴)</h4>
+      <h4>✅ 예상 결과 (2턴)</h4>
       <ul>
         <li><strong>동일 카테고리 반복:</strong> Subscription 2회 연속</li>
         <li><strong>에스컬레이션:</strong> L3 → <span class="level-badge level-l2">L2</span> 자동 에스컬레이션</li>
-        <li><strong>Zendesk 티켓:</strong> ✅ 생성 (대화 히스토리 + AI 초안 포함)</li>
+        <li><strong>Zendesk 티켓:</strong> ✅ 고객 2차 응답 후 생성 (전체 대화 히스토리 + AI 초안 포함)</li>
       </ul>
-      <p><strong>🔍 확인:</strong> 3턴째에서 "상담원이 검토 중" 안내가 나오고, Zendesk에 티켓이 생성되는지 확인</p>
+      <p><strong>🔍 확인:</strong> 2턴째에서 "상담원이 검토 중" 안내가 나오고, Zendesk에 전체 대화 맥락 포함 티켓이 생성되는지 확인</p>
     </div>
   </div>
 
@@ -355,16 +353,16 @@
   <p>각 시나리오 실행 후 아래 표에 결과를 기록하세요:</p>
   <table>
     <tr><th>#</th><th>시나리오</th><th>예상 레벨</th><th>실제 레벨</th><th>카테고리 정확</th><th>응답 언어 정확</th><th>Zendesk 티켓</th><th>비고</th></tr>
-    <tr><td>1</td><td>기본 구독 취소</td><td>L3</td><td></td><td>☐</td><td>☐</td><td>N/A</td><td></td></tr>
-    <tr><td>2</td><td>환불 요청</td><td>L3→L2</td><td></td><td>☐</td><td>☐</td><td>☐</td><td></td></tr>
-    <tr><td>3</td><td>Fraud 차지백</td><td>L1</td><td></td><td>☐</td><td>☐</td><td>☐</td><td></td></tr>
-    <tr><td>4</td><td>콘텐츠 오류</td><td>L2</td><td></td><td>☐</td><td>☐</td><td>☐</td><td></td></tr>
-    <tr><td>5</td><td>한국어 구독취소</td><td>L3</td><td></td><td>☐</td><td>☐</td><td>N/A</td><td></td></tr>
-    <tr><td>6</td><td>비밀번호 재설정</td><td>L3</td><td></td><td>☐</td><td>☐</td><td>N/A</td><td></td></tr>
-    <tr><td>7</td><td>결제 실패</td><td>L3</td><td></td><td>☐</td><td>☐</td><td>N/A</td><td></td></tr>
-    <tr><td>8</td><td>기술 문제</td><td>L3</td><td></td><td>☐</td><td>☐</td><td>N/A</td><td></td></tr>
-    <tr><td>9</td><td>반복 문의</td><td>L3→L2</td><td></td><td>☐</td><td>☐</td><td>☐</td><td></td></tr>
-    <tr><td>10</td><td>일본어 계정</td><td>L3</td><td></td><td>☐</td><td>☐</td><td>N/A</td><td></td></tr>
+    <tr><td>1</td><td>기본 구독 취소</td><td>L3</td><td></td><td>☐</td><td>☐</td><td>Solved (5분)</td><td></td></tr>
+    <tr><td>2</td><td>환불 요청</td><td>L2</td><td></td><td>☐</td><td>☐</td><td>☐ (2턴 후)</td><td></td></tr>
+    <tr><td>3</td><td>Fraud 차지백</td><td>L1</td><td></td><td>☐</td><td>☐</td><td>☐ (즉시)</td><td></td></tr>
+    <tr><td>4</td><td>콘텐츠 오류</td><td>L2</td><td></td><td>☐</td><td>☐</td><td>☐ (2턴 후)</td><td></td></tr>
+    <tr><td>5</td><td>한국어 구독취소</td><td>L3</td><td></td><td>☐</td><td>☐</td><td>Solved (5분)</td><td></td></tr>
+    <tr><td>6</td><td>비밀번호 재설정</td><td>L3</td><td></td><td>☐</td><td>☐</td><td>Solved (5분)</td><td></td></tr>
+    <tr><td>7</td><td>결제 실패</td><td>L3</td><td></td><td>☐</td><td>☐</td><td>Solved (5분)</td><td></td></tr>
+    <tr><td>8</td><td>기술 문제</td><td>L3</td><td></td><td>☐</td><td>☐</td><td>Solved (5분)</td><td></td></tr>
+    <tr><td>9</td><td>반복 문의</td><td>L3→L2</td><td></td><td>☐</td><td>☐</td><td>☐ (2턴 후)</td><td></td></tr>
+    <tr><td>10</td><td>일본어 계정</td><td>L3</td><td></td><td>☐</td><td>☐</td><td>Solved (5분)</td><td></td></tr>
   </table>
 </section>
 
