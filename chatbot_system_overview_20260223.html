@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toomics CS AI 챗봇 — 시스템 아키텍처 설명서 v1.0 | 2026-02-23</title>
+<style>
+  @page { size: A4; margin: 15mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg-primary: #0f172a; --bg-secondary: #1e293b; --bg-card: #1e293b;
+    --text-primary: #e2e8f0; --text-secondary: #94a3b8; --text-muted: #64748b;
+    --accent-blue: #0ea5e9; --accent-cyan: #22d3ee; --accent-green: #10b981;
+    --accent-amber: #f59e0b; --accent-red: #ef4444; --accent-purple: #a78bfa;
+    --border-color: #334155;
+  }
+  body { font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif; color: var(--text-primary); background: var(--bg-primary); line-height: 1.75; font-size: 14px; }
+  @media print { body { background: #fff; color: #1a1a2e; } .hero { background: #1e3a5f !important; -webkit-print-color-adjust: exact; } .back-to-top { display: none !important; } }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 0 60px; }
+  section { padding: 0 40px; margin-bottom: 48px; }
+  .hero { background: linear-gradient(135deg, #0f172a 0%, #0ea5e9 50%, #10b981 100%); color: white; padding: 48px 56px 40px; border-radius: 0 0 24px 24px; margin-bottom: 36px; }
+  .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; }
+  .hero .subtitle { font-size: 1.1rem; opacity: 0.9; }
+  .hero .badge { display: inline-block; background: rgba(255,255,255,0.15); padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; margin-top: 12px; }
+  h2 { font-size: 1.5rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border-color); }
+  h3 { font-size: 1.15rem; font-weight: 600; color: var(--accent-blue); margin: 20px 0 12px; }
+  h4 { font-size: 1rem; font-weight: 600; color: var(--accent-green); margin: 12px 0 8px; }
+  p { margin-bottom: 12px; color: var(--text-secondary); }
+  .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+  .card-blue { border-left: 4px solid var(--accent-blue); }
+  .card-green { border-left: 4px solid var(--accent-green); }
+  .card-amber { border-left: 4px solid var(--accent-amber); }
+  .card-red { border-left: 4px solid var(--accent-red); }
+  .card-purple { border-left: 4px solid var(--accent-purple); }
+  .card-cyan { border-left: 4px solid var(--accent-cyan); }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+  th { background: var(--bg-secondary); color: var(--accent-cyan); font-weight: 600; text-align: left; padding: 12px 16px; border-bottom: 2px solid var(--border-color); }
+  td { padding: 10px 16px; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); }
+  tr:hover td { background: rgba(14,165,233,0.05); }
+  ul, ol { padding-left: 20px; margin-bottom: 12px; }
+  li { margin-bottom: 6px; color: var(--text-secondary); }
+  .arch-diagram { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 30px; margin: 20px 0; }
+  .arch-row { display: flex; justify-content: center; align-items: center; gap: 12px; margin: 12px 0; flex-wrap: wrap; }
+  .arch-box { background: var(--bg-primary); border: 2px solid var(--border-color); border-radius: 10px; padding: 14px 20px; text-align: center; min-width: 140px; }
+  .arch-box.highlight { border-color: var(--accent-cyan); box-shadow: 0 0 12px rgba(34,211,238,0.2); }
+  .arch-box .title { font-weight: 700; font-size: 0.85rem; color: var(--accent-cyan); }
+  .arch-box .desc { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
+  .arch-arrow { color: var(--accent-cyan); font-size: 1.3rem; }
+  .arch-arrow-down { text-align: center; color: var(--accent-cyan); font-size: 1.3rem; margin: 4px 0; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  @media (max-width: 768px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } section { padding: 0 20px; } .arch-row { flex-direction: column; } }
+  code { background: rgba(14,165,233,0.1); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: var(--accent-cyan); }
+  .tech-badge { display: inline-block; background: rgba(167,139,250,0.15); color: var(--accent-purple); padding: 3px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; margin: 2px; }
+  .back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 1.2rem; cursor: pointer; z-index: 100; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <h1>🏗️ 시스템 아키텍처 설명서</h1>
+  <div class="subtitle">Toomics CS AI 챗봇 기술 구조와 구성 요소</div>
+  <div class="badge">v1.0 | 2026-02-23 | 기술팀 / 의사결정자용</div>
+</div>
+
+<section>
+  <h2>1. 기술 스택</h2>
+  <div class="card card-blue">
+    <div style="margin-bottom: 16px;">
+      <span class="tech-badge">Python 3.12</span>
+      <span class="tech-badge">FastAPI</span>
+      <span class="tech-badge">Uvicorn</span>
+      <span class="tech-badge">Claude Sonnet 4</span>
+      <span class="tech-badge">ChromaDB</span>
+      <span class="tech-badge">Redis</span>
+      <span class="tech-badge">Zendesk API</span>
+      <span class="tech-badge">nginx</span>
+      <span class="tech-badge">systemd</span>
+      <span class="tech-badge">Let's Encrypt</span>
+    </div>
+    <table>
+      <tr><th>계층</th><th>기술</th><th>용도</th></tr>
+      <tr><td>프론트엔드</td><td>Vanilla JS 위젯</td><td>고객 채팅 인터페이스 (데모 + 임베드용)</td></tr>
+      <tr><td>웹 서버</td><td>nginx + Let's Encrypt</td><td>HTTPS 터미네이션, 리버스 프록시</td></tr>
+      <tr><td>앱 서버</td><td>FastAPI + Uvicorn (2 workers)</td><td>API 엔드포인트, 비즈니스 로직</td></tr>
+      <tr><td>AI 엔진</td><td>Claude Sonnet 4 (via Proxy)</td><td>Intent 분류, Fraud 탐지, AI 초안 생성</td></tr>
+      <tr><td>벡터 DB</td><td>ChromaDB + all-MiniLM-L6-v2</td><td>RAG: 지식 기반 검색 (137건)</td></tr>
+      <tr><td>세션 저장</td><td>Redis 8.6</td><td>대화 세션 관리 (TTL 30분)</td></tr>
+      <tr><td>티켓 관리</td><td>Zendesk API v2</td><td>에스컬레이션 티켓 자동 생성</td></tr>
+      <tr><td>프로세스</td><td>systemd</td><td>서비스 관리 + 자동 재시작</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>2. 시스템 아키텍처</h2>
+
+  <div class="arch-diagram">
+    <div class="arch-row">
+      <div class="arch-box" style="border-color: var(--accent-green);">
+        <div class="title">👤 고객</div>
+        <div class="desc">웹 브라우저 / 위젯</div>
+      </div>
+    </div>
+    <div class="arch-arrow-down">↓ HTTPS</div>
+    <div class="arch-row">
+      <div class="arch-box">
+        <div class="title">🌐 nginx</div>
+        <div class="desc">SSL + 리버스 프록시<br>bizops.duckdns.org/chat/</div>
+      </div>
+    </div>
+    <div class="arch-arrow-down">↓ HTTP :8000</div>
+    <div class="arch-row">
+      <div class="arch-box highlight">
+        <div class="title">⚡ FastAPI</div>
+        <div class="desc">Uvicorn (2 Workers)<br>파이프라인 오케스트레이터</div>
+      </div>
+    </div>
+    <div class="arch-arrow-down">↓ 병렬 호출</div>
+    <div class="arch-row">
+      <div class="arch-box" style="border-color: var(--accent-amber);">
+        <div class="title">🧠 Claude API</div>
+        <div class="desc">via claude-max-api-proxy<br>:3456 (OpenAI 호환)</div>
+      </div>
+      <div class="arch-box" style="border-color: var(--accent-purple);">
+        <div class="title">📚 ChromaDB</div>
+        <div class="desc">RAG 벡터 검색<br>137건 지식 데이터</div>
+      </div>
+      <div class="arch-box" style="border-color: var(--accent-red);">
+        <div class="title">💾 Redis</div>
+        <div class="desc">세션 저장소<br>TTL 30분</div>
+      </div>
+      <div class="arch-box" style="border-color: var(--accent-green);">
+        <div class="title">🎫 Zendesk</div>
+        <div class="desc">티켓 자동 생성<br>L1/L2 에스컬레이션</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>3. 서비스 구성 요소</h2>
+
+  <div class="grid-2">
+    <div class="card card-blue">
+      <h3>🎯 Intent Classifier</h3>
+      <p>고객 메시지를 7개 카테고리 + 세부 의도로 분류</p>
+      <ul>
+        <li>Claude API JSON 모드로 구조화된 분류</li>
+        <li>감정(sentiment) 분석 포함</li>
+        <li>키워드 폴백 (API 실패 시)</li>
+        <li>분류 불가 시 → L1 에스컬레이션</li>
+      </ul>
+    </div>
+    <div class="card card-red">
+      <h3>🛡️ Fraud Detector</h3>
+      <p>모든 메시지에서 사기 의심 신호 탐지</p>
+      <ul>
+        <li>누적 점수 시스템 (세션 내)</li>
+        <li>탐지 항목: 차지백, 법적 위협, 반복 환불 등</li>
+        <li>점수 50+ → 강제 L1 에스컬레이션</li>
+        <li>Fraud 플래그 코드 (C1, S9 등) Zendesk 전달</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>🌍 Multilingual Service</h3>
+      <p>10개 언어 자동 감지 + 마켓 코드 매핑</p>
+      <ul>
+        <li>Phase 1: EN, KR, JP, TH, CN</li>
+        <li>Phase 2: FR, ES, PT, DE, IT</li>
+        <li>미지원 언어 → 인사말 + L1 에스컬레이션</li>
+        <li>마켓별 도메인 매핑 (toomics.com, .jp 등)</li>
+      </ul>
+    </div>
+    <div class="card card-amber">
+      <h3>📤 Escalation Handler</h3>
+      <p>L1/L2 에스컬레이션 처리 + Zendesk 티켓 생성</p>
+      <ul>
+        <li>L1: 맥락 요약만 (AI 초안 없음)</li>
+        <li>L2: 매뉴얼 기반 고객 응답 + AI 초안</li>
+        <li>Zendesk 커스텀 필드 자동 매핑</li>
+        <li>비동기 티켓 생성 (응답 차단 없음)</li>
+      </ul>
+    </div>
+    <div class="card card-purple">
+      <h3>🤖 Self-Service Handler</h3>
+      <p>L3 자동 응답 생성 (90/10 하이브리드)</p>
+      <ul>
+        <li>90%: 매뉴얼 템플릿 원문</li>
+        <li>10%: 자연어 글루 (인사말, 공감, 연결)</li>
+        <li>변수 치환 ({market_domain}, {support_url} 등)</li>
+        <li>금지 패턴 검증 (금액, 약속 표현 차단)</li>
+      </ul>
+    </div>
+    <div class="card card-cyan">
+      <h3>💬 Session Manager</h3>
+      <p>대화 세션 관리 (Redis 백엔드)</p>
+      <ul>
+        <li>세션 TTL: 30분 (설정 가능)</li>
+        <li>대화 히스토리, Fraud 누적 점수 저장</li>
+        <li>Content 상세정보 수집 상태 추적</li>
+        <li>결제 정보 수집 + Intent 복원 메커니즘</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>4. 파이프라인 처리 상세</h2>
+  <div class="card card-blue">
+    <table>
+      <tr><th>단계</th><th>처리 내용</th><th>실패 시</th></tr>
+      <tr><td>Step 0</td><td>세션 로드/생성 (Redis)</td><td>메모리 폴백</td></tr>
+      <tr><td>Step 1</td><td>언어 감지 (세션 재사용 우선)</td><td>EN 기본값</td></tr>
+      <tr><td>Step 2</td><td>미지원 언어 → L1 에스컬레이션</td><td>—</td></tr>
+      <tr><td>Step 2.5</td><td>Content 상세정보 수집 완료 → L2</td><td>—</td></tr>
+      <tr><td>Step 2.6</td><td>결제 정보 수집 완료 → Intent 복원</td><td>—</td></tr>
+      <tr><td>Step 3</td><td>Fraud + Intent 병렬 분석</td><td>Fraud: 기본값, Intent: 키워드 폴백 또는 L1</td></tr>
+      <tr><td>Step 4</td><td>Fraud 강제 L1 판단</td><td>—</td></tr>
+      <tr><td>Step 4.5</td><td>반복 응답 감지 → L2</td><td>—</td></tr>
+      <tr><td>Step 4.6</td><td>Content 최초 → 상세정보 요청</td><td>—</td></tr>
+      <tr><td>Step 4.7</td><td>결제 카테고리 → 결제 정보 요청</td><td>—</td></tr>
+      <tr><td>Step 5</td><td>라우팅 (L1/L2/L3)</td><td>—</td></tr>
+      <tr><td>Step 6</td><td>세션 업데이트 + 응답 반환</td><td>기본 에러 메시지 + L1</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>5. 인프라 구성</h2>
+  <div class="card card-green">
+    <table>
+      <tr><th>서비스</th><th>포트</th><th>관리 방식</th><th>상태 확인</th></tr>
+      <tr><td>FastAPI (챗봇)</td><td>:8000</td><td><code>systemctl restart chatbot</code></td><td><code>/health</code></td></tr>
+      <tr><td>claude-max-api-proxy</td><td>:3456</td><td><code>systemctl --user restart claude-max-api</code></td><td><code>/v1/models</code></td></tr>
+      <tr><td>Redis</td><td>:6379</td><td>수동 시작 (<code>~/.local/bin/redis-server</code>)</td><td><code>redis-cli ping</code></td></tr>
+      <tr><td>nginx</td><td>:443</td><td><code>systemctl restart nginx</code></td><td>브라우저 접속</td></tr>
+    </table>
+  </div>
+
+  <div class="card card-amber">
+    <h3>📁 디렉토리 구조</h3>
+    <pre style="background: #0d1117; padding: 16px; border-radius: 8px; font-size: 0.85rem; color: #c9d1d9; overflow-x: auto;">
+Ai-Chat-bot-project/
+├── app/
+│   ├── main.py                 # FastAPI 엔트리포인트
+│   ├── config.py               # 설정 관리 (.env 로드)
+│   ├── models/                 # Pydantic 모델 (ChatRequest, IntentResult 등)
+│   ├── routers/                # API 라우터 (/api/chat, /health 등)
+│   ├── services/               # 핵심 비즈니스 로직
+│   │   ├── pipeline.py         # 메인 파이프라인 오케스트레이터
+│   │   ├── claude_service.py   # Claude API 클라이언트 (프록시 경유)
+│   │   ├── intent_classifier.py
+│   │   ├── fraud_detector.py
+│   │   ├── multilingual.py
+│   │   ├── escalation_handler.py
+│   │   ├── self_service.py
+│   │   ├── session_manager.py
+│   │   ├── rag_service.py
+│   │   └── ...
+│   ├── utils/                  # 유틸리티 (프롬프트 로더 등)
+│   ├── static/                 # CSS, JS, 이미지
+│   └── templates/              # HTML 템플릿 (데모 페이지)
+├── knowledge/                  # RAG 지식 데이터 (JSON)
+├── prompts/                    # AI 프롬프트 템플릿
+├── config/                     # 설정 파일
+├── tests/                      # 테스트 (114개)
+├── scripts/                    # 유틸리티 스크립트 (ingest.py 등)
+├── docs/                       # 문서 (HTML)
+├── data/                       # 런타임 데이터 (ChromaDB, 피드백)
+├── .env                        # 환경 변수 (gitignore)
+├── .env.example                # 환경 변수 예시
+└── requirements.txt            # Python 의존성</pre>
+  </div>
+</section>
+
+<section>
+  <h2>6. 보안 및 개인정보</h2>
+  <div class="grid-2">
+    <div class="card card-red">
+      <h3>🔒 보안 조치</h3>
+      <ul>
+        <li>HTTPS (Let's Encrypt TLS 1.2/1.3)</li>
+        <li>API 키/토큰: .env 파일 (gitignore)</li>
+        <li>Zendesk: API 토큰 인증 (이메일/토큰)</li>
+        <li>Claude API: 프록시 경유 (로컬호스트만)</li>
+        <li>Redis: 로컬호스트 바인딩 (외부 접근 차단)</li>
+      </ul>
+    </div>
+    <div class="card card-purple">
+      <h3>🛡️ 개인정보 보호</h3>
+      <ul>
+        <li>고객 결제 정보: 세션 내 임시 저장 (30분 TTL)</li>
+        <li>대화 히스토리: Redis에만 저장 (영구 저장 없음)</li>
+        <li>Zendesk 티켓: 고객 이메일만 전달</li>
+        <li>AI 모델: 고객 데이터 학습에 사용하지 않음</li>
+        <li>로그: 고객 메시지 내용은 DEBUG 레벨에서만</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>7. 모니터링 및 운영</h2>
+  <div class="card card-cyan">
+    <h3>📊 주요 모니터링 포인트</h3>
+    <table>
+      <tr><th>항목</th><th>확인 방법</th><th>정상 기준</th></tr>
+      <tr><td>서비스 상태</td><td><code>GET /health</code></td><td><code>"status": "healthy"</code></td></tr>
+      <tr><td>응답 시간</td><td>API 로그 <code>processing_time_ms</code></td><td>&lt; 30초 (L3: &lt; 10초)</td></tr>
+      <tr><td>프록시 상태</td><td><code>GET :3456/v1/models</code></td><td>3개 모델 반환</td></tr>
+      <tr><td>Redis 연결</td><td><code>redis-cli ping</code></td><td>PONG</td></tr>
+      <tr><td>Zendesk 연동</td><td><code>GET /api/v2/users/me</code></td><td>HTTP 200</td></tr>
+      <tr><td>에러율</td><td>로그 <code>ERROR</code> 레벨</td><td>&lt; 1%</td></tr>
+    </table>
+  </div>
+</section>
+
+</div>
+
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</body>
+</html>

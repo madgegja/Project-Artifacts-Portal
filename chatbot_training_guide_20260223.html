@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toomics CS AI 챗봇 — 운영자/리더 교육 자료 v1.0 | 2026-02-23</title>
+<style>
+  @page { size: A4; margin: 15mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-card: #1e293b;
+    --text-primary: #e2e8f0;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --accent-blue: #0ea5e9;
+    --accent-cyan: #22d3ee;
+    --accent-green: #10b981;
+    --accent-amber: #f59e0b;
+    --accent-red: #ef4444;
+    --accent-purple: #a78bfa;
+    --border-color: #334155;
+    --border-light: rgba(255,255,255,0.06);
+  }
+  body {
+    font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', -apple-system, sans-serif;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    line-height: 1.75;
+    font-size: 14px;
+  }
+  @media print {
+    body { background: #fff; color: #1a1a2e; }
+    .hero { background: #1e3a5f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .card, .toc, table, .checklist-box { border: 1px solid #ccc; }
+    a { color: #1e3a5f; }
+    .back-to-top { display: none !important; }
+    section { break-inside: avoid; }
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 0 60px; }
+  section { padding: 0 40px; margin-bottom: 48px; }
+  .hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #10b981 100%);
+    color: white; padding: 48px 56px 40px;
+    position: relative; overflow: hidden;
+    border-radius: 0 0 24px 24px; margin-bottom: 36px;
+  }
+  .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; }
+  .hero .subtitle { font-size: 1.1rem; opacity: 0.9; }
+  .hero .badge { display: inline-block; background: rgba(255,255,255,0.15); padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; margin-top: 12px; }
+  h2 { font-size: 1.5rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border-color); }
+  h3 { font-size: 1.15rem; font-weight: 600; color: var(--accent-blue); margin: 20px 0 12px; }
+  h4 { font-size: 1rem; font-weight: 600; color: var(--accent-green); margin: 16px 0 8px; }
+  p { margin-bottom: 12px; color: var(--text-secondary); }
+  .card {
+    background: var(--bg-card); border: 1px solid var(--border-color);
+    border-radius: 12px; padding: 24px; margin-bottom: 20px;
+  }
+  .card-blue { border-left: 4px solid var(--accent-blue); }
+  .card-green { border-left: 4px solid var(--accent-green); }
+  .card-amber { border-left: 4px solid var(--accent-amber); }
+  .card-red { border-left: 4px solid var(--accent-red); }
+  .card-purple { border-left: 4px solid var(--accent-purple); }
+  .card-cyan { border-left: 4px solid var(--accent-cyan); }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+  th { background: var(--bg-secondary); color: var(--accent-cyan); font-weight: 600; text-align: left; padding: 12px 16px; border-bottom: 2px solid var(--border-color); }
+  td { padding: 10px 16px; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); }
+  tr:hover td { background: rgba(14,165,233,0.05); }
+  .level-badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 700; }
+  .level-l1 { background: rgba(239,68,68,0.2); color: var(--accent-red); }
+  .level-l2 { background: rgba(245,158,11,0.2); color: var(--accent-amber); }
+  .level-l3 { background: rgba(16,185,129,0.2); color: var(--accent-green); }
+  .toc { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px 32px; margin: 0 40px 36px; }
+  .toc h3 { color: var(--accent-cyan); margin-bottom: 12px; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin-bottom: 6px; }
+  .toc a { color: var(--accent-blue); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .flow-diagram {
+    display: flex; align-items: center; justify-content: center;
+    flex-wrap: wrap; gap: 8px; margin: 24px 0; padding: 20px;
+    background: var(--bg-secondary); border-radius: 12px;
+  }
+  .flow-step {
+    background: var(--bg-primary); border: 1px solid var(--border-color);
+    border-radius: 10px; padding: 12px 18px; text-align: center;
+    min-width: 120px; font-size: 0.9rem;
+  }
+  .flow-step .icon { font-size: 1.5rem; display: block; margin-bottom: 4px; }
+  .flow-arrow { color: var(--accent-cyan); font-size: 1.3rem; font-weight: bold; }
+  .ticket-example {
+    background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
+    padding: 20px; margin: 16px 0; font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.85rem; line-height: 1.6; color: #c9d1d9; white-space: pre-wrap;
+  }
+  .ticket-example .label { color: var(--accent-cyan); font-weight: 700; }
+  .ticket-example .value { color: var(--text-secondary); }
+  .ticket-example .highlight { color: var(--accent-amber); }
+  .ticket-example .draft-section { border-top: 1px dashed #30363d; margin-top: 12px; padding-top: 12px; color: var(--accent-green); }
+  .checklist-box {
+    background: var(--bg-secondary); border: 1px solid var(--border-color);
+    border-radius: 12px; padding: 24px; margin: 16px 0;
+  }
+  .checklist-item { display: flex; align-items: flex-start; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--border-light); }
+  .checklist-item:last-child { border-bottom: none; }
+  .checkbox { width: 20px; height: 20px; border: 2px solid var(--accent-blue); border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  @media (max-width: 768px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } section { padding: 0 20px; } }
+  .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .do-box { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 16px; }
+  .dont-box { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 16px; }
+  .do-box h4 { color: var(--accent-green); } .dont-box h4 { color: var(--accent-red); }
+  ul { padding-left: 20px; margin-bottom: 12px; }
+  li { margin-bottom: 6px; color: var(--text-secondary); }
+  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
+  .stat-card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; padding: 16px; text-align: center; }
+  .stat-value { font-size: 1.8rem; font-weight: 800; }
+  .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+  @media (max-width: 768px) { .stat-grid { grid-template-columns: 1fr 1fr; } .do-dont { grid-template-columns: 1fr; } }
+  .back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 1.2rem; cursor: pointer; z-index: 100; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<div class="hero">
+  <h1>📚 CS AI 챗봇 교육 자료</h1>
+  <div class="subtitle">운영자 및 팀 리더를 위한 종합 교육 가이드</div>
+  <div class="badge">v1.0 | 2026-02-23 | Toomics Global CS</div>
+</div>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>📑 목차</h3>
+  <ol>
+    <li><a href="#s1">교육 목표 및 개요</a></li>
+    <li><a href="#s2">AI 챗봇 기본 개념</a></li>
+    <li><a href="#s3">파이프라인 이해하기</a></li>
+    <li><a href="#s4">에스컬레이션 레벨 교육</a></li>
+    <li><a href="#s5">Zendesk 티켓 읽는 법</a></li>
+    <li><a href="#s6">AI 초안 활용법</a></li>
+    <li><a href="#s7">카테고리별 처리 가이드</a></li>
+    <li><a href="#s8">자주 묻는 질문 (FAQ)</a></li>
+    <li><a href="#s9">교육 완료 체크리스트</a></li>
+  </ol>
+</nav>
+
+<!-- Section 1 -->
+<section id="s1">
+  <h2>1. 교육 목표 및 개요</h2>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-value" style="color:var(--accent-blue)">10개</div><div class="stat-label">지원 언어</div></div>
+    <div class="stat-card"><div class="stat-value" style="color:var(--accent-green)">7개</div><div class="stat-label">카테고리 분류</div></div>
+    <div class="stat-card"><div class="stat-value" style="color:var(--accent-amber)">3단계</div><div class="stat-label">에스컬레이션 레벨</div></div>
+    <div class="stat-card"><div class="stat-value" style="color:var(--accent-purple)">24/7</div><div class="stat-label">자동 응대</div></div>
+  </div>
+
+  <div class="card card-blue">
+    <h3>🎯 교육 목표</h3>
+    <p>본 교육을 이수하면 다음 역량을 갖추게 됩니다:</p>
+    <ul>
+      <li><strong>AI 챗봇 작동 원리</strong>를 이해하고 고객에게 설명할 수 있다</li>
+      <li><strong>L1/L2/L3 에스컬레이션</strong> 프로세스를 숙지하고 적절히 대응할 수 있다</li>
+      <li>Zendesk 티켓의 <strong>AI 맥락 요약과 초안</strong>을 활용하여 빠르게 응대할 수 있다</li>
+      <li>카테고리별 <strong>핵심 처리 포인트</strong>를 파악하고 정확한 안내를 제공할 수 있다</li>
+      <li><strong>Fraud 탐지</strong> 알림에 적절히 대응할 수 있다</li>
+    </ul>
+  </div>
+
+  <div class="card card-green">
+    <h3>👥 대상</h3>
+    <div class="grid-2">
+      <div>
+        <h4>CS 운영자 (Agent)</h4>
+        <ul>
+          <li>L1/L2 에스컬레이션 티켓 처리</li>
+          <li>AI 초안 검토 및 발송</li>
+          <li>고객 응대 품질 관리</li>
+        </ul>
+      </div>
+      <div>
+        <h4>팀 리더 (Supervisor)</h4>
+        <ul>
+          <li>에스컬레이션 품질 모니터링</li>
+          <li>Fraud 고위험 건 관리</li>
+          <li>운영 KPI 분석 및 개선</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2 -->
+<section id="s2">
+  <h2>2. AI 챗봇 기본 개념</h2>
+
+  <div class="do-dont">
+    <div class="do-box">
+      <h4>✅ AI 챗봇이 하는 일</h4>
+      <ul>
+        <li>고객 메시지 언어 자동 감지 (10개 언어)</li>
+        <li>문의 카테고리 및 세부 의도 분류</li>
+        <li>사기(Fraud) 의심 신호 실시간 탐지</li>
+        <li>간단한 문의(L3) 매뉴얼 기반 자동 응답</li>
+        <li>복잡한 문의(L2) 상담원용 AI 초안 생성</li>
+        <li>Zendesk 티켓 자동 생성 + 맥락 요약 첨부</li>
+        <li>대화 세션 관리 (30분 유지)</li>
+        <li>결제 정보 / 콘텐츠 상세정보 사전 수집</li>
+      </ul>
+    </div>
+    <div class="dont-box">
+      <h4>❌ AI 챗봇이 하지 않는 일</h4>
+      <ul>
+        <li>환불 승인/거절 결정 (상담원 판단 필요)</li>
+        <li>계정 직접 수정 (비밀번호 리셋, 구독 취소 등)</li>
+        <li>결제 정보 조회 또는 처리</li>
+        <li>법적 문의 또는 위협에 대한 자동 응답</li>
+        <li>고객 개인정보 저장 또는 외부 전송</li>
+        <li>금액, 날짜 등 구체적 약속 (항상 [AGENT:] 표시)</li>
+        <li>Fraud 고위험 건 자동 응답 (즉시 L1 에스컬레이션)</li>
+        <li>매뉴얼에 없는 내용 창작</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card card-purple" style="margin-top: 20px;">
+    <h3>💡 핵심 원칙: "AI는 창작하지 않는다"</h3>
+    <p>AI 챗봇의 모든 고객 응답은 <strong>운영 매뉴얼 템플릿을 기반</strong>으로 합니다. AI가 자유롭게 답변을 만들어내지 않습니다.</p>
+    <ul>
+      <li><strong>90%</strong>: 매뉴얼 템플릿 원문 (고정)</li>
+      <li><strong>10%</strong>: 인사말, 공감 표현, 연결 문구 (자연어 생성)</li>
+    </ul>
+    <p>이 원칙 덕분에 <strong>잘못된 정보 제공 위험이 최소화</strong>됩니다.</p>
+  </div>
+</section>
+
+<!-- Section 3 -->
+<section id="s3">
+  <h2>3. 파이프라인 이해하기</h2>
+
+  <p>고객 메시지가 접수되면 다음 순서로 처리됩니다:</p>
+
+  <div class="flow-diagram">
+    <div class="flow-step"><span class="icon">💬</span>고객 메시지<br>접수</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step"><span class="icon">🌍</span>언어 감지<br>(10개 언어)</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step" style="border-color: var(--accent-amber);"><span class="icon">⚡</span>Fraud + Intent<br><strong>병렬 분석</strong></div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step"><span class="icon">🔀</span>라우팅<br>결정</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step" style="border-color: var(--accent-green);"><span class="icon">📤</span>응답 전송<br>+ 티켓 생성</div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card card-amber">
+      <h3>🔍 Fraud 탐지</h3>
+      <p>모든 메시지에 대해 사기 의심 신호를 자동 분석합니다:</p>
+      <ul>
+        <li><strong>점수 0~49</strong>: 정상 → Intent 기반 라우팅</li>
+        <li><strong>점수 50 이상</strong>: 위험 → <span class="level-badge level-l1">L1</span> 강제 에스컬레이션</li>
+      </ul>
+      <p>탐지 항목: 차지백 언급, 법적 위협, 반복적 환불 요청, 계정 탈취 시도 등</p>
+    </div>
+    <div class="card card-blue">
+      <h3>🎯 Intent 분류</h3>
+      <p>고객 문의를 7개 카테고리로 자동 분류합니다:</p>
+      <ul>
+        <li>Subscription (구독) / Refund (환불)</li>
+        <li>Account (계정) / Payment (결제)</li>
+        <li>Technical (기술) / Content (콘텐츠)</li>
+        <li>Other (기타)</li>
+      </ul>
+      <p>분류 불가 시 → <span class="level-badge level-l1">L1</span> 에스컬레이션</p>
+    </div>
+  </div>
+
+  <div class="card card-cyan">
+    <h3>📊 특수 플로우</h3>
+    <table>
+      <tr><th>상황</th><th>처리</th><th>이유</th></tr>
+      <tr><td>미지원 언어 감지</td><td>인사말 + 즉시 L1</td><td>해당 언어 상담원 연결 필요</td></tr>
+      <tr><td>Content 카테고리</td><td>상세정보 요청 → L2</td><td>작품명/회차/문제 수집 후 QA팀 전달</td></tr>
+      <tr><td>결제 카테고리 (L3)</td><td>결제 정보 요청 → 원래 플로우</td><td>계정 식별을 위한 결제 정보 필요</td></tr>
+      <tr><td>동일 의도 2회 반복</td><td>L3 → L2 자동 에스컬레이션</td><td>셀프서비스 해결 불가 판단</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- Section 4 -->
+<section id="s4">
+  <h2>4. 에스컬레이션 레벨 교육</h2>
+
+  <div class="card card-red">
+    <h3>🔴 L1 — 즉시 에스컬레이션</h3>
+    <table>
+      <tr><th>항목</th><th>내용</th></tr>
+      <tr><td><strong>트리거</strong></td><td>Fraud 점수 ≥ 50, 법적 위협, 차지백 언급, Intent 미분류</td></tr>
+      <tr><td><strong>AI 자동 응답</strong></td><td>❌ 없음 — 고객에게 "티켓 제출 안내" 메시지만 전송</td></tr>
+      <tr><td><strong>AI 초안</strong></td><td>❌ 없음 — 상담원이 직접 판단하여 응답</td></tr>
+      <tr><td><strong>Zendesk 티켓</strong></td><td>✅ 자동 생성 (맥락 요약 + Fraud 정보 포함)</td></tr>
+      <tr><td><strong>우선순위</strong></td><td>🔴 Urgent — 즉시 처리 필요</td></tr>
+      <tr><td><strong>상담원 액션</strong></td><td>Fraud 플래그 확인 → 계정 히스토리 조회 → 직접 응답 작성</td></tr>
+    </table>
+    <p style="margin-top: 12px; color: var(--accent-red);"><strong>⚠️ L1 건은 AI가 절대 고객에게 실질적 응답을 하지 않습니다. 상담원의 전문적 판단이 필수입니다.</strong></p>
+  </div>
+
+  <div class="card card-amber">
+    <h3>🟡 L2 — AI 초안 + 상담원 검토</h3>
+    <table>
+      <tr><th>항목</th><th>내용</th></tr>
+      <tr><td><strong>트리거</strong></td><td>Content/Other 카테고리, 복잡한 환불, 반복 문의, Intent L1 클램핑</td></tr>
+      <tr><td><strong>고객 응답</strong></td><td>✅ 매뉴얼 기반 안내 + "티켓 제출" 안내 (90/10 하이브리드)</td></tr>
+      <tr><td><strong>AI 초안</strong></td><td>✅ 운영 매뉴얼 기반 이메일 초안 생성 (Zendesk 티켓에 포함)</td></tr>
+      <tr><td><strong>Zendesk 티켓</strong></td><td>✅ 자동 생성 (맥락 요약 + 대화 로그 + AI 초안)</td></tr>
+      <tr><td><strong>우선순위</strong></td><td>🟡 High/Normal</td></tr>
+      <tr><td><strong>상담원 액션</strong></td><td>AI 초안 검토 → [AGENT:] 플레이스홀더 채우기 → 수정/발송</td></tr>
+    </table>
+    <p style="margin-top: 12px; color: var(--accent-amber);"><strong>💡 AI 초안은 "출발점"입니다. 반드시 검토 후 발송하세요.</strong></p>
+  </div>
+
+  <div class="card card-green">
+    <h3>🟢 L3 — 셀프서비스 자동 응답</h3>
+    <table>
+      <tr><th>항목</th><th>내용</th></tr>
+      <tr><td><strong>트리거</strong></td><td>명확한 카테고리 + 낮은 Fraud 점수 + 자동화 가능 의도</td></tr>
+      <tr><td><strong>고객 응답</strong></td><td>✅ 매뉴얼 기반 자동 응답 (구독 취소 방법, 비밀번호 재설정 등)</td></tr>
+      <tr><td><strong>AI 초안</strong></td><td>해당 없음 (상담원 개입 불필요)</td></tr>
+      <tr><td><strong>Zendesk 티켓</strong></td><td>❌ 생성하지 않음 (고객이 직접 해결)</td></tr>
+      <tr><td><strong>상담원 액션</strong></td><td>없음 (모니터링만)</td></tr>
+    </table>
+    <p style="margin-top: 12px; color: var(--accent-green);"><strong>✅ L3는 고객이 스스로 해결합니다. 동일 문의 2회 반복 시 자동으로 L2로 에스컬레이션됩니다.</strong></p>
+  </div>
+</section>
+
+<!-- Section 5 -->
+<section id="s5">
+  <h2>5. Zendesk 티켓 읽는 법</h2>
+
+  <p>AI 챗봇이 생성하는 Zendesk 티켓은 3개 섹션으로 구성됩니다:</p>
+
+  <div class="card card-blue">
+    <h3>📋 티켓 구조</h3>
+    <div class="ticket-example"><span class="label">## Agent Context Summary</span>
+
+<span class="label">Escalation Level</span>: <span class="value">L2</span>
+<span class="label">Reason</span>: <span class="value">Content error reported with specific details...</span>
+<span class="label">Customer Language</span>: <span class="value">EN</span>
+<span class="label">Category</span>: <span class="value">Content</span>
+<span class="label">Sub-Intent</span>: <span class="value">content_error</span>
+<span class="label">Fraud Score</span>: <span class="value">0</span>
+<span class="label">Suggested Action</span>: <span class="highlight">Verify broken image issue on Dark Moon Chapter 5...</span>
+
+---
+
+<span class="label">## Conversation Log (4 messages)</span>
+
+<span class="label">### [1] Customer</span>
+<span class="value">> The images in Chapter 5 of Dark Moon are broken</span>
+
+<span class="label">Bot Response:</span>
+<span class="value">Thank you for reporting this issue. Could you provide...</span>
+
+<span class="label">### [2] Customer</span>
+<span class="value">> Title: Dark Moon, Chapter 5, pages 3-5 have broken images</span>
+
+<span class="label">Bot Response:</span>
+<span class="value">Thank you for contacting Toomics Support...</span>
+<span class="draft-section">
+---
+
+<span class="label">## AI Draft Response (Ready to Send)</span>
+
+Thank you for contacting Toomics.
+
+We apologize for the inconvenience you experienced with <strong>Dark Moon</strong>,
+Chapter 5, pages 3–5...
+
+<span class="highlight">[AGENT: If a workaround or timeline is available, add it here]</span>
+
+Best regards,
+Toomics Support</span></div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card card-cyan">
+      <h4>① Agent Context Summary</h4>
+      <p>한눈에 파악할 수 있는 <strong>상황 요약</strong></p>
+      <ul>
+        <li>에스컬레이션 레벨 & 사유</li>
+        <li>카테고리 / Sub-Intent</li>
+        <li>Fraud 점수 & 플래그</li>
+        <li><strong>Suggested Action</strong> — AI 권장 조치</li>
+      </ul>
+    </div>
+    <div class="card card-purple">
+      <h4>② Conversation Log</h4>
+      <p>봇과 고객의 <strong>전체 대화 기록</strong></p>
+      <ul>
+        <li>고객 메시지: blockquote(>) 표시</li>
+        <li>봇 응답: 일반 텍스트</li>
+        <li>시간순 정렬</li>
+        <li>고객이 제공한 정보 확인용</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h4>③ AI Draft Response</h4>
+      <p>상담원이 <strong>바로 검토 후 발송</strong>할 수 있는 이메일 초안</p>
+      <ul>
+        <li>운영 매뉴얼 기반 작성</li>
+        <li>[AGENT:] 플레이스홀더 포함</li>
+        <li>L2에서만 생성 (L1은 없음)</li>
+        <li>수정/보완 후 고객에게 발송</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Section 6 -->
+<section id="s6">
+  <h2>6. AI 초안 활용법</h2>
+
+  <div class="card card-amber">
+    <h3>🔍 AI 초안 검토 5단계</h3>
+    <table>
+      <tr><th>단계</th><th>체크 포인트</th><th>예시</th></tr>
+      <tr><td><strong>1. [AGENT:] 확인</strong></td><td>플레이스홀더를 실제 정보로 교체</td><td>[AGENT: cancel date] → 2026-02-23</td></tr>
+      <tr><td><strong>2. 정보 정확성</strong></td><td>계정 조회 후 사실과 일치하는지 확인</td><td>구독 상태, 결제 내역, 환불 자격</td></tr>
+      <tr><td><strong>3. 톤 & 언어</strong></td><td>고객 언어와 감정에 맞는 톤인지 확인</td><td>불만 고객 → 공감 표현 추가</td></tr>
+      <tr><td><strong>4. 정책 준수</strong></td><td>환불 조건, 개인정보 처리 등 정책 위반 없는지</td><td>14일/미열람/미사용 3가지 조건</td></tr>
+      <tr><td><strong>5. 발송 전 최종 확인</strong></td><td>[AGENT:] 잔존 여부 재확인</td><td>Ctrl+F로 "[AGENT" 검색</td></tr>
+    </table>
+  </div>
+
+  <div class="do-dont">
+    <div class="do-box">
+      <h4>✅ 이렇게 활용하세요</h4>
+      <ul>
+        <li>AI 초안을 <strong>출발점</strong>으로 활용</li>
+        <li>[AGENT:] 부분을 실제 정보로 교체</li>
+        <li>계정 확인 후 정확한 정보 입력</li>
+        <li>필요 시 문구 수정/추가/삭제</li>
+        <li>고객 감정에 맞게 톤 조절</li>
+      </ul>
+    </div>
+    <div class="dont-box">
+      <h4>❌ 이렇게 하지 마세요</h4>
+      <ul>
+        <li>[AGENT:] 플레이스홀더를 그대로 발송</li>
+        <li>계정 확인 없이 AI 초안 그대로 전송</li>
+        <li>환불 금액/날짜를 추측으로 기입</li>
+        <li>AI 초안의 정책 설명을 임의 변경</li>
+        <li>L1 건에서 AI 초안 기대 (L1은 초안 없음)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card card-purple" style="margin-top: 20px;">
+    <h3>⏱️ 예상 시간 절감</h3>
+    <div class="grid-3">
+      <div style="text-align:center;">
+        <div style="font-size: 2rem;">📝</div>
+        <div style="color: var(--accent-red);">기존 방식</div>
+        <div style="font-size: 1.5rem; font-weight: 700;">8~15분</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">매뉴얼 검색 + 작성</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size: 2rem;">🤖</div>
+        <div style="color: var(--accent-green);">AI 초안 활용</div>
+        <div style="font-size: 1.5rem; font-weight: 700;">2~5분</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">검토 + 수정 + 발송</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size: 2rem;">⚡</div>
+        <div style="color: var(--accent-cyan);">절감율</div>
+        <div style="font-size: 1.5rem; font-weight: 700;">60~70%</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">응대 시간 단축</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 7 -->
+<section id="s7">
+  <h2>7. 카테고리별 처리 가이드</h2>
+
+  <div class="card card-blue">
+    <h3>📦 Subscription (구독) — 전체의 ~24%</h3>
+    <table>
+      <tr><th>주요 유형</th><th>처리 방법</th><th>주의점</th></tr>
+      <tr><td>구독 취소 요청</td><td>웹/앱/Google/Apple별 취소 방법 안내</td><td>취소 후에도 만료일까지 접근 가능 안내</td></tr>
+      <tr><td>취소했는데 과금</td><td>복수 계정 확인 / App Store 구독 확인</td><td>웹 구독 ≠ 앱 구독 (별도 시스템)</td></tr>
+      <tr><td>구독 변경</td><td>현재 구독 취소 → 만료 후 재구독 안내</td><td>중간 변경 불가, 만료 후 재가입</td></tr>
+    </table>
+  </div>
+
+  <div class="card card-red">
+    <h3>💰 Refund (환불) — 전체의 ~18%</h3>
+    <table>
+      <tr><th>주요 유형</th><th>처리 방법</th><th>주의점</th></tr>
+      <tr><td>일반 환불</td><td>3가지 조건 확인 (14일/미열람/미사용)</td><td>하나라도 불충족 시 거절</td></tr>
+      <tr><td>Apple 결제 환불</td><td>reportaproblem.apple.com 안내</td><td>Toomics에서 직접 처리 불가</td></tr>
+      <tr><td>무단 결제 주장</td><td>Fraud 점수 확인 → L1/L2 판단</td><td>자녀 결제 사례 빈번</td></tr>
+    </table>
+    <p style="margin-top: 8px; color: var(--accent-red);">⚠️ 환불 금액/날짜는 반드시 계정 확인 후 기입 — AI가 임의로 약속하지 않음</p>
+  </div>
+
+  <div class="card card-purple">
+    <h3>👤 Account (계정) — 전체의 ~15%</h3>
+    <table>
+      <tr><th>주요 유형</th><th>처리 방법</th><th>주의점</th></tr>
+      <tr><td>비밀번호 재설정</td><td>임시 비밀번호(123123) 설정 → 변경 안내</td><td>소셜 로그인 계정은 비밀번호 없음</td></tr>
+      <tr><td>계정 삭제</td><td>영구 삭제 경고 → 확인 후 처리</td><td>활성 구독 있으면 먼저 취소</td></tr>
+      <tr><td>계정 못 찾음</td><td>결제 정보로 계정 검색</td><td>CS 이메일 ≠ 가입 이메일 (~45%)</td></tr>
+    </table>
+  </div>
+
+  <div class="card card-amber">
+    <h3>💳 Payment (결제) — 전체의 ~12%</h3>
+    <table>
+      <tr><th>주요 유형</th><th>처리 방법</th><th>주의점</th></tr>
+      <tr><td>자동 갱신 과금</td><td>자동갱신 설명 + 취소 방법 안내</td><td>환불 자격도 함께 확인</td></tr>
+      <tr><td>결제 실패</td><td>카드 잔액/만료/3DS 확인 안내</td><td>은행 보안 차단 사례 다수</td></tr>
+      <tr><td>해외 수수료</td><td>Toomics가 아닌 은행 부과 수수료 설명</td><td>고객 은행에 문의 안내</td></tr>
+    </table>
+  </div>
+
+  <div class="grid-2">
+    <div class="card card-cyan">
+      <h3>🔧 Technical (기술) — ~8%</h3>
+      <ul>
+        <li>로딩 문제 → 캐시 삭제, 브라우저 변경</li>
+        <li>앱 vs 웹 → VIP 구매 플랫폼별 접근 제한</li>
+        <li>Family Safe Mode → 앱에서 해제 불가</li>
+        <li>버그 리포트 → 디바이스/OS 정보 수집</li>
+      </ul>
+    </div>
+    <div class="card card-green">
+      <h3>📖 Content (콘텐츠) — ~5%</h3>
+      <ul>
+        <li>번역 오류 → 작품명/회차/장면 수집 → QA팀 전달</li>
+        <li>이미지 깨짐 → CDN 문제 확인</li>
+        <li>콘텐츠 삭제 → 라이선스 사유 설명</li>
+        <li><strong>항상 L2</strong> — 콘텐츠팀 확인 필수</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Section 8 -->
+<section id="s8">
+  <h2>8. 자주 묻는 질문 (FAQ)</h2>
+
+  <div class="card card-blue">
+    <h4>Q1. AI 챗봇이 잘못된 답변을 하면 어떻게 되나요?</h4>
+    <p>AI는 매뉴얼 템플릿 기반으로만 응답하므로 잘못된 정보 생성 위험이 낮습니다. 금액, 날짜 등 구체적 정보는 항상 [AGENT:] 플레이스홀더로 표시되어 상담원이 직접 확인합니다.</p>
+  </div>
+
+  <div class="card card-blue">
+    <h4>Q2. L1 에스컬레이션이 너무 많으면?</h4>
+    <p>Fraud 탐지 기준(점수 50 이상)이 높게 설정되어 있어 오탐(False Positive)이 적습니다. L1이 과도하게 발생하면 팀 리더에게 보고하여 기준값 조정을 검토합니다.</p>
+  </div>
+
+  <div class="card card-blue">
+    <h4>Q3. AI 초안 없이 L2 티켓이 오면?</h4>
+    <p>드물지만 AI 서비스 장애 시 "[AGENT: AI 초안 생성 실패]"로 표시됩니다. 이 경우 기존 방식대로 매뉴얼 참고하여 직접 응답을 작성하세요.</p>
+  </div>
+
+  <div class="card card-blue">
+    <h4>Q4. 고객이 챗봇 답변에 불만을 표시하면?</h4>
+    <p>동일 의도가 2회 반복되면 자동으로 L2로 에스컬레이션됩니다. 고객이 직접 상담원을 요청하면 그에 맞게 대응하세요.</p>
+  </div>
+
+  <div class="card card-blue">
+    <h4>Q5. 챗봇이 지원하지 않는 언어로 문의가 오면?</h4>
+    <p>10개 지원 언어(EN, FR, ES, PT, DE, TH, JP, CN, IT, KR) 외의 언어는 자동으로 L1 에스컬레이션됩니다. 해당 언어 가능 상담원이 처리합니다.</p>
+  </div>
+
+  <div class="card card-blue">
+    <h4>Q6. Zendesk 티켓의 카테고리가 잘못 분류되면?</h4>
+    <p>AI의 Intent 분류 정확도는 약 90~95%입니다. 잘못 분류된 경우 Zendesk에서 카테고리를 수정하고, 반복되는 오분류 패턴은 팀 리더에게 보고하세요.</p>
+  </div>
+
+  <div class="card card-blue">
+    <h4>Q7. 고객이 결제 정보를 제공하지 않으면?</h4>
+    <p>결제 카테고리(Refund/Subscription/Payment)의 L3 플로우에서 결제 정보를 사전 수집합니다. 미제공 시 다음 메시지에서 다시 요청하며, 2회 이상 미제공 시 L2로 에스컬레이션됩니다.</p>
+  </div>
+
+  <div class="card card-blue">
+    <h4>Q8. AI 초안의 [AGENT:] 부분을 어떻게 채우나요?</h4>
+    <p>Zendesk에서 고객 계정을 조회한 후 실제 정보를 입력합니다. 예: [AGENT: cancel date] → "2026-02-23", [AGENT: amount] → "$9.99" 등</p>
+  </div>
+
+  <div class="card card-blue">
+    <h4>Q9. 챗봇의 세션은 언제 만료되나요?</h4>
+    <p>30분 동안 활동이 없으면 세션이 만료됩니다. 만료 후 새 메시지를 보내면 새 세션이 시작됩니다.</p>
+  </div>
+
+  <div class="card card-blue">
+    <h4>Q10. Fraud 점수는 어떻게 계산되나요?</h4>
+    <p>AI가 메시지 내 키워드, 패턴, 대화 히스토리를 종합 분석합니다. 차지백 언급(+20~30점), 법적 위협(+15~25점), 반복 환불(+10~15점) 등 항목별로 누적됩니다.</p>
+  </div>
+
+  <div class="card card-blue">
+    <h4>Q11. 데모 페이지는 어디인가요?</h4>
+    <p><strong><a href="https://bizops.duckdns.org/chat/demo" style="color: var(--accent-cyan);">https://bizops.duckdns.org/chat/demo</a></strong> — 실제 운영 환경과 동일하게 테스트할 수 있습니다.</p>
+  </div>
+
+  <div class="card card-blue">
+    <h4>Q12. 챗봇 장애 시 어떻게 하나요?</h4>
+    <p>챗봇 서비스가 다운되면 고객에게 기본 에러 메시지("A support agent will assist you shortly")가 표시되며 L1 에스컬레이션됩니다. 기존 Zendesk 워크플로우로 처리하세요.</p>
+  </div>
+</section>
+
+<!-- Section 9 -->
+<section id="s9">
+  <h2>9. 교육 완료 체크리스트</h2>
+  <p>아래 항목을 모두 확인하셨으면 교육이 완료된 것입니다.</p>
+
+  <div class="checklist-box">
+    <h3 style="color: var(--accent-cyan); margin-bottom: 16px;">✅ 기본 이해</h3>
+    <div class="checklist-item"><div class="checkbox"></div><div>AI 챗봇이 하는 일과 하지 않는 일을 구분할 수 있다</div></div>
+    <div class="checklist-item"><div class="checkbox"></div><div>"AI는 창작하지 않는다" — 90/10 하이브리드 응답 원칙을 이해했다</div></div>
+    <div class="checklist-item"><div class="checkbox"></div><div>파이프라인 흐름(언어 감지 → Fraud/Intent → 라우팅)을 설명할 수 있다</div></div>
+  </div>
+
+  <div class="checklist-box">
+    <h3 style="color: var(--accent-amber); margin-bottom: 16px;">🔀 에스컬레이션</h3>
+    <div class="checklist-item"><div class="checkbox"></div><div>L1/L2/L3의 차이를 설명할 수 있다</div></div>
+    <div class="checklist-item"><div class="checkbox"></div><div>L1에서 AI가 자동 응답하지 않는 이유를 안다</div></div>
+    <div class="checklist-item"><div class="checkbox"></div><div>L2 AI 초안이 Zendesk 티켓에 포함되는 것을 안다</div></div>
+    <div class="checklist-item"><div class="checkbox"></div><div>L3 자동 응답이 2회 반복 시 L2로 올라가는 것을 안다</div></div>
+    <div class="checklist-item"><div class="checkbox"></div><div>Fraud 점수 50 이상 시 강제 L1 에스컬레이션을 이해했다</div></div>
+  </div>
+
+  <div class="checklist-box">
+    <h3 style="color: var(--accent-green); margin-bottom: 16px;">📋 Zendesk 활용</h3>
+    <div class="checklist-item"><div class="checkbox"></div><div>Zendesk 티켓의 3개 섹션(Context Summary / Conversation Log / AI Draft)을 구분할 수 있다</div></div>
+    <div class="checklist-item"><div class="checkbox"></div><div>[AGENT:] 플레이스홀더를 실제 정보로 교체하는 방법을 안다</div></div>
+    <div class="checklist-item"><div class="checkbox"></div><div>AI 초안 검토 5단계를 수행할 수 있다</div></div>
+    <div class="checklist-item"><div class="checkbox"></div><div>발송 전 [AGENT:] 잔존 여부를 Ctrl+F로 확인하는 습관을 갖췄다</div></div>
+  </div>
+
+  <div class="checklist-box">
+    <h3 style="color: var(--accent-purple); margin-bottom: 16px;">📂 카테고리</h3>
+    <div class="checklist-item"><div class="checkbox"></div><div>7개 카테고리(Subscription/Refund/Account/Payment/Technical/Content/Other) 특성을 안다</div></div>
+    <div class="checklist-item"><div class="checkbox"></div><div>환불 3가지 조건(14일/미열람/미사용)을 외웠다</div></div>
+    <div class="checklist-item"><div class="checkbox"></div><div>Apple 결제 환불은 reportaproblem.apple.com으로 안내하는 것을 안다</div></div>
+    <div class="checklist-item"><div class="checkbox"></div><div>웹 VIP ≠ 앱 VIP (플랫폼별 접근 제한)를 이해했다</div></div>
+  </div>
+
+  <div class="checklist-box">
+    <h3 style="color: var(--accent-red); margin-bottom: 16px;">🛡️ 실습</h3>
+    <div class="checklist-item"><div class="checkbox"></div><div>데모 페이지(<a href="https://bizops.duckdns.org/chat/demo" style="color: var(--accent-cyan);">bizops.duckdns.org/chat/demo</a>)에서 직접 테스트해 보았다</div></div>
+    <div class="checklist-item"><div class="checkbox"></div><div>Zendesk에서 AI 생성 티켓을 열어 확인해 보았다</div></div>
+    <div class="checklist-item"><div class="checkbox"></div><div>AI 초안을 검토하고 [AGENT:] 부분을 채워 보았다</div></div>
+  </div>
+</section>
+
+</div>
+
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+</body>
+</html>
