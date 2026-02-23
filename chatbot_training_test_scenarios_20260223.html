@@ -90,14 +90,14 @@
 <div class="table-responsive"><table>
     <tr><th>#</th><th>시나리오</th><th>카테고리</th><th>예상 레벨</th><th>언어</th></tr>
     <tr><td>1</td><td>기본 구독 취소</td><td>Subscription</td><td><span class="level-badge level-l3">L3</span></td><td>EN</td></tr>
-    <tr><td>2</td><td>환불 요청 (일반)</td><td>Refund</td><td><span class="level-badge level-l3">L3</span> → <span class="level-badge level-l2">L2</span></td><td>EN</td></tr>
+    <tr><td>2</td><td>환불 요청 — L2 다턴 (3턴)</td><td>Refund</td><td><span class="level-badge level-l2">L2</span></td><td>EN</td></tr>
     <tr><td>3</td><td>Fraud — 차지백 위협</td><td>Refund</td><td><span class="level-badge level-l1">L1</span></td><td>EN</td></tr>
-    <tr><td>4</td><td>콘텐츠 오류 신고</td><td>Content</td><td><span class="level-badge level-l2">L2</span></td><td>EN</td></tr>
+    <tr><td>4</td><td>콘텐츠 오류 — L2 다턴 (3턴)</td><td>Content</td><td><span class="level-badge level-l2">L2</span></td><td>EN</td></tr>
     <tr><td>5</td><td>한국어 구독 취소</td><td>Subscription</td><td><span class="level-badge level-l3">L3</span></td><td>KR</td></tr>
     <tr><td>6</td><td>비밀번호 재설정</td><td>Account</td><td><span class="level-badge level-l3">L3</span></td><td>EN</td></tr>
     <tr><td>7</td><td>결제 실패</td><td>Payment</td><td><span class="level-badge level-l3">L3</span></td><td>EN</td></tr>
     <tr><td>8</td><td>기술 문제 (로딩)</td><td>Technical</td><td><span class="level-badge level-l3">L3</span></td><td>EN</td></tr>
-    <tr><td>9</td><td>반복 문의 (자동 에스컬레이션)</td><td>Subscription</td><td><span class="level-badge level-l3">L3</span> → <span class="level-badge level-l2">L2</span></td><td>EN</td></tr>
+    <tr><td>9</td><td>반복 문의 — L3→L2 다턴 (3턴)</td><td>Subscription</td><td><span class="level-badge level-l3">L3</span> → <span class="level-badge level-l2">L2</span></td><td>EN</td></tr>
     <tr><td>10</td><td>일본어 계정 문의</td><td>Account</td><td><span class="level-badge level-l3">L3</span></td><td>JP</td></tr>
   </table></div>
 </nav>
@@ -134,32 +134,61 @@
   <!-- Scenario 2 -->
   <div class="scenario">
     <div class="scenario-header">
-      <div><span class="scenario-number">2</span> <strong style="margin-left:8px; font-size:1.1rem;">환불 요청 (일반) — 2턴 대화</strong></div>
-      <div><span class="tag tag-cat">Refund</span> <span class="tag tag-lang">EN</span> <span class="level-badge level-l3">L3</span> → <span class="level-badge level-l2">L2</span></div>
+      <div><span class="scenario-number">2</span> <strong style="margin-left:8px; font-size:1.1rem;">환불 요청 — L2 다턴 대화 (3턴)</strong></div>
+      <div><span class="tag tag-cat">Refund</span> <span class="tag tag-lang">EN</span> <span class="level-badge level-l2">L2</span></div>
     </div>
-    <p><strong>목적:</strong> L2 2턴 구조 확인 — 매뉴얼 가이드 발송 → 고객 응답 → 티켓 생성</p>
+    <p><strong>목적:</strong> L2 다턴 구조 확인 — 가이드 발송 → 결제정보 수집 → 고객 확인 → 티켓 생성</p>
 
     <div class="msg-customer">
       <strong>👤 1턴 — 고객:</strong><br>
-      I'd like to get a refund for my recent purchase.
+      I'd like to get a refund for my recent purchase. I bought a 1-month subscription but I haven't used it at all.
     </div>
     <div class="msg-bot">
-      <strong>🤖 1턴 — 봇 (예상):</strong><br>
-      환불 정책 안내 (14일/미열람/미사용 3조건) + 결제 정보 요청 — 티켓 생성 보류
+      <strong>🤖 1턴 — 봇 (가이드 발송, 티켓 미생성):</strong><br>
+      We understand your concern. Here's our refund policy:<br>
+      • Refund is available within 14 days of purchase<br>
+      • Content must be unread/unused<br>
+      • Subscription must not have been actively used<br><br>
+      To proceed with your refund request, could you please provide:<br>
+      1. Email address used for registration<br>
+      2. Date of the charge<br>
+      3. Payment method (PayPal / Credit Card / etc.)<br>
+      4. Amount charged
     </div>
     <div class="msg-customer">
-      <strong>👤 2턴 — 고객:</strong><br>
-      Last charge was on Feb 20, $9.99, card ending 4242, email: test@example.com
+      <strong>👤 2턴 — 고객 (결제정보 제공):</strong><br>
+      My email is john@example.com, the charge was on Feb 20 for $9.99 via PayPal.
+    </div>
+    <div class="msg-bot">
+      <strong>🤖 2턴 — 봇 (Fraud 재검사 + 티켓 생성):</strong><br>
+      Thank you for providing the details. Your refund request has been submitted to our support team.<br><br>
+      📋 Ticket created — a support agent will review your case and respond within 1-2 business days.<br><br>
+      Is there anything else I can help you with?
+    </div>
+    <div class="msg-customer">
+      <strong>👤 3턴 — 고객 (추가 확인):</strong><br>
+      How long does the refund usually take once approved?
+    </div>
+    <div class="msg-bot">
+      <strong>🤖 3턴 — 봇 (후속 안내):</strong><br>
+      Once approved, refunds typically process within:<br>
+      • PayPal: 3-5 business days<br>
+      • Credit Card: 5-10 business days<br><br>
+      Your case is already being reviewed. Best regards, Toomics Support Team
     </div>
 
     <div class="expected">
-      <h4>✅ 예상 결과 (2턴)</h4>
+      <h4>✅ 예상 결과 (3턴 전체)</h4>
       <ul>
         <li><strong>카테고리:</strong> Refund / simple_refund</li>
-        <li><strong>에스컬레이션:</strong> L2 (고객 2차 응답 후 전체 맥락 포함 티켓 생성)</li>
-        <li><strong>응답 내용:</strong> 확인 안내 + 티켓 제출 알림</li>
-        <li><strong>Zendesk 티켓:</strong> ✅ 2턴 후 생성 (전체 대화 로그 + AI 초안 포함)</li>
+        <li><strong>에스컬레이션:</strong> <span class="level-badge level-l2">L2</span></li>
+        <li><strong>1턴:</strong> 환불 정책 가이드 + 결제정보 요청 (티켓 미생성)</li>
+        <li><strong>2턴:</strong> 고객 정보 수신 → Fraud 재검사 → 전체 맥락 포함 Zendesk 티켓 생성</li>
+        <li><strong>3턴:</strong> 후속 질문에 대한 추가 안내 (이미 생성된 티켓에 대화 추가)</li>
+        <li><strong>Zendesk 티켓:</strong> ✅ 2턴 후 생성 — 1~2턴 전체 대화 로그 + AI 초안 포함</li>
+        <li><strong>Fraud 재검사:</strong> 2턴에서 실행 — 정상 (Low Risk)</li>
       </ul>
+      <p><strong>🔍 확인 포인트:</strong> 1턴에서 티켓이 생성되지 않고, 2턴 고객 응답 후에만 생성되는지 확인. 3턴 후속 대화가 기존 티켓 컨텍스트에 추가되는지 확인</p>
     </div>
   </div>
 
@@ -193,34 +222,55 @@
   <!-- Scenario 4 -->
   <div class="scenario">
     <div class="scenario-header">
-      <div><span class="scenario-number">4</span> <strong style="margin-left:8px; font-size:1.1rem;">콘텐츠 오류 신고 — 2턴 대화</strong></div>
+      <div><span class="scenario-number">4</span> <strong style="margin-left:8px; font-size:1.1rem;">콘텐츠 오류 신고 — L2 다턴 대화 (3턴)</strong></div>
       <div><span class="tag tag-cat">Content</span> <span class="tag tag-lang">EN</span> <span class="level-badge level-l2">L2</span></div>
     </div>
-    <p><strong>목적:</strong> Content 상세정보 수집 → L2 에스컬레이션 + AI 초안 확인</p>
+    <p><strong>목적:</strong> Content 상세정보 단계적 수집 → L2 에스컬레이션 + AI 초안의 정보 반영 확인</p>
 
     <div class="msg-customer">
       <strong>👤 1턴 — 고객:</strong><br>
       There's a translation error in one of your comics.
     </div>
     <div class="msg-bot">
-      <strong>🤖 1턴 — 봇 (예상):</strong><br>
-      작품명, 회차, 문제 설명 요청
+      <strong>🤖 1턴 — 봇 (상세 정보 요청, 티켓 미생성):</strong><br>
+      Thank you for letting us know! To help our team investigate, could you please provide:<br>
+      1. Title of the comic<br>
+      2. Chapter/Episode number<br>
+      3. Page number (if possible)<br>
+      4. Brief description of the issue
     </div>
     <div class="msg-customer">
-      <strong>👤 2턴 — 고객:</strong><br>
-      Title: Love Storm, Chapter 15, page 8 has wrong translation — the dialogue doesn't match the scene.
+      <strong>👤 2턴 — 고객 (부분 정보 제공):</strong><br>
+      It's "Love Storm", Chapter 15. The dialogue on one page is completely wrong — it shows a different character's lines.
+    </div>
+    <div class="msg-bot">
+      <strong>🤖 2턴 — 봇 (추가 확인 + 티켓 생성):</strong><br>
+      Thank you for the details! We've submitted a report to our content team.<br><br>
+      📋 Ticket created — Title: Love Storm, Ch.15 translation issue.<br><br>
+      Could you also let us know which page number you noticed this on? That will help our team locate the issue faster.
+    </div>
+    <div class="msg-customer">
+      <strong>👤 3턴 — 고객 (추가 정보 보완):</strong><br>
+      It's page 8. Also I noticed the same issue on page 12 of the same chapter.
+    </div>
+    <div class="msg-bot">
+      <strong>🤖 3턴 — 봇 (정보 추가 확인):</strong><br>
+      Thank you! We've added pages 8 and 12 to your existing report. Our content team will review and correct these translation issues.<br><br>
+      We appreciate you taking the time to report this — it helps us improve quality for all readers. Best regards, Toomics Support Team
     </div>
 
     <div class="expected">
-      <h4>✅ 예상 결과 (2턴)</h4>
+      <h4>✅ 예상 결과 (3턴 전체)</h4>
       <ul>
         <li><strong>카테고리:</strong> Content / content_issue_report</li>
         <li><strong>에스컬레이션:</strong> <span class="level-badge level-l2">L2</span></li>
-        <li><strong>고객 응답:</strong> 매뉴얼 기반 안내 + 티켓 제출 안내</li>
-        <li><strong>Zendesk 티켓:</strong> ✅ 생성</li>
-        <li><strong>AI 초안:</strong> ✅ 작품명(Love Storm)/회차(15)/페이지(8) 반영된 이메일 초안</li>
+        <li><strong>1턴:</strong> 콘텐츠 상세 정보 요청 (작품명/회차/페이지/설명) — 티켓 미생성</li>
+        <li><strong>2턴:</strong> 부분 정보 수신 → Zendesk 티켓 생성 + 추가 정보 요청</li>
+        <li><strong>3턴:</strong> 보완 정보 수신 → 기존 티켓에 컨텍스트 추가</li>
+        <li><strong>Zendesk 티켓:</strong> ✅ 2턴 후 생성 — 전체 대화 + AI 초안 포함</li>
+        <li><strong>AI 초안:</strong> ✅ Love Storm / Ch.15 / p.8, p.12 반영</li>
       </ul>
-      <p><strong>🔍 Zendesk 확인:</strong> AI Draft에 고객이 제공한 세부 정보(작품명, 회차, 페이지)가 포함되어 있는지 확인</p>
+      <p><strong>🔍 확인 포인트:</strong> 1턴에서 티켓 미생성, 2턴에서 생성 확인. 3턴 추가 정보가 기존 티켓에 반영되는지 확인. AI 초안에 작품명/회차/페이지가 정확히 포함되어 있는지 확인</p>
     </div>
   </div>
 
@@ -318,23 +368,44 @@
   <!-- Scenario 9 -->
   <div class="scenario">
     <div class="scenario-header">
-      <div><span class="scenario-number">9</span> <strong style="margin-left:8px; font-size:1.1rem;">반복 문의 (자동 에스컬레이션)</strong></div>
+      <div><span class="scenario-number">9</span> <strong style="margin-left:8px; font-size:1.1rem;">반복 문의 — L3→L2 자동 에스컬레이션 (3턴)</strong></div>
       <div><span class="tag tag-cat">Subscription</span> <span class="tag tag-lang">EN</span> <span class="level-badge level-l3">L3</span> → <span class="level-badge level-l2">L2</span></div>
     </div>
-    <p><strong>목적:</strong> 동일 의도 2회 반복 시 자동 L2 에스컬레이션 확인</p>
+    <p><strong>목적:</strong> L3 셀프서비스 → 해결 실패 → 동일 의도 반복 → L2 자동 에스컬레이션 → 정보 수집 후 티켓 생성</p>
 
-    <div class="msg-customer"><strong>👤 1턴:</strong><br>How do I cancel my subscription?</div>
-    <div class="msg-bot"><strong>🤖 1턴:</strong><br>구독 해지 가이드 (Web/iOS/Android) — L3 셀프서비스</div>
-    <div class="msg-customer"><strong>👤 2턴:</strong><br>I still can't cancel, please help me cancel my subscription!</div>
+    <div class="msg-customer"><strong>👤 1턴 — 고객:</strong><br>How do I cancel my subscription?</div>
+    <div class="msg-bot"><strong>🤖 1턴 — 봇 (L3 셀프서비스 가이드):</strong><br>
+      Here's how to cancel your subscription:<br>
+      • Web: My Page → Subscription → Cancel<br>
+      • iOS: Settings → Apple ID → Subscriptions → Toomics → Cancel<br>
+      • Android: Play Store → Subscriptions → Toomics → Cancel<br><br>
+      Is there anything else I can help with?
+    </div>
+    <div class="msg-customer"><strong>👤 2턴 — 고객 (반복 의도, 해결 안됨):</strong><br>I tried but it says "subscription not found." I still can't cancel, please help!</div>
+    <div class="msg-bot"><strong>🤖 2턴 — 봇 (반복 감지 → L2 전환, 정보 요청):</strong><br>
+      I'm sorry you're having trouble. Let me connect you with our support team for direct assistance.<br><br>
+      To help resolve this quickly, could you please provide:<br>
+      1. Email address used for registration<br>
+      2. Payment method (PayPal / Credit Card / App Store)<br>
+      3. Approximate date of last charge
+    </div>
+    <div class="msg-customer"><strong>👤 3턴 — 고객 (정보 제공):</strong><br>Email: user@example.com, I paid through Google Play, last charge was about a week ago on Feb 16.</div>
+    <div class="msg-bot"><strong>🤖 3턴 — 봇 (Fraud 재검사 + 티켓 생성):</strong><br>
+      Thank you for the information. Your cancellation request has been submitted to our support team.<br><br>
+      📋 Ticket created — a support agent will assist you with the cancellation directly.<br><br>
+      Best regards, Toomics Support Team
+    </div>
 
     <div class="expected">
-      <h4>✅ 예상 결과 (2턴)</h4>
+      <h4>✅ 예상 결과 (3턴 전체)</h4>
       <ul>
-        <li><strong>동일 카테고리 반복:</strong> Subscription 2회 연속</li>
-        <li><strong>에스컬레이션:</strong> L3 → <span class="level-badge level-l2">L2</span> 자동 에스컬레이션</li>
-        <li><strong>Zendesk 티켓:</strong> ✅ 고객 2차 응답 후 생성 (전체 대화 히스토리 + AI 초안 포함)</li>
+        <li><strong>1턴:</strong> L3 셀프서비스 가이드 발송 (Solved 타이머 시작)</li>
+        <li><strong>2턴:</strong> 동일 의도(Subscription) 반복 감지 → L3→L2 자동 에스컬레이션 → 결제정보 요청 (티켓 미생성, Solved 타이머 취소)</li>
+        <li><strong>3턴:</strong> 고객 정보 수신 → Fraud 재검사 → 전체 맥락 포함 Zendesk 티켓 생성</li>
+        <li><strong>에스컬레이션:</strong> <span class="level-badge level-l3">L3</span> → <span class="level-badge level-l2">L2</span></li>
+        <li><strong>Zendesk 티켓:</strong> ✅ 3턴 후 생성 — 1~3턴 전체 대화 로그 + AI 초안 포함</li>
       </ul>
-      <p><strong>🔍 확인:</strong> 2턴째에서 "상담원이 검토 중" 안내가 나오고, Zendesk에 전체 대화 맥락 포함 티켓이 생성되는지 확인</p>
+      <p><strong>🔍 확인 포인트:</strong> 1턴에서 L3 가이드가 나오고, 2턴에서 반복 감지 후 L2로 전환되며 정보 요청이 나오는지 확인. 3턴에서 티켓이 생성되고 전체 3턴 대화 히스토리가 Zendesk에 포함되는지 확인</p>
     </div>
   </div>
 
@@ -370,14 +441,14 @@
 <div class="table-responsive"><table>
     <tr><th>#</th><th>시나리오</th><th>예상 레벨</th><th>실제 레벨</th><th>카테고리 정확</th><th>응답 언어 정확</th><th>Zendesk 티켓</th><th>비고</th></tr>
     <tr><td>1</td><td>기본 구독 취소</td><td>L3</td><td></td><td>☐</td><td>☐</td><td>Solved (5분)</td><td></td></tr>
-    <tr><td>2</td><td>환불 요청</td><td>L2</td><td></td><td>☐</td><td>☐</td><td>☐ (2턴 후)</td><td></td></tr>
+    <tr><td>2</td><td>환불 요청 (3턴)</td><td>L2</td><td></td><td>☐</td><td>☐</td><td>☐ (2턴 후)</td><td></td></tr>
     <tr><td>3</td><td>Fraud 차지백</td><td>L1</td><td></td><td>☐</td><td>☐</td><td>☐ (즉시)</td><td></td></tr>
-    <tr><td>4</td><td>콘텐츠 오류</td><td>L2</td><td></td><td>☐</td><td>☐</td><td>☐ (2턴 후)</td><td></td></tr>
+    <tr><td>4</td><td>콘텐츠 오류 (3턴)</td><td>L2</td><td></td><td>☐</td><td>☐</td><td>☐ (2턴 후)</td><td></td></tr>
     <tr><td>5</td><td>한국어 구독취소</td><td>L3</td><td></td><td>☐</td><td>☐</td><td>Solved (5분)</td><td></td></tr>
     <tr><td>6</td><td>비밀번호 재설정</td><td>L3</td><td></td><td>☐</td><td>☐</td><td>Solved (5분)</td><td></td></tr>
     <tr><td>7</td><td>결제 실패</td><td>L3</td><td></td><td>☐</td><td>☐</td><td>Solved (5분)</td><td></td></tr>
     <tr><td>8</td><td>기술 문제</td><td>L3</td><td></td><td>☐</td><td>☐</td><td>Solved (5분)</td><td></td></tr>
-    <tr><td>9</td><td>반복 문의</td><td>L3→L2</td><td></td><td>☐</td><td>☐</td><td>☐ (2턴 후)</td><td></td></tr>
+    <tr><td>9</td><td>반복 문의 (3턴)</td><td>L3→L2</td><td></td><td>☐</td><td>☐</td><td>☐ (3턴 후)</td><td></td></tr>
     <tr><td>10</td><td>일본어 계정</td><td>L3</td><td></td><td>☐</td><td>☐</td><td>Solved (5분)</td><td></td></tr>
   </table></div>
 </section>
