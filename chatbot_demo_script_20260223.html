@@ -14,16 +14,14 @@
     --accent-amber: #f59e0b; --accent-red: #ef4444; --accent-purple: #a78bfa;
     --border-color: #334155;
   }
-  body { font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif; color: var(--text-primary); background: var(--bg-primary); line-height: 1.75; font-size: 14px; 
-    word-break: keep-all; overflow-wrap: break-word;
-  }
+  body { font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif; color: var(--text-primary); background: var(--bg-primary); line-height: 1.7; font-size: 15px; }
   @media print { body { background: #fff; color: #1a1a2e; } .hero { background: #1e3a5f !important; -webkit-print-color-adjust: exact; } .back-to-top { display: none !important; } }
   .container { max-width: 1100px; margin: 0 auto; padding: 0 0 60px; }
   section { padding: 0 40px; margin-bottom: 48px; }
   .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #a78bfa 100%); color: white; padding: 48px 56px 40px; border-radius: 0 0 24px 24px; margin-bottom: 36px; }
   .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; }
   .hero .subtitle { font-size: 1.1rem; opacity: 0.9; }
-  .hero .badge { display: inline-block; background: rgba(255,255,255,0.15); padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; margin-top: 12px; }
+  .hero .badge { display: inline-block; background: rgba(0,0,0,0.06); padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; margin-top: 12px; }
   h2 { font-size: 1.5rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border-color); }
   h3 { font-size: 1.15rem; font-weight: 600; color: var(--accent-blue); margin: 20px 0 12px; }
   p { margin-bottom: 12px; color: var(--text-secondary); }
@@ -49,10 +47,7 @@
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } section { padding: 0 20px; } }
   .back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--accent-purple); color: white; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 1.2rem; cursor: pointer; z-index: 100; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
-
-    /* ══ 가독성 패치 (2026-02-23) ══ */
-    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1em; }
-  </style>
+</style>
 </head>
 <body>
 <div class="container">
@@ -67,17 +62,17 @@
   <h2>📋 시연 전 준비</h2>
   <div class="card card-blue">
     <h3>필수 준비 사항</h3>
-<div class="table-responsive"><table>
+    <table>
       <tr><th>항목</th><th>URL / 설정</th><th>확인</th></tr>
       <tr><td>챗봇 데모 페이지</td><td><a href="https://bizops.duckdns.org/chat/demo" style="color:var(--accent-cyan)">https://bizops.duckdns.org/chat/demo</a></td><td>☐ 접속 확인</td></tr>
       <tr><td>Zendesk 관리 화면</td><td><a href="https://toomicsglobal.zendesk.com/agent" style="color:var(--accent-cyan)">https://toomicsglobal.zendesk.com/agent</a></td><td>☐ 로그인 완료</td></tr>
       <tr><td>헬스체크</td><td><a href="https://bizops.duckdns.org/chat/health" style="color:var(--accent-cyan)">https://bizops.duckdns.org/chat/health</a></td><td>☐ "healthy" 확인</td></tr>
       <tr><td>브라우저 탭</td><td>데모 + Zendesk 2개 탭 병렬 오픈</td><td>☐ 준비</td></tr>
-    </table></div>
+    </table>
   </div>
 
   <div class="highlight-box">
-    <strong>💡 시연 팁:</strong> 데모 페이지와 Zendesk를 양쪽에 나란히 두면, L2 챗봇 대화(2턴) → Zendesk 티켓 확인이 가능하여 인상적입니다.
+    <strong>💡 시연 팁:</strong> 데모 페이지와 Zendesk를 양쪽에 나란히 두면, 챗봇 대화 → 즉시 Zendesk 티켓 확인이 가능하여 인상적입니다.
   </div>
 </section>
 
@@ -110,10 +105,10 @@
     </div>
     <div class="action">
       <strong>🖱️ 액션:</strong> 데모 페이지에서 입력:<br>
-      <code style="background:#1e293b; padding:4px 8px; border-radius:4px;">"I want to cancel my subscription"</code>
+      <code style="background: #FFFFFF; padding:4px 8px; border-radius:4px;">"I want to cancel my subscription"</code>
     </div>
     <div class="narration">
-      "보시다시피, AI가 자동으로 영어를 감지하고 구독 카테고리로 분류했습니다. L3(셀프서비스) 건이므로 결제 정보 요청 없이 즉시 해지 가이드(Web/iOS/Android)를 안내합니다. 고객이 추가 문의 없이 5분이 지나면, Zendesk에 Solved 상태의 티켓이 자동 생성되어 자동 처리율을 정확히 측정할 수 있습니다."
+      "보시다시피, AI가 자동으로 영어를 감지하고 구독 카테고리로 분류했습니다. 계정을 찾기 위해 결제 정보를 먼저 요청합니다. 이런 간단한 건은 L3(셀프서비스)로 처리되어 Zendesk 티켓이 생성되지 않습니다. 상담원 개입 없이 해결되는 거죠."
     </div>
     <div class="highlight-box">
       <strong>포인트:</strong> "전체 문의의 약 40~50%가 이렇게 자동으로 해결됩니다. 상담원은 복잡한 건에만 집중할 수 있습니다."
@@ -127,7 +122,7 @@
     <h3>시나리오 B: 한국어 문의 (다국어 지원)</h3>
     <div class="action">
       <strong>🖱️ 액션:</strong> 새 세션 시작 후 입력:<br>
-      <code style="background:#1e293b; padding:4px 8px; border-radius:4px;">"구독을 취소하고 싶습니다"</code>
+      <code style="background: #FFFFFF; padding:4px 8px; border-radius:4px;">"구독을 취소하고 싶습니다"</code>
     </div>
     <div class="narration">
       "한국어로 문의하면 자동으로 한국어를 감지하고, 한국어로 응답합니다. 10개 언어를 지원하므로 글로벌 CS 운영에 바로 적용 가능합니다."
@@ -144,17 +139,17 @@
     </div>
     <div class="action">
       <strong>🖱️ 액션 — 1턴:</strong> 새 세션에서 입력:<br>
-      <code style="background:#1e293b; padding:4px 8px; border-radius:4px;">"translation error in a comic"</code>
+      <code style="background: #FFFFFF; padding:4px 8px; border-radius:4px;">"translation error in a comic"</code>
     </div>
     <div class="narration">
       "AI가 콘텐츠 카테고리로 분류하고, 상세 정보를 요청합니다 — 작품명, 회차, 문제 설명."
     </div>
     <div class="action">
       <strong>🖱️ 액션 — 2턴:</strong><br>
-      <code style="background:#1e293b; padding:4px 8px; border-radius:4px;">"Title: Dark Moon, Chapter 5, page 3 has wrong translation"</code>
+      <code style="background: #FFFFFF; padding:4px 8px; border-radius:4px;">"Title: Dark Moon, Chapter 5, page 3 has wrong translation"</code>
     </div>
     <div class="narration">
-      "고객에게 매뉴얼 기반 안내 메시지를 보냅니다. L2는 고객의 2차 응답을 받은 후에 전체 대화 맥락이 포함된 Zendesk 티켓을 생성합니다. Zendesk를 확인해 보겠습니다."
+      "고객에게 안내 메시지를 보내면서, 동시에 Zendesk에 티켓을 자동 생성합니다. Zendesk를 확인해 보겠습니다."
     </div>
     <div class="action">
       <strong>🖱️ 액션:</strong> Zendesk 탭으로 전환 → 최신 티켓 열기<br>
@@ -177,7 +172,7 @@
     </div>
     <div class="action">
       <strong>🖱️ 액션:</strong> 새 세션에서 입력:<br>
-      <code style="background:#1e293b; padding:4px 8px; border-radius:4px;">"I never authorized this charge! I'm filing a chargeback and contacting my lawyer!"</code>
+      <code style="background: #FFFFFF; padding:4px 8px; border-radius:4px;">"I never authorized this charge! I'm filing a chargeback and contacting my lawyer!"</code>
     </div>
     <div class="narration">
       "보시면 AI가 자동 응답을 하지 않습니다. 단순히 '티켓 제출 안내'만 합니다. 이것이 L1 에스컬레이션입니다. 사기 점수가 50점 이상으로 탐지되면, AI가 절대 실질적 응답을 하지 않고 즉시 상담원에게 넘깁니다."
@@ -199,7 +194,7 @@
       "정리하겠습니다."
     </div>
     <div class="card card-cyan">
-<div class="table-responsive"><table>
+      <table>
         <tr><th>항목</th><th>수치</th></tr>
         <tr><td>지원 언어</td><td><strong>10개</strong> (EN, FR, ES, PT, DE, TH, JP, CN, IT, KR)</td></tr>
         <tr><td>자동 분류 카테고리</td><td><strong>7개</strong></td></tr>
@@ -207,7 +202,7 @@
         <tr><td>L2 응대 시간 절감</td><td><strong>60~70%</strong> (AI 초안 활용)</td></tr>
         <tr><td>Fraud 실시간 탐지</td><td><strong>100%</strong> (모든 메시지 분석)</td></tr>
         <tr><td>운영 매뉴얼 기반</td><td><strong>137건</strong> 지식 데이터 인덱싱</td></tr>
-      </table></div>
+      </table>
     </div>
     <div class="narration">
       "질문 있으시면 말씀해 주세요."
@@ -233,7 +228,7 @@
     </div>
     <div class="card card-amber">
       <h3>Zendesk에 티켓이 안 보일 때</h3>
-      <p>L3는 5분 후 Zendesk Solved 티켓이 자동 생성됨 → L2/L1 시나리오로 전환하여 시연</p>
+      <p>L3는 티켓이 생성되지 않음 → L2/L1 시나리오로 전환하여 시연</p>
       <p>태그: <code>chatbot_escalation</code>으로 검색</p>
     </div>
   </div>

@@ -27,10 +27,8 @@
     font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', -apple-system, sans-serif;
     color: var(--text-primary);
     background: var(--bg-primary);
-    line-height: 1.75;
-    font-size: 14px;
-  
-    word-break: keep-all; overflow-wrap: break-word;
+    line-height: 1.7;
+    font-size: 15px;
   }
   @media print {
     body { background: #fff; color: #1a1a2e; }
@@ -50,7 +48,7 @@
   }
   .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; }
   .hero .subtitle { font-size: 1.1rem; opacity: 0.9; }
-  .hero .badge { display: inline-block; background: rgba(255,255,255,0.15); padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; margin-top: 12px; }
+  .hero .badge { display: inline-block; background: rgba(0,0,0,0.06); padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; margin-top: 12px; }
   h2 { font-size: 1.5rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border-color); }
   h3 { font-size: 1.15rem; font-weight: 600; color: var(--accent-blue); margin: 20px 0 12px; }
   h4 { font-size: 1rem; font-weight: 600; color: var(--accent-green); margin: 16px 0 8px; }
@@ -122,10 +120,7 @@
   .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
   @media (max-width: 768px) { .stat-grid { grid-template-columns: 1fr 1fr; } .do-dont { grid-template-columns: 1fr; } }
   .back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 1.2rem; cursor: pointer; z-index: 100; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
-
-    /* ══ 가독성 패치 (2026-02-23) ══ */
-    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1em; }
-  </style>
+</style>
 </head>
 <body>
 
@@ -287,13 +282,13 @@
 
   <div class="card card-cyan">
     <h3>📊 특수 플로우</h3>
-<div class="table-responsive"><table>
+    <table>
       <tr><th>상황</th><th>처리</th><th>이유</th></tr>
       <tr><td>미지원 언어 감지</td><td>인사말 + 즉시 L1</td><td>해당 언어 상담원 연결 필요</td></tr>
       <tr><td>Content 카테고리</td><td>상세정보 요청 → L2</td><td>작품명/회차/문제 수집 후 QA팀 전달</td></tr>
-      <tr><td>결제 카테고리 (L3)</td><td>즉시 셀프서비스 가이드 제공</td><td>L3는 안내만 제공하므로 계정 식별 불필요</td></tr>
+      <tr><td>결제 카테고리 (L3)</td><td>결제 정보 요청 → 원래 플로우</td><td>계정 식별을 위한 결제 정보 필요</td></tr>
       <tr><td>동일 의도 2회 반복</td><td>L3 → L2 자동 에스컬레이션</td><td>셀프서비스 해결 불가 판단</td></tr>
-    </table></div>
+    </table>
   </div>
 </section>
 
@@ -303,7 +298,7 @@
 
   <div class="card card-red">
     <h3>🔴 L1 — 즉시 에스컬레이션</h3>
-<div class="table-responsive"><table>
+    <table>
       <tr><th>항목</th><th>내용</th></tr>
       <tr><td><strong>트리거</strong></td><td>Fraud 점수 ≥ 50, 법적 위협, 차지백 언급, Intent 미분류</td></tr>
       <tr><td><strong>AI 자동 응답</strong></td><td>❌ 없음 — 고객에게 "티켓 제출 안내" 메시지만 전송</td></tr>
@@ -311,37 +306,35 @@
       <tr><td><strong>Zendesk 티켓</strong></td><td>✅ 자동 생성 (맥락 요약 + Fraud 정보 포함)</td></tr>
       <tr><td><strong>우선순위</strong></td><td>🔴 Urgent — 즉시 처리 필요</td></tr>
       <tr><td><strong>상담원 액션</strong></td><td>Fraud 플래그 확인 → 계정 히스토리 조회 → 직접 응답 작성</td></tr>
-    </table></div>
+    </table>
     <p style="margin-top: 12px; color: var(--accent-red);"><strong>⚠️ L1 건은 AI가 절대 고객에게 실질적 응답을 하지 않습니다. 상담원의 전문적 판단이 필수입니다.</strong></p>
   </div>
 
   <div class="card card-amber">
     <h3>🟡 L2 — AI 초안 + 상담원 검토</h3>
-<div class="table-responsive"><table>
+    <table>
       <tr><th>항목</th><th>내용</th></tr>
       <tr><td><strong>트리거</strong></td><td>Content/Other 카테고리, 복잡한 환불, 반복 문의, Intent L1 클램핑</td></tr>
-      <tr><td><strong>1차 응답</strong></td><td>✅ 매뉴얼 기반 안내 발송 (90/10 하이브리드) — 티켓 생성 보류</td></tr>
-      <tr><td><strong>2차 응답</strong></td><td>고객 추가 응답 수신 → 전체 대화 맥락 포함 Zendesk 티켓 생성</td></tr>
+      <tr><td><strong>고객 응답</strong></td><td>✅ 매뉴얼 기반 안내 + "티켓 제출" 안내 (90/10 하이브리드)</td></tr>
       <tr><td><strong>AI 초안</strong></td><td>✅ 운영 매뉴얼 기반 이메일 초안 생성 (Zendesk 티켓에 포함)</td></tr>
-      <tr><td><strong>Zendesk 티켓</strong></td><td>✅ 고객 2차 응답 후 생성 (맥락 요약 + 전체 대화 로그 + AI 초안)</td></tr>
-      <tr><td><strong>타임아웃</strong></td><td>10분 미응답 시 현재 맥락으로 티켓 자동 생성</td></tr>
+      <tr><td><strong>Zendesk 티켓</strong></td><td>✅ 자동 생성 (맥락 요약 + 대화 로그 + AI 초안)</td></tr>
       <tr><td><strong>우선순위</strong></td><td>🟡 High/Normal</td></tr>
       <tr><td><strong>상담원 액션</strong></td><td>AI 초안 검토 → [AGENT:] 플레이스홀더 채우기 → 수정/발송</td></tr>
-    </table></div>
-    <p style="margin-top: 12px; color: var(--accent-amber);"><strong>💡 L2는 2턴 구조입니다: 가이드 발송 → 고객 응답 대기 → 전체 맥락 티켓 생성. AI 초안은 "출발점"이며 반드시 검토 후 발송하세요.</strong></p>
+    </table>
+    <p style="margin-top: 12px; color: var(--accent-amber);"><strong>💡 AI 초안은 "출발점"입니다. 반드시 검토 후 발송하세요.</strong></p>
   </div>
 
   <div class="card card-green">
     <h3>🟢 L3 — 셀프서비스 자동 응답</h3>
-<div class="table-responsive"><table>
+    <table>
       <tr><th>항목</th><th>내용</th></tr>
       <tr><td><strong>트리거</strong></td><td>명확한 카테고리 + 낮은 Fraud 점수 + 자동화 가능 의도</td></tr>
       <tr><td><strong>고객 응답</strong></td><td>✅ 매뉴얼 기반 자동 응답 (구독 취소 방법, 비밀번호 재설정 등)</td></tr>
       <tr><td><strong>AI 초안</strong></td><td>해당 없음 (상담원 개입 불필요)</td></tr>
-      <tr><td><strong>Zendesk 티켓</strong></td><td>✅ 5분 비활성 후 Solved 상태 자동 생성 (자동 처리율 측정용)</td></tr>
+      <tr><td><strong>Zendesk 티켓</strong></td><td>❌ 생성하지 않음 (고객이 직접 해결)</td></tr>
       <tr><td><strong>상담원 액션</strong></td><td>없음 (모니터링만)</td></tr>
-    </table></div>
-    <p style="margin-top: 12px; color: var(--accent-green);"><strong>✅ L3는 고객이 스스로 해결합니다. 5분 후 Zendesk Solved 티켓이 자동 생성됩니다. 동일 문의 2회 반복 시 자동으로 L2로 에스컬레이션됩니다.</strong></p>
+    </table>
+    <p style="margin-top: 12px; color: var(--accent-green);"><strong>✅ L3는 고객이 스스로 해결합니다. 동일 문의 2회 반복 시 자동으로 L2로 에스컬레이션됩니다.</strong></p>
   </div>
 </section>
 
@@ -434,14 +427,14 @@ Toomics Support</span></div>
 
   <div class="card card-amber">
     <h3>🔍 AI 초안 검토 5단계</h3>
-<div class="table-responsive"><table>
+    <table>
       <tr><th>단계</th><th>체크 포인트</th><th>예시</th></tr>
       <tr><td><strong>1. [AGENT:] 확인</strong></td><td>플레이스홀더를 실제 정보로 교체</td><td>[AGENT: cancel date] → 2026-02-23</td></tr>
       <tr><td><strong>2. 정보 정확성</strong></td><td>계정 조회 후 사실과 일치하는지 확인</td><td>구독 상태, 결제 내역, 환불 자격</td></tr>
       <tr><td><strong>3. 톤 & 언어</strong></td><td>고객 언어와 감정에 맞는 톤인지 확인</td><td>불만 고객 → 공감 표현 추가</td></tr>
       <tr><td><strong>4. 정책 준수</strong></td><td>환불 조건, 개인정보 처리 등 정책 위반 없는지</td><td>14일/미열람/미사용 3가지 조건</td></tr>
       <tr><td><strong>5. 발송 전 최종 확인</strong></td><td>[AGENT:] 잔존 여부 재확인</td><td>Ctrl+F로 "[AGENT" 검색</td></tr>
-    </table></div>
+    </table>
   </div>
 
   <div class="do-dont">
@@ -498,43 +491,43 @@ Toomics Support</span></div>
 
   <div class="card card-blue">
     <h3>📦 Subscription (구독) — 전체의 ~24%</h3>
-<div class="table-responsive"><table>
+    <table>
       <tr><th>주요 유형</th><th>처리 방법</th><th>주의점</th></tr>
       <tr><td>구독 취소 요청</td><td>웹/앱/Google/Apple별 취소 방법 안내</td><td>취소 후에도 만료일까지 접근 가능 안내</td></tr>
       <tr><td>취소했는데 과금</td><td>복수 계정 확인 / App Store 구독 확인</td><td>웹 구독 ≠ 앱 구독 (별도 시스템)</td></tr>
       <tr><td>구독 변경</td><td>현재 구독 취소 → 만료 후 재구독 안내</td><td>중간 변경 불가, 만료 후 재가입</td></tr>
-    </table></div>
+    </table>
   </div>
 
   <div class="card card-red">
     <h3>💰 Refund (환불) — 전체의 ~18%</h3>
-<div class="table-responsive"><table>
+    <table>
       <tr><th>주요 유형</th><th>처리 방법</th><th>주의점</th></tr>
       <tr><td>일반 환불</td><td>3가지 조건 확인 (14일/미열람/미사용)</td><td>하나라도 불충족 시 거절</td></tr>
       <tr><td>Apple 결제 환불</td><td>reportaproblem.apple.com 안내</td><td>Toomics에서 직접 처리 불가</td></tr>
       <tr><td>무단 결제 주장</td><td>Fraud 점수 확인 → L1/L2 판단</td><td>자녀 결제 사례 빈번</td></tr>
-    </table></div>
+    </table>
     <p style="margin-top: 8px; color: var(--accent-red);">⚠️ 환불 금액/날짜는 반드시 계정 확인 후 기입 — AI가 임의로 약속하지 않음</p>
   </div>
 
   <div class="card card-purple">
     <h3>👤 Account (계정) — 전체의 ~15%</h3>
-<div class="table-responsive"><table>
+    <table>
       <tr><th>주요 유형</th><th>처리 방법</th><th>주의점</th></tr>
       <tr><td>비밀번호 재설정</td><td>임시 비밀번호(123123) 설정 → 변경 안내</td><td>소셜 로그인 계정은 비밀번호 없음</td></tr>
       <tr><td>계정 삭제</td><td>영구 삭제 경고 → 확인 후 처리</td><td>활성 구독 있으면 먼저 취소</td></tr>
       <tr><td>계정 못 찾음</td><td>결제 정보로 계정 검색</td><td>CS 이메일 ≠ 가입 이메일 (~45%)</td></tr>
-    </table></div>
+    </table>
   </div>
 
   <div class="card card-amber">
     <h3>💳 Payment (결제) — 전체의 ~12%</h3>
-<div class="table-responsive"><table>
+    <table>
       <tr><th>주요 유형</th><th>처리 방법</th><th>주의점</th></tr>
       <tr><td>자동 갱신 과금</td><td>자동갱신 설명 + 취소 방법 안내</td><td>환불 자격도 함께 확인</td></tr>
       <tr><td>결제 실패</td><td>카드 잔액/만료/3DS 확인 안내</td><td>은행 보안 차단 사례 다수</td></tr>
       <tr><td>해외 수수료</td><td>Toomics가 아닌 은행 부과 수수료 설명</td><td>고객 은행에 문의 안내</td></tr>
-    </table></div>
+    </table>
   </div>
 
   <div class="grid-2">
@@ -595,7 +588,7 @@ Toomics Support</span></div>
 
   <div class="card card-blue">
     <h4>Q7. 고객이 결제 정보를 제공하지 않으면?</h4>
-    <p>L3 셀프서비스는 안내 가이드만 제공하므로 결제 정보 수집 없이 즉시 응답합니다. 결제 정보 수집은 L2(상담원이 계정별 조치 필요 시)에서만 수행됩니다. L3 응답 후 5분간 추가 문의가 없으면 Zendesk에 Solved 상태 티켓이 자동 생성되어 자동 처리율을 정확히 측정합니다.</p>
+    <p>결제 카테고리(Refund/Subscription/Payment)의 L3 플로우에서 결제 정보를 사전 수집합니다. 미제공 시 다음 메시지에서 다시 요청하며, 2회 이상 미제공 시 L2로 에스컬레이션됩니다.</p>
   </div>
 
   <div class="card card-blue">

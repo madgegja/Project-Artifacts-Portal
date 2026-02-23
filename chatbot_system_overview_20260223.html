@@ -14,16 +14,14 @@
     --accent-amber: #f59e0b; --accent-red: #ef4444; --accent-purple: #a78bfa;
     --border-color: #334155;
   }
-  body { font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif; color: var(--text-primary); background: var(--bg-primary); line-height: 1.75; font-size: 14px; 
-    word-break: keep-all; overflow-wrap: break-word;
-  }
+  body { font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif; color: var(--text-primary); background: var(--bg-primary); line-height: 1.7; font-size: 15px; }
   @media print { body { background: #fff; color: #1a1a2e; } .hero { background: #1e3a5f !important; -webkit-print-color-adjust: exact; } .back-to-top { display: none !important; } }
   .container { max-width: 1100px; margin: 0 auto; padding: 0 0 60px; }
   section { padding: 0 40px; margin-bottom: 48px; }
   .hero { background: linear-gradient(135deg, #0f172a 0%, #0ea5e9 50%, #10b981 100%); color: white; padding: 48px 56px 40px; border-radius: 0 0 24px 24px; margin-bottom: 36px; }
   .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; }
   .hero .subtitle { font-size: 1.1rem; opacity: 0.9; }
-  .hero .badge { display: inline-block; background: rgba(255,255,255,0.15); padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; margin-top: 12px; }
+  .hero .badge { display: inline-block; background: rgba(0,0,0,0.06); padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; margin-top: 12px; }
   h2 { font-size: 1.5rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border-color); }
   h3 { font-size: 1.15rem; font-weight: 600; color: var(--accent-blue); margin: 20px 0 12px; }
   h4 { font-size: 1rem; font-weight: 600; color: var(--accent-green); margin: 12px 0 8px; }
@@ -55,10 +53,7 @@
   code { background: rgba(14,165,233,0.1); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: var(--accent-cyan); }
   .tech-badge { display: inline-block; background: rgba(167,139,250,0.15); color: var(--accent-purple); padding: 3px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; margin: 2px; }
   .back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 1.2rem; cursor: pointer; z-index: 100; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
-
-    /* ══ 가독성 패치 (2026-02-23) ══ */
-    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1em; }
-  </style>
+</style>
 </head>
 <body>
 <div class="container">
@@ -84,7 +79,7 @@
       <span class="tech-badge">systemd</span>
       <span class="tech-badge">Let's Encrypt</span>
     </div>
-<div class="table-responsive"><table>
+    <table>
       <tr><th>계층</th><th>기술</th><th>용도</th></tr>
       <tr><td>프론트엔드</td><td>Vanilla JS 위젯</td><td>고객 채팅 인터페이스 (데모 + 임베드용)</td></tr>
       <tr><td>웹 서버</td><td>nginx + Let's Encrypt</td><td>HTTPS 터미네이션, 리버스 프록시</td></tr>
@@ -94,7 +89,7 @@
       <tr><td>세션 저장</td><td>Redis 8.6</td><td>대화 세션 관리 (TTL 30분)</td></tr>
       <tr><td>티켓 관리</td><td>Zendesk API v2</td><td>에스컬레이션 티켓 자동 생성</td></tr>
       <tr><td>프로세스</td><td>systemd</td><td>서비스 관리 + 자동 재시작</td></tr>
-    </table></div>
+    </table>
   </div>
 </section>
 
@@ -205,7 +200,7 @@
         <li>세션 TTL: 30분 (설정 가능)</li>
         <li>대화 히스토리, Fraud 누적 점수 저장</li>
         <li>Content 상세정보 수집 상태 추적</li>
-        <li>결제 정보 수집 (L2만) + Intent 복원 메커니즘</li>
+        <li>결제 정보 수집 + Intent 복원 메커니즘</li>
       </ul>
     </div>
   </div>
@@ -214,35 +209,34 @@
 <section>
   <h2>4. 파이프라인 처리 상세</h2>
   <div class="card card-blue">
-<div class="table-responsive"><table>
+    <table>
       <tr><th>단계</th><th>처리 내용</th><th>실패 시</th></tr>
       <tr><td>Step 0</td><td>세션 로드/생성 (Redis)</td><td>메모리 폴백</td></tr>
       <tr><td>Step 1</td><td>언어 감지 (세션 재사용 우선)</td><td>EN 기본값</td></tr>
       <tr><td>Step 2</td><td>미지원 언어 → L1 에스컬레이션</td><td>—</td></tr>
       <tr><td>Step 2.5</td><td>Content 상세정보 수집 완료 → L2</td><td>—</td></tr>
       <tr><td>Step 2.6</td><td>결제 정보 수집 완료 → Intent 복원</td><td>—</td></tr>
-      <tr><td>Step 2.7</td><td>L2 가이드 후 고객 2차 응답 → 전체 맥락 티켓 생성</td><td>—</td></tr>
       <tr><td>Step 3</td><td>Fraud + Intent 병렬 분석</td><td>Fraud: 기본값, Intent: 키워드 폴백 또는 L1</td></tr>
       <tr><td>Step 4</td><td>Fraud 강제 L1 판단</td><td>—</td></tr>
       <tr><td>Step 4.5</td><td>반복 응답 감지 → L2</td><td>—</td></tr>
       <tr><td>Step 4.6</td><td>Content 최초 → 상세정보 요청</td><td>—</td></tr>
-      <tr><td>Step 4.7</td><td>결제 카테고리 (L2만) → 결제 정보 요청</td><td>—</td></tr>
+      <tr><td>Step 4.7</td><td>결제 카테고리 → 결제 정보 요청</td><td>—</td></tr>
       <tr><td>Step 5</td><td>라우팅 (L1/L2/L3)</td><td>—</td></tr>
-      <tr><td>Step 6</td><td>세션 업데이트 + 응답 반환 (L3: 5분 후 Solved 티켓)</td><td>기본 에러 메시지 + L1</td></tr>
-    </table></div>
+      <tr><td>Step 6</td><td>세션 업데이트 + 응답 반환</td><td>기본 에러 메시지 + L1</td></tr>
+    </table>
   </div>
 </section>
 
 <section>
   <h2>5. 인프라 구성</h2>
   <div class="card card-green">
-<div class="table-responsive"><table>
+    <table>
       <tr><th>서비스</th><th>포트</th><th>관리 방식</th><th>상태 확인</th></tr>
       <tr><td>FastAPI (챗봇)</td><td>:8000</td><td><code>systemctl restart chatbot</code></td><td><code>/health</code></td></tr>
       <tr><td>claude-max-api-proxy</td><td>:3456</td><td><code>systemctl --user restart claude-max-api</code></td><td><code>/v1/models</code></td></tr>
       <tr><td>Redis</td><td>:6379</td><td>수동 시작 (<code>~/.local/bin/redis-server</code>)</td><td><code>redis-cli ping</code></td></tr>
       <tr><td>nginx</td><td>:443</td><td><code>systemctl restart nginx</code></td><td>브라우저 접속</td></tr>
-    </table></div>
+    </table>
   </div>
 
   <div class="card card-amber">
@@ -311,7 +305,7 @@ Ai-Chat-bot-project/
   <h2>7. 모니터링 및 운영</h2>
   <div class="card card-cyan">
     <h3>📊 주요 모니터링 포인트</h3>
-<div class="table-responsive"><table>
+    <table>
       <tr><th>항목</th><th>확인 방법</th><th>정상 기준</th></tr>
       <tr><td>서비스 상태</td><td><code>GET /health</code></td><td><code>"status": "healthy"</code></td></tr>
       <tr><td>응답 시간</td><td>API 로그 <code>processing_time_ms</code></td><td>&lt; 30초 (L3: &lt; 10초)</td></tr>
@@ -319,7 +313,7 @@ Ai-Chat-bot-project/
       <tr><td>Redis 연결</td><td><code>redis-cli ping</code></td><td>PONG</td></tr>
       <tr><td>Zendesk 연동</td><td><code>GET /api/v2/users/me</code></td><td>HTTP 200</td></tr>
       <tr><td>에러율</td><td>로그 <code>ERROR</code> 레벨</td><td>&lt; 1%</td></tr>
-    </table></div>
+    </table>
   </div>
 </section>
 

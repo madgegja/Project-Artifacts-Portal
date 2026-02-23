@@ -10,21 +10,15 @@
 
   body {
     font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', -apple-system, sans-serif;
-    background: #0a0e1a;
-    color: #e2e8f0;
+    background: #F8FAFC;
+    color: #1E293B;
     min-height: 100vh;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
-  
-    font-size: 14px;
-  
-    line-height: 1.6;
-  
-    word-break: keep-all; overflow-wrap: break-word;
   }
 
   @media print {
-    body { background: #0a0e1a; }
+    body { background: #F8FAFC; }
     section { break-inside: avoid; }
   }
 
@@ -48,7 +42,7 @@
   }
   .hero-chip {
     display: inline-block;
-    background: rgba(14,165,233,0.1);
+    background: rgba(14,165,233,0.08);
     border: 1px solid rgba(14,165,233,0.25);
     border-radius: 20px;
     padding: 5px 18px;
@@ -66,7 +60,7 @@
     margin-bottom: 10px;
     position: relative;
   }
-  .hero p { font-size: 15px; color: #94a3b8; position: relative; }
+  .hero p { font-size: 15px; color: #64748B; position: relative; }
   .hero-stats {
     display: flex; justify-content: center; gap: 32px;
     margin-top: 24px; position: relative;
@@ -75,7 +69,7 @@
     text-align: center;
   }
   .hero-stat .num { font-size: 26px; font-weight: 800; color: #38bdf8; }
-  .hero-stat .label { font-size: 11px; color: #64748b; margin-top: 2px; }
+  .hero-stat .label { font-size: 11px; color: #94A3B8; margin-top: 2px; }
 
   /* ══════ VERTICAL FLOW ══════ */
   .flow { display: flex; flex-direction: column; align-items: center; gap: 0; }
@@ -112,7 +106,7 @@
     position: absolute; inset: 0;
     border-radius: 20px;
     padding: 1px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+    background: linear-gradient(135deg, rgba(0,0,0,0.04), rgba(255,255,255,0.02));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -120,14 +114,14 @@
 
   .node-step {
     display: inline-block;
-    font-size: 11px; font-weight: 800;
+    font-size: 10px; font-weight: 800;
     letter-spacing: 2px; text-transform: uppercase;
     padding: 3px 12px;
     border-radius: 8px;
     margin-bottom: 10px;
   }
   .node h2 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
-  .node p { font-size: 14px; color: #94a3b8; line-height: 1.7; }
+  .node p { font-size: 14px; color: #64748B; line-height: 1.7; }
 
   /* Node colors */
   .node-input {
@@ -138,10 +132,10 @@
   .node-input h2 { color: #c7d2fe; }
 
   .node-analyze {
-    background: linear-gradient(135deg, rgba(14,165,233,0.1), rgba(6,182,212,0.05));
-    border: 1px solid rgba(14,165,233,0.2);
+    background: linear-gradient(135deg, rgba(14,165,233,0.08), rgba(6,182,212,0.05));
+    border: 1px solid rgba(14,165,233,0.12);
   }
-  .node-analyze .node-step { background: rgba(14,165,233,0.2); color: #7dd3fc; }
+  .node-analyze .node-step { background: rgba(14,165,233,0.12); color: #7dd3fc; }
   .node-analyze h2 { color: #bae6fd; }
 
   .node-fraud {
@@ -218,7 +212,7 @@
     position: absolute; inset: 0;
     border-radius: 20px;
     padding: 1px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+    background: linear-gradient(135deg, rgba(0,0,0,0.06), rgba(255,255,255,0.02));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -253,7 +247,7 @@
 
   .route-icon {
     width: 56px; height: 56px;
-    border-radius: 16px;
+    border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     display: flex; align-items: center; justify-content: center;
     font-size: 26px;
     margin: 0 auto 12px;
@@ -267,7 +261,7 @@
     margin-bottom: 8px;
   }
   .route-card h3 { font-size: 17px; font-weight: 800; margin-bottom: 6px; }
-  .route-card .route-desc { font-size: 12.5px; color: #94a3b8; line-height: 1.6; margin-bottom: 12px; }
+  .route-card .route-desc { font-size: 12.5px; color: #64748B; line-height: 1.6; margin-bottom: 12px; }
   .route-card .route-pct {
     font-size: 32px; font-weight: 800;
     margin-bottom: 2px;
@@ -275,7 +269,7 @@
   .route-l1 .route-pct { color: #f87171; }
   .route-l2 .route-pct { color: #fbbf24; }
   .route-l3 .route-pct { color: #34d399; }
-  .route-card .route-vol { font-size: 12px; color: #64748b; }
+  .route-card .route-vol { font-size: 12px; color: #94A3B8; }
 
   /* ══════ MINI DETAIL ROWS (inside nodes) ══════ */
   .detail-grid {
@@ -292,8 +286,8 @@
     text-align: center;
   }
   .detail-item .di-icon { font-size: 20px; margin-bottom: 4px; }
-  .detail-item .di-title { font-size: 12px; font-weight: 700; color: var(--text, #e2e8f0); }
-  .detail-item .di-desc { font-size: 11px; color: #64748b; margin-top: 2px; }
+  .detail-item .di-title { font-size: 12px; font-weight: 700; color: var(--text, #1E293B); }
+  .detail-item .di-desc { font-size: 11px; color: #94A3B8; margin-top: 2px; }
 
   /* Parallel indicator */
   .parallel-badge {
@@ -322,13 +316,13 @@
     border-radius: 8px;
     font-size: 11px; font-weight: 700;
   }
-  .cat-chip-sub { background: rgba(14,165,233,0.12); color: #7dd3fc; border: 1px solid rgba(14,165,233,0.2); }
+  .cat-chip-sub { background: rgba(14,165,233,0.12); color: #7dd3fc; border: 1px solid rgba(14,165,233,0.12); }
   .cat-chip-ref { background: rgba(245,158,11,0.12); color: #fcd34d; border: 1px solid rgba(245,158,11,0.2); }
   .cat-chip-acc { background: rgba(16,185,129,0.12); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.2); }
   .cat-chip-pay { background: rgba(168,85,247,0.12); color: #d8b4fe; border: 1px solid rgba(168,85,247,0.2); }
   .cat-chip-con { background: rgba(239,68,68,0.12); color: #fca5a5; border: 1px solid rgba(239,68,68,0.2); }
   .cat-chip-tec { background: rgba(6,182,212,0.12); color: #67e8f9; border: 1px solid rgba(6,182,212,0.2); }
-  .cat-chip-oth { background: rgba(100,116,139,0.15); color: #94a3b8; border: 1px solid rgba(100,116,139,0.2); }
+  .cat-chip-oth { background: rgba(100,116,139,0.15); color: #64748B; border: 1px solid rgba(100,116,139,0.2); }
 
   /* ══════ VALUE PROPOSITION ══════ */
   .value-section {
@@ -345,7 +339,7 @@
   }
   .value-subtitle {
     text-align: center;
-    font-size: 14px; color: #94a3b8;
+    font-size: 14px; color: #64748B;
     margin-bottom: 28px;
   }
 
@@ -371,12 +365,12 @@
   }
   .compare-arrow {
     display: flex; align-items: center; justify-content: center;
-    font-size: 24px; color: #64748b;
+    font-size: 24px; color: #94A3B8;
   }
   .compare-card .cc-tag {
     display: inline-block;
     padding: 3px 12px; border-radius: 10px;
-    font-size: 11px; font-weight: 800;
+    font-size: 10px; font-weight: 800;
     letter-spacing: 1.5px; text-transform: uppercase;
     margin-bottom: 12px;
   }
@@ -397,8 +391,8 @@
   }
   .compare-old .journey-num { background: rgba(239,68,68,0.12); color: #fca5a5; }
   .compare-new .journey-num { background: rgba(16,185,129,0.12); color: #6ee7b7; }
-  .journey-step .js-text { font-size: 13px; color: #94a3b8; line-height: 1.6; }
-  .journey-step .js-text strong { color: #e2e8f0; }
+  .journey-step .js-text { font-size: 13px; color: #64748B; line-height: 1.6; }
+  .journey-step .js-text strong { color: #1E293B; }
 
   .cx-benefits {
     display: grid;
@@ -423,19 +417,19 @@
   .cx-card:nth-child(3)::after { background: #a78bfa; }
   .cx-card:nth-child(4)::after { background: #fbbf24; }
   .cx-card .cx-icon { font-size: 28px; margin-bottom: 8px; }
-  .cx-card .cx-title { font-size: 13px; font-weight: 800; color: #e2e8f0; margin-bottom: 4px; }
-  .cx-card .cx-desc { font-size: 11.5px; color: #64748b; line-height: 1.5; }
+  .cx-card .cx-title { font-size: 13px; font-weight: 800; color: #1E293B; margin-bottom: 4px; }
+  .cx-card .cx-desc { font-size: 11.5px; color: #94A3B8; line-height: 1.5; }
 
   .value-callout {
     margin-top: 20px;
     background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(14,165,233,0.04));
     border: 1px solid rgba(16,185,129,0.15);
-    border-radius: 16px;
+    border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     padding: 20px 28px;
     text-align: center;
   }
   .value-callout p {
-    font-size: 15px; color: #cbd5e1; line-height: 1.8;
+    font-size: 15px; color: #475569; line-height: 1.8;
   }
   .value-callout strong { color: #6ee7b7; }
   .value-callout em { color: #7dd3fc; font-style: normal; font-weight: 700; }
@@ -446,7 +440,7 @@
     margin: 40px auto 0;
     background: rgba(239,68,68,0.05);
     border: 1px solid rgba(239,68,68,0.15);
-    border-radius: 16px;
+    border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     padding: 22px 28px;
   }
   .exclusion-box h3 {
@@ -465,7 +459,7 @@
     border-radius: 10px;
     padding: 10px 14px;
     font-size: 12px;
-    color: #cbd5e1;
+    color: #475569;
   }
   .exclusion-item strong { color: #fca5a5; font-size: 11px; display: block; margin-bottom: 2px; }
 
@@ -474,7 +468,7 @@
     text-align: center;
     margin-top: 48px;
     padding: 24px 40px;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(0,0,0,0.03);
     font-size: 12px;
     color: #475569;
   }
@@ -494,24 +488,10 @@
     padding: 16px 20px;
     text-align: center;
   }
-  .result-card .rc-label { font-size: 11px; color: #64748b; margin-bottom: 4px; }
+  .result-card .rc-label { font-size: 11px; color: #94A3B8; margin-bottom: 4px; }
   .result-card .rc-value { font-size: 22px; font-weight: 800; }
   .result-card .rc-desc { font-size: 11px; color: #475569; margin-top: 2px; }
-
-    /* ══ 가독성 패치 (2026-02-23) ══ */
-    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1em; }
-    @media (max-width: 768px) {
-      body { font-size: 13px !important; }
-      .container, .body, [class*="content"] { padding-left: 12px !important; padding-right: 12px !important; }
-      h1 { font-size: 22px !important; }
-      h2 { font-size: 18px !important; }
-      h3 { font-size: 15px !important; }
-      table { font-size: 11px !important; }
-      .header, .hero, [class*="header"] { padding: 24px 16px !important; }
-      .toc-grid, .grid-2, .grid-3, .stat-grid, .card-grid, .level-grid { grid-template-columns: 1fr !important; }
-      .header-meta { flex-direction: column; gap: 8px !important; }
-    }
-  </style>
+</style>
 </head>
 <body>
 
@@ -615,9 +595,9 @@
           <div class="di-icon">📊</div>
           <div class="di-title">위험도 점수</div>
           <div class="di-desc" style="display:flex;gap:4px;justify-content:center;margin-top:4px;">
-            <span style="background:rgba(16,185,129,0.2);color:#6ee7b7;padding:2px 8px;border-radius:6px;font-size: 11px;">0~29 안전</span>
-            <span style="background:rgba(245,158,11,0.2);color:#fcd34d;padding:2px 8px;border-radius:6px;font-size: 11px;">30~49 주의</span>
-            <span style="background:rgba(239,68,68,0.2);color:#fca5a5;padding:2px 8px;border-radius:6px;font-size: 11px;">50+ 위험</span>
+            <span style="background:rgba(16,185,129,0.2);color:#6ee7b7;padding:2px 8px;border-radius:6px;font-size:10px;">0~29 안전</span>
+            <span style="background:rgba(245,158,11,0.2);color:#fcd34d;padding:2px 8px;border-radius:6px;font-size:10px;">30~49 주의</span>
+            <span style="background:rgba(239,68,68,0.2);color:#fca5a5;padding:2px 8px;border-radius:6px;font-size:10px;">50+ 위험</span>
           </div>
         </div>
       </div>
@@ -692,7 +672,7 @@
     <div class="node node-output" style="text-align:center;">
       <span class="node-step">STEP 5</span>
       <h2>고객에게 응답이 전달됩니다</h2>
-      <p>L3는 즉시 가이드 + 5분 후 Solved 티켓, L2는 가이드 → 고객 응답 → 티켓 생성, L1은 즉시 티켓 + 상담원 직접 — 모든 응답에 "CS 티켓 제출" 옵션 포함</p>
+      <p>L3는 즉시, L2는 상담원 검토 후, L1은 상담원이 직접 — 모든 응답에 "CS 티켓 제출" 옵션 포함</p>
     </div>
 
   </div><!-- /flow -->
@@ -726,10 +706,10 @@
     <div class="value-subtitle">CS 상담의 83%가 반복 정보 확인 단계 → AI가 티켓 전에 양식 안내 + 정보 확보 → CS 처리 효율 3~4배</div>
 
     <!-- 핵심 인사이트: 83% -->
-    <div style="background:linear-gradient(135deg,rgba(14,165,233,0.08),rgba(16,185,129,0.06));border:2px solid rgba(14,165,233,0.2);border-radius:16px;padding:24px 28px;margin-bottom:20px;">
+    <div style="background:linear-gradient(135deg,rgba(14,165,233,0.08),rgba(16,185,129,0.06));border:2px solid rgba(14,165,233,0.12);border-radius:16px;padding:24px 28px;margin-bottom:20px;">
       <div style="text-align:center;margin-bottom:16px;">
         <div style="font-size:11px;color:#38bdf8;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;">CORE INSIGHT — 실데이터 11,621건 분석</div>
-        <div style="font-size:20px;font-weight:800;color:#e2e8f0;line-height:1.4;">
+        <div style="font-size:20px;font-weight:800;color:#1E293B;line-height:1.4;">
           상담원 응답의 <span style="color:#38bdf8;font-size:28px;">83%</span>가 <span style="color:#fbbf24;">반복 정보 확인 단계</span>
         </div>
       </div>
@@ -798,35 +778,35 @@
     <!-- ═══ DUAL VALUE: CX × OPERATIONS ═══ -->
     <div class="cx-benefits" style="grid-template-columns:1fr 1fr;gap:20px;">
       <!-- Pillar 1: CX → Customer Satisfaction -->
-      <div style="background:linear-gradient(135deg,rgba(14,165,233,0.06),rgba(99,102,241,0.04));border:2px solid rgba(14,165,233,0.2);border-radius:16px;padding:22px 20px 18px;position:relative;overflow:hidden;">
+      <div style="background:linear-gradient(135deg,rgba(14,165,233,0.06),rgba(99,102,241,0.04));border:2px solid rgba(14,165,233,0.12);border-radius:16px;padding:22px 20px 18px;position:relative;overflow:hidden;">
         <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#0ea5e9,#6366f1);"></div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
           <div style="width:36px;height:36px;background:linear-gradient(135deg,#0ea5e9,#6366f1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;">🎯</div>
           <div>
-            <div style="font-size: 11px;color:#818cf8;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CUSTOMER EXPERIENCE</div>
+            <div style="font-size:10px;color:#818cf8;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CUSTOMER EXPERIENCE</div>
             <div style="font-size:15px;font-weight:800;background:linear-gradient(135deg,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">고객 경험 향상 → 서비스 만족도 극대화</div>
           </div>
         </div>
         <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">
-          <div style="display:flex;align-items:start;gap:8px;font-size:12px;color:#94a3b8;line-height:1.5;">
+          <div style="display:flex;align-items:start;gap:8px;font-size:12px;color:#64748B;line-height:1.5;">
             <span style="color:#38bdf8;font-size:14px;flex-shrink:0;">▸</span>
             <span>CS 대기 7~29일 → AI가 <strong style="color:#7dd3fc;">즉시 양식 안내</strong> → 응답 대기 제거</span>
           </div>
-          <div style="display:flex;align-items:start;gap:8px;font-size:12px;color:#94a3b8;line-height:1.5;">
+          <div style="display:flex;align-items:start;gap:8px;font-size:12px;color:#64748B;line-height:1.5;">
             <span style="color:#38bdf8;font-size:14px;flex-shrink:0;">▸</span>
             <span>확실한 양식 안내 → <strong style="color:#7dd3fc;">빠르고 정확한 CS 해결</strong> 경험</span>
           </div>
-          <div style="display:flex;align-items:start;gap:8px;font-size:12px;color:#94a3b8;line-height:1.5;">
+          <div style="display:flex;align-items:start;gap:8px;font-size:12px;color:#64748B;line-height:1.5;">
             <span style="color:#38bdf8;font-size:14px;flex-shrink:0;">▸</span>
             <span>빠른 CS = 좋은 인상 → <strong style="color:#7dd3fc;">서비스 신뢰도 + 브랜드 충성도</strong> 강화</span>
           </div>
-          <div style="display:flex;align-items:start;gap:8px;font-size:12px;color:#94a3b8;line-height:1.5;">
+          <div style="display:flex;align-items:start;gap:8px;font-size:12px;color:#64748B;line-height:1.5;">
             <span style="color:#38bdf8;font-size:14px;flex-shrink:0;">▸</span>
             <span>24/7 다국어 지원 → <strong style="color:#7dd3fc;">글로벌 10개 마켓</strong> 시간대 완벽 커버</span>
           </div>
         </div>
         <div style="text-align:center;padding:8px 12px;background:rgba(14,165,233,0.08);border:1px solid rgba(14,165,233,0.15);border-radius:8px;">
-          <div style="font-size:11px;color:#64748b;">좋은 CS 경험이 서비스 전체의 가치를 높입니다</div>
+          <div style="font-size:11px;color:#94A3B8;">좋은 CS 경험이 서비스 전체의 가치를 높입니다</div>
           <div style="font-size:13px;font-weight:800;color:#38bdf8;margin-top:2px;">Customer Satisfaction & Loyalty ↑</div>
         </div>
       </div>
@@ -836,30 +816,30 @@
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
           <div style="width:36px;height:36px;background:linear-gradient(135deg,#10b981,#f59e0b);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;">⚡</div>
           <div>
-            <div style="font-size: 11px;color:#fbbf24;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CS OPERATIONS</div>
+            <div style="font-size:10px;color:#fbbf24;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CS OPERATIONS</div>
             <div style="font-size:15px;font-weight:800;background:linear-gradient(135deg,#34d399,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">운영 효율 극대화 → 처리 능력 3~4배</div>
           </div>
         </div>
         <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">
-          <div style="display:flex;align-items:start;gap:8px;font-size:12px;color:#94a3b8;line-height:1.5;">
+          <div style="display:flex;align-items:start;gap:8px;font-size:12px;color:#64748B;line-height:1.5;">
             <span style="color:#34d399;font-size:14px;flex-shrink:0;">▸</span>
             <span>고객이 정보 <strong style="color:#6ee7b7;">미리 제공</strong> → 운영자 즉시 처리 가능</span>
           </div>
-          <div style="display:flex;align-items:start;gap:8px;font-size:12px;color:#94a3b8;line-height:1.5;">
+          <div style="display:flex;align-items:start;gap:8px;font-size:12px;color:#64748B;line-height:1.5;">
             <span style="color:#34d399;font-size:14px;flex-shrink:0;">▸</span>
             <span><strong style="color:#6ee7b7;">첫 응답 해결율 3~4배</strong> → 왕복 3~5회 → 1회로 단축</span>
           </div>
-          <div style="display:flex;align-items:start;gap:8px;font-size:12px;color:#94a3b8;line-height:1.5;">
+          <div style="display:flex;align-items:start;gap:8px;font-size:12px;color:#64748B;line-height:1.5;">
             <span style="color:#34d399;font-size:14px;flex-shrink:0;">▸</span>
             <span>38% 셀프 해결 → <strong style="color:#6ee7b7;">월 630건 티켓 감소</strong></span>
           </div>
-          <div style="display:flex;align-items:start;gap:8px;font-size:12px;color:#94a3b8;line-height:1.5;">
+          <div style="display:flex;align-items:start;gap:8px;font-size:12px;color:#64748B;line-height:1.5;">
             <span style="color:#34d399;font-size:14px;flex-shrink:0;">▸</span>
             <span>반복 정보 수집 제거 → <strong style="color:#6ee7b7;">판단 업무에 집중</strong></span>
           </div>
         </div>
         <div style="text-align:center;padding:8px 12px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.15);border-radius:8px;">
-          <div style="font-size:11px;color:#64748b;">같은 인력으로 3~4배 더 많은 CS를 처리합니다</div>
+          <div style="font-size:11px;color:#94A3B8;">같은 인력으로 3~4배 더 많은 CS를 처리합니다</div>
           <div style="font-size:13px;font-weight:800;color:#34d399;margin-top:2px;">CS Processing Efficiency ×3~4</div>
         </div>
       </div>
@@ -871,7 +851,7 @@
         <strong style="color:#6ee7b7;">CX 향상 × 운영 효율의 선순환</strong><br>
         AI 양식 안내 → <em>고객 CX ↑</em> → <strong>서비스 만족도 ↑</strong> &nbsp;|&nbsp;
         운영자 즉시 처리 → <em>효율 3~4배</em> → <strong>같은 인력, 더 많은 CS</strong><br>
-        <span style="font-size:0.95em;color:#94a3b8;">두 효과가 동시에 발생하여 CS 조직의 총체적 역량이 향상됩니다</span>
+        <span style="font-size:0.95em;color:#64748B;">두 효과가 동시에 발생하여 CS 조직의 총체적 역량이 향상됩니다</span>
       </p>
     </div>
   </div>

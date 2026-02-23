@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>악의성 환불 요청 CS 티켓 분석 리포트 | 2026-02-19</title>
+<style>
+  @page {
+    size: A4;
+    margin: 15mm 18mm;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    color: #1E293B;
+    background: #F8FAFC;
+    font-size: 11px;
+    line-height: 1.7;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .report-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 0;
+  }
+
+  /* ── Header ── */
+  .report-header {
+    background: linear-gradient(135deg, #F8FAFC 0%, #F0F4F8 50%, #E8F0FE 100%);
+    color: #1E293B;
+    padding: 36px 40px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .report-header::after {
+    content: '';
+    position: absolute;
+    top: -50px; right: -50px;
+    width: 200px; height: 200px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 50%;
+  }
+  .report-header .badge {
+    display: inline-block;
+    background: #e94560;
+    color: #1E293B;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .report-header h1 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .report-header .subtitle {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 400;
+  }
+  .report-meta {
+    display: flex;
+    gap: 24px;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.65);
+  }
+  .report-meta span { display: flex; align-items: center; gap: 5px; }
+  .report-meta .label { color: rgba(255,255,255,0.45); }
+
+  /* ── Content ── */
+  .content { padding: 30px 40px; }
+
+  /* ── Section ── */
+  .section { margin-bottom: 28px; page-break-inside: avoid; }
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 800;
+    color: #F8FAFC;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e94560;
+  }
+  .section-title .icon {
+    width: 28px; height: 28px;
+    background: #e94560;
+    color: #1E293B;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  /* ── Executive Summary ── */
+  .summary-box {
+    background: linear-gradient(135deg, #fff5f5 0%, #fef2f2 100%);
+    border: 1px solid #fecaca;
+    border-left: 4px solid #e94560;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 24px;
+  }
+  .summary-box h3 {
+    font-size: 13px;
+    color: #e94560;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .summary-box ul {
+    list-style: none;
+    padding: 0;
+  }
+  .summary-box li {
+    padding: 4px 0 4px 20px;
+    position: relative;
+    font-size: 11px;
+    color: #374151;
+  }
+  .summary-box li::before {
+    content: '▸';
+    position: absolute;
+    left: 4px;
+    color: #e94560;
+    font-weight: bold;
+  }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 10.5px;
+  }
+  table th {
+    background: #F8FAFC;
+    color: #1E293B;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.3px;
+  }
+  table td {
+    padding: 7px 12px;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: top;
+  }
+  table tr:nth-child(even) td { background: #f9fafb; }
+  table tr:hover td { background: #f0f4ff; }
+
+  .table-highlight td { background: #fef3c7 !important; }
+
+  /* ── Timeline ── */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+    margin: 14px 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #d1d5db;
+  }
+  .timeline-item {
+    position: relative;
+    padding: 6px 0 12px 12px;
+    font-size: 10.5px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid #6b7280;
+  }
+  .timeline-item.alert::before { border-color: #e94560; background: #e94560; }
+  .timeline-item.response::before { border-color: #10b981; background: #10b981; }
+  .timeline-item .time {
+    font-weight: 700;
+    color: #6b7280;
+    font-size: 10px;
+    font-family: 'Consolas', monospace;
+  }
+  .timeline-item .desc { color: #374151; margin-top: 2px; }
+  .timeline-item .tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 10px;
+    font-size: 9px;
+    font-weight: 600;
+    margin-left: 4px;
+  }
+  .tag-customer { background: #fee2e2; color: #dc2626; }
+  .tag-agent { background: #d1fae5; color: #059669; }
+  .tag-escalation { background: #fef3c7; color: #d97706; }
+
+  /* ── Red Flag Cards ── */
+  .flag-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin: 10px 0;
+  }
+  .flag-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+  }
+  .flag-card.critical { background: #fef2f2; border-color: #fecaca; }
+  .flag-card.warning { background: #fffbeb; border-color: #fde68a; }
+  .flag-num {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .flag-card.critical .flag-num { background: #e94560; color: #1E293B; }
+  .flag-card.warning .flag-num { background: #f59e0b; color: #1E293B; }
+  .flag-card .flag-title { font-weight: 700; font-size: 11px; color: #F8FAFC; }
+  .flag-card .flag-desc { font-size: 10px; color: #6b7280; margin-top: 2px; line-height: 1.5; }
+
+  /* ── Verdict Box ── */
+  .verdict-box {
+    background: linear-gradient(135deg, #F8FAFC, #E8F0FE);
+    color: #1E293B;
+    border-radius: 10px;
+    padding: 22px 28px;
+    margin: 18px 0;
+    text-align: center;
+  }
+  .verdict-box .verdict-label {
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .verdict-box .verdict-result {
+    font-size: 20px;
+    font-weight: 800;
+    color: #e94560;
+    margin-bottom: 4px;
+  }
+  .verdict-bar {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    margin: 10px 0;
+  }
+  .verdict-bar .bar {
+    width: 36px; height: 8px;
+    border-radius: 4px;
+    background: rgba(0,0,0,0.06);
+  }
+  .verdict-bar .bar.active { background: #e94560; }
+  .verdict-box .verdict-type {
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 6px;
+  }
+
+  /* ── Evaluation Table ── */
+  .eval-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 10.5px;
+  }
+  .eval-check {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+  .eval-check.pass { background: #d1fae5; color: #059669; }
+  .eval-check.warn { background: #fef3c7; color: #d97706; }
+  .eval-label { font-weight: 600; color: #F8FAFC; min-width: 120px; }
+  .eval-comment { color: #6b7280; }
+
+  /* ── Response Template ── */
+  .response-template {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 12px 0;
+    font-size: 10.5px;
+    line-height: 1.7;
+    color: #374151;
+  }
+  .response-template h4 {
+    font-size: 11px;
+    font-weight: 700;
+    color: #F8FAFC;
+    margin: 14px 0 6px;
+    padding-top: 10px;
+    border-top: 1px solid #e5e7eb;
+  }
+  .response-template h4:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+  .response-template .greeting {
+    font-style: italic;
+    color: #6b7280;
+  }
+
+  /* ── Strategy Tags ── */
+  .strategy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 12px 0;
+  }
+  .strategy-card {
+    background: #f0f4ff;
+    border: 1px solid #c7d2fe;
+    border-radius: 8px;
+    padding: 12px 16px;
+  }
+  .strategy-card .s-title {
+    font-weight: 700;
+    font-size: 11px;
+    color: #3730a3;
+    margin-bottom: 4px;
+  }
+  .strategy-card .s-desc {
+    font-size: 10px;
+    color: #4b5563;
+    line-height: 1.5;
+  }
+
+  /* ── Action Items ── */
+  .action-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 14px;
+    margin: 6px 0;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+  }
+  .action-item.urgent { background: #fef2f2; border-color: #fecaca; }
+  .action-item.medium { background: #fffbeb; border-color: #fde68a; }
+  .action-item.low { background: #f0fdf4; border-color: #bbf7d0; }
+  .action-priority {
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 9px;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .action-item.urgent .action-priority { background: #e94560; color: #1E293B; }
+  .action-item.medium .action-priority { background: #f59e0b; color: #1E293B; }
+  .action-item.low .action-priority { background: #10b981; color: #1E293B; }
+  .action-content { flex: 1; }
+  .action-title { font-weight: 700; font-size: 11px; color: #F8FAFC; }
+  .action-meta { font-size: 9.5px; color: #9ca3af; margin-top: 2px; }
+
+  /* ── Insight Box ── */
+  .insight-box {
+    background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+    border: 1px solid #c7d2fe;
+    border-radius: 10px;
+    padding: 22px 28px;
+    margin: 16px 0;
+  }
+  .insight-box h3 {
+    font-size: 13px;
+    font-weight: 800;
+    color: #3730a3;
+    margin-bottom: 12px;
+  }
+  .attack-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 14px 0;
+  }
+  .flow-step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    position: relative;
+  }
+  .flow-step:not(:last-child)::after {
+    content: '↓';
+    position: absolute;
+    left: 24px;
+    bottom: -6px;
+    color: #6366f1;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 1;
+  }
+  .flow-num {
+    width: 22px; height: 22px;
+    background: #6366f1;
+    color: #1E293B;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .flow-num.predicted { background: #d1d5db; }
+  .flow-text { font-size: 10.5px; color: #374151; }
+  .flow-text em { color: #e94560; font-style: normal; font-weight: 600; }
+
+  /* ── Footer ── */
+  .report-footer {
+    background: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 9.5px;
+    color: #9ca3af;
+  }
+  .report-footer .disclaimer {
+    max-width: 500px;
+    line-height: 1.5;
+  }
+
+  /* ── Print Styles ── */
+  @media print {
+    body { background: white; font-size: 10px; }
+    .report-container { max-width: 100%; box-shadow: none; }
+    .section { page-break-inside: avoid; }
+    .no-print { display: none !important; }
+    .response-template { page-break-inside: avoid; }
+  }
+
+  /* ── Print Button ── */
+  .print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #e94560;
+    color: #1E293B;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(233,69,96,0.4);
+    z-index: 1000;
+    font-family: inherit;
+  }
+  .print-btn:hover { background: #d63851; }
+</style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">📄 PDF로 저장</button>
+
+<div class="report-container">
+
+  <!-- ═══════ HEADER ═══════ -->
+  <div class="report-header">
+    <div class="badge">🚨 FRAUD ALERT</div>
+    <h1>악의성 환불 요청 CS 티켓 분석 리포트</h1>
+    <div class="subtitle">Friendly Fraud / AI-Assisted Refund Dispute Analysis</div>
+    <div class="report-meta">
+      <span><span class="label">작성일</span> 2026-02-19</span>
+      <span><span class="label">작성자</span> 유종선</span>
+      <span><span class="label">대상 티켓</span> #121830, #123751</span>
+      <span><span class="label">긴급도</span> 🔴 HIGH</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ═══════ EXECUTIVE SUMMARY ═══════ -->
+    <div class="summary-box">
+      <h3>📋 Executive Summary</h3>
+      <ul>
+        <li>동일 인물이 2개 티켓으로 <strong>USD 35.99 환불을 반복 요구</strong>, VIP 콘텐츠 열람 이력이 DB에서 확인된 상태</li>
+        <li>AI(ChatGPT 등)로 생성한 법률 문서를 활용하여 <strong>법적 압박 전술</strong>을 구사</li>
+        <li>이탈리아 코미디 유래 <strong>가짜 이름(Ajeje Brazorf)</strong>으로 법률 대리인을 사칭, 별도 티켓 접수</li>
+        <li><strong>악의성 판정: HIGH</strong> — 콘텐츠 사용 후 무단거래 주장하는 전형적 Friendly Fraud</li>
+        <li>차지백 전환 가능성 매우 높음 → <strong>Evidence 패키지 사전 준비 필요</strong></li>
+      </ul>
+    </div>
+
+    <!-- ═══════ 1. TICKET OVERVIEW ═══════ -->
+    <div class="section">
+      <div class="section-title">
+        <div class="icon">1</div>
+        티켓 개요
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:22%">항목</th>
+            <th style="width:39%">티켓 #121830</th>
+            <th style="width:39%">티켓 #123751</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>접수일</strong></td>
+            <td>2026-02-13 06:16 AM</td>
+            <td>2026-02-18 10:05 PM</td>
+          </tr>
+          <tr>
+            <td><strong>요청자</strong></td>
+            <td>vhvh uuu (vhvhuuu1**@gmail.com)</td>
+            <td>Ajeje Brazorf (brazoa**@gmail.com)</td>
+          </tr>
+          <tr>
+            <td><strong>실소유자</strong></td>
+            <td>Gianmaria C**</td>
+            <td>동일 인물 (법률 대리인 자칭)</td>
+          </tr>
+          <tr>
+            <td><strong>계정</strong></td>
+            <td>107566017412923756326</td>
+            <td><strong>동일 계정</strong></td>
+          </tr>
+          <tr>
+            <td><strong>금액</strong></td>
+            <td>USD 35.99 (6개월 VIP)</td>
+            <td>USD 35.99 (동일 건)</td>
+          </tr>
+          <tr>
+            <td><strong>PG사</strong></td>
+            <td>Airwallex / Apple Pay</td>
+            <td>동일</td>
+          </tr>
+          <tr>
+            <td><strong>상담원</strong></td>
+            <td>PSJ (2회 답변)</td>
+            <td>미배정 (New)</td>
+          </tr>
+          <tr>
+            <td><strong>현재 상태</strong></td>
+            <td>In Progress</td>
+            <td>New</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Timeline -->
+      <div style="margin-top: 16px; font-weight: 700; font-size: 12px; color: #F8FAFC; margin-bottom: 8px;">📅 타임라인</div>
+      <div class="timeline">
+        <div class="timeline-item alert">
+          <div class="time">02/12</div>
+          <div class="desc">6개월 VIP 결제 (USD 35.99, Airwallex/Apple Pay) — <strong>동일 당일 VIP 콘텐츠 2건 열람</strong></div>
+        </div>
+        <div class="timeline-item alert">
+          <div class="time">02/13 06:16</div>
+          <div class="desc">[#121830] 1차: 단순 환불 요청 ("미승인 거래") <span class="tag tag-customer">고객</span></div>
+        </div>
+        <div class="timeline-item response">
+          <div class="time">02/13 08:36</div>
+          <div class="desc">[#121830] PSJ 1차 답변: 환불 정책 안내 + VIP 이용으로 환불 불가 <span class="tag tag-agent">상담원</span></div>
+        </div>
+        <div class="timeline-item alert">
+          <div class="time">02/13 09:12</div>
+          <div class="desc">[#121830] 2차: 법률 용어 + 7일 데드라인 + 증거 요구 (AI 생성) <span class="tag tag-customer">고객</span></div>
+        </div>
+        <div class="timeline-item response">
+          <div class="time">02/16 09:13</div>
+          <div class="desc">[#121830] PSJ 2차 답변: 열람 작품명 제시 + 환불 거절 유지 <span class="tag tag-agent">상담원</span></div>
+        </div>
+        <div class="timeline-item alert">
+          <div class="time">02/16 16:01</div>
+          <div class="desc">[#121830] 3차: 동일 내용 반복 + <em>AI 제안 문구 실수 포함</em> <span class="tag tag-customer">고객</span></div>
+        </div>
+        <div class="timeline-item alert">
+          <div class="time">02/18 22:05</div>
+          <div class="desc">[#123751] <strong>가짜 법률 대리인</strong> 사칭 별도 티켓 접수 <span class="tag tag-escalation">에스컬레이션</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ 2. RED FLAG ANALYSIS ═══════ -->
+    <div class="section">
+      <div class="section-title">
+        <div class="icon">2</div>
+        악의성 판별 분석 (Red Flag 탐지)
+      </div>
+
+      <div style="font-weight: 700; font-size: 11px; color: #dc2626; margin-bottom: 8px;">🔴 결정적 악의성 지표 (High Confidence)</div>
+      <div class="flag-grid">
+        <div class="flag-card critical">
+          <div class="flag-num">1</div>
+          <div>
+            <div class="flag-title">VIP 콘텐츠 열람 확인</div>
+            <div class="flag-desc">PSJ 상담원 DB 조회 결과, 결제 당일(02/12) 2개 작품 열람 이력 확인: <em>From Weakling to Nemesis</em>, <em>Someone Stop Her!</em></div>
+          </div>
+        </div>
+        <div class="flag-card critical">
+          <div class="flag-num">2</div>
+          <div>
+            <div class="flag-title">AI 생성 메시지 패턴</div>
+            <div class="flag-desc">3회 연속 메시지 모두 법률 조항 인용, 번호 리스트, 7일 데드라인 등 AI 템플릿 구조. 마지막 메시지에 <strong>"If you want, I can produce a short version..."</strong> — AI가 사용자에게 제안하는 문구가 그대로 포함</div>
+          </div>
+        </div>
+        <div class="flag-card critical">
+          <div class="flag-num">3</div>
+          <div>
+            <div class="flag-title">가짜 법률 대리인 등장</div>
+            <div class="flag-desc">#123751에서 "Alessandro Nieri, External Legal Representative" 자칭, 별도 Gmail 계정으로 접수. 동일 계정/동일 금액/동일 사건 — 중복 티켓</div>
+          </div>
+        </div>
+        <div class="flag-card critical">
+          <div class="flag-num">4</div>
+          <div>
+            <div class="flag-title">주장의 모순</div>
+            <div class="flag-desc">"결제를 하지 않았다/인식하지 못한다"면서 계정번호, 결제금액, PG사, 결제수단, 구독 상품명을 <strong>정확히 알고 있음</strong> — 영수증 보유 직접 언급</div>
+          </div>
+        </div>
+        <div class="flag-card critical">
+          <div class="flag-num">5</div>
+          <div>
+            <div class="flag-title">전략적 에스컬레이션</div>
+            <div class="flag-desc">1차: 단순 환불 → 2차: 법률 용어 + 증거 요구 → 3차: 동일 내용 강화 → 4차: 법률 대리인 사칭 별도 티켓. 교과서적 압박 에스컬레이션</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="font-weight: 700; font-size: 11px; color: #d97706; margin: 14px 0 8px;">🟡 추가 의심 지표 (Supporting Evidence)</div>
+      <div class="flag-grid">
+        <div class="flag-card warning">
+          <div class="flag-num">6</div>
+          <div>
+            <div class="flag-title">"Ajeje Brazorf"는 가짜 이름</div>
+            <div class="flag-desc">이탈리아 코미디 프로그램에서 유래한 허구 인물명 — 이탈리아에서 "가짜 이름의 대명사"로 통용되는 밈(meme)</div>
+          </div>
+        </div>
+        <div class="flag-card warning">
+          <div class="flag-num">7</div>
+          <div>
+            <div class="flag-title">법무법인 검증 불가</div>
+            <div class="flag-desc">"Nieri Law & Consulting, Venezia" — 이탈리아 변호사가 Gmail 주소를 공식 연락처로 사용하는 것은 비정상적. 실존 법무법인은 자체 도메인 이메일 사용이 기본</div>
+          </div>
+        </div>
+        <div class="flag-card warning">
+          <div class="flag-num">8</div>
+          <div>
+            <div class="flag-title">환율 차이 손해 주장</div>
+            <div class="flag-desc">"currency conversion + fees was higher than USD 35.99" — 카드 발급사/Apple Pay 환전 수수료이며 투믹스 책임 범위 밖</div>
+          </div>
+        </div>
+        <div class="flag-card warning">
+          <div class="flag-num">9</div>
+          <div>
+            <div class="flag-title">차지백 위협 반복</div>
+            <div class="flag-desc">총 3회에 걸쳐 차지백/소비자보호기관 신고 위협 반복 — 실제 피해자 행동보다 환불 강제를 위한 협상 전술 패턴</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Verdict -->
+      <div class="verdict-box">
+        <div class="verdict-label">악의성 종합 판정</div>
+        <div class="verdict-result">⚠️ HIGH — 매우 높음</div>
+        <div class="verdict-bar">
+          <div class="bar active"></div>
+          <div class="bar active"></div>
+          <div class="bar active"></div>
+          <div class="bar active"></div>
+          <div class="bar active"></div>
+        </div>
+        <div class="verdict-type">유형: Friendly Fraud + AI 활용 법적 압박 전술</div>
+        <div style="font-size:10px; color:rgba(255,255,255,0.5); margin-top:4px;">콘텐츠 사용 후 "무단거래" 주장 → AI 법률 문서 + 가짜 변호사 동원 → 차지백 위협</div>
+      </div>
+    </div>
+
+    <!-- ═══════ 3. AGENT EVALUATION ═══════ -->
+    <div class="section">
+      <div class="section-title">
+        <div class="icon">3</div>
+        상담원 PSJ 기존 대응 평가
+      </div>
+      <div class="eval-item">
+        <div class="eval-check pass">✓</div>
+        <div class="eval-label">환불 정책 안내</div>
+        <div class="eval-comment">Terms of Use 기반 3가지 환불 조건 명확히 안내</div>
+      </div>
+      <div class="eval-item">
+        <div class="eval-check pass">✓</div>
+        <div class="eval-label">콘텐츠 이용 확인</div>
+        <div class="eval-comment">구체적 열람 작품명 2건 제시 (From Weakling to Nemesis, Someone Stop Her!)</div>
+      </div>
+      <div class="eval-item">
+        <div class="eval-check pass">✓</div>
+        <div class="eval-label">구독 취소 처리</div>
+        <div class="eval-comment">즉시 구독 해지 완료, 만료일(2026-08-12) 안내</div>
+      </div>
+      <div class="eval-item">
+        <div class="eval-check pass">✓</div>
+        <div class="eval-label">로그인 방식 설명</div>
+        <div class="eval-comment">Google 소셜 로그인 → 본인 인증 필요 사실 설명</div>
+      </div>
+      <div class="eval-item">
+        <div class="eval-check pass">✓</div>
+        <div class="eval-label">카드사 분쟁 안내</div>
+        <div class="eval-comment">카드사 분쟁 절차 협조 의지 표명</div>
+      </div>
+      <div class="eval-item">
+        <div class="eval-check warn">!</div>
+        <div class="eval-label">보완 필요 사항</div>
+        <div class="eval-comment">법률 대리인 티켓(#123751) 미응대 상태. 법적 주장에 대한 구체적 반박 필요</div>
+      </div>
+    </div>
+
+    <!-- ═══════ 4. RECOMMENDED RESPONSE ═══════ -->
+    <div class="section">
+      <div class="section-title">
+        <div class="icon">4</div>
+        권장 CS 응대 답변 (#123751 대응)
+      </div>
+      <p style="font-size:10px; color:#6b7280; margin-bottom:10px;">※ 아래 답변은 #123751에 대한 응대이며, #121830의 미응답 메시지에 대한 최종 답변 역할도 합니다. 복사하여 바로 사용 가능합니다.</p>
+
+      <div class="response-template">
+        <p class="greeting">Hello,<br>This is TOOMICS Customer Support.</p>
+        <p style="margin-top:8px;">We are writing in response to your message dated February 18, 2026, submitted on behalf of the account holder associated with account <strong>107566017412923756326</strong>. We have also reviewed the previous correspondence on ticket <strong>#121830</strong> regarding the same matter.</p>
+
+        <h4>1. Account Access and Content Usage Verification</h4>
+        <p>Our system records confirm the following:</p>
+        <ul style="margin: 6px 0 6px 16px; list-style: disc;">
+          <li>The account was registered via <strong>Google social login</strong>. Google's OAuth authentication requires the account holder to actively sign in and authorize access.</li>
+          <li>A <strong>6 Months VIP Membership</strong> was purchased on <strong>February 12, 2026</strong> via <strong>Airwallex (Apple Pay)</strong> for <strong>USD 35.99</strong>.</li>
+          <li>Following the purchase, <strong>VIP-exclusive content was accessed on the same date</strong>, including: <em>From Weakling to Nemesis</em> and <em>Someone Stop Her!</em></li>
+          <li>The payment flow through Airwallex requires <strong>explicit user confirmation</strong> at every step.</li>
+        </ul>
+
+        <h4>2. Refund Policy Application</h4>
+        <p>In accordance with our <strong>Terms of Use</strong>, a refund is available only when <strong>all three</strong> conditions are met: ① Request within 14 days; ② No VIP content accessed; ③ No VIP-discounted coins used. As <strong>VIP content was accessed</strong>, condition ② is not satisfied, and we are unable to process a refund.</p>
+
+        <h4>3. Regarding the Claim of Unauthorized Access</h4>
+        <p>The account was accessed through Google OAuth, which requires the <strong>account holder's own Google credentials</strong>. If you believe your credentials were compromised, please contact <strong>Google</strong> (support.google.com/accounts/answer/6294825) and <strong>Apple Support</strong> directly.</p>
+
+        <h4>4. Regarding EU Consumer Law</h4>
+        <p>Users <strong>consent to immediate access to digital content</strong> upon purchase and <strong>acknowledge that the right of withdrawal is waived</strong> once digital content has been accessed. Since VIP content was accessed, the 14-day withdrawal right no longer applies.</p>
+
+        <h4>5. Regarding the Legal Representative Inquiry</h4>
+        <p>For us to formally engage with a third-party representative, we require: a <strong>signed letter of authorization</strong> from the account holder, and the representative's <strong>verifiable professional credentials</strong> (bar registration number, official law firm domain email). Until provided, we will communicate with the registered account holder on ticket #121830.</p>
+
+        <h4>6. Actions Already Taken</h4>
+        <p>✅ Subscription canceled — No future charges. ✅ VIP expires August 12, 2026. ✅ Fully prepared to cooperate with any official dispute/chargeback process.</p>
+
+        <p style="margin-top: 12px;">Best regards,<br><strong>TOOMICS Customer Support</strong></p>
+      </div>
+    </div>
+
+    <!-- ═══════ 5. STRATEGY ═══════ -->
+    <div class="section">
+      <div class="section-title">
+        <div class="icon">5</div>
+        응대 전략 요약
+      </div>
+      <div class="strategy-grid">
+        <div class="strategy-card">
+          <div class="s-title">📊 사실 기반 반박</div>
+          <div class="s-desc">콘텐츠 열람 이력(작품명 2건), Google OAuth 인증 구조, Airwallex 결제 승인 절차를 구체적으로 제시</div>
+        </div>
+        <div class="strategy-card">
+          <div class="s-title">⚖️ 법률 주장 대응</div>
+          <div class="s-desc">EU 14일 철회권 → 디지털 콘텐츠 접근 시 철회권 소멸 조건을 명시적으로 반박</div>
+        </div>
+        <div class="strategy-card">
+          <div class="s-title">🛡️ 가짜 대리인 차단</div>
+          <div class="s-desc">위임장 + 자격증명(변호사 등록번호, 법무법인 공식 이메일) 요구로 압박 중립화</div>
+        </div>
+        <div class="strategy-card">
+          <div class="s-title">🤝 에스컬레이션 수용</div>
+          <div class="s-desc">차지백/분쟁 절차 완전 협조 의지 표현 — 위협에 동요하지 않는 자세 유지</div>
+        </div>
+        <div class="strategy-card" style="grid-column: 1 / -1;">
+          <div class="s-title">🔀 책임 분리</div>
+          <div class="s-desc">계정 보안 → Google 관할 / 결제수단 보안 → Apple 관할 — 투믹스 책임 범위를 명확히 한정</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ 6. ACTION ITEMS ═══════ -->
+    <div class="section">
+      <div class="section-title">
+        <div class="icon">6</div>
+        후속 조치 권장사항
+      </div>
+      <div class="action-item urgent">
+        <div class="action-priority">즉시</div>
+        <div class="action-content">
+          <div class="action-title">#123751을 #121830에 Link 처리 — 동일 건 중복 접수 티켓 연결 관리</div>
+          <div class="action-meta">담당: CS팀 · 기한: 즉시</div>
+        </div>
+      </div>
+      <div class="action-item urgent">
+        <div class="action-priority">즉시</div>
+        <div class="action-content">
+          <div class="action-title">"Ajeje Brazorf" 계정 모니터링 — 가짜 대리인 명의 추가 접수 가능성 대비</div>
+          <div class="action-meta">담당: CS팀 · 기한: 즉시</div>
+        </div>
+      </div>
+      <div class="action-item medium">
+        <div class="action-priority">3일</div>
+        <div class="action-content">
+          <div class="action-title">차지백 대비 Evidence 패키지 사전 준비 — Airwallex 거래 로그, 콘텐츠 접근 로그(타임스탬프/IP), Terms of Use 동의 기록 확보</div>
+          <div class="action-meta">담당: 결제팀 + CS팀 · 기한: 02/22까지</div>
+        </div>
+      </div>
+      <div class="action-item medium">
+        <div class="action-priority">3일</div>
+        <div class="action-content">
+          <div class="action-title">"Nieri Law & Consulting" 실존 여부 확인 — 이탈리아 변호사회(Ordine degli Avvocati) 등록 조회</div>
+          <div class="action-meta">담당: 법무팀 · 기한: 02/22까지</div>
+        </div>
+      </div>
+      <div class="action-item low">
+        <div class="action-priority">1주</div>
+        <div class="action-content">
+          <div class="action-title">AI 생성 환불 요청 패턴 DB화 — 법률 조항 나열, 7일 데드라인, 번호 리스트 증거 요구 등 탐지 기준 수립</div>
+          <div class="action-meta">담당: BizOps · 기한: 02/26까지</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ 7. INSIGHT ═══════ -->
+    <div class="section">
+      <div class="section-title">
+        <div class="icon">7</div>
+        PM 인사이트: AI-Assisted Friendly Fraud 트렌드
+      </div>
+      <div class="insight-box">
+        <h3>💡 공격 패턴 분석</h3>
+        <div class="attack-flow">
+          <div class="flow-step">
+            <div class="flow-num">1</div>
+            <div class="flow-text">서비스 정상 이용 (VIP 콘텐츠 열람)</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">2</div>
+            <div class="flow-text">"무단거래" 주장으로 환불 요청 (단순 톤)</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">3</div>
+            <div class="flow-text">AI로 법률 문서 생성 → <em>법적 압박 + 데드라인 설정</em></div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">4</div>
+            <div class="flow-text">가짜 법률 대리인 사칭 → <em>별도 티켓 에스컬레이션</em></div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num predicted">5</div>
+            <div class="flow-text" style="color:#9ca3af;">[예상] CS 거절 시 → <em>차지백 접수</em> (Airwallex/Apple Pay 경유)</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 16px;">
+          <h3>🛡️ 대응 원칙 5가지</h3>
+          <table style="margin-top: 8px;">
+            <thead>
+              <tr>
+                <th style="width:5%">#</th>
+                <th style="width:25%">원칙</th>
+                <th>설명</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1</strong></td>
+                <td><strong>사실(팩트)로 대응</strong></td>
+                <td>감정적 대응이나 과도한 사과는 불필요</td>
+              </tr>
+              <tr>
+                <td><strong>2</strong></td>
+                <td><strong>증거를 먼저 제시</strong></td>
+                <td>상대방 요구 전에 콘텐츠 이용 사실을 구체적으로 제시</td>
+              </tr>
+              <tr>
+                <td><strong>3</strong></td>
+                <td><strong>차지백 선제 대비</strong></td>
+                <td>CS 거절 시 100% 차지백 전환 — Evidence 패키지 사전 준비</td>
+              </tr>
+              <tr>
+                <td><strong>4</strong></td>
+                <td><strong>법적 위협 불동요</strong></td>
+                <td>콘텐츠 이용 증거 보유 → 차지백 분쟁에서도 방어 가능</td>
+              </tr>
+              <tr>
+                <td><strong>5</strong></td>
+                <td><strong>자격 검증으로 차단</strong></td>
+                <td>위임장 + 변호사 등록번호 + 공식 이메일 요구</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <div class="report-footer">
+    <div class="disclaimer">
+      📌 이 리포트의 법적 분석 내용은 실무 운영 관점의 판단이며, 법률 자문을 대체하지 않습니다.
+      실제 법적 대응이 필요한 경우 법무팀 또는 외부 법률 전문가와 협의하시기 바랍니다.
+    </div>
+    <div style="text-align:right;">
+      Generated by 유종선<br>
+      2026-02-19
+    </div>
+  </div>
+
+</div><!-- /report-container -->
+
+</body>
+</html>

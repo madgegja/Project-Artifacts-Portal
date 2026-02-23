@@ -3,19 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="유종선">
-<meta name="date" content="2026-02-23">
-<title>CS AI Chatbot 주간 현황 보고 | 2026-02-23</title>
+<title>AI Chatbot 프로젝트 주간 현황 보고 | 2026-02-22</title>
 <style>
   @page { size: A4 landscape; margin: 10mm; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --bg: #0f172a;
-    --bg2: #1e293b;
-    --text: #e2e8f0;
-    --text2: #94a3b8;
-    --muted: #64748b;
+    --bg: #F8FAFC;
+    --bg2: #FFFFFF;
+    --text: #1E293B;
+    --text2: #64748B;
+    --muted: #94A3B8;
     --blue: #0ea5e9;
     --cyan: #22d3ee;
     --green: #10b981;
@@ -29,10 +27,8 @@
     font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', -apple-system, sans-serif;
     color: var(--text);
     background: var(--bg);
-    font-size: 14px;
-    line-height: 1.6;
-    word-break: keep-all;
-    overflow-wrap: break-word;
+    line-height: 1.7;
+    font-size: 13px;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
@@ -43,39 +39,47 @@
     .page:last-child { page-break-after: auto; }
   }
 
-  @media (max-width: 768px) {
-    body { font-size: 13px !important; }
-    .section { padding: 16px 16px 0 !important; }
-    .header-bar { padding: 20px 16px !important; flex-direction: column; align-items: flex-start; }
-    .kpi-row { grid-template-columns: repeat(2, 1fr) !important; }
-    .progress-row, .ra-grid, .dev-grid { grid-template-columns: 1fr !important; }
-    .header-right { flex-direction: column; gap: 4px !important; }
-    table { font-size: 12px !important; }
+  /* ── Page Layout ── */
+  .page {
+    max-width: 1280px;
+    margin: 0 auto 32px;
+    padding: 0;
+    min-height: auto;
   }
 
-  .page { max-width: 1280px; margin: 0 auto 32px; }
-
-  /* Header */
+  /* ── Header Bar ── */
   .header-bar {
-    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0ea5e9 100%);
+    background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #0ea5e9 100%);
     padding: 28px 40px 24px;
     border-radius: 0 0 20px 20px;
-    display: flex; justify-content: space-between; align-items: flex-end;
-    flex-wrap: wrap; gap: 16px;
-    position: relative; overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
   }
   .header-bar::before {
-    content: ''; position: absolute; top: -80px; right: -80px;
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
     width: 300px; height: 300px;
     background: radial-gradient(circle, rgba(14,165,233,0.15) 0%, transparent 70%);
     border-radius: 50%;
   }
   .header-left { position: relative; }
   .header-tag {
-    display: inline-block; background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2); border-radius: 16px;
-    padding: 3px 14px; font-size: 11px; font-weight: 700;
-    letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;
+    display: inline-block;
+    background: rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    padding: 3px 14px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
   }
   .header-left h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.3px; }
   .header-left p { font-size: 14px; opacity: 0.8; margin-top: 4px; }
@@ -85,21 +89,38 @@
   }
   .header-right span { display: flex; align-items: center; gap: 4px; }
 
-  /* Section */
+  /* ── Section ── */
   .section { padding: 24px 40px 0; }
   .section-title {
     font-size: 16px; font-weight: 800; margin-bottom: 16px;
-    display: flex; align-items: center; gap: 10px; color: var(--cyan);
+    display: flex; align-items: center; gap: 10px;
+    color: var(--cyan);
   }
-  .section-title .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .section-title .dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  }
 
-  /* KPI */
-  .kpi-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
-  .kpi {
-    background: var(--bg2); border: 1px solid var(--border); border-radius: 14px;
-    padding: 18px 16px; text-align: center; position: relative; overflow: hidden;
+  /* ── KPI Cards ── */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 0;
   }
-  .kpi::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 14px 14px 0 0; }
+  .kpi {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 16px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .kpi::after {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    border-radius: 14px 14px 0 0;
+  }
   .kpi.kpi-blue::after { background: var(--blue); }
   .kpi.kpi-green::after { background: var(--green); }
   .kpi.kpi-amber::after { background: var(--amber); }
@@ -114,320 +135,205 @@
   .kpi.kpi-cyan .kpi-value { color: var(--cyan); }
   .kpi .kpi-sub { font-size: 11px; color: var(--text2); }
 
-  /* Progress */
-  .progress-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  /* ── Progress ── */
+  .progress-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
   .progress-card {
-    background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 20px 24px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 24px;
   }
   .progress-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 14px; color: var(--text); }
 
-  /* Timeline */
-  .timeline { display: flex; gap: 0; margin-top: 8px; }
-  .timeline-item { flex: 1; position: relative; padding: 12px 16px; border-radius: 10px; text-align: center; }
-  .timeline-item.done { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); }
-  .timeline-item.current { background: rgba(14,165,233,0.1); border: 1px solid rgba(14,165,233,0.4); box-shadow: 0 0 12px rgba(14,165,233,0.15); }
-  .timeline-item.future { background: rgba(100,116,139,0.08); border: 1px solid rgba(100,116,139,0.2); }
-  .timeline-item .tl-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  /* ── Phase Timeline ── */
+  .timeline {
+    display: flex;
+    gap: 0;
+    margin-top: 8px;
+  }
+  .timeline-item {
+    flex: 1;
+    position: relative;
+    padding: 12px 16px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  .timeline-item.done {
+    background: rgba(16,185,129,0.1);
+    border: 1px solid rgba(16,185,129,0.3);
+  }
+  .timeline-item.current {
+    background: rgba(14,165,233,0.08);
+    border: 1px solid rgba(14,165,233,0.4);
+    box-shadow: 0 0 12px rgba(14,165,233,0.15);
+  }
+  .timeline-item.future {
+    background: rgba(100,116,139,0.08);
+    border: 1px solid rgba(100,116,139,0.2);
+  }
+  .timeline-item .tl-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
   .timeline-item.done .tl-label { color: var(--green); }
   .timeline-item.current .tl-label { color: var(--blue); }
   .timeline-item.future .tl-label { color: var(--muted); }
   .timeline-item .tl-title { font-size: 13px; font-weight: 700; margin-top: 4px; }
   .timeline-item .tl-period { font-size: 11px; color: var(--text2); margin-top: 2px; }
-  .timeline-arrow { display: flex; align-items: center; padding: 0 6px; font-size: 16px; color: var(--muted); }
+  .timeline-arrow {
+    display: flex; align-items: center; padding: 0 6px;
+    font-size: 16px; color: var(--muted);
+  }
 
-  /* Checklist */
+  /* ── Checklist ── */
   .check-list { list-style: none; padding: 0; }
-  .check-list li { padding: 5px 0 5px 24px; position: relative; font-size: 13px; color: var(--text2); }
-  .check-list li::before { position: absolute; left: 0; top: 5px; font-size: 14px; font-weight: 700; }
+  .check-list li {
+    padding: 5px 0 5px 24px; position: relative;
+    font-size: 13px; color: var(--text2);
+  }
+  .check-list li::before {
+    position: absolute; left: 0; top: 5px;
+    font-size: 14px; font-weight: 700;
+  }
   .check-list li.done::before { content: '✓'; color: var(--green); }
   .check-list li.current::before { content: '►'; color: var(--blue); }
   .check-list li.todo::before { content: '○'; color: var(--muted); }
   .check-list li.done { text-decoration: line-through; color: var(--muted); }
   .check-list li.current { color: var(--blue); font-weight: 600; }
 
-  /* Table */
-  .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1em; }
+  /* ── Cost Table ── */
   table { width: 100%; border-collapse: collapse; }
   thead th {
-    background: rgba(14,165,233,0.08); color: var(--cyan); font-weight: 700; font-size: 11px;
-    text-transform: uppercase; letter-spacing: 0.5px; padding: 8px 12px; text-align: left;
+    background: rgba(14,165,233,0.08);
+    color: var(--cyan); font-weight: 700; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    padding: 8px 12px; text-align: left;
     border-bottom: 2px solid var(--border);
   }
-  tbody td { padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text2); font-size: 13px; }
+  tbody td {
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: var(--text2); font-size: 13px;
+  }
   tbody tr:hover { background: rgba(14,165,233,0.03); }
 
-  /* Risk/Action */
-  .ra-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .ra-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 18px 22px; }
-  .ra-card h3 { font-size: 13px; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-
-  /* Dev Grid (3-col) */
-  .dev-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .dev-card {
-    background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px;
+  /* ── Risk / Action ── */
+  .ra-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
   }
-  .dev-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-  .dev-card .commit { font-size: 11px; color: var(--muted); font-family: 'Consolas', monospace; margin-top: 8px; }
+  .ra-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 22px;
+  }
+  .ra-card h3 {
+    font-size: 13px; font-weight: 700; margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
 
-  /* Category Bar */
-  .cat-bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 12px; }
+  /* ── Category Bar ── */
+  .cat-bar-row {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 6px; font-size: 12px;
+  }
   .cat-bar-label { width: 90px; text-align: right; color: var(--text2); flex-shrink: 0; }
-  .cat-bar-track { flex: 1; height: 18px; background: rgba(255,255,255,0.04); border-radius: 4px; overflow: hidden; }
+  .cat-bar-track {
+    flex: 1; height: 18px; background: rgba(255,255,255,0.04);
+    border-radius: 4px; overflow: hidden; position: relative;
+  }
   .cat-bar-fill {
-    height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 6px;
-    font-size: 11px; font-weight: 700; color: #fff; min-width: 30px;
+    height: 100%; border-radius: 4px;
+    display: flex; align-items: center; padding-left: 6px;
+    font-size: 10px; font-weight: 700; color: #1E293B;
+    min-width: 30px;
   }
   .cat-bar-pct { width: 40px; text-align: right; color: var(--muted); font-size: 11px; flex-shrink: 0; }
 
-  /* Badge */
-  .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+  /* ── Badges ── */
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 10px;
+    font-size: 10px; font-weight: 700;
+  }
   .b-green { background: rgba(16,185,129,0.15); color: #34d399; }
   .b-blue { background: rgba(14,165,233,0.15); color: #38bdf8; }
   .b-amber { background: rgba(245,158,11,0.15); color: #fbbf24; }
   .b-red { background: rgba(239,68,68,0.15); color: #f87171; }
-  .b-purple { background: rgba(167,139,250,0.15); color: #c4b5fd; }
-
-  /* Pipeline Flow Diagram */
-  .pipeline-flow {
-    display: flex; align-items: center; gap: 0; flex-wrap: wrap;
-    padding: 12px 0; margin-bottom: 12px;
-  }
-  .pipeline-step {
-    padding: 8px 14px; border-radius: 8px; font-size: 11px; font-weight: 700;
-    text-align: center; min-width: 80px; line-height: 1.4;
-  }
-  .pipeline-step.step-blue { background: rgba(14,165,233,0.12); border: 1px solid rgba(14,165,233,0.3); color: #7dd3fc; }
-  .pipeline-step.step-green { background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); color: #6ee7b7; }
-  .pipeline-step.step-amber { background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3); color: #fcd34d; }
-  .pipeline-step.step-red { background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.3); color: #fca5a5; }
-  .pipeline-step.step-purple { background: rgba(167,139,250,0.12); border: 1px solid rgba(167,139,250,0.3); color: #c4b5fd; }
-  .pipeline-arrow { padding: 0 4px; color: var(--muted); font-size: 14px; }
 
   .divider { height: 1px; background: var(--border); margin: 20px 40px; }
-  .footer { text-align: center; padding: 16px 40px 32px; font-size: 11px; color: var(--muted); }
+
+  .footer {
+    text-align: center; padding: 16px 40px 32px;
+    font-size: 11px; color: var(--muted);
+  }
 </style>
 </head>
 <body>
 
+<!-- ===================== PAGE 1 ===================== -->
 <div class="page">
 
-  <!-- ═══ Header ═══ -->
+  <!-- Header -->
   <div class="header-bar">
     <div class="header-left">
       <div class="header-tag">WEEKLY REPORT</div>
-      <h1>CS AI Chatbot 주간 현황</h1>
-      <p>프로토타입 → 고도화 진행 중 — W4 (2/17~2/23)</p>
+      <h1>CS AI Chatbot 프로젝트 현황</h1>
+      <p>Toomics Global CS 자동화 — 주간 보고</p>
     </div>
     <div class="header-right">
-      <span>보고일: 2026-02-23</span>
+      <span>보고일: 2026-02-22</span>
       <span>|</span>
       <span>보고자: 유종선</span>
       <span>|</span>
-      <span>Phase: 2 완료 → 3 진행</span>
+      <span>프로젝트 시작: 2026-02-10</span>
     </div>
   </div>
 
-  <!-- ═══ 1. 핵심 지표 ═══ -->
+  <!-- KPI -->
   <div class="section">
-    <div class="section-title"><span class="dot" style="background:var(--green);"></span>핵심 지표 (System Metrics)</div>
+    <div class="section-title"><span class="dot" style="background:var(--green);"></span>핵심 지표 (Key Metrics)</div>
     <div class="kpi-row">
-      <div class="kpi kpi-green">
-        <div class="kpi-label">테스트 통과</div>
-        <div class="kpi-value">114</div>
-        <div class="kpi-sub">전체 통과 (0 fail)</div>
-      </div>
       <div class="kpi kpi-blue">
-        <div class="kpi-label">이번 주 커밋</div>
-        <div class="kpi-value">35</div>
-        <div class="kpi-sub">기능 8 · 수정 15 · 문서 12</div>
+        <div class="kpi-label">월 총 문의</div>
+        <div class="kpi-value">1,660</div>
+        <div class="kpi-sub">건/월 (11,621건 분석)</div>
+      </div>
+      <div class="kpi kpi-green">
+        <div class="kpi-label">AI 자동 처리</div>
+        <div class="kpi-value">38%</div>
+        <div class="kpi-sub">~630건/월 셀프서비스 안내</div>
       </div>
       <div class="kpi kpi-amber">
-        <div class="kpi-label">L3 자동 처리</div>
-        <div class="kpi-value">12</div>
-        <div class="kpi-sub">Sub-Intent (5개 카테고리)</div>
+        <div class="kpi-label">응답 속도</div>
+        <div class="kpi-value">&lt;3초</div>
+        <div class="kpi-sub">기존 7~29일 → 즉시 안내</div>
       </div>
       <div class="kpi kpi-purple">
-        <div class="kpi-label">에스컬레이션 레벨</div>
-        <div class="kpi-value">3</div>
-        <div class="kpi-sub">L1 긴급 · L2 검토 · L3 자동</div>
+        <div class="kpi-label">24/7 자동 응대</div>
+        <div class="kpi-value">상시</div>
+        <div class="kpi-sub">야간·주말·공휴일 무중단</div>
       </div>
       <div class="kpi kpi-cyan">
-        <div class="kpi-label">다국어 지원</div>
-        <div class="kpi-value">10</div>
-        <div class="kpi-sub">감지 10 · 자동 응답 5</div>
+        <div class="kpi-label">언어 감지</div>
+        <div class="kpi-value">10개</div>
+        <div class="kpi-sub">자동 감지 · 5개 언어 자동 응답</div>
       </div>
     </div>
   </div>
 
   <div class="divider"></div>
 
-  <!-- ═══ 2. 파이프라인 구조 ═══ -->
+  <!-- Phase Timeline + Progress -->
   <div class="section">
-    <div class="section-title"><span class="dot" style="background:var(--blue);"></span>AI 파이프라인 처리 흐름 (현재 구현 상태)</div>
-
-    <div class="pipeline-flow">
-      <div class="pipeline-step step-blue">Step 0<br>세션 생성</div>
-      <div class="pipeline-arrow">→</div>
-      <div class="pipeline-step step-blue">Step 1<br>언어 감지</div>
-      <div class="pipeline-arrow">→</div>
-      <div class="pipeline-step step-purple">Step 2<br>미지원 언어<br>체크</div>
-      <div class="pipeline-arrow">→</div>
-      <div class="pipeline-step step-amber">Step 2.5<br>콘텐츠 상세<br>후속</div>
-      <div class="pipeline-arrow">→</div>
-      <div class="pipeline-step step-amber">Step 2.7<br><strong>L2 가이드<br>후속 (신규)</strong></div>
-      <div class="pipeline-arrow">→</div>
-      <div class="pipeline-step step-amber">Step 2.6<br>결제정보<br>수집 (L2만)</div>
-      <div class="pipeline-arrow">→</div>
-      <div class="pipeline-step step-red">Step 3<br>Fraud + Intent<br>(병렬)</div>
-      <div class="pipeline-arrow">→</div>
-      <div class="pipeline-step step-purple">Step 4<br>에스컬레이션<br>판정</div>
-      <div class="pipeline-arrow">→</div>
-      <div class="pipeline-step step-green">Step 5<br>L1/L2/L3<br>라우팅</div>
-      <div class="pipeline-arrow">→</div>
-      <div class="pipeline-step step-green">Step 6<br>세션 저장<br>+ 응답</div>
-    </div>
-
+    <div class="section-title"><span class="dot" style="background:var(--blue);"></span>프로젝트 진행 현황</div>
     <div class="progress-row">
+
+      <!-- Left: Timeline -->
       <div class="progress-card">
-        <h3>L3 셀프서비스 — 12개 Sub-Intent</h3>
-        <div class="table-responsive">
-        <table>
-          <thead><tr><th>카테고리</th><th>Sub-Intent</th><th>처리 방식</th></tr></thead>
-          <tbody>
-            <tr><td rowspan="3" style="font-weight:700; color:var(--blue);">Subscription</td><td>cancel_subscription</td><td>마켓별 해지 가이드</td></tr>
-            <tr><td>renewal_date_inquiry</td><td>결제 주기 안내</td></tr>
-            <tr><td>vip_not_working</td><td>VIP 상태 확인 가이드</td></tr>
-            <tr><td rowspan="2" style="font-weight:700; color:var(--amber);">Refund</td><td>ios_refund</td><td>Apple 환불 경로 안내</td></tr>
-            <tr><td>refund_status</td><td>환불 진행 확인 안내</td></tr>
-            <tr><td rowspan="2" style="font-weight:700; color:var(--purple);">Payment</td><td>payment_method</td><td>결제 수단 변경 안내</td></tr>
-            <tr><td>payment_failed</td><td>결제 실패 트러블슈팅</td></tr>
-            <tr><td rowspan="3" style="font-weight:700; color:var(--green);">Account</td><td>password_reset</td><td>비밀번호 리셋 가이드</td></tr>
-            <tr><td>account_deletion</td><td>계정 삭제 안내 (유일한 후속 케이스)</td></tr>
-            <tr><td>domain_confusion</td><td>도메인 구분 안내</td></tr>
-            <tr><td rowspan="2" style="font-weight:700; color:var(--cyan);">Technical</td><td>general_tech</td><td>기술 문제 기본 안내</td></tr>
-            <tr><td>app_issue</td><td>앱 문제 트러블슈팅</td></tr>
-          </tbody>
-        </table>
-        </div>
-        <div style="margin-top:10px;padding:8px 12px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.15);border-radius:8px;font-size:12px;color:var(--green);">
-          ✅ L3는 결제정보 수집 없이 즉시 가이드 발송 → 5분 비활성 시 Solved 티켓 자동 생성
-        </div>
-      </div>
-
-      <div class="progress-card">
-        <h3>L1 / L2 / L3 라우팅 조건</h3>
-        <div class="table-responsive">
-        <table>
-          <thead><tr><th>레벨</th><th>조건</th><th>처리</th></tr></thead>
-          <tbody>
-            <tr>
-              <td><span class="badge b-red">L1 긴급</span></td>
-              <td>법적 위협, Fraud (score ≥ 50),<br>감정 격앙, 심각 기술 버그</td>
-              <td>즉시 에스컬레이션<br>(사유 요약 포함)</td>
-            </tr>
-            <tr>
-              <td><span class="badge b-amber">L2 검토</span></td>
-              <td>환불 판정, 무단결제, 복합 이슈,<br>L1 clamping (fraud < 50)</td>
-              <td><strong>2턴 구조:</strong><br>Turn 1 = 가이드 + 정보 요청<br>Turn 2 = 고객 응답 → 전체 맥락 티켓<br>10분 타임아웃 → 자동 티켓</td>
-            </tr>
-            <tr>
-              <td><span class="badge b-green">L3 자동</span></td>
-              <td>confidence ≥ 0.70,<br>L1/L2 트리거 없음,<br>셀프서비스 플로우 존재</td>
-              <td>즉시 가이드 발송<br>결제정보 수집 없음<br>5분 비활성 → Solved 티켓</td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
-        <div style="margin-top:10px;padding:8px 12px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.15);border-radius:8px;font-size:12px;color:var(--amber);">
-          ⚠️ 결제정보 수집은 L2 Refund/Subscription/Payment 카테고리에만 적용
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- ═══ 3. 이번 주 개발 실적 ═══ -->
-  <div class="section">
-    <div class="section-title"><span class="dot" style="background:var(--purple);"></span>이번 주 주요 개발 실적 (W4: 2/17~2/23)</div>
-
-    <div class="dev-grid">
-      <!-- Fix 1: L3 -->
-      <div class="dev-card">
-        <h4>🟢 L3 파이프라인 수정</h4>
-        <div style="font-size:12px; color:var(--text2); line-height:1.7;">
-          <strong>문제:</strong> L3 셀프서비스 8/12 sub-intent가 불필요하게 결제정보 수집 단계 진입<br>
-          <strong>원인:</strong> Step 4.7 조건문 <code>escalation_level == "L3"</code> 오류<br>
-          <strong>수정:</strong> <code>"L2"</code>로 변경 — L3는 즉시 가이드 발송
-        </div>
-        <div class="commit">f7a96df</div>
-      </div>
-
-      <!-- Fix 2: L3 Solved -->
-      <div class="dev-card">
-        <h4>🟢 L3 Solved 티켓 자동 생성</h4>
-        <div style="font-size:12px; color:var(--text2); line-height:1.7;">
-          <strong>구현:</strong> <code>_schedule_l3_closure()</code> — 5분 비활성 타임아웃<br>
-          <strong>조건:</strong> 종료 인텐트 감지 ("thanks", "ok" 등) 또는 타임아웃<br>
-          <strong>예외:</strong> <code>account_deletion</code>은 후속 필요로 클로저 제외
-        </div>
-        <div class="commit">f7a96df</div>
-      </div>
-
-      <!-- Fix 3: L2 2-turn -->
-      <div class="dev-card">
-        <h4>🟡 L2 2턴 구조 전환</h4>
-        <div style="font-size:12px; color:var(--text2); line-height:1.7;">
-          <strong>변경 전:</strong> 즉시 Zendesk 티켓 생성<br>
-          <strong>변경 후:</strong> Turn 1 = 가이드 + 정보 요청 (티켓 없음)<br>
-          Turn 2 = 고객 응답 시 Fraud 재검사 + 전체 맥락 티켓<br>
-          <strong>안전장치:</strong> 10분 무응답 → 자동 티켓 생성
-        </div>
-        <div class="commit">bf7893b</div>
-      </div>
-
-      <!-- Feature: Proxy -->
-      <div class="dev-card">
-        <h4>🔵 Claude API 프록시 자동 복구</h4>
-        <div style="font-size:12px; color:var(--text2); line-height:1.7;">
-          <strong>구현:</strong> claude-max-api-proxy 전환<br>
-          <strong>모델:</strong> claude-sonnet-4.6 업그레이드<br>
-          <strong>Retry:</strong> 자동 복구 + 지수 백오프
-        </div>
-        <div class="commit">c0eb7c4, 3e3d952</div>
-      </div>
-
-      <!-- Feature: Content L1→L2 -->
-      <div class="dev-card">
-        <h4>🔵 Content 카테고리 L1→L2 전환</h4>
-        <div style="font-size:12px; color:var(--text2); line-height:1.7;">
-          <strong>변경:</strong> Content 관련 문의를 L1 즉시 에스컬레이션에서 L2 AI 정보 수집으로 변경<br>
-          <strong>이유:</strong> 대부분 작품 문의로 긴급 대응 불필요
-        </div>
-        <div class="commit">dc9d9e3</div>
-      </div>
-
-      <!-- Docs -->
-      <div class="dev-card">
-        <h4>📄 문서 4종 + HTML 7개 업데이트</h4>
-        <div style="font-size:12px; color:var(--text2); line-height:1.7;">
-          <strong>신규:</strong> 데모 스크립트, 시스템 개요, 트레이닝 가이드, 테스트 시나리오<br>
-          <strong>업데이트:</strong> L3/L2 변경사항 반영 7개 HTML<br>
-          <strong>배포:</strong> GitHub Pages 전체 22개 가독성 패치
-        </div>
-        <div class="commit">5140cd1, 5bf2cfd</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- ═══ 4. Phase 로드맵 + 완료 항목 ═══ -->
-  <div class="section">
-    <div class="section-title"><span class="dot" style="background:var(--blue);"></span>Phase 로드맵</div>
-    <div class="progress-row">
-      <div class="progress-card">
-        <h3>Phase 타임라인</h3>
+        <h3>Phase 로드맵</h3>
         <div class="timeline">
           <div class="timeline-item done">
             <div class="tl-label">Phase 1~2</div>
@@ -453,25 +359,111 @@
             <div class="tl-period">2026 H2 (협의 후)</div>
           </div>
         </div>
-        <div style="margin-top:12px;padding:10px 14px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.1);border-radius:8px;font-size:12px;color:var(--text2);line-height:1.7;">
-          <strong style="color:var(--blue);">현재:</strong> Phase 2 완료, Phase 3 (고도화) 진입<br>
-          <strong style="color:var(--muted);">다음:</strong> 90/10 하이브리드 아키텍처 완성 → 품질 검증 → 개발팀 협의
+        <div style="margin-top:12px;padding:10px 14px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.08);border-radius:8px;font-size:11px;color:var(--text2);line-height:1.7;">
+          <strong style="color:var(--blue);">현재 상태:</strong> 프로토타입 완료 → 고도화 진행 예정<br>
+          <strong style="color:var(--muted);">다음 단계:</strong> 프로토타입 고도화 완료 후, 개발팀과 실 프로덕트 도입 논의 진행
         </div>
       </div>
 
+      <!-- Right: Completed Items -->
       <div class="progress-card">
-        <h3>수정된 파일 (이번 주)</h3>
-        <div class="table-responsive">
-        <table>
-          <thead><tr><th>파일</th><th>변경 내용</th></tr></thead>
-          <tbody>
-            <tr><td style="font-family:monospace;font-size:11px;color:var(--cyan);">pipeline.py</td><td>L3 결제정보 제거, L3 클로저, L2 2턴 구조</td></tr>
-            <tr><td style="font-family:monospace;font-size:11px;color:var(--cyan);">session.py</td><td>L3/L2 상태 필드 6개 추가</td></tr>
-            <tr><td style="font-family:monospace;font-size:11px;color:var(--cyan);">escalation_handler.py</td><td>L3 Solved 티켓, L2 가이드 후속 핸들러</td></tr>
-            <tr><td style="font-family:monospace;font-size:11px;color:var(--cyan);">claude_service.py</td><td>프록시 자동 복구 + retry 강화</td></tr>
-            <tr><td style="font-family:monospace;font-size:11px;color:var(--cyan);">config/escalation-rules.json</td><td>Content L1→L2 전환</td></tr>
-          </tbody>
-        </table>
+        <h3>주요 완료 항목 (프로토타입)</h3>
+        <ul class="check-list">
+          <li class="done">CS 데이터 분석 (11,621건 × 7개월 × 10마켓)</li>
+          <li class="done">7대 카테고리 × 23 Sub-Intent 분류 체계</li>
+          <li class="done">FastAPI 서버 + Claude API 연동</li>
+          <li class="done">의도 분류 + Fraud 탐지 + 다국어 감지</li>
+          <li class="done">L1/L2/L3 에스컬레이션 파이프라인</li>
+          <li class="done">89개 테스트 전체 통과</li>
+          <li class="current">프로토타입 고도화 (90/10 하이브리드 아키텍처)</li>
+          <li class="todo">개발팀 협의 — 실 프로덕트 도입 방향 논의</li>
+          <li class="todo">필요 시 추가 개발 및 실서비스 적용</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Category Distribution -->
+  <div class="section">
+    <div class="section-title"><span class="dot" style="background:var(--amber);"></span>카테고리별 문의 분포 (11,621건 분석)</div>
+    <div class="progress-row">
+      <div class="progress-card">
+        <h3>월별 문의 분포</h3>
+        <div class="cat-bar-row">
+          <div class="cat-bar-label">Subscription</div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:48%; background:var(--blue);">700건</div></div>
+          <div class="cat-bar-pct">48%</div>
+        </div>
+        <div class="cat-bar-row">
+          <div class="cat-bar-label">Refund</div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:25%; background:var(--amber);">367건</div></div>
+          <div class="cat-bar-pct">25%</div>
+        </div>
+        <div class="cat-bar-row">
+          <div class="cat-bar-label">Account</div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:13%; background:var(--green);">189건</div></div>
+          <div class="cat-bar-pct">13%</div>
+        </div>
+        <div class="cat-bar-row">
+          <div class="cat-bar-label">Payment</div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:5.8%; background:var(--purple);">86건</div></div>
+          <div class="cat-bar-pct">5%</div>
+        </div>
+        <div class="cat-bar-row">
+          <div class="cat-bar-label">Content</div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:3.8%; background:var(--red);">57건</div></div>
+          <div class="cat-bar-pct">4%</div>
+        </div>
+        <div class="cat-bar-row">
+          <div class="cat-bar-label">Technical</div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:2.2%; background:var(--cyan);">32건</div></div>
+          <div class="cat-bar-pct">3%</div>
+        </div>
+        <div class="cat-bar-row">
+          <div class="cat-bar-label">Other</div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:2%; background:var(--muted);">30건</div></div>
+          <div class="cat-bar-pct">2%</div>
+        </div>
+      </div>
+
+      <!-- Right: Channel / Routing -->
+      <div class="progress-card">
+        <h3>처리 채널 & 라우팅</h3>
+
+        <h3 style="font-size:12px; color:var(--text2); margin-bottom:8px; font-weight:600;">접수 채널</h3>
+        <div class="cat-bar-row">
+          <div class="cat-bar-label">Web/App</div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:47%; background:var(--blue);">47%</div></div>
+          <div class="cat-bar-pct">789건</div>
+        </div>
+        <div class="cat-bar-row">
+          <div class="cat-bar-label">Email</div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:42%; background:var(--amber);">42%</div></div>
+          <div class="cat-bar-pct">699건</div>
+        </div>
+        <div class="cat-bar-row">
+          <div class="cat-bar-label">API/기타</div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:11%; background:var(--muted);">11%</div></div>
+          <div class="cat-bar-pct">174건</div>
+        </div>
+
+        <h3 style="font-size:12px; color:var(--text2); margin: 16px 0 8px; font-weight:600;">AI 라우팅 (비이메일 963건 기준)</h3>
+        <div class="cat-bar-row">
+          <div class="cat-bar-label"><span class="badge b-green">L3 자동</span></div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:38%; background:var(--green);">366건</div></div>
+          <div class="cat-bar-pct">38%</div>
+        </div>
+        <div class="cat-bar-row">
+          <div class="cat-bar-label"><span class="badge b-amber">L2 검토</span></div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:49%; background:var(--amber);">472건</div></div>
+          <div class="cat-bar-pct">49%</div>
+        </div>
+        <div class="cat-bar-row">
+          <div class="cat-bar-label"><span class="badge b-red">L1 긴급</span></div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:13%; background:var(--red);">125건</div></div>
+          <div class="cat-bar-pct">13%</div>
         </div>
       </div>
     </div>
@@ -479,49 +471,119 @@
 
   <div class="divider"></div>
 
-  <!-- ═══ 5. 리스크 & 다음 주 계획 ═══ -->
+  <!-- 스마트 레이어링 — 핵심 포인트 -->
+  <div class="section">
+    <div class="section-title"><span class="dot" style="background:var(--purple);"></span>스마트 레이어링 — 티켓 전 자동화 프로세스</div>
+
+    <!-- 핵심 인사이트 배너 -->
+    <div style="background:linear-gradient(135deg,rgba(14,165,233,0.08),rgba(16,185,129,0.06));border:2px solid rgba(14,165,233,0.12);border-radius:14px;padding:16px 20px;margin-bottom:14px;text-align:center;">
+      <div style="font-size:10px;color:var(--cyan);font-weight:700;letter-spacing:1.5px;margin-bottom:6px;">CORE INSIGHT — 실데이터 11,621건 분석</div>
+      <div style="font-size:18px;font-weight:800;color:var(--text);line-height:1.4;">
+        CS 상담의 <span style="color:var(--cyan);font-size:24px;">83%</span>가 반복적이지만 <span style="color:var(--amber);">반드시 거쳐야 하는 정보 확인 단계</span>
+      </div>
+      <div style="display:flex;justify-content:center;gap:12px;margin-top:10px;flex-wrap:wrap;">
+        <span style="background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.25);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;color:#7dd3fc;">결제정보 요청 45%</span>
+        <span style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;color:#6ee7b7;">구독취소 확인 18%</span>
+        <span style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.25);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;color:#fcd34d;">환불 처리 10%</span>
+        <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;color:#fca5a5;">환불 거절 7%</span>
+        <span style="background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.25);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;color:#c4b5fd;">계정 삭제 3%</span>
+      </div>
+    </div>
+
+    <div class="progress-row">
+      <div class="progress-card">
+        <h3>기존 CS 왕복 vs AI 스마트 레이어링</h3>
+        <table>
+          <thead><tr><th style="width:40%;">기존 — 반복 왕복</th><th style="width:8%;text-align:center;">→</th><th>AI — 티켓 전 정보 확보</th></tr></thead>
+          <tbody>
+            <tr>
+              <td style="color:#f87171;">문의→정보요청→회신대기→확인→안내 <strong>(3~5회 왕복)</strong></td>
+              <td style="text-align:center;color:var(--muted);">→</td>
+              <td style="color:var(--green);"><strong>티켓 전</strong> AI가 양식 안내 + 정보 확인 완료</td>
+            </tr>
+            <tr>
+              <td style="color:#f87171;">운영자가 매번 동일 정보 반복 요청 (83%)</td>
+              <td style="text-align:center;color:var(--muted);">→</td>
+              <td style="color:var(--green);">고객이 사전 제공 → <strong>운영자 즉시 처리</strong></td>
+            </tr>
+            <tr>
+              <td style="color:#f87171;">정보 부족 → 추가 왕복 → 첫 응답 해결율 낮음</td>
+              <td style="text-align:center;color:var(--muted);">→</td>
+              <td style="color:var(--green);">필요 정보 미리 확보 → <strong>첫 응답 해결율 3~4배</strong></td>
+            </tr>
+            <tr>
+              <td style="color:#f87171;">야간/주말 응답 불가</td>
+              <td style="text-align:center;color:var(--muted);">→</td>
+              <td style="color:var(--green);">24/7 AI 안내 → 언제든 양식 확인 + 티켓 생성</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="progress-card">
+        <h3>DUAL VALUE: CX × Operations</h3>
+        <div style="padding:8px 0; font-size:13px; color:var(--text2); line-height:1.7;">
+          <!-- CX Pillar -->
+          <div style="padding:10px 12px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.15);border-radius:10px;margin-bottom:10px;">
+            <div style="font-size:10px;color:#818cf8;font-weight:700;letter-spacing:1px;margin-bottom:4px;">🎯 CUSTOMER EXPERIENCE → SATISFACTION & LOYALTY</div>
+            <div style="font-size:12px;color:var(--text2);line-height:1.7;">
+              대기 7~29일 → <strong style="color:var(--cyan);">AI 즉시 안내</strong> → 빠른 해결 경험<br>
+              좋은 CS 경험 → <strong style="color:var(--cyan);">서비스 신뢰도 + 브랜드 충성도</strong> 강화
+            </div>
+          </div>
+          <!-- Ops Pillar -->
+          <div style="padding:10px 12px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.15);border-radius:10px;margin-bottom:10px;">
+            <div style="font-size:10px;color:#fbbf24;font-weight:700;letter-spacing:1px;margin-bottom:4px;">⚡ CS OPERATIONS → EFFICIENCY ×3~4</div>
+            <div style="font-size:12px;color:var(--text2);line-height:1.7;">
+              정보 미리 확보 → <strong style="color:var(--green);">첫 응답 해결율 3~4배</strong><br>
+              38% 셀프 해결 → <strong style="color:var(--green);">티켓 감소 + 판단 업무 집중</strong>
+            </div>
+          </div>
+          <!-- Result -->
+          <div style="padding:8px 12px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.12);border-radius:10px;text-align:center;font-size:12px;color:var(--amber);font-weight:600;">
+            CX ↑ 고객 만족도 &nbsp;×&nbsp; Operations ↑ 3~4배 효율 = 선순환
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Risk & Next Actions -->
   <div class="section" style="padding-bottom:8px;">
     <div class="section-title"><span class="dot" style="background:var(--red);"></span>리스크 & 다음 주 계획</div>
     <div class="ra-grid">
       <div class="ra-card">
         <h3><span class="dot" style="background:var(--red); display:inline-block; width:8px; height:8px; border-radius:50%;"></span> 리스크 / 이슈</h3>
-        <div class="table-responsive">
         <table>
           <thead><tr><th>항목</th><th>상태</th><th>대응</th></tr></thead>
           <tbody>
             <tr>
-              <td>복합 의도 분류</td>
+              <td>복합 의도 분류 정확도</td>
               <td><span class="badge b-amber">모니터링</span></td>
-              <td>해지+환불 동시 요청 시 오분류 가능 → 테스트 보강 필요</td>
-            </tr>
-            <tr>
-              <td>L2 2턴 타임아웃 검증</td>
-              <td><span class="badge b-amber">테스트 필요</span></td>
-              <td>10분 타임아웃 후 자동 티켓 생성 — 통합 테스트 추가 예정</td>
-            </tr>
-            <tr>
-              <td>L3 Solved 클로저 검증</td>
-              <td><span class="badge b-amber">테스트 필요</span></td>
-              <td>5분 비활성 후 Solved 티켓 — account_deletion 예외 처리 검증</td>
+              <td>해지+환불 동시 요청 시 오분류 가능 → 테스트 보강</td>
             </tr>
             <tr>
               <td>Phase 2 마켓 미지원</td>
               <td><span class="badge b-blue">계획됨</span></td>
               <td>TH/JP/CN/IT/KR → Phase 3에서 순차 추가</td>
             </tr>
+            <tr>
+              <td>이메일 채널 AI 미적용</td>
+              <td><span class="badge b-blue">설계중</span></td>
+              <td>42% 이메일 접수 건 → 추후 이메일 파싱 연동 검토</td>
+            </tr>
           </tbody>
         </table>
-        </div>
       </div>
       <div class="ra-card">
-        <h3><span class="dot" style="background:var(--green); display:inline-block; width:8px; height:8px; border-radius:50%;"></span> 다음 주 계획 (W5)</h3>
+        <h3><span class="dot" style="background:var(--green); display:inline-block; width:8px; height:8px; border-radius:50%;"></span> 향후 계획</h3>
         <ul class="check-list">
-          <li class="current">90/10 하이브리드 아키텍처 구현 (고정 템플릿 + NL glue)</li>
-          <li class="todo">L2 2턴 통합 테스트 추가</li>
-          <li class="todo">L3 클로저 타임아웃 통합 테스트 추가</li>
-          <li class="todo">응답 품질 시뮬레이션 (실 CS 시나리오 기반)</li>
-          <li class="todo">에스컬레이션 시나리오 HTML 문서 L2 2턴 반영 업데이트</li>
-          <li class="todo">추가 마켓 확장 검토 시작 (TH, JP)</li>
+          <li class="current">프로토타입 고도화 (90/10 하이브리드 아키텍처)</li>
+          <li class="todo">응답 품질 검증 + 파이프라인 시뮬레이션</li>
+          <li class="todo">추가 마켓 확장 검토 (TH, JP, CN, IT, KR)</li>
+          <li class="todo">개발팀과 실 프로덕트 도입 방향 협의</li>
+          <li class="todo">협의 결과에 따른 추가 개발 범위 확정</li>
         </ul>
       </div>
     </div>
@@ -529,7 +591,7 @@
 
   <!-- Footer -->
   <div class="footer">
-    Toomics CS AI Chatbot — Weekly Status Report W4 | 2026-02-23 | 유종선
+    Toomics CS AI Chatbot Project — Weekly Status Report | 2026-02-22 | Prepared by 유종선
   </div>
 
 </div>

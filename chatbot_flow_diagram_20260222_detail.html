@@ -9,16 +9,12 @@
 
         body {
             font-family: 'Segoe UI', 'Malgun Gothic', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #0f172a;
-            color: #e2e8f0;
+            background: #F8FAFC;
+            color: #1E293B;
             min-height: 100vh;
             padding: 32px 16px;
-            line-height: 1.6;
-        
-    font-size: 14px;
-  
-    word-break: keep-all; overflow-wrap: break-word;
-  }
+            line-height: 1.7;
+        }
 
         .container {
             max-width: 1200px;
@@ -43,7 +39,7 @@
             letter-spacing: -0.5px;
         }
         .header .subtitle {
-            color: #94a3b8;
+            color: #64748B;
             font-size: 15px;
             margin-bottom: 12px;
         }
@@ -70,7 +66,7 @@
         .section-title {
             font-size: 20px;
             font-weight: 700;
-            color: #f1f5f9;
+            color: #1E293B;
             margin-bottom: 24px;
             padding-left: 12px;
             border-left: 3px solid #60a5fa;
@@ -156,7 +152,7 @@
         .node-gray {
             background: linear-gradient(135deg, rgba(100, 116, 139, 0.2), rgba(100, 116, 139, 0.08));
             border: 1.5px solid rgba(100, 116, 139, 0.4);
-            color: #cbd5e1;
+            color: #475569;
         }
 
         /* ===== DIAMOND (Decision) ===== */
@@ -213,7 +209,7 @@
         }
         .arrow-down .arrow-label {
             font-size: 11px;
-            color: #64748b;
+            color: #94A3B8;
             margin-top: 2px;
         }
 
@@ -279,7 +275,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #94a3b8;
+            color: #64748B;
             margin-bottom: 8px;
         }
         .parallel-wrapper {
@@ -288,7 +284,7 @@
             max-width: 820px;
             padding: 16px;
             border: 1px dashed rgba(148, 163, 184, 0.2);
-            border-radius: 16px;
+            border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
             background: rgba(15, 23, 42, 0.5);
         }
         .parallel-badge {
@@ -296,12 +292,12 @@
             top: -10px;
             left: 50%;
             transform: translateX(-50%);
-            background: #1e293b;
+            background: #FFFFFF;
             padding: 2px 12px;
             border-radius: 8px;
             font-size: 11px;
             font-weight: 600;
-            color: #94a3b8;
+            color: #64748B;
             border: 1px solid rgba(148, 163, 184, 0.2);
         }
 
@@ -349,7 +345,7 @@
         }
         .decision-condition {
             flex: 1;
-            color: #cbd5e1;
+            color: #475569;
         }
         .decision-condition code {
             background: rgba(148, 163, 184, 0.1);
@@ -357,7 +353,7 @@
             border-radius: 4px;
             font-family: 'Consolas', 'Courier New', monospace;
             font-size: 12px;
-            color: #e2e8f0;
+            color: #1E293B;
         }
         .decision-arrow {
             margin: 0 12px;
@@ -407,13 +403,13 @@
             margin-top: 48px;
             padding: 24px;
             background: rgba(30, 41, 59, 0.4);
-            border-radius: 16px;
+            border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
             border: 1px solid rgba(148, 163, 184, 0.1);
         }
         .sub-diagram-title {
             font-size: 17px;
             font-weight: 700;
-            color: #f1f5f9;
+            color: #1E293B;
             margin-bottom: 20px;
             padding-bottom: 8px;
             border-bottom: 1px solid rgba(148, 163, 184, 0.1);
@@ -435,7 +431,7 @@
         }
         .fraud-tag {
             display: inline-block;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 700;
             padding: 2px 8px;
             border-radius: 4px;
@@ -459,12 +455,12 @@
         .fraud-item .flag-id {
             font-weight: 700;
             min-width: 28px;
-            color: #94a3b8;
+            color: #64748B;
             font-family: 'Consolas', monospace;
         }
         .fraud-item .flag-name {
             flex: 1;
-            color: #cbd5e1;
+            color: #475569;
         }
         .fraud-item .flag-score {
             font-weight: 700;
@@ -481,7 +477,7 @@
         }
         .score-bar-label {
             font-size: 12px;
-            color: #94a3b8;
+            color: #64748B;
             margin-bottom: 6px;
         }
         .score-bar {
@@ -523,8 +519,8 @@
         .score-tick {
             position: absolute;
             top: -16px;
-            font-size: 11px;
-            color: #64748b;
+            font-size: 10px;
+            color: #94A3B8;
         }
 
         /* ===== L3 GRID ===== */
@@ -551,7 +547,7 @@
             border-color: rgba(16, 185, 129, 0.3);
         }
         .l3-item .l3-cat {
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 600;
             padding: 1px 6px;
             border-radius: 4px;
@@ -562,7 +558,7 @@
         .l3-cat-ref { background: rgba(245, 158, 11, 0.25); color: #fde68a; }
         .l3-cat-acc { background: rgba(139, 92, 246, 0.25); color: #c4b5fd; }
         .l3-cat-pay { background: rgba(6, 182, 212, 0.25); color: #a5f3fc; }
-        .l3-cat-tech { background: rgba(100, 116, 139, 0.25); color: #cbd5e1; }
+        .l3-cat-tech { background: rgba(100, 116, 139, 0.25); color: #475569; }
 
         /* ===== LEGEND ===== */
         .legend {
@@ -579,7 +575,7 @@
             width: 100%;
             font-size: 14px;
             font-weight: 700;
-            color: #f1f5f9;
+            color: #1E293B;
             margin-bottom: 4px;
         }
         .legend-item {
@@ -587,7 +583,7 @@
             align-items: center;
             gap: 8px;
             font-size: 12px;
-            color: #94a3b8;
+            color: #64748B;
         }
         .legend-swatch {
             width: 16px;
@@ -672,8 +668,8 @@
         /* ===== PRINT ===== */
         @media print {
             body {
-                background: #fff;
-                color: #1e293b;
+                background: #F8FAFC;
+                color: #1E293B;
                 padding: 16px;
             }
             .header h1 {
@@ -689,14 +685,14 @@
             .node-orange { background: #fffbeb; border-color: #f59e0b; color: #92400e; }
             .node-green { background: #ecfdf5; border-color: #10b981; color: #065f46; }
             .node-cyan { background: #ecfeff; border-color: #06b6d4; color: #155e75; }
-            .node-gray { background: #f8fafc; border-color: #64748b; color: #334155; }
-            .sub-diagram, .parallel-wrapper { background: #f8fafc; border-color: #e2e8f0; }
-            .decision-tree { background: #f8fafc; border-color: #e2e8f0; }
-            .legend { background: #f8fafc; border-color: #e2e8f0; }
-            .footer { color: #94a3b8; border-color: #e2e8f0; }
-            .arrow-down .arrow-line { background: #94a3b8 !important; }
-            .arrow-down .arrow-head { border-top-color: #94a3b8 !important; }
-            .fraud-item { background: #f1f5f9; }
+            .node-gray { background: #F8FAFC; border-color: #94A3B8; color: #334155; }
+            .sub-diagram, .parallel-wrapper { background: #F8FAFC; border-color: #1E293B; }
+            .decision-tree { background: #F8FAFC; border-color: #1E293B; }
+            .legend { background: #F8FAFC; border-color: #1E293B; }
+            .footer { color: #64748B; border-color: #1E293B; }
+            .arrow-down .arrow-line { background: #64748B !important; }
+            .arrow-down .arrow-head { border-top-color: #64748B !important; }
+            .fraud-item { background: #1E293B; }
             .l3-item { background: #ecfdf5; border-color: #10b981; color: #065f46; }
         }
 
@@ -709,10 +705,7 @@
             .parallel-branch { max-width: 100%; }
             .header h1 { font-size: 22px; }
         }
-    
-    /* ══ 가독성 패치 (2026-02-23) ══ */
-    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1em; }
-  </style>
+    </style>
 </head>
 <body>
 
@@ -786,7 +779,7 @@
             <div class="branch-container" style="margin: 12px 0;">
                 <div class="branch-item">
                     <div class="branch-label branch-label-green">Phase 1 언어</div>
-                    <div style="font-size: 11px; color: #94a3b8; text-align: center;">EN / FR / ES / PT / DE<br>(상위 5개 마켓, 84%)</div>
+                    <div style="font-size: 11px; color: #64748B; text-align: center;">EN / FR / ES / PT / DE<br>(상위 5개 마켓, 84%)</div>
                     <div class="arrow-down" style="padding: 4px 0;">
                         <div class="arrow-line arrow-line-green" style="height: 16px;"></div>
                         <div class="arrow-head arrow-head-green"></div>
@@ -795,7 +788,7 @@
                 </div>
                 <div class="branch-item">
                     <div class="branch-label branch-label-blue">Phase 2 언어</div>
-                    <div style="font-size: 11px; color: #94a3b8; text-align: center;">TH / JP / CN / IT / KR<br>(Phase 3에서 지원 예정)</div>
+                    <div style="font-size: 11px; color: #64748B; text-align: center;">TH / JP / CN / IT / KR<br>(Phase 3에서 지원 예정)</div>
                     <div class="arrow-down" style="padding: 4px 0;">
                         <div class="arrow-line arrow-line-blue" style="height: 16px;"></div>
                         <div class="arrow-head arrow-head-blue"></div>
@@ -807,7 +800,7 @@
                 </div>
                 <div class="branch-item">
                     <div class="branch-label branch-label-red">미지원 언어</div>
-                    <div style="font-size: 11px; color: #94a3b8; text-align: center;">감지 실패 또는<br>미지원 언어</div>
+                    <div style="font-size: 11px; color: #64748B; text-align: center;">감지 실패 또는<br>미지원 언어</div>
                     <div class="arrow-down" style="padding: 4px 0;">
                         <div class="arrow-line arrow-line-red" style="height: 16px;"></div>
                         <div class="arrow-head arrow-head-red"></div>
@@ -824,15 +817,14 @@
 
             <!-- STEP 1.5: 결제 정보 수집 체크 -->
             <div class="node node-gray" style="max-width: 560px;">
-                <div class="step-label">Step 1.5 (조건부 — L2만)</div>
+                <div class="step-label">Step 1.5 (조건부)</div>
                 <div class="title">계정 식별 체크</div>
                 <div class="desc">
-                    Subscription / Refund / Payment 카테고리 <strong>L2</strong> 감지 시<br>
+                    Subscription / Refund / Payment 카테고리 최초 감지 시<br>
                     <strong>결제 정보 요청</strong> (최근 결제일, 금액, 끝 4자리, 등록 이메일)<br>
-                    L3 셀프서비스는 안내 가이드만 제공하므로 결제 정보 수집 없이 즉시 응답<br>
                     전체 CS 답변의 ~45%가 이 패턴 &mdash; 계정 교차 참조 필수
                 </div>
-                <div class="file-ref">pipeline.py &rarr; PAYMENT_INFO_MESSAGES (L2 only)</div>
+                <div class="file-ref">pipeline.py &rarr; PAYMENT_INFO_MESSAGES</div>
             </div>
 
             <div class="arrow-down">
@@ -904,7 +896,7 @@
 
             <!-- Decision Tree -->
             <div class="decision-tree" style="margin-top: 8px;">
-                <div style="font-size: 13px; font-weight: 700; color: #94a3b8; margin-bottom: 10px; text-align: center;">우선순위 기반 판단 (L1 &gt; L2 &gt; L3)</div>
+                <div style="font-size: 13px; font-weight: 700; color: #64748B; margin-bottom: 10px; text-align: center;">우선순위 기반 판단 (L1 &gt; L2 &gt; L3)</div>
 
                 <div class="decision-row">
                     <div class="decision-condition">Fraud 점수 <code>HIGH (&ge;50)</code></div>
@@ -1022,16 +1014,16 @@
                     </div>
                     <div class="node node-orange">
                         <div class="step-label">Step 4B</div>
-                        <div class="title">L2 &mdash; AI 초안 + 상담원 검토 (2턴)</div>
+                        <div class="title">L2 &mdash; AI 초안 + 상담원 검토</div>
                         <div class="desc" style="text-align: left;">
-                            1턴: 매뉴얼 가이드 발송 (티켓 보류)<br>
-                            2턴: 고객 응답 수신 → 전체 맥락 티켓 생성
+                            AI가 응답 초안 생성<br>
+                            상담원이 검토/수정 후 발송
                         </div>
                         <ul class="output-list">
-                            <li>1턴: 매뉴얼 기반 안내 + 정보 수집 요청</li>
-                            <li>2턴: 고객 추가 정보 수신</li>
-                            <li>Zendesk 티켓 생성 (전체 대화 맥락 + AI 초안)</li>
-                            <li>10분 미응답 시 타임아웃 티켓 자동 생성</li>
+                            <li>RAG 검색 (ChromaDB 벡터)</li>
+                            <li>매뉴얼 기반 AI 초안 생성</li>
+                            <li>추가 문의 정보 수집 안내</li>
+                            <li>Zendesk 티켓 생성 (normal)</li>
                             <li>"추가 지원이 필요하시면 알려주세요"</li>
                         </ul>
                         <div class="file-ref">app/services/self_service.py (L2 모드)</div>
@@ -1051,8 +1043,8 @@
                         <div class="step-label">Step 4C</div>
                         <div class="title">L3 &mdash; 셀프서비스 자동 처리</div>
                         <div class="desc" style="text-align: left;">
-                            검증된 셀프서비스 안내 즉시 발송 (결제정보 수집 없음)<br>
-                            5분 비활성 후 Zendesk Solved 티켓 자동 생성
+                            검증된 셀프서비스 안내 자동 발송<br>
+                            티켓 제출 옵션 항상 포함
                         </div>
                         <ul class="output-list">
                             <li>RAG 검색 (ChromaDB 벡터)</li>
@@ -1060,7 +1052,6 @@
                             <li>단계별 가이드 자동 생성</li>
                             <li>해당 마켓 도메인 URL 포함</li>
                             <li>"CS 티켓 제출" 옵션 제공</li>
-                            <li>5분 후 Zendesk Solved 티켓 (자동 처리율 측정)</li>
                         </ul>
                         <div class="file-ref">app/services/self_service.py (L3 모드)</div>
                     </div>
@@ -1210,7 +1201,7 @@
                     <span class="score-tick" style="right: 0;">100</span>
                 </div>
             </div>
-            <div style="display: flex; justify-content: space-between; font-size: 11px; color: #64748b; margin-top: 4px; padding: 0 4px;">
+            <div style="display: flex; justify-content: space-between; font-size: 10px; color: #94A3B8; margin-top: 4px; padding: 0 4px;">
                 <span>정상 처리</span>
                 <span>주의 &mdash; 모니터링</span>
                 <span>상담원 즉시 에스컬레이션</span>
@@ -1222,7 +1213,7 @@
     <!-- ===== SUB-DIAGRAM: L3 SELF-SERVICE ===== -->
     <div class="sub-diagram">
         <div class="sub-diagram-title">L3 셀프서비스 대상 &mdash; 12개 Sub-Intent (월 ~630건, 38%)</div>
-        <div style="font-size: 12px; color: #94a3b8; margin-bottom: 12px;">
+        <div style="font-size: 12px; color: #64748B; margin-bottom: 12px;">
             아래 Sub-Intent는 <code style="background: rgba(16,185,129,0.15); padding: 2px 6px; border-radius: 4px; color: #6ee7b7;">confidence &ge; 0.70</code> 이고 L1/L2 트리거가 없을 때 자동 처리됩니다.
         </div>
 
@@ -1277,12 +1268,12 @@
             </div>
         </div>
 
-        <div style="margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap; font-size: 11px; color: #64748b;">
-            <span><span class="l3-cat l3-cat-sub" style="font-size: 11px;">SUB</span> = Subscription (구독)</span>
-            <span><span class="l3-cat l3-cat-ref" style="font-size: 11px;">REF</span> = Refund (환불)</span>
-            <span><span class="l3-cat l3-cat-acc" style="font-size: 11px;">ACC</span> = Account (계정)</span>
-            <span><span class="l3-cat l3-cat-pay" style="font-size: 11px;">PAY</span> = Payment (결제)</span>
-            <span><span class="l3-cat l3-cat-tech" style="font-size: 11px;">TECH</span> = Technical (기술)</span>
+        <div style="margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap; font-size: 11px; color: #94A3B8;">
+            <span><span class="l3-cat l3-cat-sub" style="font-size: 10px;">SUB</span> = Subscription (구독)</span>
+            <span><span class="l3-cat l3-cat-ref" style="font-size: 10px;">REF</span> = Refund (환불)</span>
+            <span><span class="l3-cat l3-cat-acc" style="font-size: 10px;">ACC</span> = Account (계정)</span>
+            <span><span class="l3-cat l3-cat-pay" style="font-size: 10px;">PAY</span> = Payment (결제)</span>
+            <span><span class="l3-cat l3-cat-tech" style="font-size: 10px;">TECH</span> = Technical (기술)</span>
         </div>
     </div>
 
@@ -1291,14 +1282,14 @@
     <div class="sub-diagram">
         <div class="sub-diagram-title">카테고리별 처리 전략 &mdash; 11,621건 실데이터 기반</div>
         <div style="overflow-x: auto;">
-<div class="table-responsive"><table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
                 <thead>
                     <tr style="border-bottom: 1px solid rgba(148,163,184,0.15);">
-                        <th style="text-align: left; padding: 10px 8px; color: #94a3b8; font-weight: 600;">카테고리</th>
-                        <th style="text-align: center; padding: 10px 8px; color: #94a3b8; font-weight: 600;">월평균</th>
-                        <th style="text-align: center; padding: 10px 8px; color: #94a3b8; font-weight: 600;">비중</th>
-                        <th style="text-align: center; padding: 10px 8px; color: #94a3b8; font-weight: 600;">셀프서비스</th>
-                        <th style="text-align: center; padding: 10px 8px; color: #94a3b8; font-weight: 600;">라우팅</th>
+                        <th style="text-align: left; padding: 10px 8px; color: #64748B; font-weight: 600;">카테고리</th>
+                        <th style="text-align: center; padding: 10px 8px; color: #64748B; font-weight: 600;">월평균</th>
+                        <th style="text-align: center; padding: 10px 8px; color: #64748B; font-weight: 600;">비중</th>
+                        <th style="text-align: center; padding: 10px 8px; color: #64748B; font-weight: 600;">셀프서비스</th>
+                        <th style="text-align: center; padding: 10px 8px; color: #64748B; font-weight: 600;">라우팅</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1338,7 +1329,7 @@
                         <td style="text-align: center; padding: 8px;"><span class="decision-result result-l1" style="font-size: 11px;">L1</span></td>
                     </tr>
                     <tr style="border-bottom: 1px solid rgba(148,163,184,0.06);">
-                        <td style="padding: 8px; font-weight: 600; color: #cbd5e1;">Technical</td>
+                        <td style="padding: 8px; font-weight: 600; color: #475569;">Technical</td>
                         <td style="text-align: center; padding: 8px;">32건</td>
                         <td style="text-align: center; padding: 8px;">3%</td>
                         <td style="text-align: center; padding: 8px; color: #6ee7b7;">캐시 삭제, 앱 업데이트</td>
@@ -1352,7 +1343,7 @@
                         <td style="text-align: center; padding: 8px;"><span class="decision-result result-l1" style="font-size: 11px;">L1</span></td>
                     </tr>
                 </tbody>
-            </table></div>
+            </table>
         </div>
     </div>
 
@@ -1421,7 +1412,7 @@
             <span>의사결정 분기점 (Decision)</span>
         </div>
         <div class="legend-item" style="width: 100%; margin-top: 4px;">
-            <span style="color: #64748b; font-size: 11px;">
+            <span style="color: #94A3B8; font-size: 11px;">
                 모든 흐름은 app/services/pipeline.py (ChatPipeline.process)에서 오케스트레이션됩니다.
                 서버: FastAPI (app/main.py) &mdash; API: POST /api/chat
             </span>

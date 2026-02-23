@@ -10,18 +10,14 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: 'Malgun Gothic', 'Noto Sans KR', -apple-system, sans-serif;
-    color: #e2e8f0;
-    background: #0f172a;
-    line-height: 1.6;
+    color: #1E293B;
+    background: #F8FAFC;
+    line-height: 1.7;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
-  
-    font-size: 14px;
-  
-    word-break: keep-all; overflow-wrap: break-word;
   }
   @media print {
-    body { background: #0f172a; }
+    body { background: #F8FAFC; }
     .container { box-shadow: none; }
     .chart-box canvas { max-height: 320px; }
     section { break-inside: avoid; }
@@ -35,7 +31,7 @@
 
   /* ── Hero Header ── */
   .hero {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #0c4a6e 70%, #0ea5e9 100%);
+    background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #0ea5e9 100%);
     color: white;
     padding: 52px 56px 44px;
     position: relative;
@@ -61,8 +57,8 @@
   }
   .hero-badge {
     display: inline-block;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.08);
     border-radius: 20px;
     padding: 5px 18px;
     font-size: 11px;
@@ -110,11 +106,11 @@
     gap: 12px;
     margin-bottom: 24px;
     padding-bottom: 12px;
-    border-bottom: 2px solid rgba(14,165,233,0.3);
+    border-bottom: 2px solid rgba(14,165,233,0.2);
   }
   .section-num {
     background: linear-gradient(135deg, #0ea5e9, #06b6d4);
-    color: white;
+    color: #1E293B;
     width: 36px; height: 36px;
     border-radius: 10px;
     display: flex;
@@ -127,11 +123,11 @@
   .section-header h2 {
     font-size: 22px;
     font-weight: 700;
-    color: #f1f5f9;
+    color: #1E293B;
   }
   .section-header .desc {
     font-size: 13px;
-    color: #94a3b8;
+    color: #64748B;
     margin-left: auto;
   }
 
@@ -144,9 +140,9 @@
     margin-bottom: 40px;
   }
   .kpi-card {
-    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
-    border: 1px solid rgba(14,165,233,0.2);
-    border-radius: 16px;
+    background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+    border: 1px solid rgba(14,165,233,0.12);
+    border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     padding: 28px 24px;
     text-align: center;
     position: relative;
@@ -184,12 +180,12 @@
   .kpi-card:nth-child(4) .kpi-value { color: #34d399; }
   .kpi-label {
     font-size: 14px;
-    color: #94a3b8;
+    color: #64748B;
     font-weight: 500;
   }
   .kpi-sub {
     font-size: 11px;
-    color: #64748b;
+    color: #94A3B8;
     margin-top: 6px;
   }
 
@@ -198,7 +194,7 @@
     overflow-x: auto;
     margin-bottom: 28px;
     border-radius: 12px;
-    border: 1px solid rgba(51,65,85,0.6);
+    border: 1px solid rgba(226,232,240,0.6);
   }
   table {
     width: 100%;
@@ -206,20 +202,20 @@
     font-size: 14px;
   }
   thead th {
-    background: #1e293b;
-    color: #94a3b8;
+    background: #FFFFFF;
+    color: #64748B;
     font-weight: 700;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     padding: 14px 18px;
     text-align: left;
-    border-bottom: 2px solid rgba(14,165,233,0.2);
+    border-bottom: 2px solid rgba(14,165,233,0.12);
   }
   tbody td {
     padding: 12px 18px;
-    border-bottom: 1px solid rgba(51,65,85,0.4);
-    color: #cbd5e1;
+    border-bottom: 1px solid rgba(226,232,240,0.4);
+    color: #475569;
   }
   tbody tr:last-child td { border-bottom: none; }
   tbody tr:hover { background: rgba(14,165,233,0.04); }
@@ -250,23 +246,23 @@
     margin-bottom: 28px;
   }
   .chart-box {
-    background: #1e293b;
-    border: 1px solid rgba(51,65,85,0.6);
-    border-radius: 16px;
+    background: #FFFFFF;
+    border: 1px solid rgba(226,232,240,0.6);
+    border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     padding: 24px;
   }
   .chart-box.full { grid-column: 1 / -1; }
   .chart-box h3 {
     font-size: 15px;
     font-weight: 700;
-    color: #e2e8f0;
+    color: #1E293B;
     margin-bottom: 18px;
     display: flex;
     align-items: center;
     gap: 8px;
   }
   .chart-box h3 .chart-badge {
-    font-size: 11px;
+    font-size: 10px;
     background: rgba(14,165,233,0.15);
     color: #38bdf8;
     padding: 2px 8px;
@@ -282,7 +278,7 @@
   .sub-title {
     font-size: 16px;
     font-weight: 700;
-    color: #e2e8f0;
+    color: #1E293B;
     margin-bottom: 16px;
     padding-left: 12px;
     border-left: 3px solid #0ea5e9;
@@ -291,7 +287,7 @@
   /* ── Summary / Insight boxes ── */
   .insight-box {
     background: linear-gradient(135deg, rgba(14,165,233,0.08) 0%, rgba(6,182,212,0.04) 100%);
-    border: 1px solid rgba(14,165,233,0.2);
+    border: 1px solid rgba(14,165,233,0.12);
     border-radius: 12px;
     padding: 20px 24px;
     margin-bottom: 24px;
@@ -304,7 +300,7 @@
   }
   .insight-box p {
     font-size: 13px;
-    color: #94a3b8;
+    color: #64748B;
     line-height: 1.7;
   }
   .insight-box .big {
@@ -337,16 +333,16 @@
   }
   .token-grid .mini-table {
     font-size: 12px;
-    color: #94a3b8;
+    color: #64748B;
   }
   .token-grid .mini-table td {
     padding: 5px 8px;
-    border-bottom: 1px solid rgba(51,65,85,0.3);
+    border-bottom: 1px solid rgba(226,232,240,0.3);
   }
   .token-grid .mini-table td:last-child {
     text-align: right;
     font-weight: 600;
-    color: #cbd5e1;
+    color: #475569;
     font-variant-numeric: tabular-nums;
   }
   .token-grid .mini-table tr:last-child td {
@@ -366,10 +362,10 @@
   }
   .token-calc {
     font-size: 12px;
-    color: #64748b;
+    color: #94A3B8;
     margin-top: 12px;
     padding-top: 10px;
-    border-top: 1px solid rgba(51,65,85,0.3);
+    border-top: 1px solid rgba(226,232,240,0.3);
     line-height: 1.8;
   }
   .token-calc strong {
@@ -404,7 +400,7 @@
     justify-content: center;
     font-size: 11px;
     font-weight: 700;
-    color: #0f172a;
+    color: #F8FAFC;
   }
   .channel-bar .web-seg {
     background: linear-gradient(90deg, #0ea5e9, #0284c7);
@@ -413,7 +409,7 @@
     justify-content: center;
     font-size: 11px;
     font-weight: 700;
-    color: white;
+    color: #1E293B;
   }
   .channel-bar .api-seg {
     background: linear-gradient(90deg, #8b5cf6, #7c3aed);
@@ -422,13 +418,13 @@
     justify-content: center;
     font-size: 11px;
     font-weight: 700;
-    color: white;
+    color: #1E293B;
   }
   .channel-legend {
     display: flex;
     gap: 20px;
     font-size: 12px;
-    color: #94a3b8;
+    color: #64748B;
     flex-wrap: wrap;
   }
   .channel-legend span {
@@ -451,9 +447,9 @@
     margin-bottom: 28px;
   }
   .cx-card {
-    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
-    border: 1px solid rgba(51,65,85,0.6);
-    border-radius: 16px;
+    background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+    border: 1px solid rgba(226,232,240,0.6);
+    border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     padding: 28px 24px;
     position: relative;
     overflow: hidden;
@@ -485,7 +481,7 @@
   .cx-card h4 {
     font-size: 16px;
     font-weight: 700;
-    color: #e2e8f0;
+    color: #1E293B;
     margin-bottom: 16px;
   }
   .cx-item {
@@ -494,7 +490,7 @@
     gap: 10px;
     margin-bottom: 14px;
     font-size: 13px;
-    color: #94a3b8;
+    color: #64748B;
     line-height: 1.6;
   }
   .cx-item .cx-icon {
@@ -503,13 +499,13 @@
     margin-top: 1px;
   }
   .cx-item strong {
-    color: #cbd5e1;
+    color: #475569;
   }
 
   /* ── Conclusion Card ── */
   .conclusion {
-    background: linear-gradient(135deg, #0c4a6e 0%, #164e63 50%, #1e3a5f 100%);
-    border: 1px solid rgba(14,165,233,0.3);
+    background: linear-gradient(135deg, #DBEAFE 0%, #164e63 50%, #1e3a5f 100%);
+    border: 1px solid rgba(14,165,233,0.2);
     border-radius: 20px;
     padding: 40px 48px;
     margin: 40px 28px 0;
@@ -527,7 +523,7 @@
   .conclusion h2 {
     font-size: 24px;
     font-weight: 800;
-    color: #f1f5f9;
+    color: #1E293B;
     margin-bottom: 20px;
     position: relative;
   }
@@ -549,12 +545,12 @@
   }
   .conclusion-item .lbl {
     font-size: 13px;
-    color: #94a3b8;
+    color: #64748B;
     margin-top: 4px;
   }
   .conclusion .note {
     font-size: 12px;
-    color: #64748b;
+    color: #94A3B8;
     text-align: center;
     margin-top: 16px;
     position: relative;
@@ -567,10 +563,10 @@
     color: #475569;
     font-size: 12px;
     line-height: 1.8;
-    border-top: 1px solid rgba(51,65,85,0.4);
+    border-top: 1px solid rgba(226,232,240,0.4);
     margin: 0 28px;
   }
-  .footer strong { color: #64748b; }
+  .footer strong { color: #94A3B8; }
 
   /* ── Responsive ── */
   @media (max-width: 1024px) {
@@ -602,21 +598,7 @@
   .kpi-card:nth-child(2) { animation-delay: 0.2s; }
   .kpi-card:nth-child(3) { animation-delay: 0.3s; }
   .kpi-card:nth-child(4) { animation-delay: 0.4s; }
-
-    /* ══ 가독성 패치 (2026-02-23) ══ */
-    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1em; }
-    @media (max-width: 768px) {
-      body { font-size: 13px !important; }
-      .container, .body, [class*="content"] { padding-left: 12px !important; padding-right: 12px !important; }
-      h1 { font-size: 22px !important; }
-      h2 { font-size: 18px !important; }
-      h3 { font-size: 15px !important; }
-      table { font-size: 11px !important; }
-      .header, .hero, [class*="header"] { padding: 24px 16px !important; }
-      .toc-grid, .grid-2, .grid-3, .stat-grid, .card-grid, .level-grid { grid-template-columns: 1fr !important; }
-      .header-meta { flex-direction: column; gap: 8px !important; }
-    }
-  </style>
+</style>
 </head>
 <body>
 
@@ -657,9 +639,9 @@
     </div>
     <div class="kpi-card">
       <div class="kpi-icon">&#128200;</div>
-      <div class="kpi-value">~&#8361;190K</div>
+      <div class="kpi-value">~&#8361;260K</div>
       <div class="kpi-label">AI 월 운영비</div>
-      <div class="kpi-sub">Pro Max 정액 + 서버 (API 토큰 비용 $0)</div>
+      <div class="kpi-sub">Pro Max + API 토큰 + 서버</div>
     </div>
   </div>
 
@@ -675,7 +657,7 @@
     <div class="channel-box">
       <h4>&#128233; 접수 채널 분석 (실제 데이터 기반)</h4>
       <div style="display:flex; gap:24px; flex-wrap:wrap; margin-bottom:10px;">
-        <div style="font-size:13px; color:#cbd5e1;">
+        <div style="font-size:13px; color:#475569;">
           <strong>전체 월평균:</strong> 1,662건 &nbsp;|&nbsp;
           <strong style="color:#fbbf24;">이메일:</strong> 699건 (42%) &nbsp;|&nbsp;
           <strong style="color:#38bdf8;">Web:</strong> 789건 (47%) &nbsp;|&nbsp;
@@ -691,17 +673,17 @@
         <span><span class="dot" style="background:#f59e0b;"></span> <strong>이메일 699건/월</strong> &rarr; 상담원 전담 처리</span>
         <span><span class="dot" style="background:#0ea5e9;"></span> <strong>Web+API 963건/월</strong> &rarr; <strong style="color:#38bdf8;">AI 챗봇 대상</strong></span>
       </div>
-      <div style="font-size:11px; color:#64748b; margin-top:10px;">
-        &#128204; claude-max-api-proxy 적용으로 API 토큰 비용 <strong style="color:#34d399;">$0</strong>. Pro Max 정액제로 건수 무관 동일 비용.
+      <div style="font-size:11px; color:#94A3B8; margin-top:10px;">
+        &#128204; API 토큰 비용은 챗봇이 실제 처리하는 비이메일 <strong style="color:#64748B;">963건/월</strong> 기준으로만 산출합니다.
       </div>
     </div>
 
     <!-- AI 챗봇 운영 비용 (단일 full-width) -->
     <div class="chart-grid">
       <div class="chart-box full">
-        <h3>&#129302; AI 챗봇 운영 비용 (예상) <span class="chart-badge">TO-BE</span> <span class="chart-badge" style="background:rgba(16,185,129,0.15);color:#34d399;">Proxy 적용</span></h3>
+        <h3>&#129302; AI 챗봇 운영 비용 (예상) <span class="chart-badge">TO-BE</span></h3>
         <div class="table-wrap" style="border:none; margin-bottom:0;">
-<table>
+          <table>
             <thead>
               <tr><th style="width:40%;">항목</th><th style="width:28%;">수치</th><th>비고</th></tr>
             </thead>
@@ -709,17 +691,16 @@
               <tr style="background:rgba(139,92,246,0.06);">
                 <td><strong>Claude Pro Max 구독</strong></td>
                 <td class="num"><strong style="color:#a78bfa;">&#8361;140,000</strong></td>
-                <td style="color:#64748b;font-size:12px;">$100/월 정액제 (무제한 API 포함)</td>
+                <td style="color:#94A3B8;font-size:12px;">$100/월 정액제</td>
               </tr>
-              <tr style="background:rgba(16,185,129,0.04);">
-                <td>claude-max-api-proxy</td>
-                <td class="num" style="color:#34d399;">&#8361;0</td>
-                <td style="color:#34d399;font-size:12px;">✅ Pro Max 구독 → OpenAI 호환 프록시 → API 토큰 비용 $0</td>
-              </tr>
-              <tr><td><del style="color:#64748b;">Claude API (종량제)</del></td><td class="num" style="color:#64748b;"><del>~&#8361;71,000</del></td><td style="color:#34d399;font-size:12px;">✅ 프록시 적용으로 제거 (기존 &#8361;57K 분류 + &#8361;14K 초안)</td></tr>
-              <tr><td>서버 비용 (VPS)</td><td class="num">&#8361;50,000</td><td style="color:#64748b;font-size:12px;">월 고정 (FastAPI + 프록시 호스팅)</td></tr>
-              <tr><td>ChromaDB</td><td class="num">&#8361;0</td><td style="color:#64748b;font-size:12px;">로컬 벡터 DB (무료)</td></tr>
-              <tr class="highlight-row"><td>총 AI 월 운영비</td><td class="num"><strong style="color:#34d399;">~&#8361;190,000</strong></td><td style="font-size:12px;">Pro Max + 서버 <strong>(기존 대비 27% 절감)</strong></td></tr>
+              <tr><td>Claude API (Sonnet)</td><td class="num">$3 / $15</td><td style="color:#94A3B8;font-size:12px;">input / output per 1M tokens</td></tr>
+              <tr><td>건당 평균 토큰</td><td class="num">~9,600 tok</td><td style="color:#94A3B8;font-size:12px;">8,500 input + 1,100 output</td></tr>
+              <tr><td>건당 API 비용</td><td class="num" style="color:#a78bfa;">~&#8361;59</td><td style="color:#94A3B8;font-size:12px;">~$0.042/건 (평균 기준)</td></tr>
+              <tr><td>월간 API (963건 분류)</td><td class="num">~&#8361;57,000</td><td style="color:#94A3B8;font-size:12px;">비이메일 963건 &times; &#8361;59</td></tr>
+              <tr><td>월간 API (L2 Draft)</td><td class="num">~&#8361;14,000</td><td style="color:#94A3B8;font-size:12px;">472건 &times; &#8361;29 추가</td></tr>
+              <tr><td>서버 비용 (VPS)</td><td class="num">&#8361;50,000</td><td style="color:#94A3B8;font-size:12px;">월 고정</td></tr>
+              <tr><td>ChromaDB</td><td class="num">&#8361;0</td><td style="color:#94A3B8;font-size:12px;">로컬 벡터 DB (무료)</td></tr>
+              <tr class="highlight-row"><td>총 AI 월 운영비</td><td class="num">~&#8361;260,000</td><td style="font-size:12px;">Pro Max + API + 서버</td></tr>
             </tbody>
           </table>
         </div>
@@ -728,44 +709,48 @@
 
     <!-- Token Cost Detail -->
     <div class="token-detail">
-      <h4>&#128640; API 프록시 아키텍처 <span class="token-price-badge" style="background:rgba(16,185,129,0.15);color:#34d399;">claude-max-api-proxy</span> <span class="token-price-badge" style="background:rgba(16,185,129,0.15);color:#34d399;">토큰 비용 $0</span></h4>
+      <h4>&#129518; API 토큰 비용 상세 산출 <span class="token-price-badge">Claude 3.5 Sonnet</span> <span class="token-price-badge">평균 기준</span></h4>
       <div style="margin-bottom:12px;">
-        <span class="token-price-badge" style="background:rgba(16,185,129,0.15);color:#34d399;">Pro Max 정액제 → 무제한 API</span>
-        <span class="token-price-badge" style="background:rgba(16,185,129,0.15);color:#34d399;">종량제 비용 완전 제거</span>
+        <span class="token-price-badge">Input: $3.00 / 1M tokens</span>
+        <span class="token-price-badge">Output: $15.00 / 1M tokens</span>
+        <span class="token-price-badge">환율: &#8361;1,400 / $1</span>
       </div>
       <div class="token-grid">
         <div>
-          <div style="font-size:13px; font-weight:700; color:#cbd5e1; margin-bottom:8px;">&#128268; 프록시 구조</div>
-<table class="mini-table">
-            <tr><td>구독 플랜</td><td><strong>Claude Pro Max ($100/월)</strong></td></tr>
-            <tr><td>프록시</td><td>claude-max-api-proxy (localhost:3456)</td></tr>
-            <tr><td>인터페이스</td><td>OpenAI 호환 API (/v1/chat/completions)</td></tr>
-            <tr><td>모델</td><td>Claude Sonnet 4 (프록시 매핑)</td></tr>
-            <tr><td>자동 복구</td><td>systemd 서비스 + 5회 retry</td></tr>
-            <tr><td>헬스체크</td><td>20초 대기 + 생존 확인</td></tr>
-            <tr><td><strong>건당 API 비용</strong></td><td><strong style="color:#34d399;">$0.00 (정액제 포함)</strong></td></tr>
+          <div style="font-size:13px; font-weight:700; color:#475569; margin-bottom:8px;">&#128300; 건당 토큰 사용량 (평균 기준)</div>
+          <table class="mini-table">
+            <tr><td>시스템 프롬프트 + 규칙</td><td>2,500 tok (input)</td></tr>
+            <tr><td>RAG 컨텍스트 (knowledge)</td><td>2,000 tok (input)</td></tr>
+            <tr><td>고객 메시지 + 대화이력</td><td>1,500 tok (input)</td></tr>
+            <tr><td>STEP A (분류+추출) 출력</td><td>500 tok (output)</td></tr>
+            <tr><td>STEP B (자연어 글루) 입력</td><td>2,500 tok (input)</td></tr>
+            <tr><td>STEP B 출력</td><td>600 tok (output)</td></tr>
+            <tr><td><strong>합계</strong></td><td><strong>8,500 in + 1,100 out</strong></td></tr>
           </table>
         </div>
         <div>
-          <div style="font-size:13px; font-weight:700; color:#cbd5e1; margin-bottom:8px;">&#128178; 비용 비교 (기존 vs 프록시)</div>
-<table class="mini-table">
-            <tr><td>기존 API 종량제</td><td><del style="color:#64748b;">&#8361;71,000/월</del></td></tr>
-            <tr><td>프록시 적용 후</td><td><strong style="color:#34d399;">&#8361;0/월</strong></td></tr>
-            <tr><td style="color:#34d399;font-weight:700;">월 절감액</td><td><strong style="color:#34d399;">&#8361;71,000</strong></td></tr>
+          <div style="font-size:13px; font-weight:700; color:#475569; margin-bottom:8px;">&#128178; 건당 비용 산출</div>
+          <table class="mini-table">
+            <tr><td>Input 비용</td><td>8,500 / 1M &times; $3.00 = <strong>$0.026</strong></td></tr>
+            <tr><td>Output 비용</td><td>1,100 / 1M &times; $15.00 = <strong>$0.017</strong></td></tr>
+            <tr><td>건당 합계 (USD)</td><td><strong>~$0.042</strong></td></tr>
+            <tr><td>건당 합계 (KRW)</td><td><strong style="color:#fbbf24;">~&#8361;59/건</strong></td></tr>
           </table>
-          <div style="margin-top:14px; font-size:13px; font-weight:700; color:#cbd5e1; margin-bottom:8px;">&#128202; 최종 월간 비용</div>
-<table class="mini-table">
+          <div style="margin-top:14px; font-size:13px; font-weight:700; color:#475569; margin-bottom:8px;">&#128202; 월간 합계 (비이메일 963건 기준)</div>
+          <table class="mini-table">
+            <tr><td>전체 분류 (963건)</td><td>&#8361;56,817</td></tr>
+            <tr><td>L2 Draft 추가 (472건)</td><td>&#8361;13,688</td></tr>
             <tr><td>Claude Pro Max</td><td>&#8361;140,000</td></tr>
             <tr><td>서버 (VPS)</td><td>&#8361;50,000</td></tr>
-            <tr><td>API 토큰</td><td style="color:#34d399;"><strong>&#8361;0</strong></td></tr>
-            <tr><td><strong>총 AI 운영비</strong></td><td><strong style="color:#34d399;">~&#8361;190,000/월</strong></td></tr>
+            <tr><td><strong>총 AI 운영비</strong></td><td><strong>~&#8361;260,000/월</strong></td></tr>
           </table>
         </div>
       </div>
       <div class="token-calc">
-        <strong style="color:#34d399;">✅ 프록시 적용 완료:</strong> Claude Pro Max 구독의 무제한 API를 <strong>claude-max-api-proxy</strong>를 통해 OpenAI 호환 엔드포인트로 변환.
-        종량제 API 토큰 비용이 <strong>완전 제거</strong>되어 건수 증가에 따른 추가 비용이 없습니다.
-        월 963건이든 2,000건이든 <strong>정액 &#8361;190,000으로 동일</strong>합니다.
+        <strong>&#9888;&#65039; 산출 기준:</strong> 2회 API 호출/건 (STEP A 분류 + STEP B 자연어 글루), 버퍼 미포함 평균 기준.
+        이메일 접수 699건(42%)은 상담원이 전담 처리하므로 API 비용에서 제외.
+        챗봇이 실제 처리하는 비이메일 <strong>963건/월만</strong> 토큰 비용에 반영합니다.
+        별도 <strong>Claude Pro Max $100/월</strong> 정액제 구독료를 포함합니다.
       </div>
     </div>
   </section>
@@ -788,7 +773,7 @@
     </div>
 
     <div class="table-wrap">
-<table>
+      <table>
         <thead>
           <tr>
             <th>카테고리</th>
@@ -804,49 +789,49 @@
             <td class="num">700건</td>
             <td class="pct">48%</td>
             <td class="pct"><span class="tag tag-green">95% (L3)</span></td>
-            <td style="color:#64748b;font-size:12px;">구독 해지 안내 자동 &rarr; 과금 분쟁만 에스컬레이션</td>
+            <td style="color:#94A3B8;font-size:12px;">구독 해지 안내 자동 &rarr; 과금 분쟁만 에스컬레이션</td>
           </tr>
           <tr>
             <td><strong>Refund</strong></td>
             <td class="num">367건</td>
             <td class="pct">25%</td>
             <td class="pct"><span class="tag tag-blue">30% (L2+L3)</span></td>
-            <td style="color:#64748b;font-size:12px;">iOS 환불 리디렉트 자동 / 적격성 판단은 상담원</td>
+            <td style="color:#94A3B8;font-size:12px;">iOS 환불 리디렉트 자동 / 적격성 판단은 상담원</td>
           </tr>
           <tr>
             <td><strong>Account</strong></td>
             <td class="num">189건</td>
             <td class="pct">13%</td>
             <td class="pct"><span class="tag tag-blue">40% (L2+L3)</span></td>
-            <td style="color:#64748b;font-size:12px;">비밀번호 리셋, 인증 안내 자동 / GDPR 삭제 에스컬레이션</td>
+            <td style="color:#94A3B8;font-size:12px;">비밀번호 리셋, 인증 안내 자동 / GDPR 삭제 에스컬레이션</td>
           </tr>
           <tr>
             <td><strong>Payment</strong></td>
             <td class="num">86건</td>
             <td class="pct">5%</td>
             <td class="pct"><span class="tag tag-blue">35% (L2+L3)</span></td>
-            <td style="color:#64748b;font-size:12px;">결제 방법 안내, 실패 트러블슈팅 / 이중과금 에스컬레이션</td>
+            <td style="color:#94A3B8;font-size:12px;">결제 방법 안내, 실패 트러블슈팅 / 이중과금 에스컬레이션</td>
           </tr>
           <tr>
             <td><strong>Content</strong></td>
             <td class="num">57건</td>
             <td class="pct">4%</td>
             <td class="pct"><span class="tag" style="background:rgba(251,191,36,0.15);color:#fbbf24;">0% (L2)</span></td>
-            <td style="color:#64748b;font-size:12px;">AI 정보 수집 → 에스컬레이션 (셀프서비스 없음)</td>
+            <td style="color:#94A3B8;font-size:12px;">AI 정보 수집 → 에스컬레이션 (셀프서비스 없음)</td>
           </tr>
           <tr>
             <td><strong>Technical</strong></td>
             <td class="num">32건</td>
             <td class="pct">3%</td>
             <td class="pct"><span class="tag tag-blue">25% (L2+L3)</span></td>
-            <td style="color:#64748b;font-size:12px;">캐시 삭제, 앱 업데이트 안내 / 버그 리포트 에스컬레이션</td>
+            <td style="color:#94A3B8;font-size:12px;">캐시 삭제, 앱 업데이트 안내 / 버그 리포트 에스컬레이션</td>
           </tr>
           <tr>
             <td><strong>Other</strong></td>
             <td class="num">30건</td>
             <td class="pct">2%</td>
             <td class="pct"><span class="tag tag-red">0% (L1)</span></td>
-            <td style="color:#64748b;font-size:12px;">전체 에스컬레이션 &mdash; 자동화 영구 배제</td>
+            <td style="color:#94A3B8;font-size:12px;">전체 에스컬레이션 &mdash; 자동화 영구 배제</td>
           </tr>
           <tr class="highlight-row">
             <td>합계</td>
@@ -883,7 +868,7 @@
       <div class="chart-box">
         <h3>&#128296; 자동화 가능성 분석</h3>
         <div class="table-wrap" style="border:none; margin-bottom:0;">
-<table>
+          <table>
             <thead>
               <tr><th>템플릿</th><th>비중</th><th>변수</th><th>자동화</th></tr>
             </thead>
@@ -951,10 +936,10 @@
     </div>
 
     <!-- 핵심 인사이트: 83% -->
-    <div style="background:linear-gradient(135deg,rgba(14,165,233,0.08),rgba(16,185,129,0.06));border:2px solid rgba(14,165,233,0.2);border-radius:16px;padding:28px 32px;margin-bottom:24px;">
+    <div style="background:linear-gradient(135deg,rgba(14,165,233,0.08),rgba(16,185,129,0.06));border:2px solid rgba(14,165,233,0.12);border-radius:16px;padding:28px 32px;margin-bottom:24px;">
       <div style="text-align:center;margin-bottom:20px;">
         <div style="font-size:12px;color:#38bdf8;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;">CORE INSIGHT — 상담원 템플릿 자동화 분석 연계</div>
-        <div style="font-size:24px;font-weight:800;color:#e2e8f0;line-height:1.4;">
+        <div style="font-size:24px;font-weight:800;color:#1E293B;line-height:1.4;">
           상담원 응답의 <span style="color:#38bdf8;font-size:32px;">83%</span>가<br>
           <span style="color:#fbbf24;">반복적이지만 반드시 거쳐야 하는</span> 정보 확인 단계
         </div>
@@ -962,26 +947,26 @@
       <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:16px;">
         <div style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.2);border-radius:12px;padding:12px 8px;text-align:center;">
           <div style="font-size:22px;font-weight:800;color:#38bdf8;">45%</div>
-          <div style="font-size:11px;color:#94a3b8;margin-top:4px;">결제정보 요청</div>
+          <div style="font-size:11px;color:#64748B;margin-top:4px;">결제정보 요청</div>
         </div>
         <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:12px 8px;text-align:center;">
           <div style="font-size:22px;font-weight:800;color:#34d399;">18%</div>
-          <div style="font-size:11px;color:#94a3b8;margin-top:4px;">구독취소 확인</div>
+          <div style="font-size:11px;color:#64748B;margin-top:4px;">구독취소 확인</div>
         </div>
         <div style="background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.2);border-radius:12px;padding:12px 8px;text-align:center;">
           <div style="font-size:22px;font-weight:800;color:#fbbf24;">10%</div>
-          <div style="font-size:11px;color:#94a3b8;margin-top:4px;">환불 처리</div>
+          <div style="font-size:11px;color:#64748B;margin-top:4px;">환불 처리</div>
         </div>
         <div style="background:rgba(244,114,182,0.08);border:1px solid rgba(244,114,182,0.2);border-radius:12px;padding:12px 8px;text-align:center;">
           <div style="font-size:22px;font-weight:800;color:#f472b6;">7%</div>
-          <div style="font-size:11px;color:#94a3b8;margin-top:4px;">환불 거절</div>
+          <div style="font-size:11px;color:#64748B;margin-top:4px;">환불 거절</div>
         </div>
         <div style="background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.2);border-radius:12px;padding:12px 8px;text-align:center;">
           <div style="font-size:22px;font-weight:800;color:#a78bfa;">3%</div>
-          <div style="font-size:11px;color:#94a3b8;margin-top:4px;">계정 삭제</div>
+          <div style="font-size:11px;color:#64748B;margin-top:4px;">계정 삭제</div>
         </div>
       </div>
-      <div style="text-align:center;font-size:13px;color:#94a3b8;">이 83%를 AI가 티켓 생성 전에 양식으로 안내 &rarr; 운영자가 필요 정보를 이미 확보한 채 처리</div>
+      <div style="text-align:center;font-size:13px;color:#64748B;">이 83%를 AI가 티켓 생성 전에 양식으로 안내 &rarr; 운영자가 필요 정보를 이미 확보한 채 처리</div>
     </div>
 
     <div class="cx-grid">
@@ -1029,7 +1014,7 @@
 
     <!-- ═══ DUAL VALUE: CX × OPERATIONS ═══ -->
     <div style="margin-top:24px;">
-      <h4 style="font-size:16px;font-weight:700;color:#e2e8f0;margin-bottom:16px;padding-left:4px;">&#128161; 스마트 레이어링 — Dual Value</h4>
+      <h4 style="font-size:16px;font-weight:700;color:#1E293B;margin-bottom:16px;padding-left:4px;">&#128161; 스마트 레이어링 — Dual Value</h4>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
         <!-- Pillar 1: CX → Customer Satisfaction -->
         <div style="background:linear-gradient(135deg,rgba(14,165,233,0.06),rgba(99,102,241,0.04));border:2px solid rgba(14,165,233,0.18);border-radius:14px;padding:18px 16px 14px;position:relative;overflow:hidden;">
@@ -1037,18 +1022,18 @@
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
             <div style="width:32px;height:32px;background:linear-gradient(135deg,#0ea5e9,#6366f1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;">🎯</div>
             <div>
-              <div style="font-size: 11px;color:#818cf8;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CUSTOMER EXPERIENCE</div>
+              <div style="font-size:9px;color:#818cf8;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CUSTOMER EXPERIENCE</div>
               <div style="font-size:14px;font-weight:800;color:#38bdf8;">고객 경험 향상 → 서비스 만족도 극대화</div>
             </div>
           </div>
-          <div style="display:flex;flex-direction:column;gap:6px;font-size:12px;color:#94a3b8;line-height:1.5;margin-bottom:12px;">
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:12px;color:#64748B;line-height:1.5;margin-bottom:12px;">
             <div>▸ CS 대기 7~29일 → AI <strong style="color:#7dd3fc;">즉시 양식 안내</strong></div>
             <div>▸ 확실한 양식 → <strong style="color:#7dd3fc;">빠르고 정확한 해결</strong> 경험</div>
             <div>▸ 좋은 CS 경험 → <strong style="color:#7dd3fc;">서비스 신뢰도 + 브랜드 충성도</strong> 강화</div>
             <div>▸ 24/7 다국어 → 글로벌 10개 마켓 커버</div>
           </div>
           <div style="text-align:center;padding:7px 10px;background:rgba(14,165,233,0.08);border:1px solid rgba(14,165,233,0.12);border-radius:8px;">
-            <div style="font-size: 11px;color:#64748b;">좋은 CS 경험이 서비스 전체의 가치를 높입니다</div>
+            <div style="font-size:10px;color:#94A3B8;">좋은 CS 경험이 서비스 전체의 가치를 높입니다</div>
             <div style="font-size:13px;font-weight:800;color:#38bdf8;margin-top:2px;">Customer Satisfaction & Loyalty ↑</div>
           </div>
         </div>
@@ -1058,25 +1043,25 @@
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
             <div style="width:32px;height:32px;background:linear-gradient(135deg,#10b981,#f59e0b);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;">⚡</div>
             <div>
-              <div style="font-size: 11px;color:#fbbf24;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CS OPERATIONS</div>
+              <div style="font-size:9px;color:#fbbf24;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CS OPERATIONS</div>
               <div style="font-size:14px;font-weight:800;color:#34d399;">운영 효율 극대화 → 처리 능력 3~4배</div>
             </div>
           </div>
-          <div style="display:flex;flex-direction:column;gap:6px;font-size:12px;color:#94a3b8;line-height:1.5;margin-bottom:12px;">
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:12px;color:#64748B;line-height:1.5;margin-bottom:12px;">
             <div>▸ 정보 미리 확보 → 운영자 <strong style="color:#6ee7b7;">즉시 처리</strong></div>
             <div>▸ <strong style="color:#6ee7b7;">첫 응답 해결율 3~4배</strong> → 왕복 제거</div>
             <div>▸ 38% 셀프 해결 → <strong style="color:#6ee7b7;">월 630건 티켓 감소</strong></div>
             <div>▸ 반복 정보 수집 제거 → <strong style="color:#6ee7b7;">판단 업무 집중</strong></div>
           </div>
           <div style="text-align:center;padding:7px 10px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.12);border-radius:8px;">
-            <div style="font-size: 11px;color:#64748b;">같은 인력으로 3~4배 더 많은 CS를 처리합니다</div>
+            <div style="font-size:10px;color:#94A3B8;">같은 인력으로 3~4배 더 많은 CS를 처리합니다</div>
             <div style="font-size:13px;font-weight:800;color:#34d399;margin-top:2px;">CS Processing Efficiency ×3~4</div>
           </div>
         </div>
       </div>
       <!-- 선순환 결론 -->
-      <div style="text-align:center;padding:12px 16px;background:rgba(245,158,11,0.04);border:1px solid rgba(245,158,11,0.08);border-radius:10px;font-size:13px;color:#cbd5e1;line-height:1.7;">
-        <strong style="color:#fbbf24;">CX ↑ 고객 만족도</strong> × <strong style="color:#34d399;">Operations ↑ 3~4배 효율</strong> = <span style="color:#e2e8f0;font-weight:700;">CS 조직의 선순환 구조</span>
+      <div style="text-align:center;padding:12px 16px;background:rgba(245,158,11,0.04);border:1px solid rgba(245,158,11,0.08);border-radius:10px;font-size:13px;color:#475569;line-height:1.7;">
+        <strong style="color:#fbbf24;">CX ↑ 고객 만족도</strong> × <strong style="color:#34d399;">Operations ↑ 3~4배 효율</strong> = <span style="color:#1E293B;font-weight:700;">CS 조직의 선순환 구조</span>
       </div>
     </div>
   </section>
@@ -1103,7 +1088,7 @@
       </div>
     </div>
     <div style="text-align:center; position:relative;">
-      <p style="font-size:15px; color:#cbd5e1; line-height:1.8; max-width:720px; margin:0 auto;">
+      <p style="font-size:15px; color:#475569; line-height:1.8; max-width:720px; margin:0 auto;">
         AI 챗봇 도입으로 비이메일 채널 <strong style="color:#fbbf24;">963건/월</strong> 중 <strong style="color:#fbbf24;">38%</strong>(366건)를 셀프서비스로 자동 안내하며,<br>
         기존 7~29일 걸리던 초기 안내를 <strong style="color:#38bdf8;">&lt;3초</strong>로 단축합니다.<br>
         AI 전체 운영비는 월 <strong style="color:#fbbf24;">~&#8361;260,000</strong> (Pro Max + API + 서버)이며,<br>
@@ -1128,14 +1113,14 @@
 <!-- ══════════════ CHART.JS SCRIPTS ══════════════ -->
 <script>
 // ── Global Chart.js defaults ──
-Chart.defaults.color = '#94a3b8';
-Chart.defaults.borderColor = 'rgba(51,65,85,0.4)';
+Chart.defaults.color = '#64748B';
+Chart.defaults.borderColor = 'rgba(226,232,240,0.4)';
 Chart.defaults.font.family = "'Malgun Gothic', 'Noto Sans KR', sans-serif";
 Chart.defaults.font.size = 12;
 Chart.defaults.plugins.legend.labels.usePointStyle = true;
 Chart.defaults.plugins.legend.labels.padding = 16;
-Chart.defaults.plugins.tooltip.backgroundColor = '#1e293b';
-Chart.defaults.plugins.tooltip.borderColor = 'rgba(14,165,233,0.3)';
+Chart.defaults.plugins.tooltip.backgroundColor = '#FFFFFF';
+Chart.defaults.plugins.tooltip.borderColor = 'rgba(14,165,233,0.2)';
 Chart.defaults.plugins.tooltip.borderWidth = 1;
 Chart.defaults.plugins.tooltip.titleFont = { weight: '700' };
 Chart.defaults.plugins.tooltip.padding = 12;
@@ -1194,7 +1179,7 @@ Chart.defaults.animation.easing = 'easeOutQuart';
         x: {
           max: 100,
           ticks: { callback: (v) => v + '%' },
-          grid: { color: 'rgba(51,65,85,0.3)' }
+          grid: { color: 'rgba(226,232,240,0.3)' }
         },
         y: { grid: { display: false } }
       }
@@ -1247,7 +1232,7 @@ Chart.defaults.animation.easing = 'easeOutQuart';
         tooltip: { callbacks: { label: (ctx) => ctx.dataset.label } }
       },
       scales: {
-        x: { stacked: true, max: 100, ticks: { callback: (v) => v + '%' }, grid: { color: 'rgba(51,65,85,0.3)' } },
+        x: { stacked: true, max: 100, ticks: { callback: (v) => v + '%' }, grid: { color: 'rgba(226,232,240,0.3)' } },
         y: { stacked: true, grid: { display: false }, display: false }
       }
     },
