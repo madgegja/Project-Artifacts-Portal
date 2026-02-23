@@ -225,8 +225,12 @@ select.flt:focus { border-color: var(--blue); }
 /* ── Comment ── */
 .comment-thread { display:flex; flex-direction:column; gap:12px; }
 .comment-item { border-radius:10px; overflow:hidden; }
-.comment-item.public { background: rgba(14,165,233,.06); border:1px solid rgba(14,165,233,.15); }
+.comment-item.customer { background: rgba(14,165,233,.06); border:1px solid rgba(14,165,233,.15); }
+.comment-item.bot { background: rgba(16,185,129,.06); border:1px solid rgba(16,185,129,.15); }
 .comment-item.internal { background: rgba(245,158,11,.06); border:1px solid rgba(245,158,11,.15); }
+.comment-item.customer { margin-right:40px; }
+.comment-item.bot { margin-left:40px; }
+.comment-item.internal { margin-left:40px; opacity:.85; }
 .comment-meta {
   padding:7px 12px; display:flex; align-items:center; gap:8px; font-size:11px;
   border-bottom:1px solid rgba(255,255,255,.05);
@@ -234,7 +238,8 @@ select.flt:focus { border-color: var(--blue); }
 .comment-meta .c-author { font-weight:700; color:var(--text2); }
 .comment-meta .c-time { color:var(--muted); margin-left:auto; }
 .comment-meta .c-badge { font-size:10px; padding:1px 6px; border-radius:6px; }
-.c-pub { background:rgba(14,165,233,.15); color:#38bdf8; }
+.c-cust { background:rgba(14,165,233,.15); color:#38bdf8; }
+.c-bot { background:rgba(16,185,129,.15); color:#34d399; }
 .c-int { background:rgba(245,158,11,.15); color:#fbbf24; }
 .comment-body { padding:10px 12px; font-size:12px; color:var(--text2); line-height:1.7; white-space:pre-wrap; word-break:break-word; }
 
@@ -310,6 +315,18 @@ select.flt:focus { border-color: var(--blue); }
     <option value="L1">L1 긴급</option>
     <option value="L2">L2 검토</option>
     <option value="L3">L3 자동</option>
+  </select>
+  <select class="flt" id="languageFilter" onchange="applyFilters()">
+    <option value="">모든 언어</option>
+    <option value="en">🇺🇸 EN</option>
+    <option value="fr">🇫🇷 FR</option>
+    <option value="es">🇪🇸 ES</option>
+    <option value="pt">🇧🇷 PT</option>
+    <option value="de">🇩🇪 DE</option>
+    <option value="th">🇹🇭 TH</option>
+    <option value="jp">🇯🇵 JP</option>
+    <option value="cn">🇨🇳 CN</option>
+    <option value="it">🇮🇹 IT</option>
   </select>
   <select class="flt" id="categoryFilter" onchange="applyFilters()">
     <option value="">모든 카테고리</option>
@@ -644,6 +661,7 @@ async function loadTickets(page = 1) {
     const c = val('channelFilter'); if (c) { const m={'api':'챗봇','web':'웹','chat':'채팅'}; filtered = filtered.filter(t => t.channel === (m[c]||c)); }
     const l = val('levelFilter'); if (l) filtered = filtered.filter(t => t.level === l);
     const cat = val('categoryFilter'); if (cat) filtered = filtered.filter(t => t.category === cat);
+    const lang = val('languageFilter'); if (lang) filtered = filtered.filter(t => t.tags.some(tag => tag === 'language__'+lang));
     const q = val('searchInput').trim().toLowerCase(); if (q) filtered = filtered.filter(t => t.subject.toLowerCase().includes(q) || t.description.toLowerCase().includes(q) || String(t.id).includes(q));
     totalTickets = filtered.length;
     document.getElementById('resultCount').textContent = `총 ${totalTickets}건`;
@@ -779,16 +797,24 @@ async function openTicket(id) {
       </div>
       <div class="detail-body">
         <div class="comment-thread">
-          ${(t.comments || []).map((c, i) => `
-            <div class="comment-item ${c.public ? 'public' : 'internal'}">
+          ${(t.comments || []).map((c, i) => {
+            const isInternal = !c.public;
+            const isCustomer = c.public && (c.author_id === t.requester_id || c.author_id !== 39001 && i === 0 || (c.author_id && c.author_id >= 38000 && c.author_id < 39000));
+            const isBot = c.public && !isCustomer;
+            const cls = isInternal ? 'internal' : isCustomer ? 'customer' : 'bot';
+            const icon = isInternal ? '🔒 내부메모' : isCustomer ? '👤 고객' : '🤖 봇';
+            const badgeCls = isInternal ? 'c-int' : isCustomer ? 'c-cust' : 'c-bot';
+            const badgeTxt = isInternal ? 'Internal' : isCustomer ? 'Customer' : 'Bot';
+            return `
+            <div class="comment-item ${cls}">
               <div class="comment-meta">
-                <span class="c-author">${c.public ? '👤 고객' : '🔒 내부메모'}</span>
-                <span class="c-badge ${c.public ? 'c-pub' : 'c-int'}">${c.public ? 'Public' : 'Internal'}</span>
+                <span class="c-author">${icon}</span>
+                <span class="c-badge ${badgeCls}">${badgeTxt}</span>
                 <span class="c-time">${c.created_at}</span>
               </div>
               <div class="comment-body">${esc(c.body)}</div>
-            </div>
-          `).join('')}
+            </div>`;
+          }).join('')}
         </div>
       </div>`;
 
@@ -827,7 +853,7 @@ function setLevelFilter(l) {
 }
 
 function clearFilters() {
-  ['statusFilter','channelFilter','levelFilter','categoryFilter'].forEach(id => document.getElementById(id).value = '');
+  ['statusFilter','channelFilter','levelFilter','categoryFilter','languageFilter'].forEach(id => document.getElementById(id).value = '');
   document.getElementById('searchInput').value = '';
   document.querySelectorAll('.kpi-card').forEach(c => c.classList.remove('active'));
   loadTickets(1);
