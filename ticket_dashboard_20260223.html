@@ -363,6 +363,40 @@ select.flt:focus { border-color: var(--blue); }
 
 <script>
 // ────────────────────────────────────────────────────────
+// DEMO MODE — API 없이 테스트 데이터로 동작
+// ────────────────────────────────────────────────────────
+const DEMO_MODE = (location.protocol === 'file:' || location.hostname.includes('github.io') || !location.port);
+
+const MOCK_TICKETS = [
+  {id:48201, subject:"I want to cancel my subscription", description:"I signed up last month but I don't want to continue. Please cancel.", status:"solved", priority:"normal", channel:"챗봇", level:"L3", category:"Subscription", tags:["l3","subscription","self_service","en"], created_at:"2026-02-23 09:14", updated_at:"2026-02-23 09:15",
+   comments:[{id:1,body:"I want to cancel my subscription immediately. I signed up for the monthly plan but I don't want to continue.",author_id:1001,public:true,created_at:"2026-02-23 09:14"},{id:2,body:"We understand you'd like to cancel. Your subscription has been cancelled and you'll retain access until the end of your billing period. Is there anything else we can help with?",author_id:9001,public:true,created_at:"2026-02-23 09:15"},{id:3,body:"[BOT] Auto-resolved via self-service flow. Category: Subscription > Cancel. Market: EN.",author_id:9001,public:false,created_at:"2026-02-23 09:15"}]},
+  {id:48202, subject:"결제했는데 코인이 안 들어왔어요", description:"30분 전에 PayPal로 결제했는데 코인이 아직 없습니다.", status:"open", priority:"high", channel:"챗봇", level:"L2", category:"Payment", tags:["l2","payment","paypal","kr"], created_at:"2026-02-23 10:32", updated_at:"2026-02-23 10:45",
+   comments:[{id:4,body:"30분 전에 PayPal로 결제했는데 코인이 아직 없습니다. 주문번호는 PP-2026022301234입니다.",author_id:1002,public:true,created_at:"2026-02-23 10:32"},{id:5,body:"결제 확인 중입니다. PayPal 트랜잭션 ID와 결제 금액을 확인하여 빠르게 처리해 드리겠습니다.",author_id:9001,public:true,created_at:"2026-02-23 10:33"},{id:6,body:"[BOT] Escalated to L2. Reason: Payment not credited after 30min. PayPal order ref provided.",author_id:9001,public:false,created_at:"2026-02-23 10:33"}]},
+  {id:48203, subject:"Unauthorized charge on my credit card", description:"I see a charge of $29.99 from Toomics but I never signed up.", status:"new", priority:"urgent", channel:"웹", level:"L1", category:"Fraud", tags:["l1","fraud","unauthorized","chargeback_risk","en"], created_at:"2026-02-23 11:05", updated_at:"2026-02-23 11:05",
+   comments:[{id:7,body:"I just noticed a charge of $29.99 from Toomics on my Visa statement. I have never heard of this site and did not sign up. I need an immediate refund or I will file a chargeback with my bank.",author_id:1003,public:true,created_at:"2026-02-23 11:05"},{id:8,body:"[BOT] 🔴 RED FLAG: Unauthorized claim + chargeback threat. Fraud score: HIGH. Escalated to L1 immediately.",author_id:9001,public:false,created_at:"2026-02-23 11:05"}]},
+  {id:48204, subject:"Je ne peux pas me connecter à mon compte", description:"J'ai oublié mon mot de passe et le lien de réinitialisation ne fonctionne pas.", status:"solved", priority:"normal", channel:"챗봇", level:"L3", category:"Account", tags:["l3","account","password_reset","fr"], created_at:"2026-02-23 08:22", updated_at:"2026-02-23 08:23",
+   comments:[{id:9,body:"J'ai oublié mon mot de passe et le lien de réinitialisation ne fonctionne pas. Pouvez-vous m'aider?",author_id:1004,public:true,created_at:"2026-02-23 08:22"},{id:10,body:"Nous comprenons que cela peut être frustrant. Un nouveau lien de réinitialisation a été envoyé à votre adresse email. Veuillez vérifier également votre dossier spam.",author_id:9001,public:true,created_at:"2026-02-23 08:23"},{id:11,body:"[BOT] Auto-resolved. Password reset link re-sent. Market: FR.",author_id:9001,public:false,created_at:"2026-02-23 08:23"}]},
+  {id:48205, subject:"Quiero un reembolso de mi suscripción de 6 meses", description:"Compré la suscripción de 6 meses por error, quiero el reembolso.", status:"pending", priority:"high", channel:"챗봇", level:"L2", category:"Refund", tags:["l2","refund","subscription_6m","es"], created_at:"2026-02-23 07:45", updated_at:"2026-02-23 09:30",
+   comments:[{id:12,body:"Compré la suscripción de 6 meses por error. Quería solo 1 mes. Necesito un reembolso por la diferencia.",author_id:1005,public:true,created_at:"2026-02-23 07:45"},{id:13,body:"Entendemos su situación. Hemos enviado su solicitud de reembolso al equipo de facturación para su revisión. Le informaremos del resultado en un plazo de 24-48 horas.",author_id:9001,public:true,created_at:"2026-02-23 07:46"},{id:14,body:"[BOT] Escalated to L2. Refund eligibility check needed. 6-month plan, purchased today. Partial refund scenario.",author_id:9001,public:false,created_at:"2026-02-23 07:46"}]},
+  {id:48206, subject:"The app keeps crashing on my Android phone", description:"Every time I open a chapter, the app crashes. Galaxy S24, Android 15.", status:"open", priority:"normal", channel:"모바일", level:"L2", category:"Technical", tags:["l2","technical","app_crash","android","en"], created_at:"2026-02-23 06:18", updated_at:"2026-02-23 08:00",
+   comments:[{id:15,body:"Every time I try to read a chapter the app crashes. I'm using a Samsung Galaxy S24 with Android 15. I've already tried clearing cache and reinstalling.",author_id:1006,public:true,created_at:"2026-02-23 06:18"},{id:16,body:"We're sorry for the inconvenience. This seems to be a known issue with certain Android 15 devices. Our development team is working on a fix. In the meantime, you can try using our mobile web browser version.",author_id:9001,public:true,created_at:"2026-02-23 06:19"},{id:17,body:"[BOT] Escalated to L2. Known bug: Android 15 + Galaxy S24 crash. Ref: BUG-4521.",author_id:9001,public:false,created_at:"2026-02-23 06:19"}]},
+  {id:48207, subject:"My child purchased coins without my permission", description:"My 12-year-old son used my PayPal to buy 500 coins.", status:"new", priority:"urgent", channel:"웹", level:"L1", category:"Refund", tags:["l1","refund","unauthorized","minor","chargeback_risk","en"], created_at:"2026-02-23 11:50", updated_at:"2026-02-23 11:50",
+   comments:[{id:18,body:"My 12-year-old son used my PayPal account to purchase 500 coins ($49.99) without my knowledge. I need a full refund. This is a minor using the service.",author_id:1007,public:true,created_at:"2026-02-23 11:50"},{id:19,body:"[BOT] 🔴 RED FLAG: Minor usage + unauthorized PayPal + chargeback risk. Fraud score: HIGH. Escalated to L1.",author_id:9001,public:false,created_at:"2026-02-23 11:50"}]},
+  {id:48208, subject:"Ich möchte mein Konto und alle Daten löschen", description:"Gemäß DSGVO möchte ich die vollständige Löschung meiner Daten.", status:"new", priority:"high", channel:"웹", level:"L1", category:"Account", tags:["l1","account","gdpr","data_deletion","de"], created_at:"2026-02-23 10:00", updated_at:"2026-02-23 10:00",
+   comments:[{id:20,body:"Gemäß Artikel 17 der DSGVO fordere ich die vollständige Löschung meines Kontos und aller personenbezogenen Daten innerhalb von 30 Tagen.",author_id:1008,public:true,created_at:"2026-02-23 10:00"},{id:21,body:"[BOT] 🔴 L1 Escalation: GDPR Art.17 data deletion request. Legal compliance required. Market: DE.",author_id:9001,public:false,created_at:"2026-02-23 10:00"}]},
+  {id:48209, subject:"Como faço para trocar meu plano?", description:"Quero mudar do plano mensal para o trimestral.", status:"solved", priority:"normal", channel:"챗봇", level:"L3", category:"Subscription", tags:["l3","subscription","plan_change","pt"], created_at:"2026-02-22 22:15", updated_at:"2026-02-22 22:16",
+   comments:[{id:22,body:"Quero mudar do plano mensal para o trimestral. Como faço?",author_id:1009,public:true,created_at:"2026-02-22 22:15"},{id:23,body:"É simples! Você pode alterar seu plano acessando Configurações > Assinatura > Alterar Plano. A diferença de valor será calculada automaticamente.",author_id:9001,public:true,created_at:"2026-02-22 22:16"},{id:24,body:"[BOT] Auto-resolved. Plan change self-service guide provided. Market: PT.",author_id:9001,public:false,created_at:"2026-02-22 22:16"}]},
+  {id:48210, subject:"ไม่สามารถอ่านตอนที่ซื้อแล้ว", description:"ซื้อตอนไปแล้วแต่เปิดอ่านไม่ได้ ขึ้นว่าต้องซื้อใหม่", status:"open", priority:"normal", channel:"챗봇", level:"L2", category:"Content", tags:["l2","content","purchased_chapter","th"], created_at:"2026-02-23 05:40", updated_at:"2026-02-23 07:00",
+   comments:[{id:25,body:"ซื้อตอนไปแล้วแต่เปิดอ่านไม่ได้ ขึ้นว่าต้องซื้อใหม่ครับ ช่วยแก้ไขให้ด้วยครับ",author_id:1010,public:true,created_at:"2026-02-23 05:40"},{id:26,body:"ขออภัยในความไม่สะดวกครับ เราได้ส่งเรื่องไปยังทีมเทคนิคเพื่อตรวจสอบแล้วครับ จะแจ้งผลให้ทราบโดยเร็วที่สุดครับ",author_id:9001,public:true,created_at:"2026-02-23 05:41"},{id:27,body:"[BOT] Escalated to L2. Purchased chapter not accessible. Possible sync issue. Market: TH.",author_id:9001,public:false,created_at:"2026-02-23 05:41"}]},
+  {id:48211, subject:"Cancel subscription and refund request", description:"I cancelled 2 days ago but was charged again today.", status:"pending", priority:"high", channel:"챗봇", level:"L2", category:"Subscription", tags:["l2","subscription","cancel","charged_after_cancel","en"], created_at:"2026-02-23 04:10", updated_at:"2026-02-23 06:30",
+   comments:[{id:28,body:"I cancelled my subscription 2 days ago but I was charged again today. $9.99 on my Visa. I want a refund for this charge.",author_id:1011,public:true,created_at:"2026-02-23 04:10"},{id:29,body:"We're sorry about this. It appears the cancellation may not have processed before the billing cycle. We've escalated this to our billing team for a refund review.",author_id:9001,public:true,created_at:"2026-02-23 04:11"},{id:30,body:"[BOT] Escalated to L2. Charged after cancel claim. Needs billing verification.",author_id:9001,public:false,created_at:"2026-02-23 04:11"}]},
+  {id:48212, subject:"How do I read premium chapters?", description:"I bought coins but don't know how to use them to unlock chapters.", status:"solved", priority:"low", channel:"챗봇", level:"L3", category:"Content", tags:["l3","content","faq","coin_usage","en"], created_at:"2026-02-22 20:30", updated_at:"2026-02-22 20:31",
+   comments:[{id:31,body:"I just bought 100 coins but I don't know how to use them to unlock premium chapters. Can you help?",author_id:1012,public:true,created_at:"2026-02-22 20:30"},{id:32,body:"Great question! To unlock a premium chapter: 1) Open the series, 2) Tap the locked chapter, 3) Click 'Unlock with Coins'. The coin cost is shown on each chapter. Happy reading!",author_id:9001,public:true,created_at:"2026-02-22 20:31"},{id:33,body:"[BOT] Auto-resolved. FAQ: How to use coins. Market: EN.",author_id:9001,public:false,created_at:"2026-02-22 20:31"}]}
+];
+
+const MOCK_STATS = { new:3, open:3, pending:2, solved:4, today:8, l1_open:3 };
+
+// ────────────────────────────────────────────────────────
 // STATE
 // ────────────────────────────────────────────────────────
 let currentPage = 1;
@@ -391,6 +425,13 @@ function loadAll() {
 // STATS
 // ────────────────────────────────────────────────────────
 async function loadStats() {
+  if (DEMO_MODE) {
+    const d = MOCK_STATS;
+    setText('kv-new', d.new); setText('kv-open', d.open);
+    setText('kv-pending', d.pending); setText('kv-solved', d.solved);
+    setText('kv-today', d.today); setText('kv-l1', d.l1_open);
+    return;
+  }
   try {
     const res = await fetch('/api/dashboard/stats');
     if (!res.ok) return;
@@ -412,6 +453,20 @@ async function loadTickets(page = 1) {
   const body = document.getElementById('ticketBody');
   body.innerHTML = '<div class="loading-state"><div class="spinner"></div>로딩 중...</div>';
   document.getElementById('paginationBar').style.display = 'none';
+
+  if (DEMO_MODE) {
+    let filtered = [...MOCK_TICKETS];
+    const s = val('statusFilter'); if (s) filtered = filtered.filter(t => t.status === s);
+    const c = val('channelFilter'); if (c) { const m={'api':'챗봇','web':'웹','chat':'채팅'}; filtered = filtered.filter(t => t.channel === (m[c]||c)); }
+    const l = val('levelFilter'); if (l) filtered = filtered.filter(t => t.level === l);
+    const cat = val('categoryFilter'); if (cat) filtered = filtered.filter(t => t.category === cat);
+    const q = val('searchInput').trim().toLowerCase(); if (q) filtered = filtered.filter(t => t.subject.toLowerCase().includes(q) || t.description.toLowerCase().includes(q) || String(t.id).includes(q));
+    totalTickets = filtered.length;
+    document.getElementById('resultCount').textContent = `총 ${totalTickets}건`;
+    renderTickets(filtered);
+    renderPagination(filtered.length, 1);
+    return;
+  }
 
   const params = buildParams(page);
   try {
@@ -507,9 +562,16 @@ async function openTicket(id) {
   content.innerHTML = '<div class="sidebar-loading"><div class="spinner"></div>로딩 중...</div>';
 
   try {
-    const res = await fetch(`/api/dashboard/tickets/${id}`);
-    const t = await res.json();
-    if (t.error) { content.innerHTML = `<div class="error-banner">⚠️ ${t.error}</div>`; return; }
+    let t;
+    if (DEMO_MODE) {
+      t = MOCK_TICKETS.find(tk => tk.id === id);
+      if (!t) { content.innerHTML = '<div class="error-banner">⚠️ 티켓을 찾을 수 없습니다</div>'; return; }
+      t = {...t, zendesk_url: `https://toomics.zendesk.com/agent/tickets/${id}`};
+    } else {
+      const res = await fetch(`/api/dashboard/tickets/${id}`);
+      t = await res.json();
+      if (t.error) { content.innerHTML = `<div class="error-banner">⚠️ ${t.error}</div>`; return; }
+    }
 
     const lvlBadge = t.level !== '-'
       ? `<span class="badge badge-${t.level.toLowerCase()}">${t.level}</span>` : '';
