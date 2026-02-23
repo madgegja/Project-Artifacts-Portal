@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toomics CS — Ticket Dashboard</title>
+<style>
+:root {
+  --bg: #0f172a; --bg2: #1e293b; --bg3: #243044;
+  --text: #e2e8f0; --text2: #94a3b8; --muted: #64748b;
+  --blue: #0ea5e9; --cyan: #22d3ee; --green: #10b981;
+  --amber: #f59e0b; --red: #ef4444; --purple: #a78bfa;
+  --border: #334155; --border2: rgba(255,255,255,0.06);
+  --radius: 12px; --sidebar-w: 480px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
+  background: var(--bg); color: var(--text);
+  font-size: 13px; line-height: 1.5;
+  height: 100vh; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+
+/* ── Top Bar ── */
+.topbar {
+  background: linear-gradient(135deg,#0f172a 0%,#1e3a5f 60%,#0ea5e9 100%);
+  padding: 14px 24px; display: flex; align-items: center;
+  gap: 16px; flex-shrink: 0; position: relative; overflow: hidden;
+}
+.topbar::before {
+  content:''; position:absolute; top:-60px; right:-60px;
+  width:220px; height:220px;
+  background: radial-gradient(circle,rgba(14,165,233,0.18),transparent 70%);
+  border-radius:50%;
+}
+.topbar-logo { font-size:18px; font-weight:800; letter-spacing:-0.3px; color:#fff; position:relative; }
+.topbar-logo span { color: var(--cyan); }
+.topbar-sub { font-size:11px; color:rgba(255,255,255,0.6); position:relative; margin-top:1px; }
+.topbar-right { margin-left:auto; display:flex; align-items:center; gap:10px; position:relative; }
+.auto-refresh-badge {
+  font-size:11px; padding:3px 10px; border-radius:20px;
+  background:rgba(16,185,129,0.15); color:#34d399;
+  border:1px solid rgba(16,185,129,0.3); cursor:pointer;
+  user-select:none; transition: all .2s;
+}
+.auto-refresh-badge.paused { background:rgba(100,116,139,0.15); color:var(--muted); border-color:rgba(100,116,139,0.3); }
+.refresh-btn {
+  background: rgba(14,165,233,0.15); border:1px solid rgba(14,165,233,0.3);
+  color: var(--blue); padding:5px 12px; border-radius:8px; cursor:pointer;
+  font-size:12px; font-weight:700; transition: all .2s;
+}
+.refresh-btn:hover { background: rgba(14,165,233,0.25); }
+.last-updated { font-size:11px; color:rgba(255,255,255,0.5); }
+
+/* ── KPI Bar ── */
+.kpi-bar {
+  background: var(--bg2); border-bottom:1px solid var(--border);
+  padding: 12px 24px; display:flex; gap:16px; flex-shrink:0; overflow-x:auto;
+}
+.kpi-card {
+  background: var(--bg3); border:1px solid var(--border);
+  border-radius: 10px; padding:12px 18px; min-width:130px;
+  cursor:pointer; transition: all .2s; position:relative; overflow:hidden;
+  border-top: 3px solid transparent;
+}
+.kpi-card:hover { border-color: var(--blue); transform: translateY(-1px); }
+.kpi-card.active { border-color: var(--blue) !important; background: rgba(14,165,233,0.08); }
+.kpi-card .k-val { font-size:26px; font-weight:800; line-height:1.1; }
+.kpi-card .k-lbl { font-size:11px; color:var(--text2); margin-top:3px; }
+.kpi-card.k-new { border-top-color: var(--cyan); } .kpi-card.k-new .k-val { color:var(--cyan); }
+.kpi-card.k-open { border-top-color: var(--blue); } .kpi-card.k-open .k-val { color:var(--blue); }
+.kpi-card.k-pending { border-top-color: var(--amber); } .kpi-card.k-pending .k-val { color:var(--amber); }
+.kpi-card.k-solved { border-top-color: var(--green); } .kpi-card.k-solved .k-val { color:var(--green); }
+.kpi-card.k-today { border-top-color: var(--purple); } .kpi-card.k-today .k-val { color:var(--purple); }
+.kpi-card.k-l1 { border-top-color: var(--red); } .kpi-card.k-l1 .k-val { color:var(--red); }
+
+/* ── Filter Bar ── */
+.filter-bar {
+  background: var(--bg2); border-bottom:1px solid var(--border);
+  padding: 10px 24px; display:flex; gap:10px; align-items:center; flex-shrink:0; flex-wrap:wrap;
+}
+.filter-bar input[type=text] {
+  background: var(--bg3); border:1px solid var(--border); color:var(--text);
+  padding:6px 12px; border-radius:8px; font-size:12px; width:220px; outline:none;
+  transition: border-color .2s;
+}
+.filter-bar input[type=text]:focus { border-color:var(--blue); }
+.filter-bar input[type=text]::placeholder { color:var(--muted); }
+select.flt {
+  background: var(--bg3); border:1px solid var(--border); color:var(--text);
+  padding:5px 10px; border-radius:8px; font-size:12px; outline:none; cursor:pointer;
+}
+select.flt:focus { border-color: var(--blue); }
+.filter-sep { width:1px; height:20px; background:var(--border); }
+.clear-btn {
+  background:transparent; border:1px solid var(--border); color:var(--muted);
+  padding:5px 10px; border-radius:8px; cursor:pointer; font-size:11px; transition:all .2s;
+}
+.clear-btn:hover { border-color:var(--red); color:var(--red); }
+.result-count { font-size:11px; color:var(--muted); margin-left:auto; }
+
+/* ── Main Layout ── */
+.main { display:flex; flex:1; overflow:hidden; }
+
+/* ── Ticket List ── */
+.ticket-list-pane {
+  flex:1; overflow-y:auto; min-width:0;
+}
+.ticket-list-pane::-webkit-scrollbar { width:6px; }
+.ticket-list-pane::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+
+.ticket-row {
+  display:grid;
+  grid-template-columns: 70px 1fr 90px 80px 80px 90px 130px 42px;
+  gap:0; align-items:center;
+  padding:10px 16px; border-bottom:1px solid var(--border2);
+  cursor:pointer; transition:background .15s; min-height:52px;
+}
+.ticket-row:hover { background: rgba(14,165,233,0.04); }
+.ticket-row.active { background: rgba(14,165,233,0.08); border-left:3px solid var(--blue); }
+.ticket-row.tr-l1 { border-left:3px solid var(--red); }
+.ticket-row.tr-l2 { border-left:3px solid var(--amber); }
+.ticket-row.tr-l3 { border-left:3px solid var(--green); }
+
+.thead {
+  background: var(--bg2); position:sticky; top:0; z-index:10;
+  border-bottom:2px solid var(--border); font-size:11px;
+  color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.5px;
+}
+.thead .ticket-row { min-height:36px; }
+.thead .ticket-row:hover { background:transparent; cursor:default; }
+
+.t-id { font-size:11px; font-weight:700; color:var(--text2); font-family:monospace; }
+.t-subject { overflow:hidden; }
+.t-subject .subj { font-weight:600; color:var(--text); font-size:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.t-subject .desc { font-size:11px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:1px; }
+.t-channel { font-size:11px; color:var(--text2); }
+.t-level .badge, .t-cat .badge, .t-status .badge {
+  display:inline-block; padding:2px 8px; border-radius:8px;
+  font-size:10px; font-weight:700;
+}
+.badge-l1 { background:rgba(239,68,68,.15); color:#f87171; }
+.badge-l2 { background:rgba(245,158,11,.15); color:#fbbf24; }
+.badge-l3 { background:rgba(16,185,129,.15); color:#34d399; }
+.badge-dash { color:var(--muted); }
+.badge-new { background:rgba(34,211,238,.15); color:#22d3ee; }
+.badge-open { background:rgba(14,165,233,.15); color:#38bdf8; }
+.badge-pending { background:rgba(245,158,11,.15); color:#fbbf24; }
+.badge-solved { background:rgba(16,185,129,.15); color:#34d399; }
+.t-date { font-size:11px; color:var(--muted); }
+.t-open-btn { background:transparent; border:none; color:var(--muted); cursor:pointer; font-size:14px; padding:4px; border-radius:6px; transition:all .2s; }
+.t-open-btn:hover { background:rgba(14,165,233,.15); color:var(--blue); }
+
+/* ── Empty/Loading ── */
+.empty-state, .loading-state {
+  text-align:center; padding:60px 40px; color:var(--muted);
+}
+.loading-state .spinner {
+  width:32px; height:32px; border:3px solid var(--border);
+  border-top-color:var(--blue); border-radius:50%;
+  animation: spin .7s linear infinite; margin:0 auto 16px;
+}
+@keyframes spin { to { transform:rotate(360deg); } }
+
+/* ── Pagination ── */
+.pagination { display:flex; align-items:center; justify-content:center; gap:8px; padding:12px; border-top:1px solid var(--border); }
+.page-btn {
+  background:var(--bg3); border:1px solid var(--border); color:var(--text2);
+  padding:5px 12px; border-radius:8px; cursor:pointer; font-size:12px; transition:all .2s;
+}
+.page-btn:hover { border-color:var(--blue); color:var(--blue); }
+.page-btn:disabled { opacity:.4; cursor:default; }
+.page-btn.current { background:rgba(14,165,233,.15); border-color:var(--blue); color:var(--blue); }
+.page-info { font-size:12px; color:var(--muted); }
+
+/* ── Sidebar Detail ── */
+.detail-sidebar {
+  width: var(--sidebar-w); background:var(--bg2); border-left:1px solid var(--border);
+  display:flex; flex-direction:column; overflow:hidden;
+  transform: translateX(100%); transition: transform .3s cubic-bezier(.4,0,.2,1);
+  position:relative; flex-shrink:0;
+}
+.detail-sidebar.open { transform: translateX(0); }
+
+.detail-header {
+  padding:16px 20px; border-bottom:1px solid var(--border);
+  display:flex; align-items:flex-start; gap:12px; flex-shrink:0;
+}
+.detail-header .dh-title { flex:1; min-width:0; }
+.detail-header .dh-id { font-size:11px; font-weight:700; color:var(--blue); font-family:monospace; margin-bottom:4px; }
+.detail-header .dh-subject { font-size:14px; font-weight:700; color:var(--text); line-height:1.4; }
+.detail-close { background:transparent; border:none; color:var(--muted); cursor:pointer; font-size:18px; padding:2px; flex-shrink:0; }
+.detail-close:hover { color:var(--text); }
+
+.detail-meta {
+  padding:12px 20px; border-bottom:1px solid var(--border);
+  display:flex; flex-wrap:wrap; gap:8px; flex-shrink:0;
+}
+.meta-chip {
+  font-size:11px; padding:3px 10px; border-radius:8px;
+  background:var(--bg3); border:1px solid var(--border); color:var(--text2);
+  display:flex; align-items:center; gap:4px;
+}
+.meta-chip .label { color:var(--muted); font-size:10px; }
+
+.detail-body { flex:1; overflow-y:auto; padding:16px 20px; }
+.detail-body::-webkit-scrollbar { width:5px; }
+.detail-body::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+
+.detail-actions {
+  padding:12px 20px; border-top:1px solid var(--border);
+  display:flex; gap:8px; flex-shrink:0;
+}
+.action-btn {
+  flex:1; padding:8px; border-radius:8px; font-size:12px; font-weight:700;
+  cursor:pointer; border:none; transition:all .2s; text-align:center; text-decoration:none;
+  display:flex; align-items:center; justify-content:center; gap:6px;
+}
+.action-btn.primary { background: var(--blue); color:#fff; }
+.action-btn.primary:hover { background: #0284c7; }
+.action-btn.secondary { background:var(--bg3); color:var(--text2); border:1px solid var(--border); }
+.action-btn.secondary:hover { border-color:var(--blue); color:var(--blue); }
+
+/* ── Comment ── */
+.comment-thread { display:flex; flex-direction:column; gap:12px; }
+.comment-item { border-radius:10px; overflow:hidden; }
+.comment-item.public { background: rgba(14,165,233,.06); border:1px solid rgba(14,165,233,.15); }
+.comment-item.internal { background: rgba(245,158,11,.06); border:1px solid rgba(245,158,11,.15); }
+.comment-meta {
+  padding:7px 12px; display:flex; align-items:center; gap:8px; font-size:11px;
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.comment-meta .c-author { font-weight:700; color:var(--text2); }
+.comment-meta .c-time { color:var(--muted); margin-left:auto; }
+.comment-meta .c-badge { font-size:10px; padding:1px 6px; border-radius:6px; }
+.c-pub { background:rgba(14,165,233,.15); color:#38bdf8; }
+.c-int { background:rgba(245,158,11,.15); color:#fbbf24; }
+.comment-body { padding:10px 12px; font-size:12px; color:var(--text2); line-height:1.7; white-space:pre-wrap; word-break:break-word; }
+
+/* ── Loading overlay for sidebar ── */
+.sidebar-loading { text-align:center; padding:40px; color:var(--muted); }
+.sidebar-loading .spinner { width:28px; height:28px; border:3px solid var(--border); border-top-color:var(--blue); border-radius:50%; animation:spin .7s linear infinite; margin:0 auto 12px; }
+
+/* ── Error banner ── */
+.error-banner { background:rgba(239,68,68,.12); border:1px solid rgba(239,68,68,.25); color:#f87171; border-radius:8px; padding:10px 14px; margin:8px 16px; font-size:12px; }
+
+/* ── Scrollbar global ── */
+::-webkit-scrollbar { width:6px; height:6px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+</style>
+</head>
+<body>
+
+<!-- ── Top Bar ── -->
+<div class="topbar">
+  <div>
+    <div class="topbar-logo">Toomics <span>CS</span> Dashboard</div>
+    <div class="topbar-sub">챗봇 처리 티켓 · 이메일 제외 · 실시간 조회</div>
+  </div>
+  <div class="topbar-right">
+    <span class="last-updated" id="lastUpdated">–</span>
+    <span class="auto-refresh-badge" id="arBadge" onclick="toggleAutoRefresh()">🔄 자동갱신 ON</span>
+    <button class="refresh-btn" onclick="loadAll()">↻ 새로고침</button>
+  </div>
+</div>
+
+<!-- ── KPI Bar ── -->
+<div class="kpi-bar" id="kpiBar">
+  <div class="kpi-card k-new active" onclick="setStatusFilter('new')" data-s="new">
+    <div class="k-val" id="kv-new">–</div><div class="k-lbl">🆕 New</div>
+  </div>
+  <div class="kpi-card k-open" onclick="setStatusFilter('open')" data-s="open">
+    <div class="k-val" id="kv-open">–</div><div class="k-lbl">🔵 Open</div>
+  </div>
+  <div class="kpi-card k-pending" onclick="setStatusFilter('pending')" data-s="pending">
+    <div class="k-val" id="kv-pending">–</div><div class="k-lbl">🟡 Pending</div>
+  </div>
+  <div class="kpi-card k-solved" onclick="setStatusFilter('solved')" data-s="solved">
+    <div class="k-val" id="kv-solved">–</div><div class="k-lbl">✅ Solved</div>
+  </div>
+  <div class="kpi-card k-today" onclick="setStatusFilter('all')" data-s="today">
+    <div class="k-val" id="kv-today">–</div><div class="k-lbl">📅 오늘 신규</div>
+  </div>
+  <div class="kpi-card k-l1" onclick="setLevelFilter('L1')" data-s="l1">
+    <div class="k-val" id="kv-l1">–</div><div class="k-lbl">🔴 L1 긴급 (Open)</div>
+  </div>
+</div>
+
+<!-- ── Filter Bar ── -->
+<div class="filter-bar">
+  <input type="text" id="searchInput" placeholder="🔍  티켓 #, 제목, 이메일 검색..." oninput="debounceSearch()" />
+  <div class="filter-sep"></div>
+  <select class="flt" id="statusFilter" onchange="applyFilters()">
+    <option value="">모든 상태</option>
+    <option value="new">New</option>
+    <option value="open">Open</option>
+    <option value="pending">Pending</option>
+    <option value="solved">Solved</option>
+  </select>
+  <select class="flt" id="channelFilter" onchange="applyFilters()">
+    <option value="">모든 채널</option>
+    <option value="api">챗봇</option>
+    <option value="web">웹</option>
+    <option value="chat">채팅</option>
+  </select>
+  <select class="flt" id="levelFilter" onchange="applyFilters()">
+    <option value="">모든 레벨</option>
+    <option value="L1">L1 긴급</option>
+    <option value="L2">L2 검토</option>
+    <option value="L3">L3 자동</option>
+  </select>
+  <select class="flt" id="categoryFilter" onchange="applyFilters()">
+    <option value="">모든 카테고리</option>
+    <option value="Subscription">Subscription</option>
+    <option value="Refund">Refund</option>
+    <option value="Account">Account</option>
+    <option value="Payment">Payment</option>
+    <option value="Content">Content</option>
+    <option value="Technical">Technical</option>
+    <option value="Fraud">Fraud</option>
+  </select>
+  <button class="clear-btn" onclick="clearFilters()">✕ 초기화</button>
+  <span class="result-count" id="resultCount"></span>
+</div>
+
+<!-- ── Main ── -->
+<div class="main">
+  <!-- Ticket List -->
+  <div class="ticket-list-pane" id="ticketListPane">
+    <!-- thead -->
+    <div class="thead">
+      <div class="ticket-row">
+        <span class="t-id">ID</span>
+        <span class="t-subject">제목</span>
+        <span class="t-channel">채널</span>
+        <span class="t-level">레벨</span>
+        <span class="t-cat">카테고리</span>
+        <span class="t-status">상태</span>
+        <span class="t-date">접수일</span>
+        <span></span>
+      </div>
+    </div>
+    <!-- body -->
+    <div id="ticketBody">
+      <div class="loading-state"><div class="spinner"></div>티켓 로딩 중...</div>
+    </div>
+    <div id="paginationBar" class="pagination" style="display:none;"></div>
+  </div>
+
+  <!-- Detail Sidebar -->
+  <div class="detail-sidebar" id="detailSidebar">
+    <div id="detailContent">
+      <div class="sidebar-loading"><div class="spinner"></div>로딩 중...</div>
+    </div>
+    <div class="detail-actions" id="detailActions" style="display:none;">
+      <a class="action-btn primary" id="zendeskLink" href="#" target="_blank">🔗 Zendesk에서 열기</a>
+      <button class="action-btn secondary" onclick="closeSidebar()">✕ 닫기</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ────────────────────────────────────────────────────────
+// STATE
+// ────────────────────────────────────────────────────────
+let currentPage = 1;
+let totalTickets = 0;
+let perPage = 25;
+let autoRefresh = true;
+let arTimer = null;
+let searchTimer = null;
+let activeTicketId = null;
+
+// ────────────────────────────────────────────────────────
+// INIT
+// ────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  loadAll();
+  scheduleAutoRefresh();
+});
+
+function loadAll() {
+  loadStats();
+  loadTickets();
+  setLastUpdated();
+}
+
+// ────────────────────────────────────────────────────────
+// STATS
+// ────────────────────────────────────────────────────────
+async function loadStats() {
+  try {
+    const res = await fetch('/api/dashboard/stats');
+    if (!res.ok) return;
+    const d = await res.json();
+    setText('kv-new', d.new ?? '–');
+    setText('kv-open', d.open ?? '–');
+    setText('kv-pending', d.pending ?? '–');
+    setText('kv-solved', d.solved ?? '–');
+    setText('kv-today', d.today ?? '–');
+    setText('kv-l1', d.l1_open ?? '–');
+  } catch(e) { console.warn('Stats load failed', e); }
+}
+
+// ────────────────────────────────────────────────────────
+// TICKETS
+// ────────────────────────────────────────────────────────
+async function loadTickets(page = 1) {
+  currentPage = page;
+  const body = document.getElementById('ticketBody');
+  body.innerHTML = '<div class="loading-state"><div class="spinner"></div>로딩 중...</div>';
+  document.getElementById('paginationBar').style.display = 'none';
+
+  const params = buildParams(page);
+  try {
+    const res = await fetch('/api/dashboard/tickets?' + params);
+    const d = await res.json();
+    if (d.error) {
+      body.innerHTML = `<div class="error-banner">⚠️ ${d.error}</div>`;
+      return;
+    }
+    totalTickets = d.total || 0;
+    document.getElementById('resultCount').textContent = `총 ${totalTickets.toLocaleString()}건`;
+    renderTickets(d.tickets || []);
+    renderPagination(d.total, page);
+  } catch(e) {
+    body.innerHTML = `<div class="error-banner">⚠️ 연결 오류: ${e.message}</div>`;
+  }
+}
+
+function buildParams(page) {
+  const p = new URLSearchParams();
+  const s = val('statusFilter'); if (s) p.set('status', s);
+  const c = val('channelFilter'); if (c) p.set('channel', c);
+  const l = val('levelFilter'); if (l) p.set('level', l);
+  const cat = val('categoryFilter'); if (cat) p.set('category', cat);
+  const q = val('searchInput').trim(); if (q) p.set('q', q);
+  p.set('page', page); p.set('per_page', perPage);
+  return p.toString();
+}
+
+function renderTickets(tickets) {
+  const body = document.getElementById('ticketBody');
+  if (!tickets.length) {
+    body.innerHTML = '<div class="empty-state">🔍 해당하는 티켓이 없습니다</div>';
+    return;
+  }
+  body.innerHTML = tickets.map(t => {
+    const lvl = t.level !== '-' ? `<span class="badge badge-${t.level.toLowerCase()}">${t.level}</span>` : '<span class="badge-dash">–</span>';
+    const cat = `<span style="font-size:11px;color:var(--text2);">${t.category}</span>`;
+    const sta = `<span class="badge badge-${t.status}">${statusLabel(t.status)}</span>`;
+    const levelClass = t.level !== '-' ? `tr-${t.level.toLowerCase()}` : '';
+    const activeClass = activeTicketId === t.id ? 'active' : '';
+    return `
+      <div class="ticket-row ${levelClass} ${activeClass}" onclick="openTicket(${t.id})" data-id="${t.id}">
+        <span class="t-id">#${t.id}</span>
+        <span class="t-subject">
+          <div class="subj">${esc(t.subject)}</div>
+          <div class="desc">${esc(t.description)}</div>
+        </span>
+        <span class="t-channel" style="font-size:11px;">${esc(t.channel)}</span>
+        <span class="t-level">${lvl}</span>
+        <span class="t-cat">${cat}</span>
+        <span class="t-status">${sta}</span>
+        <span class="t-date">${t.created_at}</span>
+        <span><button class="t-open-btn" title="상세 보기" onclick="event.stopPropagation();openTicket(${t.id})">›</button></span>
+      </div>`;
+  }).join('');
+}
+
+function renderPagination(total, page) {
+  const bar = document.getElementById('paginationBar');
+  const totalPages = Math.ceil(total / perPage);
+  if (totalPages <= 1) { bar.style.display = 'none'; return; }
+  bar.style.display = 'flex';
+
+  let html = `<button class="page-btn" onclick="loadTickets(${page - 1})" ${page <= 1 ? 'disabled' : ''}>‹ 이전</button>`;
+  // Show window of pages
+  const start = Math.max(1, page - 2), end = Math.min(totalPages, page + 2);
+  if (start > 1) html += `<button class="page-btn" onclick="loadTickets(1)">1</button><span class="page-info">…</span>`;
+  for (let i = start; i <= end; i++) {
+    html += `<button class="page-btn ${i === page ? 'current' : ''}" onclick="loadTickets(${i})">${i}</button>`;
+  }
+  if (end < totalPages) html += `<span class="page-info">…</span><button class="page-btn" onclick="loadTickets(${totalPages})">${totalPages}</button>`;
+  html += `<button class="page-btn" onclick="loadTickets(${page + 1})" ${page >= totalPages ? 'disabled' : ''}>다음 ›</button>`;
+  html += `<span class="page-info">${total.toLocaleString()}건 / ${totalPages}페이지</span>`;
+  bar.innerHTML = html;
+}
+
+// ────────────────────────────────────────────────────────
+// DETAIL SIDEBAR
+// ────────────────────────────────────────────────────────
+async function openTicket(id) {
+  activeTicketId = id;
+  // highlight row
+  document.querySelectorAll('.ticket-row').forEach(r => r.classList.remove('active'));
+  const row = document.querySelector(`.ticket-row[data-id="${id}"]`);
+  if (row) row.classList.add('active');
+
+  const sidebar = document.getElementById('detailSidebar');
+  const content = document.getElementById('detailContent');
+  const actions = document.getElementById('detailActions');
+  sidebar.classList.add('open');
+  actions.style.display = 'none';
+  content.innerHTML = '<div class="sidebar-loading"><div class="spinner"></div>로딩 중...</div>';
+
+  try {
+    const res = await fetch(`/api/dashboard/tickets/${id}`);
+    const t = await res.json();
+    if (t.error) { content.innerHTML = `<div class="error-banner">⚠️ ${t.error}</div>`; return; }
+
+    const lvlBadge = t.level !== '-'
+      ? `<span class="badge badge-${t.level.toLowerCase()}">${t.level}</span>` : '';
+    const staBadge = `<span class="badge badge-${t.status}">${statusLabel(t.status)}</span>`;
+
+    content.innerHTML = `
+      <div class="detail-header">
+        <div class="dh-title">
+          <div class="dh-id">#${t.id} · ${t.channel}</div>
+          <div class="dh-subject">${esc(t.subject)}</div>
+        </div>
+        <button class="detail-close" onclick="closeSidebar()">✕</button>
+      </div>
+      <div class="detail-meta">
+        ${staBadge}
+        ${lvlBadge}
+        <div class="meta-chip"><span class="label">카테고리</span>${t.category}</div>
+        <div class="meta-chip"><span class="label">접수</span>${t.created_at}</div>
+        <div class="meta-chip"><span class="label">업데이트</span>${t.updated_at}</div>
+        ${t.tags.filter(tag => !['l1','l2','l3'].includes(tag.toLowerCase())).slice(0,4).map(tag => `<div class="meta-chip">${esc(tag)}</div>`).join('')}
+      </div>
+      <div class="detail-body">
+        <div class="comment-thread">
+          ${(t.comments || []).map((c, i) => `
+            <div class="comment-item ${c.public ? 'public' : 'internal'}">
+              <div class="comment-meta">
+                <span class="c-author">${c.public ? '👤 고객' : '🔒 내부메모'}</span>
+                <span class="c-badge ${c.public ? 'c-pub' : 'c-int'}">${c.public ? 'Public' : 'Internal'}</span>
+                <span class="c-time">${c.created_at}</span>
+              </div>
+              <div class="comment-body">${esc(c.body)}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>`;
+
+    document.getElementById('zendeskLink').href = t.zendesk_url;
+    actions.style.display = 'flex';
+  } catch(e) {
+    content.innerHTML = `<div class="error-banner">⚠️ 로드 실패: ${e.message}</div>`;
+  }
+}
+
+function closeSidebar() {
+  document.getElementById('detailSidebar').classList.remove('open');
+  document.querySelectorAll('.ticket-row').forEach(r => r.classList.remove('active'));
+  activeTicketId = null;
+}
+
+// ────────────────────────────────────────────────────────
+// FILTERS
+// ────────────────────────────────────────────────────────
+function applyFilters() { loadTickets(1); }
+
+function setStatusFilter(s) {
+  document.getElementById('statusFilter').value = s === 'all' ? '' : s;
+  document.querySelectorAll('.kpi-card').forEach(c => c.classList.remove('active'));
+  const active = document.querySelector(`.kpi-card[data-s="${s}"]`);
+  if (active) active.classList.add('active');
+  loadTickets(1);
+}
+
+function setLevelFilter(l) {
+  document.getElementById('levelFilter').value = l;
+  document.querySelectorAll('.kpi-card').forEach(c => c.classList.remove('active'));
+  const active = document.querySelector(`.kpi-card[data-s="l1"]`);
+  if (active) active.classList.add('active');
+  loadTickets(1);
+}
+
+function clearFilters() {
+  ['statusFilter','channelFilter','levelFilter','categoryFilter'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('searchInput').value = '';
+  document.querySelectorAll('.kpi-card').forEach(c => c.classList.remove('active'));
+  loadTickets(1);
+}
+
+function debounceSearch() {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => loadTickets(1), 400);
+}
+
+// ────────────────────────────────────────────────────────
+// AUTO REFRESH
+// ────────────────────────────────────────────────────────
+function scheduleAutoRefresh() {
+  clearInterval(arTimer);
+  if (autoRefresh) arTimer = setInterval(loadAll, 60000); // 1분마다
+}
+function toggleAutoRefresh() {
+  autoRefresh = !autoRefresh;
+  const badge = document.getElementById('arBadge');
+  badge.textContent = autoRefresh ? '🔄 자동갱신 ON' : '⏸ 자동갱신 OFF';
+  badge.classList.toggle('paused', !autoRefresh);
+  scheduleAutoRefresh();
+}
+function setLastUpdated() {
+  const now = new Date();
+  document.getElementById('lastUpdated').textContent =
+    '갱신: ' + now.toLocaleTimeString('ko-KR', {hour:'2-digit', minute:'2-digit', second:'2-digit'});
+}
+
+// ────────────────────────────────────────────────────────
+// HELPERS
+// ────────────────────────────────────────────────────────
+function statusLabel(s) {
+  return {new:'New', open:'Open', pending:'Pending', solved:'Solved', closed:'Closed'}[s] || s;
+}
+function esc(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function val(id) { return document.getElementById(id)?.value || ''; }
+function setText(id, v) { const el = document.getElementById(id); if (el) el.textContent = v; }
+</script>
+</body>
+</html>
