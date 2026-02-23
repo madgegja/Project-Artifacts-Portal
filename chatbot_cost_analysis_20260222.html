@@ -57,7 +57,7 @@
   }
   .hero-badge {
     display: inline-block;
-    background: #CBD5E1;
+    background: rgba(255,255,255,0.15);
     border: 1px solid #94A3B8;
     border-radius: 20px;
     padding: 5px 18px;
@@ -362,7 +362,7 @@
   }
   .token-calc {
     font-size: 12px;
-    color: #94A3B8;
+    color: #64748B;
     margin-top: 12px;
     padding-top: 10px;
     border-top: 1px solid rgba(226,232,240,0.3);
@@ -504,7 +504,7 @@
 
   /* ── Conclusion Card ── */
   .conclusion {
-    background: linear-gradient(135deg, #DBEAFE 0%, #164e63 50%, #1e3a5f 100%);
+    background: linear-gradient(135deg, #EFF6FF, #DBEAFE, #E0E7FF);
     border: 1px solid rgba(14,165,233,0.2);
     border-radius: 20px;
     padding: 40px 48px;
@@ -550,7 +550,7 @@
   }
   .conclusion .note {
     font-size: 12px;
-    color: #94A3B8;
+    color: #64748B;
     text-align: center;
     margin-top: 16px;
     position: relative;
@@ -566,7 +566,7 @@
     border-top: 1px solid rgba(226,232,240,0.4);
     margin: 0 28px;
   }
-  .footer strong { color: #94A3B8; }
+  .footer strong { color: #64748B; }
 
   /* ── Responsive ── */
   @media (max-width: 1024px) {
@@ -673,7 +673,7 @@
         <span><span class="dot" style="background:#f59e0b;"></span> <strong>이메일 699건/월</strong> &rarr; 상담원 전담 처리</span>
         <span><span class="dot" style="background:#0ea5e9;"></span> <strong>Web+API 963건/월</strong> &rarr; <strong style="color:#0369a1;">AI 챗봇 대상</strong></span>
       </div>
-      <div style="font-size: 12px; color:#94A3B8; margin-top:10px;">
+      <div style="font-size: 12px; color: #64748B; margin-top:10px;">
         &#128204; API 토큰 비용은 챗봇이 실제 처리하는 비이메일 <strong style="color:#64748B;">963건/월</strong> 기준으로만 산출합니다.
       </div>
     </div>
@@ -691,15 +691,15 @@
               <tr style="background:rgba(139,92,246,0.06);">
                 <td><strong>Claude Pro Max 구독</strong></td>
                 <td class="num"><strong style="color:#6d28d9;">&#8361;140,000</strong></td>
-                <td style="color:#94A3B8;font-size:12px;">$100/월 정액제</td>
+                <td style="color: #64748B;font-size:12px;">$100/월 정액제</td>
               </tr>
-              <tr><td>Claude API (Sonnet)</td><td class="num">$3 / $15</td><td style="color:#94A3B8;font-size:12px;">input / output per 1M tokens</td></tr>
-              <tr><td>건당 평균 토큰</td><td class="num">~9,600 tok</td><td style="color:#94A3B8;font-size:12px;">8,500 input + 1,100 output</td></tr>
-              <tr><td>건당 API 비용</td><td class="num" style="color:#6d28d9;">~&#8361;59</td><td style="color:#94A3B8;font-size:12px;">~$0.042/건 (평균 기준)</td></tr>
-              <tr><td>월간 API (963건 분류)</td><td class="num">~&#8361;57,000</td><td style="color:#94A3B8;font-size:12px;">비이메일 963건 &times; &#8361;59</td></tr>
-              <tr><td>월간 API (L2 Draft)</td><td class="num">~&#8361;14,000</td><td style="color:#94A3B8;font-size:12px;">472건 &times; &#8361;29 추가</td></tr>
-              <tr><td>서버 비용 (VPS)</td><td class="num">&#8361;50,000</td><td style="color:#94A3B8;font-size:12px;">월 고정</td></tr>
-              <tr><td>ChromaDB</td><td class="num">&#8361;0</td><td style="color:#94A3B8;font-size:12px;">로컬 벡터 DB (무료)</td></tr>
+              <tr><td>Claude API (Sonnet)</td><td class="num">$3 / $15</td><td style="color: #64748B;font-size:12px;">input / output per 1M tokens</td></tr>
+              <tr><td>건당 평균 토큰</td><td class="num">~9,600 tok</td><td style="color: #64748B;font-size:12px;">8,500 input + 1,100 output</td></tr>
+              <tr><td>건당 API 비용</td><td class="num" style="color:#6d28d9;">~&#8361;59</td><td style="color: #64748B;font-size:12px;">~$0.042/건 (평균 기준)</td></tr>
+              <tr><td>월간 API (963건 분류)</td><td class="num">~&#8361;57,000</td><td style="color: #64748B;font-size:12px;">비이메일 963건 &times; &#8361;59</td></tr>
+              <tr><td>월간 API (L2 Draft)</td><td class="num">~&#8361;14,000</td><td style="color: #64748B;font-size:12px;">472건 &times; &#8361;29 추가</td></tr>
+              <tr><td>서버 비용 (VPS)</td><td class="num">&#8361;50,000</td><td style="color: #64748B;font-size:12px;">월 고정</td></tr>
+              <tr><td>ChromaDB</td><td class="num">&#8361;0</td><td style="color: #64748B;font-size:12px;">로컬 벡터 DB (무료)</td></tr>
               <tr class="highlight-row"><td>총 AI 월 운영비</td><td class="num">~&#8361;260,000</td><td style="font-size:12px;">Pro Max + API + 서버</td></tr>
             </tbody>
           </table>
@@ -789,49 +789,49 @@
             <td class="num">700건</td>
             <td class="pct">48%</td>
             <td class="pct"><span class="tag tag-green">95% (L3)</span></td>
-            <td style="color:#94A3B8;font-size:12px;">구독 해지 안내 자동 &rarr; 과금 분쟁만 에스컬레이션</td>
+            <td style="color: #64748B;font-size:12px;">구독 해지 안내 자동 &rarr; 과금 분쟁만 에스컬레이션</td>
           </tr>
           <tr>
             <td><strong>Refund</strong></td>
             <td class="num">367건</td>
             <td class="pct">25%</td>
             <td class="pct"><span class="tag tag-blue">30% (L2+L3)</span></td>
-            <td style="color:#94A3B8;font-size:12px;">iOS 환불 리디렉트 자동 / 적격성 판단은 상담원</td>
+            <td style="color: #64748B;font-size:12px;">iOS 환불 리디렉트 자동 / 적격성 판단은 상담원</td>
           </tr>
           <tr>
             <td><strong>Account</strong></td>
             <td class="num">189건</td>
             <td class="pct">13%</td>
             <td class="pct"><span class="tag tag-blue">40% (L2+L3)</span></td>
-            <td style="color:#94A3B8;font-size:12px;">비밀번호 리셋, 인증 안내 자동 / GDPR 삭제 에스컬레이션</td>
+            <td style="color: #64748B;font-size:12px;">비밀번호 리셋, 인증 안내 자동 / GDPR 삭제 에스컬레이션</td>
           </tr>
           <tr>
             <td><strong>Payment</strong></td>
             <td class="num">86건</td>
             <td class="pct">5%</td>
             <td class="pct"><span class="tag tag-blue">35% (L2+L3)</span></td>
-            <td style="color:#94A3B8;font-size:12px;">결제 방법 안내, 실패 트러블슈팅 / 이중과금 에스컬레이션</td>
+            <td style="color: #64748B;font-size:12px;">결제 방법 안내, 실패 트러블슈팅 / 이중과금 에스컬레이션</td>
           </tr>
           <tr>
             <td><strong>Content</strong></td>
             <td class="num">57건</td>
             <td class="pct">4%</td>
             <td class="pct"><span class="tag" style="background:rgba(251,191,36,0.15);color:#b45309;">0% (L2)</span></td>
-            <td style="color:#94A3B8;font-size:12px;">AI 정보 수집 → 에스컬레이션 (셀프서비스 없음)</td>
+            <td style="color: #64748B;font-size:12px;">AI 정보 수집 → 에스컬레이션 (셀프서비스 없음)</td>
           </tr>
           <tr>
             <td><strong>Technical</strong></td>
             <td class="num">32건</td>
             <td class="pct">3%</td>
             <td class="pct"><span class="tag tag-blue">25% (L2+L3)</span></td>
-            <td style="color:#94A3B8;font-size:12px;">캐시 삭제, 앱 업데이트 안내 / 버그 리포트 에스컬레이션</td>
+            <td style="color: #64748B;font-size:12px;">캐시 삭제, 앱 업데이트 안내 / 버그 리포트 에스컬레이션</td>
           </tr>
           <tr>
             <td><strong>Other</strong></td>
             <td class="num">30건</td>
             <td class="pct">2%</td>
             <td class="pct"><span class="tag tag-red">0% (L1)</span></td>
-            <td style="color:#94A3B8;font-size:12px;">전체 에스컬레이션 &mdash; 자동화 영구 배제</td>
+            <td style="color: #64748B;font-size:12px;">전체 에스컬레이션 &mdash; 자동화 영구 배제</td>
           </tr>
           <tr class="highlight-row">
             <td>합계</td>
@@ -1033,7 +1033,7 @@
             <div>▸ 24/7 다국어 → 글로벌 10개 마켓 커버</div>
           </div>
           <div style="text-align:center;padding:7px 10px;background:rgba(14,165,233,0.08);border:1px solid rgba(14,165,233,0.12);border-radius:8px;">
-            <div style="font-size: 12px;color:#94A3B8;">좋은 CS 경험이 서비스 전체의 가치를 높입니다</div>
+            <div style="font-size: 12px;color: #64748B;">좋은 CS 경험이 서비스 전체의 가치를 높입니다</div>
             <div style="font-size:13px;font-weight:800;color:#0369a1;margin-top:2px;">Customer Satisfaction & Loyalty ↑</div>
           </div>
         </div>
@@ -1054,7 +1054,7 @@
             <div>▸ 반복 정보 수집 제거 → <strong style="color:#047857;">판단 업무 집중</strong></div>
           </div>
           <div style="text-align:center;padding:7px 10px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.12);border-radius:8px;">
-            <div style="font-size: 12px;color:#94A3B8;">같은 인력으로 3~4배 더 많은 CS를 처리합니다</div>
+            <div style="font-size: 12px;color: #64748B;">같은 인력으로 3~4배 더 많은 CS를 처리합니다</div>
             <div style="font-size:13px;font-weight:800;color:#047857;margin-top:2px;">CS Processing Efficiency ×3~4</div>
           </div>
         </div>
