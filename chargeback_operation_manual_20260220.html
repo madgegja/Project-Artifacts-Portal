@@ -16,7 +16,7 @@
     color: #1a1a2e;
     background: #f0f2f5;
     font-size: 11px;
-    line-height: 1.65;
+    line-height: 1.7;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   
@@ -27,14 +27,14 @@
 
   /* Header */
   .header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #dc2626 100%);
-    color: #fff;
+    background: linear-gradient(135deg, #F8FAFC 0%, #1e3a5f 40%, #dc2626 100%);
+    color: #1E293B;
     padding: 40px 48px 34px;
     position: relative;
     overflow: hidden;
   }
   .header::before { content:''; position:absolute; top:-80px; right:-80px; width:300px; height:300px; background:radial-gradient(circle,rgba(220,38,38,0.15),transparent 70%); border-radius:50%; }
-  .header-badge { display:inline-block; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:20px; padding:4px 14px; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:12px; }
+  .header-badge { display:inline-block; background:rgba(255,255,255,0.12); border:1px solid rgba(0,0,0,0.08); border-radius:20px; padding:4px 14px; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:12px; }
   .header h1 { font-size:30px; font-weight:800; letter-spacing:-0.3px; margin-bottom:6px; position:relative; }
   .header .sub { font-size:14px; opacity:0.85; font-weight:400; position:relative; }
   .header-meta { display:flex; gap:24px; margin-top:20px; position:relative; }
@@ -92,7 +92,7 @@
 
   /* Tables */
   table { width:100%; border-collapse:separate; border-spacing:0; font-size:11px; margin:8px 0 14px; }
-  thead th { background:#0f172a; color:#e2e8f0; padding:8px 12px; text-align:left; font-size:10.5px; font-weight:600; text-transform:uppercase; letter-spacing:0.3px; }
+  thead th { background:#F8FAFC; color: #1E293B; padding:8px 12px; text-align:left; font-size:10.5px; font-weight:600; text-transform:uppercase; letter-spacing:0.3px; }
   thead th:first-child { border-radius:8px 0 0 0; }
   thead th:last-child { border-radius:0 8px 0 0; }
   tbody td { padding:8px 12px; border-bottom:1px solid #f1f5f9; vertical-align:top; }
@@ -124,12 +124,12 @@
   .alert strong { font-weight:700; }
 
   /* Code block */
-  .code-block { background:#0f172a; color:#e2e8f0; padding:16px 20px; border-radius:8px; font-family:'Consolas','Courier New',monospace; font-size:11px; line-height:1.6; margin:8px 0 14px; overflow-x:auto; white-space:pre-wrap; }
+  .code-block { background:#F8FAFC; color: #1E293B; padding:16px 20px; border-radius:8px; font-family:'Consolas','Courier New',monospace; font-size:11px; line-height:1.6; margin:8px 0 14px; overflow-x:auto; white-space:pre-wrap; }
 
   /* Flow */
   .flow { display:flex; align-items:center; gap:0; margin:14px 0 18px; flex-wrap:wrap; }
   .flow-step { background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:10px 16px; font-size:11px; font-weight:600; color:#1e40af; text-align:center; min-width:100px; }
-  .flow-arrow { font-size:18px; color:#94a3b8; margin:0 4px; }
+  .flow-arrow { font-size:18px; color: #64748B; margin:0 4px; }
   .flow-step.active { background:#dc2626; color:#fff; border-color:#dc2626; }
 
   /* Collapsible */
@@ -139,14 +139,14 @@
   details .inner { padding:8px 16px; background:#f8fafc; border-radius:8px; border:1px solid #e2e8f0; margin-top:4px; }
 
   /* Footer */
-  .footer { text-align:center; padding:28px 24px 16px; font-size: 11px; color:#94a3b8; border-top:1px solid #e2e8f0; }
+  .footer { text-align:center; padding:28px 24px 16px; font-size: 11px; color: #64748B; border-top:1px solid #e2e8f0; }
   .footer a { color:#2563eb; text-decoration:none; }
 
   /* PG tabs */
   .pg-tabs { display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
   .pg-tab { padding:8px 18px; border-radius:8px; font-size:12px; font-weight:700; cursor:default; }
   .pg-tab.paypal { background:#003087; color:#fff; }
-  .pg-tab.cko { background:#0f172a; color:#00d632; }
+  .pg-tab.cko { background:#F8FAFC; color:#00d632; }
   .pg-tab.airwallex { background:#6366f1; color:#fff; }
   .pg-tab.pwl { background:#f59e0b; color:#0f172a; }
   .pg-tab.worldpay { background:#e11d48; color:#fff; }
