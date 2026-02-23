@@ -110,16 +110,22 @@ select.flt:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,2
 
 .ticket-row {
   display:grid;
-  grid-template-columns: 70px 1fr 90px 80px 80px 90px 130px 42px;
+  grid-template-columns: 70px 1fr 60px 50px 64px 80px 76px 120px 36px;
   gap:0; align-items:center;
   padding:10px 16px; border-bottom:1px solid var(--border2);
   cursor:pointer; transition:background .15s; min-height:52px;
 }
 .ticket-row:hover { background: #f1f5f9; }
-.ticket-row.active { background: #eff6ff; border-left:3px solid var(--blue); }
-.ticket-row.tr-l1 { border-left:3px solid var(--red); }
-.ticket-row.tr-l2 { border-left:3px solid var(--amber); }
-.ticket-row.tr-l3 { border-left:3px solid var(--green); }
+.ticket-row.active { background: #eff6ff; box-shadow: inset 3px 0 0 var(--blue); }
+.ticket-row.tr-l1 { box-shadow: inset 3px 0 0 var(--red); }
+.ticket-row.tr-l2 { box-shadow: inset 3px 0 0 var(--amber); }
+.ticket-row.tr-l3 { box-shadow: inset 3px 0 0 var(--green); }
+.ticket-row.active.tr-l1 { box-shadow: inset 3px 0 0 var(--red), inset 0 0 0 1px rgba(37,99,235,0.2); background:#eff6ff; }
+.ticket-row.active.tr-l2 { box-shadow: inset 3px 0 0 var(--amber), inset 0 0 0 1px rgba(37,99,235,0.2); background:#eff6ff; }
+.ticket-row.active.tr-l3 { box-shadow: inset 3px 0 0 var(--green), inset 0 0 0 1px rgba(37,99,235,0.2); background:#eff6ff; }
+.t-lang { font-size:13px; text-align:center; }
+.t-sortable { cursor:pointer; user-select:none; }
+.t-sortable:hover { color:var(--blue); }
 
 .thead {
   background: #f8fafc; position:sticky; top:0; z-index:10;
@@ -227,9 +233,12 @@ select.flt:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,2
 .comment-item.customer { background: #eff6ff; border:1px solid #bfdbfe; margin-right:32px; }
 .comment-item.bot { background: #ecfdf5; border:1px solid #a7f3d0; margin-left:32px; }
 .comment-item.internal { background: #fffbeb; border:1px solid #fde68a; margin-left:32px; font-size:11px; }
+.comment-item.fraud { background: #fef2f2; border:1px solid #fca5a5; margin-left:32px; font-size:11px; }
+.comment-item.fraud .c-author { color:#dc2626; }
+.c-fraud { background:#fecaca; color:#991b1b; }
 .comment-meta {
   padding:7px 12px; display:flex; align-items:center; gap:8px; font-size:11px;
-  border-bottom:1px solid rgba(255,255,255,.05);
+  border-bottom:1px solid rgba(0,0,0,.06);
 }
 .comment-meta .c-author { font-weight:700; color:var(--text); }
 .comment-meta .c-time { color:var(--muted); margin-left:auto; font-size:11px; }
@@ -248,6 +257,16 @@ select.flt:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,2
 .error-banner { background:#fef2f2; border:1px solid #fecaca; color:#dc2626; border-radius:8px; padding:10px 14px; margin:8px 16px; font-size:12px; }
 
 /* ── Scrollbar global ── */
+@media (max-width:1200px) {
+  .detail-sidebar { position:absolute; right:0; top:0; bottom:0; z-index:100; box-shadow:-4px 0 20px rgba(0,0,0,0.12); }
+  .detail-sidebar.open { transform:translateX(0); }
+}
+.demo-banner {
+  position:fixed; bottom:12px; left:12px; z-index:999;
+  background:#fffbeb; border:1px solid #fde68a; color:#92400e;
+  padding:6px 14px; border-radius:8px; font-size:11px; font-weight:600;
+  box-shadow: var(--shadow2);
+}
 ::-webkit-scrollbar { width:6px; height:6px; }
 ::-webkit-scrollbar-track { background:#f8fafc; }
 ::-webkit-scrollbar-thumb { background:#cbd5e1; border-radius:3px; }
@@ -350,10 +369,11 @@ select.flt:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,2
         <span class="t-id">ID</span>
         <span class="t-subject">제목</span>
         <span class="t-channel">채널</span>
+        <span class="t-lang">언어</span>
         <span class="t-level">레벨</span>
         <span class="t-cat">카테고리</span>
         <span class="t-status">상태</span>
-        <span class="t-date">접수일</span>
+        <span class="t-date t-sortable" onclick="toggleSort('date')" title="정렬">접수일 <span id="sortIcon">▼</span></span>
         <span></span>
       </div>
     </div>
@@ -708,6 +728,7 @@ function renderTickets(tickets) {
     const sta = `<span class="badge badge-${t.status}">${statusLabel(t.status)}</span>`;
     const levelClass = t.level !== '-' ? `tr-${t.level.toLowerCase()}` : '';
     const activeClass = activeTicketId === t.id ? 'active' : '';
+    const lang = getLangFromTags(t.tags);
     return `
       <div class="ticket-row ${levelClass} ${activeClass}" onclick="openTicket(${t.id})" data-id="${t.id}">
         <span class="t-id">#${t.id}</span>
@@ -716,6 +737,7 @@ function renderTickets(tickets) {
           <div class="desc">${esc(t.description)}</div>
         </span>
         <span class="t-channel" style="font-size:11px;">${esc(t.channel)}</span>
+        <span class="t-lang">${lang}</span>
         <span class="t-level">${lvl}</span>
         <span class="t-cat">${cat}</span>
         <span class="t-status">${sta}</span>
@@ -797,12 +819,13 @@ async function openTicket(id) {
         <div class="comment-thread">
           ${(t.comments || []).map((c, i) => {
             const isInternal = !c.public;
+            const isFraud = isInternal && (c.body.includes('FRAUD') || c.body.includes('🔴'));
             const isCustomer = c.public && (c.author_id === t.requester_id || c.author_id !== 39001 && i === 0 || (c.author_id && c.author_id >= 38000 && c.author_id < 39000));
             const isBot = c.public && !isCustomer;
-            const cls = isInternal ? 'internal' : isCustomer ? 'customer' : 'bot';
-            const icon = isInternal ? '🔒 내부메모' : isCustomer ? '👤 고객' : '🤖 봇';
-            const badgeCls = isInternal ? 'c-int' : isCustomer ? 'c-cust' : 'c-bot';
-            const badgeTxt = isInternal ? 'Internal' : isCustomer ? 'Customer' : 'Bot';
+            const cls = isFraud ? 'fraud' : isInternal ? 'internal' : isCustomer ? 'customer' : 'bot';
+            const icon = isFraud ? '🚨 Fraud 탐지' : isInternal ? '🔒 내부메모' : isCustomer ? '👤 고객' : '🤖 봇';
+            const badgeCls = isFraud ? 'c-fraud' : isInternal ? 'c-int' : isCustomer ? 'c-cust' : 'c-bot';
+            const badgeTxt = isFraud ? 'Fraud Alert' : isInternal ? 'Internal' : isCustomer ? 'Customer' : 'Bot';
             return `
             <div class="comment-item ${cls}">
               <div class="comment-meta">
@@ -894,6 +917,79 @@ function esc(s) {
 }
 function val(id) { return document.getElementById(id)?.value || ''; }
 function setText(id, v) { const el = document.getElementById(id); if (el) el.textContent = v; }
+
+const LANG_FLAGS = {en:'🇺🇸',fr:'🇫🇷',es:'🇪🇸',pt:'🇧🇷',de:'🇩🇪',th:'🇹🇭',jp:'🇯🇵',cn:'🇨🇳',it:'🇮🇹',kr:'🇰🇷'};
+function getLangFromTags(tags) {
+  if (!tags) return '';
+  for (const t of tags) {
+    if (t.startsWith('language__')) {
+      const code = t.replace('language__','');
+      return (LANG_FLAGS[code] || '') + ' ' + code.toUpperCase();
+    }
+  }
+  return '';
+}
+
+// ── Sort ──
+let sortDir = 'desc';
+function toggleSort(col) {
+  if (col === 'date') {
+    sortDir = sortDir === 'desc' ? 'asc' : 'desc';
+    const icon = document.getElementById('sortIcon');
+    if (icon) icon.textContent = sortDir === 'desc' ? '▼' : '▲';
+    if (DEMO_MODE) loadTickets(1);
+  }
+}
+// Patch loadTickets for sort — insert sort after filter in DEMO_MODE
+const _origLoadTickets = loadTickets;
+loadTickets = async function(page) {
+  await _origLoadTickets(page);
+  if (DEMO_MODE && sortDir === 'asc') {
+    // Re-sort displayed rows (simple: re-render)
+    const body = document.getElementById('ticketBody');
+    const rows = [...body.children];
+    rows.reverse();
+    body.innerHTML = '';
+    rows.forEach(r => body.appendChild(r));
+  }
+};
+
+// ── Keyboard ──
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') { closeSidebar(); return; }
+  const rows = [...document.querySelectorAll('.ticket-row:not(.thead .ticket-row)')];
+  if (!rows.length) return;
+  const idx = rows.findIndex(r => r.classList.contains('active'));
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    const next = Math.min(idx + 1, rows.length - 1);
+    const id = rows[next]?.dataset?.id;
+    if (id) openTicket(parseInt(id));
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    const prev = Math.max(idx - 1, 0);
+    const id = rows[prev]?.dataset?.id;
+    if (id) openTicket(parseInt(id));
+  }
+});
+
+// ── KPI today: clear all filters ──
+const _origSetStatusFilter = setStatusFilter;
+setStatusFilter = function(s) {
+  if (s === 'all') {
+    ['statusFilter','channelFilter','levelFilter','categoryFilter','languageFilter'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('searchInput').value = '';
+  }
+  _origSetStatusFilter(s);
+};
+
+// ── Demo banner ──
+if (DEMO_MODE) {
+  const banner = document.createElement('div');
+  banner.className = 'demo-banner';
+  banner.innerHTML = '🎯 Demo Mode — 24 sample tickets';
+  document.body.appendChild(banner);
+}
 </script>
 </body>
 </html>
