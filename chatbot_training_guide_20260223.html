@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Toomics CS AI 챗봇 — 운영자/리더 교육 자료 v1.0 | 2026-02-23</title>
 <style>
+  html { scroll-behavior: smooth; }
+
   @page { size: A4; margin: 15mm; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
@@ -39,7 +41,8 @@
     .back-to-top { display: none !important; }
     section { break-inside: avoid; }
   }
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 0 60px; }
+  .container { max-width: 1100px;
+    width: 100%; margin: 0 auto; padding: 0 0 60px; }
   section { padding: 0 40px; margin-bottom: 48px; }
   .hero {
     background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #10b981 100%);
@@ -121,7 +124,16 @@
   .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
   @media (max-width: 768px) { .stat-grid { grid-template-columns: 1fr 1fr; } .do-dont { grid-template-columns: 1fr; } }
   .back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 1.2rem; cursor: pointer; z-index: 100; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+
+  /* ── Table Responsive ── */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 16px; }
+  .table-wrap table { margin-bottom: 0; }
+
+  @media (max-width: 900px) {
+    .container { max-width: 100% !important; width: 100% !important; overflow-x: auto; }
+  }
 </style>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>" type="image/svg+xml">
 </head>
 <body>
 
@@ -283,13 +295,13 @@
 
   <div class="card card-cyan">
     <h3>📊 특수 플로우</h3>
-    <table>
+    <div class="table-wrap"><table>
       <tr><th>상황</th><th>처리</th><th>이유</th></tr>
       <tr><td>미지원 언어 감지</td><td>인사말 + 즉시 L1</td><td>해당 언어 상담원 연결 필요</td></tr>
       <tr><td>Content 카테고리</td><td>상세정보 요청 → L2</td><td>작품명/회차/문제 수집 후 QA팀 전달</td></tr>
       <tr><td>결제 카테고리 (L3)</td><td>결제 정보 요청 → 원래 플로우</td><td>계정 식별을 위한 결제 정보 필요</td></tr>
       <tr><td>동일 의도 2회 반복</td><td>L3 → L2 자동 에스컬레이션</td><td>셀프서비스 해결 불가 판단</td></tr>
-    </table>
+    </table></div>
   </div>
 </section>
 
@@ -299,7 +311,7 @@
 
   <div class="card card-red">
     <h3>🔴 L1 — 즉시 에스컬레이션</h3>
-    <table>
+    <div class="table-wrap"><table>
       <tr><th>항목</th><th>내용</th></tr>
       <tr><td><strong>트리거</strong></td><td>Fraud 점수 ≥ 50, 법적 위협, 차지백 언급, Intent 미분류</td></tr>
       <tr><td><strong>AI 자동 응답</strong></td><td>❌ 없음 — 고객에게 "티켓 제출 안내" 메시지만 전송</td></tr>
@@ -307,13 +319,13 @@
       <tr><td><strong>Zendesk 티켓</strong></td><td>✅ 자동 생성 (맥락 요약 + Fraud 정보 포함)</td></tr>
       <tr><td><strong>우선순위</strong></td><td>🔴 Urgent — 즉시 처리 필요</td></tr>
       <tr><td><strong>상담원 액션</strong></td><td>Fraud 플래그 확인 → 계정 히스토리 조회 → 직접 응답 작성</td></tr>
-    </table>
+    </table></div>
     <p style="margin-top: 12px; color: var(--accent-red);"><strong>⚠️ L1 건은 AI가 절대 고객에게 실질적 응답을 하지 않습니다. 상담원의 전문적 판단이 필수입니다.</strong></p>
   </div>
 
   <div class="card card-amber">
     <h3>🟡 L2 — AI 초안 + 상담원 검토</h3>
-    <table>
+    <div class="table-wrap"><table>
       <tr><th>항목</th><th>내용</th></tr>
       <tr><td><strong>트리거</strong></td><td>Content/Other 카테고리, 복잡한 환불, 반복 문의, Intent L1 클램핑</td></tr>
       <tr><td><strong>고객 응답</strong></td><td>✅ 매뉴얼 기반 안내 + "티켓 제출" 안내 (90/10 하이브리드)</td></tr>
@@ -321,20 +333,20 @@
       <tr><td><strong>Zendesk 티켓</strong></td><td>✅ 자동 생성 (맥락 요약 + 대화 로그 + AI 초안)</td></tr>
       <tr><td><strong>우선순위</strong></td><td>🟡 High/Normal</td></tr>
       <tr><td><strong>상담원 액션</strong></td><td>AI 초안 검토 → [AGENT:] 플레이스홀더 채우기 → 수정/발송</td></tr>
-    </table>
+    </table></div>
     <p style="margin-top: 12px; color: var(--accent-amber);"><strong>💡 AI 초안은 "출발점"입니다. 반드시 검토 후 발송하세요.</strong></p>
   </div>
 
   <div class="card card-green">
     <h3>🟢 L3 — 셀프서비스 자동 응답</h3>
-    <table>
+    <div class="table-wrap"><table>
       <tr><th>항목</th><th>내용</th></tr>
       <tr><td><strong>트리거</strong></td><td>명확한 카테고리 + 낮은 Fraud 점수 + 자동화 가능 의도</td></tr>
       <tr><td><strong>고객 응답</strong></td><td>✅ 매뉴얼 기반 자동 응답 (구독 취소 방법, 비밀번호 재설정 등)</td></tr>
       <tr><td><strong>AI 초안</strong></td><td>해당 없음 (상담원 개입 불필요)</td></tr>
       <tr><td><strong>Zendesk 티켓</strong></td><td>❌ 생성하지 않음 (고객이 직접 해결)</td></tr>
       <tr><td><strong>상담원 액션</strong></td><td>없음 (모니터링만)</td></tr>
-    </table>
+    </table></div>
     <p style="margin-top: 12px; color: var(--accent-green);"><strong>✅ L3는 고객이 스스로 해결합니다. 동일 문의 2회 반복 시 자동으로 L2로 에스컬레이션됩니다.</strong></p>
   </div>
 </section>
@@ -428,14 +440,14 @@ Toomics Support</span></div>
 
   <div class="card card-amber">
     <h3>🔍 AI 초안 검토 5단계</h3>
-    <table>
+    <div class="table-wrap"><table>
       <tr><th>단계</th><th>체크 포인트</th><th>예시</th></tr>
       <tr><td><strong>1. [AGENT:] 확인</strong></td><td>플레이스홀더를 실제 정보로 교체</td><td>[AGENT: cancel date] → 2026-02-23</td></tr>
       <tr><td><strong>2. 정보 정확성</strong></td><td>계정 조회 후 사실과 일치하는지 확인</td><td>구독 상태, 결제 내역, 환불 자격</td></tr>
       <tr><td><strong>3. 톤 & 언어</strong></td><td>고객 언어와 감정에 맞는 톤인지 확인</td><td>불만 고객 → 공감 표현 추가</td></tr>
       <tr><td><strong>4. 정책 준수</strong></td><td>환불 조건, 개인정보 처리 등 정책 위반 없는지</td><td>14일/미열람/미사용 3가지 조건</td></tr>
       <tr><td><strong>5. 발송 전 최종 확인</strong></td><td>[AGENT:] 잔존 여부 재확인</td><td>Ctrl+F로 "[AGENT" 검색</td></tr>
-    </table>
+    </table></div>
   </div>
 
   <div class="do-dont">
@@ -492,43 +504,43 @@ Toomics Support</span></div>
 
   <div class="card card-blue">
     <h3>📦 Subscription (구독) — 전체의 ~24%</h3>
-    <table>
+    <div class="table-wrap"><table>
       <tr><th>주요 유형</th><th>처리 방법</th><th>주의점</th></tr>
       <tr><td>구독 취소 요청</td><td>웹/앱/Google/Apple별 취소 방법 안내</td><td>취소 후에도 만료일까지 접근 가능 안내</td></tr>
       <tr><td>취소했는데 과금</td><td>복수 계정 확인 / App Store 구독 확인</td><td>웹 구독 ≠ 앱 구독 (별도 시스템)</td></tr>
       <tr><td>구독 변경</td><td>현재 구독 취소 → 만료 후 재구독 안내</td><td>중간 변경 불가, 만료 후 재가입</td></tr>
-    </table>
+    </table></div>
   </div>
 
   <div class="card card-red">
     <h3>💰 Refund (환불) — 전체의 ~18%</h3>
-    <table>
+    <div class="table-wrap"><table>
       <tr><th>주요 유형</th><th>처리 방법</th><th>주의점</th></tr>
       <tr><td>일반 환불</td><td>3가지 조건 확인 (14일/미열람/미사용)</td><td>하나라도 불충족 시 거절</td></tr>
       <tr><td>Apple 결제 환불</td><td>reportaproblem.apple.com 안내</td><td>Toomics에서 직접 처리 불가</td></tr>
       <tr><td>무단 결제 주장</td><td>Fraud 점수 확인 → L1/L2 판단</td><td>자녀 결제 사례 빈번</td></tr>
-    </table>
+    </table></div>
     <p style="margin-top: 8px; color: var(--accent-red);">⚠️ 환불 금액/날짜는 반드시 계정 확인 후 기입 — AI가 임의로 약속하지 않음</p>
   </div>
 
   <div class="card card-purple">
     <h3>👤 Account (계정) — 전체의 ~15%</h3>
-    <table>
+    <div class="table-wrap"><table>
       <tr><th>주요 유형</th><th>처리 방법</th><th>주의점</th></tr>
       <tr><td>비밀번호 재설정</td><td>임시 비밀번호(123123) 설정 → 변경 안내</td><td>소셜 로그인 계정은 비밀번호 없음</td></tr>
       <tr><td>계정 삭제</td><td>영구 삭제 경고 → 확인 후 처리</td><td>활성 구독 있으면 먼저 취소</td></tr>
       <tr><td>계정 못 찾음</td><td>결제 정보로 계정 검색</td><td>CS 이메일 ≠ 가입 이메일 (~45%)</td></tr>
-    </table>
+    </table></div>
   </div>
 
   <div class="card card-amber">
     <h3>💳 Payment (결제) — 전체의 ~12%</h3>
-    <table>
+    <div class="table-wrap"><table>
       <tr><th>주요 유형</th><th>처리 방법</th><th>주의점</th></tr>
       <tr><td>자동 갱신 과금</td><td>자동갱신 설명 + 취소 방법 안내</td><td>환불 자격도 함께 확인</td></tr>
       <tr><td>결제 실패</td><td>카드 잔액/만료/3DS 확인 안내</td><td>은행 보안 차단 사례 다수</td></tr>
       <tr><td>해외 수수료</td><td>Toomics가 아닌 은행 부과 수수료 설명</td><td>고객 은행에 문의 안내</td></tr>
-    </table>
+    </table></div>
   </div>
 
   <div class="grid-2">
@@ -667,5 +679,9 @@ Toomics Support</span></div>
 
 <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
+
+<footer style="text-align:center; padding:24px 40px 32px; font-size:12px; color:#94A3B8; border-top:1px solid #E2E8F0; margin-top:48px;">
+  <strong style="color:#1E293B;">Toomics Global BizOps</strong> · 작성: 유종선 · Confidential
+</footer>
 </body>
 </html>

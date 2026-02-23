@@ -24,6 +24,7 @@
 
   .container {
     max-width: 1400px;
+    width: 100%;
     margin: 0 auto;
     padding: 0 0 40px;
   }
@@ -365,7 +366,38 @@
     .hero { padding: 32px 24px; }
     .hero h1 { font-size: 26px; }
   }
+
+  /* ── Back to Top ── */
+  .back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 44px;
+    height: 44px;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .back-to-top.visible { opacity: 1; visibility: visible; }
+  .back-to-top:hover { background: #1d4ed8; transform: translateY(-2px); }
+  @media print { .back-to-top { display: none !important; } }
+
+  /* ── Table Responsive ── */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 16px; }
+  .table-wrap table { margin-bottom: 0; }
 </style>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>" type="image/svg+xml">
 </head>
 <body>
 
@@ -496,7 +528,7 @@
   <div class="section">
     <div class="section-title"><span class="dot"></span>마켓별 상세 현황</div>
     <div class="chart-card">
-      <table class="market-table">
+      <div class="table-wrap"><table class="market-table">
         <thead>
           <tr>
             <th>마켓</th>
@@ -608,7 +640,7 @@
             <td><span class="trend-up">↑ 2.7배 성장</span></td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
   </div>
 
@@ -874,5 +906,16 @@
   });
 </script>
 
+
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="맨 위로">↑</button>
+<script>
+(function(){
+  var btn = document.querySelector('.back-to-top');
+  if(!btn) return;
+  window.addEventListener('scroll', function(){
+    btn.classList.toggle('visible', window.scrollY > 300);
+  });
+})();
+</script>
 </body>
 </html>

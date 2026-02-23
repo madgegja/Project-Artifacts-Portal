@@ -25,6 +25,7 @@
 
   .container {
     max-width: 1400px;
+    width: 100%;
     margin: 0 auto;
     padding: 0 0 60px;
   }
@@ -541,7 +542,7 @@
     font-size: 32px;
     font-weight: 800;
     color: #b45309;
-    line-height: 1.2;
+    line-height: 1.5
   }
   .conclusion-item .lbl {
     font-size: 13px;
@@ -598,7 +599,34 @@
   .kpi-card:nth-child(2) { animation-delay: 0.2s; }
   .kpi-card:nth-child(3) { animation-delay: 0.3s; }
   .kpi-card:nth-child(4) { animation-delay: 0.4s; }
+
+  /* ── Back to Top ── */
+  .back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 44px;
+    height: 44px;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .back-to-top.visible { opacity: 1; visibility: visible; }
+  .back-to-top:hover { background: #1d4ed8; transform: translateY(-2px); }
+  @media print { .back-to-top { display: none !important; } }
 </style>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>" type="image/svg+xml">
 </head>
 <body>
 
@@ -1266,5 +1294,16 @@ Chart.defaults.animation.easing = 'easeOutQuart';
 })();
 </script>
 
+
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="맨 위로">↑</button>
+<script>
+(function(){
+  var btn = document.querySelector('.back-to-top');
+  if(!btn) return;
+  window.addEventListener('scroll', function(){
+    btn.classList.toggle('visible', window.scrollY > 300);
+  });
+})();
+</script>
 </body>
 </html>

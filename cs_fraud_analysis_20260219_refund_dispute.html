@@ -486,7 +486,48 @@
     font-family: inherit;
   }
   .print-btn:hover { background: #d63851; }
+
+  /* ── Back to Top ── */
+  .back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 44px;
+    height: 44px;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .back-to-top.visible { opacity: 1; visibility: visible; }
+  .back-to-top:hover { background: #1d4ed8; transform: translateY(-2px); }
+  @media print { .back-to-top { display: none !important; } }
+
+  /* ── Table Responsive ── */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 16px; }
+  .table-wrap table { margin-bottom: 0; }
+
+  /* ── Mobile Responsive ── */
+  @media (max-width: 768px) {
+    body { padding: 8px; }
+    section, .container > * { padding-left: 16px !important; padding-right: 16px !important; }
+    h1 { font-size: 22px !important; }
+    h2 { font-size: 18px !important; }
+    table { font-size: 12px; }
+    .hero { padding: 24px 20px !important; border-radius: 0 !important; }
+  }
 </style>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>" type="image/svg+xml">
 </head>
 <body>
 
@@ -527,7 +568,7 @@
         <div class="icon">1</div>
         티켓 개요
       </div>
-      <table>
+      <div class="table-wrap"><table>
         <thead>
           <tr>
             <th style="width:22%">항목</th>
@@ -577,7 +618,7 @@
             <td>New</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
 
       <!-- Timeline -->
       <div style="margin-top: 16px; font-weight: 700; font-size: 12px; color: #1E293B; margin-bottom: 8px;">📅 타임라인</div>
@@ -891,7 +932,7 @@
 
         <div style="margin-top: 16px;">
           <h3>🛡️ 대응 원칙 5가지</h3>
-          <table style="margin-top: 8px;">
+          <div class="table-wrap"><table style="margin-top: 8px;">
             <thead>
               <tr>
                 <th style="width:5%">#</th>
@@ -926,7 +967,7 @@
                 <td>위임장 + 변호사 등록번호 + 공식 이메일 요구</td>
               </tr>
             </tbody>
-          </table>
+          </table></div>
         </div>
       </div>
     </div>
@@ -947,5 +988,20 @@
 
 </div><!-- /report-container -->
 
+
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="맨 위로">↑</button>
+<script>
+(function(){
+  var btn = document.querySelector('.back-to-top');
+  if(!btn) return;
+  window.addEventListener('scroll', function(){
+    btn.classList.toggle('visible', window.scrollY > 300);
+  });
+})();
+</script>
+
+<footer style="text-align:center; padding:24px 40px 32px; font-size:12px; color:#94A3B8; border-top:1px solid #E2E8F0; margin-top:48px;">
+  <strong style="color:#1E293B;">Toomics Global BizOps</strong> · 작성: 유종선 · Confidential
+</footer>
 </body>
 </html>

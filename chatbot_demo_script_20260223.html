@@ -17,7 +17,8 @@
   body { font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif; color: var(--text-primary); background: var(--bg-primary); line-height: 1.7; font-size: 15px; }
   @media print { body { background: #fff; color: #1E293B; } .hero {
     color: #FFFFFF; background: #1e3a5f !important; -webkit-print-color-adjust: exact; } .back-to-top { display: none !important; } }
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 0 60px; }
+  .container { max-width: 1100px;
+    width: 100%; margin: 0 auto; padding: 0 0 60px; }
   section { padding: 0 40px; margin-bottom: 48px; }
   .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #a78bfa 100%); color: white; padding: 48px 56px 40px; border-radius: 0 0 24px 24px; margin-bottom: 36px; }
   .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; }
@@ -48,7 +49,16 @@
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } section { padding: 0 20px; } }
   .back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--accent-purple); color: white; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 1.2rem; cursor: pointer; z-index: 100; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+
+  /* ── Table Responsive ── */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 16px; }
+  .table-wrap table { margin-bottom: 0; }
+
+  @media (max-width: 900px) {
+    .container { max-width: 100% !important; width: 100% !important; overflow-x: auto; }
+  }
 </style>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>" type="image/svg+xml">
 </head>
 <body>
 <div class="container">
@@ -63,13 +73,13 @@
   <h2>📋 시연 전 준비</h2>
   <div class="card card-blue">
     <h3>필수 준비 사항</h3>
-    <table>
+    <div class="table-wrap"><table>
       <tr><th>항목</th><th>URL / 설정</th><th>확인</th></tr>
       <tr><td>챗봇 데모 페이지</td><td><a href="https://bizops.duckdns.org/chat/demo" style="color:var(--accent-cyan)">https://bizops.duckdns.org/chat/demo</a></td><td>☐ 접속 확인</td></tr>
       <tr><td>Zendesk 관리 화면</td><td><a href="https://toomicsglobal.zendesk.com/agent" style="color:var(--accent-cyan)">https://toomicsglobal.zendesk.com/agent</a></td><td>☐ 로그인 완료</td></tr>
       <tr><td>헬스체크</td><td><a href="https://bizops.duckdns.org/chat/health" style="color:var(--accent-cyan)">https://bizops.duckdns.org/chat/health</a></td><td>☐ "healthy" 확인</td></tr>
       <tr><td>브라우저 탭</td><td>데모 + Zendesk 2개 탭 병렬 오픈</td><td>☐ 준비</td></tr>
-    </table>
+    </table></div>
   </div>
 
   <div class="highlight-box">
@@ -195,7 +205,7 @@
       "정리하겠습니다."
     </div>
     <div class="card card-cyan">
-      <table>
+      <div class="table-wrap"><table>
         <tr><th>항목</th><th>수치</th></tr>
         <tr><td>지원 언어</td><td><strong>10개</strong> (EN, FR, ES, PT, DE, TH, JP, CN, IT, KR)</td></tr>
         <tr><td>자동 분류 카테고리</td><td><strong>7개</strong></td></tr>
@@ -203,7 +213,7 @@
         <tr><td>L2 응대 시간 절감</td><td><strong>60~70%</strong> (AI 초안 활용)</td></tr>
         <tr><td>Fraud 실시간 탐지</td><td><strong>100%</strong> (모든 메시지 분석)</td></tr>
         <tr><td>운영 매뉴얼 기반</td><td><strong>137건</strong> 지식 데이터 인덱싱</td></tr>
-      </table>
+      </table></div>
     </div>
     <div class="narration">
       "질문 있으시면 말씀해 주세요."
@@ -238,5 +248,9 @@
 </div>
 
 <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<footer style="text-align:center; padding:24px 40px 32px; font-size:12px; color:#94A3B8; border-top:1px solid #E2E8F0; margin-top:48px;">
+  <strong style="color:#1E293B;">Toomics Global BizOps</strong> · 작성: 유종선 · Confidential
+</footer>
 </body>
 </html>

@@ -174,7 +174,12 @@
       .toc-grid, .grid-2, .grid-3, .stat-grid, .card-grid, .level-grid { grid-template-columns: 1fr !important; }
       .header-meta { flex-direction: column; gap: 8px !important; }
     }
-  </style>
+  
+  @media (max-width: 900px) {
+    .page { max-width: 100% !important; width: 100% !important; overflow-x: auto; }
+  }
+</style>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>" type="image/svg+xml">
 </head>
 <body>
 <div class="page">

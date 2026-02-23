@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Toomics CS AI Chatbot 운영 매뉴얼 v1.0 | 2026-02-22</title>
 <style>
+  html { scroll-behavior: smooth; }
+
   @page { size: A4; margin: 15mm; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -53,6 +55,7 @@
   /* ── Layout ── */
   .container {
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
     padding: 0 0 60px;
   }
@@ -527,7 +530,7 @@
   }
   .market-flag {
     font-size: 28px;
-    line-height: 1;
+    line-height: 1.5
   }
   .market-card-header h4 {
     font-size: 15px;
@@ -660,7 +663,12 @@
     background: var(--border-color);
     margin: 32px 40px;
   }
+
+  @media (max-width: 900px) {
+    .container { max-width: 100% !important; width: 100% !important; overflow-x: auto; }
+  }
 </style>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>" type="image/svg+xml">
 </head>
 <body>
 

@@ -17,7 +17,8 @@
   body { font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif; color: var(--text-primary); background: var(--bg-primary); line-height: 1.7; font-size: 15px; }
   @media print { body { background: #fff; color: #1E293B; } .hero {
     color: #FFFFFF; background: #1e3a5f !important; -webkit-print-color-adjust: exact; } .back-to-top { display: none !important; } }
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 0 60px; }
+  .container { max-width: 1100px;
+    width: 100%; margin: 0 auto; padding: 0 0 60px; }
   section { padding: 0 40px; margin-bottom: 48px; }
   .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #f59e0b 100%); color: white; padding: 48px 56px 40px; border-radius: 0 0 24px 24px; margin-bottom: 36px; }
   .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; }
@@ -58,7 +59,22 @@
   .toc h3 { color: var(--accent-cyan); margin-bottom: 12px; }
   .toc a { color: var(--accent-blue); text-decoration: none; }
   .back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--accent-amber); color: white; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 1.2rem; cursor: pointer; z-index: 100; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+
+  /* ── Table Responsive ── */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 16px; }
+  .table-wrap table { margin-bottom: 0; }
+
+  /* ── Mobile Responsive ── */
+  @media (max-width: 768px) {
+    body { padding: 8px; }
+    section, .container > * { padding-left: 16px !important; padding-right: 16px !important; }
+    h1 { font-size: 22px !important; }
+    h2 { font-size: 18px !important; }
+    table { font-size: 12px; }
+    .hero { padding: 24px 20px !important; border-radius: 0 !important; }
+  }
 </style>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>" type="image/svg+xml">
 </head>
 <body>
 
@@ -72,7 +88,7 @@
 
 <nav class="toc">
   <h3>📑 시나리오 목록</h3>
-  <table>
+  <div class="table-wrap"><table>
     <tr><th>#</th><th>시나리오</th><th>카테고리</th><th>예상 레벨</th><th>언어</th></tr>
     <tr><td>1</td><td>기본 구독 취소</td><td>Subscription</td><td><span class="level-badge level-l3">L3</span></td><td>EN</td></tr>
     <tr><td>2</td><td>환불 요청 (일반)</td><td>Refund</td><td><span class="level-badge level-l3">L3</span> → <span class="level-badge level-l2">L2</span></td><td>EN</td></tr>
@@ -84,7 +100,7 @@
     <tr><td>8</td><td>기술 문제 (로딩)</td><td>Technical</td><td><span class="level-badge level-l3">L3</span></td><td>EN</td></tr>
     <tr><td>9</td><td>반복 문의 (자동 에스컬레이션)</td><td>Subscription</td><td><span class="level-badge level-l3">L3</span> → <span class="level-badge level-l2">L2</span></td><td>EN</td></tr>
     <tr><td>10</td><td>일본어 계정 문의</td><td>Account</td><td><span class="level-badge level-l3">L3</span></td><td>JP</td></tr>
-  </table>
+  </table></div>
 </nav>
 
 <!-- Scenario 1 -->
@@ -354,7 +370,7 @@
 <section>
   <h2>📝 테스트 결과 기록표</h2>
   <p>각 시나리오 실행 후 아래 표에 결과를 기록하세요:</p>
-  <table>
+  <div class="table-wrap"><table>
     <tr><th>#</th><th>시나리오</th><th>예상 레벨</th><th>실제 레벨</th><th>카테고리 정확</th><th>응답 언어 정확</th><th>Zendesk 티켓</th><th>비고</th></tr>
     <tr><td>1</td><td>기본 구독 취소</td><td>L3</td><td></td><td>☐</td><td>☐</td><td>N/A</td><td></td></tr>
     <tr><td>2</td><td>환불 요청</td><td>L3→L2</td><td></td><td>☐</td><td>☐</td><td>☐</td><td></td></tr>
@@ -366,11 +382,15 @@
     <tr><td>8</td><td>기술 문제</td><td>L3</td><td></td><td>☐</td><td>☐</td><td>N/A</td><td></td></tr>
     <tr><td>9</td><td>반복 문의</td><td>L3→L2</td><td></td><td>☐</td><td>☐</td><td>☐</td><td></td></tr>
     <tr><td>10</td><td>일본어 계정</td><td>L3</td><td></td><td>☐</td><td>☐</td><td>N/A</td><td></td></tr>
-  </table>
+  </table></div>
 </section>
 
 </div>
 
 <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<footer style="text-align:center; padding:24px 40px 32px; font-size:12px; color:#94A3B8; border-top:1px solid #E2E8F0; margin-top:48px;">
+  <strong style="color:#1E293B;">Toomics Global BizOps</strong> · 작성: 유종선 · Confidential
+</footer>
 </body>
 </html>

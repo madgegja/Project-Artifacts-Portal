@@ -8,7 +8,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
             background: #F8FAFC;
             color: #1E293B;
             min-height: 100vh;
@@ -363,7 +363,49 @@
             .node { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
             .node-category { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
         }
-    </style>
+    
+  /* ── Back to Top ── */
+  .back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 44px;
+    height: 44px;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .back-to-top.visible { opacity: 1; visibility: visible; }
+  .back-to-top:hover { background: #1d4ed8; transform: translateY(-2px); }
+  @media print { .back-to-top { display: none !important; } }
+
+  /* ── Mobile Responsive ── */
+  @media (max-width: 768px) {
+    body { padding: 8px; }
+    section, .container > * { padding-left: 16px !important; padding-right: 16px !important; }
+    h1 { font-size: 22px !important; }
+    h2 { font-size: 18px !important; }
+    table { font-size: 12px; }
+    .hero { padding: 24px 20px !important; border-radius: 0 !important; }
+  }
+
+  @media (max-width: 900px) {
+    .flow-container { max-width: 100% !important; width: 100% !important; overflow-x: auto; }
+    .category-grid { max-width: 100% !important; width: 100% !important; overflow-x: auto; }
+  }
+</style>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>" type="image/svg+xml">
 </head>
 <body>
 
@@ -708,5 +750,16 @@
         <p>TOOMICS Global CS Operations &middot; 작성: 유종선 &middot; 2026-02-19 &middot; 데이터: 2025.07 ~ 2026.01</p>
     </div>
 
+
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="맨 위로">↑</button>
+<script>
+(function(){
+  var btn = document.querySelector('.back-to-top');
+  if(!btn) return;
+  window.addEventListener('scroll', function(){
+    btn.classList.toggle('visible', window.scrollY > 300);
+  });
+})();
+</script>
 </body>
 </html>
