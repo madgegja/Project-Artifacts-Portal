@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Toomics CS — Ticket Dashboard</title>
 <style>
+  html { scroll-behavior: smooth; }
 :root {
   --bg: #f8fafc; --bg2: #ffffff; --bg3: #f1f5f9;
   --text: #1e293b; --text2: #475569; --muted: #94a3b8;
@@ -22,7 +23,11 @@ body {
   font-size: 13px; line-height: 1.5;
   height: 100vh; overflow: hidden;
   display: flex; flex-direction: column;
-}
+
+    word-break: keep-all; overflow-wrap: break-word;
+  
+    -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important;
+  }
 
 /* ── Top Bar ── */
 .topbar {
@@ -296,6 +301,15 @@ select.flt:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,2
   .back-to-top.visible { opacity: 1; visibility: visible; }
   .back-to-top:hover { background: #1d4ed8; transform: translateY(-2px); }
   @media print { .back-to-top { display: none !important; } }
+
+  /* ══ UX Enhancement Patch (2026-02-23) ══ */
+  ::selection { background: #3b82f6; color: #fff; }
+  ::-moz-selection { background: #3b82f6; color: #fff; }
+  a:focus-visible, button:focus-visible { outline: 2px solid #3b82f6; outline-offset: 2px; border-radius: 4px; }
+  tbody tr:nth-child(even) { background: rgba(248,250,252,0.5); }
+  thead th { font-weight: 700 !important; }
+
+  h2, h3, [id] { scroll-margin-top: 24px; }
 </style>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>" type="image/svg+xml">
 </head>

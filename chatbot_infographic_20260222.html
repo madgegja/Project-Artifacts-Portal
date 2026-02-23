@@ -6,6 +6,7 @@
 <title>TOOMICS CS AI 챗봇 운영 인포그래픽 | 2026-02-22</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
+  html { scroll-behavior: smooth; }
   @page { size: A3 portrait; margin: 10mm; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -16,6 +17,10 @@
     line-height: 1.7;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+  
+    word-break: keep-all; overflow-wrap: break-word;
+  
+    font-size: 14px;
   }
 
   @media print {
@@ -587,6 +592,13 @@
   /* ── Table Responsive ── */
   .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 16px; }
   .table-wrap table { margin-bottom: 0; }
+
+  /* ══ UX Enhancement Patch (2026-02-23) ══ */
+  ::selection { background: #3b82f6; color: #fff; }
+  ::-moz-selection { background: #3b82f6; color: #fff; }
+  a:focus-visible, button:focus-visible { outline: 2px solid #3b82f6; outline-offset: 2px; border-radius: 4px; }
+  tbody tr:nth-child(even) { background: rgba(248,250,252,0.5); }
+  thead th { font-weight: 700 !important; }
 </style>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>" type="image/svg+xml">
 </head>

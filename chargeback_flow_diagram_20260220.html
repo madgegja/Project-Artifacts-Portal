@@ -9,6 +9,7 @@
 <meta name="date" content="2026-02-20">
 <title>TOOMICS 차지백 프로세스 플로우 다이어그램 | 유종선</title>
 <style>
+  html { scroll-behavior: smooth; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
@@ -231,8 +232,8 @@
     border-radius: 12px;
     margin-bottom: 8px;
   }
-  .branch-yes { background: #166534; color: #FFFFFF; color: #15803d; border: 1px solid #22c55e; }
-  .branch-no { background: #7f1d1d; color: #FFFFFF; color: #b91c1c; border: 1px solid #ef4444; }
+  .branch-yes { background: #dcfce7; color: #15803d; border: 1px solid #22c55e; }
+  .branch-no { background: #fef2f2; color: #b91c1c; border: 1px solid #ef4444; }
 
   /* ===== PG GRID ===== */
   .pg-grid {
@@ -613,6 +614,13 @@
     .mycard-flow-box { max-width: 100% !important; width: 100% !important; overflow-x: auto; }
     .flow-container { max-width: 100% !important; width: 100% !important; overflow-x: auto; }
   }
+
+  /* ══ UX Enhancement Patch (2026-02-23) ══ */
+  ::selection { background: #3b82f6; color: #fff; }
+  ::-moz-selection { background: #3b82f6; color: #fff; }
+  a:focus-visible, button:focus-visible { outline: 2px solid #3b82f6; outline-offset: 2px; border-radius: 4px; }
+  tbody tr:nth-child(even) { background: rgba(248,250,252,0.5); }
+  thead th { font-weight: 700 !important; }
 </style>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>" type="image/svg+xml">
 </head>

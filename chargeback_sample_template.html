@@ -8,13 +8,14 @@
 <meta name="date" content="2026-02-20">
 <title>Chargeback Explanation Template | 유종선</title>
 <style>
+  html { scroll-behavior: smooth; }
   @page { size: A4; margin: 10mm 12mm; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', 'Arial', sans-serif;
     color: #1a1a1a;
     background: #fff;
-    font-size: 10.5px;
+    font-size: 12px;
     line-height: 1.7;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
@@ -165,7 +166,16 @@
       .toc-grid, .grid-2, .grid-3, .stat-grid, .card-grid, .level-grid { grid-template-columns: 1fr !important; }
       .header-meta { flex-direction: column; gap: 8px !important; }
     }
-  </style>
+  
+  /* ══ UX Enhancement Patch (2026-02-23) ══ */
+  ::selection { background: #3b82f6; color: #fff; }
+  ::-moz-selection { background: #3b82f6; color: #fff; }
+  a:focus-visible, button:focus-visible { outline: 2px solid #3b82f6; outline-offset: 2px; border-radius: 4px; }
+  tbody tr:nth-child(even) { background: rgba(248,250,252,0.5); }
+  thead th { font-weight: 700 !important; }
+
+  .card:hover, .kpi:hover, .kpi-item:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: all 0.2s ease; }
+</style>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>" type="image/svg+xml">
 </head>
 <body>

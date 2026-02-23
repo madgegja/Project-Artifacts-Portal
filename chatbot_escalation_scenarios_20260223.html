@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toomics CS AI Chatbot — Escalation Scenarios (L1/L2/L3)</title>
     <style>
+  html { scroll-behavior: smooth; }
         :root {
             --red: #dc3545;
             --red-bg: #fff5f5;
@@ -32,7 +33,13 @@
             background: var(--gray-50);
             color: var(--gray-900);
             line-height: 1.7;
-        }
+        
+    word-break: keep-all; overflow-wrap: break-word;
+  
+    font-size: 14px;
+  
+    -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important;
+  }
 
         .container {
             max-width: 1100px;
@@ -317,6 +324,13 @@
     table { font-size: 12px; }
     .hero { padding: 24px 20px !important; border-radius: 0 !important; }
   }
+
+  /* ══ UX Enhancement Patch (2026-02-23) ══ */
+  ::selection { background: #3b82f6; color: #fff; }
+  ::-moz-selection { background: #3b82f6; color: #fff; }
+  a:focus-visible, button:focus-visible { outline: 2px solid #3b82f6; outline-offset: 2px; border-radius: 4px; }
+  tbody tr:nth-child(even) { background: rgba(248,250,252,0.5); }
+  thead th { font-weight: 700 !important; }
 </style>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>" type="image/svg+xml">
 </head>
