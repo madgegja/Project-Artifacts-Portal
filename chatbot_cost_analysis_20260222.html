@@ -639,9 +639,9 @@
     </div>
     <div class="kpi-card">
       <div class="kpi-icon">&#128200;</div>
-      <div class="kpi-value">~&#8361;260K</div>
+      <div class="kpi-value">~&#8361;190K</div>
       <div class="kpi-label">AI 월 운영비</div>
-      <div class="kpi-sub">Pro Max + API 토큰 + 서버</div>
+      <div class="kpi-sub">Pro Max 정액 + 서버 (API 토큰 비용 $0)</div>
     </div>
   </div>
 
@@ -674,14 +674,14 @@
         <span><span class="dot" style="background:#0ea5e9;"></span> <strong>Web+API 963건/월</strong> &rarr; <strong style="color:#38bdf8;">AI 챗봇 대상</strong></span>
       </div>
       <div style="font-size:11px; color:#64748b; margin-top:10px;">
-        &#128204; API 토큰 비용은 챗봇이 실제 처리하는 비이메일 <strong style="color:#94a3b8;">963건/월</strong> 기준으로만 산출합니다.
+        &#128204; claude-max-api-proxy 적용으로 API 토큰 비용 <strong style="color:#34d399;">$0</strong>. Pro Max 정액제로 건수 무관 동일 비용.
       </div>
     </div>
 
     <!-- AI 챗봇 운영 비용 (단일 full-width) -->
     <div class="chart-grid">
       <div class="chart-box full">
-        <h3>&#129302; AI 챗봇 운영 비용 (예상) <span class="chart-badge">TO-BE</span></h3>
+        <h3>&#129302; AI 챗봇 운영 비용 (예상) <span class="chart-badge">TO-BE</span> <span class="chart-badge" style="background:rgba(16,185,129,0.15);color:#34d399;">Proxy 적용</span></h3>
         <div class="table-wrap" style="border:none; margin-bottom:0;">
           <table>
             <thead>
@@ -691,16 +691,17 @@
               <tr style="background:rgba(139,92,246,0.06);">
                 <td><strong>Claude Pro Max 구독</strong></td>
                 <td class="num"><strong style="color:#a78bfa;">&#8361;140,000</strong></td>
-                <td style="color:#64748b;font-size:12px;">$100/월 정액제</td>
+                <td style="color:#64748b;font-size:12px;">$100/월 정액제 (무제한 API 포함)</td>
               </tr>
-              <tr><td>Claude API (Sonnet)</td><td class="num">$3 / $15</td><td style="color:#64748b;font-size:12px;">input / output per 1M tokens</td></tr>
-              <tr><td>건당 평균 토큰</td><td class="num">~9,600 tok</td><td style="color:#64748b;font-size:12px;">8,500 input + 1,100 output</td></tr>
-              <tr><td>건당 API 비용</td><td class="num" style="color:#a78bfa;">~&#8361;59</td><td style="color:#64748b;font-size:12px;">~$0.042/건 (평균 기준)</td></tr>
-              <tr><td>월간 API (963건 분류)</td><td class="num">~&#8361;57,000</td><td style="color:#64748b;font-size:12px;">비이메일 963건 &times; &#8361;59</td></tr>
-              <tr><td>월간 API (L2 Draft)</td><td class="num">~&#8361;14,000</td><td style="color:#64748b;font-size:12px;">472건 &times; &#8361;29 추가</td></tr>
-              <tr><td>서버 비용 (VPS)</td><td class="num">&#8361;50,000</td><td style="color:#64748b;font-size:12px;">월 고정</td></tr>
+              <tr style="background:rgba(16,185,129,0.04);">
+                <td>claude-max-api-proxy</td>
+                <td class="num" style="color:#34d399;">&#8361;0</td>
+                <td style="color:#34d399;font-size:12px;">✅ Pro Max 구독 → OpenAI 호환 프록시 → API 토큰 비용 $0</td>
+              </tr>
+              <tr><td><del style="color:#64748b;">Claude API (종량제)</del></td><td class="num" style="color:#64748b;"><del>~&#8361;71,000</del></td><td style="color:#34d399;font-size:12px;">✅ 프록시 적용으로 제거 (기존 &#8361;57K 분류 + &#8361;14K 초안)</td></tr>
+              <tr><td>서버 비용 (VPS)</td><td class="num">&#8361;50,000</td><td style="color:#64748b;font-size:12px;">월 고정 (FastAPI + 프록시 호스팅)</td></tr>
               <tr><td>ChromaDB</td><td class="num">&#8361;0</td><td style="color:#64748b;font-size:12px;">로컬 벡터 DB (무료)</td></tr>
-              <tr class="highlight-row"><td>총 AI 월 운영비</td><td class="num">~&#8361;260,000</td><td style="font-size:12px;">Pro Max + API + 서버</td></tr>
+              <tr class="highlight-row"><td>총 AI 월 운영비</td><td class="num"><strong style="color:#34d399;">~&#8361;190,000</strong></td><td style="font-size:12px;">Pro Max + 서버 <strong>(기존 대비 27% 절감)</strong></td></tr>
             </tbody>
           </table>
         </div>
@@ -709,48 +710,44 @@
 
     <!-- Token Cost Detail -->
     <div class="token-detail">
-      <h4>&#129518; API 토큰 비용 상세 산출 <span class="token-price-badge">Claude 3.5 Sonnet</span> <span class="token-price-badge">평균 기준</span></h4>
+      <h4>&#128640; API 프록시 아키텍처 <span class="token-price-badge" style="background:rgba(16,185,129,0.15);color:#34d399;">claude-max-api-proxy</span> <span class="token-price-badge" style="background:rgba(16,185,129,0.15);color:#34d399;">토큰 비용 $0</span></h4>
       <div style="margin-bottom:12px;">
-        <span class="token-price-badge">Input: $3.00 / 1M tokens</span>
-        <span class="token-price-badge">Output: $15.00 / 1M tokens</span>
-        <span class="token-price-badge">환율: &#8361;1,400 / $1</span>
+        <span class="token-price-badge" style="background:rgba(16,185,129,0.15);color:#34d399;">Pro Max 정액제 → 무제한 API</span>
+        <span class="token-price-badge" style="background:rgba(16,185,129,0.15);color:#34d399;">종량제 비용 완전 제거</span>
       </div>
       <div class="token-grid">
         <div>
-          <div style="font-size:13px; font-weight:700; color:#cbd5e1; margin-bottom:8px;">&#128300; 건당 토큰 사용량 (평균 기준)</div>
+          <div style="font-size:13px; font-weight:700; color:#cbd5e1; margin-bottom:8px;">&#128268; 프록시 구조</div>
           <table class="mini-table">
-            <tr><td>시스템 프롬프트 + 규칙</td><td>2,500 tok (input)</td></tr>
-            <tr><td>RAG 컨텍스트 (knowledge)</td><td>2,000 tok (input)</td></tr>
-            <tr><td>고객 메시지 + 대화이력</td><td>1,500 tok (input)</td></tr>
-            <tr><td>STEP A (분류+추출) 출력</td><td>500 tok (output)</td></tr>
-            <tr><td>STEP B (자연어 글루) 입력</td><td>2,500 tok (input)</td></tr>
-            <tr><td>STEP B 출력</td><td>600 tok (output)</td></tr>
-            <tr><td><strong>합계</strong></td><td><strong>8,500 in + 1,100 out</strong></td></tr>
+            <tr><td>구독 플랜</td><td><strong>Claude Pro Max ($100/월)</strong></td></tr>
+            <tr><td>프록시</td><td>claude-max-api-proxy (localhost:3456)</td></tr>
+            <tr><td>인터페이스</td><td>OpenAI 호환 API (/v1/chat/completions)</td></tr>
+            <tr><td>모델</td><td>Claude Sonnet 4 (프록시 매핑)</td></tr>
+            <tr><td>자동 복구</td><td>systemd 서비스 + 5회 retry</td></tr>
+            <tr><td>헬스체크</td><td>20초 대기 + 생존 확인</td></tr>
+            <tr><td><strong>건당 API 비용</strong></td><td><strong style="color:#34d399;">$0.00 (정액제 포함)</strong></td></tr>
           </table>
         </div>
         <div>
-          <div style="font-size:13px; font-weight:700; color:#cbd5e1; margin-bottom:8px;">&#128178; 건당 비용 산출</div>
+          <div style="font-size:13px; font-weight:700; color:#cbd5e1; margin-bottom:8px;">&#128178; 비용 비교 (기존 vs 프록시)</div>
           <table class="mini-table">
-            <tr><td>Input 비용</td><td>8,500 / 1M &times; $3.00 = <strong>$0.026</strong></td></tr>
-            <tr><td>Output 비용</td><td>1,100 / 1M &times; $15.00 = <strong>$0.017</strong></td></tr>
-            <tr><td>건당 합계 (USD)</td><td><strong>~$0.042</strong></td></tr>
-            <tr><td>건당 합계 (KRW)</td><td><strong style="color:#fbbf24;">~&#8361;59/건</strong></td></tr>
+            <tr><td>기존 API 종량제</td><td><del style="color:#64748b;">&#8361;71,000/월</del></td></tr>
+            <tr><td>프록시 적용 후</td><td><strong style="color:#34d399;">&#8361;0/월</strong></td></tr>
+            <tr><td style="color:#34d399;font-weight:700;">월 절감액</td><td><strong style="color:#34d399;">&#8361;71,000</strong></td></tr>
           </table>
-          <div style="margin-top:14px; font-size:13px; font-weight:700; color:#cbd5e1; margin-bottom:8px;">&#128202; 월간 합계 (비이메일 963건 기준)</div>
+          <div style="margin-top:14px; font-size:13px; font-weight:700; color:#cbd5e1; margin-bottom:8px;">&#128202; 최종 월간 비용</div>
           <table class="mini-table">
-            <tr><td>전체 분류 (963건)</td><td>&#8361;56,817</td></tr>
-            <tr><td>L2 Draft 추가 (472건)</td><td>&#8361;13,688</td></tr>
             <tr><td>Claude Pro Max</td><td>&#8361;140,000</td></tr>
             <tr><td>서버 (VPS)</td><td>&#8361;50,000</td></tr>
-            <tr><td><strong>총 AI 운영비</strong></td><td><strong>~&#8361;260,000/월</strong></td></tr>
+            <tr><td>API 토큰</td><td style="color:#34d399;"><strong>&#8361;0</strong></td></tr>
+            <tr><td><strong>총 AI 운영비</strong></td><td><strong style="color:#34d399;">~&#8361;190,000/월</strong></td></tr>
           </table>
         </div>
       </div>
       <div class="token-calc">
-        <strong>&#9888;&#65039; 산출 기준:</strong> 2회 API 호출/건 (STEP A 분류 + STEP B 자연어 글루), 버퍼 미포함 평균 기준.
-        이메일 접수 699건(42%)은 상담원이 전담 처리하므로 API 비용에서 제외.
-        챗봇이 실제 처리하는 비이메일 <strong>963건/월만</strong> 토큰 비용에 반영합니다.
-        별도 <strong>Claude Pro Max $100/월</strong> 정액제 구독료를 포함합니다.
+        <strong style="color:#34d399;">✅ 프록시 적용 완료:</strong> Claude Pro Max 구독의 무제한 API를 <strong>claude-max-api-proxy</strong>를 통해 OpenAI 호환 엔드포인트로 변환.
+        종량제 API 토큰 비용이 <strong>완전 제거</strong>되어 건수 증가에 따른 추가 비용이 없습니다.
+        월 963건이든 2,000건이든 <strong>정액 &#8361;190,000으로 동일</strong>합니다.
       </div>
     </div>
   </section>
