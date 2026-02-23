@@ -34,10 +34,10 @@ body {
 }
 .topbar-logo { font-size:18px; font-weight:800; letter-spacing:-0.3px; color:var(--text); position:relative; }
 .topbar-logo span { color: var(--blue); }
-.topbar-sub { font-size:11px; color:var(--muted); position:relative; margin-top:1px; }
+.topbar-sub { font-size: 12px; color:var(--muted); position:relative; margin-top:1px; }
 .topbar-right { margin-left:auto; display:flex; align-items:center; gap:10px; position:relative; }
 .auto-refresh-badge {
-  font-size:11px; padding:3px 10px; border-radius:20px;
+  font-size: 12px; padding:3px 10px; border-radius:20px;
   background:#ecfdf5; color:#059669;
   border:1px solid #a7f3d0; cursor:pointer;
   user-select:none; transition: all .2s;
@@ -49,7 +49,7 @@ body {
   font-size:12px; font-weight:700; transition: all .2s;
 }
 .refresh-btn:hover { background: #dbeafe; }
-.last-updated { font-size:11px; color:var(--muted); }
+.last-updated { font-size: 12px; color:var(--muted); }
 
 /* ── KPI Bar ── */
 .kpi-bar {
@@ -65,7 +65,7 @@ body {
 .kpi-card:hover { border-color: var(--blue); transform: translateY(-2px); box-shadow: var(--shadow2); }
 .kpi-card.active { border-color: var(--blue) !important; background: #eff6ff; }
 .kpi-card .k-val { font-size:28px; font-weight:800; line-height:1.1; }
-.kpi-card .k-lbl { font-size:11px; color:var(--text2); margin-top:4px; font-weight:600; }
+.kpi-card .k-lbl { font-size: 12px; color:var(--text2); margin-top:4px; font-weight:600; }
 .kpi-card.k-new { border-top-color: var(--cyan); } .kpi-card.k-new .k-val { color:var(--cyan); }
 .kpi-card.k-open { border-top-color: var(--blue); } .kpi-card.k-open .k-val { color:var(--blue); }
 .kpi-card.k-pending { border-top-color: var(--amber); } .kpi-card.k-pending .k-val { color:var(--amber); }
@@ -92,10 +92,10 @@ select.flt:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,2
 .filter-sep { width:1px; height:20px; background:var(--border); }
 .clear-btn {
   background:#fff; border:1px solid var(--border); color:var(--text2);
-  padding:6px 12px; border-radius:8px; cursor:pointer; font-size:11px; font-weight:600; transition:all .2s;
+  padding:6px 12px; border-radius:8px; cursor:pointer; font-size: 12px; font-weight:600; transition:all .2s;
 }
 .clear-btn:hover { border-color:var(--red); color:var(--red); background:#fef2f2; }
-.result-count { font-size:11px; color:var(--muted); margin-left:auto; }
+.result-count { font-size: 12px; color:var(--muted); margin-left:auto; }
 
 /* ── Main Layout ── */
 .main { display:flex; flex:1; overflow:hidden; }
@@ -128,20 +128,20 @@ select.flt:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,2
 
 .thead {
   background: #f8fafc; position:sticky; top:0; z-index:10;
-  border-bottom:2px solid var(--border); font-size:11px;
+  border-bottom:2px solid var(--border); font-size: 12px;
   color:var(--text2); font-weight:700; text-transform:uppercase; letter-spacing:.5px;
 }
 .thead .ticket-row { min-height:36px; }
 .thead .ticket-row:hover { background:transparent; cursor:default; }
 
-.t-id { font-size:11px; font-weight:700; color:var(--blue); font-family:monospace; }
+.t-id { font-size: 12px; font-weight:700; color:var(--blue); font-family:monospace; }
 .t-subject { overflow:hidden; }
 .t-subject .subj { font-weight:600; color:var(--text); font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.t-subject .desc { font-size:11px; color:var(--text2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:2px; }
-.t-channel { font-size:11px; color:var(--text2); }
+.t-subject .desc { font-size: 12px; color:var(--text2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:2px; }
+.t-channel { font-size: 12px; color:var(--text2); }
 .t-level .badge, .t-cat .badge, .t-status .badge {
   display:inline-block; padding:2px 8px; border-radius:8px;
-  font-size:10px; font-weight:700;
+  font-size: 12px; font-weight:700;
 }
 .badge-l1 { background:#fef2f2; color:#dc2626; border:1px solid #fecaca; }
 .badge-l2 { background:#fffbeb; color:#d97706; border:1px solid #fde68a; }
@@ -202,11 +202,11 @@ select.flt:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,2
   display:flex; flex-wrap:wrap; gap:8px; flex-shrink:0;
 }
 .meta-chip {
-  font-size:11px; padding:4px 10px; border-radius:8px;
+  font-size: 12px; padding:4px 10px; border-radius:8px;
   background:#f8fafc; border:1px solid var(--border); color:var(--text2);
   display:flex; align-items:center; gap:4px; font-weight:500;
 }
-.meta-chip .label { color:var(--muted); font-size:10px; font-weight:600; }
+.meta-chip .label { color:var(--muted); font-size: 12px; font-weight:600; }
 
 .detail-body { flex:1; overflow-y:auto; padding:16px 20px; }
 .detail-body::-webkit-scrollbar { width:5px; }
@@ -231,17 +231,17 @@ select.flt:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,2
 .comment-item { border-radius:10px; overflow:hidden; }
 .comment-item.customer { background: #eff6ff; border:1px solid #bfdbfe; margin-right:32px; }
 .comment-item.bot { background: #ecfdf5; border:1px solid #a7f3d0; margin-left:32px; }
-.comment-item.internal { background: #fffbeb; border:1px solid #fde68a; margin-left:32px; font-size:11px; }
-.comment-item.fraud { background: #fef2f2; border:1px solid #fca5a5; margin-left:32px; font-size:11px; }
+.comment-item.internal { background: #fffbeb; border:1px solid #fde68a; margin-left:32px; font-size: 12px; }
+.comment-item.fraud { background: #fef2f2; border:1px solid #fca5a5; margin-left:32px; font-size: 12px; }
 .comment-item.fraud .c-author { color:#dc2626; }
 .c-fraud { background:#fecaca; color:#991b1b; }
 .comment-meta {
-  padding:7px 12px; display:flex; align-items:center; gap:8px; font-size:11px;
+  padding:7px 12px; display:flex; align-items:center; gap:8px; font-size: 12px;
   border-bottom:1px solid rgba(0,0,0,.06);
 }
 .comment-meta .c-author { font-weight:700; color:var(--text); }
-.comment-meta .c-time { color:var(--muted); margin-left:auto; font-size:11px; }
-.comment-meta .c-badge { font-size:10px; padding:1px 6px; border-radius:6px; }
+.comment-meta .c-time { color:var(--muted); margin-left:auto; font-size: 12px; }
+.comment-meta .c-badge { font-size: 12px; padding:1px 6px; border-radius:6px; }
 .c-cust { background:#dbeafe; color:#1d4ed8; }
 .c-bot { background:#d1fae5; color:#047857; }
 .c-int { background:#fef3c7; color:#b45309; }
@@ -263,7 +263,7 @@ select.flt:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,2
 .demo-banner {
   position:fixed; bottom:12px; left:12px; z-index:999;
   background:#fffbeb; border:1px solid #fde68a; color:#92400e;
-  padding:6px 14px; border-radius:8px; font-size:11px; font-weight:600;
+  padding:6px 14px; border-radius:8px; font-size: 12px; font-weight:600;
   box-shadow: var(--shadow2);
 }
 ::-webkit-scrollbar { width:6px; height:6px; }
@@ -736,7 +736,7 @@ function renderTickets(tickets) {
   }
   body.innerHTML = tickets.map(t => {
     const lvl = t.level !== '-' ? `<span class="badge badge-${t.level.toLowerCase()}">${t.level}</span>` : '<span class="badge-dash">–</span>';
-    const cat = `<span style="font-size:11px;color:var(--text2);">${t.category}</span>`;
+    const cat = `<span style="font-size: 12px;color:var(--text2);">${t.category}</span>`;
     const sta = `<span class="badge badge-${t.status}">${statusLabel(t.status)}</span>`;
     const levelClass = t.level !== '-' ? `tr-${t.level.toLowerCase()}` : '';
     const activeClass = activeTicketId === t.id ? 'active' : '';
@@ -748,7 +748,7 @@ function renderTickets(tickets) {
           <div class="subj">${esc(t.subject)}</div>
           <div class="desc">${esc(t.description)}</div>
         </span>
-        <span class="t-channel" style="font-size:11px;">${esc(t.channel)}</span>
+        <span class="t-channel" style="font-size: 12px;">${esc(t.channel)}</span>
         <span class="t-lang">${lang}</span>
         <span class="t-level">${lvl}</span>
         <span class="t-cat">${cat}</span>

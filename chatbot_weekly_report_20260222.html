@@ -71,11 +71,11 @@
   .header-left { position: relative; }
   .header-tag {
     display: inline-block;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.25);
+    background: #CBD5E1;
+    border: 1px solid #94A3B8;
     border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     padding: 3px 14px;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -126,14 +126,14 @@
   .kpi.kpi-amber::after { background: var(--amber); }
   .kpi.kpi-purple::after { background: var(--purple); }
   .kpi.kpi-cyan::after { background: var(--cyan); }
-  .kpi .kpi-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .kpi .kpi-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
   .kpi .kpi-value { font-size: 28px; font-weight: 800; margin: 6px 0 2px; }
   .kpi.kpi-blue .kpi-value { color: var(--blue); }
   .kpi.kpi-green .kpi-value { color: var(--green); }
   .kpi.kpi-amber .kpi-value { color: var(--amber); }
   .kpi.kpi-purple .kpi-value { color: var(--purple); }
   .kpi.kpi-cyan .kpi-value { color: var(--cyan); }
-  .kpi .kpi-sub { font-size: 11px; color: var(--text2); }
+  .kpi .kpi-sub { font-size: 12px; color: var(--text2); }
 
   /* ── Progress ── */
   .progress-row {
@@ -175,12 +175,12 @@
     background: rgba(100,116,139,0.08);
     border: 1px solid rgba(100,116,139,0.2);
   }
-  .timeline-item .tl-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .timeline-item .tl-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
   .timeline-item.done .tl-label { color: var(--green); }
   .timeline-item.current .tl-label { color: var(--blue); }
   .timeline-item.future .tl-label { color: var(--muted); }
   .timeline-item .tl-title { font-size: 13px; font-weight: 700; margin-top: 4px; }
-  .timeline-item .tl-period { font-size: 11px; color: var(--text2); margin-top: 2px; }
+  .timeline-item .tl-period { font-size: 12px; color: var(--text2); margin-top: 2px; }
   .timeline-arrow {
     display: flex; align-items: center; padding: 0 6px;
     font-size: 16px; color: var(--muted);
@@ -206,17 +206,17 @@
   table { width: 100%; border-collapse: collapse; }
   thead th {
     background: rgba(14,165,233,0.08);
-    color: var(--cyan); font-weight: 700; font-size: 11px;
+    color: var(--cyan); font-weight: 700; font-size: 12px;
     text-transform: uppercase; letter-spacing: 0.5px;
     padding: 8px 12px; text-align: left;
     border-bottom: 2px solid var(--border);
   }
   tbody td {
     padding: 8px 12px;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
+    border-bottom: 1px solid #E2E8F0;
     color: var(--text2); font-size: 13px;
   }
-  tbody tr:hover { background: rgba(14,165,233,0.03); }
+  tbody tr:hover { background: rgba(14,165,233,0.04); }
 
   /* ── Risk / Action ── */
   .ra-grid {
@@ -242,21 +242,21 @@
   }
   .cat-bar-label { width: 90px; text-align: right; color: var(--text2); flex-shrink: 0; }
   .cat-bar-track {
-    flex: 1; height: 18px; background: rgba(255,255,255,0.04);
+    flex: 1; height: 18px; background: #E2E8F0;
     border-radius: 4px; overflow: hidden; position: relative;
   }
   .cat-bar-fill {
     height: 100%; border-radius: 4px;
     display: flex; align-items: center; padding-left: 6px;
-    font-size: 10px; font-weight: 700; color: #1E293B;
+    font-size: 12px; font-weight: 700; color: #1E293B;
     min-width: 30px;
   }
-  .cat-bar-pct { width: 40px; text-align: right; color: var(--muted); font-size: 11px; flex-shrink: 0; }
+  .cat-bar-pct { width: 40px; text-align: right; color: var(--muted); font-size: 12px; flex-shrink: 0; }
 
   /* ── Badges ── */
   .badge {
     display: inline-block; padding: 2px 8px; border-radius: 10px;
-    font-size: 10px; font-weight: 700;
+    font-size: 12px; font-weight: 700;
   }
   .b-green { background: rgba(5,150,105,0.12); color: #047857; }
   .b-blue { background: rgba(3,105,161,0.10); color: #0369a1; }
@@ -267,7 +267,7 @@
 
   .footer {
     text-align: center; padding: 16px 40px 32px;
-    font-size: 11px; color: var(--muted);
+    font-size: 12px; color: var(--muted);
   }
 </style>
 </head>
@@ -359,7 +359,7 @@
             <div class="tl-period">2026 H2 (협의 후)</div>
           </div>
         </div>
-        <div style="margin-top:12px;padding:10px 14px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.08);border-radius:8px;font-size:11px;color:var(--text2);line-height:1.7;">
+        <div style="margin-top:12px;padding:10px 14px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.08);border-radius:8px;font-size: 12px;color:var(--text2);line-height:1.7;">
           <strong style="color:var(--blue);">현재 상태:</strong> 프로토타입 완료 → 고도화 진행 예정<br>
           <strong style="color:var(--muted);">다음 단계:</strong> 프로토타입 고도화 완료 후, 개발팀과 실 프로덕트 도입 논의 진행
         </div>
@@ -477,16 +477,16 @@
 
     <!-- 핵심 인사이트 배너 -->
     <div style="background:linear-gradient(135deg,rgba(14,165,233,0.08),rgba(16,185,129,0.06));border:2px solid rgba(14,165,233,0.12);border-radius:14px;padding:16px 20px;margin-bottom:14px;text-align:center;">
-      <div style="font-size:10px;color:var(--cyan);font-weight:700;letter-spacing:1.5px;margin-bottom:6px;">CORE INSIGHT — 실데이터 11,621건 분석</div>
+      <div style="font-size: 12px;color:var(--cyan);font-weight:700;letter-spacing:1.5px;margin-bottom:6px;">CORE INSIGHT — 실데이터 11,621건 분석</div>
       <div style="font-size:18px;font-weight:800;color:var(--text);line-height:1.4;">
         CS 상담의 <span style="color:var(--cyan);font-size:24px;">83%</span>가 반복적이지만 <span style="color:var(--amber);">반드시 거쳐야 하는 정보 확인 단계</span>
       </div>
       <div style="display:flex;justify-content:center;gap:12px;margin-top:10px;flex-wrap:wrap;">
-        <span style="background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.25);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;color:#0369a1;">결제정보 요청 45%</span>
-        <span style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;color:#047857;">구독취소 확인 18%</span>
-        <span style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.25);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;color:#b45309;">환불 처리 10%</span>
-        <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;color: #b91c1c;">환불 거절 7%</span>
-        <span style="background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.25);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;color: #6d28d9;">계정 삭제 3%</span>
+        <span style="background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.25);border-radius:8px;padding:4px 10px;font-size: 12px;font-weight:700;color:#0369a1;">결제정보 요청 45%</span>
+        <span style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);border-radius:8px;padding:4px 10px;font-size: 12px;font-weight:700;color:#047857;">구독취소 확인 18%</span>
+        <span style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.25);border-radius:8px;padding:4px 10px;font-size: 12px;font-weight:700;color:#b45309;">환불 처리 10%</span>
+        <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:4px 10px;font-size: 12px;font-weight:700;color: #b91c1c;">환불 거절 7%</span>
+        <span style="background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.25);border-radius:8px;padding:4px 10px;font-size: 12px;font-weight:700;color: #6d28d9;">계정 삭제 3%</span>
       </div>
     </div>
 
@@ -524,7 +524,7 @@
         <div style="padding:8px 0; font-size:13px; color:var(--text2); line-height:1.7;">
           <!-- CX Pillar -->
           <div style="padding:10px 12px;background:rgba(14,165,233,0.06);border:1px solid rgba(3,105,161,0.10);border-radius:10px;margin-bottom:10px;">
-            <div style="font-size:10px;color:#4338ca;font-weight:700;letter-spacing:1px;margin-bottom:4px;">🎯 CUSTOMER EXPERIENCE → SATISFACTION & LOYALTY</div>
+            <div style="font-size: 12px;color:#4338ca;font-weight:700;letter-spacing:1px;margin-bottom:4px;">🎯 CUSTOMER EXPERIENCE → SATISFACTION & LOYALTY</div>
             <div style="font-size:12px;color:var(--text2);line-height:1.7;">
               대기 7~29일 → <strong style="color:var(--cyan);">AI 즉시 안내</strong> → 빠른 해결 경험<br>
               좋은 CS 경험 → <strong style="color:var(--cyan);">서비스 신뢰도 + 브랜드 충성도</strong> 강화
@@ -532,7 +532,7 @@
           </div>
           <!-- Ops Pillar -->
           <div style="padding:10px 12px;background:rgba(16,185,129,0.06);border:1px solid rgba(5,150,105,0.12);border-radius:10px;margin-bottom:10px;">
-            <div style="font-size:10px;color:#b45309;font-weight:700;letter-spacing:1px;margin-bottom:4px;">⚡ CS OPERATIONS → EFFICIENCY ×3~4</div>
+            <div style="font-size: 12px;color:#b45309;font-weight:700;letter-spacing:1px;margin-bottom:4px;">⚡ CS OPERATIONS → EFFICIENCY ×3~4</div>
             <div style="font-size:12px;color:var(--text2);line-height:1.7;">
               정보 미리 확보 → <strong style="color:var(--green);">첫 응답 해결율 3~4배</strong><br>
               38% 셀프 해결 → <strong style="color:var(--green);">티켓 감소 + 판단 업무 집중</strong>
