@@ -65,8 +65,8 @@
   }
   .hero-badge {
     display: inline-block;
-    background: rgba(0,0,0,0.06);
-    border: 1px solid rgba(0,0,0,0.08);
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
     border-radius: 20px;
     padding: 5px 16px;
     font-size: 12px;
@@ -206,10 +206,10 @@
     line-height: 1.1;
     margin-bottom: 4px;
   }
-  .kpi-card:nth-child(1) .kpi-number { color: #60a5fa; }
-  .kpi-card:nth-child(2) .kpi-number { color: #34d399; }
-  .kpi-card:nth-child(3) .kpi-number { color: #fbbf24; }
-  .kpi-card:nth-child(4) .kpi-number { color: #a78bfa; }
+  .kpi-card:nth-child(1) .kpi-number { color: #1d4ed8; }
+  .kpi-card:nth-child(2) .kpi-number { color: #047857; }
+  .kpi-card:nth-child(3) .kpi-number { color: #b45309; }
+  .kpi-card:nth-child(4) .kpi-number { color: #6d28d9; }
   .kpi-unit {
     font-size: 16px;
     font-weight: 600;
@@ -276,9 +276,9 @@
     font-size: 11px;
     font-weight: 600;
   }
-  .cat-badge.auto { background: rgba(16,185,129,0.15); color: #34d399; }
-  .cat-badge.partial { background: rgba(245,158,11,0.15); color: #fbbf24; }
-  .cat-badge.manual { background: rgba(239,68,68,0.15); color: #f87171; }
+  .cat-badge.auto { background: rgba(5,150,105,0.12); color: #047857; }
+  .cat-badge.partial { background: rgba(180,83,9,0.10); color: #b45309; }
+  .cat-badge.manual { background: rgba(185,28,28,0.10); color: #b91c1c; }
 
   /* ── Escalation ── */
   .escalation-chart-container {
@@ -359,9 +359,9 @@
     font-weight: 700;
     text-align: center;
   }
-  .pipe-result.l1 { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
-  .pipe-result.l2 { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
-  .pipe-result.l3 { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+  .pipe-result.l1 { background: rgba(185,28,28,0.10); color: #b91c1c; border: 1px solid rgba(239,68,68,0.3); }
+  .pipe-result.l2 { background: rgba(180,83,9,0.10); color: #b45309; border: 1px solid rgba(245,158,11,0.3); }
+  .pipe-result.l3 { background: rgba(5,150,105,0.12); color: #047857; border: 1px solid rgba(16,185,129,0.3); }
 
   /* ── Market Chart ── */
   .market-chart-wrap {
@@ -387,7 +387,7 @@
     background: rgba(255,255,255,0.02);
   }
   .flag-list li.critical { border-color: #ef4444; }
-  .flag-list li.supporting { border-color: #f59e0b; }
+  .flag-list li.supporting { border-color: #92400e; }
   .flag-type {
     font-size: 10px;
     font-weight: 700;
@@ -395,8 +395,8 @@
     letter-spacing: 0.5px;
     margin-bottom: 2px;
   }
-  .flag-type.critical { color: #f87171; }
-  .flag-type.supporting { color: #fbbf24; }
+  .flag-type.critical { color: #b91c1c; }
+  .flag-type.supporting { color: #b45309; }
   .gauge-container {
     display: flex;
     flex-direction: column;
@@ -420,9 +420,9 @@
     font-size: 12px;
     font-weight: 600;
   }
-  .gauge-labels span:nth-child(1) { color: #4ade80; }
-  .gauge-labels span:nth-child(2) { color: #facc15; }
-  .gauge-labels span:nth-child(3) { color: #f87171; }
+  .gauge-labels span:nth-child(1) { color: #15803d; }
+  .gauge-labels span:nth-child(2) { color: #854d0e; }
+  .gauge-labels span:nth-child(3) { color: #b91c1c; }
   .gauge-zones {
     display: flex;
     width: 100%;
@@ -482,8 +482,8 @@
     align-items: center;
     gap: 8px;
   }
-  .comparison-card.before .comparison-title { color: #f87171; }
-  .comparison-card.after .comparison-title { color: #34d399; }
+  .comparison-card.before .comparison-title { color: #b91c1c; }
+  .comparison-card.after .comparison-title { color: #047857; }
   .comparison-item {
     display: flex;
     justify-content: space-between;
@@ -886,15 +886,15 @@
         </div>
         <div class="comparison-item">
           <span class="c-label">평균 응답 시간</span>
-          <span class="c-value" style="color:#f87171;">24~48시간</span>
+          <span class="c-value" style="color:#b91c1c;">24~48시간</span>
         </div>
         <div class="comparison-item">
           <span class="c-label">야간/주말 대응</span>
-          <span class="c-value" style="color:#f87171;">불가</span>
+          <span class="c-value" style="color:#b91c1c;">불가</span>
         </div>
         <div class="comparison-item">
           <span class="c-label">자동 처리율</span>
-          <span class="c-value" style="color:#f87171;">0%</span>
+          <span class="c-value" style="color:#b91c1c;">0%</span>
         </div>
       </div>
       <div class="comparison-arrow">&#x27A1;&#xFE0F;</div>
@@ -902,7 +902,7 @@
         <div class="comparison-title">&#x2705; After AI</div>
         <div class="comparison-item">
           <span class="c-label">자동 처리</span>
-          <span class="c-value" style="color:#34d399;">630건/월 (38%)</span>
+          <span class="c-value" style="color:#047857;">630건/월 (38%)</span>
         </div>
         <div class="comparison-item">
           <span class="c-label">상담원 처리</span>
@@ -910,15 +910,15 @@
         </div>
         <div class="comparison-item">
           <span class="c-label">L3 응답 시간</span>
-          <span class="c-value" style="color:#34d399;">즉시 안내</span>
+          <span class="c-value" style="color:#047857;">즉시 안내</span>
         </div>
         <div class="comparison-item">
           <span class="c-label">24/7 대응</span>
-          <span class="c-value" style="color:#34d399;">야간·주말·공휴일 상시</span>
+          <span class="c-value" style="color:#047857;">야간·주말·공휴일 상시</span>
         </div>
         <div class="comparison-item">
           <span class="c-label">자동 처리율</span>
-          <span class="c-value" style="color:#34d399;">38%</span>
+          <span class="c-value" style="color:#047857;">38%</span>
         </div>
       </div>
     </div>
@@ -955,37 +955,37 @@
     <!-- 핵심 인사이트: 83% -->
     <div style="background:linear-gradient(135deg,rgba(14,165,233,0.08),rgba(16,185,129,0.06));border:2px solid rgba(14,165,233,0.12);border-radius:16px;padding:24px 28px;margin-bottom:20px;">
       <div style="text-align:center;margin-bottom:14px;">
-        <div style="font-size:11px;color:#38bdf8;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;">CORE INSIGHT — 실데이터 11,621건 분석</div>
+        <div style="font-size:11px;color:#0369a1;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;">CORE INSIGHT — 실데이터 11,621건 분석</div>
         <div style="font-size:20px;font-weight:800;color:#1E293B;line-height:1.4;">
-          CS 상담의 <span style="color:#38bdf8;font-size:28px;">83%</span>가 <span style="color:#fbbf24;">반복적이지만 반드시 거쳐야 하는</span> 정보 확인 단계
+          CS 상담의 <span style="color:#0369a1;font-size:28px;">83%</span>가 <span style="color:#b45309;">반복적이지만 반드시 거쳐야 하는</span> 정보 확인 단계
         </div>
       </div>
       <div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;">
-        <span style="background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.25);border-radius:20px;padding:5px 12px;font-size:11px;color:#7dd3fc;font-weight:600;">결제정보 요청 45%</span>
-        <span style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);border-radius:20px;padding:5px 12px;font-size:11px;color:#6ee7b7;font-weight:600;">구독취소 확인 18%</span>
-        <span style="background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.2);border-radius:20px;padding:5px 12px;font-size:11px;color:#fcd34d;font-weight:600;">환불 처리 10%</span>
-        <span style="background:rgba(244,114,182,0.1);border:1px solid rgba(244,114,182,0.2);border-radius:20px;padding:5px 12px;font-size:11px;color:#f9a8d4;font-weight:600;">환불 거절 7%</span>
-        <span style="background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2);border-radius:20px;padding:5px 12px;font-size:11px;color:#c4b5fd;font-weight:600;">계정 삭제 3%</span>
+        <span style="background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.25);border-radius:20px;padding:5px 12px;font-size:11px;color:#0369a1;font-weight:600;">결제정보 요청 45%</span>
+        <span style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);border-radius:20px;padding:5px 12px;font-size:11px;color:#047857;font-weight:600;">구독취소 확인 18%</span>
+        <span style="background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.2);border-radius:20px;padding:5px 12px;font-size:11px;color:#b45309;font-weight:600;">환불 처리 10%</span>
+        <span style="background:rgba(244,114,182,0.1);border:1px solid rgba(244,114,182,0.2);border-radius:20px;padding:5px 12px;font-size:11px;color: #be185d;font-weight:600;">환불 거절 7%</span>
+        <span style="background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2);border-radius:20px;padding:5px 12px;font-size:11px;color: #6d28d9;font-weight:600;">계정 삭제 3%</span>
       </div>
     </div>
 
     <!-- Before / After -->
-    <div style="background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.15);border-radius:16px;padding:28px 32px;">
+    <div style="background:rgba(16,185,129,0.04);border:1px solid rgba(5,150,105,0.12);border-radius:16px;padding:28px 32px;">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;">
         <div style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.12);border-radius:12px;padding:16px 20px;">
-          <div style="font-size:11px;font-weight:800;color:#fca5a5;letter-spacing:1px;margin-bottom:8px;">BEFORE — 반복 왕복 3~5회</div>
+          <div style="font-size:11px;font-weight:800;color: #b91c1c;letter-spacing:1px;margin-bottom:8px;">BEFORE — 반복 왕복 3~5회</div>
           <div style="font-size:13px;color:#64748B;line-height:1.8;">
-            운영자가 매번 <strong style="color:#f87171;">동일한 정보를 반복 요청</strong><br>
-            정보 부족 → 추가 왕복 → <strong style="color:#f87171;">7~29일 소요</strong><br>
+            운영자가 매번 <strong style="color:#b91c1c;">동일한 정보를 반복 요청</strong><br>
+            정보 부족 → 추가 왕복 → <strong style="color:#b91c1c;">7~29일 소요</strong><br>
             첫 응답에서 해결하기 어려움
           </div>
         </div>
         <div style="background:rgba(16,185,129,0.05);border:1px solid rgba(16,185,129,0.12);border-radius:12px;padding:16px 20px;">
-          <div style="font-size:11px;font-weight:800;color:#6ee7b7;letter-spacing:1px;margin-bottom:8px;">AFTER — 스마트 레이어링</div>
+          <div style="font-size:11px;font-weight:800;color:#047857;letter-spacing:1px;margin-bottom:8px;">AFTER — 스마트 레이어링</div>
           <div style="font-size:13px;color:#64748B;line-height:1.8;">
-            고객이 <strong style="color:#6ee7b7;">티켓 전 AI 안내로 양식 확인 + 정보 제공</strong><br>
-            운영자가 <strong style="color:#6ee7b7;">필요 정보를 이미 확보</strong>한 채 처리<br>
-            <strong style="color:#6ee7b7;">CS 처리 효율 3~4배 향상</strong>
+            고객이 <strong style="color:#047857;">티켓 전 AI 안내로 양식 확인 + 정보 제공</strong><br>
+            운영자가 <strong style="color:#047857;">필요 정보를 이미 확보</strong>한 채 처리<br>
+            <strong style="color:#047857;">CS 처리 효율 3~4배 향상</strong>
           </div>
         </div>
       </div>
@@ -997,18 +997,18 @@
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
             <div style="width:30px;height:30px;background:linear-gradient(135deg,#0ea5e9,#6366f1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;">🎯</div>
             <div>
-              <div style="font-size:9px;color:#818cf8;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CUSTOMER EXPERIENCE</div>
-              <div style="font-size:13px;font-weight:800;color:#38bdf8;">고객 경험 향상 → 서비스 만족도 극대화</div>
+              <div style="font-size:9px;color:#4338ca;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CUSTOMER EXPERIENCE</div>
+              <div style="font-size:13px;font-weight:800;color:#0369a1;">고객 경험 향상 → 서비스 만족도 극대화</div>
             </div>
           </div>
           <div style="display:flex;flex-direction:column;gap:5px;font-size:11px;color:#64748B;line-height:1.5;margin-bottom:10px;">
-            <div>▸ 대기 7~29일 → AI <strong style="color:#7dd3fc;">즉시 양식 안내</strong></div>
-            <div>▸ 확실한 양식 → <strong style="color:#7dd3fc;">빠른 CS 해결</strong> 경험</div>
-            <div>▸ 좋은 CS 경험 → <strong style="color:#7dd3fc;">신뢰도 + 충성도</strong> 강화</div>
+            <div>▸ 대기 7~29일 → AI <strong style="color:#0369a1;">즉시 양식 안내</strong></div>
+            <div>▸ 확실한 양식 → <strong style="color:#0369a1;">빠른 CS 해결</strong> 경험</div>
+            <div>▸ 좋은 CS 경험 → <strong style="color:#0369a1;">신뢰도 + 충성도</strong> 강화</div>
             <div>▸ 24/7 다국어 → 글로벌 커버</div>
           </div>
           <div style="text-align:center;padding:6px 10px;background:rgba(14,165,233,0.08);border:1px solid rgba(14,165,233,0.12);border-radius:8px;">
-            <div style="font-size:12px;font-weight:800;color:#38bdf8;">Customer Satisfaction & Loyalty ↑</div>
+            <div style="font-size:12px;font-weight:800;color:#0369a1;">Customer Satisfaction & Loyalty ↑</div>
           </div>
         </div>
         <!-- Pillar 2: Operations Efficiency -->
@@ -1017,24 +1017,24 @@
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
             <div style="width:30px;height:30px;background:linear-gradient(135deg,#10b981,#f59e0b);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;">⚡</div>
             <div>
-              <div style="font-size:9px;color:#fbbf24;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CS OPERATIONS</div>
-              <div style="font-size:13px;font-weight:800;color:#34d399;">운영 효율 극대화 → 처리 능력 3~4배</div>
+              <div style="font-size:9px;color:#b45309;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CS OPERATIONS</div>
+              <div style="font-size:13px;font-weight:800;color:#047857;">운영 효율 극대화 → 처리 능력 3~4배</div>
             </div>
           </div>
           <div style="display:flex;flex-direction:column;gap:5px;font-size:11px;color:#64748B;line-height:1.5;margin-bottom:10px;">
-            <div>▸ 정보 미리 확보 → <strong style="color:#6ee7b7;">즉시 처리</strong></div>
-            <div>▸ <strong style="color:#6ee7b7;">첫 응답 해결율 3~4배</strong> 상승</div>
+            <div>▸ 정보 미리 확보 → <strong style="color:#047857;">즉시 처리</strong></div>
+            <div>▸ <strong style="color:#047857;">첫 응답 해결율 3~4배</strong> 상승</div>
             <div>▸ 38% 셀프 해결 → 월 630건 감소</div>
             <div>▸ 반복 제거 → 판단 업무 집중</div>
           </div>
           <div style="text-align:center;padding:6px 10px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.12);border-radius:8px;">
-            <div style="font-size:12px;font-weight:800;color:#34d399;">CS Processing Efficiency ×3~4</div>
+            <div style="font-size:12px;font-weight:800;color:#047857;">CS Processing Efficiency ×3~4</div>
           </div>
         </div>
       </div>
       <!-- 선순환 결론 -->
       <div style="text-align:center;padding:12px 16px;margin-top:12px;background:rgba(245,158,11,0.04);border:1px solid rgba(245,158,11,0.1);border-radius:10px;font-size:12px;color:#475569;line-height:1.7;">
-        <strong style="color:#fbbf24;">CX ↑ 고객 만족도</strong> × <strong style="color:#34d399;">Operations ↑ 3~4배 효율</strong> = <span style="color:#1E293B;font-weight:700;">CS 조직의 선순환 구조</span>
+        <strong style="color:#b45309;">CX ↑ 고객 만족도</strong> × <strong style="color:#047857;">Operations ↑ 3~4배 효율</strong> = <span style="color:#1E293B;font-weight:700;">CS 조직의 선순환 구조</span>
       </div>
     </div>
   </section>

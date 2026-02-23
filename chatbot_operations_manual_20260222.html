@@ -76,7 +76,7 @@
     position: absolute;
     top: -100px; right: -100px;
     width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(14,165,233,0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(3,105,161,0.10) 0%, transparent 70%);
     border-radius: 50%;
   }
   .hero::after {
@@ -261,12 +261,12 @@
     font-weight: 700;
     letter-spacing: 0.3px;
   }
-  .badge-l1 { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
-  .badge-l2 { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
-  .badge-l3 { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
-  .badge-critical { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
-  .badge-supporting { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
-  .badge-phase1 { background: rgba(14,165,233,0.15); color: #38bdf8; border: 1px solid rgba(14,165,233,0.3); }
+  .badge-l1 { background: rgba(185,28,28,0.10); color: #b91c1c; border: 1px solid rgba(239,68,68,0.3); }
+  .badge-l2 { background: rgba(180,83,9,0.10); color: #b45309; border: 1px solid rgba(245,158,11,0.3); }
+  .badge-l3 { background: rgba(5,150,105,0.12); color: #047857; border: 1px solid rgba(16,185,129,0.3); }
+  .badge-critical { background: rgba(185,28,28,0.10); color: #b91c1c; border: 1px solid rgba(239,68,68,0.3); }
+  .badge-supporting { background: rgba(180,83,9,0.10); color: #b45309; border: 1px solid rgba(245,158,11,0.3); }
+  .badge-phase1 { background: rgba(3,105,161,0.10); color: #0369a1; border: 1px solid rgba(14,165,233,0.3); }
   .badge-phase2 { background: rgba(100,116,139,0.2); color: #64748B; border: 1px solid rgba(100,116,139,0.3); }
   .badge-tech {
     display: inline-block;
@@ -276,10 +276,10 @@
     font-weight: 600;
     margin: 2px;
   }
-  .badge-tech-blue { background: rgba(14,165,233,0.15); color: #38bdf8; }
-  .badge-tech-green { background: rgba(16,185,129,0.15); color: #34d399; }
-  .badge-tech-purple { background: rgba(167,139,250,0.15); color: #a78bfa; }
-  .badge-tech-amber { background: rgba(245,158,11,0.15); color: #fbbf24; }
+  .badge-tech-blue { background: rgba(3,105,161,0.10); color: #0369a1; }
+  .badge-tech-green { background: rgba(5,150,105,0.12); color: #047857; }
+  .badge-tech-purple { background: rgba(167,139,250,0.15); color: #6d28d9; }
+  .badge-tech-amber { background: rgba(180,83,9,0.10); color: #b45309; }
 
   /* ── Pipeline Flow ── */
   .pipeline-flow {
@@ -361,9 +361,9 @@
     font-weight: 700;
     margin-bottom: 10px;
   }
-  .routing-card-l1 h4 { color: #f87171; }
-  .routing-card-l2 h4 { color: #fbbf24; }
-  .routing-card-l3 h4 { color: #34d399; }
+  .routing-card-l1 h4 { color: #b91c1c; }
+  .routing-card-l2 h4 { color: #b45309; }
+  .routing-card-l3 h4 { color: #047857; }
   .routing-card ul {
     list-style: none;
     font-size: 12.5px;
@@ -432,21 +432,21 @@
   }
   .score-bar-low {
     background: rgba(16,185,129,0.25);
-    color: #34d399;
+    color: #047857;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .score-bar-med {
     background: rgba(245,158,11,0.25);
-    color: #fbbf24;
+    color: #b45309;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .score-bar-high {
     background: rgba(239,68,68,0.25);
-    color: #f87171;
+    color: #b91c1c;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -460,7 +460,7 @@
     padding: 16px 20px;
     font-family: 'Consolas', 'Courier New', monospace;
     font-size: 13px;
-    color: #38bdf8;
+    color: #0369a1;
     overflow-x: auto;
     margin: 12px 0;
     line-height: 1.6;
@@ -468,9 +468,9 @@
     word-break: break-all;
   }
   .code-block .comment { color: #64748b; }
-  .code-block .cmd { color: #34d399; }
-  .code-block .flag { color: #fbbf24; }
-  .code-block .url { color: #a78bfa; }
+  .code-block .cmd { color: #047857; }
+  .code-block .flag { color: #b45309; }
+  .code-block .url { color: #6d28d9; }
 
   /* ── Info/Warning Boxes ── */
   .info-box {
@@ -485,22 +485,22 @@
   .info-box-blue {
     background: rgba(14,165,233,0.08);
     border: 1px solid rgba(14,165,233,0.2);
-    color: #7dd3fc;
+    color: #0369a1;
   }
   .info-box-amber {
     background: rgba(245,158,11,0.08);
     border: 1px solid rgba(245,158,11,0.2);
-    color: #fde68a;
+    color: #92400e;
   }
   .info-box-red {
     background: rgba(239,68,68,0.08);
     border: 1px solid rgba(239,68,68,0.2);
-    color: #fca5a5;
+    color: #b91c1c;
   }
   .info-box-green {
     background: rgba(16,185,129,0.08);
     border: 1px solid rgba(16,185,129,0.2);
-    color: #6ee7b7;
+    color: #047857;
   }
   .info-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
 
@@ -713,27 +713,27 @@
 
       <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:20px;">
         <div style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.2);border-radius:12px;padding:14px 8px;text-align:center;">
-          <div style="font-size:24px;font-weight:800;color:#38bdf8;">45%</div>
+          <div style="font-size:24px;font-weight:800;color:#0369a1;">45%</div>
           <div style="font-size:11px;color:#94a3b8;margin-top:4px;">결제정보 요청</div>
           <div style="font-size:10px;color:#64748b;margin-top:2px;">변수 0개, 고정 템플릿</div>
         </div>
         <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:14px 8px;text-align:center;">
-          <div style="font-size:24px;font-weight:800;color:#34d399;">18%</div>
+          <div style="font-size:24px;font-weight:800;color:#047857;">18%</div>
           <div style="font-size:11px;color:#94a3b8;margin-top:4px;">구독취소 확인</div>
           <div style="font-size:10px;color:#64748b;margin-top:2px;">변수 2개 (날짜)</div>
         </div>
         <div style="background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.2);border-radius:12px;padding:14px 8px;text-align:center;">
-          <div style="font-size:24px;font-weight:800;color:#fbbf24;">10%</div>
+          <div style="font-size:24px;font-weight:800;color:#b45309;">10%</div>
           <div style="font-size:11px;color:#94a3b8;margin-top:4px;">환불 처리</div>
           <div style="font-size:10px;color:#64748b;margin-top:2px;">변수 0개, 고정</div>
         </div>
         <div style="background:rgba(244,114,182,0.08);border:1px solid rgba(244,114,182,0.2);border-radius:12px;padding:14px 8px;text-align:center;">
-          <div style="font-size:24px;font-weight:800;color:#f472b6;">7%</div>
+          <div style="font-size:24px;font-weight:800;color:#be185d;">7%</div>
           <div style="font-size:11px;color:#94a3b8;margin-top:4px;">환불 거절</div>
           <div style="font-size:10px;color:#64748b;margin-top:2px;">변수 1개 (종료일)</div>
         </div>
         <div style="background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.2);border-radius:12px;padding:14px 8px;text-align:center;">
-          <div style="font-size:24px;font-weight:800;color:#a78bfa;">3%</div>
+          <div style="font-size:24px;font-weight:800;color:#6d28d9;">3%</div>
           <div style="font-size:11px;color:#94a3b8;margin-top:4px;">계정 삭제</div>
           <div style="font-size:10px;color:#64748b;margin-top:2px;">변수 0개, 체크리스트</div>
         </div>
@@ -770,20 +770,20 @@
       <!-- ═══ DUAL VALUE: CX × OPERATIONS ═══ -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;margin-bottom:16px;">
         <!-- Pillar 1: CX → Customer Satisfaction -->
-        <div style="background:linear-gradient(135deg,rgba(14,165,233,0.05),rgba(99,102,241,0.03));border:2px solid rgba(14,165,233,0.15);border-radius:14px;padding:18px 16px 14px;position:relative;overflow:hidden;">
+        <div style="background:linear-gradient(135deg,rgba(14,165,233,0.05),rgba(99,102,241,0.03));border:2px solid rgba(3,105,161,0.10);border-radius:14px;padding:18px 16px 14px;position:relative;overflow:hidden;">
           <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0ea5e9,#6366f1);"></div>
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
             <div style="width:32px;height:32px;background:linear-gradient(135deg,#0ea5e9,#6366f1);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:14px;">🎯</div>
             <div>
-              <div style="font-size:9px;color:#818cf8;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CUSTOMER EXPERIENCE</div>
+              <div style="font-size:9px;color:#4338ca;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CUSTOMER EXPERIENCE</div>
               <div style="font-size:14px;font-weight:800;color:var(--accent-cyan);">고객 경험 향상 → 서비스 만족도 극대화</div>
             </div>
           </div>
           <div style="display:flex;flex-direction:column;gap:6px;font-size:12.5px;color:#94a3b8;line-height:1.5;margin-bottom:12px;">
-            <div>▸ CS 대기 7~29일 → AI <strong style="color:#7dd3fc;">즉시 양식 안내</strong> → 응답 대기 제거</div>
-            <div>▸ 확실한 양식 안내 → <strong style="color:#7dd3fc;">빠르고 정확한 CS 해결</strong> 경험</div>
-            <div>▸ 빠른 CS = 좋은 인상 → <strong style="color:#7dd3fc;">서비스 신뢰도 + 브랜드 충성도</strong> 강화</div>
-            <div>▸ 24/7 다국어 지원 → <strong style="color:#7dd3fc;">글로벌 10개 마켓</strong> 시간대 커버</div>
+            <div>▸ CS 대기 7~29일 → AI <strong style="color:#0369a1;">즉시 양식 안내</strong> → 응답 대기 제거</div>
+            <div>▸ 확실한 양식 안내 → <strong style="color:#0369a1;">빠르고 정확한 CS 해결</strong> 경험</div>
+            <div>▸ 빠른 CS = 좋은 인상 → <strong style="color:#0369a1;">서비스 신뢰도 + 브랜드 충성도</strong> 강화</div>
+            <div>▸ 24/7 다국어 지원 → <strong style="color:#0369a1;">글로벌 10개 마켓</strong> 시간대 커버</div>
           </div>
           <div style="text-align:center;padding:8px 12px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.1);border-radius:8px;">
             <div style="font-size:10px;color:#64748b;">좋은 CS 경험이 서비스 전체의 가치를 높입니다</div>
@@ -791,20 +791,20 @@
           </div>
         </div>
         <!-- Pillar 2: Operations Efficiency -->
-        <div style="background:linear-gradient(135deg,rgba(16,185,129,0.05),rgba(245,158,11,0.03));border:2px solid rgba(16,185,129,0.15);border-radius:14px;padding:18px 16px 14px;position:relative;overflow:hidden;">
+        <div style="background:linear-gradient(135deg,rgba(16,185,129,0.05),rgba(245,158,11,0.03));border:2px solid rgba(5,150,105,0.12);border-radius:14px;padding:18px 16px 14px;position:relative;overflow:hidden;">
           <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#10b981,#f59e0b);"></div>
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
             <div style="width:32px;height:32px;background:linear-gradient(135deg,#10b981,#f59e0b);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:14px;">⚡</div>
             <div>
-              <div style="font-size:9px;color:#fbbf24;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CS OPERATIONS</div>
+              <div style="font-size:9px;color:#b45309;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CS OPERATIONS</div>
               <div style="font-size:14px;font-weight:800;color:var(--accent-green);">운영 효율 극대화 → 처리 능력 3~4배</div>
             </div>
           </div>
           <div style="display:flex;flex-direction:column;gap:6px;font-size:12.5px;color:#94a3b8;line-height:1.5;margin-bottom:12px;">
-            <div>▸ 고객이 정보 <strong style="color:#6ee7b7;">미리 제공</strong> → 운영자 즉시 처리 가능</div>
-            <div>▸ <strong style="color:#6ee7b7;">첫 응답 해결율 3~4배</strong> → 왕복 3~5회 → 1회로 단축</div>
-            <div>▸ 38% 셀프 해결 → <strong style="color:#6ee7b7;">월 630건 티켓 감소</strong></div>
-            <div>▸ 반복 정보 수집 제거 → <strong style="color:#6ee7b7;">판단 업무에 집중</strong></div>
+            <div>▸ 고객이 정보 <strong style="color:#047857;">미리 제공</strong> → 운영자 즉시 처리 가능</div>
+            <div>▸ <strong style="color:#047857;">첫 응답 해결율 3~4배</strong> → 왕복 3~5회 → 1회로 단축</div>
+            <div>▸ 38% 셀프 해결 → <strong style="color:#047857;">월 630건 티켓 감소</strong></div>
+            <div>▸ 반복 정보 수집 제거 → <strong style="color:#047857;">판단 업무에 집중</strong></div>
           </div>
           <div style="text-align:center;padding:8px 12px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.1);border-radius:8px;">
             <div style="font-size:10px;color:#64748b;">같은 인력으로 3~4배 더 많은 CS를 처리합니다</div>
@@ -813,8 +813,8 @@
         </div>
       </div>
       <!-- 선순환 결론 -->
-      <div style="text-align:center;padding:12px 16px;background:rgba(245,158,11,0.04);border:1px solid rgba(245,158,11,0.08);border-radius:10px;font-size:13px;color:#cbd5e1;line-height:1.7;">
-        <strong style="color:var(--accent-amber);">CX ↑ 고객 만족도</strong> × <strong style="color:var(--accent-green);">Operations ↑ 3~4배 효율</strong> = <span style="color:#e2e8f0;font-weight:700;">CS 조직의 선순환 구조</span>
+      <div style="text-align:center;padding:12px 16px;background:rgba(245,158,11,0.04);border:1px solid rgba(245,158,11,0.08);border-radius:10px;font-size:13px;color: #475569;line-height:1.7;">
+        <strong style="color:var(--accent-amber);">CX ↑ 고객 만족도</strong> × <strong style="color:var(--accent-green);">Operations ↑ 3~4배 효율</strong> = <span style="color: #334155;font-weight:700;">CS 조직의 선순환 구조</span>
       </div>
     </div>
   </section>
@@ -986,7 +986,7 @@ Ai-Chat-bot-project/
       <div class="routing-grid">
         <div class="routing-card routing-card-l1">
           <h4>&#128308; L1 -- Immediate Escalation</h4>
-          <p style="font-size:11px; color:#fca5a5; margin-bottom:10px;">AI 응답 없음. 즉시 티켓 제출.</p>
+          <p style="font-size:11px; color: #b91c1c; margin-bottom:10px;">AI 응답 없음. 즉시 티켓 제출.</p>
           <ul>
             <li>Fraud HIGH (50점 이상)</li>
             <li>Content 카테고리 전체</li>
@@ -1001,7 +1001,7 @@ Ai-Chat-bot-project/
         </div>
         <div class="routing-card routing-card-l2">
           <h4>&#128992; L2 -- AI Draft + Agent Review</h4>
-          <p style="font-size:11px; color:#fde68a; margin-bottom:10px;">AI 초안 생성, 상담원 검토 후 발송.</p>
+          <p style="font-size:11px; color: #92400e; margin-bottom:10px;">AI 초안 생성, 상담원 검토 후 발송.</p>
           <ul>
             <li>환불 적격성 판단 필요</li>
             <li>해지 + 환불 동시 요청</li>
@@ -1015,7 +1015,7 @@ Ai-Chat-bot-project/
         </div>
         <div class="routing-card routing-card-l3">
           <h4>&#128994; L3 -- Self-Service Auto Response</h4>
-          <p style="font-size:11px; color:#6ee7b7; margin-bottom:10px;">검증된 안내 자동 발송. 티켓 옵션 포함.</p>
+          <p style="font-size:11px; color:#047857; margin-bottom:10px;">검증된 안내 자동 발송. 티켓 옵션 포함.</p>
           <ul>
             <li>구독 해지 안내</li>
             <li>갱신일/잔여기간 문의</li>
@@ -1063,7 +1063,7 @@ Ai-Chat-bot-project/
             <td><strong style="color:var(--accent-blue)">Subscription</strong> (구독)</td>
             <td>700건</td>
             <td><strong>48%</strong></td>
-            <td style="color:#34d399;">95%</td>
+            <td style="color:#047857;">95%</td>
             <td><span class="badge badge-l3">L3 주도</span></td>
             <td>6개</td>
           </tr>
@@ -1071,7 +1071,7 @@ Ai-Chat-bot-project/
             <td><strong style="color:var(--accent-blue)">Refund</strong> (환불)</td>
             <td>367건</td>
             <td><strong>25%</strong></td>
-            <td style="color:#fbbf24;">50%</td>
+            <td style="color:#b45309;">50%</td>
             <td><span class="badge badge-l2">L2</span> / <span class="badge badge-l3">L3</span> 혼합</td>
             <td>7개</td>
           </tr>
@@ -1079,7 +1079,7 @@ Ai-Chat-bot-project/
             <td><strong style="color:var(--accent-blue)">Account</strong> (계정)</td>
             <td>189건</td>
             <td><strong>13%</strong></td>
-            <td style="color:#fbbf24;">50%</td>
+            <td style="color:#b45309;">50%</td>
             <td><span class="badge badge-l2">L2</span> / <span class="badge badge-l3">L3</span> 혼합</td>
             <td>5개</td>
           </tr>
@@ -1087,32 +1087,32 @@ Ai-Chat-bot-project/
             <td><strong style="color:var(--accent-blue)">Payment</strong> (결제)</td>
             <td>86건</td>
             <td><strong>5%</strong></td>
-            <td style="color:#fbbf24;">50%</td>
+            <td style="color:#b45309;">50%</td>
             <td><span class="badge badge-l2">L2</span> / <span class="badge badge-l3">L3</span> 혼합</td>
             <td>5개</td>
           </tr>
           <tr style="background:rgba(239,68,68,0.04);">
-            <td><strong style="color:#f87171;">Content</strong> (콘텐츠)</td>
+            <td><strong style="color:#b91c1c;">Content</strong> (콘텐츠)</td>
             <td>57건</td>
             <td><strong>4%</strong></td>
-            <td style="color:#f87171;">0%</td>
-            <td><span class="badge badge-l2">전체 L2</span> <span style="font-size:11px; color:#fbbf24;">(정보 수집 → 에스컬레이션)</span></td>
+            <td style="color:#b91c1c;">0%</td>
+            <td><span class="badge badge-l2">전체 L2</span> <span style="font-size:11px; color:#b45309;">(정보 수집 → 에스컬레이션)</span></td>
             <td>4개</td>
           </tr>
           <tr>
             <td><strong style="color:var(--accent-blue)">Technical</strong> (기술)</td>
             <td>32건</td>
             <td><strong>3%</strong></td>
-            <td style="color:#fbbf24;">50%</td>
+            <td style="color:#b45309;">50%</td>
             <td><span class="badge badge-l2">L2</span> / <span class="badge badge-l3">L3</span> 혼합</td>
             <td>3개</td>
           </tr>
           <tr style="background:rgba(239,68,68,0.04);">
-            <td><strong style="color:#f87171;">Other</strong> (기타)</td>
+            <td><strong style="color:#b91c1c;">Other</strong> (기타)</td>
             <td>30건</td>
             <td><strong>2%</strong></td>
-            <td style="color:#f87171;">0%</td>
-            <td><span class="badge badge-l1">전체 L1</span> <span style="font-size:11px; color:#f87171;">(자동화 배제)</span></td>
+            <td style="color:#b91c1c;">0%</td>
+            <td><span class="badge badge-l1">전체 L1</span> <span style="font-size:11px; color:#b91c1c;">(자동화 배제)</span></td>
             <td>3개</td>
           </tr>
         </tbody>
@@ -1504,17 +1504,17 @@ Ai-Chat-bot-project/
         <tbody>
           <tr>
             <td><strong>0 ~ 19</strong></td>
-            <td><span style="color:#34d399;">&#9899; LOW</span></td>
+            <td><span style="color:#047857;">&#9899; LOW</span></td>
             <td>정상 진행. 스킬 2(셀프서비스) 또는 3(에스컬레이션)으로 라우팅.</td>
           </tr>
           <tr>
             <td><strong>20 ~ 49</strong></td>
-            <td><span style="color:#fbbf24;">&#9899; MEDIUM</span></td>
+            <td><span style="color:#b45309;">&#9899; MEDIUM</span></td>
             <td>주의 플래그 기록. 정상 처리하되 메타데이터에 플래그 기록.</td>
           </tr>
           <tr>
             <td><strong>50 ~ 100</strong></td>
-            <td><span style="color:#f87171;">&#9899; HIGH</span></td>
+            <td><span style="color:#b91c1c;">&#9899; HIGH</span></td>
             <td><strong>강제 L1 에스컬레이션.</strong> Fraud 플래그 + 맥락 요약 상담원 전달.</td>
           </tr>
         </tbody>
@@ -2057,17 +2057,17 @@ Ai-Chat-bot-project/
         </thead>
         <tbody>
           <tr>
-            <td><strong style="color:#34d399;">&#8805; 90%</strong></td>
+            <td><strong style="color:#047857;">&#8805; 90%</strong></td>
             <td>확정 분류</td>
             <td>해당 스킬로 즉시 라우팅</td>
           </tr>
           <tr>
-            <td><strong style="color:#fbbf24;">70 ~ 89%</strong></td>
+            <td><strong style="color:#b45309;">70 ~ 89%</strong></td>
             <td>추정 분류</td>
             <td>확인 질문 1회 후 진행</td>
           </tr>
           <tr>
-            <td><strong style="color:#f87171;">&lt; 70%</strong></td>
+            <td><strong style="color:#b91c1c;">&lt; 70%</strong></td>
             <td>분류 불가</td>
             <td>선택지 제시 또는 에스컬레이션</td>
           </tr>

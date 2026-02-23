@@ -65,14 +65,14 @@
     position: absolute;
     top: -80px; right: -80px;
     width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(14,165,233,0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(3,105,161,0.10) 0%, transparent 70%);
     border-radius: 50%;
   }
   .header-left { position: relative; }
   .header-tag {
     display: inline-block;
-    background: rgba(0,0,0,0.06);
-    border: 1px solid rgba(0,0,0,0.08);
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
     border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     padding: 3px 14px;
     font-size: 10px;
@@ -169,7 +169,7 @@
   .timeline-item.current {
     background: rgba(14,165,233,0.08);
     border: 1px solid rgba(14,165,233,0.4);
-    box-shadow: 0 0 12px rgba(14,165,233,0.15);
+    box-shadow: 0 0 12px rgba(3,105,161,0.10);
   }
   .timeline-item.future {
     background: rgba(100,116,139,0.08);
@@ -258,10 +258,10 @@
     display: inline-block; padding: 2px 8px; border-radius: 10px;
     font-size: 10px; font-weight: 700;
   }
-  .b-green { background: rgba(16,185,129,0.15); color: #34d399; }
-  .b-blue { background: rgba(14,165,233,0.15); color: #38bdf8; }
-  .b-amber { background: rgba(245,158,11,0.15); color: #fbbf24; }
-  .b-red { background: rgba(239,68,68,0.15); color: #f87171; }
+  .b-green { background: rgba(5,150,105,0.12); color: #047857; }
+  .b-blue { background: rgba(3,105,161,0.10); color: #0369a1; }
+  .b-amber { background: rgba(180,83,9,0.10); color: #b45309; }
+  .b-red { background: rgba(185,28,28,0.10); color: #b91c1c; }
 
   .divider { height: 1px; background: var(--border); margin: 20px 40px; }
 
@@ -482,11 +482,11 @@
         CS 상담의 <span style="color:var(--cyan);font-size:24px;">83%</span>가 반복적이지만 <span style="color:var(--amber);">반드시 거쳐야 하는 정보 확인 단계</span>
       </div>
       <div style="display:flex;justify-content:center;gap:12px;margin-top:10px;flex-wrap:wrap;">
-        <span style="background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.25);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;color:#7dd3fc;">결제정보 요청 45%</span>
-        <span style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;color:#6ee7b7;">구독취소 확인 18%</span>
-        <span style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.25);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;color:#fcd34d;">환불 처리 10%</span>
-        <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;color:#fca5a5;">환불 거절 7%</span>
-        <span style="background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.25);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;color:#c4b5fd;">계정 삭제 3%</span>
+        <span style="background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.25);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;color:#0369a1;">결제정보 요청 45%</span>
+        <span style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;color:#047857;">구독취소 확인 18%</span>
+        <span style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.25);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;color:#b45309;">환불 처리 10%</span>
+        <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;color: #b91c1c;">환불 거절 7%</span>
+        <span style="background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.25);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;color: #6d28d9;">계정 삭제 3%</span>
       </div>
     </div>
 
@@ -497,22 +497,22 @@
           <thead><tr><th style="width:40%;">기존 — 반복 왕복</th><th style="width:8%;text-align:center;">→</th><th>AI — 티켓 전 정보 확보</th></tr></thead>
           <tbody>
             <tr>
-              <td style="color:#f87171;">문의→정보요청→회신대기→확인→안내 <strong>(3~5회 왕복)</strong></td>
+              <td style="color:#b91c1c;">문의→정보요청→회신대기→확인→안내 <strong>(3~5회 왕복)</strong></td>
               <td style="text-align:center;color:var(--muted);">→</td>
               <td style="color:var(--green);"><strong>티켓 전</strong> AI가 양식 안내 + 정보 확인 완료</td>
             </tr>
             <tr>
-              <td style="color:#f87171;">운영자가 매번 동일 정보 반복 요청 (83%)</td>
+              <td style="color:#b91c1c;">운영자가 매번 동일 정보 반복 요청 (83%)</td>
               <td style="text-align:center;color:var(--muted);">→</td>
               <td style="color:var(--green);">고객이 사전 제공 → <strong>운영자 즉시 처리</strong></td>
             </tr>
             <tr>
-              <td style="color:#f87171;">정보 부족 → 추가 왕복 → 첫 응답 해결율 낮음</td>
+              <td style="color:#b91c1c;">정보 부족 → 추가 왕복 → 첫 응답 해결율 낮음</td>
               <td style="text-align:center;color:var(--muted);">→</td>
               <td style="color:var(--green);">필요 정보 미리 확보 → <strong>첫 응답 해결율 3~4배</strong></td>
             </tr>
             <tr>
-              <td style="color:#f87171;">야간/주말 응답 불가</td>
+              <td style="color:#b91c1c;">야간/주말 응답 불가</td>
               <td style="text-align:center;color:var(--muted);">→</td>
               <td style="color:var(--green);">24/7 AI 안내 → 언제든 양식 확인 + 티켓 생성</td>
             </tr>
@@ -523,16 +523,16 @@
         <h3>DUAL VALUE: CX × Operations</h3>
         <div style="padding:8px 0; font-size:13px; color:var(--text2); line-height:1.7;">
           <!-- CX Pillar -->
-          <div style="padding:10px 12px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.15);border-radius:10px;margin-bottom:10px;">
-            <div style="font-size:10px;color:#818cf8;font-weight:700;letter-spacing:1px;margin-bottom:4px;">🎯 CUSTOMER EXPERIENCE → SATISFACTION & LOYALTY</div>
+          <div style="padding:10px 12px;background:rgba(14,165,233,0.06);border:1px solid rgba(3,105,161,0.10);border-radius:10px;margin-bottom:10px;">
+            <div style="font-size:10px;color:#4338ca;font-weight:700;letter-spacing:1px;margin-bottom:4px;">🎯 CUSTOMER EXPERIENCE → SATISFACTION & LOYALTY</div>
             <div style="font-size:12px;color:var(--text2);line-height:1.7;">
               대기 7~29일 → <strong style="color:var(--cyan);">AI 즉시 안내</strong> → 빠른 해결 경험<br>
               좋은 CS 경험 → <strong style="color:var(--cyan);">서비스 신뢰도 + 브랜드 충성도</strong> 강화
             </div>
           </div>
           <!-- Ops Pillar -->
-          <div style="padding:10px 12px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.15);border-radius:10px;margin-bottom:10px;">
-            <div style="font-size:10px;color:#fbbf24;font-weight:700;letter-spacing:1px;margin-bottom:4px;">⚡ CS OPERATIONS → EFFICIENCY ×3~4</div>
+          <div style="padding:10px 12px;background:rgba(16,185,129,0.06);border:1px solid rgba(5,150,105,0.12);border-radius:10px;margin-bottom:10px;">
+            <div style="font-size:10px;color:#b45309;font-weight:700;letter-spacing:1px;margin-bottom:4px;">⚡ CS OPERATIONS → EFFICIENCY ×3~4</div>
             <div style="font-size:12px;color:var(--text2);line-height:1.7;">
               정보 미리 확보 → <strong style="color:var(--green);">첫 응답 해결율 3~4배</strong><br>
               38% 셀프 해결 → <strong style="color:var(--green);">티켓 감소 + 판단 업무 집중</strong>
