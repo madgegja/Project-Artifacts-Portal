@@ -13,7 +13,13 @@
             color: #e2e8f0;
             min-height: 100vh;
             padding: 32px;
-        }
+        
+    font-size: 14px;
+  
+    line-height: 1.6;
+  
+    word-break: keep-all; overflow-wrap: break-word;
+  }
 
         .header {
             text-align: center;
@@ -154,7 +160,7 @@
             position: absolute;
             top: 8px;
             left: 10px;
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 700;
             padding: 1px 6px;
             border-radius: 4px;
@@ -162,7 +168,7 @@
         }
         .node-category .emoji { font-size: 28px; margin-bottom: 8px; }
         .node-category .title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
-        .node-category .desc { font-size: 10px; opacity: 0.75; line-height: 1.4; }
+        .node-category .desc { font-size: 11px; opacity: 0.75; line-height: 1.4; }
 
         /* Category colors */
         .cat-subscription { background: linear-gradient(135deg, #dc2626, #ef4444); border: 1px solid #f87171; }
@@ -363,7 +369,21 @@
             .node { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
             .node-category { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
         }
-    </style>
+    
+    /* ══ 가독성 패치 (2026-02-23) ══ */
+    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1em; }
+    @media (max-width: 768px) {
+      body { font-size: 13px !important; }
+      .container, .body, [class*="content"] { padding-left: 12px !important; padding-right: 12px !important; }
+      h1 { font-size: 22px !important; }
+      h2 { font-size: 18px !important; }
+      h3 { font-size: 15px !important; }
+      table { font-size: 11px !important; }
+      .header, .hero, [class*="header"] { padding: 24px 16px !important; }
+      .toc-grid, .grid-2, .grid-3, .stat-grid, .card-grid, .level-grid { grid-template-columns: 1fr !important; }
+      .header-meta { flex-direction: column; gap: 8px !important; }
+    }
+  </style>
 </head>
 <body>
 
@@ -445,11 +465,11 @@
                 </div>
                 <div style="margin-top:10px; display:flex; gap:24px; justify-content:center;">
                     <div style="text-align:center;">
-                        <div class="branch-label branch-no" style="font-size:10px;">NO</div>
+                        <div class="branch-label branch-no" style="font-size: 11px;">NO</div>
                         <div style="font-size:11px; color:#fca5a5; margin-top:4px;">해당 마켓팀 라우팅</div>
                     </div>
                     <div style="text-align:center;">
-                        <div class="branch-label branch-yes" style="font-size:10px;">YES</div>
+                        <div class="branch-label branch-yes" style="font-size: 11px;">YES</div>
                         <div style="font-size:11px; color:#4ade80; margin-top:4px;">▼ 카테고리 분류</div>
                     </div>
                 </div>

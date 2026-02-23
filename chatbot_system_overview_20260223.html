@@ -14,7 +14,9 @@
     --accent-amber: #f59e0b; --accent-red: #ef4444; --accent-purple: #a78bfa;
     --border-color: #334155;
   }
-  body { font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif; color: var(--text-primary); background: var(--bg-primary); line-height: 1.75; font-size: 14px; }
+  body { font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif; color: var(--text-primary); background: var(--bg-primary); line-height: 1.75; font-size: 14px; 
+    word-break: keep-all; overflow-wrap: break-word;
+  }
   @media print { body { background: #fff; color: #1a1a2e; } .hero { background: #1e3a5f !important; -webkit-print-color-adjust: exact; } .back-to-top { display: none !important; } }
   .container { max-width: 1100px; margin: 0 auto; padding: 0 0 60px; }
   section { padding: 0 40px; margin-bottom: 48px; }
@@ -53,7 +55,10 @@
   code { background: rgba(14,165,233,0.1); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: var(--accent-cyan); }
   .tech-badge { display: inline-block; background: rgba(167,139,250,0.15); color: var(--accent-purple); padding: 3px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; margin: 2px; }
   .back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 1.2rem; cursor: pointer; z-index: 100; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
-</style>
+
+    /* ══ 가독성 패치 (2026-02-23) ══ */
+    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1em; }
+  </style>
 </head>
 <body>
 <div class="container">
@@ -79,7 +84,7 @@
       <span class="tech-badge">systemd</span>
       <span class="tech-badge">Let's Encrypt</span>
     </div>
-    <table>
+<div class="table-responsive"><table>
       <tr><th>계층</th><th>기술</th><th>용도</th></tr>
       <tr><td>프론트엔드</td><td>Vanilla JS 위젯</td><td>고객 채팅 인터페이스 (데모 + 임베드용)</td></tr>
       <tr><td>웹 서버</td><td>nginx + Let's Encrypt</td><td>HTTPS 터미네이션, 리버스 프록시</td></tr>
@@ -209,7 +214,7 @@
 <section>
   <h2>4. 파이프라인 처리 상세</h2>
   <div class="card card-blue">
-    <table>
+<div class="table-responsive"><table>
       <tr><th>단계</th><th>처리 내용</th><th>실패 시</th></tr>
       <tr><td>Step 0</td><td>세션 로드/생성 (Redis)</td><td>메모리 폴백</td></tr>
       <tr><td>Step 1</td><td>언어 감지 (세션 재사용 우선)</td><td>EN 기본값</td></tr>
@@ -231,7 +236,7 @@
 <section>
   <h2>5. 인프라 구성</h2>
   <div class="card card-green">
-    <table>
+<div class="table-responsive"><table>
       <tr><th>서비스</th><th>포트</th><th>관리 방식</th><th>상태 확인</th></tr>
       <tr><td>FastAPI (챗봇)</td><td>:8000</td><td><code>systemctl restart chatbot</code></td><td><code>/health</code></td></tr>
       <tr><td>claude-max-api-proxy</td><td>:3456</td><td><code>systemctl --user restart claude-max-api</code></td><td><code>/v1/models</code></td></tr>
@@ -306,7 +311,7 @@ Ai-Chat-bot-project/
   <h2>7. 모니터링 및 운영</h2>
   <div class="card card-cyan">
     <h3>📊 주요 모니터링 포인트</h3>
-    <table>
+<div class="table-responsive"><table>
       <tr><th>항목</th><th>확인 방법</th><th>정상 기준</th></tr>
       <tr><td>서비스 상태</td><td><code>GET /health</code></td><td><code>"status": "healthy"</code></td></tr>
       <tr><td>응답 시간</td><td>API 로그 <code>processing_time_ms</code></td><td>&lt; 30초 (L3: &lt; 10초)</td></tr>

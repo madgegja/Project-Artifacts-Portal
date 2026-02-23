@@ -35,6 +35,8 @@
     line-height: 1.7;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+  
+    font-size: 14px;
   }
 
   @media print {
@@ -323,7 +325,7 @@
     top: -14px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 9px;
+    font-size: 11px;
     font-weight: 700;
     color: var(--accent-amber);
     letter-spacing: 1px;
@@ -411,7 +413,7 @@
   summary::-webkit-details-marker { display: none; }
   summary::before {
     content: '\25B6';
-    font-size: 10px;
+    font-size: 11px;
     color: var(--accent-blue);
     transition: transform 0.2s;
   }
@@ -659,7 +661,10 @@
     background: var(--border-color);
     margin: 32px 40px;
   }
-</style>
+
+    /* ══ 가독성 패치 (2026-02-23) ══ */
+    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1em; }
+  </style>
 </head>
 <body>
 
@@ -715,31 +720,30 @@
         <div style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.2);border-radius:12px;padding:14px 8px;text-align:center;">
           <div style="font-size:24px;font-weight:800;color:#38bdf8;">45%</div>
           <div style="font-size:11px;color:#94a3b8;margin-top:4px;">결제정보 요청</div>
-          <div style="font-size:10px;color:#64748b;margin-top:2px;">변수 0개, 고정 템플릿</div>
+          <div style="font-size: 11px;color:#64748b;margin-top:2px;">변수 0개, 고정 템플릿</div>
         </div>
         <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:14px 8px;text-align:center;">
           <div style="font-size:24px;font-weight:800;color:#34d399;">18%</div>
           <div style="font-size:11px;color:#94a3b8;margin-top:4px;">구독취소 확인</div>
-          <div style="font-size:10px;color:#64748b;margin-top:2px;">변수 2개 (날짜)</div>
+          <div style="font-size: 11px;color:#64748b;margin-top:2px;">변수 2개 (날짜)</div>
         </div>
         <div style="background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.2);border-radius:12px;padding:14px 8px;text-align:center;">
           <div style="font-size:24px;font-weight:800;color:#fbbf24;">10%</div>
           <div style="font-size:11px;color:#94a3b8;margin-top:4px;">환불 처리</div>
-          <div style="font-size:10px;color:#64748b;margin-top:2px;">변수 0개, 고정</div>
+          <div style="font-size: 11px;color:#64748b;margin-top:2px;">변수 0개, 고정</div>
         </div>
         <div style="background:rgba(244,114,182,0.08);border:1px solid rgba(244,114,182,0.2);border-radius:12px;padding:14px 8px;text-align:center;">
           <div style="font-size:24px;font-weight:800;color:#f472b6;">7%</div>
           <div style="font-size:11px;color:#94a3b8;margin-top:4px;">환불 거절</div>
-          <div style="font-size:10px;color:#64748b;margin-top:2px;">변수 1개 (종료일)</div>
+          <div style="font-size: 11px;color:#64748b;margin-top:2px;">변수 1개 (종료일)</div>
         </div>
         <div style="background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.2);border-radius:12px;padding:14px 8px;text-align:center;">
           <div style="font-size:24px;font-weight:800;color:#a78bfa;">3%</div>
           <div style="font-size:11px;color:#94a3b8;margin-top:4px;">계정 삭제</div>
-          <div style="font-size:10px;color:#64748b;margin-top:2px;">변수 0개, 체크리스트</div>
+          <div style="font-size: 11px;color:#64748b;margin-top:2px;">변수 0개, 체크리스트</div>
         </div>
       </div>
-
-      <table>
+<div class="table-responsive"><table>
         <thead>
           <tr><th style="width:18%;">구분</th><th style="width:41%;">Before — 반복 왕복 3~5회</th><th style="width:41%;">After — 스마트 레이어링</th></tr>
         </thead>
@@ -765,7 +769,7 @@
             <td style="color:var(--accent-green);">확실한 양식 안내 → 빠르고 확실한 CS 경험</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
 
       <!-- ═══ DUAL VALUE: CX × OPERATIONS ═══ -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;margin-bottom:16px;">
@@ -775,7 +779,7 @@
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
             <div style="width:32px;height:32px;background:linear-gradient(135deg,#0ea5e9,#6366f1);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:14px;">🎯</div>
             <div>
-              <div style="font-size:9px;color:#818cf8;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CUSTOMER EXPERIENCE</div>
+              <div style="font-size: 11px;color:#818cf8;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CUSTOMER EXPERIENCE</div>
               <div style="font-size:14px;font-weight:800;color:var(--accent-cyan);">고객 경험 향상 → 서비스 만족도 극대화</div>
             </div>
           </div>
@@ -786,7 +790,7 @@
             <div>▸ 24/7 다국어 지원 → <strong style="color:#7dd3fc;">글로벌 10개 마켓</strong> 시간대 커버</div>
           </div>
           <div style="text-align:center;padding:8px 12px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.1);border-radius:8px;">
-            <div style="font-size:10px;color:#64748b;">좋은 CS 경험이 서비스 전체의 가치를 높입니다</div>
+            <div style="font-size: 11px;color:#64748b;">좋은 CS 경험이 서비스 전체의 가치를 높입니다</div>
             <div style="font-size:13px;font-weight:800;color:var(--accent-cyan);margin-top:2px;">Customer Satisfaction & Loyalty ↑</div>
           </div>
         </div>
@@ -796,7 +800,7 @@
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
             <div style="width:32px;height:32px;background:linear-gradient(135deg,#10b981,#f59e0b);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:14px;">⚡</div>
             <div>
-              <div style="font-size:9px;color:#fbbf24;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CS OPERATIONS</div>
+              <div style="font-size: 11px;color:#fbbf24;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CS OPERATIONS</div>
               <div style="font-size:14px;font-weight:800;color:var(--accent-green);">운영 효율 극대화 → 처리 능력 3~4배</div>
             </div>
           </div>
@@ -807,7 +811,7 @@
             <div>▸ 반복 정보 수집 제거 → <strong style="color:#6ee7b7;">판단 업무에 집중</strong></div>
           </div>
           <div style="text-align:center;padding:8px 12px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.1);border-radius:8px;">
-            <div style="font-size:10px;color:#64748b;">같은 인력으로 3~4배 더 많은 CS를 처리합니다</div>
+            <div style="font-size: 11px;color:#64748b;">같은 인력으로 3~4배 더 많은 CS를 처리합니다</div>
             <div style="font-size:13px;font-weight:800;color:var(--accent-green);margin-top:2px;">CS Processing Efficiency ×3~4</div>
           </div>
         </div>
@@ -850,8 +854,7 @@
           <div class="stat-label">Phase 1 지원 마켓</div>
         </div>
       </div>
-
-      <table>
+<div class="table-responsive"><table>
         <thead>
           <tr><th>항목</th><th>내용</th></tr>
         </thead>
@@ -890,7 +893,7 @@
       </p>
 
       <h4>&#128421;&#65039; 서버 정보</h4>
-      <table>
+<div class="table-responsive"><table>
         <thead>
           <tr><th>항목</th><th>값</th></tr>
         </thead>
@@ -1047,7 +1050,7 @@ Ai-Chat-bot-project/
 
     <div class="card">
       <h3>&#128202; 카테고리별 처리 현황 (11,621건 분석 기반)</h3>
-      <table>
+<div class="table-responsive"><table>
         <thead>
           <tr>
             <th>카테고리</th>
@@ -1116,7 +1119,7 @@ Ai-Chat-bot-project/
             <td>3개</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="info-box info-box-red">
         <span class="info-icon">&#128683;</span>
@@ -1136,7 +1139,7 @@ Ai-Chat-bot-project/
     <details>
       <summary><span class="badge badge-l3" style="margin-right:4px">L3 주도</span> Subscription (구독) -- 6개 Sub-Intent | 월 700건 | 48%</summary>
       <div class="details-content">
-        <table>
+<div class="table-responsive"><table>
           <thead>
             <tr><th>Sub-Intent</th><th>한국어명</th><th>Level</th><th>설명</th><th>Keywords (EN)</th></tr>
           </thead>
@@ -1192,7 +1195,7 @@ Ai-Chat-bot-project/
     <details>
       <summary><span class="badge badge-l2" style="margin-right:4px">L2/L3 혼합</span> Refund (환불) -- 7개 Sub-Intent | 월 367건 | 25%</summary>
       <div class="details-content">
-        <table>
+<div class="table-responsive"><table>
           <thead>
             <tr><th>Sub-Intent</th><th>한국어명</th><th>Level</th><th>설명</th><th>Keywords (EN)</th></tr>
           </thead>
@@ -1247,7 +1250,7 @@ Ai-Chat-bot-project/
               <td><span class="keyword-tag">my child</span><span class="keyword-tag">my kid</span><span class="keyword-tag">minor</span><span class="keyword-tag">underage</span></td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
         <div class="info-box info-box-amber">
           <span class="info-icon">&#9888;&#65039;</span>
           <div>
@@ -1265,7 +1268,7 @@ Ai-Chat-bot-project/
     <details>
       <summary><span class="badge badge-l2" style="margin-right:4px">L2/L3 혼합</span> Account (계정) -- 5개 Sub-Intent | 월 189건 | 13%</summary>
       <div class="details-content">
-        <table>
+<div class="table-responsive"><table>
           <thead>
             <tr><th>Sub-Intent</th><th>한국어명</th><th>Level</th><th>설명</th><th>Keywords (EN)</th></tr>
           </thead>
@@ -1314,7 +1317,7 @@ Ai-Chat-bot-project/
     <details>
       <summary><span class="badge badge-l2" style="margin-right:4px">L2/L3 혼합</span> Payment (결제) -- 5개 Sub-Intent | 월 86건 | 5%</summary>
       <div class="details-content">
-        <table>
+<div class="table-responsive"><table>
           <thead>
             <tr><th>Sub-Intent</th><th>한국어명</th><th>Level</th><th>설명</th><th>Keywords (EN)</th></tr>
           </thead>
@@ -1367,7 +1370,7 @@ Ai-Chat-bot-project/
           <span class="info-icon">&#128221;</span>
           <div><strong>정보 수집 후 에스컬레이션:</strong> AI가 작품명·챕터·기기 등 필요 정보를 먼저 수집한 뒤, 상담원에게 전달합니다. 셀프서비스 자동 처리는 없습니다.</div>
         </div>
-        <table>
+<div class="table-responsive"><table>
           <thead>
             <tr><th>Sub-Intent</th><th>한국어명</th><th>Level</th><th>설명</th><th>Keywords (EN)</th></tr>
           </thead>
@@ -1409,7 +1412,7 @@ Ai-Chat-bot-project/
     <details>
       <summary><span class="badge badge-l2" style="margin-right:4px">L2/L3 혼합</span> Technical (기술) -- 3개 Sub-Intent | 월 32건 | 3%</summary>
       <div class="details-content">
-        <table>
+<div class="table-responsive"><table>
           <thead>
             <tr><th>Sub-Intent</th><th>한국어명</th><th>Level</th><th>설명</th><th>Keywords (EN)</th></tr>
           </thead>
@@ -1448,7 +1451,7 @@ Ai-Chat-bot-project/
           <span class="info-icon">&#128683;</span>
           <div><strong>자동화 영구 배제:</strong> Other 카테고리 전체는 CS 대상이 아닌 문의로 적절한 부서 배정이 필요합니다.</div>
         </div>
-        <table>
+<div class="table-responsive"><table>
           <thead>
             <tr><th>Sub-Intent</th><th>한국어명</th><th>Level</th><th>설명</th><th>Keywords (EN)</th></tr>
           </thead>
@@ -1496,8 +1499,7 @@ Ai-Chat-bot-project/
         <div class="score-bar-med" style="width:30%;">MEDIUM (20~49)</div>
         <div class="score-bar-high" style="width:50%;">HIGH (50~100) &#8594; 강제 L1</div>
       </div>
-
-      <table>
+<div class="table-responsive"><table>
         <thead>
           <tr><th>점수 범위</th><th>위험 등급</th><th>동작</th></tr>
         </thead>
@@ -1524,7 +1526,7 @@ Ai-Chat-bot-project/
     <div class="card">
       <h3>&#128308; Critical 지표 (5개) -- 1개라도 감지 시 주의</h3>
       <p style="margin-bottom:16px; color:var(--accent-red);">Critical 지표 1개 단독 감지 시 해당 점수 반영. 점수 합계 50+ 시 L1 에스컬레이션.</p>
-      <table>
+<div class="table-responsive"><table>
         <thead>
           <tr><th>#</th><th>Red Flag</th><th>한국어명</th><th>점수</th><th>설명</th></tr>
         </thead>
@@ -1571,7 +1573,7 @@ Ai-Chat-bot-project/
     <div class="card">
       <h3>&#128992; Supporting 지표 (4개) -- 2개 이상 조합 시 주의</h3>
       <p style="margin-bottom:16px; color:var(--accent-amber);">Supporting 지표 단독으로는 에스컬레이션하지 않음. 2개+ 조합 시 합산 점수 반영.</p>
-      <table>
+<div class="table-responsive"><table>
         <thead>
           <tr><th>#</th><th>Red Flag</th><th>한국어명</th><th>점수</th><th>설명</th></tr>
         </thead>
@@ -1610,7 +1612,7 @@ Ai-Chat-bot-project/
 
     <div class="card">
       <h3>&#128220; Fraud 탐지 핵심 원칙</h3>
-      <table>
+<div class="table-responsive"><table>
         <thead>
           <tr><th>원칙</th><th>설명</th></tr>
         </thead>
@@ -1736,7 +1738,7 @@ Ai-Chat-bot-project/
     <div class="card">
       <h3>&#128338; Phase 2 마켓 (5개 -- 현재 미지원)</h3>
       <p style="margin-bottom:16px;">Phase 2 마켓에서 메시지 수신 시: <strong>인사말 + L1 에스컬레이션</strong> (언어 메타데이터 포함 티켓 생성)</p>
-      <table>
+<div class="table-responsive"><table>
         <thead>
           <tr><th>마켓</th><th>언어</th><th>도메인</th><th>비중</th><th>월평균</th><th>특이사항</th></tr>
         </thead>
@@ -1787,7 +1789,7 @@ Ai-Chat-bot-project/
 
     <div class="card">
       <h3>&#128231; 마켓별 지원 채널</h3>
-      <table>
+<div class="table-responsive"><table>
         <thead>
           <tr><th>마켓</th><th>지원 채널</th></tr>
         </thead>
@@ -1799,7 +1801,7 @@ Ai-Chat-bot-project/
           <tr><td>IT</td><td>Zendesk 채널 (이탈리아어)</td></tr>
           <tr><td>JP</td><td>Zendesk 채널 (일본어)</td></tr>
         </tbody>
-      </table>
+      </table></div>
       <div class="info-box info-box-blue">
         <span class="info-icon">&#128233;</span>
         <div>각 마켓별 Zendesk 티켓 시스템을 통해 접수됩니다.</div>
@@ -1903,7 +1905,7 @@ Ai-Chat-bot-project/
 
     <div class="card">
       <h3>&#128268; API 엔드포인트</h3>
-      <table>
+<div class="table-responsive"><table>
         <thead>
           <tr><th>Method</th><th>Endpoint</th><th>설명</th><th>비고</th></tr>
         </thead>
@@ -1939,7 +1941,7 @@ Ai-Chat-bot-project/
             <td>Zendesk 티켓 상태 변경 알림 수신</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
 
       <h4>API 테스트 예시</h4>
       <div class="code-block"><span class="comment"># 헬스체크</span>
@@ -1995,7 +1997,7 @@ Ai-Chat-bot-project/
 
     <div class="card">
       <h3>&#128208; 응대 품질 필수 규칙</h3>
-      <table>
+<div class="table-responsive"><table>
         <thead>
           <tr><th>항목</th><th>규칙</th><th>상세</th></tr>
         </thead>
@@ -2051,7 +2053,7 @@ Ai-Chat-bot-project/
 
     <div class="card">
       <h3>&#128203; 분류 신뢰도 기준</h3>
-      <table>
+<div class="table-responsive"><table>
         <thead>
           <tr><th>신뢰도</th><th>판정</th><th>다음 단계</th></tr>
         </thead>
@@ -2078,7 +2080,7 @@ Ai-Chat-bot-project/
     <div class="card">
       <h3>&#128295; 복합 의도 처리 규칙</h3>
       <p>하나의 메시지에 2개 이상의 의도가 포함된 경우:</p>
-      <table>
+<div class="table-responsive"><table>
         <thead>
           <tr><th>상황</th><th>처리 방법</th></tr>
         </thead>
@@ -2105,7 +2107,7 @@ Ai-Chat-bot-project/
 
     <div class="card">
       <h3>&#128202; 환불 소요 기간 참조표</h3>
-      <table>
+<div class="table-responsive"><table>
         <thead>
           <tr><th>PG사</th><th>소요 기간</th><th>비고</th></tr>
         </thead>

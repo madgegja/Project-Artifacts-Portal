@@ -32,7 +32,11 @@
             background: var(--gray-50);
             color: var(--gray-900);
             line-height: 1.6;
-        }
+        
+    font-size: 14px;
+  
+    word-break: keep-all; overflow-wrap: break-word;
+  }
 
         .container {
             max-width: 1100px;
@@ -276,7 +280,28 @@
             color: var(--gray-700);
             margin-left: 6px;
         }
-    </style>
+    
+    /* ══ 가독성 패치 (2026-02-23) ══ */
+    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1em; }
+    @media (max-width: 768px) {
+      body { font-size: 13px !important; }
+      .container, .body, [class*="content"] { padding-left: 12px !important; padding-right: 12px !important; }
+      h1 { font-size: 22px !important; }
+      h2 { font-size: 18px !important; }
+      h3 { font-size: 15px !important; }
+      table { font-size: 11px !important; }
+      .header, .hero, [class*="header"] { padding: 24px 16px !important; }
+      .toc-grid, .grid-2, .grid-3, .stat-grid, .card-grid, .level-grid { grid-template-columns: 1fr !important; }
+      .header-meta { flex-direction: column; gap: 8px !important; }
+    }
+    @media print {
+      body { background: #fff !important; color: #000 !important; font-size: 11px !important; }
+      .container { box-shadow: none !important; max-width: 100% !important; }
+      .no-print, .back-to-top { display: none !important; }
+      a { color: #000 !important; text-decoration: underline; }
+      .card, section, .section { break-inside: avoid; }
+    }
+  </style>
 </head>
 <body>
 <div class="container">
@@ -304,11 +329,11 @@
                 L1-① Fraud + 무단결제 위협 <span class="lang-flag">EN</span>
             </div>
             <div class="scenario-body">
-                <table class="meta-table">
+<div class="table-responsive"><table class="meta-table">
                     <tr><th>의도 분류</th><td>Refund → <code>unauthorized_charge</code> (L1 트리거: sub_intent)</td></tr>
                     <tr><th>Fraud 탐지</th><td>Score <strong>70</strong>, Risk <strong>HIGH</strong> — C1 (unauthorized + 위협)</td></tr>
                     <tr><th>트리거 (3개)</th><td>① sub_intent = unauthorized_charge &nbsp; ② chargeback 키워드 ("dispute", "report to bank") &nbsp; ③ Fraud HIGH</td></tr>
-                </table>
+                </table></div>
                 <div class="chat-area">
                     <div class="chat-label">💬 대화 시뮬레이션</div>
                     <div class="chat-bubble customer">I never authorized this charge of $29.99 on my credit card! Someone used my account without permission. I will report this to my bank and file a dispute if this isn't resolved immediately!</div>
@@ -330,11 +355,11 @@ Tags:     ai_l1, chatbot_escalation, fraud_high</div>
                 L1-② 법적 위협 + DSGVO <span class="lang-flag">DE</span>
             </div>
             <div class="scenario-body">
-                <table class="meta-table">
+<div class="table-responsive"><table class="meta-table">
                     <tr><th>의도 분류</th><td>Subscription → <code>auto_renewal_complaint</code></td></tr>
                     <tr><th>Fraud 탐지</th><td>Score <strong>35</strong>, MEDIUM</td></tr>
                     <tr><th>트리거</th><td>Legal 키워드: "Rechtsanwalt", "Verbraucherschutz", "DSGVO"</td></tr>
-                </table>
+                </table></div>
                 <div class="chat-area">
                     <div class="chat-label">💬 대화 시뮬레이션</div>
                     <div class="chat-bubble customer">Ich habe mein Abo vor 3 Monaten gekündigt aber Sie buchen immer noch ab! Das ist Betrug! Ich werde meinen Rechtsanwalt einschalten und die Verbraucherschutz kontaktieren. DSGVO Verstoß!</div>
@@ -349,11 +374,11 @@ Tags:     ai_l1, chatbot_escalation, fraud_high</div>
                 L1-③ 미성년자 무단 결제 <span class="lang-flag">FR</span>
             </div>
             <div class="scenario-body">
-                <table class="meta-table">
+<div class="table-responsive"><table class="meta-table">
                     <tr><th>의도 분류</th><td>Refund → <code>child_purchase</code> (L1 트리거: sub_intent)</td></tr>
                     <tr><th>Fraud 탐지</th><td>Score <strong>55</strong>, HIGH — 미성년자 패턴</td></tr>
                     <tr><th>트리거 (2개)</th><td>① sub_intent = child_purchase &nbsp; ② Fraud HIGH (score ≥ 50)</td></tr>
-                </table>
+                </table></div>
                 <div class="chat-area">
                     <div class="chat-label">💬 대화 시뮬레이션</div>
                     <div class="chat-bubble customer">Mon fils de 12 ans a utilisé ma carte bancaire pour acheter un abonnement VIP sans ma permission. Je veux un remboursement complet immédiatement!</div>
@@ -379,11 +404,11 @@ Tags:     ai_l1, chatbot_escalation, fraud_high</div>
                 L2-① 일반 환불 요청 <span class="lang-flag">EN</span>
             </div>
             <div class="scenario-body">
-                <table class="meta-table">
+<div class="table-responsive"><table class="meta-table">
                     <tr><th>의도 분류</th><td>Refund → <code>simple_refund</code> (L2)</td></tr>
                     <tr><th>Fraud 탐지</th><td>Score <strong>10</strong>, LOW</td></tr>
                     <tr><th>L2 사유</th><td>환불 적격성 확인 필요 (14일 이내, 콘텐츠 미이용, 코인 미사용)</td></tr>
-                </table>
+                </table></div>
                 <div class="chat-area">
                     <div class="chat-label">💬 대화 시뮬레이션</div>
                     <div class="chat-bubble customer">I subscribed yesterday but the content isn't what I expected. Can I get a refund for my 1-month VIP subscription?</div>
@@ -428,11 +453,11 @@ Tags:     ai_l2, chatbot_escalation, intent_simple_refund</div>
                 L2-② 해지 + 환불 동시 요청 <span class="lang-flag">ES</span>
             </div>
             <div class="scenario-body">
-                <table class="meta-table">
+<div class="table-responsive"><table class="meta-table">
                     <tr><th>의도 분류</th><td>Subscription → <code>cancel_and_refund</code> (L2)</td></tr>
                     <tr><th>Fraud 탐지</th><td>Score <strong>5</strong>, LOW</td></tr>
                     <tr><th>L2 사유</th><td>해지 + 환불 동시 처리 → 상담원 판단 필요</td></tr>
-                </table>
+                </table></div>
                 <div class="chat-area">
                     <div class="chat-label">💬 대화 시뮬레이션</div>
                     <div class="chat-bubble customer">Quiero cancelar mi suscripción y también quiero que me devuelvan el dinero del último cobro. No he usado el servicio este mes.</div>
@@ -468,11 +493,11 @@ Equipo de Soporte Toomics</div>
                 L2-③ 소셜 로그인 복구 <span class="lang-flag">PT</span>
             </div>
             <div class="scenario-body">
-                <table class="meta-table">
+<div class="table-responsive"><table class="meta-table">
                     <tr><th>의도 분류</th><td>Account → <code>social_login_issue</code> (L2)</td></tr>
                     <tr><th>Fraud 탐지</th><td>Score <strong>0</strong>, LOW</td></tr>
                     <tr><th>L2 사유</th><td>계정 복구 → 상담원이 직접 확인/처리 필요</td></tr>
-                </table>
+                </table></div>
                 <div class="chat-area">
                     <div class="chat-label">💬 대화 시뮬레이션</div>
                     <div class="chat-bubble customer">Eu fiz login com o Facebook mas agora não consigo acessar minha conta. Aparece erro quando tento entrar. Já tentei várias vezes.</div>
@@ -514,12 +539,12 @@ Equipe de Suporte Toomics</div>
                 <span class="fix-badge">✅ 수정 완료</span>
             </div>
             <div class="scenario-body">
-                <table class="meta-table">
+<div class="table-responsive"><table class="meta-table">
                     <tr><th>의도 분류</th><td>Subscription → <code>cancel_subscription</code> (신뢰도 0.95, L3)</td></tr>
                     <tr><th>Fraud 탐지</th><td>Score <strong>0</strong>, LOW</td></tr>
                     <tr><th>수정 전 (버그)</th><td><span class="bug-badge">❌ BUG</span> 결제정보 4개 항목 수집 → 실질적 L2 응대</td></tr>
                     <tr><th>수정 후</th><td><span class="fix-badge">✅ FIX</span> 즉시 해지 가이드 (Web / iOS / Android)</td></tr>
-                </table>
+                </table></div>
                 <div class="chat-area">
                     <div class="chat-label">💬 대화 시뮬레이션 (수정 후)</div>
                     <div class="chat-bubble customer">I want to cancel my subscription.</div>
@@ -567,12 +592,12 @@ Toomics Support Team</div>
                 <span class="fix-badge">✅ 수정 완료</span>
             </div>
             <div class="scenario-body">
-                <table class="meta-table">
+<div class="table-responsive"><table class="meta-table">
                     <tr><th>의도 분류</th><td>Refund → <code>ios_refund</code> (L3)</td></tr>
                     <tr><th>Fraud 탐지</th><td>Score <strong>0</strong>, LOW</td></tr>
                     <tr><th>수정 전 (버그)</th><td><span class="bug-badge">❌ BUG</span> 결제정보 요청 → Apple 리디렉트 지연</td></tr>
                     <tr><th>수정 후</th><td><span class="fix-badge">✅ FIX</span> 즉시 reportaproblem.apple.com 안내</td></tr>
-                </table>
+                </table></div>
                 <div class="chat-area">
                     <div class="chat-label">💬 대화 시뮬레이션 (수정 후)</div>
                     <div class="chat-bubble customer">Comment obtenir un remboursement pour mon achat sur l'App Store?</div>
@@ -604,12 +629,12 @@ L'équipe Toomics Support</div>
                 <span class="fix-badge">✅ 수정 완료</span>
             </div>
             <div class="scenario-body">
-                <table class="meta-table">
+<div class="table-responsive"><table class="meta-table">
                     <tr><th>의도 분류</th><td>Payment → <code>payment_failed</code> (L3)</td></tr>
                     <tr><th>Fraud 탐지</th><td>Score <strong>0</strong>, LOW</td></tr>
                     <tr><th>수정 전 (버그)</th><td><span class="bug-badge">❌ BUG</span> 결제정보 요청 → 트러블슈팅 지연</td></tr>
                     <tr><th>수정 후</th><td><span class="fix-badge">✅ FIX</span> 즉시 5단계 트러블슈팅 가이드</td></tr>
-                </table>
+                </table></div>
                 <div class="chat-area">
                     <div class="chat-label">💬 대화 시뮬레이션 (수정 후)</div>
                     <div class="chat-bubble customer">Meine Zahlung funktioniert nicht. Es kommt immer eine Fehlermeldung.</div>
@@ -645,8 +670,7 @@ Toomics Support Team</div>
                 <p>L1 / L2 / L3 처리 방식 비교</p>
             </div>
         </div>
-
-        <table class="summary-table">
+<div class="table-responsive"><table class="summary-table">
             <thead>
                 <tr>
                     <th>항목</th>
@@ -693,11 +717,11 @@ Toomics Support Team</div>
                     <td>구독 해지, FAQ, 트러블슈팅</td>
                 </tr>
             </tbody>
-        </table>
+        </table></div>
 
         <div class="closure-flow" style="margin-top:24px;">
             <div class="flow-title">🔄 L3 → 에스컬레이션 자동 전환 시나리오</div>
-            <table class="summary-table" style="margin-top:12px;">
+<div class="table-responsive"><table class="summary-table" style="margin-top:12px;">
                 <thead>
                     <tr><th>시나리오</th><th>트리거</th><th>결과</th></tr>
                 </thead>

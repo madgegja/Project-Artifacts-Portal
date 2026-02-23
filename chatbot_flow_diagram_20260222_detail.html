@@ -14,7 +14,11 @@
             min-height: 100vh;
             padding: 32px 16px;
             line-height: 1.6;
-        }
+        
+    font-size: 14px;
+  
+    word-break: keep-all; overflow-wrap: break-word;
+  }
 
         .container {
             max-width: 1200px;
@@ -431,7 +435,7 @@
         }
         .fraud-tag {
             display: inline-block;
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 700;
             padding: 2px 8px;
             border-radius: 4px;
@@ -519,7 +523,7 @@
         .score-tick {
             position: absolute;
             top: -16px;
-            font-size: 10px;
+            font-size: 11px;
             color: #64748b;
         }
 
@@ -547,7 +551,7 @@
             border-color: rgba(16, 185, 129, 0.3);
         }
         .l3-item .l3-cat {
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 600;
             padding: 1px 6px;
             border-radius: 4px;
@@ -705,7 +709,10 @@
             .parallel-branch { max-width: 100%; }
             .header h1 { font-size: 22px; }
         }
-    </style>
+    
+    /* ══ 가독성 패치 (2026-02-23) ══ */
+    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1em; }
+  </style>
 </head>
 <body>
 
@@ -1203,7 +1210,7 @@
                     <span class="score-tick" style="right: 0;">100</span>
                 </div>
             </div>
-            <div style="display: flex; justify-content: space-between; font-size: 10px; color: #64748b; margin-top: 4px; padding: 0 4px;">
+            <div style="display: flex; justify-content: space-between; font-size: 11px; color: #64748b; margin-top: 4px; padding: 0 4px;">
                 <span>정상 처리</span>
                 <span>주의 &mdash; 모니터링</span>
                 <span>상담원 즉시 에스컬레이션</span>
@@ -1271,11 +1278,11 @@
         </div>
 
         <div style="margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap; font-size: 11px; color: #64748b;">
-            <span><span class="l3-cat l3-cat-sub" style="font-size: 10px;">SUB</span> = Subscription (구독)</span>
-            <span><span class="l3-cat l3-cat-ref" style="font-size: 10px;">REF</span> = Refund (환불)</span>
-            <span><span class="l3-cat l3-cat-acc" style="font-size: 10px;">ACC</span> = Account (계정)</span>
-            <span><span class="l3-cat l3-cat-pay" style="font-size: 10px;">PAY</span> = Payment (결제)</span>
-            <span><span class="l3-cat l3-cat-tech" style="font-size: 10px;">TECH</span> = Technical (기술)</span>
+            <span><span class="l3-cat l3-cat-sub" style="font-size: 11px;">SUB</span> = Subscription (구독)</span>
+            <span><span class="l3-cat l3-cat-ref" style="font-size: 11px;">REF</span> = Refund (환불)</span>
+            <span><span class="l3-cat l3-cat-acc" style="font-size: 11px;">ACC</span> = Account (계정)</span>
+            <span><span class="l3-cat l3-cat-pay" style="font-size: 11px;">PAY</span> = Payment (결제)</span>
+            <span><span class="l3-cat l3-cat-tech" style="font-size: 11px;">TECH</span> = Technical (기술)</span>
         </div>
     </div>
 
@@ -1284,7 +1291,7 @@
     <div class="sub-diagram">
         <div class="sub-diagram-title">카테고리별 처리 전략 &mdash; 11,621건 실데이터 기반</div>
         <div style="overflow-x: auto;">
-            <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+<div class="table-responsive"><table style="width: 100%; border-collapse: collapse; font-size: 13px;">
                 <thead>
                     <tr style="border-bottom: 1px solid rgba(148,163,184,0.15);">
                         <th style="text-align: left; padding: 10px 8px; color: #94a3b8; font-weight: 600;">카테고리</th>

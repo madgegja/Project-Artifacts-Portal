@@ -17,6 +17,10 @@
     line-height: 1.5;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+  
+    font-size: 14px;
+  
+    word-break: keep-all; overflow-wrap: break-word;
   }
   .container {
     max-width: 1400px;
@@ -123,7 +127,7 @@
   .bar-legend-label { min-width: 100px; font-size: 12px; font-weight: 600; color: #e2e8f0; }
   .bar-legend-bar-wrap { flex: 1; height: 20px; background: #0f172a; border-radius: 4px; overflow: hidden; position: relative; }
   .bar-legend-bar { height: 100%; border-radius: 4px; transition: width 0.8s ease; display: flex; align-items: center; padding-left: 8px; }
-  .bar-legend-bar span { font-size: 10px; font-weight: 700; color: #fff; white-space: nowrap; }
+  .bar-legend-bar span { font-size: 11px; font-weight: 700; color: #fff; white-space: nowrap; }
   .bar-legend-val { min-width: 72px; text-align: right; font-size: 12px; font-weight: 700; color: #94a3b8; font-variant-numeric: tabular-nums; }
 
   /* ── WoW Table ── */
@@ -193,7 +197,7 @@
   .voice-card.severity-low { border-left-color: #22c55e; }
   .voice-card.severity-critical { border-left-color: #7c3aed; }
   .voice-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
-  .voice-badge { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 10px; font-weight: 700; }
+  .voice-badge { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; }
   .badge-market { background: #1e3a5f; color: #38bdf8; }
   .badge-count { background: #3b1c1c; color: #fca5a5; }
   .badge-severity-high { background: #3b1c1c; color: #fca5a5; }
@@ -274,7 +278,21 @@
     .no-print { display: none !important; }
     canvas { max-width: 100% !important; }
   }
-</style>
+
+    /* ══ 가독성 패치 (2026-02-23) ══ */
+    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1em; }
+    @media (max-width: 768px) {
+      body { font-size: 13px !important; }
+      .container, .body, [class*="content"] { padding-left: 12px !important; padding-right: 12px !important; }
+      h1 { font-size: 22px !important; }
+      h2 { font-size: 18px !important; }
+      h3 { font-size: 15px !important; }
+      table { font-size: 11px !important; }
+      .header, .hero, [class*="header"] { padding: 24px 16px !important; }
+      .toc-grid, .grid-2, .grid-3, .stat-grid, .card-grid, .level-grid { grid-template-columns: 1fr !important; }
+      .header-meta { flex-direction: column; gap: 8px !important; }
+    }
+  </style>
 </head>
 <body>
 
@@ -374,7 +392,7 @@
   <div class="section">
     <div class="section-title"><span class="dot"></span>Week-over-Week 비교 (W2 vs W3)</div>
     <div class="chart-card">
-      <table class="wow-table">
+<div class="table-responsive"><table class="wow-table">
         <thead>
           <tr>
             <th>지표</th>
@@ -489,23 +507,23 @@
       <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:18px;" class="cb-kpi-strip">
         <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#fff;">86</div>
-          <div style="font-size:10px; color:#64748b;">총 건수 (7일)</div>
+          <div style="font-size: 11px; color:#64748b;">총 건수 (7일)</div>
         </div>
         <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#f59e0b;">12.3</div>
-          <div style="font-size:10px; color:#64748b;">일 평균</div>
+          <div style="font-size: 11px; color:#64748b;">일 평균</div>
         </div>
         <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#ef4444;">22</div>
-          <div style="font-size:10px; color:#64748b;">피크일 (02.11 수)</div>
+          <div style="font-size: 11px; color:#64748b;">피크일 (02.11 수)</div>
         </div>
         <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#0ea5e9;">51.2%</div>
-          <div style="font-size:10px; color:#64748b;">PayPal 비중</div>
+          <div style="font-size: 11px; color:#64748b;">PayPal 비중</div>
         </div>
         <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#22c55e;">$1,659</div>
-          <div style="font-size:10px; color:#64748b;">추정 피해액</div>
+          <div style="font-size: 11px; color:#64748b;">추정 피해액</div>
         </div>
       </div>
 
@@ -547,30 +565,30 @@
         <h3 style="font-size:16px; margin:0;">📅 W3 — 2월 3주차 (02.14 토 ~ 02.20 금)</h3>
         <span style="background:#1e3a5f; color:#38bdf8; padding:3px 10px; border-radius:6px; font-size:11px; font-weight:700;">40건*</span>
         <span style="background:#1e3a5f; color:#38bdf8; padding:3px 10px; border-radius:6px; font-size:11px; font-weight:700;">~$706 USD</span>
-        <span style="background:#3b2e1c; color:#fcd34d; padding:3px 10px; border-radius:6px; font-size:10px; font-weight:600;">02.20(금) 미반영 · 6일 데이터</span>
+        <span style="background:#3b2e1c; color:#fcd34d; padding:3px 10px; border-radius:6px; font-size: 11px; font-weight:600;">02.20(금) 미반영 · 6일 데이터</span>
       </div>
 
       <!-- W3 KPI -->
       <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:18px;" class="cb-kpi-strip">
         <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#fff;">40<span style="font-size:12px; color:#64748b;">*</span></div>
-          <div style="font-size:10px; color:#64748b;">총 건수 (6일)</div>
+          <div style="font-size: 11px; color:#64748b;">총 건수 (6일)</div>
         </div>
         <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#22c55e;">6.7</div>
-          <div style="font-size:10px; color:#64748b;">일 평균 <span style="color:#22c55e;">▼</span></div>
+          <div style="font-size: 11px; color:#64748b;">일 평균 <span style="color:#22c55e;">▼</span></div>
         </div>
         <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#f59e0b;">14</div>
-          <div style="font-size:10px; color:#64748b;">피크일 (02.18 수)</div>
+          <div style="font-size: 11px; color:#64748b;">피크일 (02.18 수)</div>
         </div>
         <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#0ea5e9;">62.5%</div>
-          <div style="font-size:10px; color:#64748b;">PayPal 비중 <span style="color:#ef4444;">▲</span></div>
+          <div style="font-size: 11px; color:#64748b;">PayPal 비중 <span style="color:#ef4444;">▲</span></div>
         </div>
         <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#22c55e;">$706</div>
-          <div style="font-size:10px; color:#64748b;">추정 피해액</div>
+          <div style="font-size: 11px; color:#64748b;">추정 피해액</div>
         </div>
       </div>
 
@@ -610,7 +628,7 @@
     <div class="chart-grid-2" style="margin-bottom:16px;">
       <div class="chart-card" style="padding:20px;">
         <h3 style="font-size:13px;">W2 vs W3 주간 비교</h3>
-        <table class="wow-table">
+<div class="table-responsive"><table class="wow-table">
           <thead><tr><th>지표</th><th style="text-align:right;">W2</th><th style="text-align:right;">W3*</th><th style="text-align:right;">변화</th></tr></thead>
           <tbody>
             <tr><td><strong>총 건수</strong></td><td class="num">86</td><td class="num">40*</td><td class="num"><span class="trend-down">-53.5%</span></td></tr>
@@ -923,28 +941,28 @@
       <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:18px;" class="cb-kpi-strip">
         <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#8b5cf6;">5</div>
-          <div style="font-size:10px; color:#64748b;">Core AI Skills</div>
+          <div style="font-size: 11px; color:#64748b;">Core AI Skills</div>
         </div>
         <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#22c55e;">114/114</div>
-          <div style="font-size:10px; color:#64748b;">테스트 통과</div>
+          <div style="font-size: 11px; color:#64748b;">테스트 통과</div>
         </div>
         <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#0ea5e9;">100%</div>
-          <div style="font-size:10px; color:#64748b;">예측 정확도</div>
+          <div style="font-size: 11px; color:#64748b;">예측 정확도</div>
         </div>
         <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#f59e0b;">9</div>
-          <div style="font-size:10px; color:#64748b;">운영 문서</div>
+          <div style="font-size: 11px; color:#64748b;">운영 문서</div>
         </div>
         <div style="background:#0f172a; border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#ef4444;">38%</div>
-          <div style="font-size:10px; color:#64748b;">Phase 1 자동화 목표</div>
+          <div style="font-size: 11px; color:#64748b;">Phase 1 자동화 목표</div>
         </div>
       </div>
 
       <!-- AI Progress Table -->
-      <table class="wow-table" style="margin-bottom:16px;">
+<div class="table-responsive"><table class="wow-table" style="margin-bottom:16px;">
         <thead>
           <tr><th>구분</th><th>내용</th><th>상태</th></tr>
         </thead>
@@ -980,7 +998,7 @@
             <td><span class="trend-up">⚠️ 블로커</span></td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
 
       <!-- Phase Roadmap -->
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;" class="cb-breakdown-grid">

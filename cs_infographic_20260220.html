@@ -15,6 +15,10 @@
     line-height: 1.5;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+  
+    font-size: 14px;
+  
+    word-break: keep-all; overflow-wrap: break-word;
   }
   @media print {
     body { background: white; }
@@ -310,7 +314,7 @@
   }
   .roadmap-phase:last-child { border-right: none; }
   .roadmap-phase .phase-label {
-    font-size: 10px;
+    font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     font-weight: 700;
@@ -365,7 +369,21 @@
     .hero { padding: 32px 24px; }
     .hero h1 { font-size: 26px; }
   }
-</style>
+
+    /* ══ 가독성 패치 (2026-02-23) ══ */
+    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1em; }
+    @media (max-width: 768px) {
+      body { font-size: 13px !important; }
+      .container, .body, [class*="content"] { padding-left: 12px !important; padding-right: 12px !important; }
+      h1 { font-size: 22px !important; }
+      h2 { font-size: 18px !important; }
+      h3 { font-size: 15px !important; }
+      table { font-size: 11px !important; }
+      .header, .hero, [class*="header"] { padding: 24px 16px !important; }
+      .toc-grid, .grid-2, .grid-3, .stat-grid, .card-grid, .level-grid { grid-template-columns: 1fr !important; }
+      .header-meta { flex-direction: column; gap: 8px !important; }
+    }
+  </style>
 </head>
 <body>
 
@@ -496,7 +514,7 @@
   <div class="section">
     <div class="section-title"><span class="dot"></span>마켓별 상세 현황</div>
     <div class="chart-card">
-      <table class="market-table">
+<div class="table-responsive"><table class="market-table">
         <thead>
           <tr>
             <th>마켓</th>

@@ -15,6 +15,8 @@
     font-size: 14px;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+  
+    word-break: keep-all; overflow-wrap: break-word;
   }
   @media print {
     body { background: #0f172a; }
@@ -96,7 +98,7 @@
     gap: 2px;
   }
   .hero-meta-item .label {
-    font-size: 10px;
+    font-size: 11px;
     opacity: 0.5;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -263,7 +265,7 @@
     display: inline-block;
     padding: 2px 10px;
     border-radius: 10px;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     margin-top: 8px;
   }
@@ -435,7 +437,7 @@
     border-left: 3px solid #0ea5e9;
   }
   .deliverables .deliverables-label {
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     color: #0ea5e9;
     text-transform: uppercase;
@@ -533,7 +535,7 @@
   }
   .tech-card:hover { border-color: rgba(14,165,233,0.4); }
   .tech-card .tech-phase {
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
@@ -605,7 +607,7 @@
   }
   .pipeline-node:hover { border-color: #0ea5e9; }
   .pipeline-node .node-step {
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     color: #0ea5e9;
     letter-spacing: 1px;
@@ -618,7 +620,7 @@
     margin-bottom: 2px;
   }
   .pipeline-node .node-file {
-    font-size: 10px;
+    font-size: 11px;
     color: #64748b;
     font-family: 'Consolas', 'Courier New', monospace;
   }
@@ -649,7 +651,7 @@
     font-weight: 700;
     padding: 1px 8px;
     border-radius: 4px;
-    font-size: 10px;
+    font-size: 11px;
   }
   .branch-level.l1 { background: rgba(239,68,68,0.15); color: #ef4444; }
   .branch-level.l2 { background: rgba(245,158,11,0.15); color: #f59e0b; }
@@ -711,7 +713,21 @@
     .goals-grid { grid-template-columns: 1fr; }
     .tech-grid { grid-template-columns: 1fr; }
   }
-</style>
+
+    /* ══ 가독성 패치 (2026-02-23) ══ */
+    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1em; }
+    @media (max-width: 768px) {
+      body { font-size: 13px !important; }
+      .container, .body, [class*="content"] { padding-left: 12px !important; padding-right: 12px !important; }
+      h1 { font-size: 22px !important; }
+      h2 { font-size: 18px !important; }
+      h3 { font-size: 15px !important; }
+      table { font-size: 11px !important; }
+      .header, .hero, [class*="header"] { padding: 24px 16px !important; }
+      .toc-grid, .grid-2, .grid-3, .stat-grid, .card-grid, .level-grid { grid-template-columns: 1fr !important; }
+      .header-meta { flex-direction: column; gap: 8px !important; }
+    }
+  </style>
 </head>
 <body>
 
@@ -1144,16 +1160,16 @@
 
       <!-- 핵심 인사이트: 83% -->
       <div style="text-align:center;margin-bottom:16px;padding:16px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.12);border-radius:12px;">
-        <div style="font-size:10px;color:#38bdf8;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;">CORE INSIGHT — 실데이터 11,621건 분석</div>
+        <div style="font-size: 11px;color:#38bdf8;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;">CORE INSIGHT — 실데이터 11,621건 분석</div>
         <div style="font-size:17px;font-weight:800;color:#e2e8f0;line-height:1.4;margin-bottom:10px;">
           상담원 응답의 <span style="color:#38bdf8;font-size:24px;">83%</span>가 <span style="color:#fbbf24;">반복 정보 확인 단계</span>
         </div>
         <div style="display:flex;justify-content:center;gap:6px;flex-wrap:wrap;">
-          <span style="background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.2);border-radius:16px;padding:4px 10px;font-size:10px;color:#7dd3fc;font-weight:600;">결제정보 45%</span>
-          <span style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);border-radius:16px;padding:4px 10px;font-size:10px;color:#6ee7b7;font-weight:600;">구독취소 18%</span>
-          <span style="background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.2);border-radius:16px;padding:4px 10px;font-size:10px;color:#fcd34d;font-weight:600;">환불 10%</span>
-          <span style="background:rgba(244,114,182,0.1);border:1px solid rgba(244,114,182,0.2);border-radius:16px;padding:4px 10px;font-size:10px;color:#f9a8d4;font-weight:600;">환불거절 7%</span>
-          <span style="background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2);border-radius:16px;padding:4px 10px;font-size:10px;color:#c4b5fd;font-weight:600;">계정삭제 3%</span>
+          <span style="background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.2);border-radius:16px;padding:4px 10px;font-size: 11px;color:#7dd3fc;font-weight:600;">결제정보 45%</span>
+          <span style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);border-radius:16px;padding:4px 10px;font-size: 11px;color:#6ee7b7;font-weight:600;">구독취소 18%</span>
+          <span style="background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.2);border-radius:16px;padding:4px 10px;font-size: 11px;color:#fcd34d;font-weight:600;">환불 10%</span>
+          <span style="background:rgba(244,114,182,0.1);border:1px solid rgba(244,114,182,0.2);border-radius:16px;padding:4px 10px;font-size: 11px;color:#f9a8d4;font-weight:600;">환불거절 7%</span>
+          <span style="background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2);border-radius:16px;padding:4px 10px;font-size: 11px;color:#c4b5fd;font-weight:600;">계정삭제 3%</span>
         </div>
       </div>
 
@@ -1165,7 +1181,7 @@
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
             <div style="width:28px;height:28px;background:linear-gradient(135deg,#0ea5e9,#6366f1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;">🎯</div>
             <div>
-              <div style="font-size:9px;color:#818cf8;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CUSTOMER EXPERIENCE</div>
+              <div style="font-size: 11px;color:#818cf8;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CUSTOMER EXPERIENCE</div>
               <div style="font-size:12px;font-weight:800;color:#38bdf8;">고객 경험 향상 → 서비스 만족도 극대화</div>
             </div>
           </div>
@@ -1173,12 +1189,12 @@
             <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(14,165,233,0.1);border-radius:10px;padding:10px;text-align:center;">
               <div style="font-size:18px;margin-bottom:2px;">🛡️</div>
               <div style="font-size:11px;font-weight:700;color:#7dd3fc;">CS 만족도</div>
-              <div style="font-size:10px;color:#64748b;margin-top:1px;">빠른 CS → 긍정적 경험</div>
+              <div style="font-size: 11px;color:#64748b;margin-top:1px;">빠른 CS → 긍정적 경험</div>
             </div>
             <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(14,165,233,0.1);border-radius:10px;padding:10px;text-align:center;">
               <div style="font-size:18px;margin-bottom:2px;">🌐</div>
               <div style="font-size:11px;font-weight:700;color:#7dd3fc;">24/7 글로벌</div>
-              <div style="font-size:10px;color:#64748b;margin-top:1px;">10개 언어 감지 · 시간대 무관</div>
+              <div style="font-size: 11px;color:#64748b;margin-top:1px;">10개 언어 감지 · 시간대 무관</div>
             </div>
           </div>
           <div style="text-align:center;padding:5px 8px;background:rgba(14,165,233,0.06);border-radius:6px;font-size:11px;font-weight:700;color:#38bdf8;">Customer Satisfaction & Loyalty ↑</div>
@@ -1189,7 +1205,7 @@
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
             <div style="width:28px;height:28px;background:linear-gradient(135deg,#10b981,#f59e0b);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;">⚡</div>
             <div>
-              <div style="font-size:9px;color:#fbbf24;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CS OPERATIONS</div>
+              <div style="font-size: 11px;color:#fbbf24;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CS OPERATIONS</div>
               <div style="font-size:12px;font-weight:800;color:#34d399;">운영 효율 극대화 → 처리 능력 3~4배</div>
             </div>
           </div>
@@ -1197,12 +1213,12 @@
             <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(16,185,129,0.1);border-radius:10px;padding:10px;text-align:center;">
               <div style="font-size:18px;margin-bottom:2px;">⚡</div>
               <div style="font-size:11px;font-weight:700;color:#6ee7b7;">효율 3~4배</div>
-              <div style="font-size:10px;color:#64748b;margin-top:1px;">정보 확보 → 즉시 처리</div>
+              <div style="font-size: 11px;color:#64748b;margin-top:1px;">정보 확보 → 즉시 처리</div>
             </div>
             <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(16,185,129,0.1);border-radius:10px;padding:10px;text-align:center;">
               <div style="font-size:18px;margin-bottom:2px;">🎯</div>
               <div style="font-size:11px;font-weight:700;color:#6ee7b7;">38% 티켓 감소</div>
-              <div style="font-size:10px;color:#64748b;margin-top:1px;">셀프 해결 630건/월</div>
+              <div style="font-size: 11px;color:#64748b;margin-top:1px;">셀프 해결 630건/월</div>
             </div>
           </div>
           <div style="text-align:center;padding:5px 8px;background:rgba(16,185,129,0.06);border-radius:6px;font-size:11px;font-weight:700;color:#34d399;">CS Processing Efficiency ×3~4</div>

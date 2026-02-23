@@ -350,7 +350,7 @@
             left: 16px;
             background: var(--brand-accent);
             color: var(--white);
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 700;
             letter-spacing: 1px;
             padding: 2px 10px;
@@ -638,7 +638,10 @@
                 padding: 16px 18px;
             }
         }
-    </style>
+    
+    /* ══ 가독성 패치 (2026-02-23) ══ */
+    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1em; }
+  </style>
 </head>
 <body>
 
@@ -682,7 +685,7 @@
         <h1 id="section-1"><span class="section-number">1.</span> Overview Dashboard</h1>
 
         <h2>1.1 Ticket Volume by Category (7-Month Average)</h2>
-        <table>
+<div class="table-responsive"><table>
             <thead>
                 <tr><th>Priority</th><th>Category</th><th>Monthly Avg</th><th>% of Total</th><th>Target Response</th></tr>
             </thead>
@@ -695,10 +698,10 @@
                 <tr><td><strong>P6</strong></td><td>Technical</td><td>32</td><td>3%</td><td>&lt; 12 hours</td></tr>
                 <tr><td><strong>P7</strong></td><td>Other (Coins, etc.)</td><td>30</td><td>2%</td><td>&lt; 12 hours</td></tr>
             </tbody>
-        </table>
+        </table></div>
 
         <h2>1.2 Ticket Volume by Market</h2>
-        <table>
+<div class="table-responsive"><table>
             <thead>
                 <tr><th>Market</th><th>Monthly Avg</th><th>%</th><th>Top Category</th><th>Key Issue</th></tr>
             </thead>
@@ -714,10 +717,10 @@
                 <tr><td><strong>IT</strong></td><td>45</td><td>2.7%</td><td>Subscription (40%)</td><td>Cross-language VIP, coin issues</td></tr>
                 <tr><td><strong>KR</strong></td><td>&lt;1</td><td>0%</td><td>&mdash;</td><td>Minimal (browser language only)</td></tr>
             </tbody>
-        </table>
+        </table></div>
 
         <h2>1.3 Support Email Addresses</h2>
-        <table>
+<div class="table-responsive"><table>
             <thead>
                 <tr><th>Market</th><th>Email</th></tr>
             </thead>
@@ -732,7 +735,7 @@
                 <tr><td><strong>CN</strong></td><td>cs@toomicsglobal.com</td></tr>
                 <tr><td><strong>IT</strong></td><td>it.help@toomicsglobal.com</td></tr>
             </tbody>
-        </table>
+        </table></div>
 
         <h2>1.4 Decision Flowchart: First Response</h2>
 <pre>
@@ -960,8 +963,7 @@ Customer Ticket Received
         <h2>3.1 Refund Eligibility Criteria</h2>
 
         <p><strong>All three conditions must be met for a refund:</strong></p>
-
-        <table>
+<div class="table-responsive"><table>
             <thead>
                 <tr><th>#</th><th>Condition</th><th>Verification Method</th></tr>
             </thead>
@@ -970,10 +972,10 @@ Customer Ticket Received
                 <tr><td>2</td><td><strong>No VIP content</strong> has been accessed</td><td>Check content access log</td></tr>
                 <tr><td>3</td><td><strong>No coins</strong> (including Gift/Bonus coins) have been used</td><td>Check coin usage history</td></tr>
             </tbody>
-        </table>
+        </table></div>
 
         <p><strong>Decision Matrix:</strong></p>
-        <table>
+<div class="table-responsive"><table>
             <thead>
                 <tr><th>Content Accessed?</th><th>Within 14 Days?</th><th>Coins Used?</th><th>Result</th></tr>
             </thead>
@@ -984,7 +986,7 @@ Customer Ticket Received
                 <tr><td>No</td><td>Yes</td><td>Yes</td><td class="result-denied">REFUND DENIED</td></tr>
                 <tr><td>Yes</td><td>Yes</td><td>Yes</td><td class="result-denied">REFUND DENIED</td></tr>
             </tbody>
-        </table>
+        </table></div>
 
         <h2>3.2 Refund Approved</h2>
 
@@ -1113,7 +1115,7 @@ Customer Ticket Received
             <p>Hello, this is Toomics.<br>Thank you for contacting us again.</p>
             <p>We understand your concern about the pending refund. According to our records, the refund was processed on <strong>_____ (date)</strong>.</p>
             <p>Please note that refund processing times vary depending on the payment method:</p>
-            <table>
+<div class="table-responsive"><table>
                 <thead>
                     <tr><th>Payment Method</th><th>Estimated Time</th></tr>
                 </thead>
@@ -1123,7 +1125,7 @@ Customer Ticket Received
                     <tr><td>Google Play</td><td>3-5 business days</td></tr>
                     <tr><td>Apple App Store</td><td>2-5 business days</td></tr>
                 </tbody>
-            </table>
+            </table></div>
             <p>If you have not received the refund after this period, we recommend contacting your card-issuing bank or payment provider directly, as the processing time ultimately depends on their policy.</p>
             <p>If you have any further questions, please feel free to contact us.</p>
             <p>Best regards,<br>Toomics</p>
@@ -1359,7 +1361,7 @@ Customer Ticket Received
         <blockquote>
             <p>Hello, this is Toomics.<br>Thank you for contacting us.</p>
             <p>Here are our current VIP Membership plans:</p>
-            <table>
+<div class="table-responsive"><table>
                 <thead>
                     <tr><th>Plan</th><th>Price (USD)</th><th>Per Month</th></tr>
                 </thead>
@@ -1368,7 +1370,7 @@ Customer Ticket Received
                     <tr><td>3 Months</td><td>$23.99</td><td>$7.99/mo</td></tr>
                     <tr><td>6 Months</td><td>$41.99</td><td>$6.99/mo</td></tr>
                 </tbody>
-            </table>
+            </table></div>
             <p><em>Prices may vary depending on your region and payment method.</em></p>
             <p>All plans include unlimited access to our entire VIP content library and are set to auto-renew at the end of each billing period unless canceled.</p>
             <p>You can subscribe at: toomics.com</p>
@@ -1791,8 +1793,7 @@ Customer Ticket Received
         <h1 id="section-9"><span class="section-number">9.</span> Fraud Detection &amp; Restricted Accounts</h1>
 
         <h2>9.1 Fraud Red Flag Indicators</h2>
-
-        <table>
+<div class="table-responsive"><table>
             <thead>
                 <tr><th>Level</th><th>Indicator</th><th>Description</th></tr>
             </thead>
@@ -1806,7 +1807,7 @@ Customer Ticket Received
                 <tr><td class="flag-supporting">Supporting</td><td>Copied template</td><td>Inquiry text appears to be a pre-written template</td></tr>
                 <tr><td class="flag-supporting">Supporting</td><td>Rapid content consumption</td><td>Read last chapters only, or read chapters in seconds</td></tr>
             </tbody>
-        </table>
+        </table></div>
 
         <h2>9.2 Restricted Account Templates</h2>
 
@@ -1886,7 +1887,7 @@ Customer Ticket Received
         <p>TOOMICS STORE is a separate content section offering exclusive and uncensored webtoons, available only via the web (not on mobile apps).</p>
 
         <p><strong>Key differences from VIP Subscription:</strong></p>
-        <table>
+<div class="table-responsive"><table>
             <thead>
                 <tr><th>Feature</th><th>VIP Membership</th><th>TOOMICS STORE</th></tr>
             </thead>
@@ -1897,7 +1898,7 @@ Customer Ticket Received
                 <tr><td><strong>Content</strong></td><td>Curated library</td><td>Exclusive + Uncensored</td></tr>
                 <tr><td><strong>Payment</strong></td><td>Recurring</td><td>Per-chapter coin purchase</td></tr>
             </tbody>
-        </table>
+        </table></div>
 
         <h2>10.2 Templates</h2>
 
@@ -1937,8 +1938,7 @@ Customer Ticket Received
         <h1 id="section-11"><span class="section-number">11.</span> Operational Standards &amp; SLA</h1>
 
         <h2>11.1 Response Time Targets</h2>
-
-        <table>
+<div class="table-responsive"><table>
             <thead>
                 <tr><th>Priority</th><th>Category</th><th>Target First Response</th><th>Target Resolution</th></tr>
             </thead>
@@ -1952,7 +1952,7 @@ Customer Ticket Received
                 <tr><td><strong>P4</strong></td><td>Payment Investigation</td><td>&lt; 8 hours</td><td>&lt; 24 hours</td></tr>
                 <tr><td><strong>P5</strong></td><td>Content/Technical</td><td>&lt; 12 hours</td><td>&lt; 48 hours</td></tr>
             </tbody>
-        </table>
+        </table></div>
 
         <h2>11.2 Quality Checklist</h2>
 
@@ -1991,8 +1991,7 @@ Customer Ticket Received
         </ul>
 
         <h2>11.4 Common Mistakes to Avoid</h2>
-
-        <table>
+<div class="table-responsive"><table>
             <thead>
                 <tr><th>Mistake</th><th>Correct Approach</th></tr>
             </thead>
@@ -2005,7 +2004,7 @@ Customer Ticket Received
                 <tr><td>Canceling VIP without checking iOS/Android source</td><td>Check payment source first</td></tr>
                 <tr><td>Using informal language for JP/DE markets</td><td>Maintain formal register (keigo / Sie form)</td></tr>
             </tbody>
-        </table>
+        </table></div>
 
         <hr>
 
@@ -2111,7 +2110,7 @@ Customer Ticket Received
         <p><em>Data source: 11,621 Zendesk tickets from July 2025 to January 2026, analyzed across 10 language markets.</em></p>
 
         <div class="version-table">
-            <table>
+<div class="table-responsive"><table>
                 <thead>
                     <tr><th>Version</th><th>Date</th><th>Changes</th></tr>
                 </thead>

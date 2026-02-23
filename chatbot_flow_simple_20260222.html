@@ -15,6 +15,12 @@
     min-height: 100vh;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+  
+    font-size: 14px;
+  
+    line-height: 1.6;
+  
+    word-break: keep-all; overflow-wrap: break-word;
   }
 
   @media print {
@@ -114,7 +120,7 @@
 
   .node-step {
     display: inline-block;
-    font-size: 10px; font-weight: 800;
+    font-size: 11px; font-weight: 800;
     letter-spacing: 2px; text-transform: uppercase;
     padding: 3px 12px;
     border-radius: 8px;
@@ -370,7 +376,7 @@
   .compare-card .cc-tag {
     display: inline-block;
     padding: 3px 12px; border-radius: 10px;
-    font-size: 10px; font-weight: 800;
+    font-size: 11px; font-weight: 800;
     letter-spacing: 1.5px; text-transform: uppercase;
     margin-bottom: 12px;
   }
@@ -491,7 +497,21 @@
   .result-card .rc-label { font-size: 11px; color: #64748b; margin-bottom: 4px; }
   .result-card .rc-value { font-size: 22px; font-weight: 800; }
   .result-card .rc-desc { font-size: 11px; color: #475569; margin-top: 2px; }
-</style>
+
+    /* ══ 가독성 패치 (2026-02-23) ══ */
+    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1em; }
+    @media (max-width: 768px) {
+      body { font-size: 13px !important; }
+      .container, .body, [class*="content"] { padding-left: 12px !important; padding-right: 12px !important; }
+      h1 { font-size: 22px !important; }
+      h2 { font-size: 18px !important; }
+      h3 { font-size: 15px !important; }
+      table { font-size: 11px !important; }
+      .header, .hero, [class*="header"] { padding: 24px 16px !important; }
+      .toc-grid, .grid-2, .grid-3, .stat-grid, .card-grid, .level-grid { grid-template-columns: 1fr !important; }
+      .header-meta { flex-direction: column; gap: 8px !important; }
+    }
+  </style>
 </head>
 <body>
 
@@ -595,9 +615,9 @@
           <div class="di-icon">📊</div>
           <div class="di-title">위험도 점수</div>
           <div class="di-desc" style="display:flex;gap:4px;justify-content:center;margin-top:4px;">
-            <span style="background:rgba(16,185,129,0.2);color:#6ee7b7;padding:2px 8px;border-radius:6px;font-size:10px;">0~29 안전</span>
-            <span style="background:rgba(245,158,11,0.2);color:#fcd34d;padding:2px 8px;border-radius:6px;font-size:10px;">30~49 주의</span>
-            <span style="background:rgba(239,68,68,0.2);color:#fca5a5;padding:2px 8px;border-radius:6px;font-size:10px;">50+ 위험</span>
+            <span style="background:rgba(16,185,129,0.2);color:#6ee7b7;padding:2px 8px;border-radius:6px;font-size: 11px;">0~29 안전</span>
+            <span style="background:rgba(245,158,11,0.2);color:#fcd34d;padding:2px 8px;border-radius:6px;font-size: 11px;">30~49 주의</span>
+            <span style="background:rgba(239,68,68,0.2);color:#fca5a5;padding:2px 8px;border-radius:6px;font-size: 11px;">50+ 위험</span>
           </div>
         </div>
       </div>
@@ -783,7 +803,7 @@
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
           <div style="width:36px;height:36px;background:linear-gradient(135deg,#0ea5e9,#6366f1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;">🎯</div>
           <div>
-            <div style="font-size:10px;color:#818cf8;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CUSTOMER EXPERIENCE</div>
+            <div style="font-size: 11px;color:#818cf8;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CUSTOMER EXPERIENCE</div>
             <div style="font-size:15px;font-weight:800;background:linear-gradient(135deg,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">고객 경험 향상 → 서비스 만족도 극대화</div>
           </div>
         </div>
@@ -816,7 +836,7 @@
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
           <div style="width:36px;height:36px;background:linear-gradient(135deg,#10b981,#f59e0b);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;">⚡</div>
           <div>
-            <div style="font-size:10px;color:#fbbf24;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CS OPERATIONS</div>
+            <div style="font-size: 11px;color:#fbbf24;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CS OPERATIONS</div>
             <div style="font-size:15px;font-weight:800;background:linear-gradient(135deg,#34d399,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">운영 효율 극대화 → 처리 능력 3~4배</div>
           </div>
         </div>

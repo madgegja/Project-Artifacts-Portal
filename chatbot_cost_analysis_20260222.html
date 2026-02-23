@@ -15,6 +15,10 @@
     line-height: 1.6;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+  
+    font-size: 14px;
+  
+    word-break: keep-all; overflow-wrap: break-word;
   }
   @media print {
     body { background: #0f172a; }
@@ -262,7 +266,7 @@
     gap: 8px;
   }
   .chart-box h3 .chart-badge {
-    font-size: 10px;
+    font-size: 11px;
     background: rgba(14,165,233,0.15);
     color: #38bdf8;
     padding: 2px 8px;
@@ -598,7 +602,21 @@
   .kpi-card:nth-child(2) { animation-delay: 0.2s; }
   .kpi-card:nth-child(3) { animation-delay: 0.3s; }
   .kpi-card:nth-child(4) { animation-delay: 0.4s; }
-</style>
+
+    /* ══ 가독성 패치 (2026-02-23) ══ */
+    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1em; }
+    @media (max-width: 768px) {
+      body { font-size: 13px !important; }
+      .container, .body, [class*="content"] { padding-left: 12px !important; padding-right: 12px !important; }
+      h1 { font-size: 22px !important; }
+      h2 { font-size: 18px !important; }
+      h3 { font-size: 15px !important; }
+      table { font-size: 11px !important; }
+      .header, .hero, [class*="header"] { padding: 24px 16px !important; }
+      .toc-grid, .grid-2, .grid-3, .stat-grid, .card-grid, .level-grid { grid-template-columns: 1fr !important; }
+      .header-meta { flex-direction: column; gap: 8px !important; }
+    }
+  </style>
 </head>
 <body>
 
@@ -683,7 +701,7 @@
       <div class="chart-box full">
         <h3>&#129302; AI 챗봇 운영 비용 (예상) <span class="chart-badge">TO-BE</span> <span class="chart-badge" style="background:rgba(16,185,129,0.15);color:#34d399;">Proxy 적용</span></h3>
         <div class="table-wrap" style="border:none; margin-bottom:0;">
-          <table>
+<div class="table-responsive"><table>
             <thead>
               <tr><th style="width:40%;">항목</th><th style="width:28%;">수치</th><th>비고</th></tr>
             </thead>
@@ -718,7 +736,7 @@
       <div class="token-grid">
         <div>
           <div style="font-size:13px; font-weight:700; color:#cbd5e1; margin-bottom:8px;">&#128268; 프록시 구조</div>
-          <table class="mini-table">
+<div class="table-responsive"><table class="mini-table">
             <tr><td>구독 플랜</td><td><strong>Claude Pro Max ($100/월)</strong></td></tr>
             <tr><td>프록시</td><td>claude-max-api-proxy (localhost:3456)</td></tr>
             <tr><td>인터페이스</td><td>OpenAI 호환 API (/v1/chat/completions)</td></tr>
@@ -730,13 +748,13 @@
         </div>
         <div>
           <div style="font-size:13px; font-weight:700; color:#cbd5e1; margin-bottom:8px;">&#128178; 비용 비교 (기존 vs 프록시)</div>
-          <table class="mini-table">
+<div class="table-responsive"><table class="mini-table">
             <tr><td>기존 API 종량제</td><td><del style="color:#64748b;">&#8361;71,000/월</del></td></tr>
             <tr><td>프록시 적용 후</td><td><strong style="color:#34d399;">&#8361;0/월</strong></td></tr>
             <tr><td style="color:#34d399;font-weight:700;">월 절감액</td><td><strong style="color:#34d399;">&#8361;71,000</strong></td></tr>
-          </table>
+          </table></div>
           <div style="margin-top:14px; font-size:13px; font-weight:700; color:#cbd5e1; margin-bottom:8px;">&#128202; 최종 월간 비용</div>
-          <table class="mini-table">
+<div class="table-responsive"><table class="mini-table">
             <tr><td>Claude Pro Max</td><td>&#8361;140,000</td></tr>
             <tr><td>서버 (VPS)</td><td>&#8361;50,000</td></tr>
             <tr><td>API 토큰</td><td style="color:#34d399;"><strong>&#8361;0</strong></td></tr>
@@ -770,7 +788,7 @@
     </div>
 
     <div class="table-wrap">
-      <table>
+<div class="table-responsive"><table>
         <thead>
           <tr>
             <th>카테고리</th>
@@ -865,7 +883,7 @@
       <div class="chart-box">
         <h3>&#128296; 자동화 가능성 분석</h3>
         <div class="table-wrap" style="border:none; margin-bottom:0;">
-          <table>
+<div class="table-responsive"><table>
             <thead>
               <tr><th>템플릿</th><th>비중</th><th>변수</th><th>자동화</th></tr>
             </thead>
@@ -1019,7 +1037,7 @@
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
             <div style="width:32px;height:32px;background:linear-gradient(135deg,#0ea5e9,#6366f1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;">🎯</div>
             <div>
-              <div style="font-size:9px;color:#818cf8;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CUSTOMER EXPERIENCE</div>
+              <div style="font-size: 11px;color:#818cf8;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CUSTOMER EXPERIENCE</div>
               <div style="font-size:14px;font-weight:800;color:#38bdf8;">고객 경험 향상 → 서비스 만족도 극대화</div>
             </div>
           </div>
@@ -1030,7 +1048,7 @@
             <div>▸ 24/7 다국어 → 글로벌 10개 마켓 커버</div>
           </div>
           <div style="text-align:center;padding:7px 10px;background:rgba(14,165,233,0.08);border:1px solid rgba(14,165,233,0.12);border-radius:8px;">
-            <div style="font-size:10px;color:#64748b;">좋은 CS 경험이 서비스 전체의 가치를 높입니다</div>
+            <div style="font-size: 11px;color:#64748b;">좋은 CS 경험이 서비스 전체의 가치를 높입니다</div>
             <div style="font-size:13px;font-weight:800;color:#38bdf8;margin-top:2px;">Customer Satisfaction & Loyalty ↑</div>
           </div>
         </div>
@@ -1040,7 +1058,7 @@
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
             <div style="width:32px;height:32px;background:linear-gradient(135deg,#10b981,#f59e0b);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;">⚡</div>
             <div>
-              <div style="font-size:9px;color:#fbbf24;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CS OPERATIONS</div>
+              <div style="font-size: 11px;color:#fbbf24;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CS OPERATIONS</div>
               <div style="font-size:14px;font-weight:800;color:#34d399;">운영 효율 극대화 → 처리 능력 3~4배</div>
             </div>
           </div>
@@ -1051,7 +1069,7 @@
             <div>▸ 반복 정보 수집 제거 → <strong style="color:#6ee7b7;">판단 업무 집중</strong></div>
           </div>
           <div style="text-align:center;padding:7px 10px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.12);border-radius:8px;">
-            <div style="font-size:10px;color:#64748b;">같은 인력으로 3~4배 더 많은 CS를 처리합니다</div>
+            <div style="font-size: 11px;color:#64748b;">같은 인력으로 3~4배 더 많은 CS를 처리합니다</div>
             <div style="font-size:13px;font-weight:800;color:#34d399;margin-top:2px;">CS Processing Efficiency ×3~4</div>
           </div>
         </div>

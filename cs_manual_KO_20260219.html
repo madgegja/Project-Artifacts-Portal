@@ -350,7 +350,7 @@
             left: 16px;
             background: var(--brand-accent);
             color: var(--white);
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 700;
             letter-spacing: 1px;
             padding: 2px 10px;
@@ -638,7 +638,10 @@
                 padding: 16px 18px;
             }
         }
-    </style>
+    
+    /* ══ 가독성 패치 (2026-02-23) ══ */
+    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1em; }
+  </style>
 </head>
 <body>
 
@@ -682,7 +685,7 @@
         <h1 id="section-1"><span class="section-number">1.</span> 한눈에 보기</h1>
 
         <h2>1.1 카테고리별 티켓 볼륨 (7개월 평균)</h2>
-        <table>
+<div class="table-responsive"><table>
             <thead>
                 <tr><th>우선순위</th><th>카테고리</th><th>월평균</th><th>비중</th><th>목표 응답시간</th></tr>
             </thead>
@@ -695,10 +698,10 @@
                 <tr><td><strong>P6</strong></td><td>Technical (기술)</td><td>32</td><td>3%</td><td>&lt; 12시간</td></tr>
                 <tr><td><strong>P7</strong></td><td>Other (코인 등 기타)</td><td>30</td><td>2%</td><td>&lt; 12시간</td></tr>
             </tbody>
-        </table>
+        </table></div>
 
         <h2>1.2 마켓별 티켓 볼륨</h2>
-        <table>
+<div class="table-responsive"><table>
             <thead>
                 <tr><th>마켓</th><th>월평균</th><th>비중</th><th>1위 카테고리</th><th>주요 이슈</th></tr>
             </thead>
@@ -714,10 +717,10 @@
                 <tr><td><strong>IT</strong></td><td>45</td><td>2.7%</td><td>Subscription (40%)</td><td>교차언어 VIP, 코인 이슈</td></tr>
                 <tr><td><strong>KR</strong></td><td>&lt;1</td><td>0%</td><td>&mdash;</td><td>미미 (브라우저 언어 감지만)</td></tr>
             </tbody>
-        </table>
+        </table></div>
 
         <h2>1.3 고객지원 이메일 주소</h2>
-        <table>
+<div class="table-responsive"><table>
             <thead>
                 <tr><th>마켓</th><th>이메일</th></tr>
             </thead>
@@ -732,7 +735,7 @@
                 <tr><td><strong>CN</strong></td><td>cs@toomicsglobal.com</td></tr>
                 <tr><td><strong>IT</strong></td><td>it.help@toomicsglobal.com</td></tr>
             </tbody>
-        </table>
+        </table></div>
 
         <h2>1.4 첫 응대 의사결정 플로차트</h2>
 <pre>
@@ -984,8 +987,7 @@
         <h2>3.1 환불 자격 조건</h2>
 
         <p><strong>아래 3가지 조건을 모두 충족해야 환불이 가능합니다:</strong></p>
-
-        <table>
+<div class="table-responsive"><table>
             <thead>
                 <tr><th>#</th><th>조건</th><th>확인 방법</th></tr>
             </thead>
@@ -994,10 +996,10 @@
                 <tr><td>2</td><td><strong>VIP 콘텐츠 접근 이력 없음</strong></td><td>콘텐츠 접근 로그 확인</td></tr>
                 <tr><td>3</td><td><strong>코인 사용 이력 없음</strong> (선물/보너스 코인 포함)</td><td>코인 사용 내역 확인</td></tr>
             </tbody>
-        </table>
+        </table></div>
 
         <p><strong>판정 매트릭스:</strong></p>
-        <table>
+<div class="table-responsive"><table>
             <thead>
                 <tr><th>콘텐츠 접근?</th><th>14일 이내?</th><th>코인 사용?</th><th>결과</th></tr>
             </thead>
@@ -1008,7 +1010,7 @@
                 <tr><td>No</td><td>Yes</td><td>Yes</td><td class="result-denied">환불 거절</td></tr>
                 <tr><td>Yes</td><td>Yes</td><td>Yes</td><td class="result-denied">환불 거절</td></tr>
             </tbody>
-        </table>
+        </table></div>
 
         <h2>3.2 환불 승인</h2>
 
@@ -1145,7 +1147,7 @@
             <p>Hello, this is Toomics.<br>Thank you for contacting us again.</p>
             <p>We understand your concern about the pending refund. According to our records, the refund was processed on <strong>_____ (date)</strong>.</p>
             <p>Please note that refund processing times vary depending on the payment method:</p>
-            <table>
+<div class="table-responsive"><table>
                 <thead>
                     <tr><th>Payment Method</th><th>Estimated Time</th></tr>
                 </thead>
@@ -1155,7 +1157,7 @@
                     <tr><td>Google Play</td><td>3-5 business days</td></tr>
                     <tr><td>Apple App Store</td><td>2-5 business days</td></tr>
                 </tbody>
-            </table>
+            </table></div>
             <p>If you have not received the refund after this period, we recommend contacting your card-issuing bank or payment provider directly, as the processing time ultimately depends on their policy.</p>
             <p>If you have any further questions, please feel free to contact us.</p>
             <p>Best regards,<br>Toomics</p>
@@ -1404,7 +1406,7 @@
         <blockquote>
             <p>Hello, this is Toomics.<br>Thank you for contacting us.</p>
             <p>Here are our current VIP Membership plans:</p>
-            <table>
+<div class="table-responsive"><table>
                 <thead>
                     <tr><th>Plan</th><th>Price (USD)</th><th>Per Month</th></tr>
                 </thead>
@@ -1413,7 +1415,7 @@
                     <tr><td>3 Months</td><td>$23.99</td><td>$7.99/mo</td></tr>
                     <tr><td>6 Months</td><td>$41.99</td><td>$6.99/mo</td></tr>
                 </tbody>
-            </table>
+            </table></div>
             <p><em>Prices may vary depending on your region and payment method.</em></p>
             <p>All plans include unlimited access to our entire VIP content library and are set to auto-renew at the end of each billing period unless canceled.</p>
             <p>You can subscribe at: toomics.com</p>
@@ -1848,8 +1850,7 @@
         <h1 id="section-9"><span class="section-number">9.</span> 사기 탐지 및 제한 계정</h1>
 
         <h2>9.1 사기 Red Flag 지표</h2>
-
-        <table>
+<div class="table-responsive"><table>
             <thead>
                 <tr><th>등급</th><th>지표</th><th>설명</th></tr>
             </thead>
@@ -1863,7 +1864,7 @@
                 <tr><td class="flag-supporting">보조 (Supporting)</td><td>복사된 템플릿</td><td>문의 텍스트가 미리 작성된 템플릿으로 보임</td></tr>
                 <tr><td class="flag-supporting">보조 (Supporting)</td><td>빠른 콘텐츠 소비</td><td>마지막 챕터만 열람, 또는 수초 만에 챕터 열람</td></tr>
             </tbody>
-        </table>
+        </table></div>
 
         <h2>9.2 제한 계정 템플릿</h2>
 
@@ -1948,7 +1949,7 @@
         <p>TOOMICS STORE는 독점 및 무삭제 웹툰을 제공하는 별도 콘텐츠 섹션으로, 웹에서만 이용 가능합니다 (모바일 앱 미지원).</p>
 
         <p><strong>VIP 멤버십과의 주요 차이점:</strong></p>
-        <table>
+<div class="table-responsive"><table>
             <thead>
                 <tr><th>항목</th><th>VIP 멤버십</th><th>TOOMICS STORE</th></tr>
             </thead>
@@ -1959,7 +1960,7 @@
                 <tr><td><strong>콘텐츠</strong></td><td>큐레이션 라이브러리</td><td>독점 + 무삭제</td></tr>
                 <tr><td><strong>과금</strong></td><td>정기 결제</td><td>챕터별 코인 구매</td></tr>
             </tbody>
-        </table>
+        </table></div>
 
         <h2>10.2 템플릿</h2>
 
@@ -2001,8 +2002,7 @@
         <h1 id="section-11"><span class="section-number">11.</span> 운영 기준 및 SLA</h1>
 
         <h2>11.1 응대시간 목표</h2>
-
-        <table>
+<div class="table-responsive"><table>
             <thead>
                 <tr><th>우선순위</th><th>카테고리</th><th>목표 첫 응답</th><th>목표 해결</th></tr>
             </thead>
@@ -2016,7 +2016,7 @@
                 <tr><td><strong>P4</strong></td><td>결제 조사</td><td>&lt; 8시간</td><td>&lt; 24시간</td></tr>
                 <tr><td><strong>P5</strong></td><td>콘텐츠/기술</td><td>&lt; 12시간</td><td>&lt; 48시간</td></tr>
             </tbody>
-        </table>
+        </table></div>
 
         <h2>11.2 품질 체크리스트</h2>
 
@@ -2051,8 +2051,7 @@
         </ul>
 
         <h2>11.4 흔한 실수와 올바른 대응</h2>
-
-        <table>
+<div class="table-responsive"><table>
             <thead>
                 <tr><th>실수</th><th>&#10004; 올바른 대응</th></tr>
             </thead>
@@ -2065,7 +2064,7 @@
                 <tr><td>iOS/Android 결제 소스 확인 없이 VIP 해지</td><td>먼저 결제 소스 확인</td></tr>
                 <tr><td>JP/DE 마켓에서 비격식 언어 사용</td><td>격식체 유지 (경어 / Sie 형식)</td></tr>
             </tbody>
-        </table>
+        </table></div>
 
         <hr>
 
@@ -2177,7 +2176,7 @@
         <p><em>데이터 출처: 2025년 7월~2026년 1월 Zendesk 티켓 11,621건, 10개 언어 마켓 분석</em></p>
 
         <div class="version-table">
-            <table>
+<div class="table-responsive"><table>
                 <thead>
                     <tr><th>버전</th><th>날짜</th><th>변경사항</th></tr>
                 </thead>

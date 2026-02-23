@@ -19,6 +19,8 @@
     line-height: 1.65;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+  
+    word-break: keep-all; overflow-wrap: break-word;
   }
   .container { max-width: 900px; margin: 0 auto; background: #fff; box-shadow: 0 4px 24px rgba(0,0,0,0.08); border-radius: 12px; overflow: hidden; }
   @media print { body { background: #fff; } .container { box-shadow: none; border-radius: 0; margin: 0; } .no-print { display: none !important; } .page-break { page-break-before: always; } }
@@ -36,7 +38,7 @@
   .header h1 { font-size:30px; font-weight:800; letter-spacing:-0.3px; margin-bottom:6px; position:relative; }
   .header .sub { font-size:14px; opacity:0.85; font-weight:400; position:relative; }
   .header-meta { display:flex; gap:24px; margin-top:20px; position:relative; }
-  .header-meta-item .label { font-size:10px; opacity:0.6; text-transform:uppercase; letter-spacing:1px; }
+  .header-meta-item .label { font-size: 11px; opacity:0.6; text-transform:uppercase; letter-spacing:1px; }
   .header-meta-item .value { font-size:18px; font-weight:700; }
   .header-meta-item .unit { font-size:12px; font-weight:400; opacity:0.7; }
 
@@ -97,7 +99,7 @@
   tbody tr:hover { background:#f8fafc; }
 
   /* Badge */
-  .badge { display:inline-block; padding:2px 8px; border-radius:6px; font-size:10px; font-weight:600; }
+  .badge { display:inline-block; padding:2px 8px; border-radius:6px; font-size: 11px; font-weight:600; }
   .badge.red { background:#fee2e2; color:#dc2626; }
   .badge.blue { background:#dbeafe; color:#1d4ed8; }
   .badge.green { background:#dcfce7; color:#16a34a; }
@@ -137,7 +139,7 @@
   details .inner { padding:8px 16px; background:#f8fafc; border-radius:8px; border:1px solid #e2e8f0; margin-top:4px; }
 
   /* Footer */
-  .footer { text-align:center; padding:28px 24px 16px; font-size:10px; color:#94a3b8; border-top:1px solid #e2e8f0; }
+  .footer { text-align:center; padding:28px 24px 16px; font-size: 11px; color:#94a3b8; border-top:1px solid #e2e8f0; }
   .footer a { color:#2563eb; text-decoration:none; }
 
   /* PG tabs */
@@ -151,7 +153,21 @@
   .pg-tab.payletter { background:#0d9488; color:#fff; }
   .pg-tab.mycard { background:#4f46e5; color:#fff; }
   .pg-tab.opn { background:#475569; color:#fff; }
-</style>
+
+    /* ══ 가독성 패치 (2026-02-23) ══ */
+    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1em; }
+    @media (max-width: 768px) {
+      body { font-size: 13px !important; }
+      .container, .body, [class*="content"] { padding-left: 12px !important; padding-right: 12px !important; }
+      h1 { font-size: 22px !important; }
+      h2 { font-size: 18px !important; }
+      h3 { font-size: 15px !important; }
+      table { font-size: 11px !important; }
+      .header, .hero, [class*="header"] { padding: 24px 16px !important; }
+      .toc-grid, .grid-2, .grid-3, .stat-grid, .card-grid, .level-grid { grid-template-columns: 1fr !important; }
+      .header-meta { flex-direction: column; gap: 8px !important; }
+    }
+  </style>
 </head>
 <body>
 <div class="container">
@@ -209,28 +225,28 @@
       <span style="font-size:24px;">📖</span>
       <div>
         <div style="font-size:12px; font-weight:700; color:#1e3a5f;">차지백 한글 매뉴얼</div>
-        <div style="font-size:10px; color:#64748b;">전체 내용 한눈에 보기</div>
+        <div style="font-size: 11px; color:#64748b;">전체 내용 한눈에 보기</div>
       </div>
     </a>
     <a href="https://tg-bizops.github.io/BizOPS/chargeback_flow_diagram_20260220.html" target="_blank" style="display:flex; align-items:center; gap:10px; background:#fff; border:1px solid #bbf7d0; border-radius:10px; padding:12px 16px; text-decoration:none; transition:all 0.2s; box-shadow:0 1px 3px rgba(0,0,0,0.04);">
       <span style="font-size:24px;">🔄</span>
       <div>
         <div style="font-size:12px; font-weight:700; color:#166534;">차지백 플로우 다이어그램</div>
-        <div style="font-size:10px; color:#64748b;">6단계 처리 흐름도</div>
+        <div style="font-size: 11px; color:#64748b;">6단계 처리 흐름도</div>
       </div>
     </a>
     <a href="https://tg-bizops.github.io/BizOPS/chargeback_sample_template.html" target="_blank" style="display:flex; align-items:center; gap:10px; background:#fff; border:1px solid #fde68a; border-radius:10px; padding:12px 16px; text-decoration:none; transition:all 0.2s; box-shadow:0 1px 3px rgba(0,0,0,0.04);">
       <span style="font-size:24px;">📑</span>
       <div>
         <div style="font-size:12px; font-weight:700; color:#92400e;">차지백 증빙 템플릿 미리보기</div>
-        <div style="font-size:10px; color:#64748b;">일일 소명 작성용 샘플</div>
+        <div style="font-size: 11px; color:#64748b;">일일 소명 작성용 샘플</div>
       </div>
     </a>
     <a href="https://docs.google.com/spreadsheets/d/1u2OgvNyKDCGCucGmRKxPHmJ5cA4-F5uLzYeZehKssEg" target="_blank" style="display:flex; align-items:center; gap:10px; background:#fff; border:1px solid #c4b5fd; border-radius:10px; padding:12px 16px; text-decoration:none; transition:all 0.2s; box-shadow:0 1px 3px rgba(0,0,0,0.04);">
       <span style="font-size:24px;">📊</span>
       <div>
         <div style="font-size:12px; font-weight:700; color:#5b21b6;">차지백 접수 관리대장</div>
-        <div style="font-size:10px; color:#64748b;">실시간 접수 현황 (구글시트)</div>
+        <div style="font-size: 11px; color:#64748b;">실시간 접수 현황 (구글시트)</div>
       </div>
     </a>
   </div>
@@ -263,7 +279,7 @@
 </div>
 
 <h3 class="sub-title">PG사별 건수 (8사)</h3>
-<table>
+<div class="table-responsive"><table>
   <thead><tr><th>PG사</th><th>건수</th><th>비율</th><th>비고</th></tr></thead>
   <tbody>
     <tr><td><strong>PayPal</strong></td><td><strong>2,857</strong></td><td>67.7%</td><td>최다, 메인/부계정 분리 운영</td></tr>
@@ -275,10 +291,10 @@
     <tr><td><strong>Payletter</strong></td><td><strong>15</strong></td><td>0.4%</td><td>특이사항 없음</td></tr>
     <tr><td><strong>OPN (Omise)</strong></td><td><strong>14</strong></td><td>0.3%</td><td>태국(TH) 전용 PG, 신용카드만 사용 중</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <h3 class="sub-title">차지백 사유별 분포</h3>
-<table>
+<div class="table-responsive"><table>
   <thead><tr><th>사유</th><th>건수</th><th>비율</th><th>설명</th></tr></thead>
   <tbody>
     <tr><td><span class="badge red">Unauthorized</span></td><td>1,294</td><td>31%</td><td>"나는 이 결제를 승인하지 않았다" — 가장 많은 사유</td></tr>
@@ -287,10 +303,10 @@
     <tr><td><span class="badge purple">Not as Described</span></td><td>234</td><td>6%</td><td>상품이 설명과 다르다</td></tr>
     <tr><td><span class="badge green">Other</span></td><td>307</td><td>7%</td><td>기타</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <h3 class="sub-title">상품별 / 통화별</h3>
-<table>
+<div class="table-responsive"><table>
   <thead><tr><th>상품</th><th>건수</th><th colspan="2">주요 통화별 누적 금액</th></tr></thead>
   <tbody>
     <tr><td>VIP 1개월</td><td>1,251</td><td>TWD 117,500</td><td>USD 35,308</td></tr>
@@ -298,7 +314,7 @@
     <tr><td>VIP 3개월</td><td>556</td><td>BRL 13,835</td><td>THB 7,994</td></tr>
     <tr><td>Coin 구매</td><td>276</td><td>GBP 205</td><td>—</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <!-- 2. 전체 플로우 -->
 <h2 class="section-title" id="sec2">2. 전체 프로세스 플로우</h2>
@@ -322,7 +338,7 @@
 </div>
 
 <h3 class="sub-title">사용 내역 확인 분기</h3>
-<table>
+<div class="table-responsive"><table>
   <thead><tr><th style="width:15%;">판단</th><th style="width:25%;">조건</th><th style="width:30%;">처리</th><th style="width:30%;">비고</th></tr></thead>
   <tbody>
     <tr style="background:#F0FDF4;">
@@ -338,7 +354,7 @@
       <td>소명 자료 작성 불필요</td>
     </tr>
   </tbody>
-</table>
+</table></div>
 
 <h3 class="sub-title">차지백 접수 기록 (★ 필수 업무)</h3>
 
@@ -346,8 +362,7 @@
   <strong>⚠ 핵심:</strong> 차지백 접수 건은 반드시 <strong>★차지백 접수 건수</strong> 구글시트에 기록해야 합니다.<br>
   데이터 동기화를 위해 PG사 포탈에서 확인한 건은 <strong>당일 시트에 즉시 업데이트</strong>하세요.
 </div>
-
-<table>
+<div class="table-responsive"><table>
   <thead><tr><th style="width:20%;">단계</th><th style="width:50%;">내용</th><th style="width:30%;">비고</th></tr></thead>
   <tbody>
     <tr>
@@ -374,10 +389,10 @@
       <td>CKO: 2차 소명 가능<br>기타: PG사 정책 확인</td>
     </tr>
   </tbody>
-</table>
+</table></div>
 
 <h4 style="margin-top:14px; color:#334155;">★차지백 접수 건수 시트 구조 (31컬럼)</h4>
-<table>
+<div class="table-responsive"><table>
   <thead><tr><th>영역</th><th>컬럼</th><th>기록 시점</th></tr></thead>
   <tbody>
     <tr><td><strong>날짜 + 합계</strong></td><td>날짜, 합계</td><td>접수 시</td></tr>
@@ -387,7 +402,7 @@
     <tr><td><strong>사유별</strong></td><td>무단거래/미승인, 사기, 취소건결제, 상품못받음, 기타</td><td>접수 시</td></tr>
     <tr><td><strong>메모</strong></td><td>비고 사항</td><td>필요 시</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <!-- 3. 소명 자료 작성 (공통) -->
 <h2 class="section-title" id="sec3">3. 소명 자료 작성 (공통 — 전 PG사 동일)</h2>
@@ -426,7 +441,7 @@
 </ol>
 
 <h3 class="sub-title">3-4. 소명 엑셀 구조 (Chargeback Explanation)</h3>
-<table>
+<div class="table-responsive"><table>
   <thead><tr><th>섹션</th><th>내용</th><th>비고</th></tr></thead>
   <tbody>
     <tr><td><strong>User Account</strong></td><td>User Number, User ID, Email</td><td>User ID 숫자 표시 확인</td></tr>
@@ -436,7 +451,7 @@
     <tr><td><del>Accessed URLs</del></td><td><del>접속 URL 기록</del></td><td><strong>삭제</strong></td></tr>
     <tr><td><del>1:1 history</del></td><td><del>CS 문의 내역</del></td><td><strong>삭제</strong></td></tr>
   </tbody>
-</table>
+</table></div>
 
 <!-- 3-5. 소명 엑셀 템플릿 -->
 <h3 class="sub-title">3-5. 소명 엑셀 템플릿 (chargeback_template.xlsx)</h3>
@@ -447,8 +462,7 @@
 </div>
 
 <p style="margin-bottom:8px;">관리자에서 다운로드한 소명자료 데이터를 <strong>아래 표준 템플릿 엑셀</strong>에 넣어서 소명 자료를 완성하는 구조입니다.</p>
-
-<table>
+<div class="table-responsive"><table>
   <thead><tr><th style="width:5%">#</th><th style="width:25%">섹션</th><th style="width:45%">내용</th><th style="width:25%">작성 방법</th></tr></thead>
   <tbody>
     <tr>
@@ -459,16 +473,16 @@
     </tr>
     <tr style="background:#EFF6FF;">
       <td>1~4</td>
-      <td><strong>소명 데이터</strong><br><span style="color:#1E40AF; font-size:9px;">한 번에 붙여넣기</span></td>
+      <td><strong>소명 데이터</strong><br><span style="color:#1E40AF; font-size: 11px;">한 번에 붙여넣기</span></td>
       <td>
         User Account · Transaction · Coin Usage · Usage History<br>
-        <span style="color:#64748b; font-size:9px;">관리자에서 다운로드한 소명자료 엑셀 전체를 하나의 영역에 한 번에 붙여넣기</span>
+        <span style="color:#64748b; font-size: 11px;">관리자에서 다운로드한 소명자료 엑셀 전체를 하나의 영역에 한 번에 붙여넣기</span>
       </td>
       <td>관리자 소명자료 엑셀<br>전체 복사 → 붙여넣기</td>
     </tr>
     <tr style="background:#F0FDF4;">
       <td>5</td>
-      <td><strong>Proof of Delivery</strong><br><span style="color:#166534; font-size:9px;">택1 후 나머지 삭제</span></td>
+      <td><strong>Proof of Delivery</strong><br><span style="color:#166534; font-size: 11px;">택1 후 나머지 삭제</span></td>
       <td>
         <strong>Case A</strong> — VIP 자동결제 (가장 많은 케이스)<br>
         <strong>Case B</strong> — VIP 첫 결제 (1회 구매)<br>
@@ -479,7 +493,7 @@
     </tr>
     <tr style="background:#FEF2F2;">
       <td>6</td>
-      <td><strong>Invoice or Receipt</strong><br><span style="color:#991B1B; font-size:9px;">VIP/Coin 택1</span></td>
+      <td><strong>Invoice or Receipt</strong><br><span style="color:#991B1B; font-size: 11px;">VIP/Coin 택1</span></td>
       <td>VIP 버전 / Coin 버전 중 선택</td>
       <td>[PG사명], [상품명/코인 수], [결제일], [시간], [거래번호] 입력</td>
     </tr>
@@ -502,7 +516,7 @@
       <td>수정 불필요 ✅<br>이미지 고정 삽입됨</td>
     </tr>
   </tbody>
-</table>
+</table></div>
 
 <h4 style="margin-top:16px; color:#334155;">사용 절차</h4>
 <ol class="step-list">
@@ -543,7 +557,7 @@
 </div>
 
 <h3 class="sub-title">PG사별 소명 방식 요약</h3>
-<table>
+<div class="table-responsive"><table>
   <thead><tr><th>PG사</th><th>비중</th><th>소명 자료 PDF</th><th>소명 답변</th><th>특이사항</th></tr></thead>
   <tbody>
     <tr><td><strong>CKO</strong></td><td>23% · 970건</td><td>✅ 필수</td><td>✅ 4개 카테고리 입력란</td><td>카테고리별 입력란에 공통 템플릿 답변 복사</td></tr>
@@ -555,7 +569,7 @@
     <tr><td><strong>MyCard</strong></td><td>1.4% · 57건</td><td>❌ 불필요</td><td>❌ MyCard 지정 양식</td><td>⚠️ 이메일 기반, 14일 환불 기한, 2차 차지백 없음</td></tr>
     <tr><td><strong>OPN</strong></td><td>0.3% · 14건</td><td>✅ 필수</td><td>✅ 공통 답변</td><td>TH 전용</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <div class="alert info">
   <strong>📋 공통 프로세스 (MyCard 제외):</strong><br>
@@ -578,7 +592,7 @@
 
 <h4 class="step-title">CKO 소명 제출 방법</h4>
 <p style="margin-bottom:8px;">CKO는 소명 시 <strong>4개 입력 카테고리</strong>가 표시됩니다. 공통 엑셀 템플릿에 있는 답변을 각 카테고리에 복사 붙여넣기합니다.</p>
-<table>
+<div class="table-responsive"><table>
   <thead><tr><th>카테고리</th><th>입력 내용</th><th>소스</th></tr></thead>
   <tbody>
     <tr><td><strong>① Proof of delivery</strong></td><td>Case A~D 중 해당 답변 (택1)</td><td>공통 템플릿 Proof of Delivery 섹션</td></tr>
@@ -586,7 +600,7 @@
     <tr><td><strong>③ Recurring Agreement</strong></td><td>고정 텍스트 (수정 불필요)</td><td>공통 템플릿 Recurring 섹션</td></tr>
     <tr><td><strong>④ Refund Policy</strong></td><td>고정 텍스트 (수정 불필요)</td><td>공통 템플릿 Refund 섹션</td></tr>
   </tbody>
-</table>
+</table></div>
 <div class="alert warn">
   <strong>💡 포인트:</strong> 템플릿에 "Dear [PG사명] Team" 으로 되어 있으므로 <strong>[PG사명]을 "Checkout"으로 변경</strong>하여 입력. 나머지 [대괄호] 부분만 실제 데이터로 교체하면 됩니다.
 </div>
@@ -596,14 +610,14 @@
 <span class="badge red">전체의 68% · 2,857건 — 최다 PG사</span>
 
 <h4 class="step-title">접속 및 계정</h4>
-<table>
+<div class="table-responsive"><table>
   <thead><tr><th>구분</th><th>URL / 계정</th><th>비고</th></tr></thead>
   <tbody>
     <tr><td><strong>사이트</strong></td><td><a href="https://www.paypal.com/signin" target="_blank">https://www.paypal.com/signin</a></td><td>—</td></tr>
     <tr><td><strong>메인 계정</strong></td><td>toomicsphone@gmail.com</td><td>Resolution Center에서 차지백 확인</td></tr>
     <tr><td><strong>부계정</strong></td><td>toomicsglobal22@gmail.com</td><td>대량이체 후 인출용</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <h4 class="step-title">PayPal 소명 프로세스</h4>
 <ol class="step-list">
@@ -637,13 +651,13 @@
 </div>
 
 <h4 class="step-title">Challenge vs Accept 분기</h4>
-<table>
+<div class="table-responsive"><table>
   <thead><tr><th>사용 내역</th><th>선택</th><th>설명</th></tr></thead>
   <tbody>
     <tr><td><span class="badge green">있음</span></td><td><strong>Challenge (도전)</strong></td><td>소명자료 등록 진행</td></tr>
     <tr><td><span class="badge red">없음</span></td><td><strong>Accept (수용)</strong></td><td>분쟁 금액 환불 처리</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <h4 class="step-title">Airwallex Challenge 소명 등록 단계</h4>
 <ol class="step-list purple">
@@ -763,23 +777,23 @@
   </li>
   <li><strong>투믹스 → 환불 가능 여부 판단 + 양식 작성 후 회신</strong><br>
     투믹스 관리자에서 회원 이용내역 조회 → 아래 기준으로 환불 여부 결정:
-    <table style="width:100%; margin:10px 0; font-size:13px;">
+<div class="table-responsive"><table style="width:100%; margin:10px 0; font-size:13px;">
       <thead><tr><th style="width:30%">조건</th><th style="width:20%">환불 여부</th><th>조치</th></tr></thead>
       <tbody>
         <tr><td>결제일로부터 14일 이내 + 이용내역 없음</td><td style="color:#16a34a;"><strong>환불 O</strong></td><td>MyCard 양식에 "환불 가능" 기입 → 회신</td></tr>
         <tr><td>결제일로부터 14일 이내 + 이용내역 있음</td><td style="color:#dc2626;"><strong>환불 X</strong></td><td>MyCard 양식에 "환불 불가 (이용내역 존재)" 기입 → 회신</td></tr>
         <tr><td>결제일로부터 14일 경과</td><td style="color:#dc2626;"><strong>환불 X</strong></td><td>이용내역 유무 관계없이 환불 거부 (14일 기한 초과)</td></tr>
       </tbody>
-    </table>
+    </table></div>
   </li>
   <li><strong>관리자에서 후속 처리</strong>
-    <table style="width:100%; margin:10px 0; font-size:13px;">
+<div class="table-responsive"><table style="width:100%; margin:10px 0; font-size:13px;">
       <thead><tr><th style="width:30%">환불 결과</th><th>관리자 조치</th></tr></thead>
       <tbody>
         <tr><td style="color:#16a34a;"><strong>환불 O</strong></td><td>① 결제 취소 + ② 회원 제재 (섹션 7 참고)</td></tr>
         <tr><td style="color:#dc2626;"><strong>환불 X</strong></td><td>① 구독 취소만 진행 (결제 취소 없음, 제재 없음)</td></tr>
       </tbody>
-    </table>
+    </table></div>
   </li>
   <li><strong>MyCard 후속 처리 (투믹스 개입 불필요)</strong><br>
     MyCard가 투믹스 회신 내용대로 후속 작업 진행. <strong>2차 차지백 없이 종결.</strong>
@@ -788,7 +802,7 @@
 
 <div class="card" style="background:#fef3c7; border-left:4px solid #f59e0b;">
   <strong>📌 MyCard vs 다른 PG사 핵심 차이점</strong><br>
-  <table style="width:100%; margin:10px 0; font-size:13px;">
+<div class="table-responsive"><table style="width:100%; margin:10px 0; font-size:13px;">
     <thead><tr><th style="width:35%">항목</th><th style="width:30%">MyCard</th><th>다른 PG사 (CKO, PayPal 등)</th></tr></thead>
     <tbody>
       <tr><td>접수 방식</td><td><strong>MyCard가 이메일 발송</strong></td><td>PG사 대시보드에서 확인</td></tr>
@@ -828,7 +842,7 @@
 <!-- 5. PG사별 접속 정보 -->
 <div class="page-break"></div>
 <h2 class="section-title" id="sec5">5. PG사별 접속 및 로그인 요약</h2>
-<table>
+<div class="table-responsive"><table>
   <thead><tr><th>PG사</th><th>URL</th><th>인증</th><th>경로</th></tr></thead>
   <tbody>
     <tr><td><strong>CKO</strong></td><td>identity.checkout.com</td><td>Google Authenticator OTP</td><td>Payments → Disputes → Unanswered</td></tr>
@@ -840,7 +854,7 @@
     <tr><td><strong>MyCard</strong></td><td colspan="3">⚠️ 대시보드 미사용 — MyCard가 <code>cs@toomicsglobal.com</code>(중국어 CS)로 이메일 접수, BizOps CC. MyCard 지정 양식으로 회신</td></tr>
     <tr><td><strong>OPN</strong></td><td>OPN 대시보드</td><td>담당자 계정</td><td>Charges → Disputes</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <div class="alert info">
   <strong>ℹ️ WorldPay · Payletter · MyCard · OPN</strong> 접속 URL은 보안 상 매뉴얼에 미기재.<br>
@@ -857,7 +871,7 @@
 </div>
 
 <h3 class="sub-title">공통 템플릿 답변 구조 (4개 섹션)</h3>
-<table>
+<div class="table-responsive"><table>
   <thead><tr><th>#</th><th>섹션</th><th>내용</th><th>작성 방법</th></tr></thead>
   <tbody>
     <tr style="background:#F0FDF4;">
@@ -885,10 +899,10 @@
       <td>수정 불필요 ✅</td>
     </tr>
   </tbody>
-</table>
+</table></div>
 
 <h3 class="sub-title">PG사별 답변 제출 범위</h3>
-<table>
+<div class="table-responsive"><table>
   <thead><tr><th>PG사</th><th>소명 PDF</th><th>① Proof</th><th>② Invoice</th><th>③ Recurring</th><th>④ Refund</th><th>비고</th></tr></thead>
   <tbody>
     <tr><td><strong>CKO</strong></td><td>✅</td><td>✅ 택1</td><td>✅ 택1</td><td>✅ 고정</td><td>✅ 고정</td><td>4개 입력란에 복사</td></tr>
@@ -900,7 +914,7 @@
     <tr style="background:#FEF3C7;"><td><strong>MyCard</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>⚠️ 공통 템플릿 미사용 (MyCard 지정 양식으로 이메일 회신)</td></tr>
     <tr><td><strong>OPN</strong></td><td>✅</td><td>✅ 택1</td><td>✅ 첨부</td><td>—</td><td>—</td><td>공통 양식</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <div class="alert info">
   <strong>📋 요약:</strong> CKO만 4개 카테고리 전부 입력, Airwallex는 7단계 UI에서 입력, Paymentwall은 PDF만.<br>
@@ -923,8 +937,7 @@
 <!-- 8. 환불 응대 템플릿 -->
 <h2 class="section-title" id="sec8">8. 환불 응대 CS 템플릿 (다국어)</h2>
 <p style="margin-bottom:12px;">차지백 처리 후 환불 완료 시 고객에게 발송하는 CS 응대 템플릿입니다.</p>
-
-<table>
+<div class="table-responsive"><table>
   <thead><tr><th>언어</th><th>적용 마켓</th><th>핵심 내용</th></tr></thead>
   <tbody>
     <tr><td>English</td><td>EN</td><td>환불 완료 (7 working days) + VIP 해지 + 추가 결제 없음 안내</td></tr>
@@ -937,7 +950,7 @@
     <tr><td>繁體中文</td><td>CN (TW)</td><td>계정 제한 안내 포함</td></tr>
     <tr><td>Italiano</td><td>IT</td><td>코인 환불 전용 버전</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <details>
   <summary>영문 환불 응대 템플릿 전문 보기</summary>
@@ -964,7 +977,7 @@ Toomics</div>
 
 <div class="card highlight">
   <h4 class="step-title">필수 주의사항</h4>
-  <table>
+<div class="table-responsive"><table>
     <tbody>
       <tr><td style="width:30%;"><strong>기일 엄수</strong></td><td>만료 전 미제출 시 건이 소멸 → 자동 패소 처리</td></tr>
       <tr><td><strong>User ID 표시</strong></td><td>숫자+ 표기 시 반드시 셀 서식을 '숫자'로 변경</td></tr>
@@ -976,7 +989,7 @@ Toomics</div>
 
 <div class="card blue">
   <h4 class="step-title">FAQ</h4>
-  <table>
+<div class="table-responsive"><table>
     <tbody>
       <tr><td style="width:40%;"><strong>Q: 사용 내역이 전혀 없는 경우?</strong></td><td>→ Accept (환불 수용) 처리. 소명 불필요.</td></tr>
       <tr><td><strong>Q: Airwallex에서 분쟁 격상되면?</strong></td><td>→ 분쟁 금액 재공제 + USD $15 중재 수수료 부과</td></tr>
@@ -992,7 +1005,7 @@ Toomics</div>
 
 <!-- 10. 참고 링크 -->
 <h2 class="section-title" id="sec10">10. 참고 링크</h2>
-<table>
+<div class="table-responsive"><table>
   <thead><tr><th>자료</th><th>링크</th></tr></thead>
   <tbody>
     <tr><td>Confluence: 차지백 소명 자료 제출</td><td><a href="https://toomics.atlassian.net/wiki/spaces/Tlos64YMyGN2/pages/121143470" target="_blank">열기</a></td></tr>

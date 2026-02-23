@@ -14,7 +14,9 @@
     --accent-amber: #f59e0b; --accent-red: #ef4444; --accent-purple: #a78bfa;
     --border-color: #334155;
   }
-  body { font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif; color: var(--text-primary); background: var(--bg-primary); line-height: 1.75; font-size: 14px; }
+  body { font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif; color: var(--text-primary); background: var(--bg-primary); line-height: 1.75; font-size: 14px; 
+    word-break: keep-all; overflow-wrap: break-word;
+  }
   @media print { body { background: #fff; color: #1a1a2e; } .hero { background: #1e3a5f !important; -webkit-print-color-adjust: exact; } .back-to-top { display: none !important; } }
   .container { max-width: 1100px; margin: 0 auto; padding: 0 0 60px; }
   section { padding: 0 40px; margin-bottom: 48px; }
@@ -47,7 +49,10 @@
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } section { padding: 0 20px; } }
   .back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--accent-purple); color: white; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 1.2rem; cursor: pointer; z-index: 100; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
-</style>
+
+    /* ══ 가독성 패치 (2026-02-23) ══ */
+    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1em; }
+  </style>
 </head>
 <body>
 <div class="container">
@@ -62,7 +67,7 @@
   <h2>📋 시연 전 준비</h2>
   <div class="card card-blue">
     <h3>필수 준비 사항</h3>
-    <table>
+<div class="table-responsive"><table>
       <tr><th>항목</th><th>URL / 설정</th><th>확인</th></tr>
       <tr><td>챗봇 데모 페이지</td><td><a href="https://bizops.duckdns.org/chat/demo" style="color:var(--accent-cyan)">https://bizops.duckdns.org/chat/demo</a></td><td>☐ 접속 확인</td></tr>
       <tr><td>Zendesk 관리 화면</td><td><a href="https://toomicsglobal.zendesk.com/agent" style="color:var(--accent-cyan)">https://toomicsglobal.zendesk.com/agent</a></td><td>☐ 로그인 완료</td></tr>
@@ -194,7 +199,7 @@
       "정리하겠습니다."
     </div>
     <div class="card card-cyan">
-      <table>
+<div class="table-responsive"><table>
         <tr><th>항목</th><th>수치</th></tr>
         <tr><td>지원 언어</td><td><strong>10개</strong> (EN, FR, ES, PT, DE, TH, JP, CN, IT, KR)</td></tr>
         <tr><td>자동 분류 카테고리</td><td><strong>7개</strong></td></tr>
