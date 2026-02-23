@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toomics CS AI Chatbot — Escalation Scenarios (L1/L2/L3)</title>
+    <style>
+        :root {
+            --red: #dc3545;
+            --red-bg: #fff5f5;
+            --red-border: #fee2e2;
+            --yellow: #f59e0b;
+            --yellow-bg: #fffbeb;
+            --yellow-border: #fef3c7;
+            --green: #10b981;
+            --green-bg: #ecfdf5;
+            --green-border: #d1fae5;
+            --blue: #3b82f6;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-500: #6b7280;
+            --gray-700: #374151;
+            --gray-900: #111827;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-900);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .header .subtitle {
+            font-size: 15px;
+            color: var(--gray-500);
+        }
+        .header .date {
+            font-size: 13px;
+            color: var(--gray-500);
+            margin-top: 4px;
+        }
+
+        /* Level Section */
+        .level-section {
+            margin-bottom: 48px;
+        }
+        .level-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--gray-200);
+        }
+        .level-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 18px;
+            color: #fff;
+        }
+        .level-badge.l1 { background: var(--red); }
+        .level-badge.l2 { background: var(--yellow); }
+        .level-badge.l3 { background: var(--green); }
+
+        .level-title h2 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .level-title p {
+            font-size: 13px;
+            color: var(--gray-500);
+        }
+
+        /* Scenario Card */
+        .scenario {
+            background: #fff;
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            margin-bottom: 24px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+        .scenario-header {
+            padding: 16px 20px;
+            font-weight: 700;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .scenario.l1 .scenario-header { background: var(--red-bg); border-bottom: 1px solid var(--red-border); color: var(--red); }
+        .scenario.l2 .scenario-header { background: var(--yellow-bg); border-bottom: 1px solid var(--yellow-border); color: #b45309; }
+        .scenario.l3 .scenario-header { background: var(--green-bg); border-bottom: 1px solid var(--green-border); color: #047857; }
+
+        .scenario-body {
+            padding: 20px;
+        }
+
+        /* Meta Table */
+        .meta-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        .meta-table th {
+            text-align: left;
+            padding: 6px 12px;
+            background: var(--gray-100);
+            color: var(--gray-700);
+            font-weight: 600;
+            width: 140px;
+            border: 1px solid var(--gray-200);
+        }
+        .meta-table td {
+            padding: 6px 12px;
+            border: 1px solid var(--gray-200);
+        }
+
+        /* Chat Simulation */
+        .chat-area {
+            background: var(--gray-100);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .chat-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+        .chat-bubble {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            line-height: 1.65;
+            white-space: pre-wrap;
+        }
+        .chat-bubble.customer {
+            background: var(--blue);
+            color: #fff;
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+        }
+        .chat-bubble.bot {
+            background: #fff;
+            color: var(--gray-900);
+            border: 1px solid var(--gray-200);
+            border-bottom-left-radius: 4px;
+        }
+        .chat-bubble strong { font-weight: 600; }
+
+        /* Zendesk Ticket */
+        .zendesk-box {
+            margin-top: 16px;
+            background: #fef9ef;
+            border: 1px dashed #e5c07b;
+            border-radius: 8px;
+            padding: 14px 16px;
+            font-size: 12px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: var(--gray-700);
+            white-space: pre-wrap;
+        }
+        .zendesk-box .label {
+            font-weight: 700;
+            color: #b45309;
+            margin-bottom: 6px;
+            display: block;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 12px;
+        }
+
+        /* Fix badge */
+        .fix-badge {
+            display: inline-block;
+            background: #dcfce7;
+            color: #166534;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 8px;
+        }
+        .bug-badge {
+            display: inline-block;
+            background: #fee2e2;
+            color: #991b1b;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 8px;
+        }
+
+        /* Summary Table */
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-top: 16px;
+        }
+        .summary-table th, .summary-table td {
+            padding: 10px 14px;
+            border: 1px solid var(--gray-200);
+            text-align: center;
+        }
+        .summary-table th {
+            background: var(--gray-100);
+            font-weight: 700;
+        }
+        .summary-table td:first-child { text-align: left; font-weight: 600; }
+
+        /* L3 Closure */
+        .closure-flow {
+            background: var(--green-bg);
+            border: 1px solid var(--green-border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-top: 16px;
+            font-size: 13px;
+        }
+        .closure-flow .flow-title {
+            font-weight: 700;
+            color: #047857;
+            margin-bottom: 8px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 32px 0 16px;
+            font-size: 12px;
+            color: var(--gray-500);
+            border-top: 1px solid var(--gray-200);
+            margin-top: 32px;
+        }
+
+        /* Language flag */
+        .lang-flag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 1px 6px;
+            border-radius: 3px;
+            background: var(--gray-200);
+            color: var(--gray-700);
+            margin-left: 6px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Header -->
+    <div class="header">
+        <h1>🤖 Toomics CS AI Chatbot — Escalation Scenarios</h1>
+        <div class="subtitle">L1 / L2 / L3 고객 문의 → 응답 시나리오 (실제 파이프라인 기반)</div>
+        <div class="date">작성일: 2026-02-23 | 작성자: 유종선 | 버전: v3 (90/10 하이브리드)</div>
+    </div>
+
+    <!-- ==================== L1 ==================== -->
+    <div class="level-section">
+        <div class="level-header">
+            <div class="level-badge l1">L1</div>
+            <div class="level-title">
+                <h2>즉시 에스컬레이션 (Immediate Escalation)</h2>
+                <p>자동 처리 절대 금지 · 즉시 Zendesk 티켓 생성 · 상담원 필수 개입</p>
+            </div>
+        </div>
+
+        <!-- L1-① -->
+        <div class="scenario l1">
+            <div class="scenario-header">
+                L1-① Fraud + 무단결제 위협 <span class="lang-flag">EN</span>
+            </div>
+            <div class="scenario-body">
+                <table class="meta-table">
+                    <tr><th>의도 분류</th><td>Refund → <code>unauthorized_charge</code> (L1 트리거: sub_intent)</td></tr>
+                    <tr><th>Fraud 탐지</th><td>Score <strong>70</strong>, Risk <strong>HIGH</strong> — C1 (unauthorized + 위협)</td></tr>
+                    <tr><th>트리거 (3개)</th><td>① sub_intent = unauthorized_charge &nbsp; ② chargeback 키워드 ("dispute", "report to bank") &nbsp; ③ Fraud HIGH</td></tr>
+                </table>
+                <div class="chat-area">
+                    <div class="chat-label">💬 대화 시뮬레이션</div>
+                    <div class="chat-bubble customer">I never authorized this charge of $29.99 on my credit card! Someone used my account without permission. I will report this to my bank and file a dispute if this isn't resolved immediately!</div>
+                    <div class="chat-bubble bot">Thank you for contacting Toomics. I understand this is an important matter. We are submitting a support ticket on your behalf. Our team will review your inquiry and respond via email as soon as possible.</div>
+                </div>
+                <div class="zendesk-box">
+                    <span class="label">📋 Zendesk 티켓 (내부)</span>
+Subject:  [L1] Refund — Unauthorized Charge
+Priority: urgent
+Fraud:    Score 70 (HIGH), Flags: C1
+Action:   Review fraud indicators. Check account history.
+Tags:     ai_l1, chatbot_escalation, fraud_high</div>
+            </div>
+        </div>
+
+        <!-- L1-② -->
+        <div class="scenario l1">
+            <div class="scenario-header">
+                L1-② 법적 위협 + DSGVO <span class="lang-flag">DE</span>
+            </div>
+            <div class="scenario-body">
+                <table class="meta-table">
+                    <tr><th>의도 분류</th><td>Subscription → <code>auto_renewal_complaint</code></td></tr>
+                    <tr><th>Fraud 탐지</th><td>Score <strong>35</strong>, MEDIUM</td></tr>
+                    <tr><th>트리거</th><td>Legal 키워드: "Rechtsanwalt", "Verbraucherschutz", "DSGVO"</td></tr>
+                </table>
+                <div class="chat-area">
+                    <div class="chat-label">💬 대화 시뮬레이션</div>
+                    <div class="chat-bubble customer">Ich habe mein Abo vor 3 Monaten gekündigt aber Sie buchen immer noch ab! Das ist Betrug! Ich werde meinen Rechtsanwalt einschalten und die Verbraucherschutz kontaktieren. DSGVO Verstoß!</div>
+                    <div class="chat-bubble bot">Vielen Dank, dass Sie Toomics kontaktiert haben. Ich verstehe die Wichtigkeit Ihres Anliegens. Wir erstellen ein Support-Ticket in Ihrem Namen. Unser Team wird Ihre Anfrage prüfen und Ihnen so schnell wie möglich per E-Mail antworten.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- L1-③ -->
+        <div class="scenario l1">
+            <div class="scenario-header">
+                L1-③ 미성년자 무단 결제 <span class="lang-flag">FR</span>
+            </div>
+            <div class="scenario-body">
+                <table class="meta-table">
+                    <tr><th>의도 분류</th><td>Refund → <code>child_purchase</code> (L1 트리거: sub_intent)</td></tr>
+                    <tr><th>Fraud 탐지</th><td>Score <strong>55</strong>, HIGH — 미성년자 패턴</td></tr>
+                    <tr><th>트리거 (2개)</th><td>① sub_intent = child_purchase &nbsp; ② Fraud HIGH (score ≥ 50)</td></tr>
+                </table>
+                <div class="chat-area">
+                    <div class="chat-label">💬 대화 시뮬레이션</div>
+                    <div class="chat-bubble customer">Mon fils de 12 ans a utilisé ma carte bancaire pour acheter un abonnement VIP sans ma permission. Je veux un remboursement complet immédiatement!</div>
+                    <div class="chat-bubble bot">Merci d'avoir contacté Toomics. Je comprends l'importance de votre demande. Nous soumettons un ticket de support en votre nom. Notre équipe examinera votre demande et vous répondra par e-mail dans les plus brefs délais.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== L2 ==================== -->
+    <div class="level-section">
+        <div class="level-header">
+            <div class="level-badge l2">L2</div>
+            <div class="level-title">
+                <h2>AI 초안 + 상담원 검토 (AI Draft + Agent Review)</h2>
+                <p>매뉴얼 기반 고객 안내 자동 제공 · AI 응답 초안 생성 · 상담원 검토 후 발송</p>
+            </div>
+        </div>
+
+        <!-- L2-① -->
+        <div class="scenario l2">
+            <div class="scenario-header">
+                L2-① 일반 환불 요청 <span class="lang-flag">EN</span>
+            </div>
+            <div class="scenario-body">
+                <table class="meta-table">
+                    <tr><th>의도 분류</th><td>Refund → <code>simple_refund</code> (L2)</td></tr>
+                    <tr><th>Fraud 탐지</th><td>Score <strong>10</strong>, LOW</td></tr>
+                    <tr><th>L2 사유</th><td>환불 적격성 확인 필요 (14일 이내, 콘텐츠 미이용, 코인 미사용)</td></tr>
+                </table>
+                <div class="chat-area">
+                    <div class="chat-label">💬 대화 시뮬레이션</div>
+                    <div class="chat-bubble customer">I subscribed yesterday but the content isn't what I expected. Can I get a refund for my 1-month VIP subscription?</div>
+                    <div class="chat-bubble bot">Hello, this is Toomics Support. Thank you for reaching out.
+
+I understand you'd like a refund for your recent subscription.
+
+Here's our refund policy:
+
+<strong>Refund Eligibility (all 3 conditions must be met):</strong>
+1. Requested within 14 days of purchase
+2. No VIP content has been accessed
+3. No coins (including Gift/Bonus) have been used
+
+<strong>Refund Processing Times:</strong>
+- PayPal: 3–5 business days
+- Credit Card (Checkout.com): 5–10 business days
+- Google Play: 1–3 business days
+
+<strong>For iOS/Apple purchases:</strong>
+Apple handles all iOS refunds directly. Please visit:
+https://reportaproblem.apple.com
+
+We've also submitted a support ticket on your behalf. Our team will review your case and follow up via email if further assistance is needed.
+
+Best regards,
+Toomics Support Team</div>
+                </div>
+                <div class="zendesk-box">
+                    <span class="label">📋 Zendesk 티켓 + AI 초안 (상담원용)</span>
+Subject:  [L2] Refund — Simple Refund
+Priority: normal
+Action:   Check refund eligibility. Verify payment and subscription status.
+AI Draft: [환불 적격 여부 확인 후 발송할 응답 초안 포함]
+Tags:     ai_l2, chatbot_escalation, intent_simple_refund</div>
+            </div>
+        </div>
+
+        <!-- L2-② -->
+        <div class="scenario l2">
+            <div class="scenario-header">
+                L2-② 해지 + 환불 동시 요청 <span class="lang-flag">ES</span>
+            </div>
+            <div class="scenario-body">
+                <table class="meta-table">
+                    <tr><th>의도 분류</th><td>Subscription → <code>cancel_and_refund</code> (L2)</td></tr>
+                    <tr><th>Fraud 탐지</th><td>Score <strong>5</strong>, LOW</td></tr>
+                    <tr><th>L2 사유</th><td>해지 + 환불 동시 처리 → 상담원 판단 필요</td></tr>
+                </table>
+                <div class="chat-area">
+                    <div class="chat-label">💬 대화 시뮬레이션</div>
+                    <div class="chat-bubble customer">Quiero cancelar mi suscripción y también quiero que me devuelvan el dinero del último cobro. No he usado el servicio este mes.</div>
+                    <div class="chat-bubble bot">Hola, somos el soporte de Toomics. Gracias por contactarnos.
+
+Entiendo que desea cancelar su suscripción y solicitar un reembolso.
+
+<strong>Cómo Cancelar la Suscripción:</strong>
+
+En el sitio web:
+1. Inicie sesión en es.toomics.com
+2. Vaya a Mi Página → Información de Suscripción
+3. Haga clic en "Cancelar Suscripción"
+
+En la aplicación:
+- iOS: Ajustes → Su nombre → Suscripciones → Toomics → Cancelar
+- Android: Google Play → Perfil → Pagos y suscripciones → Toomics
+
+<strong>Política de Reembolso:</strong>
+Su solicitud de reembolso será revisada por nuestro equipo.
+
+También hemos creado un ticket de soporte en su nombre. Nuestro equipo revisará su caso y le contactará por correo electrónico si necesita ayuda adicional.
+
+Atentamente,
+Equipo de Soporte Toomics</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- L2-③ -->
+        <div class="scenario l2">
+            <div class="scenario-header">
+                L2-③ 소셜 로그인 복구 <span class="lang-flag">PT</span>
+            </div>
+            <div class="scenario-body">
+                <table class="meta-table">
+                    <tr><th>의도 분류</th><td>Account → <code>social_login_issue</code> (L2)</td></tr>
+                    <tr><th>Fraud 탐지</th><td>Score <strong>0</strong>, LOW</td></tr>
+                    <tr><th>L2 사유</th><td>계정 복구 → 상담원이 직접 확인/처리 필요</td></tr>
+                </table>
+                <div class="chat-area">
+                    <div class="chat-label">💬 대화 시뮬레이션</div>
+                    <div class="chat-bubble customer">Eu fiz login com o Facebook mas agora não consigo acessar minha conta. Aparece erro quando tento entrar. Já tentei várias vezes.</div>
+                    <div class="chat-bubble bot">Olá, aqui é o suporte Toomics. Obrigado por entrar em contato.
+
+Entendo a frustração com o problema de login.
+
+<strong>Recuperação de Conta:</strong>
+- Redefinição de senha: pt.toomics.com → Login → "Esqueceu a senha?"
+- Login Social: Se você usou Facebook/Google/Apple para criar sua conta, tente fazer login pelo mesmo método
+
+<strong>Verificação de E-mail:</strong>
+- Verifique se está usando o mesmo e-mail associado ao Facebook
+- Tente a opção "Esqueceu a senha?" com esse e-mail
+
+Também criamos um ticket de suporte em seu nome. Nossa equipe analisará seu caso e responderá por e-mail em breve.
+
+Atenciosamente,
+Equipe de Suporte Toomics</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== L3 ==================== -->
+    <div class="level-section">
+        <div class="level-header">
+            <div class="level-badge l3">L3</div>
+            <div class="level-title">
+                <h2>셀프서비스 자동 처리 (Self-Service Auto-Response)</h2>
+                <p>검증된 가이드 자동 발송 · 상담원 개입 불필요 · 5분 후 Zendesk Solved 티켓 자동 생성</p>
+            </div>
+        </div>
+
+        <!-- L3-① -->
+        <div class="scenario l3">
+            <div class="scenario-header">
+                L3-① 구독 해지 안내 <span class="lang-flag">EN</span>
+                <span class="fix-badge">✅ 수정 완료</span>
+            </div>
+            <div class="scenario-body">
+                <table class="meta-table">
+                    <tr><th>의도 분류</th><td>Subscription → <code>cancel_subscription</code> (신뢰도 0.95, L3)</td></tr>
+                    <tr><th>Fraud 탐지</th><td>Score <strong>0</strong>, LOW</td></tr>
+                    <tr><th>수정 전 (버그)</th><td><span class="bug-badge">❌ BUG</span> 결제정보 4개 항목 수집 → 실질적 L2 응대</td></tr>
+                    <tr><th>수정 후</th><td><span class="fix-badge">✅ FIX</span> 즉시 해지 가이드 (Web / iOS / Android)</td></tr>
+                </table>
+                <div class="chat-area">
+                    <div class="chat-label">💬 대화 시뮬레이션 (수정 후)</div>
+                    <div class="chat-bubble customer">I want to cancel my subscription.</div>
+                    <div class="chat-bubble bot">Hello, this is Toomics Support. Thank you for reaching out.
+
+I understand you'd like to cancel your VIP subscription.
+
+Here's how you can do it:
+
+<strong>On the website:</strong>
+1) Log in to your account at en.toomics.com
+2) Go to My Page → Subscription Management
+3) Click "Cancel Subscription"
+4) Confirm the cancellation
+
+<strong>On iOS (iPhone/iPad):</strong>
+1) Open Settings → tap your name → Subscriptions
+2) Find "Toomics" and tap it
+3) Tap "Cancel Subscription"
+
+<strong>On Android:</strong>
+1) Open Google Play Store → Profile → Payments &amp; subscriptions
+2) Find "Toomics" → Cancel subscription
+
+<strong>Please note:</strong> Your VIP access will remain active until the end of your current billing period. No further charges will be made after cancellation.
+
+If you need further assistance, please describe your issue in as much detail as possible below and submit a support ticket. Our team will review your request and get back to you as soon as possible.
+
+Best regards,
+Toomics Support Team</div>
+                </div>
+                <div class="closure-flow">
+                    <div class="flow-title">🎫 L3 티켓 종료 플로우</div>
+                    → 5분 후 추가 문의 없음 확인<br>
+                    → Zendesk Solved 티켓 자동 생성<br>
+                    → Tags: <code>l3_self_service</code>, <code>auto_resolved</code>, <code>intent_cancel_subscription</code>, <code>market_en</code>
+                </div>
+            </div>
+        </div>
+
+        <!-- L3-② -->
+        <div class="scenario l3">
+            <div class="scenario-header">
+                L3-② iOS 환불 리디렉트 <span class="lang-flag">FR</span>
+                <span class="fix-badge">✅ 수정 완료</span>
+            </div>
+            <div class="scenario-body">
+                <table class="meta-table">
+                    <tr><th>의도 분류</th><td>Refund → <code>ios_refund</code> (L3)</td></tr>
+                    <tr><th>Fraud 탐지</th><td>Score <strong>0</strong>, LOW</td></tr>
+                    <tr><th>수정 전 (버그)</th><td><span class="bug-badge">❌ BUG</span> 결제정보 요청 → Apple 리디렉트 지연</td></tr>
+                    <tr><th>수정 후</th><td><span class="fix-badge">✅ FIX</span> 즉시 reportaproblem.apple.com 안내</td></tr>
+                </table>
+                <div class="chat-area">
+                    <div class="chat-label">💬 대화 시뮬레이션 (수정 후)</div>
+                    <div class="chat-bubble customer">Comment obtenir un remboursement pour mon achat sur l'App Store?</div>
+                    <div class="chat-bubble bot">Bonjour, ici le support Toomics.
+
+Je comprends votre demande de remboursement.
+
+Étant donné que votre achat a été effectué via l'App Store d'Apple, le remboursement doit être demandé directement auprès d'Apple :
+
+1) Rendez-vous sur https://reportaproblem.apple.com
+2) Connectez-vous avec votre identifiant Apple
+3) Trouvez la transaction Toomics concernée
+4) Sélectionnez "Demander un remboursement"
+
+<strong>Veuillez noter :</strong> Apple traite généralement les demandes de remboursement dans un délai de 48 heures.
+
+Si vous avez besoin d'aide supplémentaire, veuillez décrire votre problème en détail ci-dessous et soumettre un ticket de support. Notre équipe examinera votre demande et vous répondra dans les plus brefs délais.
+
+Cordialement,
+L'équipe Toomics Support</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- L3-③ -->
+        <div class="scenario l3">
+            <div class="scenario-header">
+                L3-③ 결제 실패 트러블슈팅 <span class="lang-flag">DE</span>
+                <span class="fix-badge">✅ 수정 완료</span>
+            </div>
+            <div class="scenario-body">
+                <table class="meta-table">
+                    <tr><th>의도 분류</th><td>Payment → <code>payment_failed</code> (L3)</td></tr>
+                    <tr><th>Fraud 탐지</th><td>Score <strong>0</strong>, LOW</td></tr>
+                    <tr><th>수정 전 (버그)</th><td><span class="bug-badge">❌ BUG</span> 결제정보 요청 → 트러블슈팅 지연</td></tr>
+                    <tr><th>수정 후</th><td><span class="fix-badge">✅ FIX</span> 즉시 5단계 트러블슈팅 가이드</td></tr>
+                </table>
+                <div class="chat-area">
+                    <div class="chat-label">💬 대화 시뮬레이션 (수정 후)</div>
+                    <div class="chat-bubble customer">Meine Zahlung funktioniert nicht. Es kommt immer eine Fehlermeldung.</div>
+                    <div class="chat-bubble bot">Hallo, hier ist der Toomics Support.
+
+Ich verstehe, wie ärgerlich ein Zahlungsfehler sein kann.
+
+Hier sind einige Schritte, die helfen können:
+
+1) Überprüfen Sie, ob Ihre Kartendaten korrekt eingegeben sind
+2) Stellen Sie sicher, dass Ihre Karte ausreichend gedeckt ist
+3) Versuchen Sie einen anderen Browser oder leeren Sie den Browser-Cache
+4) Deaktivieren Sie vorübergehend VPN oder Werbeblocker
+5) Versuchen Sie eine alternative Zahlungsmethode (PayPal, andere Karte)
+
+<strong>Bitte beachten Sie:</strong> Wenn das Problem weiterhin besteht, empfehlen wir Ihnen, Ihre Bank zu kontaktieren, um sicherzustellen, dass die Transaktion nicht blockiert wird.
+
+Wenn Sie weitere Hilfe benötigen, beschreiben Sie Ihr Anliegen bitte unten so detailliert wie möglich und reichen Sie ein Support-Ticket ein. Unser Team wird Ihre Anfrage prüfen und sich so schnell wie möglich bei Ihnen melden.
+
+Mit freundlichen Grüßen,
+Toomics Support Team</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== Summary ==================== -->
+    <div class="level-section">
+        <div class="level-header">
+            <div class="level-badge" style="background:var(--blue);">📊</div>
+            <div class="level-title">
+                <h2>에스컬레이션 레벨 비교 요약</h2>
+                <p>L1 / L2 / L3 처리 방식 비교</p>
+            </div>
+        </div>
+
+        <table class="summary-table">
+            <thead>
+                <tr>
+                    <th>항목</th>
+                    <th style="color:var(--red);">🔴 L1</th>
+                    <th style="color:#b45309;">🟡 L2</th>
+                    <th style="color:var(--green);">🟢 L3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>자동 응답</td>
+                    <td>❌ 제네릭 안내만</td>
+                    <td>✅ 매뉴얼 기반 가이드</td>
+                    <td>✅ 셀프서비스 가이드</td>
+                </tr>
+                <tr>
+                    <td>AI 초안</td>
+                    <td>❌ 없음</td>
+                    <td>✅ 상담원 검토용</td>
+                    <td>❌ 불필요</td>
+                </tr>
+                <tr>
+                    <td>Zendesk 티켓</td>
+                    <td>✅ urgent/high</td>
+                    <td>✅ normal</td>
+                    <td>✅ solved (5분 후 자동)</td>
+                </tr>
+                <tr>
+                    <td>상담원 개입</td>
+                    <td>✅ 필수 (즉시)</td>
+                    <td>✅ 필수 (검토 후)</td>
+                    <td>❌ 불필요</td>
+                </tr>
+                <tr>
+                    <td>월간 예상 건수</td>
+                    <td>~150건 (9%)</td>
+                    <td>~880건 (53%)</td>
+                    <td>~630건 (38%)</td>
+                </tr>
+                <tr>
+                    <td>대표 트리거</td>
+                    <td>Fraud HIGH, 법적 위협, 미성년자</td>
+                    <td>환불 판정, 계정 복구, 복합 이슈</td>
+                    <td>구독 해지, FAQ, 트러블슈팅</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="closure-flow" style="margin-top:24px;">
+            <div class="flow-title">🔄 L3 → 에스컬레이션 자동 전환 시나리오</div>
+            <table class="summary-table" style="margin-top:12px;">
+                <thead>
+                    <tr><th>시나리오</th><th>트리거</th><th>결과</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>구독 해지 + "refund my money"</td><td>cancel + refund 동시</td><td><strong>L3 → L2</strong></td></tr>
+                    <tr><td>비밀번호 리셋 + "I'll sue you"</td><td>Legal 키워드 감지</td><td><strong>L3 → L1</strong></td></tr>
+                    <tr><td>결제 실패 + Fraud score 50+</td><td>Fraud HIGH</td><td><strong>L3 → L1</strong></td></tr>
+                    <tr><td>동일 문의 2회 반복</td><td>same_intent_count ≥ 2</td><td><strong>L3 → L2</strong></td></tr>
+                    <tr><td>의도 신뢰도 &lt; 0.70</td><td>저신뢰도</td><td><strong>L3 불가 → L2</strong></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        Toomics Global BizOps · CS AI Chatbot Escalation Scenarios · 2026-02-23<br>
+        작성: 유종선 (BizOps PM) · Powered by OpenClaw Multi-Agent System
+    </div>
+
+</div>
+</body>
+</html>
