@@ -79,7 +79,7 @@
 
 <div class="hero">
   <h1>🏗️ 시스템 아키텍처 설명서</h1>
-  <div class="subtitle">Toomics CS AI 챗봇 기술 구조와 구성 요소</div>
+  <div class="subtitle">Toomics CS AI 챗봇 기술 구조와 구성 요소 — PROTOTYPE</div>
   <div class="badge">v1.0 | 2026-02-23 | 기술팀 / 의사결정자용</div>
 </div>
 
@@ -96,12 +96,11 @@
       <span class="tech-badge">Zendesk API</span>
       <span class="tech-badge">nginx</span>
       <span class="tech-badge">systemd</span>
-      <span class="tech-badge">Let's Encrypt</span>
     </div>
     <table>
       <tr><th>계층</th><th>기술</th><th>용도</th></tr>
       <tr><td>프론트엔드</td><td>Vanilla JS 위젯</td><td>고객 채팅 인터페이스 (데모 + 임베드용)</td></tr>
-      <tr><td>웹 서버</td><td>nginx + Let's Encrypt</td><td>HTTPS 터미네이션, 리버스 프록시</td></tr>
+      
       <tr><td>앱 서버</td><td>FastAPI + Uvicorn (2 workers)</td><td>API 엔드포인트, 비즈니스 로직</td></tr>
       <tr><td>AI 엔진</td><td>Claude Sonnet 4 (via Proxy)</td><td>Intent 분류, Fraud 탐지, AI 초안 생성</td></tr>
       <tr><td>벡터 DB</td><td>ChromaDB + all-MiniLM-L6-v2</td><td>RAG: 지식 기반 검색 (137건)</td></tr>
@@ -126,7 +125,7 @@
     <div class="arch-row">
       <div class="arch-box">
         <div class="title">🌐 nginx</div>
-        <div class="desc">SSL + 리버스 프록시<br>bizops.duckdns.org/chat/</div>
+        <div class="desc">웹 서버<br>[프로토타입 URL]</div>
       </div>
     </div>
     <div class="arch-arrow-down">↓ HTTP :8000</div>
@@ -248,74 +247,22 @@
 
 <section>
   <h2>5. 인프라 구성</h2>
-  <div class="card card-green">
-    <table>
-      <tr><th>서비스</th><th>포트</th><th>관리 방식</th><th>상태 확인</th></tr>
-      <tr><td>FastAPI (챗봇)</td><td>:8000</td><td><code>systemctl restart chatbot</code></td><td><code>/health</code></td></tr>
-      <tr><td>claude-max-api-proxy</td><td>:3456</td><td><code>systemctl --user restart claude-max-api</code></td><td><code>/v1/models</code></td></tr>
-      <tr><td>Redis</td><td>:6379</td><td>수동 시작 (<code>~/.local/bin/redis-server</code>)</td><td><code>redis-cli ping</code></td></tr>
-      <tr><td>nginx</td><td>:443</td><td><code>systemctl restart nginx</code></td><td>브라우저 접속</td></tr>
-    </table>
-  </div>
-
-  <div class="card card-amber">
-    <h3>📁 디렉토리 구조</h3>
-    <pre style="background: #F8FAFC; padding: 16px; border-radius: 8px; font-size: 0.85rem; color: #475569; overflow-x: auto;">
-Ai-Chat-bot-project/
-├── app/
-│   ├── main.py                 # FastAPI 엔트리포인트
-│   ├── config.py               # 설정 관리 (.env 로드)
-│   ├── models/                 # Pydantic 모델 (ChatRequest, IntentResult 등)
-│   ├── routers/                # API 라우터 (/api/chat, /health 등)
-│   ├── services/               # 핵심 비즈니스 로직
-│   │   ├── pipeline.py         # 메인 파이프라인 오케스트레이터
-│   │   ├── claude_service.py   # Claude API 클라이언트 (프록시 경유)
-│   │   ├── intent_classifier.py
-│   │   ├── fraud_detector.py
-│   │   ├── multilingual.py
-│   │   ├── escalation_handler.py
-│   │   ├── self_service.py
-│   │   ├── session_manager.py
-│   │   ├── rag_service.py
-│   │   └── ...
-│   ├── utils/                  # 유틸리티 (프롬프트 로더 등)
-│   ├── static/                 # CSS, JS, 이미지
-│   └── templates/              # HTML 템플릿 (데모 페이지)
-├── knowledge/                  # RAG 지식 데이터 (JSON)
-├── prompts/                    # AI 프롬프트 템플릿
-├── config/                     # 설정 파일
-├── tests/                      # 테스트 (114개)
-├── scripts/                    # 유틸리티 스크립트 (ingest.py 등)
-├── docs/                       # 문서 (HTML)
-├── data/                       # 런타임 데이터 (ChromaDB, 피드백)
-├── .env                        # 환경 변수 (gitignore)
-├── .env.example                # 환경 변수 예시
-└── requirements.txt            # Python 의존성</pre>
+  <div class="card">
+    <div style="text-align:center; padding:32px 16px; color:#64748B;">
+      <div style="font-size:2rem; margin-bottom:8px;">🔧</div>
+      <strong>프로토타입 단계</strong><br>
+      인프라 구성 세부사항은 개발팀 협의 후 확정 예정입니다.
+    </div>
   </div>
 </section>
 
 <section>
   <h2>6. 보안 및 개인정보</h2>
-  <div class="grid-2">
-    <div class="card card-red">
-      <h3>🔒 보안 조치</h3>
-      <ul>
-        <li>HTTPS (Let's Encrypt TLS 1.2/1.3)</li>
-        <li>API 키/토큰: .env 파일 (gitignore)</li>
-        <li>Zendesk: API 토큰 인증 (이메일/토큰)</li>
-        <li>Claude API: 프록시 경유 (로컬호스트만)</li>
-        <li>Redis: 로컬호스트 바인딩 (외부 접근 차단)</li>
-      </ul>
-    </div>
-    <div class="card card-purple">
-      <h3>🛡️ 개인정보 보호</h3>
-      <ul>
-        <li>고객 결제 정보: 세션 내 임시 저장 (30분 TTL)</li>
-        <li>대화 히스토리: Redis에만 저장 (영구 저장 없음)</li>
-        <li>Zendesk 티켓: 고객 이메일만 전달</li>
-        <li>AI 모델: 고객 데이터 학습에 사용하지 않음</li>
-        <li>로그: 고객 메시지 내용은 DEBUG 레벨에서만</li>
-      </ul>
+  <div class="card">
+    <div style="text-align:center; padding:32px 16px; color:#64748B;">
+      <div style="font-size:2rem; margin-bottom:8px;">🛡️</div>
+      <strong>프로토타입 단계</strong><br>
+      보안 정책 및 개인정보 보호 상세사항은 보안팀 협의 후 확정 예정입니다.
     </div>
   </div>
 </section>

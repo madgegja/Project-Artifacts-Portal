@@ -299,6 +299,7 @@
 <div class="hero">
   <div class="hero-badge">CS OPERATOR GUIDE</div>
   <h1>CS 운영자 가이드</h1>
+<div style="display:inline-block;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.3);border-radius:20px;padding:4px 16px;font-size:12px;color:#fff;margin-bottom:8px;">⚠️ PROTOTYPE — 개발팀/보안팀 협의 전</div>
   <p class="subtitle">AI 챗봇 도입 후 CS 상담원이 알아야 할 모든 것 — 기술 용어 없이, 실무 중심으로</p>
   <div class="hero-meta">
     <span>버전 v1.0</span>
@@ -622,7 +623,7 @@
       <thead><tr><th>문의 유형</th><th>AI 처리</th><th>상담원 확인 포인트</th></tr></thead>
       <tbody>
         <tr><td>작품 에러 (챕터 누락, 이미지 깨짐)</td><td><span class="badge badge-l2">L2 검토</span></td><td>작품명·챕터·기기 확인 → 콘텐츠팀 전달</td></tr>
-        <tr><td>번역/맞춤법 에러</td><td><span class="badge badge-l2">L2 검토</span></td><td>작품명·챕터·오류 위치 확인 → QA팀 전달</td></tr>
+        <tr><td>번역/맞춤법 에러</td><td><span class="badge badge-l2">L2 검토</span></td><td>작품명·챕터·오류 위치 확인 → 팀 리더에게 전달</td></tr>
         <tr><td>작품 요청/업데이트 일정</td><td><span class="badge badge-l2">L2 검토</span></td><td>콘텐츠팀 일정 확인 후 안내</td></tr>
         <tr><td>작품 피드백/평점</td><td><span class="badge badge-l2">L2 검토</span></td><td>피드백 접수 확인 안내</td></tr>
       </tbody>
@@ -640,7 +641,7 @@
       <thead><tr><th>문의 유형</th><th>AI 처리</th><th>상담원 확인 포인트</th></tr></thead>
       <tbody>
         <tr><td>캐시 삭제 / 앱 업데이트</td><td><span class="badge badge-l3">L3 자동</span></td><td>없음 — 기본 트러블슈팅 안내</td></tr>
-        <tr><td>버그 리포트 (기기+OS 포함)</td><td><span class="badge badge-l2">L2 검토</span></td><td>기기명, OS, 앱 버전 수집 후 개발팀 전달</td></tr>
+        <tr><td>버그 리포트 (기기+OS 포함)</td><td><span class="badge badge-l2">L2 검토</span></td><td>기기명, OS, 앱 버전 수집 후 팀 리더에게 전달</td></tr>
       </tbody>
     </table></div>
   </div>
@@ -870,7 +871,7 @@
 
   <div class="scenario-box scenario-blue">
     <h4 style="color:var(--accent-blue);">Q. AI 챗봇이 다운되면 어떻게 되나요?</h4>
-    <p>챗봇 서비스 장애 시 고객 문의는 자동으로 이메일 채널로 전환됩니다. 상담원은 기존 이메일 처리 방식으로 정상 운영하면 됩니다. 시스템 복구는 개발팀에서 처리합니다.</p>
+    <p>챗봇 서비스 장애 시 고객 문의는 자동으로 이메일 채널로 전환됩니다. 상담원은 기존 이메일 처리 방식으로 정상 운영하면 됩니다. 시스템 복구 절차는 프로토타입 종료 후 확정 예정입니다.</p>
   </div>
 
   <div class="scenario-box scenario-blue">
@@ -941,19 +942,19 @@
     <div class="scenario-box scenario-red">
       <h4 style="color:var(--accent-red);">챗봇 서비스 장애 (응답 불가)</h4>
       <p><strong>영향:</strong> 챗봇 채널 고객이 응답 받지 못함<br>
-      <strong>조치:</strong> 이메일 채널로 자동 전환됨. 상담원은 이메일 문의량 증가에 대비. 개발팀 장애 복구 진행 중일 것이므로 별도 신고 불필요 (자동 알림 체계).</p>
+      <strong>조치:</strong> 이메일 채널로 자동 전환됨. 상담원은 이메일 문의량 증가에 대비. 장애 발생 시 CS 팀 리더에게 보고해주세요.</p>
     </div>
 
     <div class="scenario-box scenario-red">
       <h4 style="color:var(--accent-red);">AI가 부적절한 응답 반복 발송</h4>
       <p><strong>영향:</strong> 고객 불만 증가<br>
-      <strong>조치:</strong> 즉시 팀 리더에게 보고. 해당 카테고리/Sub-Intent 파악하여 전달. 개발팀에서 해당 템플릿 긴급 수정 또는 임시 비활성화 가능.</p>
+      <strong>조치:</strong> 즉시 팀 리더에게 보고. 해당 카테고리/Sub-Intent 파악하여 전달. CS 팀 리더를 통해 템플릿 수정 요청을 접수해주세요.</p>
     </div>
 
     <div class="scenario-box scenario-red">
       <h4 style="color:var(--accent-red);">대량 Fraud 의심 건 동시 접수</h4>
       <p><strong>영향:</strong> 조직적 사기 가능성<br>
-      <strong>조치:</strong> 패턴 파악 (동일 IP, 유사 문구, 동시간대) → 팀 리더 + 보안팀 즉시 보고. 개별 건은 정상 Fraud 절차 따라 처리.</p>
+      <strong>조치:</strong> 패턴 파악 (동일 IP, 유사 문구, 동시간대) → 팀 리더에게 즉시 보고. 개별 건은 정상 Fraud 절차 따라 처리.</p>
     </div>
 
     <div class="scenario-box">
@@ -969,8 +970,7 @@
       <thead><tr><th>담당</th><th>역할</th><th>연락 시점</th></tr></thead>
       <tbody>
         <tr><td><strong>CS 팀 리더</strong></td><td>운영 이슈, AI 오류 보고, Fraud 보고</td><td>업무 시간 내</td></tr>
-        <tr><td><strong>개발팀</strong></td><td>시스템 장애, 템플릿 수정, 기능 개선</td><td>긴급 시 즉시, 일반 건은 티켓 등록</td></tr>
-        <tr><td><strong>보안팀</strong></td><td>대량 Fraud, 계정 탈취, 데이터 이슈</td><td>의심 시 즉시</td></tr>
+        <tr><td colspan="3" style="color:#64748B; font-style:italic; text-align:center;">개발팀 · 보안팀 연락 체계는 프로토타입 종료 후 확정 예정</td></tr>
       </tbody>
     </table></div>
   </div>

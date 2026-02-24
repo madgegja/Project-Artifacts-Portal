@@ -688,9 +688,9 @@
 <!-- ============================== HERO ============================== -->
 <div class="container">
   <header class="hero" id="top">
-    <div class="hero-badge">OPERATIONS MANUAL v1.0</div>
+    <div class="hero-badge">OPERATIONS MANUAL v1.0 — PROTOTYPE</div>
     <h1>Toomics CS AI Chatbot 운영 매뉴얼</h1>
-    <p class="subtitle">투믹스 글로벌 CS AI 챗봇 시스템 운영 가이드 -- CS 운영팀 / QA팀 전용</p>
+    <p class="subtitle">투믹스 글로벌 CS AI 챗봇 시스템 운영 가이드 — CS 운영팀 전용</p>
     <div class="hero-meta">
       <span>&#128100; 작성자: 유종선 (Chongsun Yu)</span>
       <span>&#128197; 작성일: 2026-02-22</span>
@@ -712,7 +712,6 @@
       <a href="#sec-6"><span class="toc-num">6</span> Fraud 탐지 운영</a>
       <a href="#sec-7"><span class="toc-num">7</span> 다국어 운영 가이드</a>
       <a href="#sec-8"><span class="toc-num">8</span> 자동화 영구 배제 영역</a>
-      <a href="#sec-9"><span class="toc-num">9</span> 서버 운영 가이드</a>
       <a href="#sec-10"><span class="toc-num">10</span> 품질 규칙</a>
     </div>
   </nav>
@@ -882,7 +881,7 @@
           <tr><td><strong>버전</strong></td><td>v1.0</td></tr>
           <tr><td><strong>작성일</strong></td><td>2026-02-22</td></tr>
           <tr><td><strong>작성자</strong></td><td>유종선 (Chongsun Yu)</td></tr>
-          <tr><td><strong>대상 독자</strong></td><td>CS 운영팀, QA팀</td></tr>
+          <tr><td><strong>대상 독자</strong></td><td>CS 운영팀</td></tr>
           <tr><td><strong>데이터 기반</strong></td><td>11,621건 x 7개월 x 10개 마켓 실제 CS 데이터</td></tr>
           <tr><td><strong>목표</strong></td><td>월 ~630건(38%) 셀프서비스 자동 처리 + 나머지 상담원 에스컬레이션 (총 월 ~1,660건)</td></tr>
           <tr><td><strong>Phase 1 마켓</strong></td><td>EN(37%), FR(17%), ES(13%), PT(9%), DE(8%) -- 상위 5개 (84%)</td></tr>
@@ -911,21 +910,10 @@
         <span class="badge-tech badge-tech-amber">Zendesk API</span>
       </p>
 
-      <h4>&#128421;&#65039; 서버 정보</h4>
-      <table>
-        <thead>
-          <tr><th>항목</th><th>값</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>서버 IP</td><td><code style="color:var(--accent-cyan)">94.125.160.235</code></td></tr>
-          <tr><td>서비스명</td><td><code style="color:var(--accent-cyan)">chatbot.service</code> (systemd)</td></tr>
-          <tr><td>애플리케이션 경로</td><td><code style="color:var(--accent-cyan)">/opt/Ai-Chat-bot-project</code></td></tr>
-          <tr><td>포트</td><td><code style="color:var(--accent-cyan)">8000</code> (기본)</td></tr>
-          <tr><td>프레임워크</td><td>FastAPI + Uvicorn (ASGI)</td></tr>
-          <tr><td>AI 모델</td><td>Anthropic Claude API</td></tr>
-          <tr><td>벡터 DB</td><td>ChromaDB (RAG 파이프라인)</td></tr>
-        </tbody>
-      </table>
+      <div class="info-box info-box-blue">
+        <span class="info-icon">&#9432;</span>
+        <div><strong>프로토타입 단계:</strong> 서버 인프라 세부사항은 개발팀 협의 후 확정 예정입니다. 현재는 프로토타입 환경에서 운영 중입니다.</div>
+      </div>
     </div>
 
     <div class="card">
@@ -1447,7 +1435,7 @@ Ai-Chat-bot-project/
               <td><code>bug_report</code></td>
               <td>버그 리포트 (기기+OS)</td>
               <td><span class="badge badge-l1">L1</span></td>
-              <td>기기명+OS 버전이 포함된 상세 버그 리포트. 개발팀 전달 필요.</td>
+              <td>기기명+OS 버전이 포함된 상세 버그 리포트. 팀 리더에게 전달 필요.</td>
               <td><span class="keyword-tag">bug</span><span class="keyword-tag">Android</span><span class="keyword-tag">iOS</span><span class="keyword-tag">device</span><span class="keyword-tag">version</span></td>
             </tr>
             <tr>
@@ -1859,7 +1847,7 @@ Ai-Chat-bot-project/
           <span class="exclusion-icon">&#10006;</span>
           <div>
             <strong style="color:var(--text-primary);">기술 버그 리포트 (기기+OS)</strong><br>
-            기기명 + OS 버전이 포함된 상세 버그 리포트. 개발팀 전달 필요. (예: "iPhone 15 Pro, iOS 17.2에서 크래시 발생")
+            기기명 + OS 버전이 포함된 상세 버그 리포트. 팀 리더에게 전달 필요. (예: "iPhone 15 Pro, iOS 17.2에서 크래시 발생")
           </div>
         </li>
         <li>
@@ -1887,123 +1875,20 @@ Ai-Chat-bot-project/
     </div>
   </section>
 
-  <!-- ============================== 9. 서버 운영 가이드 ============================== -->
+  <!-- ============================== [삭제됨] 서버 운영 가이드 ============================== -->
   <section id="sec-9">
     <div class="section-header">
       <span class="section-number">9</span>
       <h2>서버 운영 가이드</h2>
     </div>
-
     <div class="card">
-      <h3>&#128421;&#65039; 서비스 관리 명령어</h3>
-      <h4>서버 시작 / 중지 / 재시작</h4>
-      <div class="code-block"><span class="comment"># 서비스 시작</span>
-<span class="cmd">sudo systemctl start</span> <span class="flag">chatbot.service</span>
-
-<span class="comment"># 서비스 중지</span>
-<span class="cmd">sudo systemctl stop</span> <span class="flag">chatbot.service</span>
-
-<span class="comment"># 서비스 재시작</span>
-<span class="cmd">sudo systemctl restart</span> <span class="flag">chatbot.service</span>
-
-<span class="comment"># 서비스 상태 확인</span>
-<span class="cmd">sudo systemctl status</span> <span class="flag">chatbot.service</span>
-
-<span class="comment"># 부팅 시 자동 시작 설정</span>
-<span class="cmd">sudo systemctl enable</span> <span class="flag">chatbot.service</span></div>
-
-      <h4>로그 확인</h4>
-      <div class="code-block"><span class="comment"># 실시간 로그 추적</span>
-<span class="cmd">journalctl -u chatbot.service -f</span>
-
-<span class="comment"># 최근 100줄 로그</span>
-<span class="cmd">journalctl -u chatbot.service -n 100</span>
-
-<span class="comment"># 오늘 로그만 보기</span>
-<span class="cmd">journalctl -u chatbot.service --since today</span></div>
-    </div>
-
-    <div class="card">
-      <h3>&#128268; API 엔드포인트</h3>
-      <table>
-        <thead>
-          <tr><th>Method</th><th>Endpoint</th><th>설명</th><th>비고</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="badge-tech badge-tech-green">GET</span></td>
-            <td><code>/health</code></td>
-            <td>기본 헬스체크</td>
-            <td>서버 상태 확인 (200 OK)</td>
-          </tr>
-          <tr>
-            <td><span class="badge-tech badge-tech-green">GET</span></td>
-            <td><code>/health/detailed</code></td>
-            <td>상세 헬스체크</td>
-            <td>Claude API, ChromaDB, 메모리 등 상세 상태</td>
-          </tr>
-          <tr>
-            <td><span class="badge-tech badge-tech-blue">POST</span></td>
-            <td><code>/api/chat</code></td>
-            <td>메인 채팅 API</td>
-            <td>고객 메시지 처리 (파이프라인 전체 실행)</td>
-          </tr>
-          <tr>
-            <td><span class="badge-tech badge-tech-blue">POST</span></td>
-            <td><code>/api/chat/feedback</code></td>
-            <td>피드백 수집</td>
-            <td>고객 만족도 / 응답 품질 피드백</td>
-          </tr>
-          <tr>
-            <td><span class="badge-tech badge-tech-amber">POST</span></td>
-            <td><code>/api/webhook/zendesk</code></td>
-            <td>Zendesk 웹훅</td>
-            <td>Zendesk 티켓 상태 변경 알림 수신</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h4>API 테스트 예시</h4>
-      <div class="code-block"><span class="comment"># 헬스체크</span>
-<span class="cmd">curl</span> <span class="url">http://94.125.160.235:8000/health</span>
-
-<span class="comment"># 상세 헬스체크</span>
-<span class="cmd">curl</span> <span class="url">http://94.125.160.235:8000/health/detailed</span>
-
-<span class="comment"># 채팅 API 테스트</span>
-<span class="cmd">curl</span> -X POST <span class="url">http://94.125.160.235:8000/api/chat</span> \
-  -H "Content-Type: application/json" \
-  -d '{
-    "message": "I want to cancel my subscription",
-    "session_id": "test-001"
-  }'</div>
-    </div>
-
-    <div class="card">
-      <h3>&#128640; 배포 절차</h3>
-      <div class="code-block"><span class="comment"># 1. 로컬에서 서버로 파일 전송</span>
-<span class="cmd">scp</span> -r ./Ai-Chat-bot-project/ user@<span class="url">94.125.160.235</span>:<span class="flag">/opt/Ai-Chat-bot-project</span>
-
-<span class="comment"># 2. 서버 접속</span>
-<span class="cmd">ssh</span> user@<span class="url">94.125.160.235</span>
-
-<span class="comment"># 3. 의존성 업데이트 (필요 시)</span>
-<span class="cmd">cd</span> <span class="flag">/opt/Ai-Chat-bot-project</span>
-<span class="cmd">pip install</span> -r requirements.txt
-
-<span class="comment"># 4. Knowledge 인제스트 (지식 베이스 변경 시)</span>
-<span class="cmd">python</span> scripts/ingest.py
-
-<span class="comment"># 5. 서비스 재시작</span>
-<span class="cmd">sudo systemctl restart</span> <span class="flag">chatbot.service</span>
-
-<span class="comment"># 6. 상태 확인</span>
-<span class="cmd">sudo systemctl status</span> <span class="flag">chatbot.service</span>
-<span class="cmd">curl</span> <span class="url">http://localhost:8000/health/detailed</span></div>
-
       <div class="info-box info-box-amber">
         <span class="info-icon">&#9888;&#65039;</span>
-        <div><strong>배포 주의사항:</strong> Knowledge 파일(knowledge/*.json) 변경 시 반드시 <code>python scripts/ingest.py</code>를 실행하여 ChromaDB를 업데이트해야 합니다. 인제스트 없이 재시작하면 이전 지식 베이스가 사용됩니다.</div>
+        <div>
+          <strong>프로토타입 단계</strong><br>
+          서버 운영 가이드(인프라 구성, API 엔드포인트, 배포 절차)는 개발팀 협의 후 확정 예정입니다.<br>
+          현재 프로토타입 환경에서 검증 중이며, 프로덕션 배포 시 별도 운영 매뉴얼이 제공됩니다.
+        </div>
       </div>
     </div>
   </section>
@@ -2147,7 +2032,7 @@ Ai-Chat-bot-project/
   <div class="footer">
     <p><strong>Toomics CS AI Chatbot Operations Manual v1.0</strong></p>
     <p>&#169; 2026 Toomics Global. 작성자: 유종선 (Chongsun Yu) | 작성일: 2026-02-22</p>
-    <p style="margin-top:8px;">본 문서는 CS 운영팀/QA팀 내부 전용입니다. 외부 배포를 금합니다.</p>
+    <p style="margin-top:8px;">본 문서는 CS 운영팀 내부 전용입니다. (프로토타입) 외부 배포를 금합니다.</p>
   </div>
 </div>
 
