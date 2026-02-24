@@ -380,6 +380,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
+    align-items: start;
   }
   .flag-list {
     list-style: none;
@@ -408,7 +409,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 10px;
   }
   .gauge-bar {
     width: 100%;
@@ -441,13 +442,14 @@
   .gauge-zones span:nth-child(2) { width: 20%; text-align: center; }
   .gauge-zones span:nth-child(3) { width: 51%; text-align: center; }
   .scoring-rules {
-    margin-top: 10px;
+    margin-top: 8px;
+    margin-bottom: 4px;
     font-size: 12px;
     color: #64748B;
   }
   .scoring-rules li {
     list-style: none;
-    padding: 3px 0;
+    padding: 2px 0;
   }
   .scoring-rules li::before {
     content: '';
@@ -905,8 +907,9 @@
           <li><strong>Supporting 지표 2개+</strong>: +15점/개</li>
           <li><strong>HIGH 등급</strong>: 강제 L1 에스컬레이션 (AI 응답 없음)</li>
         </ul>
-        <div style="margin-top:12px;display:flex;justify-content:center;">
-          <canvas id="fraudDoughnut" width="180" height="180" style="max-width:180px;"></canvas>
+        <p style="text-align:center;font-size:11px;color:#94A3B8;margin:10px 0 6px;">Red Flag 구성: 5 Critical + 4 Supporting</p>
+        <div style="display:flex;justify-content:center;">
+          <canvas id="fraudDoughnut" width="160" height="160" style="max-width:160px;"></canvas>
         </div>
       </div>
     </div>
@@ -1267,12 +1270,13 @@ new Chart(document.getElementById('fraudDoughnut'), {
   },
   options: {
     responsive: true,
-    cutout: '50%',
+    cutout: '55%',
+    aspectRatio: 1.2,
     plugins: {
       legend: {
         position: 'bottom',
         labels: {
-          padding: 12,
+          padding: 8,
           usePointStyle: true,
           pointStyleWidth: 10,
           font: { size: 11 }
