@@ -11,29 +11,31 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --bg-primary: #F8FAFC;
-    --bg-secondary: #F1F5F9;
-    --bg-card: #FFFFFF;
-    --text-primary: #1E293B;
-    --text-secondary: #475569;
-    --text-muted: #64748B;
-    --accent-blue: #0ea5e9;
-    --accent-cyan: #22d3ee;
-    --accent-green: #10b981;
-    --accent-amber: #f59e0b;
-    --accent-red: #ef4444;
-    --accent-purple: #a78bfa;
-    --border-color: #E2E8F0;
-    --border-light: #E2E8F0;
+    --max-w: 960px; --radius: 12px; --gap: 16px;
+    --bg-base: #F8FAFC; --bg-card: #FFFFFF; --bg-muted: #F1F5F9;
+    --text-primary: #1E293B; --text-secondary: #475569; --text-muted: #94A3B8;
+    --border: #E2E8F0;
+    --accent-brand: #2563EB; --accent-info: #0EA5E9; --accent-success: #10B981;
+    --accent-warn: #F59E0B; --accent-danger: #EF4444; --accent-purple: #7C3AED;
+    --font-base: 14px; --font-sm: 12px; --font-lg: 18px; --font-xl: 28px;
+    --line-height: 1.7;
+    --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-base: #0F172A; --bg-card: #1E293B; --bg-muted: #334155;
+      --text-primary: #F1F5F9; --text-secondary: #CBD5E1; --text-muted: #64748B;
+      --border: #334155;
+    }
   }
 
   body {
     font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', -apple-system, sans-serif;
     color: var(--text-primary);
-    background: var(--bg-primary);
+    background: var(--bg-base);
     line-height: 1.7;
-    font-size: 15px;
-  
+    font-size: 14px;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact; font-variant-numeric: tabular-nums;
     word-break: keep-all; overflow-wrap: break-word;
   }
 
@@ -48,18 +50,18 @@
     .no-print { display: none !important; }
   }
 
-  .container { max-width: 1100px;
+  .container { max-width: 960px;
     width: 100%; margin: 0 auto; padding: 0 0 60px; }
   section { padding: 0 40px; margin-bottom: 48px; }
 
   /* ── Hero ── */
   .hero {
-    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #10b981 100%);
+    background: linear-gradient(135deg, #1E3A5F 0%, #2563EB 50%, #0EA5E9 100%);
     color: white;
     padding: 48px 56px 40px;
     position: relative;
     overflow: hidden;
-    border-radius: 0 0 24px 24px;
+    border-radius: 0 0 12px 12px;
     margin-bottom: 36px;
   }
   .hero::before {
@@ -94,14 +96,14 @@
     gap: 14px;
     margin-bottom: 24px;
     padding-bottom: 12px;
-    border-bottom: 2px solid var(--border-color);
+    border-bottom: 2px solid var(--border);
   }
   .section-number {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 36px; height: 36px;
-    background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
+    background: linear-gradient(135deg, var(--accent-success), var(--accent-info));
     border-radius: 10px;
     font-size: 16px;
     font-weight: 800;
@@ -113,49 +115,49 @@
   /* ── Cards ── */
   .card {
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border);
     border-radius: 14px;
     padding: 24px 28px;
     margin-bottom: 16px;
     transition: border-color 0.2s;
   }
-  .card:hover { border-color: var(--accent-green); }
-  .card h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--accent-cyan); }
+  .card:hover { border-color: var(--accent-success); }
+  .card h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--accent-info); }
   .card h4 { font-size: 14px; font-weight: 600; margin: 14px 0 8px; color: var(--text-primary); }
   .card p, .card li { color: var(--text-secondary); font-size: 14px; line-height: 1.75; }
 
   /* ── TOC ── */
   .toc {
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border);
     border-radius: 14px;
     padding: 24px 32px;
     margin: 0 40px 36px;
   }
-  .toc h3 { font-size: 17px; font-weight: 700; margin-bottom: 14px; color: var(--accent-cyan); }
+  .toc h3 { font-size: 17px; font-weight: 700; margin-bottom: 14px; color: var(--accent-info); }
   .toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 6px 28px; }
   .toc a {
     display: flex; align-items: center; gap: 10px;
     padding: 7px 12px; color: var(--text-secondary); text-decoration: none;
     font-size: 14px; border-radius: 8px; transition: all 0.2s;
   }
-  .toc a:hover { background: rgba(16,185,129,0.08); color: var(--accent-green); }
+  .toc a:hover { background: rgba(16,185,129,0.08); color: var(--accent-success); }
   .toc-num {
     display: inline-flex; align-items: center; justify-content: center;
     min-width: 24px; height: 24px;
     background: rgba(16,185,129,0.12); border-radius: 7px;
-    font-size: 12px; font-weight: 700; color: var(--accent-green);
+    font-size: 12px; font-weight: 700; color: var(--accent-success);
   }
 
   /* ── Table ── */
   table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin-bottom: 14px; }
   thead th {
-    background: rgba(16,185,129,0.1); color: var(--accent-cyan);
+    background: rgba(16,185,129,0.1); color: var(--accent-info);
     font-weight: 700; font-size: 12px; text-transform: uppercase;
     letter-spacing: 0.5px; padding: 10px 14px; text-align: left;
-    border-bottom: 2px solid var(--border-color); white-space: nowrap;
+    border-bottom: 2px solid var(--border); white-space: nowrap;
   }
-  tbody td { padding: 10px 14px; border-bottom: 1px solid var(--border-light); color: var(--text-secondary); vertical-align: top; }
+  tbody td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; }
   tbody tr:hover { background: rgba(16,185,129,0.04); }
 
   /* ── Badges ── */
@@ -175,7 +177,7 @@
     padding: 20px 24px;
     margin-bottom: 14px;
   }
-  .checklist-box h4 { font-size: 14px; font-weight: 700; color: var(--accent-green); margin-bottom: 10px; }
+  .checklist-box h4 { font-size: 14px; font-weight: 700; color: var(--accent-success); margin-bottom: 10px; }
   .checklist-box ul { list-style: none; padding: 0; }
   .checklist-box li {
     padding: 6px 0 6px 28px;
@@ -186,20 +188,20 @@
   .checklist-box li::before {
     content: '☐';
     position: absolute; left: 4px; top: 6px;
-    color: var(--accent-green); font-size: 14px;
+    color: var(--accent-success); font-size: 14px;
   }
 
   /* ── Scenario Box ── */
   .scenario-box {
     background: var(--bg-card);
-    border-left: 4px solid var(--accent-amber);
+    border-left: 4px solid var(--accent-warn);
     border-radius: 0 12px 12px 0;
     padding: 20px 24px;
     margin-bottom: 14px;
   }
-  .scenario-box.scenario-red { border-left-color: var(--accent-red); }
-  .scenario-box.scenario-green { border-left-color: var(--accent-green); }
-  .scenario-box.scenario-blue { border-left-color: var(--accent-blue); }
+  .scenario-box.scenario-red { border-left-color: var(--accent-danger); }
+  .scenario-box.scenario-green { border-left-color: var(--accent-success); }
+  .scenario-box.scenario-blue { border-left-color: var(--accent-info); }
   .scenario-box h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
   .scenario-box p { color: var(--text-secondary); font-size: 13.5px; }
 
@@ -211,7 +213,7 @@
   }
   .flow-step {
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border);
     border-radius: 12px;
     padding: 14px 18px;
     text-align: center;
@@ -241,13 +243,13 @@
   .qr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
   .qr-item {
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border);
     border-radius: 10px;
     padding: 16px;
     text-align: center;
   }
   .qr-item .qr-label { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
-  .qr-item .qr-value { font-size: 22px; font-weight: 800; color: var(--accent-green); }
+  .qr-item .qr-value { font-size: 22px; font-weight: 800; color: var(--accent-success); }
   .qr-item .qr-desc { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
 
   ul, ol { padding-left: 20px; }
@@ -255,7 +257,7 @@
 
   .back-to-top {
     position: fixed; bottom: 24px; right: 24px;
-    background: var(--accent-green); color: #fff;
+    background: var(--accent-success); color: #fff;
     width: 42px; height: 42px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     text-decoration: none; font-size: 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);
@@ -263,7 +265,7 @@
   }
   .back-to-top:hover { transform: scale(1.1); }
 
-  .divider { height: 1px; background: var(--border-color); margin: 32px 40px; }
+  .divider { height: 1px; background: var(--border); margin: 32px 40px; }
 
   /* ── Table Responsive ── */
   .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 16px; }
@@ -326,7 +328,7 @@
     <a href="#sec8"><span class="toc-num">8</span> 자주 묻는 질문 (FAQ)</a>
     <a href="#sec9"><span class="toc-num">9</span> 일일 체크리스트</a>
     <a href="#sec10"><span class="toc-num">10</span> 비상 상황 대응</a>
-    <a href="#smart-layering" style="background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.25);"><span class="toc-num" style="background:var(--accent-green);">★</span> 핵심 가치 — 스마트 레이어링</a>
+    <a href="#smart-layering" style="background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.25);"><span class="toc-num" style="background:var(--accent-success);">★</span> 핵심 가치 — 스마트 레이어링</a>
   </div>
 </div>
 
@@ -460,22 +462,22 @@
   <div class="card">
     <h3>전체 흐름 (한눈에 보기)</h3>
     <div class="flow-steps">
-      <div class="flow-step" style="border-color:var(--accent-blue);">
+      <div class="flow-step" style="border-color:var(--accent-info);">
         <div class="step-label">STEP 1</div>
         <div class="step-title">고객이 챗봇에<br>메시지 입력</div>
       </div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step" style="border-color:var(--accent-cyan);">
+      <div class="flow-step" style="border-color:var(--accent-info);">
         <div class="step-label">STEP 2</div>
         <div class="step-title">AI가 언어 감지<br>+ 카테고리 분류</div>
       </div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step" style="border-color:var(--accent-amber);">
+      <div class="flow-step" style="border-color:var(--accent-warn);">
         <div class="step-label">STEP 3</div>
         <div class="step-title">Fraud 검사<br>+ 처리 레벨 결정</div>
       </div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step" style="border-color:var(--accent-green);">
+      <div class="flow-step" style="border-color:var(--accent-success);">
         <div class="step-label">STEP 4</div>
         <div class="step-title">자동 응답<br>또는 상담원 전달</div>
       </div>
@@ -818,12 +820,12 @@
   <div class="card">
     <h3>마켓별 지원 채널</h3>
     <div class="qr-grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));">
-      <div class="qr-item"><div class="qr-label">EN</div><div style="font-size:13px;color:var(--accent-cyan);margin-top:4px;">Zendesk 채널 (영어)</div></div>
-      <div class="qr-item"><div class="qr-label">FR</div><div style="font-size:13px;color:var(--accent-cyan);margin-top:4px;">Zendesk 채널 (프랑스어)</div></div>
-      <div class="qr-item"><div class="qr-label">ES</div><div style="font-size:13px;color:var(--accent-cyan);margin-top:4px;">Zendesk 채널 (스페인어)</div></div>
-      <div class="qr-item"><div class="qr-label">PT</div><div style="font-size:13px;color:var(--accent-cyan);margin-top:4px;">Zendesk 채널 (포르투갈어)</div></div>
-      <div class="qr-item"><div class="qr-label">DE</div><div style="font-size:13px;color:var(--accent-cyan);margin-top:4px;">Zendesk 채널 (독일어)</div></div>
-      <div class="qr-item"><div class="qr-label">JP</div><div style="font-size:13px;color:var(--accent-cyan);margin-top:4px;">Zendesk 채널 (일본어)</div></div>
+      <div class="qr-item"><div class="qr-label">EN</div><div style="font-size:13px;color:var(--accent-info);margin-top:4px;">Zendesk 채널 (영어)</div></div>
+      <div class="qr-item"><div class="qr-label">FR</div><div style="font-size:13px;color:var(--accent-info);margin-top:4px;">Zendesk 채널 (프랑스어)</div></div>
+      <div class="qr-item"><div class="qr-label">ES</div><div style="font-size:13px;color:var(--accent-info);margin-top:4px;">Zendesk 채널 (스페인어)</div></div>
+      <div class="qr-item"><div class="qr-label">PT</div><div style="font-size:13px;color:var(--accent-info);margin-top:4px;">Zendesk 채널 (포르투갈어)</div></div>
+      <div class="qr-item"><div class="qr-label">DE</div><div style="font-size:13px;color:var(--accent-info);margin-top:4px;">Zendesk 채널 (독일어)</div></div>
+      <div class="qr-item"><div class="qr-label">JP</div><div style="font-size:13px;color:var(--accent-info);margin-top:4px;">Zendesk 채널 (일본어)</div></div>
     </div>
   </div>
 
@@ -838,32 +840,32 @@
   </div>
 
   <div class="scenario-box scenario-blue">
-    <h4 style="color:var(--accent-blue);">Q. AI가 잘못된 답변을 보낸 것 같아요. 어떻게 하나요?</h4>
+    <h4 style="color:var(--accent-info);">Q. AI가 잘못된 답변을 보낸 것 같아요. 어떻게 하나요?</h4>
     <p>L3 자동 응답 건에서 오류를 발견하면, 해당 건을 캡처하여 팀 리더에게 보고해주세요. 빠르게 템플릿을 수정합니다. AI 자동 응답은 사전 검증된 템플릿 기반이므로 오류가 드물지만, 발견 시 즉시 보고가 중요합니다.</p>
   </div>
 
   <div class="scenario-box scenario-blue">
-    <h4 style="color:var(--accent-blue);">Q. 고객이 "AI와 대화하고 싶지 않다, 사람과 연결해달라"고 하면?</h4>
+    <h4 style="color:var(--accent-info);">Q. 고객이 "AI와 대화하고 싶지 않다, 사람과 연결해달라"고 하면?</h4>
     <p>AI 챗봇에는 항상 "CS 티켓 제출" 옵션이 함께 제공됩니다. 고객이 사람과의 대화를 원하면 티켓이 생성되고 상담원에게 전달됩니다. 이 경우 평소처럼 직접 응대하면 됩니다.</p>
   </div>
 
   <div class="scenario-box scenario-blue">
-    <h4 style="color:var(--accent-blue);">Q. 이메일로 들어온 문의도 AI가 처리하나요?</h4>
+    <h4 style="color:var(--accent-info);">Q. 이메일로 들어온 문의도 AI가 처리하나요?</h4>
     <p><strong>아니요.</strong> 이메일 접수 건(전체의 약 42%)은 기존과 동일하게 상담원이 직접 처리합니다. AI 챗봇은 웹사이트/앱의 실시간 채팅 채널에서만 작동합니다.</p>
   </div>
 
   <div class="scenario-box scenario-blue">
-    <h4 style="color:var(--accent-blue);">Q. AI가 분류한 카테고리가 틀린 것 같아요.</h4>
+    <h4 style="color:var(--accent-info);">Q. AI가 분류한 카테고리가 틀린 것 같아요.</h4>
     <p>AI 분류 정확도는 약 92% 이상이지만, 복합 의도(예: 해지 + 환불 동시 요청)에서 간혹 오분류가 발생할 수 있습니다. 틀린 분류를 발견하면 해당 건을 기록해주세요 — 피드백이 축적되면 AI 분류 정확도가 개선됩니다.</p>
   </div>
 
   <div class="scenario-box scenario-blue">
-    <h4 style="color:var(--accent-blue);">Q. AI 챗봇이 다운되면 어떻게 되나요?</h4>
+    <h4 style="color:var(--accent-info);">Q. AI 챗봇이 다운되면 어떻게 되나요?</h4>
     <p>챗봇 서비스 장애 시 고객 문의는 자동으로 이메일 채널로 전환됩니다. 상담원은 기존 이메일 처리 방식으로 정상 운영하면 됩니다. 시스템 복구 절차는 프로토타입 종료 후 확정 예정입니다.</p>
   </div>
 
   <div class="scenario-box scenario-blue">
-    <h4 style="color:var(--accent-blue);">Q. 고객이 AI 응답에 불만을 표시하면?</h4>
+    <h4 style="color:var(--accent-info);">Q. 고객이 AI 응답에 불만을 표시하면?</h4>
     <p>고객의 불만 피드백은 자동 수집됩니다. 상담원이 추가 대응이 필요하다고 판단되면 해당 건을 직접 이어받아 처리하세요. "AI 답변이 부정확했다면 사과드립니다" 등의 표현은 자연스럽게 사용 가능합니다.</p>
   </div>
 </section>
@@ -928,25 +930,25 @@
     <h3>상황별 대응 가이드</h3>
 
     <div class="scenario-box scenario-red">
-      <h4 style="color:var(--accent-red);">챗봇 서비스 장애 (응답 불가)</h4>
+      <h4 style="color:var(--accent-danger);">챗봇 서비스 장애 (응답 불가)</h4>
       <p><strong>영향:</strong> 챗봇 채널 고객이 응답 받지 못함<br>
       <strong>조치:</strong> 이메일 채널로 자동 전환됨. 상담원은 이메일 문의량 증가에 대비. 장애 발생 시 CS 팀 리더에게 보고해주세요.</p>
     </div>
 
     <div class="scenario-box scenario-red">
-      <h4 style="color:var(--accent-red);">AI가 부적절한 응답 반복 발송</h4>
+      <h4 style="color:var(--accent-danger);">AI가 부적절한 응답 반복 발송</h4>
       <p><strong>영향:</strong> 고객 불만 증가<br>
       <strong>조치:</strong> 즉시 팀 리더에게 보고. 해당 카테고리/Sub-Intent 파악하여 전달. CS 팀 리더를 통해 템플릿 수정 요청을 접수해주세요.</p>
     </div>
 
     <div class="scenario-box scenario-red">
-      <h4 style="color:var(--accent-red);">대량 Fraud 의심 건 동시 접수</h4>
+      <h4 style="color:var(--accent-danger);">대량 Fraud 의심 건 동시 접수</h4>
       <p><strong>영향:</strong> 조직적 사기 가능성<br>
       <strong>조치:</strong> 패턴 파악 (동일 IP, 유사 문구, 동시간대) → 팀 리더에게 즉시 보고. 개별 건은 정상 Fraud 절차 따라 처리.</p>
     </div>
 
     <div class="scenario-box">
-      <h4 style="color:var(--accent-amber);">특정 마켓에서 문의 급증</h4>
+      <h4 style="color:var(--accent-warn);">특정 마켓에서 문의 급증</h4>
       <p><strong>영향:</strong> 해당 마켓 응답 지연<br>
       <strong>조치:</strong> 결제 시스템 장애, 콘텐츠 이슈 등 원인 파악. 공통 이슈라면 해당 마켓 일괄 안내 템플릿 요청.</p>
     </div>
@@ -977,30 +979,30 @@
   <!-- 핵심 인사이트: 83% 반복 단계 -->
   <div style="background:linear-gradient(135deg,rgba(14,165,233,0.08),rgba(16,185,129,0.06));border:2px solid rgba(14,165,233,0.2);border-radius:16px;padding:28px 32px;margin-bottom:24px;">
     <div style="text-align:center;margin-bottom:20px;">
-      <div style="font-size:13px;color:var(--accent-cyan);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;">CORE INSIGHT — 실데이터 11,621건 분석 결과</div>
+      <div style="font-size:13px;color:var(--accent-info);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;">CORE INSIGHT — 실데이터 11,621건 분석 결과</div>
       <div style="font-size:26px;font-weight:800;color:var(--text-primary);line-height:1.4;">
-        CS 상담의 <span style="color:var(--accent-cyan);font-size:34px;">83%</span>가<br>
-        <span style="color:var(--accent-amber);">반복적이지만 반드시 거쳐야 하는</span> 정보 확인 단계입니다
+        CS 상담의 <span style="color:var(--accent-info);font-size:34px;">83%</span>가<br>
+        <span style="color:var(--accent-warn);">반복적이지만 반드시 거쳐야 하는</span> 정보 확인 단계입니다
       </div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:20px;">
       <div style="background:#E2E8F0;border:1px solid rgba(0,0,0,0.04);border-radius:12px;padding:14px 10px;text-align:center;">
-        <div style="font-size:24px;font-weight:800;color:var(--accent-blue);">45%</div>
+        <div style="font-size:24px;font-weight:800;color:var(--accent-info);">45%</div>
         <div style="font-size: 12px;color:var(--text-secondary);margin-top:4px;">결제 정보 요청</div>
         <div style="font-size: 12px;color:var(--text-muted);">계정 교차 확인</div>
       </div>
       <div style="background:#E2E8F0;border:1px solid rgba(0,0,0,0.04);border-radius:12px;padding:14px 10px;text-align:center;">
-        <div style="font-size:24px;font-weight:800;color:var(--accent-green);">18%</div>
+        <div style="font-size:24px;font-weight:800;color:var(--accent-success);">18%</div>
         <div style="font-size: 12px;color:var(--text-secondary);margin-top:4px;">구독 취소 확인</div>
         <div style="font-size: 12px;color:var(--text-muted);">해지 방법 안내</div>
       </div>
       <div style="background:#E2E8F0;border:1px solid rgba(0,0,0,0.04);border-radius:12px;padding:14px 10px;text-align:center;">
-        <div style="font-size:24px;font-weight:800;color:var(--accent-amber);">10%</div>
+        <div style="font-size:24px;font-weight:800;color:var(--accent-warn);">10%</div>
         <div style="font-size: 12px;color:var(--text-secondary);margin-top:4px;">환불 처리 안내</div>
         <div style="font-size: 12px;color:var(--text-muted);">환불 일정 안내</div>
       </div>
       <div style="background:#E2E8F0;border:1px solid rgba(0,0,0,0.04);border-radius:12px;padding:14px 10px;text-align:center;">
-        <div style="font-size:24px;font-weight:800;color:var(--accent-red);">7%</div>
+        <div style="font-size:24px;font-weight:800;color:var(--accent-danger);">7%</div>
         <div style="font-size: 12px;color:var(--text-secondary);margin-top:4px;">환불 거절 안내</div>
         <div style="font-size: 12px;color:var(--text-muted);">조건 미충족 안내</div>
       </div>
@@ -1012,7 +1014,7 @@
     </div>
     <div style="text-align:center;font-size:14px;color:var(--text-secondary);line-height:1.8;">
       이 단계들은 <strong style="color:var(--text-primary);">매번 동일한 정보 확인</strong>이 반복되지만, 고객 문제 해결을 위해 <strong style="color:var(--text-primary);">반드시 거쳐야 하는 필수 과정</strong>입니다.<br>
-      AI 스마트 레이어링은 <strong style="color:var(--accent-cyan);">티켓 생성 전에 이 정보 확인 과정을 자동화</strong>하여 고객과 운영자 모두에게 가치를 제공합니다.
+      AI 스마트 레이어링은 <strong style="color:var(--accent-info);">티켓 생성 전에 이 정보 확인 과정을 자동화</strong>하여 고객과 운영자 모두에게 가치를 제공합니다.
     </div>
   </div>
 
@@ -1023,20 +1025,20 @@
       <thead><tr><th style="width:45%;">기존 — 반복 왕복 3~5회</th><th>AI — 티켓 전 스마트 레이어링</th></tr></thead>
       <tbody>
         <tr>
-          <td>고객 문의 → 상담원 결제 정보 요청 → 고객 회신 대기 → 확인 → 안내<br><span style="color:var(--accent-red);font-size:12px;">평균 <strong>3~5회 왕복, 7~29일 소요</strong></span></td>
-          <td>고객이 <strong style="color:var(--accent-green);">티켓 생성 전</strong> AI 안내로 양식 확인 + 필요 정보 제공<br><span style="color:var(--accent-green);font-size:12px;">셀프 해결 or <strong>운영자가 필요 정보를 이미 확보한 채</strong> 티켓 수신</span></td>
+          <td>고객 문의 → 상담원 결제 정보 요청 → 고객 회신 대기 → 확인 → 안내<br><span style="color:var(--accent-danger);font-size:12px;">평균 <strong>3~5회 왕복, 7~29일 소요</strong></span></td>
+          <td>고객이 <strong style="color:var(--accent-success);">티켓 생성 전</strong> AI 안내로 양식 확인 + 필요 정보 제공<br><span style="color:var(--accent-success);font-size:12px;">셀프 해결 or <strong>운영자가 필요 정보를 이미 확보한 채</strong> 티켓 수신</span></td>
         </tr>
         <tr>
           <td>운영자가 <strong>매번 동일한 정보를 반복 요청</strong> (83%)</td>
-          <td>고객이 AI 프로세스를 통해 <strong style="color:var(--accent-green);">사전에 정보 제공 완료</strong> → 운영자 즉시 처리</td>
+          <td>고객이 AI 프로세스를 통해 <strong style="color:var(--accent-success);">사전에 정보 제공 완료</strong> → 운영자 즉시 처리</td>
         </tr>
         <tr>
           <td>정보 부족 → 추가 왕복 → <strong>첫 응답 해결율 낮음</strong></td>
-          <td>필요 정보 미리 확보 → <strong style="color:var(--accent-green);">첫 응답 해결율 비약적 상승 (3~4배)</strong></td>
+          <td>필요 정보 미리 확보 → <strong style="color:var(--accent-success);">첫 응답 해결율 비약적 상승 (3~4배)</strong></td>
         </tr>
         <tr>
           <td>야간/주말/공휴일에는 <strong>응답 불가</strong></td>
-          <td><strong style="color:var(--accent-green);">24/7</strong> AI 안내 → 언제든 양식 확인 + 티켓 생성 가능</td>
+          <td><strong style="color:var(--accent-success);">24/7</strong> AI 안내 → 언제든 양식 확인 + 티켓 생성 가능</td>
         </tr>
       </tbody>
     </table></div>
@@ -1059,25 +1061,25 @@
         <div style="display:flex;align-items:flex-start;gap:10px;">
           <div style="width:6px;height:6px;background:#38bdf8;border-radius:50%;margin-top:7px;flex-shrink:0;"></div>
           <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">
-            <strong style="color:var(--text-primary);">대기 7~29일 → 즉시 안내:</strong> CS 불만의 #1 원인인 <strong style="color:var(--accent-cyan);">응답 지연을 제거</strong>
+            <strong style="color:var(--text-primary);">대기 7~29일 → 즉시 안내:</strong> CS 불만의 #1 원인인 <strong style="color:var(--accent-info);">응답 지연을 제거</strong>
           </div>
         </div>
         <div style="display:flex;align-items:flex-start;gap:10px;">
           <div style="width:6px;height:6px;background:#38bdf8;border-radius:50%;margin-top:7px;flex-shrink:0;"></div>
           <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">
-            <strong style="color:var(--text-primary);">확실한 양식 안내 → 빠른 해결:</strong> 고객이 정확한 정보를 제공 → <strong style="color:var(--accent-cyan);">문제 해결 속도 체감</strong>
+            <strong style="color:var(--text-primary);">확실한 양식 안내 → 빠른 해결:</strong> 고객이 정확한 정보를 제공 → <strong style="color:var(--accent-info);">문제 해결 속도 체감</strong>
           </div>
         </div>
         <div style="display:flex;align-items:flex-start;gap:10px;">
           <div style="width:6px;height:6px;background:#38bdf8;border-radius:50%;margin-top:7px;flex-shrink:0;"></div>
           <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">
-            <strong style="color:var(--text-primary);">빠른 CS = 좋은 인상:</strong> 긍정적 경험 → <strong style="color:var(--accent-cyan);">서비스 신뢰도 + 브랜드 충성도 강화</strong>
+            <strong style="color:var(--text-primary);">빠른 CS = 좋은 인상:</strong> 긍정적 경험 → <strong style="color:var(--accent-info);">서비스 신뢰도 + 브랜드 충성도 강화</strong>
           </div>
         </div>
         <div style="display:flex;align-items:flex-start;gap:10px;">
           <div style="width:6px;height:6px;background:#38bdf8;border-radius:50%;margin-top:7px;flex-shrink:0;"></div>
           <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">
-            <strong style="color:var(--text-primary);">24/7 글로벌 지원:</strong> 10개 마켓 시간대 무관 → <strong style="color:var(--accent-cyan);">해외 고객 CS 접근성 확보</strong>
+            <strong style="color:var(--text-primary);">24/7 글로벌 지원:</strong> 10개 마켓 시간대 무관 → <strong style="color:var(--accent-info);">해외 고객 CS 접근성 확보</strong>
           </div>
         </div>
       </div>
@@ -1103,25 +1105,25 @@
         <div style="display:flex;align-items:flex-start;gap:10px;">
           <div style="width:6px;height:6px;background:#34d399;border-radius:50%;margin-top:7px;flex-shrink:0;"></div>
           <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">
-            <strong style="color:var(--text-primary);">필요 정보 미리 확보:</strong> 고객이 티켓 전 정보 제공 완료 → <strong style="color:var(--accent-green);">운영자가 즉시 처리</strong>
+            <strong style="color:var(--text-primary);">필요 정보 미리 확보:</strong> 고객이 티켓 전 정보 제공 완료 → <strong style="color:var(--accent-success);">운영자가 즉시 처리</strong>
           </div>
         </div>
         <div style="display:flex;align-items:flex-start;gap:10px;">
           <div style="width:6px;height:6px;background:#34d399;border-radius:50%;margin-top:7px;flex-shrink:0;"></div>
           <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">
-            <strong style="color:var(--text-primary);">첫 응답 해결율 3~4배:</strong> 정보 왕복 제거 → <strong style="color:var(--accent-green);">한 번에 처리하는 건수 비약적 상승</strong>
+            <strong style="color:var(--text-primary);">첫 응답 해결율 3~4배:</strong> 정보 왕복 제거 → <strong style="color:var(--accent-success);">한 번에 처리하는 건수 비약적 상승</strong>
           </div>
         </div>
         <div style="display:flex;align-items:flex-start;gap:10px;">
           <div style="width:6px;height:6px;background:#34d399;border-radius:50%;margin-top:7px;flex-shrink:0;"></div>
           <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">
-            <strong style="color:var(--text-primary);">티켓 38% 자연 감소:</strong> 셀프 해결 630건/월 → <strong style="color:var(--accent-green);">대기열 경감 + 피크타임 분산</strong>
+            <strong style="color:var(--text-primary);">티켓 38% 자연 감소:</strong> 셀프 해결 630건/월 → <strong style="color:var(--accent-success);">대기열 경감 + 피크타임 분산</strong>
           </div>
         </div>
         <div style="display:flex;align-items:flex-start;gap:10px;">
           <div style="width:6px;height:6px;background:#34d399;border-radius:50%;margin-top:7px;flex-shrink:0;"></div>
           <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">
-            <strong style="color:var(--text-primary);">판단 업무 집중:</strong> 반복 정보 수집 자동화 → <strong style="color:var(--accent-green);">환불 심사·Fraud 대응에 전념</strong>
+            <strong style="color:var(--text-primary);">판단 업무 집중:</strong> 반복 정보 수집 자동화 → <strong style="color:var(--accent-success);">환불 심사·Fraud 대응에 전념</strong>
           </div>
         </div>
       </div>
@@ -1137,9 +1139,9 @@
   <!-- 선순환 결론 -->
     <h4>CX 향상 × 운영 효율의 선순환</h4>
     <p>
-      <strong style="color:var(--accent-cyan);">AI가 티켓 전 양식을 안내</strong> → 고객은 빠르고 확실한 CS 경험 (CX ↑) → <strong style="color:var(--accent-cyan);">서비스 전반의 만족도 상승</strong> (Brand Trust ↑)<br>
-      <strong style="color:var(--accent-green);">운영자는 이미 확보된 정보로 즉시 처리</strong> → 첫 응답 해결율 ↑ → <strong style="color:var(--accent-green);">CS 처리 효율 3~4배</strong> → 남은 건도 더 빠르게 처리<br>
-      <strong style="color:var(--accent-amber);">두 효과가 동시에 달성:</strong> 고객 만족도 향상 + 운영 효율 극대화 → <strong>전체 CS 품질 상승의 선순환</strong>
+      <strong style="color:var(--accent-info);">AI가 티켓 전 양식을 안내</strong> → 고객은 빠르고 확실한 CS 경험 (CX ↑) → <strong style="color:var(--accent-info);">서비스 전반의 만족도 상승</strong> (Brand Trust ↑)<br>
+      <strong style="color:var(--accent-success);">운영자는 이미 확보된 정보로 즉시 처리</strong> → 첫 응답 해결율 ↑ → <strong style="color:var(--accent-success);">CS 처리 효율 3~4배</strong> → 남은 건도 더 빠르게 처리<br>
+      <strong style="color:var(--accent-warn);">두 효과가 동시에 달성:</strong> 고객 만족도 향상 + 운영 효율 극대화 → <strong>전체 CS 품질 상승의 선순환</strong>
     </p>
   </div>
 </section>

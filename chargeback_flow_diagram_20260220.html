@@ -9,53 +9,90 @@
 <meta name="date" content="2026-02-20">
 <title>TOOMICS 차지백 프로세스 플로우 다이어그램 | 유종선</title>
 <style>
+  :root {
+    --max-w: 960px;
+    --max-w-wide: 1280px;
+    --radius: 12px;
+    --gap: 16px;
+    --bg-base: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --bg-muted: #F1F5F9;
+    --text-primary: #1E293B;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --border: #E2E8F0;
+    --accent-brand: #2563EB;
+    --accent-info: #0EA5E9;
+    --accent-success: #10B981;
+    --accent-warn: #F59E0B;
+    --accent-danger: #EF4444;
+    --accent-purple: #7C3AED;
+    --font-base: 14px;
+    --font-sm: 12px;
+    --font-lg: 18px;
+    --font-xl: 28px;
+    --line-height: 1.7;
+    --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-base: #0F172A;
+      --bg-card: #1E293B;
+      --bg-muted: #334155;
+      --text-primary: #F1F5F9;
+      --text-secondary: #CBD5E1;
+      --text-muted: #64748B;
+      --border: #334155;
+    }
+  }
   html { scroll-behavior: smooth; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
-    background: #F8FAFC;
-    color: #1E293B;
+    font-family: var(--font-family);
+    background: var(--bg-base);
+    color: var(--text-primary);
     min-height: 100vh;
     padding: 32px;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
-  
-    font-size: 14px;
-  
-    line-height: 1.7;
-  
+    font-size: var(--font-base);
+    line-height: var(--line-height);
     word-break: keep-all; overflow-wrap: break-word;
+    font-variant-numeric: tabular-nums;
   }
   @media print {
-    body { background: #F8FAFC; padding: 16px; }
+    body { background: var(--bg-base); padding: 16px; }
     .no-print { display: none !important; }
+    .node, .pg-card, .tmpl-card, .sanction-card { page-break-inside: avoid; }
   }
 
   /* ===== HEADER ===== */
   .header {
     text-align: center;
     margin-bottom: 40px;
+    background: linear-gradient(135deg, #1E3A5F 0%, #dc2626 50%, #EF4444 100%);
+    color: #fff;
+    padding: 40px 32px 34px;
+    border-radius: var(--radius);
   }
   .header h1 {
-    font-size: 30px;
+    font-size: var(--font-xl);
     font-weight: 800;
-    background: linear-gradient(135deg, #f87171, #fb923c);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #fff;
     margin-bottom: 8px;
   }
   .header .sub {
-    color: #64748B;
-    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    font-size: var(--font-base);
   }
   .header .badge {
     display: inline-block;
-    background: rgba(248,113,113,0.15);
-    border: 1px solid rgba(248,113,113,0.3);
-    color: #b91c1c;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
     padding: 4px 14px;
     border-radius: 20px;
-    font-size: 12px;
+    font-size: var(--font-sm);
     margin-top: 8px;
   }
 
@@ -68,7 +105,7 @@
     flex-wrap: wrap;
   }
   .kpi-item {
-    background: #E2E8F0;
+    background: var(--bg-muted);
     border: 1px solid rgba(0,0,0,0.04);
     border-radius: 12px;
     padding: 14px 24px;
@@ -87,13 +124,13 @@
   }
   .kpi-item .label {
     font-size: 12px;
-    color: #64748B;
+    color: var(--text-muted);
     margin-top: 2px;
   }
 
   /* ===== FLOW CONTAINER ===== */
   .flow-container {
-    max-width: 1100px;
+    max-width: var(--max-w-wide);
     margin: 0 auto;
     position: relative;
   }
@@ -120,7 +157,7 @@
   }
   .arrow-down .arrow-label {
     font-size: 12px;
-    color: #64748B;
+    color: var(--text-muted);
     margin-left: 8px;
     align-self: center;
   }
@@ -160,14 +197,14 @@
     width: 28px;
     height: 28px;
     background: #dc2626;
-    color: #1E293B;
+    color: var(--text-primary);
     border-radius: 50%;
     font-size: 13px;
     font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #F8FAFC;
+    border: 2px solid var(--bg-base);
     box-shadow: 0 2px 8px rgba(220,38,38,0.4);
   }
 
@@ -315,7 +352,7 @@
   }
   .mycard-header .mh-tags {
     font-size: 12px;
-    color: #64748B;
+    color: var(--text-muted);
   }
   .mycard-header .mh-tags span {
     display: inline-block;
@@ -347,18 +384,18 @@
     width: 22px;
     height: 22px;
     background: #d97706;
-    color: #1E293B;
+    color: var(--text-primary);
     border-radius: 50%;
     font-size: 12px;
     font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #F8FAFC;
+    border: 2px solid var(--bg-base);
   }
   .mc-step .mc-icon { font-size: 20px; margin-bottom: 6px; display: block; }
   .mc-step .mc-title { font-size: 12px; font-weight: 700; color: #b45309; margin-bottom: 4px; }
-  .mc-step .mc-desc { font-size: 12px; color: #475569; line-height: 1.5; }
+  .mc-step .mc-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
   .mc-arrow {
     position: absolute;
     right: -14px;
@@ -373,7 +410,7 @@
     margin-top: 14px;
     text-align: center;
     font-size: 12px;
-    color: #64748B;
+    color: var(--text-muted);
     background: rgba(251,191,36,0.06);
     border-radius: 8px;
     padding: 8px 12px;
@@ -389,7 +426,7 @@
     margin: 0 auto;
   }
   .tmpl-card {
-    background: #E2E8F0;
+    background: var(--bg-muted);
     border: 1px solid rgba(0,0,0,0.06);
     border-radius: 10px;
     padding: 14px 16px;
@@ -402,7 +439,7 @@
     margin-bottom: 6px;
   }
   .tmpl-card .tmpl-desc {
-    color: #64748B;
+    color: var(--text-muted);
     font-size: 12px;
     line-height: 1.5;
   }
@@ -422,7 +459,7 @@
     padding: 6px 20px;
     border-radius: 8px;
     font-size: 12px;
-    color: #64748B;
+    color: var(--text-muted);
     letter-spacing: 1px;
     text-transform: uppercase;
   }
@@ -436,7 +473,7 @@
     margin: 0 auto;
   }
   .sanction-card {
-    background: #E2E8F0;
+    background: var(--bg-muted);
     border: 1px solid rgba(0,0,0,0.06);
     border-radius: 10px;
     padding: 14px 16px;
@@ -456,12 +493,12 @@
   }
   .sanction-card li {
     padding: 3px 0;
-    color: #475569;
+    color: var(--text-secondary);
     font-size: 12px;
   }
   .sanction-card li::before {
     content: "• ";
-    color: #64748B;
+    color: var(--text-muted);
   }
   .sanction-admin {
     border-color: rgba(248,113,113,0.3);
@@ -496,11 +533,11 @@
     text-align: center;
     margin-top: 40px;
     padding: 20px;
-    color: #64748B;
+    color: var(--text-muted);
     font-size: 12px;
-    border-top: 1px solid #E2E8F0;
+    border-top: 1px solid var(--border);
   }
-  .footer a { color: #1d4ed8; text-decoration: none; }
+  .footer a { color: var(--accent-brand); text-decoration: none; }
 
   /* ===== MERGE POINT ===== */
   .merge-dot {
@@ -534,7 +571,7 @@
   }
   .lane-label {
     font-size: 12px;
-    color: #64748B;
+    color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 4px;
@@ -552,12 +589,12 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: #E2E8F0;
-    border: 1px solid #CBD5E1;
+    background: var(--bg-muted);
+    border: 1px solid var(--border);
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 12px;
-    color: #475569;
+    color: var(--text-secondary);
     text-decoration: none;
     transition: all 0.2s;
   }

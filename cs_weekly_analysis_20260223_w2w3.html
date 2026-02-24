@@ -6,15 +6,50 @@
 <meta name="author" content="유종선">
 <meta name="description" content="투믹스 글로벌 CS 주간 분석 보고서 2026년 2월 2~3주차 — Zendesk CS 829건 + Chargeback 150건(시트) + AI Chatbot Phase 2 통합 분석">
 <title>TOOMICS CS Weekly Report | 2026년 2월 2~3주차 (02.07 ~ 02.20) v2</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
+  :root {
+    --max-w: 960px;
+    --max-w-wide: 1280px;
+    --radius: 12px;
+    --gap: 16px;
+    --bg-base: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --bg-muted: #F1F5F9;
+    --text-primary: #1E293B;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --border: #E2E8F0;
+    --accent-brand: #2563EB;
+    --accent-info: #0EA5E9;
+    --accent-success: #10B981;
+    --accent-warn: #F59E0B;
+    --accent-danger: #EF4444;
+    --accent-purple: #7C3AED;
+    --font-base: 14px;
+    --font-sm: 12px;
+    --font-lg: 18px;
+    --font-xl: 28px;
+    --line-height: 1.7;
+    --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-base: #0F172A;
+      --bg-card: #1E293B;
+      --bg-muted: #334155;
+      --text-primary: #F1F5F9;
+      --text-secondary: #CBD5E1;
+      --text-muted: #64748B;
+      --border: #334155;
+    }
+  }
   html { scroll-behavior: smooth; }
   @page { size: A3 portrait; margin: 10mm; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', -apple-system, sans-serif;
-    color: #1E293B;
-    background: #F8FAFC;
+    color: var(--text-primary);
+    background: var(--bg-base);
     line-height: 1.7;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
@@ -24,7 +59,7 @@
     word-break: keep-all; overflow-wrap: break-word;
   }
   .container {
-    max-width: 1400px;
+    max-width: var(--max-w-wide);
     width: 100%;
     margin: 0 auto;
     padding: 0 0 40px;
@@ -70,15 +105,15 @@
 
   /* ── Executive Summary ── */
   .exec-summary {
-    background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
+    background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-base) 100%);
     border-radius: 16px;
     padding: 32px;
     margin: 0 24px 32px;
-    border: 1px solid #CBD5E1;
+    border: 1px solid var(--border);
   }
   .exec-summary h2 { font-size: 16px; font-weight: 700; margin-bottom: 16px; color: #0369a1; }
   .exec-summary ul { list-style: none; padding: 0; }
-  .exec-summary li { padding: 8px 0; border-bottom: 1px solid #E2E8F0; font-size: 13px; line-height: 1.7; color: #1E293B; }
+  .exec-summary li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; line-height: 1.7; color: var(--text-primary); }
   .exec-summary li:last-child { border-bottom: none; }
   .exec-summary .tag { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 10.5px; font-weight: 700; margin-right: 6px; }
   .tag-up { background: #fef2f2; color: #dc2626; }
@@ -89,54 +124,54 @@
   /* ── KPI Strip ── */
   .kpi-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; padding: 0 24px; margin-bottom: 32px; }
   .kpi-card {
-    background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
+    background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-base) 100%);
     border-radius: 16px;
     padding: 24px 20px;
     text-align: center;
     box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-    border: 1px solid #CBD5E1;
+    border: 1px solid var(--border);
     transition: transform 0.2s;
   }
   .kpi-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
   .kpi-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 22px; }
-  .kpi-number { font-size: 32px; font-weight: 800; color: #1E293B; line-height: 1.1; }
+  .kpi-number { font-size: 32px; font-weight: 800; color: var(--text-primary); line-height: 1.1; }
   .kpi-number .small { font-size: 16px; font-weight: 600; }
-  .kpi-label { font-size: 12px; color: #64748B; margin-top: 4px; font-weight: 500; }
-  .kpi-sub { font-size: 12px; color: #64748B; margin-top: 2px; }
+  .kpi-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; font-weight: 500; }
+  .kpi-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
 
   /* ── Section ── */
   .section { padding: 0 24px; margin-bottom: 32px; }
-  .section-title { font-size: 18px; font-weight: 700; color: #1E293B; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .section-title { font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
   .section-title .dot { width: 8px; height: 8px; border-radius: 50%; background: #0ea5e9; display: inline-block; }
 
   /* ── Chart Grid ── */
   .chart-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .chart-card {
-    background: #FFFFFF;
+    background: var(--bg-card);
     border-radius: 16px;
     padding: 28px 24px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-    border: 1px solid #CBD5E1;
+    border: 1px solid var(--border);
   }
-  .chart-card h3 { font-size: 14px; font-weight: 700; color: #1E293B; margin-bottom: 4px; }
-  .chart-card .chart-desc { font-size: 12px; color: #64748B; margin-bottom: 16px; }
+  .chart-card h3 { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+  .chart-card .chart-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
   .chart-wrap { position: relative; width: 100%; }
 
   /* ── Bar Legend Table (replaces doughnut) ── */
   .bar-legend { width: 100%; }
-  .bar-legend-item { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #E2E8F0; }
+  .bar-legend-item { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--border); }
   .bar-legend-item:last-child { border-bottom: none; }
-  .bar-legend-label { min-width: 100px; font-size: 12px; font-weight: 600; color: #1E293B; }
-  .bar-legend-bar-wrap { flex: 1; height: 20px; background: #F8FAFC; border-radius: 4px; overflow: hidden; position: relative; }
+  .bar-legend-label { min-width: 100px; font-size: 12px; font-weight: 600; color: var(--text-primary); }
+  .bar-legend-bar-wrap { flex: 1; height: 20px; background: var(--bg-base); border-radius: 4px; overflow: hidden; position: relative; }
   .bar-legend-bar { height: 100%; border-radius: 4px; transition: width 0.8s ease; display: flex; align-items: center; padding-left: 8px; }
-  .bar-legend-bar span { font-size: 12px; font-weight: 700; color: #1E293B; white-space: nowrap; }
+  .bar-legend-bar span { font-size: 12px; font-weight: 700; color: var(--text-primary); white-space: nowrap; }
   .bar-legend-val { min-width: 72px; text-align: right; font-size: 12px; font-weight: 700; color: #64748B; font-variant-numeric: tabular-nums; }
 
   /* ── WoW Table ── */
   .wow-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; }
   .wow-table thead th {
-    background: #F8FAFC;
-    color: #64748B;
+    background: var(--bg-muted);
+    color: var(--text-muted);
     padding: 12px 16px;
     text-align: left;
     font-weight: 600;
@@ -146,8 +181,8 @@
   }
   .wow-table thead th:first-child { border-radius: 10px 0 0 0; }
   .wow-table thead th:last-child { border-radius: 0 10px 0 0; }
-  .wow-table tbody td { padding: 12px 16px; border-bottom: 1px solid #E2E8F0; color: #1E293B; }
-  .wow-table tbody tr:hover { background: #F1F5F9; }
+  .wow-table tbody td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-primary); }
+  .wow-table tbody tr:hover { background: var(--bg-muted); }
   .wow-table tbody tr:last-child td { border-bottom: none; }
   .wow-table .num { text-align: right; font-variant-numeric: tabular-nums; }
   .trend-up { color: #ef4444; font-weight: 700; font-size: 12px; }
@@ -157,7 +192,7 @@
   /* ── Insight Cards ── */
   .insight-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .insight-card {
-    background: #FFFFFF;
+    background: var(--bg-card);
     border-radius: 16px;
     padding: 24px;
     border-left: 4px solid;
@@ -169,8 +204,8 @@
   .insight-card.yellow { border-left-color: #eab308; }
   .insight-card.purple { border-left-color: #8b5cf6; }
   .insight-card.orange { border-left-color: #f97316; }
-  .insight-card h4 { font-size: 13px; font-weight: 700; color: #1E293B; margin-bottom: 6px; }
-  .insight-card p { font-size: 12px; color: #64748B; line-height: 1.7; }
+  .insight-card h4 { font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
+  .insight-card p { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
   .insight-card .highlight { font-weight: 700; color: #0369a1; }
 
   /* ── Customer Voice ── */
@@ -178,20 +213,20 @@
   .voice-category {
     font-size: 15px;
     font-weight: 800;
-    color: #1E293B;
+    color: var(--text-primary);
     margin-bottom: 14px;
     padding: 10px 16px;
-    background: linear-gradient(90deg, #DBEAFE 0%, #F8FAFC 100%);
+    background: linear-gradient(90deg, #DBEAFE 0%, var(--bg-base) 100%);
     border-radius: 10px;
     border-left: 4px solid #0ea5e9;
   }
   .voice-card {
-    background: #FFFFFF;
+    background: var(--bg-card);
     border-radius: 12px;
     padding: 20px 24px;
     margin-bottom: 12px;
     box-shadow: 0 1px 6px rgba(0,0,0,0.08);
-    border: 1px solid #CBD5E1;
+    border: 1px solid var(--border);
     border-left: 4px solid;
   }
   .voice-card.severity-high { border-left-color: #ef4444; }
@@ -206,17 +241,17 @@
   .badge-severity-medium { background: #fefce8; color: #b45309; }
   .badge-severity-low { background: #dcfce7; color: #166534; }
   .badge-severity-critical { background: #f3e8ff; color: #6d28d9; }
-  .voice-title { font-size: 13px; font-weight: 700; color: #1E293B; }
+  .voice-title { font-size: 13px; font-weight: 700; color: var(--text-primary); }
   .voice-quote {
-    background: #F8FAFC;
+    background: var(--bg-muted);
     border-radius: 8px;
     padding: 12px 16px;
     margin: 8px 0;
     font-size: 12px;
     font-style: italic;
-    color: #475569;
+    color: var(--text-secondary);
     line-height: 1.7;
-    border-left: 3px solid #CBD5E1;
+    border-left: 3px solid var(--border);
   }
   .voice-quote .translation { display: block; margin-top: 4px; font-style: normal; color: #64748B; font-size: 12px; }
   .voice-impact { font-size: 12px; color: #64748B; line-height: 1.6; margin-top: 8px; }
@@ -225,7 +260,7 @@
     display: inline-block;
     margin-top: 8px;
     padding: 4px 12px;
-    background: #FFFFFF;
+    background: var(--bg-card);
     color: #0369a1;
     border-radius: 6px;
     font-size: 12px;
@@ -234,26 +269,26 @@
 
   /* ── Action Items ── */
   .action-list {
-    background: #FFFFFF;
+    background: var(--bg-card);
     border-radius: 16px;
     padding: 28px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-    border: 1px solid #CBD5E1;
+    border: 1px solid var(--border);
   }
-  .action-list h3 { font-size: 15px; font-weight: 700; color: #1E293B; margin-bottom: 16px; }
-  .action-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #E2E8F0; }
+  .action-list h3 { font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 16px; }
+  .action-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
   .action-item:last-child { border-bottom: none; }
-  .action-priority { min-width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #1E293B; }
+  .action-priority { min-width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #fff; }
   .priority-high { background: #ef4444; }
   .priority-mid { background: #f59e0b; }
   .priority-low { background: #22c55e; }
   .action-content { flex: 1; }
-  .action-content .action-title { font-size: 13px; font-weight: 700; color: #1E293B; }
-  .action-content .action-desc { font-size: 12px; color: #64748B; margin-top: 2px; }
-  .action-content .action-owner { font-size: 12px; color: #64748B; margin-top: 4px; }
+  .action-content .action-title { font-size: 13px; font-weight: 700; color: var(--text-primary); }
+  .action-content .action-desc { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+  .action-content .action-owner { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
 
   /* ── Footer ── */
-  .footer { text-align: center; padding: 32px 24px 16px; font-size: 12px; color: #64748B; }
+  .footer { text-align: center; padding: 32px 24px 16px; font-size: 12px; color: var(--text-muted); }
 
   @media (max-width: 900px) {
     .kpi-strip { grid-template-columns: repeat(3, 1fr); }
@@ -273,12 +308,11 @@
     .hero h1 { font-size: 20px; }
   }
   @media print {
-    body { background: #F8FAFC; color: #1E293B; }
+    body { background: var(--bg-base); color: var(--text-primary); }
     .container { box-shadow: none; }
     .chart-card, .insight-card, .voice-card, .action-item { page-break-inside: avoid; }
     .section { page-break-before: auto; }
     .no-print { display: none !important; }
-    canvas { max-width: 100% !important; }
   }
 
     /* ══ 가독성 패치 (2026-02-23) ══ */
@@ -414,12 +448,32 @@
       <div class="chart-card">
         <h3>카테고리별 티켓 비중</h3>
         <p class="chart-desc">Subscription + Refund + Account = 80.0%</p>
-        <div class="chart-wrap"><canvas id="chartCategory"></canvas></div>
+        <div class="chart-wrap">
+<div class="bar-legend">
+  <div class="bar-legend-item"><span class="bar-legend-label">Subscription</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:#0ea5e9;"><span>321건</span></div></div><span class="bar-legend-val">38.7%</span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">Refund</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:71.0%;background:#6366f1;"><span>228건</span></div></div><span class="bar-legend-val">27.5%</span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">Account</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:35.5%;background:#f97316;"><span>114건</span></div></div><span class="bar-legend-val">13.8%</span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">Payment</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:17.8%;background:#22c55e;"><span>57건</span></div></div><span class="bar-legend-val">6.9%</span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">Content</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:13.7%;background:#eab308;"><span>44건</span></div></div><span class="bar-legend-val">5.3%</span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">Technical</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:9.7%;background:#ec4899;"><span>31건</span></div></div><span class="bar-legend-val">3.7%</span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">IP/Other</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:10.6%;background:#8b5cf6;"><span>34건</span></div></div><span class="bar-legend-val">4.1%</span></div>
+</div>
+</div>
       </div>
       <div class="chart-card">
         <h3>마켓(언어)별 티켓 비중</h3>
         <p class="chart-desc">EN 35.2% 최대, 유럽권 합산 53.2%</p>
-        <div class="chart-wrap"><canvas id="chartMarket"></canvas></div>
+        <div class="chart-wrap">
+<div class="bar-legend">
+  <div class="bar-legend-item"><span class="bar-legend-label">EN</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:#0ea5e9;"><span>292건</span></div></div><span class="bar-legend-val">35.2%</span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">FR</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:45.5%;background:#6366f1;"><span>133건</span></div></div><span class="bar-legend-val">16.0%</span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">ES</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:36.6%;background:#f97316;"><span>107건</span></div></div><span class="bar-legend-val">12.9%</span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">PT</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:35.6%;background:#22c55e;"><span>104건</span></div></div><span class="bar-legend-val">12.5%</span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">DE</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:22.9%;background:#eab308;"><span>67건</span></div></div><span class="bar-legend-val">8.1%</span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">TH</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:14.7%;background:#ec4899;"><span>43건</span></div></div><span class="bar-legend-val">5.2%</span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">IT/JP/CN</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:28.4%;background:#8b5cf6;"><span>83건</span></div></div><span class="bar-legend-val">10.0%</span></div>
+</div>
+</div>
       </div>
     </div>
   </div>
@@ -500,7 +554,12 @@
       <h3>주별 Solved 티켓 추이</h3>
       <p class="chart-desc">JAN W4(439건) 이후 W2 433건, W3 396건으로 안정화 추세</p>
       <div class="chart-wrap">
-        <canvas id="chartWeeklyTrend"></canvas>
+<div class="bar-legend">
+  <div class="bar-legend-item"><span class="bar-legend-label">JAN W3</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:#475569;"><span>474건</span></div></div><span class="bar-legend-val"></span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">JAN W4</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:92.6%;background:#475569;"><span>439건</span></div></div><span class="bar-legend-val"></span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">FEB W2</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:91.4%;background:#0ea5e9;"><span>433건</span></div></div><span class="bar-legend-val"></span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">FEB W3</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:83.5%;background:#0ea5e9;"><span>396건</span></div></div><span class="bar-legend-val"></span></div>
+</div>
       </div>
     </div>
   </div>
@@ -513,14 +572,23 @@
         <h3>유입 채널 분포</h3>
         <p class="chart-desc">Web 48.5%, Email 39.0%, API 12.5%</p>
         <div class="chart-wrap">
-          <canvas id="chartChannel"></canvas>
+<div class="bar-legend">
+  <div class="bar-legend-item"><span class="bar-legend-label">Web</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:#0ea5e9;"><span>402건</span></div></div><span class="bar-legend-val">48.5%</span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">Email</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:80.3%;background:#6366f1;"><span>323건</span></div></div><span class="bar-legend-val">39.0%</span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">API</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:25.9%;background:#f97316;"><span>104건</span></div></div><span class="bar-legend-val">12.5%</span></div>
+</div>
         </div>
       </div>
       <div class="chart-card">
         <h3>감성(Sentiment) 분포</h3>
         <p class="chart-desc">Neutral 60.0% / 부정 감성은 IP, Payment, Refund에 집중</p>
         <div class="chart-wrap">
-          <canvas id="chartSentiment"></canvas>
+<div class="bar-legend">
+  <div class="bar-legend-item"><span class="bar-legend-label">Neutral</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:#475569;"><span>497건</span></div></div><span class="bar-legend-val">60.0%</span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">Negative</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:61.6%;background:#f97316;"><span>306건</span></div></div><span class="bar-legend-val">36.9%</span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">V.Negative</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:4.2%;background:#ef4444;"><span>21건</span></div></div><span class="bar-legend-val">2.5%</span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">Positive</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:1.0%;background:#22c55e;"><span>5건</span></div></div><span class="bar-legend-val">0.6%</span></div>
+</div>
         </div>
       </div>
     </div>
@@ -680,7 +748,13 @@
       <h3>주별 차지백 트렌드 (최근 5주 · 토~금)</h3>
       <p class="chart-desc">FEB W1~W2 85~86건 고원 구간 · FEB W3는 6일 부분(40건*) · JAN W3(57건) 대비 +50% 수준</p>
       <div class="chart-wrap">
-        <canvas id="chartCBTrend"></canvas>
+<div class="bar-legend">
+  <div class="bar-legend-item"><span class="bar-legend-label">JAN W3</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:66.3%;background:#475569;"><span>57건</span></div></div><span class="bar-legend-val"></span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">JAN W4</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:82.6%;background:#475569;"><span>71건</span></div></div><span class="bar-legend-val"></span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">FEB W1</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:98.8%;background:#475569;"><span>85건</span></div></div><span class="bar-legend-val"></span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">FEB W2</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:#ef4444;"><span>86건</span></div></div><span class="bar-legend-val"></span></div>
+  <div class="bar-legend-item"><span class="bar-legend-label">FEB W3*</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:46.5%;background:#ef4444;"><span>40건</span></div></div><span class="bar-legend-val"></span></div>
+</div>
       </div>
     </div>
 
@@ -1222,132 +1296,6 @@
   </div>
 
 </div>
-
-<script>
-const fontFamily = "'Malgun Gothic','Noto Sans KR',sans-serif";
-Chart.defaults.font.family = fontFamily;
-Chart.defaults.font.size = 12;
-Chart.defaults.color = '#94a3b8';
-
-// ── Category Pie ──
-new Chart(document.getElementById('chartCategory'), {
-  type: 'doughnut',
-  data: {
-    labels: ['Subscription 321건 (38.7%)','Refund 228건 (27.5%)','Account 114건 (13.8%)','Payment 57건 (6.9%)','Content 44건 (5.3%)','Technical 31건 (3.7%)','IP/Other 34건 (4.1%)'],
-    datasets: [{ data: [321,228,114,57,44,31,34], backgroundColor: ['#0ea5e9','#6366f1','#f97316','#22c55e','#eab308','#ec4899','#8b5cf6'], borderWidth: 0 }]
-  },
-  options: { responsive:true, maintainAspectRatio:true, aspectRatio:1.2, cutout:'60%', plugins:{ legend:{ position:'bottom', labels:{ padding:12, color:'#475569', font:{size:13, weight:'600'}, boxWidth:14, usePointStyle:true, pointStyle:'circle' } } } }
-});
-
-// ── Market Pie ──
-new Chart(document.getElementById('chartMarket'), {
-  type: 'doughnut',
-  data: {
-    labels: ['🇬🇧 EN 292건 (35.2%)','🇫🇷 FR 133건 (16.0%)','🇪🇸 ES 107건 (12.9%)','🇧🇷 PT 104건 (12.5%)','🇩🇪 DE 67건 (8.1%)','🇹🇭 TH 43건 (5.2%)','🇮🇹🇯🇵🇨🇳 83건 (10.0%)'],
-    datasets: [{ data: [292,133,107,104,67,43,83], backgroundColor: ['#0ea5e9','#6366f1','#f97316','#22c55e','#eab308','#ec4899','#8b5cf6'], borderWidth: 0 }]
-  },
-  options: { responsive:true, maintainAspectRatio:true, aspectRatio:1.2, cutout:'60%', plugins:{ legend:{ position:'bottom', labels:{ padding:12, color:'#475569', font:{size:13, weight:'600'}, boxWidth:14, usePointStyle:true, pointStyle:'circle' } } } }
-});
-
-// ── Weekly Trend (4 weeks) ──
-new Chart(document.getElementById('chartWeeklyTrend'), {
-  type: 'bar',
-  data: {
-    labels: ['JAN W3\n(01/12~18)','JAN W4\n(01/19~25)','FEB W2\n(02/09~13)','FEB W3\n(02/16~20)'],
-    datasets: [{
-      label: '주간 티켓',
-      data: [474, 439, 433, 396],
-      backgroundColor: ['#475569','#475569','#0ea5e9','#0ea5e9'],
-      borderRadius: 8,
-      borderSkipped: false,
-      barThickness: 60
-    }]
-  },
-  options: {
-    responsive: true,
-    aspectRatio: 2.4,
-    plugins: {
-      legend: { display: false },
-      tooltip: { backgroundColor: '#FFFFFF', titleColor: '#1E293B', bodyColor: '#1E293B', borderColor: '#E2E8F0', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.raw + '건' } }
-    },
-    scales: {
-      y: { beginAtZero: false, min: 350, max: 520, grid: { color: '#E2E8F0' }, ticks: { color: '#64748B' } },
-      x: { grid: { display: false }, ticks: { color: '#475569', font: { size: 13, weight: '600' } } }
-    }
-  }
-});
-
-// ── CB Weekly Trend (토~금 기준) ──
-new Chart(document.getElementById('chartCBTrend'), {
-  type: 'bar',
-  data: {
-    labels: ['JAN W3\n(01/17~23)','JAN W4\n(01/24~30)','FEB W1\n(01/31~02/06)','FEB W2\n(02/07~13)','FEB W3\n(02/14~19)*'],
-    datasets: [{
-      label: '주간 차지백 (토~금)',
-      data: [57, 71, 85, 86, 40],
-      backgroundColor: ['#475569','#475569','#475569','#ef4444','#ef4444'],
-      borderRadius: 8,
-      borderSkipped: false,
-      barThickness: 52
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: { display: false },
-      tooltip: { backgroundColor: '#FFFFFF', titleColor: '#1E293B', bodyColor: '#1E293B', borderColor: '#E2E8F0', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.raw + '건' } }
-    },
-    scales: {
-      y: { beginAtZero: true, grid: { color: '#E2E8F0' }, ticks: { color: '#64748B' } },
-      x: { grid: { display: false }, ticks: { color: '#475569', font: { size: 13, weight: '600' } } }
-    }
-  }
-});
-
-// ── Channel Doughnut ──
-new Chart(document.getElementById('chartChannel'), {
-  type: 'doughnut',
-  data: {
-    labels: ['Web 48.5%','Email 39.0%','API 12.5%'],
-    datasets: [{
-      data: [402, 323, 104],
-      backgroundColor: ['#0ea5e9','#6366f1','#f97316'],
-      borderWidth: 0
-    }]
-  },
-  options: {
-    responsive: true,
-    aspectRatio: 1.2,
-    cutout: '65%',
-    plugins: {
-      legend: { position: 'bottom', labels: { padding: 12, color: '#475569', font: { size: 13, weight: '600' }, boxWidth: 14, usePointStyle: true, pointStyle: 'circle' } },
-      tooltip: { backgroundColor: '#FFFFFF', titleColor: '#1E293B', bodyColor: '#1E293B', borderColor: '#E2E8F0', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.raw + '건' } }
-    }
-  }
-});
-
-// ── Sentiment Doughnut ──
-new Chart(document.getElementById('chartSentiment'), {
-  type: 'doughnut',
-  data: {
-    labels: ['Neutral 60.0%','Negative 36.9%','V.Negative 2.5%','Positive 0.6%'],
-    datasets: [{
-      data: [497, 306, 21, 5],
-      backgroundColor: ['#475569','#f97316','#ef4444','#22c55e'],
-      borderWidth: 0
-    }]
-  },
-  options: {
-    responsive: true,
-    aspectRatio: 1.2,
-    cutout: '65%',
-    plugins: {
-      legend: { position: 'bottom', labels: { padding: 12, color: '#475569', font: { size: 13, weight: '600' }, boxWidth: 14, usePointStyle: true, pointStyle: 'circle' } },
-      tooltip: { backgroundColor: '#FFFFFF', titleColor: '#1E293B', bodyColor: '#1E293B', borderColor: '#E2E8F0', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.raw + '건' } }
-    }
-  }
-});
-</script>
 
 
 <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="맨 위로">↑</button>

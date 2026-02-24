@@ -10,26 +10,49 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --bg: #F8FAFC;
-    --bg2: #FFFFFF;
-    --text: #1E293B;
-    --text2: #64748B;
-    --muted: #64748B;
-    --blue: #0ea5e9;
-    --cyan: #22d3ee;
-    --green: #10b981;
-    --amber: #f59e0b;
-    --red: #ef4444;
-    --purple: #a78bfa;
+    --max-w: 960px;
+    --max-w-wide: 1280px;
+    --radius: 12px;
+    --gap: 16px;
+    --bg-base: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --bg-muted: #F1F5F9;
+    --text-primary: #1E293B;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
     --border: #E2E8F0;
+    --accent-brand: #2563EB;
+    --accent-info: #0ea5e9;
+    --accent-cyan: #22d3ee;
+    --accent-success: #10b981;
+    --accent-warn: #f59e0b;
+    --accent-danger: #ef4444;
+    --accent-purple: #a78bfa;
+    --font-base: 14px;
+    --font-sm: 12px;
+    --font-lg: 18px;
+    --font-xl: 28px;
+    --line-height: 1.7;
+    --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-base: #0F172A;
+      --bg-card: #1E293B;
+      --bg-muted: #334155;
+      --text-primary: #F1F5F9;
+      --text-secondary: #CBD5E1;
+      --text-muted: #64748B;
+      --border: #334155;
+    }
   }
 
   body {
-    font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', -apple-system, sans-serif;
-    color: var(--text);
-    background: var(--bg);
-    line-height: 1.7;
-    font-size: 13px;
+    font-family: var(--font-family);
+    color: var(--text-primary);
+    background: var(--bg-base);
+    line-height: var(--line-height);
+    font-size: var(--font-base);
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   
@@ -37,7 +60,7 @@
   }
 
   @media print {
-    body { background: var(--bg); }
+    body { background: var(--bg-base); }
     .page { box-shadow: none; page-break-after: always; }
     .page:last-child { page-break-after: auto; }
   }
@@ -98,7 +121,7 @@
   .section-title {
     font-size: 16px; font-weight: 800; margin-bottom: 16px;
     display: flex; align-items: center; gap: 10px;
-    color: var(--cyan);
+    color: var(--accent-cyan);
   }
   .section-title .dot {
     width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
@@ -112,7 +135,7 @@
     margin-bottom: 0;
   }
   .kpi {
-    background: var(--bg2);
+    background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 14px;
     padding: 18px 16px;
@@ -125,19 +148,19 @@
     position: absolute; top: 0; left: 0; right: 0; height: 3px;
     border-radius: 14px 14px 0 0;
   }
-  .kpi.kpi-blue::after { background: var(--blue); }
-  .kpi.kpi-green::after { background: var(--green); }
-  .kpi.kpi-amber::after { background: var(--amber); }
-  .kpi.kpi-purple::after { background: var(--purple); }
-  .kpi.kpi-cyan::after { background: var(--cyan); }
-  .kpi .kpi-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
-  .kpi .kpi-value { font-size: 28px; font-weight: 800; margin: 6px 0 2px; }
-  .kpi.kpi-blue .kpi-value { color: var(--blue); }
-  .kpi.kpi-green .kpi-value { color: var(--green); }
-  .kpi.kpi-amber .kpi-value { color: var(--amber); }
-  .kpi.kpi-purple .kpi-value { color: var(--purple); }
-  .kpi.kpi-cyan .kpi-value { color: var(--cyan); }
-  .kpi .kpi-sub { font-size: 12px; color: var(--text2); }
+  .kpi.kpi-blue::after { background: var(--accent-info); }
+  .kpi.kpi-green::after { background: var(--accent-success); }
+  .kpi.kpi-amber::after { background: var(--accent-warn); }
+  .kpi.kpi-purple::after { background: var(--accent-purple); }
+  .kpi.kpi-cyan::after { background: var(--accent-cyan); }
+  .kpi .kpi-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .kpi .kpi-value { font-size: var(--font-xl); font-weight: 800; margin: 6px 0 2px; font-variant-numeric: tabular-nums; }
+  .kpi.kpi-blue .kpi-value { color: var(--accent-info); }
+  .kpi.kpi-green .kpi-value { color: var(--accent-success); }
+  .kpi.kpi-amber .kpi-value { color: var(--accent-warn); }
+  .kpi.kpi-purple .kpi-value { color: var(--accent-purple); }
+  .kpi.kpi-cyan .kpi-value { color: var(--accent-cyan); }
+  .kpi .kpi-sub { font-size: 12px; color: var(--text-secondary); }
 
   /* ── Progress ── */
   .progress-row {
@@ -146,12 +169,12 @@
     gap: 16px;
   }
   .progress-card {
-    background: var(--bg2);
+    background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 14px;
     padding: 20px 24px;
   }
-  .progress-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 14px; color: var(--text); }
+  .progress-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 14px; color: var(--text-primary); }
 
   /* ── Phase Timeline ── */
   .timeline {
@@ -180,45 +203,45 @@
     border: 1px solid rgba(100,116,139,0.2);
   }
   .timeline-item .tl-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-  .timeline-item.done .tl-label { color: var(--green); }
-  .timeline-item.current .tl-label { color: var(--blue); }
-  .timeline-item.future .tl-label { color: var(--muted); }
+  .timeline-item.done .tl-label { color: var(--accent-success); }
+  .timeline-item.current .tl-label { color: var(--accent-info); }
+  .timeline-item.future .tl-label { color: var(--text-muted); }
   .timeline-item .tl-title { font-size: 13px; font-weight: 700; margin-top: 4px; }
-  .timeline-item .tl-period { font-size: 12px; color: var(--text2); margin-top: 2px; }
+  .timeline-item .tl-period { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
   .timeline-arrow {
     display: flex; align-items: center; padding: 0 6px;
-    font-size: 16px; color: var(--muted);
+    font-size: 16px; color: var(--text-muted);
   }
 
   /* ── Checklist ── */
   .check-list { list-style: none; padding: 0; }
   .check-list li {
     padding: 5px 0 5px 24px; position: relative;
-    font-size: 13px; color: var(--text2);
+    font-size: 13px; color: var(--text-secondary);
   }
   .check-list li::before {
     position: absolute; left: 0; top: 5px;
     font-size: 14px; font-weight: 700;
   }
-  .check-list li.done::before { content: '✓'; color: var(--green); }
-  .check-list li.current::before { content: '►'; color: var(--blue); }
-  .check-list li.todo::before { content: '○'; color: var(--muted); }
-  .check-list li.done { text-decoration: line-through; color: var(--muted); }
-  .check-list li.current { color: var(--blue); font-weight: 600; }
+  .check-list li.done::before { content: '✓'; color: var(--accent-success); }
+  .check-list li.current::before { content: '►'; color: var(--accent-info); }
+  .check-list li.todo::before { content: '○'; color: var(--text-muted); }
+  .check-list li.done { text-decoration: line-through; color: var(--text-muted); }
+  .check-list li.current { color: var(--accent-info); font-weight: 600; }
 
   /* ── Cost Table ── */
   table { width: 100%; border-collapse: collapse; }
   thead th {
     background: rgba(14,165,233,0.08);
-    color: var(--cyan); font-weight: 700; font-size: 12px;
+    color: var(--accent-cyan); font-weight: 700; font-size: 12px;
     text-transform: uppercase; letter-spacing: 0.5px;
     padding: 8px 12px; text-align: left;
     border-bottom: 2px solid var(--border);
   }
   tbody td {
     padding: 8px 12px;
-    border-bottom: 1px solid #E2E8F0;
-    color: var(--text2); font-size: 13px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary); font-size: 13px;
   }
   tbody tr:hover { background: rgba(14,165,233,0.04); }
 
@@ -229,7 +252,7 @@
     gap: 16px;
   }
   .ra-card {
-    background: var(--bg2);
+    background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 14px;
     padding: 18px 22px;
@@ -244,18 +267,18 @@
     display: flex; align-items: center; gap: 8px;
     margin-bottom: 6px; font-size: 12px;
   }
-  .cat-bar-label { width: 90px; text-align: right; color: var(--text2); flex-shrink: 0; }
+  .cat-bar-label { width: 90px; text-align: right; color: var(--text-secondary); flex-shrink: 0; }
   .cat-bar-track {
-    flex: 1; height: 18px; background: #E2E8F0;
+    flex: 1; height: 18px; background: var(--border);
     border-radius: 4px; overflow: hidden; position: relative;
   }
   .cat-bar-fill {
     height: 100%; border-radius: 4px;
     display: flex; align-items: center; padding-left: 6px;
-    font-size: 12px; font-weight: 700; color: #1E293B;
-    min-width: 30px;
+    font-size: var(--font-sm); font-weight: 700; color: var(--text-primary);
+    min-width: 30px; font-variant-numeric: tabular-nums;
   }
-  .cat-bar-pct { width: 40px; text-align: right; color: var(--muted); font-size: 12px; flex-shrink: 0; }
+  .cat-bar-pct { width: 40px; text-align: right; color: var(--text-muted); font-size: 12px; flex-shrink: 0; }
 
   /* ── Badges ── */
   .badge {
@@ -271,7 +294,7 @@
 
   .footer {
     text-align: center; padding: 16px 40px 32px;
-    font-size: 12px; color: var(--muted);
+    font-size: 12px; color: var(--text-muted);
   }
 
   /* ── Back to Top ── */
@@ -352,7 +375,7 @@
 
   <!-- KPI -->
   <div class="section">
-    <div class="section-title"><span class="dot" style="background:var(--green);"></span>핵심 지표 (Key Metrics)</div>
+    <div class="section-title"><span class="dot" style="background:var(--accent-success);"></span>핵심 지표 (Key Metrics)</div>
     <div class="kpi-row">
       <div class="kpi kpi-blue">
         <div class="kpi-label">월 총 문의</div>
@@ -386,7 +409,7 @@
 
   <!-- Phase Timeline + Progress -->
   <div class="section">
-    <div class="section-title"><span class="dot" style="background:var(--blue);"></span>프로젝트 진행 현황</div>
+    <div class="section-title"><span class="dot" style="background:var(--accent-info);"></span>프로젝트 진행 현황</div>
     <div class="progress-row">
 
       <!-- Left: Timeline -->
@@ -417,9 +440,9 @@
             <div class="tl-period">2026 H2 (협의 후)</div>
           </div>
         </div>
-        <div style="margin-top:12px;padding:10px 14px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.08);border-radius:8px;font-size: 12px;color:var(--text2);line-height:1.7;">
-          <strong style="color:var(--blue);">현재 상태:</strong> 프로토타입 완료 → 고도화 진행 중 (2~3월)<br>
-          <strong style="color:var(--muted);">다음 단계:</strong> 3월 말 고도화 완료 → 기획팀·개발팀 프로덕션 도입 협의 (3~4월)
+        <div style="margin-top:12px;padding:10px 14px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.08);border-radius:8px;font-size: 12px;color:var(--text-secondary);line-height:1.7;">
+          <strong style="color:var(--accent-info);">현재 상태:</strong> 프로토타입 완료 → 고도화 진행 중 (2~3월)<br>
+          <strong style="color:var(--text-muted);">다음 단계:</strong> 3월 말 고도화 완료 → 기획팀·개발팀 프로덕션 도입 협의 (3~4월)
         </div>
       </div>
 
@@ -445,43 +468,43 @@
 
   <!-- Category Distribution -->
   <div class="section">
-    <div class="section-title"><span class="dot" style="background:var(--amber);"></span>카테고리별 문의 분포 (11,621건 분석)</div>
+    <div class="section-title"><span class="dot" style="background:var(--accent-warn);"></span>카테고리별 문의 분포 (11,621건 분석)</div>
     <div class="progress-row">
       <div class="progress-card">
         <h3>월별 문의 분포</h3>
         <div class="cat-bar-row">
           <div class="cat-bar-label">Subscription</div>
-          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:48%; background:var(--blue);">700건</div></div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:48%; background:var(--accent-info);">700건</div></div>
           <div class="cat-bar-pct">48%</div>
         </div>
         <div class="cat-bar-row">
           <div class="cat-bar-label">Refund</div>
-          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:25%; background:var(--amber);">367건</div></div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:25%; background:var(--accent-warn);">367건</div></div>
           <div class="cat-bar-pct">25%</div>
         </div>
         <div class="cat-bar-row">
           <div class="cat-bar-label">Account</div>
-          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:13%; background:var(--green);">189건</div></div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:13%; background:var(--accent-success);">189건</div></div>
           <div class="cat-bar-pct">13%</div>
         </div>
         <div class="cat-bar-row">
           <div class="cat-bar-label">Payment</div>
-          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:5.8%; background:var(--purple);">86건</div></div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:5.8%; background:var(--accent-purple);">86건</div></div>
           <div class="cat-bar-pct">5%</div>
         </div>
         <div class="cat-bar-row">
           <div class="cat-bar-label">Content</div>
-          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:3.8%; background:var(--red);">57건</div></div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:3.8%; background:var(--accent-danger);">57건</div></div>
           <div class="cat-bar-pct">4%</div>
         </div>
         <div class="cat-bar-row">
           <div class="cat-bar-label">Technical</div>
-          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:2.2%; background:var(--cyan);">32건</div></div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:2.2%; background:var(--accent-cyan);">32건</div></div>
           <div class="cat-bar-pct">3%</div>
         </div>
         <div class="cat-bar-row">
           <div class="cat-bar-label">Other</div>
-          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:2%; background:var(--muted);">30건</div></div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:2%; background:var(--text-muted);">30건</div></div>
           <div class="cat-bar-pct">2%</div>
         </div>
       </div>
@@ -490,37 +513,37 @@
       <div class="progress-card">
         <h3>처리 채널 & 라우팅</h3>
 
-        <h3 style="font-size:12px; color:var(--text2); margin-bottom:8px; font-weight:600;">접수 채널</h3>
+        <h3 style="font-size:12px; color:var(--text-secondary); margin-bottom:8px; font-weight:600;">접수 채널</h3>
         <div class="cat-bar-row">
           <div class="cat-bar-label">Web/App</div>
-          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:47%; background:var(--blue);">47%</div></div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:47%; background:var(--accent-info);">47%</div></div>
           <div class="cat-bar-pct">789건</div>
         </div>
         <div class="cat-bar-row">
           <div class="cat-bar-label">Email</div>
-          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:42%; background:var(--amber);">42%</div></div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:42%; background:var(--accent-warn);">42%</div></div>
           <div class="cat-bar-pct">699건</div>
         </div>
         <div class="cat-bar-row">
           <div class="cat-bar-label">API/기타</div>
-          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:11%; background:var(--muted);">11%</div></div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:11%; background:var(--text-muted);">11%</div></div>
           <div class="cat-bar-pct">174건</div>
         </div>
 
-        <h3 style="font-size:12px; color:var(--text2); margin: 16px 0 8px; font-weight:600;">AI 라우팅 (비이메일 963건 기준)</h3>
+        <h3 style="font-size:12px; color:var(--text-secondary); margin: 16px 0 8px; font-weight:600;">AI 라우팅 (비이메일 963건 기준)</h3>
         <div class="cat-bar-row">
           <div class="cat-bar-label"><span class="badge b-green">L3 자동</span></div>
-          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:38%; background:var(--green);">366건</div></div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:38%; background:var(--accent-success);">366건</div></div>
           <div class="cat-bar-pct">38%</div>
         </div>
         <div class="cat-bar-row">
           <div class="cat-bar-label"><span class="badge b-amber">L2 검토</span></div>
-          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:49%; background:var(--amber);">472건</div></div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:49%; background:var(--accent-warn);">472건</div></div>
           <div class="cat-bar-pct">49%</div>
         </div>
         <div class="cat-bar-row">
           <div class="cat-bar-label"><span class="badge b-red">L1 긴급</span></div>
-          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:13%; background:var(--red);">125건</div></div>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:13%; background:var(--accent-danger);">125건</div></div>
           <div class="cat-bar-pct">13%</div>
         </div>
       </div>
@@ -531,13 +554,13 @@
 
   <!-- 스마트 레이어링 — 핵심 포인트 -->
   <div class="section">
-    <div class="section-title"><span class="dot" style="background:var(--purple);"></span>스마트 레이어링 — 티켓 전 자동화 프로세스</div>
+    <div class="section-title"><span class="dot" style="background:var(--accent-purple);"></span>스마트 레이어링 — 티켓 전 자동화 프로세스</div>
 
     <!-- 핵심 인사이트 배너 -->
     <div style="background:linear-gradient(135deg,rgba(14,165,233,0.08),rgba(16,185,129,0.06));border:2px solid rgba(14,165,233,0.12);border-radius:14px;padding:16px 20px;margin-bottom:14px;text-align:center;">
-      <div style="font-size: 12px;color:var(--cyan);font-weight:700;letter-spacing:1.5px;margin-bottom:6px;">CORE INSIGHT — 실데이터 11,621건 분석</div>
-      <div style="font-size:18px;font-weight:800;color:var(--text);line-height:1.4;">
-        CS 상담의 <span style="color:var(--cyan);font-size:24px;">83%</span>가 반복적이지만 <span style="color:var(--amber);">반드시 거쳐야 하는 정보 확인 단계</span>
+      <div style="font-size: 12px;color:var(--accent-cyan);font-weight:700;letter-spacing:1.5px;margin-bottom:6px;">CORE INSIGHT — 실데이터 11,621건 분석</div>
+      <div style="font-size:18px;font-weight:800;color:var(--text-primary);line-height:1.4;">
+        CS 상담의 <span style="color:var(--accent-cyan);font-size:24px;">83%</span>가 반복적이지만 <span style="color:var(--accent-warn);">반드시 거쳐야 하는 정보 확인 단계</span>
       </div>
       <div style="display:flex;justify-content:center;gap:12px;margin-top:10px;flex-wrap:wrap;">
         <span style="background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.25);border-radius:8px;padding:4px 10px;font-size: 12px;font-weight:700;color:#0369a1;">결제정보 요청 45%</span>
@@ -556,48 +579,48 @@
           <tbody>
             <tr>
               <td style="color:#b91c1c;">문의→정보요청→회신대기→확인→안내 <strong>(3~5회 왕복)</strong></td>
-              <td style="text-align:center;color:var(--muted);">→</td>
-              <td style="color:var(--green);"><strong>티켓 전</strong> AI가 양식 안내 + 정보 확인 완료</td>
+              <td style="text-align:center;color:var(--text-muted);">→</td>
+              <td style="color:var(--accent-success);"><strong>티켓 전</strong> AI가 양식 안내 + 정보 확인 완료</td>
             </tr>
             <tr>
               <td style="color:#b91c1c;">운영자가 매번 동일 정보 반복 요청 (83%)</td>
-              <td style="text-align:center;color:var(--muted);">→</td>
-              <td style="color:var(--green);">고객이 사전 제공 → <strong>운영자 즉시 처리</strong></td>
+              <td style="text-align:center;color:var(--text-muted);">→</td>
+              <td style="color:var(--accent-success);">고객이 사전 제공 → <strong>운영자 즉시 처리</strong></td>
             </tr>
             <tr>
               <td style="color:#b91c1c;">정보 부족 → 추가 왕복 → 첫 응답 해결율 낮음</td>
-              <td style="text-align:center;color:var(--muted);">→</td>
-              <td style="color:var(--green);">필요 정보 미리 확보 → <strong>첫 응답 해결율 3~4배</strong></td>
+              <td style="text-align:center;color:var(--text-muted);">→</td>
+              <td style="color:var(--accent-success);">필요 정보 미리 확보 → <strong>첫 응답 해결율 3~4배</strong></td>
             </tr>
             <tr>
               <td style="color:#b91c1c;">야간/주말 응답 불가</td>
-              <td style="text-align:center;color:var(--muted);">→</td>
-              <td style="color:var(--green);">24/7 AI 안내 → 언제든 양식 확인 + 티켓 생성</td>
+              <td style="text-align:center;color:var(--text-muted);">→</td>
+              <td style="color:var(--accent-success);">24/7 AI 안내 → 언제든 양식 확인 + 티켓 생성</td>
             </tr>
           </tbody>
         </table></div>
       </div>
       <div class="progress-card">
         <h3>DUAL VALUE: CX × Operations</h3>
-        <div style="padding:8px 0; font-size:13px; color:var(--text2); line-height:1.7;">
+        <div style="padding:8px 0; font-size:13px; color:var(--text-secondary); line-height:1.7;">
           <!-- CX Pillar -->
           <div style="padding:10px 12px;background:rgba(14,165,233,0.06);border:1px solid rgba(3,105,161,0.10);border-radius:10px;margin-bottom:10px;">
             <div style="font-size: 12px;color:#4338ca;font-weight:700;letter-spacing:1px;margin-bottom:4px;">🎯 CUSTOMER EXPERIENCE → SATISFACTION & LOYALTY</div>
-            <div style="font-size:12px;color:var(--text2);line-height:1.7;">
-              대기 7~29일 → <strong style="color:var(--cyan);">AI 즉시 안내</strong> → 빠른 해결 경험<br>
-              좋은 CS 경험 → <strong style="color:var(--cyan);">서비스 신뢰도 + 브랜드 충성도</strong> 강화
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.7;">
+              대기 7~29일 → <strong style="color:var(--accent-cyan);">AI 즉시 안내</strong> → 빠른 해결 경험<br>
+              좋은 CS 경험 → <strong style="color:var(--accent-cyan);">서비스 신뢰도 + 브랜드 충성도</strong> 강화
             </div>
           </div>
           <!-- Ops Pillar -->
           <div style="padding:10px 12px;background:rgba(16,185,129,0.06);border:1px solid rgba(5,150,105,0.12);border-radius:10px;margin-bottom:10px;">
             <div style="font-size: 12px;color:#b45309;font-weight:700;letter-spacing:1px;margin-bottom:4px;">⚡ CS OPERATIONS → EFFICIENCY ×3~4</div>
-            <div style="font-size:12px;color:var(--text2);line-height:1.7;">
-              정보 미리 확보 → <strong style="color:var(--green);">첫 응답 해결율 3~4배</strong><br>
-              38% 셀프 해결 → <strong style="color:var(--green);">티켓 감소 + 판단 업무 집중</strong>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.7;">
+              정보 미리 확보 → <strong style="color:var(--accent-success);">첫 응답 해결율 3~4배</strong><br>
+              38% 셀프 해결 → <strong style="color:var(--accent-success);">티켓 감소 + 판단 업무 집중</strong>
             </div>
           </div>
           <!-- Result -->
-          <div style="padding:8px 12px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.12);border-radius:10px;text-align:center;font-size:12px;color:var(--amber);font-weight:600;">
+          <div style="padding:8px 12px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.12);border-radius:10px;text-align:center;font-size:12px;color:var(--accent-warn);font-weight:600;">
             CX ↑ 고객 만족도 &nbsp;×&nbsp; Operations ↑ 3~4배 효율 = 선순환
           </div>
         </div>
@@ -609,10 +632,10 @@
 
   <!-- Risk & Next Actions -->
   <div class="section" style="padding-bottom:8px;">
-    <div class="section-title"><span class="dot" style="background:var(--red);"></span>리스크 & 다음 주 계획</div>
+    <div class="section-title"><span class="dot" style="background:var(--accent-danger);"></span>리스크 & 다음 주 계획</div>
     <div class="ra-grid">
       <div class="ra-card">
-        <h3><span class="dot" style="background:var(--red); display:inline-block; width:8px; height:8px; border-radius:50%;"></span> 리스크 / 이슈</h3>
+        <h3><span class="dot" style="background:var(--accent-danger); display:inline-block; width:8px; height:8px; border-radius:50%;"></span> 리스크 / 이슈</h3>
         <div class="table-wrap"><table>
           <thead><tr><th>항목</th><th>상태</th><th>대응</th></tr></thead>
           <tbody>
@@ -635,7 +658,7 @@
         </table></div>
       </div>
       <div class="ra-card">
-        <h3><span class="dot" style="background:var(--green); display:inline-block; width:8px; height:8px; border-radius:50%;"></span> 향후 계획</h3>
+        <h3><span class="dot" style="background:var(--accent-success); display:inline-block; width:8px; height:8px; border-radius:50%;"></span> 향후 계획</h3>
         <ul class="check-list">
           <li class="current">프로토타입 고도화 (90/10 하이브리드 아키텍처)</li>
           <li class="todo">응답 품질 검증 + 파이프라인 시뮬레이션</li>

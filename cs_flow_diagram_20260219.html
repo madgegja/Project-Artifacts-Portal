@@ -5,53 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOOMICS Global CS Flow Diagram</title>
     <style>
+  :root {
+    --max-w: 960px;
+    --max-w-wide: 1280px;
+    --radius: 12px;
+    --gap: 16px;
+    --bg-base: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --bg-muted: #F1F5F9;
+    --text-primary: #1E293B;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --border: #E2E8F0;
+    --accent-brand: #2563EB;
+    --accent-info: #0EA5E9;
+    --accent-success: #10B981;
+    --accent-warn: #F59E0B;
+    --accent-danger: #EF4444;
+    --accent-purple: #7C3AED;
+    --font-base: 14px;
+    --font-sm: 12px;
+    --font-lg: 18px;
+    --font-xl: 28px;
+    --line-height: 1.7;
+    --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
+    /* Category colors */
+    --cat-subscription: #dc2626;
+    --cat-refund: #ea580c;
+    --cat-account: #ca8a04;
+    --cat-payment: #2563eb;
+    --cat-content: #0891b2;
+    --cat-fraud: #9333ea;
+    --cat-store: #059669;
+    --cat-language: #4f46e5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-base: #0F172A;
+      --bg-card: #1E293B;
+      --bg-muted: #334155;
+      --text-primary: #F1F5F9;
+      --text-secondary: #CBD5E1;
+      --text-muted: #64748B;
+      --border: #334155;
+    }
+  }
   html { scroll-behavior: smooth; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #F8FAFC;
-            color: #1E293B;
+            font-family: var(--font-family);
+            background: var(--bg-base);
+            color: var(--text-primary);
             min-height: 100vh;
             padding: 32px;
-        
-    word-break: keep-all; overflow-wrap: break-word;
-  
-    font-size: 14px;
-  
-    line-height: 1.7;
-  }
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            word-break: keep-all; overflow-wrap: break-word;
+            font-size: var(--font-base);
+            line-height: var(--line-height);
+            font-variant-numeric: tabular-nums;
+        }
 
         .header {
             text-align: center;
             margin-bottom: 40px;
+            background: linear-gradient(135deg, #1E3A5F 0%, #2563EB 50%, #0EA5E9 100%);
+            color: #fff;
+            padding: 40px 32px 34px;
+            border-radius: var(--radius);
         }
         .header h1 {
-            font-size: 28px;
+            font-size: var(--font-xl);
             font-weight: 700;
-            background: linear-gradient(135deg, #60a5fa, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #fff;
             margin-bottom: 8px;
         }
         .header .sub {
-            color: #64748B;
-            font-size: 14px;
+            color: rgba(255,255,255,0.85);
+            font-size: var(--font-base);
         }
         .header .badge {
             display: inline-block;
-            background: rgba(96,165,250,0.15);
-            border: 1px solid rgba(96,165,250,0.3);
-            color: #1d4ed8;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: #fff;
             padding: 4px 14px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: var(--font-sm);
             margin-top: 8px;
         }
 
         /* ===== FLOW CONTAINER ===== */
         .flow-container {
-            max-width: 1200px;
+            max-width: var(--max-w-wide);
             margin: 0 auto;
             position: relative;
         }
@@ -77,7 +124,7 @@
         }
         .arrow-down .arrow-label {
             font-size: 12px;
-            color: #64748b;
+            color: var(--text-muted);
             margin-left: 8px;
             align-self: center;
         }
@@ -239,15 +286,15 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            background: #E2E8F0;
+            background: var(--bg-muted);
             border: 1px solid rgba(0,0,0,0.06);
             padding: 4px 10px;
             border-radius: 20px;
             font-size: 12px;
-            color: #475569;
+            color: var(--text-secondary);
         }
         .market-chip .flag { font-size: 14px; }
-        .market-chip .vol { color: #64748B; margin-left: 2px; }
+        .market-chip .vol { color: var(--text-muted); margin-left: 2px; }
 
         /* ===== SECTION DIVIDER ===== */
         .section-label {
@@ -261,7 +308,7 @@
             padding: 6px 20px;
             border-radius: 8px;
             font-size: 12px;
-            color: #64748B;
+            color: var(--text-muted);
             letter-spacing: 1px;
             text-transform: uppercase;
         }
@@ -275,7 +322,7 @@
             margin: 0 auto;
         }
         .esc-card {
-            background: #E2E8F0;
+            background: var(--bg-muted);
             border: 1px solid rgba(0,0,0,0.06);
             border-radius: 10px;
             padding: 14px 16px;
@@ -295,7 +342,7 @@
         }
         .esc-card li {
             padding: 2px 0;
-            color: #475569;
+            color: var(--text-secondary);
         }
         .esc-card li::before {
             content: "⚠️ ";
@@ -326,13 +373,11 @@
         .stat-value {
             font-size: 24px;
             font-weight: 800;
-            background: linear-gradient(135deg, #60a5fa, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--accent-brand);
         }
         .stat-label {
             font-size: 12px;
-            color: #64748b;
+            color: var(--text-muted);
             margin-top: 2px;
         }
 
@@ -358,17 +403,19 @@
             text-align: center;
             margin-top: 40px;
             padding-top: 20px;
-            border-top: 1px solid #E2E8F0;
-            color: #475569;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
             font-size: 12px;
         }
 
         /* ===== PRINT ===== */
+        @page { size: A3 landscape; margin: 10mm; }
         @media print {
             body { background: #fff; color: #1a1a1a; padding: 16px; }
-            .header h1 { -webkit-text-fill-color: #1e40af; }
+            .header h1 { color: var(--accent-brand); }
             .node { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
             .node-category { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+            .node, .node-category { page-break-inside: avoid; }
         }
     
   /* ── Back to Top ── */

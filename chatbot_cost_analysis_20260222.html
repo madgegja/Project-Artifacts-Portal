@@ -4,15 +4,50 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TOOMICS CS AI 챗봇 비용 분석 | 2026-02-22</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
+  :root {
+    --max-w: 960px;
+    --max-w-wide: 1280px;
+    --radius: 12px;
+    --gap: 16px;
+    --bg-base: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --bg-muted: #F1F5F9;
+    --text-primary: #1E293B;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --border: #E2E8F0;
+    --accent-brand: #2563EB;
+    --accent-info: #0EA5E9;
+    --accent-success: #10B981;
+    --accent-warn: #F59E0B;
+    --accent-danger: #EF4444;
+    --accent-purple: #7C3AED;
+    --font-base: 14px;
+    --font-sm: 12px;
+    --font-lg: 18px;
+    --font-xl: 28px;
+    --line-height: 1.7;
+    --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-base: #0F172A;
+      --bg-card: #1E293B;
+      --bg-muted: #334155;
+      --text-primary: #F1F5F9;
+      --text-secondary: #CBD5E1;
+      --text-muted: #64748B;
+      --border: #334155;
+    }
+  }
   html { scroll-behavior: smooth; }
   @page { size: A3 portrait; margin: 10mm; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    font-family: 'Malgun Gothic', 'Noto Sans KR', -apple-system, sans-serif;
-    color: #1E293B;
-    background: #F8FAFC;
+    font-family: var(--font-family);
+    color: var(--text-primary);
+    background: var(--bg-base);
     line-height: 1.7;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
@@ -22,14 +57,13 @@
     font-size: 14px;
   }
   @media print {
-    body { background: #F8FAFC; }
+    body { background: var(--bg-base); color: var(--text-primary); }
     .container { box-shadow: none; }
-    .chart-box canvas { max-height: 320px; }
     section { break-inside: avoid; }
   }
 
   .container {
-    max-width: 1400px;
+    max-width: var(--max-w-wide);
     width: 100%;
     margin: 0 auto;
     padding: 0 0 60px;
@@ -129,11 +163,11 @@
   .section-header h2 {
     font-size: 22px;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
   }
   .section-header .desc {
     font-size: 13px;
-    color: #64748B;
+    color: var(--text-muted);
     margin-left: auto;
   }
 
@@ -146,7 +180,7 @@
     margin-bottom: 40px;
   }
   .kpi-card {
-    background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-base) 100%);
     border: 1px solid rgba(14,165,233,0.12);
     border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     padding: 28px 24px;
@@ -179,6 +213,7 @@
     font-weight: 800;
     margin-bottom: 4px;
     line-height: 1.2;
+    font-variant-numeric: tabular-nums;
   }
   .kpi-card:nth-child(1) .kpi-value { color: #b45309; }
   .kpi-card:nth-child(2) .kpi-value { color: #0369a1; }
@@ -186,12 +221,12 @@
   .kpi-card:nth-child(4) .kpi-value { color: #047857; }
   .kpi-label {
     font-size: 14px;
-    color: #64748B;
+    color: var(--text-muted);
     font-weight: 500;
   }
   .kpi-sub {
     font-size: 12px;
-    color: #64748B;
+    color: var(--text-muted);
     margin-top: 6px;
   }
 
@@ -208,8 +243,8 @@
     font-size: 14px;
   }
   thead th {
-    background: #F1F5F9;
-    color: #334155;
+    background: var(--bg-muted);
+    color: var(--text-primary);
     font-weight: 700;
     font-size: 12px;
     text-transform: uppercase;
@@ -221,7 +256,7 @@
   tbody td {
     padding: 12px 18px;
     border-bottom: 1px solid rgba(226,232,240,0.4);
-    color: #475569;
+    color: var(--text-secondary);
   }
   tbody tr:last-child td { border-bottom: none; }
   tbody tr:hover { background: rgba(14,165,233,0.04); }
@@ -252,7 +287,7 @@
     margin-bottom: 28px;
   }
   .chart-box {
-    background: #FFFFFF;
+    background: var(--bg-card);
     border: 1px solid rgba(226,232,240,0.6);
     border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     padding: 24px;
@@ -261,7 +296,7 @@
   .chart-box h3 {
     font-size: 15px;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
     margin-bottom: 18px;
     display: flex;
     align-items: center;
@@ -566,7 +601,7 @@
   .footer {
     text-align: center;
     padding: 40px 28px 20px;
-    color: #475569;
+    color: var(--text-secondary);
     font-size: 12px;
     line-height: 1.8;
     border-top: 1px solid rgba(226,232,240,0.4);
@@ -1086,162 +1121,6 @@
   </div>
 
 </div><!-- /.container -->
-
-<!-- ══════════════ CHART.JS SCRIPTS ══════════════ -->
-<script>
-// ── Global Chart.js defaults ──
-Chart.defaults.color = '#64748B';
-Chart.defaults.borderColor = 'rgba(226,232,240,0.4)';
-Chart.defaults.font.family = "'Malgun Gothic', 'Noto Sans KR', sans-serif";
-Chart.defaults.font.size = 12;
-Chart.defaults.plugins.legend.labels.usePointStyle = true;
-Chart.defaults.plugins.legend.labels.padding = 16;
-Chart.defaults.plugins.tooltip.backgroundColor = '#FFFFFF';
-Chart.defaults.plugins.tooltip.borderColor = '#E2E8F0';
-Chart.defaults.plugins.tooltip.borderWidth = 1;
-Chart.defaults.plugins.tooltip.titleColor = '#1E293B';
-Chart.defaults.plugins.tooltip.bodyColor = '#1E293B';
-Chart.defaults.plugins.tooltip.cornerRadius = 8;
-Chart.defaults.color = '#475569';
-Chart.defaults.plugins.tooltip.titleFont = { weight: '700' };
-Chart.defaults.plugins.tooltip.padding = 12;
-Chart.defaults.plugins.tooltip.cornerRadius = 8;
-Chart.defaults.color = '#475569';
-Chart.defaults.animation.duration = 1200;
-Chart.defaults.animation.easing = 'easeOutQuart';
-
-// ═══════════════════════════════════════════════
-// CHART 1: Category Automation Rate (Horizontal Bar)
-// ═══════════════════════════════════════════════
-(function() {
-  const ctx = document.getElementById('chartCategory').getContext('2d');
-  const categories = ['Subscription', 'Refund', 'Account', 'Payment', 'Content', 'Technical', 'Other'];
-  const automationRates = [95, 30, 40, 35, 0, 25, 0];
-  const monthlyVolumes = [700, 367, 189, 86, 57, 32, 30];
-
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: categories,
-      datasets: [
-        {
-          label: '\uC790\uB3D9\uD654\uC728 (%)',
-          data: automationRates,
-          backgroundColor: automationRates.map(v =>
-            v >= 50 ? 'rgba(16,185,129,0.7)' :
-            v > 0 ? 'rgba(14,165,233,0.7)' :
-            'rgba(239,68,68,0.4)'
-          ),
-          borderColor: automationRates.map(v =>
-            v >= 50 ? '#10b981' :
-            v > 0 ? '#0ea5e9' :
-            '#ef4444'
-          ),
-          borderWidth: 1,
-          borderRadius: 4,
-        }
-      ]
-    },
-    options: {
-      indexAxis: 'y',
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          callbacks: {
-            label: function(ctx) {
-              const idx = ctx.dataIndex;
-              return '\uC790\uB3D9\uD654\uC728: ' + ctx.raw + '% (\uC6D4 ' + monthlyVolumes[idx] + '\uAC74)';
-            }
-          }
-        }
-      },
-      scales: {
-        x: {
-          max: 100,
-          ticks: { callback: (v) => v + '%' },
-          grid: { color: '#E2E8F0' }
-        },
-        y: { grid: { display: false } }
-      }
-    },
-    plugins: [{
-      id: 'barLabels',
-      afterDatasetsDraw(chart) {
-        const { ctx: c, scales: { x, y } } = chart;
-        const dataset = chart.data.datasets[0];
-        c.save();
-        c.font = "700 12px 'Malgun Gothic'";
-        c.textAlign = 'left';
-        c.textBaseline = 'middle';
-        dataset.data.forEach((val, i) => {
-          const xPos = x.getPixelForValue(val) + 8;
-          const yPos = y.getPixelForValue(i);
-          c.fillStyle = val >= 50 ? '#34d399' : val > 0 ? '#38bdf8' : '#f87171';
-          c.fillText(val + '%', xPos, yPos);
-        });
-        c.restore();
-      }
-    }]
-  });
-})();
-
-// ═══════════════════════════════════════════════
-// CHART 2: Template Automation (Horizontal Stacked)
-// ═══════════════════════════════════════════════
-(function() {
-  const ctx = document.getElementById('chartTemplate').getContext('2d');
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['\uC0C1\uB2F4\uC6D0 \uC751\uB2F5 \uD15C\uD50C\uB9BF'],
-      datasets: [
-        { label: '\uACB0\uC81C \uC815\uBCF4 \uC694\uCCAD (45%)', data: [45], backgroundColor: '#10b981', borderRadius: 0 },
-        { label: '\uAD6C\uB3C5 \uCDE8\uC18C \uD655\uC778 (18%)', data: [18], backgroundColor: '#06b6d4', borderRadius: 0 },
-        { label: '\uD658\uBD88 \uCC98\uB9AC \uC644\uB8CC (10%)', data: [10], backgroundColor: '#0ea5e9', borderRadius: 0 },
-        { label: '\uD658\uBD88 \uAC70\uC808 (7%)', data: [7], backgroundColor: '#6366f1', borderRadius: 0 },
-        { label: '\uACC4\uC815 \uC0AD\uC81C \uCCB4\uD06C\uB9AC\uC2A4\uD2B8 (3%)', data: [3], backgroundColor: '#8b5cf6', borderRadius: 0 },
-        { label: '\uAE30\uD0C0 \uCEE4\uC2A4\uD140 \uC751\uB2F5 (17%)', data: [17], backgroundColor: '#475569', borderRadius: 0 }
-      ]
-    },
-    options: {
-      indexAxis: 'y',
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { position: 'bottom', labels: { font: { size: 11 } } },
-        tooltip: { callbacks: { label: (ctx) => ctx.dataset.label } }
-      },
-      scales: {
-        x: { stacked: true, max: 100, ticks: { callback: (v) => v + '%' }, grid: { color: '#E2E8F0' } },
-        y: { stacked: true, grid: { display: false }, display: false }
-      }
-    },
-    plugins: [{
-      id: 'automationLine',
-      afterDraw(chart) {
-        const { ctx: c, chartArea, scales: { x } } = chart;
-        const lineX = x.getPixelForValue(83);
-        c.save();
-        c.beginPath();
-        c.setLineDash([6, 3]);
-        c.strokeStyle = '#34d399';
-        c.lineWidth = 2;
-        c.moveTo(lineX, chartArea.top - 10);
-        c.lineTo(lineX, chartArea.bottom + 10);
-        c.stroke();
-        c.setLineDash([]);
-        c.fillStyle = '#34d399';
-        c.font = "700 12px 'Malgun Gothic'";
-        c.textAlign = 'center';
-        c.fillText('\uC790\uB3D9\uD654 \uAC00\uB2A5 83%', lineX, chartArea.top - 16);
-        c.restore();
-      }
-    }]
-  });
-})();
-</script>
 
 
 <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="맨 위로">↑</button>

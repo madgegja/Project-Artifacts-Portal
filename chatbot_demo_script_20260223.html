@@ -8,47 +8,58 @@
   @page { size: A4; margin: 15mm; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
-    --bg-primary: #F8FAFC; --bg-secondary: #F1F5F9; --bg-card: #FFFFFF;
-    --text-primary: #1E293B; --text-secondary: #475569; --text-muted: #64748B;
-    --accent-blue: #0ea5e9; --accent-cyan: #22d3ee; --accent-green: #10b981;
-    --accent-amber: #f59e0b; --accent-red: #ef4444; --accent-purple: #a78bfa;
-    --border-color: #E2E8F0;
+    --max-w: 960px; --radius: 12px; --gap: 16px;
+    --bg-base: #F8FAFC; --bg-card: #FFFFFF; --bg-muted: #F1F5F9;
+    --text-primary: #1E293B; --text-secondary: #475569; --text-muted: #94A3B8;
+    --border: #E2E8F0;
+    --accent-brand: #2563EB; --accent-info: #0EA5E9; --accent-success: #10B981;
+    --accent-warn: #F59E0B; --accent-danger: #EF4444; --accent-purple: #7C3AED;
+    --font-base: 14px; --font-sm: 12px; --font-lg: 18px; --font-xl: 28px;
+    --line-height: 1.7;
+    --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
   }
-  body { font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif; color: var(--text-primary); background: var(--bg-primary); line-height: 1.7; font-size: 15px; }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-base: #0F172A; --bg-card: #1E293B; --bg-muted: #334155;
+      --text-primary: #F1F5F9; --text-secondary: #CBD5E1; --text-muted: #64748B;
+      --border: #334155;
+    }
+  }
+  body { font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif; color: var(--text-primary); background: var(--bg-base); line-height: 1.7; font-size: 14px; word-break: keep-all; overflow-wrap: break-word; -webkit-print-color-adjust: exact; print-color-adjust: exact; font-variant-numeric: tabular-nums; }
   @media print { body { background: #fff; color: #1E293B; } .hero {
     color: #FFFFFF; background: #1e3a5f !important; -webkit-print-color-adjust: exact; } .back-to-top { display: none !important; } }
-  .container { max-width: 1100px;
+  .container { max-width: 960px;
     width: 100%; margin: 0 auto; padding: 0 0 60px; }
   section { padding: 0 40px; margin-bottom: 48px; }
-  .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #a78bfa 100%); color: white; padding: 48px 56px 40px; border-radius: 0 0 24px 24px; margin-bottom: 36px; }
-  .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; }
-  .hero .subtitle { font-size: 1.1rem; opacity: 0.9; }
-  .hero .badge { display: inline-block; background: rgba(0,0,0,0.06); padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; margin-top: 12px; }
-  h2 { font-size: 1.5rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border-color); }
-  h3 { font-size: 1.15rem; font-weight: 600; color: var(--accent-blue); margin: 20px 0 12px; }
+  .hero { background: linear-gradient(135deg, #1E3A5F 0%, #2563EB 50%, #0EA5E9 100%); color: white; padding: 48px 56px 40px; border-radius: 0 0 12px 12px; margin-bottom: 36px; }
+  .hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+  .hero .subtitle { font-size: 16px; opacity: 0.9; }
+  .hero .badge { display: inline-block; background: rgba(0,0,0,0.06); padding: 4px 14px; border-radius: 20px; font-size: 12px; margin-top: 12px; }
+  h2 { font-size: 18px; font-weight: 700; color: var(--accent-info); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+  h3 { font-size: 14px; font-weight: 600; color: var(--accent-info); margin: 20px 0 12px; }
   p { margin-bottom: 12px; color: var(--text-secondary); }
-  .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 20px; }
-  .card-blue { border-left: 4px solid var(--accent-blue); }
-  .card-green { border-left: 4px solid var(--accent-green); }
-  .card-amber { border-left: 4px solid var(--accent-amber); }
-  .card-red { border-left: 4px solid var(--accent-red); }
+  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+  .card-blue { border-left: 4px solid var(--accent-info); }
+  .card-green { border-left: 4px solid var(--accent-success); }
+  .card-amber { border-left: 4px solid var(--accent-warn); }
+  .card-red { border-left: 4px solid var(--accent-danger); }
   .card-purple { border-left: 4px solid var(--accent-purple); }
-  .card-cyan { border-left: 4px solid var(--accent-cyan); }
+  .card-cyan { border-left: 4px solid var(--accent-info); }
   table { width: 100%; border-collapse: collapse; margin: 16px 0; }
-  th { background: var(--bg-secondary); color: var(--accent-cyan); font-weight: 600; text-align: left; padding: 12px 16px; border-bottom: 2px solid var(--border-color); }
-  td { padding: 10px 16px; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); }
+  th { background: var(--bg-muted); color: var(--accent-info); font-weight: 600; text-align: left; padding: 12px 16px; border-bottom: 2px solid var(--border); }
+  td { padding: 10px 16px; border-bottom: 1px solid var(--border); color: var(--text-secondary); }
   ul, ol { padding-left: 20px; margin-bottom: 12px; }
   li { margin-bottom: 6px; color: var(--text-secondary); }
-  .demo-step { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 20px; position: relative; }
-  .demo-step-number { position: absolute; top: -12px; left: 20px; background: var(--accent-purple); color: white; padding: 2px 14px; border-radius: 20px; font-weight: 700; font-size: 0.85rem; }
-  .demo-time { display: inline-block; background: rgba(167,139,250,0.2); color: var(--accent-purple); padding: 2px 10px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; margin-bottom: 12px; }
-  .narration { background: rgba(14,165,233,0.08); border-left: 3px solid var(--accent-blue); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 8px 0; font-style: italic; }
-  .action { background: rgba(16,185,129,0.08); border-left: 3px solid var(--accent-green); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 8px 0; }
-  .action strong { color: var(--accent-green); }
+  .demo-step { background: var(--bg-muted); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 20px; position: relative; }
+  .demo-step-number { position: absolute; top: -12px; left: 20px; background: var(--accent-purple); color: white; padding: 2px 14px; border-radius: 20px; font-weight: 700; font-size: 12px; }
+  .demo-time { display: inline-block; background: rgba(124,58,237,0.2); color: var(--accent-purple); padding: 2px 10px; border-radius: 8px; font-size: 12px; font-weight: 600; margin-bottom: 12px; }
+  .narration { background: rgba(14,165,233,0.08); border-left: 3px solid var(--accent-info); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 8px 0; font-style: italic; }
+  .action { background: rgba(16,185,129,0.08); border-left: 3px solid var(--accent-success); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 8px 0; }
+  .action strong { color: var(--accent-success); }
   .highlight-box { background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3); border-radius: 8px; padding: 16px; margin: 12px 0; }
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } section { padding: 0 20px; } }
-  .back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--accent-purple); color: white; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 1.2rem; cursor: pointer; z-index: 100; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+  .back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--accent-purple); color: white; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 16px; cursor: pointer; z-index: 100; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
 
   /* ── Table Responsive ── */
   .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 16px; }
@@ -57,6 +68,15 @@
   @media (max-width: 900px) {
     .container { max-width: 100% !important; width: 100% !important; overflow-x: auto; }
   }
+
+  /* ══ UX Enhancement Patch (2026-02-23) ══ */
+  ::selection { background: #3b82f6; color: #fff; }
+  ::-moz-selection { background: #3b82f6; color: #fff; }
+  a:focus-visible, button:focus-visible { outline: 2px solid #3b82f6; outline-offset: 2px; border-radius: 4px; }
+  tbody tr:nth-child(even) { background: rgba(248,250,252,0.5); }
+  thead th { font-weight: 700 !important; }
+
+  .card:hover, .kpi:hover, .kpi-item:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: all 0.2s ease; }
 </style>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>" type="image/svg+xml">
 </head>
@@ -75,9 +95,9 @@
     <h3>필수 준비 사항</h3>
     <div class="table-wrap"><table>
       <tr><th>항목</th><th>URL / 설정</th><th>확인</th></tr>
-      <tr><td>챗봇 데모 페이지</td><td><a href="https://bizops.duckdns.org/chat/demo" style="color:var(--accent-cyan)">https://bizops.duckdns.org/chat/demo</a> (프로토타입)</td><td>☐ 접속 확인</td></tr>
-      <tr><td>Zendesk 관리 화면</td><td><a href="https://toomicsglobal.zendesk.com/agent" style="color:var(--accent-cyan)">https://toomicsglobal.zendesk.com/agent</a></td><td>☐ 로그인 완료</td></tr>
-      <tr><td>헬스체크</td><td><a href="https://bizops.duckdns.org/chat/health" style="color:var(--accent-cyan)">https://bizops.duckdns.org/chat/health</a> (프로토타입)</td><td>☐ "healthy" 확인</td></tr>
+      <tr><td>챗봇 데모 페이지</td><td><a href="https://bizops.duckdns.org/chat/demo" style="color:var(--accent-info)">https://bizops.duckdns.org/chat/demo</a> (프로토타입)</td><td>☐ 접속 확인</td></tr>
+      <tr><td>Zendesk 관리 화면</td><td><a href="https://toomicsglobal.zendesk.com/agent" style="color:var(--accent-info)">https://toomicsglobal.zendesk.com/agent</a></td><td>☐ 로그인 완료</td></tr>
+      <tr><td>헬스체크</td><td><a href="https://bizops.duckdns.org/chat/health" style="color:var(--accent-info)">https://bizops.duckdns.org/chat/health</a> (프로토타입)</td><td>☐ "healthy" 확인</td></tr>
       <tr><td>브라우저 탭</td><td>데모 + Zendesk 2개 탭 병렬 오픈</td><td>☐ 준비</td></tr>
     </table></div>
   </div>

@@ -7,23 +7,45 @@
     <style>
         /* ===== Base & Typography ===== */
         :root {
-            --brand-primary: #3B1F8E;
-            --brand-secondary: #5B3CC4;
-            --brand-accent: #7C5CFC;
-            --brand-light: #EDE8FF;
-            --brand-bg: #F7F5FF;
-            --navy: #1A1A3E;
-            --dark: #2D2D3F;
-            --text: #333344;
-            --text-light: #666680;
-            --border: #D8D8E8;
-            --success: #28A06C;
-            --warning: #E8A020;
-            --danger: #D94052;
-            --info: #2196F3;
-            --white: #FFFFFF;
-            --bg-light: #FAFAFE;
+            /* Layout */
+            --max-w: 960px;
+            --radius: 12px;
+            --gap: 16px;
+
+            /* Colors — Light */
+            --bg-base: #F8FAFC;
             --bg-card: #FFFFFF;
+            --bg-muted: #F1F5F9;
+            --text-primary: #1E293B;
+            --text-secondary: #475569;
+            --text-muted: #94A3B8;
+            --border: #E2E8F0;
+            --accent-brand: #2563EB;
+            --accent-info: #0EA5E9;
+            --accent-success: #10B981;
+            --accent-warn: #F59E0B;
+            --accent-danger: #EF4444;
+            --accent-purple: #7C3AED;
+
+            /* Typography */
+            --font-base: 14px;
+            --font-sm: 12px;
+            --font-lg: 18px;
+            --font-xl: 28px;
+            --line-height: 1.7;
+            --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-base: #0F172A;
+                --bg-card: #1E293B;
+                --bg-muted: #334155;
+                --text-primary: #F1F5F9;
+                --text-secondary: #CBD5E1;
+                --text-muted: #64748B;
+                --border: #334155;
+            }
         }
 
         * {
@@ -33,12 +55,15 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', 'Noto Sans JP', 'Noto Sans SC', Roboto, Helvetica, Arial, sans-serif;
-            font-size: 15px;
-            line-height: 1.7;
-            color: var(--text);
-            background: var(--bg-light);
+            font-family: var(--font-family);
+            font-size: var(--font-base);
+            line-height: var(--line-height);
+            color: var(--text-primary);
+            background: var(--bg-base);
             -webkit-font-smoothing: antialiased;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+            font-variant-numeric: tabular-nums;
         }
 
         /* ===== Page Container ===== */
@@ -46,17 +71,17 @@
             max-width: 960px;
             margin: 0 auto;
             padding: 0 32px;
-            background: var(--white);
-            box-shadow: 0 0 40px rgba(59, 31, 142, 0.06);
+            background: var(--bg-card);
+            box-shadow: 0 0 40px rgba(37, 99, 235, 0.06);
         }
 
         /* ===== Cover Section ===== */
         .cover {
-            background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 50%, var(--brand-accent) 100%);
-            color: var(--white);
+            background: linear-gradient(135deg, #1E3A5F 0%, #2563EB 50%, #0EA5E9 100%);
+            color: #fff;
             padding: 64px 48px;
             text-align: center;
-            border-bottom: 4px solid var(--brand-accent);
+            border-bottom: 4px solid var(--accent-info);
         }
 
         .cover h1 {
@@ -100,20 +125,20 @@
 
         /* ===== Table of Contents ===== */
         .toc {
-            background: var(--brand-bg);
-            border: 1px solid var(--brand-light);
+            background: var(--bg-muted);
+            border: 1px solid var(--border);
             border-radius: 8px;
             padding: 32px 40px;
             margin: 40px 32px;
         }
 
         .toc h2 {
-            color: var(--brand-primary);
+            color: var(--accent-brand);
             font-size: 20px;
             font-weight: 700;
             margin-bottom: 16px;
             padding-bottom: 8px;
-            border-bottom: 2px solid var(--brand-accent);
+            border-bottom: 2px solid var(--accent-info);
             display: inline-block;
         }
 
@@ -127,7 +152,7 @@
             counter-increment: toc-counter;
             margin-bottom: 8px;
             padding: 6px 0;
-            border-bottom: 1px solid rgba(124, 92, 252, 0.1);
+            border-bottom: 1px solid rgba(14, 165, 233, 0.1);
         }
 
         .toc ol li:last-child {
@@ -136,14 +161,14 @@
 
         .toc ol li::before {
             content: counter(toc-counter) ".";
-            color: var(--brand-accent);
+            color: var(--accent-info);
             font-weight: 700;
             margin-right: 10px;
             font-size: 14px;
         }
 
         .toc ol li a {
-            color: var(--dark);
+            color: var(--text-primary);
             text-decoration: none;
             font-weight: 500;
             font-size: 14.5px;
@@ -151,13 +176,13 @@
         }
 
         .toc ol li a:hover {
-            color: var(--brand-secondary);
+            color: var(--accent-brand);
         }
 
         .toc ol li .badge {
             display: inline-block;
-            background: var(--brand-secondary);
-            color: var(--white);
+            background: var(--accent-brand);
+            color: #fff;
             font-size: 11px;
             font-weight: 600;
             padding: 2px 8px;
@@ -173,33 +198,33 @@
 
         /* ===== Headings ===== */
         h1 {
-            color: var(--brand-primary);
+            color: var(--accent-brand);
             font-size: 28px;
             font-weight: 800;
             margin-top: 56px;
             margin-bottom: 20px;
             padding-bottom: 12px;
-            border-bottom: 3px solid var(--brand-primary);
+            border-bottom: 3px solid var(--accent-brand);
             letter-spacing: -0.3px;
         }
 
         h1 .section-number {
-            color: var(--brand-accent);
+            color: var(--accent-info);
             font-weight: 800;
         }
 
         h2 {
-            color: var(--brand-secondary);
+            color: var(--accent-brand);
             font-size: 21px;
             font-weight: 700;
             margin-top: 40px;
             margin-bottom: 14px;
             padding-left: 14px;
-            border-left: 4px solid var(--brand-accent);
+            border-left: 4px solid var(--accent-info);
         }
 
         h3 {
-            color: var(--navy);
+            color: var(--text-primary);
             font-size: 17px;
             font-weight: 600;
             margin-top: 28px;
@@ -207,12 +232,12 @@
         }
 
         h3.template-title {
-            background: var(--brand-bg);
+            background: var(--bg-muted);
             padding: 10px 16px;
             border-radius: 6px;
             font-size: 15px;
-            color: var(--brand-primary);
-            border-left: 3px solid var(--brand-accent);
+            color: var(--accent-brand);
+            border-left: 3px solid var(--accent-info);
         }
 
         /* ===== Paragraphs & Text ===== */
@@ -222,14 +247,14 @@
         }
 
         strong {
-            color: var(--dark);
+            color: var(--text-primary);
             font-weight: 600;
         }
 
         .volume-badge {
             display: inline-block;
-            background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
-            color: var(--white);
+            background: linear-gradient(135deg, var(--accent-brand), var(--accent-info));
+            color: #fff;
             padding: 4px 14px;
             border-radius: 16px;
             font-size: 13px;
@@ -239,13 +264,13 @@
 
         .stat-line {
             font-size: 14px;
-            color: var(--text-light);
+            color: var(--text-secondary);
             margin-bottom: 6px;
         }
 
         .note-box {
             background: #FFF8E1;
-            border-left: 4px solid var(--warning);
+            border-left: 4px solid var(--accent-warn);
             padding: 12px 18px;
             border-radius: 0 6px 6px 0;
             margin: 16px 0;
@@ -269,8 +294,8 @@
         }
 
         thead th {
-            background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
-            color: var(--white);
+            background: var(--accent-brand);
+            color: #fff;
             font-weight: 600;
             padding: 12px 16px;
             text-align: left;
@@ -289,20 +314,20 @@
 
         tbody td {
             padding: 10px 16px;
-            border-bottom: 1px solid #EDEDF5;
+            border-bottom: 1px solid var(--border);
             vertical-align: top;
         }
 
         tbody tr:nth-child(even) {
-            background: var(--bg-light);
+            background: var(--bg-base);
         }
 
         tbody tr:nth-child(odd) {
-            background: var(--white);
+            background: var(--bg-card);
         }
 
         tbody tr:hover {
-            background: var(--brand-bg);
+            background: var(--bg-muted);
         }
 
         tbody tr:last-child td {
@@ -333,13 +358,13 @@
 
         /* ===== Blockquotes (Template Cards) ===== */
         blockquote {
-            background: var(--white);
-            border: 1px solid #E0DCEF;
-            border-left: 5px solid var(--brand-accent);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 5px solid var(--accent-info);
             border-radius: 0 8px 8px 0;
             padding: 20px 24px;
             margin: 16px 0 24px;
-            box-shadow: 0 2px 8px rgba(59, 31, 142, 0.06);
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.06);
             position: relative;
         }
 
@@ -348,8 +373,8 @@
             position: absolute;
             top: -10px;
             left: 16px;
-            background: var(--brand-accent);
-            color: var(--white);
+            background: var(--accent-info);
+            color: #fff;
             font-size: 12px;
             font-weight: 700;
             letter-spacing: 1px;
@@ -358,7 +383,7 @@
         }
 
         blockquote p {
-            color: var(--text);
+            color: var(--text-primary);
             font-size: 14px;
             line-height: 1.7;
             margin-bottom: 8px;
@@ -369,7 +394,7 @@
         }
 
         blockquote strong {
-            color: var(--brand-primary);
+            color: var(--accent-brand);
         }
 
         blockquote ol, blockquote ul {
@@ -384,18 +409,18 @@
 
         /* Translation reference blockquote */
         blockquote + blockquote {
-            border-left-color: var(--info);
-            background: #F0F7FF;
+            border-left-color: var(--accent-info);
+            background: var(--bg-muted);
         }
 
         blockquote + blockquote::before {
             content: 'REFERENCE';
-            background: var(--info);
+            background: var(--accent-info);
         }
 
         /* ===== Code Blocks (Flowcharts) ===== */
         pre {
-            background: var(--navy);
+            background: #0F172A;
             color: #475569;
             border-radius: 8px;
             padding: 24px;
@@ -404,14 +429,14 @@
             font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
             font-size: 13px;
             line-height: 1.6;
-            border: 1px solid rgba(124, 92, 252, 0.3);
+            border: 1px solid rgba(14, 165, 233, 0.3);
         }
 
         code {
             font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
             font-size: 13px;
-            background: var(--brand-bg);
-            color: var(--brand-primary);
+            background: var(--bg-muted);
+            color: var(--accent-brand);
             padding: 2px 6px;
             border-radius: 4px;
         }
@@ -448,7 +473,7 @@
             content: '\2610';
             position: absolute;
             left: 0;
-            color: var(--brand-accent);
+            color: var(--accent-info);
             font-size: 18px;
         }
 
@@ -456,35 +481,35 @@
         hr {
             border: none;
             height: 2px;
-            background: linear-gradient(to right, var(--brand-primary), var(--brand-accent), transparent);
+            background: linear-gradient(to right, var(--accent-brand), var(--accent-info), transparent);
             margin: 48px 0;
         }
 
         /* ===== Decision Matrix Highlight ===== */
         .result-approved {
-            color: var(--success);
+            color: var(--accent-success);
             font-weight: 700;
         }
 
         .result-denied {
-            color: var(--danger);
+            color: var(--accent-danger);
             font-weight: 700;
         }
 
         /* ===== Red Flag Table ===== */
         .flag-critical {
-            color: var(--danger);
+            color: var(--accent-danger);
             font-weight: 700;
         }
 
         .flag-supporting {
-            color: var(--warning);
+            color: var(--accent-warn);
             font-weight: 700;
         }
 
         /* ===== Footer ===== */
         .footer {
-            background: var(--navy);
+            background: #0F172A;
             color: rgba(255,255,255,0.7);
             padding: 32px 48px;
             text-align: center;
@@ -593,7 +618,7 @@
             }
 
             a {
-                color: var(--brand-primary);
+                color: var(--accent-brand);
                 text-decoration: none;
             }
         }
