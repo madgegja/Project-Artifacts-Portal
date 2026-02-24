@@ -900,15 +900,13 @@
             <span>50 ~ 100</span>
           </div>
         </div>
-        <div style="display:flex;align-items:center;gap:16px;margin-top:8px;">
-          <ul class="scoring-rules" style="flex:1;margin-top:0;">
-            <li><strong>Critical 1개</strong>: +30점 (즉시 MED↑)</li>
-            <li><strong>Supporting 2개+</strong>: +15점/개</li>
-            <li><strong>HIGH</strong>: 강제 L1 에스컬레이션</li>
-          </ul>
-          <div style="flex:0 0 200px;">
-            <canvas id="fraudDoughnut" style="width:200px;height:200px;"></canvas>
-          </div>
+        <ul class="scoring-rules">
+          <li><strong>Critical 지표 1개</strong>: +30점 (즉시 MEDIUM 이상)</li>
+          <li><strong>Supporting 지표 2개+</strong>: +15점/개</li>
+          <li><strong>HIGH 등급</strong>: 강제 L1 에스컬레이션 (AI 응답 없음)</li>
+        </ul>
+        <div style="margin-top:12px;display:flex;justify-content:center;">
+          <canvas id="fraudDoughnut" width="280" height="280" style="max-width:280px;"></canvas>
         </div>
       </div>
     </div>
