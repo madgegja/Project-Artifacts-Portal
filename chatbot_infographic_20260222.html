@@ -405,16 +405,16 @@
   .flag-type.critical { color: #b91c1c; }
   .flag-type.supporting { color: #b45309; }
   .gauge-container {
-    margin-bottom: 4px;
+    margin-bottom: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 6px;
   }
   .gauge-bar {
     width: 100%;
     max-width: 360px;
-    height: 36px;
+    height: 30px;
     border-radius: 18px;
     background: linear-gradient(90deg, #22c55e 0%, #22c55e 29%, #eab308 29%, #eab308 49%, #ef4444 49%, #ef4444 100%);
     position: relative;
@@ -442,8 +442,8 @@
   .gauge-zones span:nth-child(2) { width: 20%; text-align: center; }
   .gauge-zones span:nth-child(3) { width: 51%; text-align: center; }
   .scoring-rules {
-    margin-top: 8px;
-    margin-bottom: 4px;
+    margin-top: 4px;
+    margin-bottom: 0;
     font-size: 12px;
     color: #64748B;
   }
@@ -907,9 +907,9 @@
           <li><strong>Supporting 지표 2개+</strong>: +15점/개</li>
           <li><strong>HIGH 등급</strong>: 강제 L1 에스컬레이션 (AI 응답 없음)</li>
         </ul>
-        <p style="text-align:center;font-size:11px;color:#94A3B8;margin:10px 0 6px;">Red Flag 구성: 5 Critical + 4 Supporting</p>
+        <p style="text-align:center;font-size:11px;color:#94A3B8;margin:6px 0 4px;">Red Flag 구성: 5 Critical + 4 Supporting</p>
         <div style="display:flex;justify-content:center;">
-          <canvas id="fraudDoughnut" width="160" height="160" style="max-width:160px;"></canvas>
+          <canvas id="fraudDoughnut" width="220" height="220" style="max-width:220px;"></canvas>
         </div>
       </div>
     </div>
@@ -1271,12 +1271,12 @@ new Chart(document.getElementById('fraudDoughnut'), {
   options: {
     responsive: true,
     cutout: '55%',
-    aspectRatio: 1.2,
+    aspectRatio: 1.0,
     plugins: {
       legend: {
         position: 'bottom',
         labels: {
-          padding: 8,
+          padding: 6,
           usePointStyle: true,
           pointStyleWidth: 10,
           font: { size: 11 }
@@ -1292,11 +1292,7 @@ new Chart(document.getElementById('fraudDoughnut'), {
         padding: 12
       },
       title: {
-        display: true,
-        text: 'Red Flag 구성: 5 Critical + 4 Supporting',
-        color: '#64748B',
-        font: { size: 12, weight: '500' },
-        padding: { bottom: 8 }
+        display: false
       }
     }
   }
