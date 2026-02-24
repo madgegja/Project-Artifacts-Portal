@@ -7,31 +7,6 @@
     <style>
   html { scroll-behavior: smooth; }
         :root {
-            /* Standard design tokens */
-            --max-w: 960px;
-            --max-w-wide: 1280px;
-            --radius: 12px;
-            --gap: 16px;
-            --bg-base: #F8FAFC;
-            --bg-card: #FFFFFF;
-            --bg-muted: #F1F5F9;
-            --text-primary: #1E293B;
-            --text-secondary: #475569;
-            --text-muted: #94A3B8;
-            --border: #E2E8F0;
-            --accent-brand: #2563EB;
-            --accent-info: #0EA5E9;
-            --accent-success: #10B981;
-            --accent-warn: #F59E0B;
-            --accent-danger: #EF4444;
-            --accent-purple: #7C3AED;
-            --font-base: 14px;
-            --font-sm: 12px;
-            --font-lg: 18px;
-            --font-xl: 28px;
-            --line-height: 1.7;
-            --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
-            /* Semantic aliases (mapped from old vars) */
             --red: #dc3545;
             --red-bg: #fff5f5;
             --red-border: #fee2e2;
@@ -41,36 +16,34 @@
             --green: #10b981;
             --green-bg: #ecfdf5;
             --green-border: #d1fae5;
-            --blue: var(--accent-brand);
-        }
-        @media (prefers-color-scheme: dark) {
-          :root {
-            --bg-base: #0F172A;
-            --bg-card: #1E293B;
-            --bg-muted: #334155;
-            --text-primary: #F1F5F9;
-            --text-secondary: #CBD5E1;
-            --text-muted: #64748B;
-            --border: #334155;
-          }
+            --blue: #3b82f6;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-500: #6b7280;
+            --gray-700: #374151;
+            --gray-900: #111827;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: var(--font-family);
-            background: var(--bg-base);
-            color: var(--text-primary);
-            line-height: var(--line-height);
-            word-break: keep-all; overflow-wrap: break-word;
-            font-size: var(--font-base);
-            -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important;
-            font-variant-numeric: tabular-nums;
-        }
+            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-900);
+            line-height: 1.7;
+        
+    word-break: keep-all; overflow-wrap: break-word;
+  
+    font-size: 14px;
+  
+    -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important;
+  }
 
         .container {
-            max-width: var(--max-w);
-            width: 100%;
+            max-width: 1100px;
+    width: 100%;
             margin: 0 auto;
             padding: 40px 24px;
         }
@@ -79,24 +52,19 @@
         .header {
             text-align: center;
             margin-bottom: 48px;
-            background: linear-gradient(135deg, #1E3A5F 0%, #2563EB 50%, #0EA5E9 100%);
-            color: #fff;
-            padding: 40px 32px 34px;
-            border-radius: var(--radius);
         }
         .header h1 {
-            font-size: var(--font-xl);
+            font-size: 28px;
             font-weight: 700;
-            color: #fff;
             margin-bottom: 8px;
         }
         .header .subtitle {
             font-size: 15px;
-            color: rgba(255,255,255,0.85);
+            color: var(--gray-500);
         }
         .header .date {
             font-size: 13px;
-            color: rgba(255,255,255,0.7);
+            color: var(--gray-500);
             margin-top: 4px;
         }
 
@@ -110,7 +78,7 @@
             gap: 12px;
             margin-bottom: 24px;
             padding-bottom: 12px;
-            border-bottom: 2px solid var(--border);
+            border-bottom: 2px solid var(--gray-200);
         }
         .level-badge {
             display: inline-flex;
@@ -121,7 +89,7 @@
             border-radius: 12px;
             font-weight: 800;
             font-size: 18px;
-            color: var(--text-primary);
+            color: #1E293B;
         }
         .level-badge.l1 { background: var(--red); }
         .level-badge.l2 { background: var(--yellow); }
@@ -133,13 +101,13 @@
         }
         .level-title p {
             font-size: 13px;
-            color: var(--text-muted);
+            color: var(--gray-500);
         }
 
         /* Scenario Card */
         .scenario {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
+            background: #fff;
+            border: 1px solid var(--gray-200);
             border-radius: 12px;
             margin-bottom: 24px;
             overflow: hidden;
@@ -171,27 +139,27 @@
         .meta-table th {
             text-align: left;
             padding: 6px 12px;
-            background: var(--bg-muted);
-            color: var(--text-secondary);
+            background: var(--gray-100);
+            color: var(--gray-700);
             font-weight: 600;
             width: 140px;
-            border: 1px solid var(--border);
+            border: 1px solid var(--gray-200);
         }
         .meta-table td {
             padding: 6px 12px;
-            border: 1px solid var(--border);
+            border: 1px solid var(--gray-200);
         }
 
         /* Chat Simulation */
         .chat-area {
-            background: var(--bg-muted);
+            background: var(--gray-100);
             border-radius: 12px;
             padding: 20px;
         }
         .chat-label {
             font-size: 12px;
             font-weight: 700;
-            color: var(--text-muted);
+            color: var(--gray-500);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 12px;
@@ -207,14 +175,14 @@
         }
         .chat-bubble.customer {
             background: var(--blue);
-            color: #fff;
+            color: #1E293B;
             margin-left: auto;
             border-bottom-right-radius: 4px;
         }
         .chat-bubble.bot {
-            background: var(--bg-card);
-            color: var(--text-primary);
-            border: 1px solid var(--border);
+            background: #fff;
+            color: var(--gray-900);
+            border: 1px solid var(--gray-200);
             border-bottom-left-radius: 4px;
         }
         .chat-bubble strong { font-weight: 600; }
@@ -228,7 +196,7 @@
             padding: 14px 16px;
             font-size: 12px;
             font-family: 'Consolas', 'Monaco', monospace;
-            color: var(--text-secondary);
+            color: var(--gray-700);
             white-space: pre-wrap;
         }
         .zendesk-box .label {
@@ -236,8 +204,8 @@
             color: #b45309;
             margin-bottom: 6px;
             display: block;
-            font-family: var(--font-family);
-            font-size: var(--font-sm);
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 12px;
         }
 
         /* Fix badge */
@@ -271,11 +239,11 @@
         }
         .summary-table th, .summary-table td {
             padding: 10px 14px;
-            border: 1px solid var(--border);
+            border: 1px solid var(--gray-200);
             text-align: center;
         }
         .summary-table th {
-            background: var(--bg-muted);
+            background: var(--gray-100);
             font-weight: 700;
         }
         .summary-table td:first-child { text-align: left; font-weight: 600; }
@@ -300,8 +268,8 @@
             text-align: center;
             padding: 32px 0 16px;
             font-size: 12px;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border);
+            color: var(--gray-500);
+            border-top: 1px solid var(--gray-200);
             margin-top: 32px;
         }
 
@@ -312,8 +280,8 @@
             font-weight: 600;
             padding: 1px 6px;
             border-radius: 3px;
-            background: var(--border);
-            color: var(--text-secondary);
+            background: var(--gray-200);
+            color: var(--gray-700);
             margin-left: 6px;
         }
     
@@ -324,7 +292,7 @@
     right: 32px;
     width: 44px;
     height: 44px;
-    background: var(--accent-brand);
+    background: #2563eb;
     color: #fff;
     border: none;
     border-radius: 50%;

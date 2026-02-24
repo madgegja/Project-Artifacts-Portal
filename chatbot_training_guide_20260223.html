@@ -10,32 +10,29 @@
   @page { size: A4; margin: 15mm; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
-    --max-w: 960px; --radius: 12px; --gap: 16px;
-    --bg-base: #F8FAFC; --bg-card: #FFFFFF; --bg-muted: #F1F5F9;
-    --text-primary: #1E293B; --text-secondary: #475569; --text-muted: #94A3B8;
-    --border: #E2E8F0;
-    --accent-brand: #2563EB; --accent-info: #0EA5E9; --accent-success: #10B981;
-    --accent-warn: #F59E0B; --accent-danger: #EF4444; --accent-purple: #7C3AED;
-    --font-base: 14px; --font-sm: 12px; --font-lg: 18px; --font-xl: 28px;
-    --line-height: 1.7;
-    --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg-base: #0F172A; --bg-card: #1E293B; --bg-muted: #334155;
-      --text-primary: #F1F5F9; --text-secondary: #CBD5E1; --text-muted: #64748B;
-      --border: #334155;
-    }
+    --bg-primary: #F8FAFC;
+    --bg-secondary: #F1F5F9;
+    --bg-card: #FFFFFF;
+    --text-primary: #1E293B;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+    --accent-blue: #0ea5e9;
+    --accent-cyan: #22d3ee;
+    --accent-green: #10b981;
+    --accent-amber: #f59e0b;
+    --accent-red: #ef4444;
+    --accent-purple: #a78bfa;
+    --border-color: #E2E8F0;
+    --border-light: #E2E8F0;
   }
   body {
     font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', -apple-system, sans-serif;
     color: var(--text-primary);
-    background: var(--bg-base);
+    background: var(--bg-primary);
     line-height: 1.7;
-    font-size: 14px;
-
+    font-size: 15px;
+  
     word-break: keep-all; overflow-wrap: break-word;
-    -webkit-print-color-adjust: exact; print-color-adjust: exact; font-variant-numeric: tabular-nums;
   }
   @media print {
     body { background: #fff; color: #1E293B; }
@@ -46,89 +43,89 @@
     .back-to-top { display: none !important; }
     section { break-inside: avoid; }
   }
-  .container { max-width: 960px;
+  .container { max-width: 1100px;
     width: 100%; margin: 0 auto; padding: 0 0 60px; }
   section { padding: 0 40px; margin-bottom: 48px; }
   .hero {
-    background: linear-gradient(135deg, #1E3A5F 0%, #2563EB 50%, #0EA5E9 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #10b981 100%);
     color: white; padding: 48px 56px 40px;
     position: relative; overflow: hidden;
-    border-radius: 0 0 12px 12px; margin-bottom: 36px;
+    border-radius: 0 0 24px 24px; margin-bottom: 36px;
   }
-  .hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
-  .hero .subtitle { font-size: 16px; opacity: 0.9; }
-  .hero .badge { display: inline-block; background: rgba(0,0,0,0.06); padding: 4px 14px; border-radius: 20px; font-size: 12px; margin-top: 12px; }
-  h2 { font-size: 18px; font-weight: 700; color: var(--accent-info); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
-  h3 { font-size: 14px; font-weight: 600; color: var(--accent-info); margin: 20px 0 12px; }
-  h4 { font-size: 14px; font-weight: 600; color: var(--accent-success); margin: 16px 0 8px; }
+  .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; }
+  .hero .subtitle { font-size: 1.1rem; opacity: 0.9; }
+  .hero .badge { display: inline-block; background: rgba(0,0,0,0.06); padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; margin-top: 12px; }
+  h2 { font-size: 1.5rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border-color); }
+  h3 { font-size: 1.15rem; font-weight: 600; color: var(--accent-blue); margin: 20px 0 12px; }
+  h4 { font-size: 1rem; font-weight: 600; color: var(--accent-green); margin: 16px 0 8px; }
   p { margin-bottom: 12px; color: var(--text-secondary); }
   .card {
-    background: var(--bg-card); border: 1px solid var(--border);
+    background: var(--bg-card); border: 1px solid var(--border-color);
     border-radius: 12px; padding: 24px; margin-bottom: 20px;
   }
-  .card-blue { border-left: 4px solid var(--accent-info); }
-  .card-green { border-left: 4px solid var(--accent-success); }
-  .card-amber { border-left: 4px solid var(--accent-warn); }
-  .card-red { border-left: 4px solid var(--accent-danger); }
+  .card-blue { border-left: 4px solid var(--accent-blue); }
+  .card-green { border-left: 4px solid var(--accent-green); }
+  .card-amber { border-left: 4px solid var(--accent-amber); }
+  .card-red { border-left: 4px solid var(--accent-red); }
   .card-purple { border-left: 4px solid var(--accent-purple); }
-  .card-cyan { border-left: 4px solid var(--accent-info); }
+  .card-cyan { border-left: 4px solid var(--accent-cyan); }
   table { width: 100%; border-collapse: collapse; margin: 16px 0; }
-  th { background: var(--bg-muted); color: var(--accent-info); font-weight: 600; text-align: left; padding: 12px 16px; border-bottom: 2px solid var(--border); }
-  td { padding: 10px 16px; border-bottom: 1px solid var(--border); color: var(--text-secondary); }
+  th { background: var(--bg-secondary); color: var(--accent-cyan); font-weight: 600; text-align: left; padding: 12px 16px; border-bottom: 2px solid var(--border-color); }
+  td { padding: 10px 16px; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); }
   tr:hover td { background: rgba(14,165,233,0.04); }
-  .level-badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 700; }
-  .level-l1 { background: rgba(239,68,68,0.2); color: var(--accent-danger); }
-  .level-l2 { background: rgba(245,158,11,0.2); color: var(--accent-warn); }
-  .level-l3 { background: rgba(16,185,129,0.2); color: var(--accent-success); }
-  .toc { background: var(--bg-muted); border: 1px solid var(--border); border-radius: 12px; padding: 24px 32px; margin: 0 40px 36px; }
-  .toc h3 { color: var(--accent-info); margin-bottom: 12px; }
+  .level-badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 700; }
+  .level-l1 { background: rgba(239,68,68,0.2); color: var(--accent-red); }
+  .level-l2 { background: rgba(245,158,11,0.2); color: var(--accent-amber); }
+  .level-l3 { background: rgba(16,185,129,0.2); color: var(--accent-green); }
+  .toc { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px 32px; margin: 0 40px 36px; }
+  .toc h3 { color: var(--accent-cyan); margin-bottom: 12px; }
   .toc ol { padding-left: 20px; }
   .toc li { margin-bottom: 6px; }
-  .toc a { color: var(--accent-info); text-decoration: none; }
+  .toc a { color: var(--accent-blue); text-decoration: none; }
   .toc a:hover { text-decoration: underline; }
   .flow-diagram {
     display: flex; align-items: center; justify-content: center;
     flex-wrap: wrap; gap: 8px; margin: 24px 0; padding: 20px;
-    background: var(--bg-muted); border-radius: 12px;
+    background: var(--bg-secondary); border-radius: 12px;
   }
   .flow-step {
-    background: var(--bg-base); border: 1px solid var(--border);
+    background: var(--bg-primary); border: 1px solid var(--border-color);
     border-radius: 10px; padding: 12px 18px; text-align: center;
-    min-width: 120px; font-size: 13px;
+    min-width: 120px; font-size: 0.9rem;
   }
-  .flow-step .icon { font-size: 18px; display: block; margin-bottom: 4px; }
-  .flow-arrow { color: var(--accent-info); font-size: 18px; font-weight: bold; }
+  .flow-step .icon { font-size: 1.5rem; display: block; margin-bottom: 4px; }
+  .flow-arrow { color: var(--accent-cyan); font-size: 1.3rem; font-weight: bold; }
   .ticket-example {
     background: #F8FAFC; border: 1px solid #30363d; border-radius: 8px;
     padding: 20px; margin: 16px 0; font-family: 'Consolas', 'Monaco', monospace;
-    font-size: 12px; line-height: 1.6; color: #475569; white-space: pre-wrap;
+    font-size: 0.85rem; line-height: 1.6; color: #475569; white-space: pre-wrap;
   }
-  .ticket-example .label { color: var(--accent-info); font-weight: 700; }
+  .ticket-example .label { color: var(--accent-cyan); font-weight: 700; }
   .ticket-example .value { color: var(--text-secondary); }
-  .ticket-example .highlight { color: var(--accent-warn); }
-  .ticket-example .draft-section { border-top: 1px dashed #30363d; margin-top: 12px; padding-top: 12px; color: var(--accent-success); }
+  .ticket-example .highlight { color: var(--accent-amber); }
+  .ticket-example .draft-section { border-top: 1px dashed #30363d; margin-top: 12px; padding-top: 12px; color: var(--accent-green); }
   .checklist-box {
-    background: var(--bg-muted); border: 1px solid var(--border);
+    background: var(--bg-secondary); border: 1px solid var(--border-color);
     border-radius: 12px; padding: 24px; margin: 16px 0;
   }
-  .checklist-item { display: flex; align-items: flex-start; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .checklist-item { display: flex; align-items: flex-start; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--border-light); }
   .checklist-item:last-child { border-bottom: none; }
-  .checkbox { width: 20px; height: 20px; border: 2px solid var(--accent-info); border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
+  .checkbox { width: 20px; height: 20px; border: 2px solid var(--accent-blue); border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
   @media (max-width: 768px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } section { padding: 0 20px; } }
   .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .do-box { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 16px; }
   .dont-box { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 16px; }
-  .do-box h4 { color: var(--accent-success); } .dont-box h4 { color: var(--accent-danger); }
+  .do-box h4 { color: var(--accent-green); } .dont-box h4 { color: var(--accent-red); }
   ul { padding-left: 20px; margin-bottom: 12px; }
   li { margin-bottom: 6px; color: var(--text-secondary); }
   .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
-  .stat-card { background: var(--bg-muted); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-align: center; }
-  .stat-value { font-size: 28px; font-weight: 800; }
-  .stat-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+  .stat-card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; padding: 16px; text-align: center; }
+  .stat-value { font-size: 1.8rem; font-weight: 800; }
+  .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
   @media (max-width: 768px) { .stat-grid { grid-template-columns: 1fr 1fr; } .do-dont { grid-template-columns: 1fr; } }
-  .back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--accent-info); color: white; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 16px; cursor: pointer; z-index: 100; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+  .back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 1.2rem; cursor: pointer; z-index: 100; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
 
   /* ── Table Responsive ── */
   .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 16px; }
@@ -181,9 +178,9 @@
   <h2>1. 교육 목표 및 개요</h2>
 
   <div class="stat-grid">
-    <div class="stat-card"><div class="stat-value" style="color:var(--accent-info)">10개</div><div class="stat-label">지원 언어</div></div>
-    <div class="stat-card"><div class="stat-value" style="color:var(--accent-success)">7개</div><div class="stat-label">카테고리 분류</div></div>
-    <div class="stat-card"><div class="stat-value" style="color:var(--accent-warn)">3단계</div><div class="stat-label">에스컬레이션 레벨</div></div>
+    <div class="stat-card"><div class="stat-value" style="color:var(--accent-blue)">10개</div><div class="stat-label">지원 언어</div></div>
+    <div class="stat-card"><div class="stat-value" style="color:var(--accent-green)">7개</div><div class="stat-label">카테고리 분류</div></div>
+    <div class="stat-card"><div class="stat-value" style="color:var(--accent-amber)">3단계</div><div class="stat-label">에스컬레이션 레벨</div></div>
     <div class="stat-card"><div class="stat-value" style="color:var(--accent-purple)">24/7</div><div class="stat-label">자동 응대</div></div>
   </div>
 
@@ -277,11 +274,11 @@
     <span class="flow-arrow">→</span>
     <div class="flow-step"><span class="icon">🌍</span>언어 감지<br>(10개 언어)</div>
     <span class="flow-arrow">→</span>
-    <div class="flow-step" style="border-color: var(--accent-warn);"><span class="icon">⚡</span>Fraud + Intent<br><strong>병렬 분석</strong></div>
+    <div class="flow-step" style="border-color: var(--accent-amber);"><span class="icon">⚡</span>Fraud + Intent<br><strong>병렬 분석</strong></div>
     <span class="flow-arrow">→</span>
     <div class="flow-step"><span class="icon">🔀</span>라우팅<br>결정</div>
     <span class="flow-arrow">→</span>
-    <div class="flow-step" style="border-color: var(--accent-success);"><span class="icon">📤</span>응답 전송<br>+ 티켓 생성</div>
+    <div class="flow-step" style="border-color: var(--accent-green);"><span class="icon">📤</span>응답 전송<br>+ 티켓 생성</div>
   </div>
 
   <div class="grid-2">
@@ -334,7 +331,7 @@
       <tr><td><strong>우선순위</strong></td><td>🔴 Urgent — 즉시 처리 필요</td></tr>
       <tr><td><strong>상담원 액션</strong></td><td>Fraud 플래그 확인 → 계정 히스토리 조회 → 직접 응답 작성</td></tr>
     </table></div>
-    <p style="margin-top: 12px; color: var(--accent-danger);"><strong>⚠️ L1 건은 AI가 절대 고객에게 실질적 응답을 하지 않습니다. 상담원의 전문적 판단이 필수입니다.</strong></p>
+    <p style="margin-top: 12px; color: var(--accent-red);"><strong>⚠️ L1 건은 AI가 절대 고객에게 실질적 응답을 하지 않습니다. 상담원의 전문적 판단이 필수입니다.</strong></p>
   </div>
 
   <div class="card card-amber">
@@ -348,7 +345,7 @@
       <tr><td><strong>우선순위</strong></td><td>🟡 High/Normal</td></tr>
       <tr><td><strong>상담원 액션</strong></td><td>AI 초안 검토 → [AGENT:] 플레이스홀더 채우기 → 수정/발송</td></tr>
     </table></div>
-    <p style="margin-top: 12px; color: var(--accent-warn);"><strong>💡 AI 초안은 "출발점"입니다. 반드시 검토 후 발송하세요.</strong></p>
+    <p style="margin-top: 12px; color: var(--accent-amber);"><strong>💡 AI 초안은 "출발점"입니다. 반드시 검토 후 발송하세요.</strong></p>
   </div>
 
   <div class="card card-green">
@@ -361,7 +358,7 @@
       <tr><td><strong>Zendesk 티켓</strong></td><td>❌ 생성하지 않음 (고객이 직접 해결)</td></tr>
       <tr><td><strong>상담원 액션</strong></td><td>없음 (모니터링만)</td></tr>
     </table></div>
-    <p style="margin-top: 12px; color: var(--accent-success);"><strong>✅ L3는 고객이 스스로 해결합니다. 동일 문의 2회 반복 시 자동으로 L2로 에스컬레이션됩니다.</strong></p>
+    <p style="margin-top: 12px; color: var(--accent-green);"><strong>✅ L3는 고객이 스스로 해결합니다. 동일 문의 2회 반복 시 자동으로 L2로 에스컬레이션됩니다.</strong></p>
   </div>
 </section>
 
@@ -492,21 +489,21 @@ Toomics Support</span></div>
     <div class="grid-3">
       <div style="text-align:center;">
         <div style="font-size: 2rem;">📝</div>
-        <div style="color: var(--accent-danger);">기존 방식</div>
-        <div style="font-size: 18px; font-weight: 700;">8~15분</div>
-        <div style="font-size: 12px; color: var(--text-muted);">매뉴얼 검색 + 작성</div>
+        <div style="color: var(--accent-red);">기존 방식</div>
+        <div style="font-size: 1.5rem; font-weight: 700;">8~15분</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">매뉴얼 검색 + 작성</div>
       </div>
       <div style="text-align:center;">
         <div style="font-size: 2rem;">🤖</div>
-        <div style="color: var(--accent-success);">AI 초안 활용</div>
-        <div style="font-size: 18px; font-weight: 700;">2~5분</div>
-        <div style="font-size: 12px; color: var(--text-muted);">검토 + 수정 + 발송</div>
+        <div style="color: var(--accent-green);">AI 초안 활용</div>
+        <div style="font-size: 1.5rem; font-weight: 700;">2~5분</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">검토 + 수정 + 발송</div>
       </div>
       <div style="text-align:center;">
         <div style="font-size: 2rem;">⚡</div>
-        <div style="color: var(--accent-info);">절감율</div>
-        <div style="font-size: 18px; font-weight: 700;">60~70%</div>
-        <div style="font-size: 12px; color: var(--text-muted);">응대 시간 단축</div>
+        <div style="color: var(--accent-cyan);">절감율</div>
+        <div style="font-size: 1.5rem; font-weight: 700;">60~70%</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">응대 시간 단축</div>
       </div>
     </div>
   </div>
@@ -534,7 +531,7 @@ Toomics Support</span></div>
       <tr><td>Apple 결제 환불</td><td>reportaproblem.apple.com 안내</td><td>Toomics에서 직접 처리 불가</td></tr>
       <tr><td>무단 결제 주장</td><td>Fraud 점수 확인 → L1/L2 판단</td><td>자녀 결제 사례 빈번</td></tr>
     </table></div>
-    <p style="margin-top: 8px; color: var(--accent-danger);">⚠️ 환불 금액/날짜는 반드시 계정 확인 후 기입 — AI가 임의로 약속하지 않음</p>
+    <p style="margin-top: 8px; color: var(--accent-red);">⚠️ 환불 금액/날짜는 반드시 계정 확인 후 기입 — AI가 임의로 약속하지 않음</p>
   </div>
 
   <div class="card card-purple">
@@ -635,7 +632,7 @@ Toomics Support</span></div>
 
   <div class="card card-blue">
     <h4>Q11. 데모 페이지는 어디인가요?</h4>
-    <p><strong><a href="https://bizops.duckdns.org/chat/demo" style="color: var(--accent-info);">https://bizops.duckdns.org/chat/demo</a></strong> — 프로토타입 환경에서 테스트할 수 있습니다.</p>
+    <p><strong><a href="https://bizops.duckdns.org/chat/demo" style="color: var(--accent-cyan);">https://bizops.duckdns.org/chat/demo</a></strong> — 프로토타입 환경에서 테스트할 수 있습니다.</p>
   </div>
 
   <div class="card card-blue">
@@ -650,14 +647,14 @@ Toomics Support</span></div>
   <p>아래 항목을 모두 확인하셨으면 교육이 완료된 것입니다.</p>
 
   <div class="checklist-box">
-    <h3 style="color: var(--accent-info); margin-bottom: 16px;">✅ 기본 이해</h3>
+    <h3 style="color: var(--accent-cyan); margin-bottom: 16px;">✅ 기본 이해</h3>
     <div class="checklist-item"><div class="checkbox"></div><div>AI 챗봇이 하는 일과 하지 않는 일을 구분할 수 있다</div></div>
     <div class="checklist-item"><div class="checkbox"></div><div>"AI는 창작하지 않는다" — 90/10 하이브리드 응답 원칙을 이해했다</div></div>
     <div class="checklist-item"><div class="checkbox"></div><div>파이프라인 흐름(언어 감지 → Fraud/Intent → 라우팅)을 설명할 수 있다</div></div>
   </div>
 
   <div class="checklist-box">
-    <h3 style="color: var(--accent-warn); margin-bottom: 16px;">🔀 에스컬레이션</h3>
+    <h3 style="color: var(--accent-amber); margin-bottom: 16px;">🔀 에스컬레이션</h3>
     <div class="checklist-item"><div class="checkbox"></div><div>L1/L2/L3의 차이를 설명할 수 있다</div></div>
     <div class="checklist-item"><div class="checkbox"></div><div>L1에서 AI가 자동 응답하지 않는 이유를 안다</div></div>
     <div class="checklist-item"><div class="checkbox"></div><div>L2 AI 초안이 Zendesk 티켓에 포함되는 것을 안다</div></div>
@@ -666,7 +663,7 @@ Toomics Support</span></div>
   </div>
 
   <div class="checklist-box">
-    <h3 style="color: var(--accent-success); margin-bottom: 16px;">📋 Zendesk 활용</h3>
+    <h3 style="color: var(--accent-green); margin-bottom: 16px;">📋 Zendesk 활용</h3>
     <div class="checklist-item"><div class="checkbox"></div><div>Zendesk 티켓의 3개 섹션(Context Summary / Conversation Log / AI Draft)을 구분할 수 있다</div></div>
     <div class="checklist-item"><div class="checkbox"></div><div>[AGENT:] 플레이스홀더를 실제 정보로 교체하는 방법을 안다</div></div>
     <div class="checklist-item"><div class="checkbox"></div><div>AI 초안 검토 5단계를 수행할 수 있다</div></div>
@@ -682,8 +679,8 @@ Toomics Support</span></div>
   </div>
 
   <div class="checklist-box">
-    <h3 style="color: var(--accent-danger); margin-bottom: 16px;">🛡️ 실습</h3>
-    <div class="checklist-item"><div class="checkbox"></div><div>데모 페이지(<a href="https://bizops.duckdns.org/chat/demo" style="color: var(--accent-info);">bizops.duckdns.org/chat/demo</a>)에서 직접 테스트해 보았다</div></div>
+    <h3 style="color: var(--accent-red); margin-bottom: 16px;">🛡️ 실습</h3>
+    <div class="checklist-item"><div class="checkbox"></div><div>데모 페이지(<a href="https://bizops.duckdns.org/chat/demo" style="color: var(--accent-cyan);">bizops.duckdns.org/chat/demo</a>)에서 직접 테스트해 보았다</div></div>
     <div class="checklist-item"><div class="checkbox"></div><div>Zendesk에서 AI 생성 티켓을 열어 확인해 보았다</div></div>
     <div class="checklist-item"><div class="checkbox"></div><div>AI 초안을 검토하고 [AGENT:] 부분을 채워 보았다</div></div>
   </div>

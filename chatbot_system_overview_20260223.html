@@ -9,66 +9,55 @@
   @page { size: A4; margin: 15mm; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
-    --max-w: 960px; --radius: 12px; --gap: 16px;
-    --bg-base: #F8FAFC; --bg-card: #FFFFFF; --bg-muted: #F1F5F9;
-    --text-primary: #1E293B; --text-secondary: #475569; --text-muted: #94A3B8;
-    --border: #E2E8F0;
-    --accent-brand: #2563EB; --accent-info: #0EA5E9; --accent-success: #10B981;
-    --accent-warn: #F59E0B; --accent-danger: #EF4444; --accent-purple: #7C3AED;
-    --font-base: 14px; --font-sm: 12px; --font-lg: 18px; --font-xl: 28px;
-    --line-height: 1.7;
-    --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
+    --bg-primary: #F8FAFC; --bg-secondary: #F1F5F9; --bg-card: #FFFFFF;
+    --text-primary: #1E293B; --text-secondary: #475569; --text-muted: #64748B;
+    --accent-blue: #0ea5e9; --accent-cyan: #22d3ee; --accent-green: #10b981;
+    --accent-amber: #f59e0b; --accent-red: #ef4444; --accent-purple: #a78bfa;
+    --border-color: #E2E8F0;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg-base: #0F172A; --bg-card: #1E293B; --bg-muted: #334155;
-      --text-primary: #F1F5F9; --text-secondary: #CBD5E1; --text-muted: #64748B;
-      --border: #334155;
-    }
-  }
-  body { font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif; color: var(--text-primary); background: var(--bg-base); line-height: 1.7; font-size: 14px;
-    word-break: keep-all; overflow-wrap: break-word; -webkit-print-color-adjust: exact; print-color-adjust: exact; font-variant-numeric: tabular-nums;
+  body { font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif; color: var(--text-primary); background: var(--bg-primary); line-height: 1.7; font-size: 15px; 
+    word-break: keep-all; overflow-wrap: break-word;
   }
   @media print { body { background: #fff; color: #1E293B; } .hero {
     color: #FFFFFF; background: #1e3a5f !important; -webkit-print-color-adjust: exact; } .back-to-top { display: none !important; } }
-  .container { max-width: 960px;
+  .container { max-width: 1100px;
     width: 100%; margin: 0 auto; padding: 0 0 60px; }
   section { padding: 0 40px; margin-bottom: 48px; }
-  .hero { background: linear-gradient(135deg, #1E3A5F 0%, #2563EB 50%, #0EA5E9 100%); color: white; padding: 48px 56px 40px; border-radius: 0 0 12px 12px; margin-bottom: 36px; }
-  .hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
-  .hero .subtitle { font-size: 16px; opacity: 0.9; }
-  .hero .badge { display: inline-block; background: rgba(0,0,0,0.06); padding: 4px 14px; border-radius: 20px; font-size: 12px; margin-top: 12px; }
-  h2 { font-size: 18px; font-weight: 700; color: var(--accent-info); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
-  h3 { font-size: 14px; font-weight: 600; color: var(--accent-info); margin: 20px 0 12px; }
-  h4 { font-size: 14px; font-weight: 600; color: var(--accent-success); margin: 12px 0 8px; }
+  .hero { background: linear-gradient(135deg, #0f172a 0%, #0ea5e9 50%, #10b981 100%); color: white; padding: 48px 56px 40px; border-radius: 0 0 24px 24px; margin-bottom: 36px; }
+  .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; }
+  .hero .subtitle { font-size: 1.1rem; opacity: 0.9; }
+  .hero .badge { display: inline-block; background: rgba(0,0,0,0.06); padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; margin-top: 12px; }
+  h2 { font-size: 1.5rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border-color); }
+  h3 { font-size: 1.15rem; font-weight: 600; color: var(--accent-blue); margin: 20px 0 12px; }
+  h4 { font-size: 1rem; font-weight: 600; color: var(--accent-green); margin: 12px 0 8px; }
   p { margin-bottom: 12px; color: var(--text-secondary); }
-  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 20px; }
-  .card-blue { border-left: 4px solid var(--accent-info); }
-  .card-green { border-left: 4px solid var(--accent-success); }
-  .card-amber { border-left: 4px solid var(--accent-warn); }
-  .card-red { border-left: 4px solid var(--accent-danger); }
+  .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+  .card-blue { border-left: 4px solid var(--accent-blue); }
+  .card-green { border-left: 4px solid var(--accent-green); }
+  .card-amber { border-left: 4px solid var(--accent-amber); }
+  .card-red { border-left: 4px solid var(--accent-red); }
   .card-purple { border-left: 4px solid var(--accent-purple); }
-  .card-cyan { border-left: 4px solid var(--accent-info); }
+  .card-cyan { border-left: 4px solid var(--accent-cyan); }
   table { width: 100%; border-collapse: collapse; margin: 16px 0; }
-  th { background: var(--bg-muted); color: var(--accent-info); font-weight: 600; text-align: left; padding: 12px 16px; border-bottom: 2px solid var(--border); }
-  td { padding: 10px 16px; border-bottom: 1px solid var(--border); color: var(--text-secondary); }
+  th { background: var(--bg-secondary); color: var(--accent-cyan); font-weight: 600; text-align: left; padding: 12px 16px; border-bottom: 2px solid var(--border-color); }
+  td { padding: 10px 16px; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); }
   tr:hover td { background: rgba(14,165,233,0.04); }
   ul, ol { padding-left: 20px; margin-bottom: 12px; }
   li { margin-bottom: 6px; color: var(--text-secondary); }
-  .arch-diagram { background: var(--bg-muted); border: 1px solid var(--border); border-radius: 12px; padding: 30px; margin: 20px 0; }
+  .arch-diagram { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 30px; margin: 20px 0; }
   .arch-row { display: flex; justify-content: center; align-items: center; gap: 12px; margin: 12px 0; flex-wrap: wrap; }
-  .arch-box { background: var(--bg-base); border: 2px solid var(--border); border-radius: 10px; padding: 14px 20px; text-align: center; min-width: 140px; }
-  .arch-box.highlight { border-color: var(--accent-info); box-shadow: 0 0 12px rgba(14,165,233,0.2); }
-  .arch-box .title { font-weight: 700; font-size: 12px; color: var(--accent-info); }
-  .arch-box .desc { font-size: 10px; color: var(--text-muted); margin-top: 4px; }
-  .arch-arrow { color: var(--accent-info); font-size: 18px; }
-  .arch-arrow-down { text-align: center; color: var(--accent-info); font-size: 18px; margin: 4px 0; }
+  .arch-box { background: var(--bg-primary); border: 2px solid var(--border-color); border-radius: 10px; padding: 14px 20px; text-align: center; min-width: 140px; }
+  .arch-box.highlight { border-color: var(--accent-cyan); box-shadow: 0 0 12px rgba(34,211,238,0.2); }
+  .arch-box .title { font-weight: 700; font-size: 0.85rem; color: var(--accent-cyan); }
+  .arch-box .desc { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
+  .arch-arrow { color: var(--accent-cyan); font-size: 1.3rem; }
+  .arch-arrow-down { text-align: center; color: var(--accent-cyan); font-size: 1.3rem; margin: 4px 0; }
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
   @media (max-width: 768px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } section { padding: 0 20px; } .arch-row { flex-direction: column; } }
-  code { background: rgba(14,165,233,0.1); padding: 2px 6px; border-radius: 4px; font-size: 13px; color: var(--accent-info); }
-  .tech-badge { display: inline-block; background: rgba(124,58,237,0.15); color: var(--accent-purple); padding: 3px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; margin: 2px; }
-  .back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--accent-info); color: white; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 16px; cursor: pointer; z-index: 100; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+  code { background: rgba(14,165,233,0.1); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: var(--accent-cyan); }
+  .tech-badge { display: inline-block; background: rgba(167,139,250,0.15); color: var(--accent-purple); padding: 3px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; margin: 2px; }
+  .back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 1.2rem; cursor: pointer; z-index: 100; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
 
   @media (max-width: 900px) {
     .container { max-width: 100% !important; width: 100% !important; overflow-x: auto; }
@@ -127,7 +116,7 @@
 
   <div class="arch-diagram">
     <div class="arch-row">
-      <div class="arch-box" style="border-color: var(--accent-success);">
+      <div class="arch-box" style="border-color: var(--accent-green);">
         <div class="title">👤 고객</div>
         <div class="desc">웹 브라우저 / 위젯</div>
       </div>
@@ -148,7 +137,7 @@
     </div>
     <div class="arch-arrow-down">↓ 병렬 호출</div>
     <div class="arch-row">
-      <div class="arch-box" style="border-color: var(--accent-warn);">
+      <div class="arch-box" style="border-color: var(--accent-amber);">
         <div class="title">🧠 Claude API</div>
         <div class="desc">via claude-max-api-proxy<br>:3456 (OpenAI 호환)</div>
       </div>
@@ -156,11 +145,11 @@
         <div class="title">📚 ChromaDB</div>
         <div class="desc">RAG 벡터 검색<br>137건 지식 데이터</div>
       </div>
-      <div class="arch-box" style="border-color: var(--accent-danger);">
+      <div class="arch-box" style="border-color: var(--accent-red);">
         <div class="title">💾 Redis</div>
         <div class="desc">세션 저장소<br>TTL 30분</div>
       </div>
-      <div class="arch-box" style="border-color: var(--accent-success);">
+      <div class="arch-box" style="border-color: var(--accent-green);">
         <div class="title">🎫 Zendesk</div>
         <div class="desc">티켓 자동 생성<br>L1/L2 에스컬레이션</div>
       </div>

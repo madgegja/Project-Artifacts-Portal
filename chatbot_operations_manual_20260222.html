@@ -11,33 +11,33 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --max-w: 960px; --radius: 12px; --gap: 16px;
-    --bg-base: #F8FAFC; --bg-card: #FFFFFF; --bg-muted: #F1F5F9;
-    --text-primary: #1E293B; --text-secondary: #475569; --text-muted: #94A3B8;
-    --border: #E2E8F0;
-    --accent-brand: #2563EB; --accent-info: #0EA5E9; --accent-success: #10B981;
-    --accent-warn: #F59E0B; --accent-danger: #EF4444; --accent-purple: #7C3AED;
-    --font-base: 14px; --font-sm: 12px; --font-lg: 18px; --font-xl: 28px;
-    --line-height: 1.7;
-    --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg-base: #0F172A; --bg-card: #1E293B; --bg-muted: #334155;
-      --text-primary: #F1F5F9; --text-secondary: #CBD5E1; --text-muted: #64748B;
-      --border: #334155;
-    }
+    --bg-primary: #F8FAFC;
+    --bg-secondary: #F1F5F9;
+    --bg-card: #FFFFFF;
+    --bg-card-hover: #243247;
+    --text-primary: #1E293B;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+    --accent-blue: #0ea5e9;
+    --accent-cyan: #22d3ee;
+    --accent-green: #10b981;
+    --accent-amber: #f59e0b;
+    --accent-red: #ef4444;
+    --accent-purple: #a78bfa;
+    --accent-pink: #ec4899;
+    --border-color: #E2E8F0;
+    --border-light: #E2E8F0;
+    --shadow: 0 4px 24px rgba(0,0,0,0.3);
   }
 
   body {
     font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', -apple-system, sans-serif;
     color: var(--text-primary);
-    background: var(--bg-base);
+    background: var(--bg-primary);
     line-height: 1.7;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
-    font-variant-numeric: tabular-nums;
-
+  
     word-break: keep-all; overflow-wrap: break-word;
   
     font-size: 14px;
@@ -58,7 +58,7 @@
 
   /* ── Layout ── */
   .container {
-    max-width: 960px;
+    max-width: 1200px;
     width: 100%;
     margin: 0 auto;
     padding: 0 0 60px;
@@ -71,12 +71,12 @@
 
   /* ── Hero Header ── */
   .hero {
-    background: linear-gradient(135deg, #1E3A5F 0%, #2563EB 50%, #0EA5E9 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #0ea5e9 100%);
     color: white;
     padding: 52px 56px 44px;
     position: relative;
     overflow: hidden;
-    border-radius: 0 0 12px 12px;
+    border-radius: 0 0 24px 24px;
     margin-bottom: 40px;
   }
   .hero::before {
@@ -137,14 +137,14 @@
     gap: 14px;
     margin-bottom: 24px;
     padding-bottom: 12px;
-    border-bottom: 2px solid var(--border);
+    border-bottom: 2px solid var(--border-color);
   }
   .section-number {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 36px; height: 36px;
-    background: linear-gradient(135deg, var(--accent-info), var(--accent-info));
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
     border-radius: 10px;
     font-size: 16px;
     font-weight: 800;
@@ -160,18 +160,18 @@
   /* ── Cards ── */
   .card {
     background: var(--bg-card);
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-color);
     border-radius: 14px;
     padding: 28px;
     margin-bottom: 20px;
     transition: border-color 0.2s;
   }
-  .card:hover { border-color: var(--accent-info); }
+  .card:hover { border-color: var(--accent-blue); }
   .card h3 {
     font-size: 17px;
     font-weight: 700;
     margin-bottom: 16px;
-    color: var(--accent-info);
+    color: var(--accent-cyan);
   }
   .card h4 {
     font-size: 15px;
@@ -189,7 +189,7 @@
   /* ── Table of Contents ── */
   .toc {
     background: var(--bg-card);
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-color);
     border-radius: 14px;
     padding: 28px 36px;
     margin: 0 40px 40px;
@@ -198,7 +198,7 @@
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 16px;
-    color: var(--accent-info);
+    color: var(--accent-cyan);
   }
   .toc-grid {
     display: grid;
@@ -218,7 +218,7 @@
   }
   .toc a:hover {
     background: rgba(14,165,233,0.08);
-    color: var(--accent-info);
+    color: var(--accent-blue);
   }
   .toc-num {
     display: inline-flex;
@@ -229,7 +229,7 @@
     border-radius: 7px;
     font-size: 12px;
     font-weight: 700;
-    color: var(--accent-info);
+    color: var(--accent-blue);
   }
 
   /* ── Tables ── */
@@ -241,19 +241,19 @@
   }
   thead th {
     background: rgba(14,165,233,0.1);
-    color: var(--accent-info);
+    color: var(--accent-cyan);
     font-weight: 700;
     font-size: 12.5px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     padding: 12px 14px;
     text-align: left;
-    border-bottom: 2px solid var(--border);
+    border-bottom: 2px solid var(--border-color);
     white-space: nowrap;
   }
   tbody td {
     padding: 10px 14px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--border-light);
     color: var(--text-secondary);
     vertical-align: top;
   }
@@ -286,7 +286,7 @@
   }
   .badge-tech-blue { background: rgba(3,105,161,0.10); color: #0369a1; }
   .badge-tech-green { background: rgba(5,150,105,0.12); color: #047857; }
-  .badge-tech-purple { background: rgba(124,58,237,0.15); color: #6d28d9; }
+  .badge-tech-purple { background: rgba(167,139,250,0.15); color: #6d28d9; }
   .badge-tech-amber { background: rgba(180,83,9,0.10); color: #b45309; }
 
   /* ── Pipeline Flow ── */
@@ -301,7 +301,7 @@
   }
   .pipeline-step {
     background: var(--bg-card);
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 16px 20px;
     text-align: center;
@@ -309,9 +309,9 @@
     flex-shrink: 0;
     transition: all 0.2s;
   }
-  .pipeline-step:hover { border-color: var(--accent-info); transform: translateY(-2px); }
+  .pipeline-step:hover { border-color: var(--accent-blue); transform: translateY(-2px); }
   .pipeline-step .step-icon { font-size: 24px; margin-bottom: 6px; }
-  .pipeline-step .step-title { font-size: 12px; font-weight: 700; color: var(--accent-info); }
+  .pipeline-step .step-title { font-size: 12px; font-weight: 700; color: var(--accent-cyan); }
   .pipeline-step .step-desc { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
   .pipeline-arrow {
     font-size: 20px;
@@ -333,7 +333,7 @@
     transform: translateX(-50%);
     font-size: 12px;
     font-weight: 700;
-    color: var(--accent-warn);
+    color: var(--accent-amber);
     letter-spacing: 1px;
   }
 
@@ -350,7 +350,7 @@
   .routing-card {
     border-radius: 12px;
     padding: 20px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-color);
   }
   .routing-card-l1 {
     background: rgba(239,68,68,0.06);
@@ -396,14 +396,14 @@
   /* ── Collapsible Sections ── */
   details {
     background: var(--bg-card);
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     margin-bottom: 12px;
     overflow: hidden;
     transition: border-color 0.2s;
   }
-  details:hover { border-color: var(--accent-info); }
-  details[open] { border-color: var(--accent-info); }
+  details:hover { border-color: var(--accent-blue); }
+  details[open] { border-color: var(--accent-blue); }
   summary {
     padding: 16px 24px;
     cursor: pointer;
@@ -420,7 +420,7 @@
   summary::before {
     content: '\25B6';
     font-size: 12px;
-    color: var(--accent-info);
+    color: var(--accent-blue);
     transition: transform 0.2s;
   }
   details[open] summary::before { transform: rotate(90deg); }
@@ -463,7 +463,7 @@
   /* ── Code Block ── */
   .code-block {
     background: #0c1222;
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-color);
     border-radius: 10px;
     padding: 16px 20px;
     font-family: 'Consolas', 'Courier New', monospace;
@@ -520,12 +520,12 @@
   }
   .market-card {
     background: var(--bg-card);
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 20px;
     transition: border-color 0.2s;
   }
-  .market-card:hover { border-color: var(--accent-info); }
+  .market-card:hover { border-color: var(--accent-blue); }
   .market-card-header {
     display: flex;
     align-items: center;
@@ -545,7 +545,7 @@
     margin-left: auto;
     font-size: 20px;
     font-weight: 800;
-    color: var(--accent-info);
+    color: var(--accent-blue);
   }
   .market-detail {
     font-size: 12.5px;
@@ -563,7 +563,7 @@
   }
   .stat-item {
     background: var(--bg-card);
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 18px;
     text-align: center;
@@ -571,7 +571,7 @@
   .stat-value {
     font-size: 28px;
     font-weight: 800;
-    color: var(--accent-info);
+    color: var(--accent-blue);
     line-height: 1.2;
   }
   .stat-label {
@@ -591,13 +591,13 @@
     align-items: flex-start;
     gap: 12px;
     padding: 12px 16px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--border-light);
     font-size: 13.5px;
     color: var(--text-secondary);
   }
   .exclusion-list li:last-child { border-bottom: none; }
   .exclusion-icon {
-    color: var(--accent-danger);
+    color: var(--accent-red);
     font-size: 16px;
     flex-shrink: 0;
     margin-top: 1px;
@@ -610,7 +610,7 @@
     right: 32px;
     width: 44px;
     height: 44px;
-    background: var(--accent-info);
+    background: var(--accent-blue);
     color: #fff;
     border: none;
     border-radius: 12px;
@@ -657,14 +657,14 @@
     padding: 32px 40px;
     color: var(--text-muted);
     font-size: 12px;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--border-color);
     margin-top: 40px;
   }
 
   /* ── Horizontal Divider ── */
   .divider {
     height: 1px;
-    background: var(--border);
+    background: var(--border-color);
     margin: 32px 40px;
   }
 
@@ -725,10 +725,10 @@
 
     <div class="card" style="border-color:rgba(14,165,233,0.2);background:linear-gradient(135deg,rgba(14,165,233,0.04),rgba(16,185,129,0.03));">
       <div style="text-align:center;margin-bottom:20px;">
-        <div style="font-size:12px;color:var(--accent-info);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;">CORE INSIGHT — 실데이터 11,621건 분석 결과</div>
+        <div style="font-size:12px;color:var(--accent-cyan);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;">CORE INSIGHT — 실데이터 11,621건 분석 결과</div>
         <div style="font-size:22px;font-weight:800;color:var(--text-primary);line-height:1.4;">
-          CS 상담의 <span style="color:var(--accent-info);font-size:30px;">83%</span>가
-          <span style="color:var(--accent-warn);">반복적이지만 반드시 거쳐야 하는</span> 정보 확인 단계입니다
+          CS 상담의 <span style="color:var(--accent-cyan);font-size:30px;">83%</span>가
+          <span style="color:var(--accent-amber);">반복적이지만 반드시 거쳐야 하는</span> 정보 확인 단계입니다
         </div>
       </div>
 
@@ -753,7 +753,7 @@
           <div style="font-size: 12px;color: #64748B;margin-top:4px;">환불 거절</div>
           <div style="font-size: 12px;color:#64748b;margin-top:2px;">변수 1개 (종료일)</div>
         </div>
-        <div style="background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:14px 8px;text-align:center;">
+        <div style="background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.2);border-radius:12px;padding:14px 8px;text-align:center;">
           <div style="font-size:24px;font-weight:800;color:#6d28d9;">3%</div>
           <div style="font-size: 12px;color: #64748B;margin-top:4px;">계정 삭제</div>
           <div style="font-size: 12px;color:#64748b;margin-top:2px;">변수 0개, 체크리스트</div>
@@ -767,23 +767,23 @@
         <tbody>
           <tr>
             <td><strong>처리 방식</strong></td>
-            <td style="color:var(--accent-danger);">운영자가 매번 동일 정보 반복 요청 (3~5회 왕복)</td>
-            <td style="color:var(--accent-success);">고객이 티켓 전 AI 안내로 양식 확인 + 정보 제공</td>
+            <td style="color:var(--accent-red);">운영자가 매번 동일 정보 반복 요청 (3~5회 왕복)</td>
+            <td style="color:var(--accent-green);">고객이 티켓 전 AI 안내로 양식 확인 + 정보 제공</td>
           </tr>
           <tr>
             <td><strong>운영자 처리</strong></td>
-            <td style="color:var(--accent-danger);">정보 부족 → 추가 왕복 → 첫 응답 해결율 낮음</td>
-            <td style="color:var(--accent-success);">필요 정보 이미 확보 → <strong>첫 응답 해결율 3~4배 상승</strong></td>
+            <td style="color:var(--accent-red);">정보 부족 → 추가 왕복 → 첫 응답 해결율 낮음</td>
+            <td style="color:var(--accent-green);">필요 정보 이미 확보 → <strong>첫 응답 해결율 3~4배 상승</strong></td>
           </tr>
           <tr>
             <td><strong>미해결 건</strong></td>
             <td>다시 처음부터 정보 수집 반복</td>
-            <td style="color:var(--accent-success);">필요 정보 포함된 티켓 전달 → 운영자 즉시 처리</td>
+            <td style="color:var(--accent-green);">필요 정보 포함된 티켓 전달 → 운영자 즉시 처리</td>
           </tr>
           <tr>
             <td><strong>고객 경험</strong></td>
             <td>7~29일 대기 + 반복 왕복 피로</td>
-            <td style="color:var(--accent-success);">확실한 양식 안내 → 빠르고 확실한 CS 경험</td>
+            <td style="color:var(--accent-green);">확실한 양식 안내 → 빠르고 확실한 CS 경험</td>
           </tr>
         </tbody>
       </table>
@@ -797,7 +797,7 @@
             <div style="width:32px;height:32px;background:linear-gradient(135deg,#0ea5e9,#6366f1);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:14px;">🎯</div>
             <div>
               <div style="font-size: 12px;color:#4338ca;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CUSTOMER EXPERIENCE</div>
-              <div style="font-size:14px;font-weight:800;color:var(--accent-info);">고객 경험 향상 → 서비스 만족도 극대화</div>
+              <div style="font-size:14px;font-weight:800;color:var(--accent-cyan);">고객 경험 향상 → 서비스 만족도 극대화</div>
             </div>
           </div>
           <div style="display:flex;flex-direction:column;gap:6px;font-size:12.5px;color: #64748B;line-height:1.5;margin-bottom:12px;">
@@ -808,7 +808,7 @@
           </div>
           <div style="text-align:center;padding:8px 12px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.1);border-radius:8px;">
             <div style="font-size: 12px;color:#64748b;">좋은 CS 경험이 서비스 전체의 가치를 높입니다</div>
-            <div style="font-size:13px;font-weight:800;color:var(--accent-info);margin-top:2px;">Customer Satisfaction & Loyalty ↑</div>
+            <div style="font-size:13px;font-weight:800;color:var(--accent-cyan);margin-top:2px;">Customer Satisfaction & Loyalty ↑</div>
           </div>
         </div>
         <!-- Pillar 2: Operations Efficiency -->
@@ -818,7 +818,7 @@
             <div style="width:32px;height:32px;background:linear-gradient(135deg,#10b981,#f59e0b);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:14px;">⚡</div>
             <div>
               <div style="font-size: 12px;color:#b45309;font-weight:700;letter-spacing:1px;text-transform:uppercase;">CS OPERATIONS</div>
-              <div style="font-size:14px;font-weight:800;color:var(--accent-success);">운영 효율 극대화 → 처리 능력 3~4배</div>
+              <div style="font-size:14px;font-weight:800;color:var(--accent-green);">운영 효율 극대화 → 처리 능력 3~4배</div>
             </div>
           </div>
           <div style="display:flex;flex-direction:column;gap:6px;font-size:12.5px;color: #64748B;line-height:1.5;margin-bottom:12px;">
@@ -829,13 +829,13 @@
           </div>
           <div style="text-align:center;padding:8px 12px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.1);border-radius:8px;">
             <div style="font-size: 12px;color:#64748b;">같은 인력으로 3~4배 더 많은 CS를 처리합니다</div>
-            <div style="font-size:13px;font-weight:800;color:var(--accent-success);margin-top:2px;">CS Processing Efficiency ×3~4</div>
+            <div style="font-size:13px;font-weight:800;color:var(--accent-green);margin-top:2px;">CS Processing Efficiency ×3~4</div>
           </div>
         </div>
       </div>
       <!-- 선순환 결론 -->
       <div style="text-align:center;padding:12px 16px;background:rgba(245,158,11,0.04);border:1px solid rgba(245,158,11,0.08);border-radius:10px;font-size:13px;color: #475569;line-height:1.7;">
-        <strong style="color:var(--accent-warn);">CX ↑ 고객 만족도</strong> × <strong style="color:var(--accent-success);">Operations ↑ 3~4배 효율</strong> = <span style="color: #1E293B;font-weight:700;">CS 조직의 선순환 구조</span>
+        <strong style="color:var(--accent-amber);">CX ↑ 고객 만족도</strong> × <strong style="color:var(--accent-green);">Operations ↑ 3~4배 효율</strong> = <span style="color: #1E293B;font-weight:700;">CS 조직의 선순환 구조</span>
       </div>
     </div>
   </section>
@@ -849,7 +849,7 @@
 
     <div class="card">
       <h3>&#128214; 목적</h3>
-      <p>본 문서는 <strong style="color:var(--accent-info)">투믹스(Toomics) 글로벌 CS AI 챗봇</strong> 시스템의 운영 매뉴얼입니다.
+      <p>본 문서는 <strong style="color:var(--accent-cyan)">투믹스(Toomics) 글로벌 CS AI 챗봇</strong> 시스템의 운영 매뉴얼입니다.
         고객이 웹사이트/앱에서 AI와 직접 대화하여 CS 문의를 해결하는 서비스의 전체 운영 절차, 기술 구조, 에스컬레이션 규칙,
         Fraud 탐지 방침, 다국어 처리 가이드를 포괄합니다.</p>
 
@@ -1070,7 +1070,7 @@ Ai-Chat-bot-project/
         </thead>
         <tbody>
           <tr>
-            <td><strong style="color:var(--accent-info)">Subscription</strong> (구독)</td>
+            <td><strong style="color:var(--accent-blue)">Subscription</strong> (구독)</td>
             <td>700건</td>
             <td><strong>48%</strong></td>
             <td style="color:#047857;">95%</td>
@@ -1078,7 +1078,7 @@ Ai-Chat-bot-project/
             <td>6개</td>
           </tr>
           <tr>
-            <td><strong style="color:var(--accent-info)">Refund</strong> (환불)</td>
+            <td><strong style="color:var(--accent-blue)">Refund</strong> (환불)</td>
             <td>367건</td>
             <td><strong>25%</strong></td>
             <td style="color:#b45309;">50%</td>
@@ -1086,7 +1086,7 @@ Ai-Chat-bot-project/
             <td>7개</td>
           </tr>
           <tr>
-            <td><strong style="color:var(--accent-info)">Account</strong> (계정)</td>
+            <td><strong style="color:var(--accent-blue)">Account</strong> (계정)</td>
             <td>189건</td>
             <td><strong>13%</strong></td>
             <td style="color:#b45309;">50%</td>
@@ -1094,7 +1094,7 @@ Ai-Chat-bot-project/
             <td>5개</td>
           </tr>
           <tr>
-            <td><strong style="color:var(--accent-info)">Payment</strong> (결제)</td>
+            <td><strong style="color:var(--accent-blue)">Payment</strong> (결제)</td>
             <td>86건</td>
             <td><strong>5%</strong></td>
             <td style="color:#b45309;">50%</td>
@@ -1110,7 +1110,7 @@ Ai-Chat-bot-project/
             <td>4개</td>
           </tr>
           <tr>
-            <td><strong style="color:var(--accent-info)">Technical</strong> (기술)</td>
+            <td><strong style="color:var(--accent-blue)">Technical</strong> (기술)</td>
             <td>32건</td>
             <td><strong>3%</strong></td>
             <td style="color:#b45309;">50%</td>
@@ -1533,7 +1533,7 @@ Ai-Chat-bot-project/
 
     <div class="card">
       <h3>&#128308; Critical 지표 (5개) -- 1개라도 감지 시 주의</h3>
-      <p style="margin-bottom:16px; color:var(--accent-danger);">Critical 지표 1개 단독 감지 시 해당 점수 반영. 점수 합계 50+ 시 L1 에스컬레이션.</p>
+      <p style="margin-bottom:16px; color:var(--accent-red);">Critical 지표 1개 단독 감지 시 해당 점수 반영. 점수 합계 50+ 시 L1 에스컬레이션.</p>
       <table>
         <thead>
           <tr><th>#</th><th>Red Flag</th><th>한국어명</th><th>점수</th><th>설명</th></tr>
@@ -1580,7 +1580,7 @@ Ai-Chat-bot-project/
 
     <div class="card">
       <h3>&#128992; Supporting 지표 (4개) -- 2개 이상 조합 시 주의</h3>
-      <p style="margin-bottom:16px; color:var(--accent-warn);">Supporting 지표 단독으로는 에스컬레이션하지 않음. 2개+ 조합 시 합산 점수 반영.</p>
+      <p style="margin-bottom:16px; color:var(--accent-amber);">Supporting 지표 단독으로는 에스컬레이션하지 않음. 2개+ 조합 시 합산 점수 반영.</p>
       <table>
         <thead>
           <tr><th>#</th><th>Red Flag</th><th>한국어명</th><th>점수</th><th>설명</th></tr>
@@ -1717,7 +1717,7 @@ Ai-Chat-bot-project/
             <strong>톤:</strong> Formal, warm. 브라질 포르투갈어. Senhor/Senhora 사용.<br>
             <strong>경칭:</strong> Senhor/Senhora (경칭)<br>
             <strong>결제:</strong> PayPal, PIX (대기 2~10일), Checkout(card)<br>
-            <strong>특이사항:</strong> <strong style="color:var(--accent-warn);">7개월간 2배 성장 (103건&#8594;253건) -- 가장 빠른 성장 마켓.</strong> Refund > Subscription 유일한 마켓. PIX 결제 대기 혼란 집중.<br>
+            <strong>특이사항:</strong> <strong style="color:var(--accent-amber);">7개월간 2배 성장 (103건&#8594;253건) -- 가장 빠른 성장 마켓.</strong> Refund > Subscription 유일한 마켓. PIX 결제 대기 혼란 집중.<br>
             <strong>법적 규정:</strong> <strong>CDC (C&#243;digo de Defesa do Consumidor)</strong> -- 온라인 구매 7일 내 무조건 철회 (콘텐츠 유형 무관)
           </div>
         </div>
@@ -1736,7 +1736,7 @@ Ai-Chat-bot-project/
             <strong>톤:</strong> Formal, precise. 반드시 Sie 사용. 법적 용어 정확성 중요.<br>
             <strong>경칭:</strong> Sie (경칭) -- du 절대 사용 금지<br>
             <strong>결제:</strong> PayPal, Checkout(card)<br>
-            <strong>특이사항:</strong> Subscription 50%로 전체 마켓 중 최고. Account 16% (GDPR 삭제 요청 집중). <strong style="color:var(--accent-warn);">법적 에스컬레이션 최다 마켓.</strong><br>
+            <strong>특이사항:</strong> Subscription 50%로 전체 마켓 중 최고. Account 16% (GDPR 삭제 요청 집중). <strong style="color:var(--accent-amber);">법적 에스컬레이션 최다 마켓.</strong><br>
             <strong>법적 규정:</strong> <strong>Widerrufsrecht</strong> (EU 14일 철회권), <strong>DSGVO</strong> (GDPR) -- 계정 삭제 30일 내 처리 의무
           </div>
         </div>
@@ -1868,7 +1868,7 @@ Ai-Chat-bot-project/
           <span class="exclusion-icon">&#10006;</span>
           <div>
             <strong style="color:var(--text-primary);">제3자 해지 요청 (Minna Technologies / Ethoca)</strong><br>
-            <code>@cancel.us.minnatechnologies.com</code> 도메인 발신 자동 요청. <strong style="color:var(--accent-danger);">절대 응답 금지 (DO NOT RESPOND).</strong>
+            <code>@cancel.us.minnatechnologies.com</code> 도메인 발신 자동 요청. <strong style="color:var(--accent-red);">절대 응답 금지 (DO NOT RESPOND).</strong>
           </div>
         </li>
       </ul>
