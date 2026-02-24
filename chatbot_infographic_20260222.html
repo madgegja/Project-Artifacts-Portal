@@ -404,6 +404,7 @@
   .flag-type.critical { color: #b91c1c; }
   .flag-type.supporting { color: #b45309; }
   .gauge-container {
+    margin-bottom: 4px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -440,13 +441,13 @@
   .gauge-zones span:nth-child(2) { width: 20%; text-align: center; }
   .gauge-zones span:nth-child(3) { width: 51%; text-align: center; }
   .scoring-rules {
-    margin-top: 16px;
-    font-size: 13px;
+    margin-top: 10px;
+    font-size: 12px;
     color: #64748B;
   }
   .scoring-rules li {
     list-style: none;
-    padding: 6px 0;
+    padding: 3px 0;
   }
   .scoring-rules li::before {
     content: '';
@@ -899,13 +900,15 @@
             <span>50 ~ 100</span>
           </div>
         </div>
-        <ul class="scoring-rules">
-          <li><strong>Critical 지표 1개</strong>: +30점 (즉시 MEDIUM 이상)</li>
-          <li><strong>Supporting 지표 2개+</strong>: +15점/개</li>
-          <li><strong>HIGH 등급</strong>: 강제 L1 에스컬레이션 (AI 응답 없음)</li>
-        </ul>
-        <div style="margin-top:14px;">
-          <canvas id="fraudDoughnut" style="max-width:320px;max-height:320px;margin:0 auto;display:block;"></canvas>
+        <div style="display:flex;align-items:center;gap:16px;margin-top:8px;">
+          <ul class="scoring-rules" style="flex:1;margin-top:0;">
+            <li><strong>Critical 1개</strong>: +30점 (즉시 MED↑)</li>
+            <li><strong>Supporting 2개+</strong>: +15점/개</li>
+            <li><strong>HIGH</strong>: 강제 L1 에스컬레이션</li>
+          </ul>
+          <div style="flex:0 0 200px;">
+            <canvas id="fraudDoughnut" style="width:200px;height:200px;"></canvas>
+          </div>
         </div>
       </div>
     </div>
