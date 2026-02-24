@@ -888,7 +888,7 @@
           </li>
         </ul>
       </div>
-      <div class="card">
+      <div class="card" style="display:flex;flex-direction:column;">
         <h3 style="font-size:14px;font-weight:700;margin-bottom:8px;color:#1E293B;">리스크 스코어링</h3>
         <div class="gauge-container">
           <div class="gauge-bar">
@@ -908,10 +908,10 @@
           <li><strong>HIGH 등급</strong>: 강제 L1 에스컬레이션 (AI 응답 없음)</li>
         </ul>
         <p style="text-align:center;font-size:11px;color:#94A3B8;margin:6px 0 4px;">Red Flag 구성: 5 Critical + 4 Supporting</p>
-        <div style="display:flex;justify-content:center;margin-top:4px;">
+        <div style="flex:1;display:flex;align-items:center;justify-content:center;">
           <canvas id="fraudDoughnut" width="200" height="200"></canvas>
         </div>
-        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:8px;font-size:11px;color:#64748B;">
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;padding-top:8px;font-size:11px;color:#64748B;">
           <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#22c55e;margin-right:4px;vertical-align:middle;"></span>LOW (0-29)</span>
           <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#eab308;margin-right:4px;vertical-align:middle;"></span>MEDIUM (30-49)</span>
           <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#ef4444;margin-right:4px;vertical-align:middle;"></span>HIGH (50-100)</span>
