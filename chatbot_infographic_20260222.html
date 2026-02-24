@@ -380,7 +380,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
-    align-items: start;
+    align-items: stretch;
   }
   .flag-list {
     list-style: none;
@@ -908,8 +908,13 @@
           <li><strong>HIGH 등급</strong>: 강제 L1 에스컬레이션 (AI 응답 없음)</li>
         </ul>
         <p style="text-align:center;font-size:11px;color:#94A3B8;margin:6px 0 4px;">Red Flag 구성: 5 Critical + 4 Supporting</p>
-        <div style="display:flex;justify-content:center;">
-          <canvas id="fraudDoughnut" width="220" height="220" style="max-width:220px;"></canvas>
+        <div style="display:flex;justify-content:center;margin-top:4px;">
+          <canvas id="fraudDoughnut" width="200" height="200"></canvas>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:8px;font-size:11px;color:#64748B;">
+          <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#22c55e;margin-right:4px;vertical-align:middle;"></span>LOW (0-29)</span>
+          <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#eab308;margin-right:4px;vertical-align:middle;"></span>MEDIUM (30-49)</span>
+          <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#ef4444;margin-right:4px;vertical-align:middle;"></span>HIGH (50-100)</span>
         </div>
       </div>
     </div>
@@ -1269,18 +1274,11 @@ new Chart(document.getElementById('fraudDoughnut'), {
     }]
   },
   options: {
-    responsive: true,
+    responsive: false,
     cutout: '55%',
-    aspectRatio: 1.0,
     plugins: {
       legend: {
-        position: 'bottom',
-        labels: {
-          padding: 6,
-          usePointStyle: true,
-          pointStyleWidth: 10,
-          font: { size: 11 }
-        }
+        display: false
       },
       tooltip: {
         backgroundColor: '#FFFFFF',
