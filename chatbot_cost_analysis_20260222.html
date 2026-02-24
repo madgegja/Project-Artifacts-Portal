@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TOOMICS CS AI 챗봇 운영 분석 | 2026-02-22</title>
+<title>TOOMICS CS AI 챗봇 비용 분석 | 2026-02-22</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
   html { scroll-behavior: smooth; }
@@ -648,8 +648,8 @@
   <!-- ══════════════ HERO HEADER ══════════════ -->
   <header class="hero">
     <div class="hero-badge">Operational Analysis Report — PROTOTYPE</div>
-    <h1>TOOMICS CS AI 챗봇 운영 분석</h1>
-    <p class="subtitle">실제 CS 데이터 기반 AI 챗봇 시스템 운영 현황</p>
+    <h1>TOOMICS CS AI 챗봇 비용 분석</h1>
+    <p class="subtitle">실제 CS 데이터 기반 AI 챗봇 도입 비용 및 효과 분석</p>
     <div class="meta">
       <span>&#128202; 데이터: 11,621건 (7개월 &times; 10개 마켓)</span>
       <span>&#128197; 분석 기간: 2025.07 ~ 2026.01</span>
@@ -867,182 +867,47 @@
     </div>
   </section>
 
-  <!-- ══════════════ SECTION 2: 카테고리별 자동화 분석 ══════════════ -->
+  <!-- ══════════════ SECTION 2: 자동화 대상 요약 ══════════════ -->
   <section>
     <div class="section-header">
       <div class="section-num">2</div>
-      <h2>카테고리별 자동화 분석</h2>
-      <span class="desc">7대 카테고리 상세</span>
+      <h2>자동화 대상 요약</h2>
+      <span class="desc">7대 카테고리 × 자동화율</span>
     </div>
 
-    <div class="chart-grid">
-      <div class="chart-box full">
-        <h3>&#128200; 카테고리별 자동화율 비교 <span class="chart-badge">Horizontal Bar</span></h3>
-        <div class="chart-canvas-wrap">
-          <canvas id="chartCategory" height="260"></canvas>
-        </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;">
+      <div style="background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.15);border-radius:12px;padding:16px;text-align:center;">
+        <div style="font-size:28px;font-weight:800;color:#0369a1;">38%</div>
+        <div style="font-size:12px;color:#64748B;margin-top:4px;">전체 자동화율</div>
+        <div style="font-size:11px;color:#94A3B8;">963건 중 366건 자동</div>
+      </div>
+      <div style="background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.15);border-radius:12px;padding:16px;text-align:center;">
+        <div style="font-size:28px;font-weight:800;color:#047857;">95%</div>
+        <div style="font-size:12px;color:#64748B;margin-top:4px;">Subscription 자동화</div>
+        <div style="font-size:11px;color:#94A3B8;">700건/월 (48%)</div>
+      </div>
+      <div style="background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.15);border-radius:12px;padding:16px;text-align:center;">
+        <div style="font-size:28px;font-weight:800;color:#6d28d9;">83%</div>
+        <div style="font-size:12px;color:#64748B;margin-top:4px;">템플릿 자동화 가능</div>
+        <div style="font-size:11px;color:#94A3B8;">상담원 응답 기준</div>
+      </div>
+      <div style="background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.15);border-radius:12px;padding:16px;text-align:center;">
+        <div style="font-size:28px;font-weight:800;color:#b45309;">45%</div>
+        <div style="font-size:12px;color:#64748B;margin-top:4px;">결제정보 요청 (병목)</div>
+        <div style="font-size:11px;color:#94A3B8;">계정 미식별 문제</div>
       </div>
     </div>
 
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>카테고리</th>
-            <th>월평균</th>
-            <th>비중</th>
-            <th>자동화율</th>
-            <th>처리 방식</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Subscription</strong></td>
-            <td class="num">700건</td>
-            <td class="pct">48%</td>
-            <td class="pct"><span class="tag tag-green">95% (L3)</span></td>
-            <td style="color: #64748B;font-size:12px;">구독 해지 안내 자동 &rarr; 과금 분쟁만 에스컬레이션</td>
-          </tr>
-          <tr>
-            <td><strong>Refund</strong></td>
-            <td class="num">367건</td>
-            <td class="pct">25%</td>
-            <td class="pct"><span class="tag tag-blue">30% (L2+L3)</span></td>
-            <td style="color: #64748B;font-size:12px;">iOS 환불 리디렉트 자동 / 적격성 판단은 상담원</td>
-          </tr>
-          <tr>
-            <td><strong>Account</strong></td>
-            <td class="num">189건</td>
-            <td class="pct">13%</td>
-            <td class="pct"><span class="tag tag-blue">40% (L2+L3)</span></td>
-            <td style="color: #64748B;font-size:12px;">비밀번호 리셋, 인증 안내 자동 / GDPR 삭제 에스컬레이션</td>
-          </tr>
-          <tr>
-            <td><strong>Payment</strong></td>
-            <td class="num">86건</td>
-            <td class="pct">5%</td>
-            <td class="pct"><span class="tag tag-blue">35% (L2+L3)</span></td>
-            <td style="color: #64748B;font-size:12px;">결제 방법 안내, 실패 트러블슈팅 / 이중과금 에스컬레이션</td>
-          </tr>
-          <tr>
-            <td><strong>Content</strong></td>
-            <td class="num">57건</td>
-            <td class="pct">4%</td>
-            <td class="pct"><span class="tag" style="background:rgba(251,191,36,0.15);color:#b45309;">0% (L2)</span></td>
-            <td style="color: #64748B;font-size:12px;">AI 정보 수집 → 에스컬레이션 (셀프서비스 없음)</td>
-          </tr>
-          <tr>
-            <td><strong>Technical</strong></td>
-            <td class="num">32건</td>
-            <td class="pct">3%</td>
-            <td class="pct"><span class="tag tag-blue">25% (L2+L3)</span></td>
-            <td style="color: #64748B;font-size:12px;">캐시 삭제, 앱 업데이트 안내 / 버그 리포트 에스컬레이션</td>
-          </tr>
-          <tr>
-            <td><strong>Other</strong></td>
-            <td class="num">30건</td>
-            <td class="pct">2%</td>
-            <td class="pct"><span class="tag tag-red">0% (L1)</span></td>
-            <td style="color: #64748B;font-size:12px;">전체 에스컬레이션 &mdash; 자동화 영구 배제</td>
-          </tr>
-          <tr class="highlight-row">
-            <td>합계</td>
-            <td class="num">1,461건</td>
-            <td class="pct">100%</td>
-            <td class="pct">38%</td>
-            <td style="font-size:12px;">L3 366건 자동 + L2 472건 AI 보조 + L1 125건 상담원 전담</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
     <div class="insight-box">
-      <h4>&#128269; 카테고리별 자동화 인사이트</h4>
-      <p><strong>Subscription 카테고리가 자동화의 핵심</strong>입니다. 구독 해지 안내의 95%가 동일 템플릿 기반으로 자동화 적합성이 가장 높으며, 전체 티켓의 48%를 차지하는 최대 카테고리입니다. <strong>Content</strong>는 AI가 정보 수집 후 L2 에스컬레이션하며, <strong>Other</strong>는 전체 L1 에스컬레이션으로 자동화율 0%입니다.</p>
+      <h4>&#128269; 핵심 인사이트</h4>
+      <p><strong>Subscription(48%)</strong>의 95%가 동일 템플릿 → 자동화 최적 대상. 상담원 응답의 <strong>45%가 동일한 결제 정보 요청</strong>(계정 미식별 병목)이며, 이를 AI가 티켓 전 양식 안내로 해결하면 처리 효율 3~4배 향상. <strong>Content/Other(6%)</strong>는 자동화 배제 → 전체 L1~L2 에스컬레이션.</p>
     </div>
   </section>
 
-  <!-- ══════════════ SECTION 3: 상담원 템플릿 자동화 분석 ══════════════ -->
+  <!-- ══════════════ SECTION 3: 스마트 레이어링 — 핵심 가치 ══════════════ -->
   <section>
     <div class="section-header">
       <div class="section-num">3</div>
-      <h2>상담원 템플릿 자동화 분석</h2>
-      <span class="desc">실제 상담 데이터 기반</span>
-    </div>
-
-    <div class="chart-grid">
-      <div class="chart-box">
-        <h3>&#128203; 템플릿 사용 분포 <span class="chart-badge">Stacked Bar</span></h3>
-        <div class="chart-canvas-wrap">
-          <canvas id="chartTemplate" height="300"></canvas>
-        </div>
-      </div>
-      <div class="chart-box">
-        <h3>&#128296; 자동화 가능성 분석</h3>
-        <div class="table-wrap" style="border:none; margin-bottom:0;">
-          <table>
-            <thead>
-              <tr><th>템플릿</th><th>비중</th><th>변수</th><th>자동화</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>결제 정보 요청</td>
-                <td class="num">45%</td>
-                <td class="pct">0개</td>
-                <td class="pct"><span class="tag tag-green">가능</span></td>
-              </tr>
-              <tr>
-                <td>구독 취소 확인</td>
-                <td class="num">18%</td>
-                <td class="pct">2개</td>
-                <td class="pct"><span class="tag tag-green">가능</span></td>
-              </tr>
-              <tr>
-                <td>환불 처리 완료</td>
-                <td class="num">10%</td>
-                <td class="pct">0개</td>
-                <td class="pct"><span class="tag tag-green">가능</span></td>
-              </tr>
-              <tr>
-                <td>환불 거절</td>
-                <td class="num">7%</td>
-                <td class="pct">1개</td>
-                <td class="pct"><span class="tag tag-green">가능</span></td>
-              </tr>
-              <tr>
-                <td>계정 삭제 체크리스트</td>
-                <td class="num">3%</td>
-                <td class="pct">0개</td>
-                <td class="pct"><span class="tag tag-green">가능</span></td>
-              </tr>
-              <tr>
-                <td>기타 (커스텀 응답)</td>
-                <td class="num">17%</td>
-                <td class="pct">N/A</td>
-                <td class="pct"><span class="tag tag-red">수동 유지</span></td>
-              </tr>
-              <tr class="highlight-row">
-                <td>총 자동화 가능</td>
-                <td class="num" style="font-size:16px;">83%</td>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <div class="insight-box">
-      <h4>&#128204; 핵심 발견: 계정 미식별 병목</h4>
-      <p>전체 상담원 답변의 <span class="big">45%</span>가 동일한 "결제 정보 요청" 템플릿입니다. 이는 <strong>고객 CS 이메일 &ne; 투믹스 가입 이메일</strong> 문제로 발생하며, 계정 교차 참조 시스템 구축 시 해결 기간을 7~29일에서 <strong>수분</strong>으로 단축 가능합니다.</p>
-    </div>
-  </section>
-
-  <!-- ══════════════ SECTION 4: 스마트 레이어링 — 핵심 가치 ══════════════ -->
-  <section>
-    <div class="section-header">
-      <div class="section-num">4</div>
       <h2>스마트 레이어링 — 티켓 전 자동화 프로세스</h2>
       <span class="desc">티켓 생성 전 AI가 양식 안내 + 정보 확보 → CS 처리 효율 3~4배</span>
     </div>
@@ -1214,7 +1079,7 @@
 
   <!-- ══════════════ FOOTER ══════════════ -->
   <div class="footer">
-    <strong>TOOMICS CS AI 챗봇 운영 분석 리포트</strong><br>
+    <strong>TOOMICS CS AI 챗봇 비용 분석 리포트</strong><br>
     작성자: <strong>유종선 (Chongsun Yu)</strong> &nbsp;|&nbsp; 작성일: 2026-02-22<br>
     데이터 출처: Zendesk 추출 11,621건 (2025.07 ~ 2026.01, 10개 마켓)<br>
     &copy; 2026 Toomics Global. Internal Use Only.
