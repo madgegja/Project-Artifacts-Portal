@@ -197,7 +197,7 @@
       <li><span class="tag tag-info">VOLUME</span> 2주간 총 <strong>829건</strong> 처리. W2 433건 → W3 396건으로 전주 대비 8.5% 감소하며 안정화 추세입니다.</li>
       <li><span class="tag tag-down">IMPROVE</span> 전주(JAN W3) 대비 평균 첫 응답 시간 <strong>-5.7h 개선</strong> (27.8h → 22.1h), 해결 시간 <strong>-8.4h 개선</strong> (70.9h → 62.5h).</li>
       <li><span class="tag tag-info">INSIGHT</span> VIP 결제 후 미적용 이슈 <strong>35건(4.2%)</strong> — IAP-웹 동기화 실패가 구조적으로 존재하며, CS 유입 이외 이탈 고객 포함 시 실제 규모가 더 클 수 있습니다.</li>
-      <li><span class="tag tag-info">GROWTH</span> PT(브라질) 마켓 점유율이 전주 대비 <strong>+1.3%p 상승</strong> (W2 11.2% → W3 13.9%). 유럽권 합산 53.2%로 마켓 다변화가 진행 중입니다.</li>
+      <li><span class="tag tag-info">GROWTH</span> PT(남미) 마켓 점유율이 전주 대비 <strong>+1.3%p 상승</strong> (W2 11.2% → W3 13.9%). 유럽·남미권 합산 53.2%로 마켓 다변화가 진행 중입니다.</li>
       <li><span class="tag tag-warn">WATCH</span> VIP vs Coin 구분 혼란 <strong>8건</strong>, 자동갱신 미인지 <strong>30건</strong> — 과금 구조 UX 개선이 환불 감소에 직결될 수 있습니다.</li>
       <li><span class="tag tag-up">CB</span> 차지백 <strong>150건</strong>(시트 기준 주 평균 75건, 전주 대비 10건 감소). 2월 누적 <strong>189건</strong>(~02.19). <strong>JPY 유입만 증가</strong> 특이. 6M·Coin 소폭 감소.</li>
       <li><span class="tag tag-info">AI PROJECT</span> CS AI Chatbot <strong>Phase 2 구현 완료</strong> — FastAPI 서버 + 5 Core AI Skills + 114/114 테스트 통과. 시뮬레이션 정확도 48%→<strong>100% 예측</strong> (버그 수정 완료). API 크레딧 충전 후 최종 검증 대기.</li>
@@ -262,43 +262,43 @@
               <td><span class="cat-dot" style="background:#0ea5e9"></span>Subscription</td>
               <td>38.7%</td>
               <td>321건</td>
-              <td><span class="cat-badge auto">자동 + 에스컬</span></td>
+              <td>구독 해지·갱신·자동결제 변경</td>
             </tr>
             <tr>
               <td><span class="cat-dot" style="background:#6366f1"></span>Refund</td>
               <td>27.5%</td>
               <td>228건</td>
-              <td><span class="cat-badge partial">부분 자동</span></td>
+              <td>결제 환불 요청·분쟁 처리</td>
             </tr>
             <tr>
               <td><span class="cat-dot" style="background:#f97316"></span>Account</td>
               <td>13.8%</td>
               <td>114건</td>
-              <td><span class="cat-badge partial">부분 자동</span></td>
+              <td>로그인·탈퇴·개인정보 변경</td>
             </tr>
             <tr>
               <td><span class="cat-dot" style="background:#22c55e"></span>Payment</td>
               <td>6.9%</td>
               <td>57건</td>
-              <td><span class="cat-badge partial">부분 자동</span></td>
+              <td>결제 실패·이중결제·수단 변경</td>
             </tr>
             <tr>
               <td><span class="cat-dot" style="background:#eab308"></span>Content</td>
               <td>5.3%</td>
               <td>44건</td>
-              <td><span class="cat-badge manual">전체 에스컬</span></td>
+              <td>작품 열람 오류·번역·노출 문의</td>
             </tr>
             <tr>
               <td><span class="cat-dot" style="background:#ec4899"></span>Technical</td>
               <td>3.7%</td>
               <td>31건</td>
-              <td><span class="cat-badge partial">부분 자동</span></td>
+              <td>앱 오류·접속 장애·기기 호환</td>
             </tr>
             <tr>
               <td><span class="cat-dot" style="background:#8b5cf6"></span>IP/Other</td>
               <td>4.1%</td>
               <td>34건</td>
-              <td><span class="cat-badge manual">전체 에스컬</span></td>
+              <td>저작권 신고·분류 불가 기타</td>
             </tr>
           </tbody>
         </table></div>
@@ -343,7 +343,7 @@
               <td><span class="cat-dot" style="background:#22c55e"></span>PT</td>
               <td>12.5%</td>
               <td>104건</td>
-              <td><span class="cat-badge partial">유럽권</span></td>
+              <td><span class="cat-badge auto">남미권</span></td>
             </tr>
             <tr>
               <td><span class="cat-dot" style="background:#eab308"></span>DE</td>
@@ -489,38 +489,73 @@
   <!-- ════════ AI CHATBOT PROJECT ════════ -->
   <div class="section">
     <div class="section-title"><span class="dot" style="background:#8b5cf6;"></span>AI Chatbot Project — Phase 2 현황</div>
+    <!-- Prototype Highlight -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px;" class="cb-kpi-strip">
+      <div style="background:linear-gradient(135deg,#f5f3ff 0%,#ede9fe 100%); border:2px solid #8b5cf6; border-radius:14px; padding:18px; position:relative; overflow:hidden;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+          <span style="font-size:22px;">🤖</span>
+          <div style="font-size:13px; font-weight:800; color:#5b21b6;">CS AI Chatbot</div>
+          <span style="background:#8b5cf6; color:#fff; padding:2px 8px; border-radius:6px; font-size:10px; font-weight:700;">PROTOTYPE READY</span>
+        </div>
+        <div style="font-size:11px; color:#475569; line-height:1.6;">
+          5 Core AI Skills · 시뮬레이션 <strong style="color:#5b21b6;">100%</strong> 정확도 · 114/114 테스트
+        </div>
+      </div>
+      <div style="background:linear-gradient(135deg,#eff6ff 0%,#dbeafe 100%); border:2px solid #2563eb; border-radius:14px; padding:18px; position:relative; overflow:hidden;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+          <span style="font-size:22px;">📊</span>
+          <div style="font-size:13px; font-weight:800; color:#1e40af;">CS Ticket Dashboard</div>
+          <span style="background:#2563eb; color:#fff; padding:2px 8px; border-radius:6px; font-size:10px; font-weight:700;">PROTOTYPE READY</span>
+        </div>
+        <div style="font-size:11px; color:#475569; line-height:1.6;">
+          실시간 티켓 모니터링 · 마켓별·카테고리별 분석 뷰
+        </div>
+      </div>
+    </div>
+
     <div class="chart-card" style="border-top:3px solid #8b5cf6;">
-      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
-        <h3 style="font-size:16px; margin:0;">CS AI Chatbot — Phase 2 개발 현황</h3>
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+        <h3 style="font-size:15px; margin:0;">L1 / L2 / L3 — 3단계 AI 응대 구조</h3>
         <span style="background:#f3e8ff; color:#6d28d9; padding:3px 10px; border-radius:6px; font-size: 12px; font-weight:700;">Phase 2 완료</span>
         <span style="background:#fef2f2; color:#b91c1c; padding:3px 10px; border-radius:6px; font-size: 12px; font-weight:700;">API 크레딧 블로커</span>
       </div>
 
-      <!-- AI KPI Strip -->
-      <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:16px;" class="cb-kpi-strip">
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
-          <div style="font-size:22px; font-weight:800; color:#8b5cf6;">5</div>
-          <div style="font-size: 12px; color:#64748b;">Core AI Skills</div>
+      <!-- L1/L2/L3 Visual -->
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:14px;" class="cb-kpi-strip">
+        <div style="background:linear-gradient(180deg,#f0fdf4 0%,#dcfce7 100%); border-radius:10px; padding:14px; border-top:3px solid #22c55e; text-align:center;">
+          <div style="font-size:13px; font-weight:800; color:#166534; margin-bottom:2px;">🟢 L3 · Self-Service</div>
+          <div style="font-size:10px; color:#166534; font-weight:600; margin-bottom:6px;">AI가 직접 완결 처리</div>
+          <div style="font-size:10px; color:#475569; line-height:1.6;">구독 해지 · FAQ · 계정 복구<br><strong style="color:#047857;">즉시 응답 · 24/7</strong></div>
         </div>
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
-          <div style="font-size:22px; font-weight:800; color:#22c55e;">114/114</div>
-          <div style="font-size: 12px; color:#64748b;">테스트 통과</div>
+        <div style="background:linear-gradient(180deg,#eff6ff 0%,#dbeafe 100%); border-radius:10px; padding:14px; border-top:3px solid #2563eb; text-align:center;">
+          <div style="font-size:13px; font-weight:800; color:#1e40af; margin-bottom:2px;">🔵 L2 · AI + Agent</div>
+          <div style="font-size:10px; color:#1e40af; font-weight:600; margin-bottom:6px;">AI 초안 → 상담원 검토</div>
+          <div style="font-size:10px; color:#475569; line-height:1.6;">환불 심사 · 다국어 초안 생성<br><strong style="color:#1d4ed8;">응답 시간 50%↓</strong></div>
         </div>
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
-          <div style="font-size:22px; font-weight:800; color:#0ea5e9;">100%</div>
-          <div style="font-size: 12px; color:#64748b;">예측 정확도</div>
-        </div>
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
-          <div style="font-size:22px; font-weight:800; color:#92400e;">9</div>
-          <div style="font-size: 12px; color:#64748b;">운영 문서</div>
-        </div>
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
-          <div style="font-size:22px; font-weight:800; color:#ef4444;">~630<span style="font-size:14px;">/월</span></div>
-          <div style="font-size: 12px; color:#64748b;">자동화 기대 (38%)</div>
+        <div style="background:linear-gradient(180deg,#fef2f2 0%,#fecaca 100%); border-radius:10px; padding:14px; border-top:3px solid #ef4444; text-align:center;">
+          <div style="font-size:13px; font-weight:800; color:#991b1b; margin-bottom:2px;">🔴 L1 · Agent Direct</div>
+          <div style="font-size:10px; color:#991b1b; font-weight:600; margin-bottom:6px;">상담원 직접 전문 응대</div>
+          <div style="font-size:10px; color:#475569; line-height:1.6;">Fraud · 법적 분쟁 · 차지백<br><strong style="color:#b91c1c;">즉시 에스컬 · 전문 집중</strong></div>
         </div>
       </div>
 
-      <!-- Compact Progress -->
+      <!-- Benefits -->
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:14px;" class="cb-kpi-strip">
+        <div style="background:#F8FAFC; border-radius:8px; padding:10px; text-align:center; border-left:3px solid #22c55e;">
+          <div style="font-size:10px; font-weight:700; color:#047857; margin-bottom:2px;">고객 경험</div>
+          <div style="font-size:10px; color:#475569;">L3 대기시간 0 · L2 품질 향상</div>
+        </div>
+        <div style="background:#F8FAFC; border-radius:8px; padding:10px; text-align:center; border-left:3px solid #2563eb;">
+          <div style="font-size:10px; font-weight:700; color:#1d4ed8; margin-bottom:2px;">상담원 경험</div>
+          <div style="font-size:10px; color:#475569;">반복 문의 해방 · 고가치 집중</div>
+        </div>
+        <div style="background:#F8FAFC; border-radius:8px; padding:10px; text-align:center; border-left:3px solid #8b5cf6;">
+          <div style="font-size:10px; font-weight:700; color:#6d28d9; margin-bottom:2px;">운영 효율</div>
+          <div style="font-size:10px; color:#475569;">월 ~630건(38%) · 부담 3~4배↓</div>
+        </div>
+      </div>
+
+      <!-- Compact Phase Progress -->
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:12px;" class="cb-kpi-strip">
         <div style="background:#f0fdf4; border-radius:10px; padding:14px; border-left:3px solid #22c55e;">
           <p style="font-weight:700; color:#047857; font-size:12px; margin-bottom:6px;">Phase 1-2 (현재)</p>
