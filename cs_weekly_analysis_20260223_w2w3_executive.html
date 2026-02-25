@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="유종선">
-<meta name="description" content="투믹스 글로벌 CS 주간 분석 Executive Summary 2026년 2월 2~3주차">
-<title>TOOMICS CS Executive Summary | 2026년 2월 2~3주차 (02.07 ~ 02.20)</title>
+<meta name="description" content="투믹스 글로벌 BizOps팀 주간 보고서 2026년 2월 2~3주차 — CS·결제·차지백·AI 프로젝트 통합">
+<title>TOOMICS BizOps팀 주간 보고서 | 2026년 2월 2~3주차 (02.07 ~ 02.20)</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
   html { scroll-behavior: smooth; }
@@ -93,7 +93,7 @@
   .trend-flat { color:#64748B; font-weight:600; font-size:12px; }
   .voc-group { font-size:14px; font-weight:800; color:#1E293B; margin:20px 0 8px; padding:8px 14px; background:linear-gradient(90deg,#DBEAFE 0%,#F8FAFC 100%); border-radius:8px; border-left:4px solid #0ea5e9; }
   .voc-group:first-of-type { margin-top:0; }
-  .voc-table { width:100%; border-collapse:collapse; font-size:13px; margin-bottom:16px; }
+  .voc-table { width:100%; border-collapse:collapse; font-size:13px; margin-bottom:16px; table-layout:fixed; }
   .voc-table th { text-align:left; padding:8px 10px; border-bottom:2px solid #CBD5E1; color:#64748B; font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; }
   .voc-table td { padding:8px 10px; border-bottom:1px solid #E2E8F0; vertical-align:top; }
   .voc-table tr:hover td { background:#F1F5F9; }
@@ -167,9 +167,9 @@
 
   <!-- ════════ HERO ════════ -->
   <div class="hero">
-    <div class="hero-badge">EXECUTIVE SUMMARY</div>
-    <h1>CS 주간 분석 보고서 — 2월 2~3주차</h1>
-    <p class="subtitle">2026.02.07 ~ 02.20 | Zendesk 829건 + Chargeback 150건</p>
+    <div class="hero-badge">BIZOPS WEEKLY REPORT</div>
+    <h1>BizOps팀 주간 보고서 — 2월 2~3주차</h1>
+    <p class="subtitle">2026.02.07 ~ 02.20 | CS 829건 + Chargeback 150건 + AI Chatbot Phase 2</p>
     <div class="hero-meta">
       <div class="hero-meta-item">
         <span class="label">분석 기간</span>
@@ -192,7 +192,7 @@
 
   <!-- ════════ EXECUTIVE SUMMARY ════════ -->
   <div class="exec-summary">
-    <h2>Executive Summary</h2>
+    <h2>BizOps팀 Executive Summary</h2>
     <ul>
       <li><span class="tag tag-info">VOLUME</span> 2주간 총 <strong>829건</strong> 처리. W2 433건 → W3 396건으로 전주 대비 8.5% 감소하며 안정화 추세입니다.</li>
       <li><span class="tag tag-down">IMPROVE</span> 전주(JAN W3) 대비 평균 첫 응답 시간 <strong>-5.7h 개선</strong> (27.8h → 22.1h), 해결 시간 <strong>-8.4h 개선</strong> (70.9h → 62.5h).</li>
@@ -486,6 +486,77 @@
     </div>
   </div>
 
+  <!-- ════════ AI CHATBOT PROJECT ════════ -->
+  <div class="section">
+    <div class="section-title"><span class="dot" style="background:#8b5cf6;"></span>AI Chatbot Project — Phase 2 현황</div>
+    <div class="chart-card" style="border-top:3px solid #8b5cf6;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+        <h3 style="font-size:16px; margin:0;">CS AI Chatbot — Phase 2 개발 현황</h3>
+        <span style="background:#f3e8ff; color:#6d28d9; padding:3px 10px; border-radius:6px; font-size: 12px; font-weight:700;">Phase 2 완료</span>
+        <span style="background:#fef2f2; color:#b91c1c; padding:3px 10px; border-radius:6px; font-size: 12px; font-weight:700;">API 크레딧 블로커</span>
+      </div>
+
+      <!-- AI KPI Strip -->
+      <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:16px;" class="cb-kpi-strip">
+        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:#8b5cf6;">5</div>
+          <div style="font-size: 12px; color:#64748b;">Core AI Skills</div>
+        </div>
+        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:#22c55e;">114/114</div>
+          <div style="font-size: 12px; color:#64748b;">테스트 통과</div>
+        </div>
+        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:#0ea5e9;">100%</div>
+          <div style="font-size: 12px; color:#64748b;">예측 정확도</div>
+        </div>
+        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:#92400e;">9</div>
+          <div style="font-size: 12px; color:#64748b;">운영 문서</div>
+        </div>
+        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:#ef4444;">~630<span style="font-size:14px;">/월</span></div>
+          <div style="font-size: 12px; color:#64748b;">자동화 기대 (38%)</div>
+        </div>
+      </div>
+
+      <!-- Compact Progress -->
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:12px;" class="cb-kpi-strip">
+        <div style="background:#f0fdf4; border-radius:10px; padding:14px; border-left:3px solid #22c55e;">
+          <p style="font-weight:700; color:#047857; font-size:12px; margin-bottom:6px;">Phase 1-2 (현재)</p>
+          <div style="font-size: 11px; color: #475569; line-height:1.7;">
+            Intent 분류 7카테고리<br>
+            Self-Service 자동 응답<br>
+            Fraud Detection 9 Red Flags<br>
+            5개 마켓 (EN/FR/ES/PT/DE)
+          </div>
+        </div>
+        <div style="background:#fffbeb; border-radius:10px; padding:14px; border-left:3px solid #f59e0b;">
+          <p style="font-weight:700; color:#92400e; font-size:12px; margin-bottom:6px;">Phase 3 (3~5개월)</p>
+          <div style="font-size: 11px; color: #475569; line-height:1.7;">
+            고위험 Fraud ML 모델<br>
+            5개 마켓 추가<br>
+            Zendesk Webhook 실연동<br>
+            Docker 컨테이너 배포
+          </div>
+        </div>
+        <div style="background:#F8FAFC; border-radius:10px; padding:14px; border-left:3px solid #94a3b8;">
+          <p style="font-weight:700; color:#64748b; font-size:12px; margin-bottom:6px;">Phase 4-5 (H2 2026)</p>
+          <div style="font-size: 11px; color: #475569; line-height:1.7;">
+            Production Ops 협업<br>
+            모니터링 (Sentry/DataDog)<br>
+            부하 테스트 100명 동시<br>
+            자동화율 70%+ 목표
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:10px 14px; background:#F8FAFC; border-radius:8px; border-left:3px solid #8b5cf6; font-size: 12px; color: #64748B; line-height:1.7;">
+        <strong style="color:#8b5cf6;">Next Step:</strong> Anthropic API 크레딧 충전 → 23개 시나리오 최종 시뮬레이션 재실행 → Phase 3 진입
+      </div>
+    </div>
+  </div>
+
   <!-- ════════ CUSTOMER VOICE (Compact Table) ════════ -->
   <div class="section">
     <div class="section-title"><span class="dot"></span>Customer Voice — 주요 이슈 요약</div>
@@ -493,6 +564,7 @@
 
       <div class="voc-group">🔧 기술/시스템 이슈</div>
       <table class="voc-table">
+        <colgroup><col style="width:10%"><col style="width:40%"><col style="width:15%"><col style="width:10%"><col style="width:25%"></colgroup>
         <thead><tr><th>심각도</th><th>이슈</th><th>마켓</th><th>건수</th><th>권장 조치</th></tr></thead>
         <tbody>
           <tr>
@@ -535,6 +607,7 @@
 
       <div class="voc-group">📚 콘텐츠 피드백</div>
       <table class="voc-table">
+        <colgroup><col style="width:10%"><col style="width:40%"><col style="width:15%"><col style="width:10%"><col style="width:25%"></colgroup>
         <thead><tr><th>심각도</th><th>이슈</th><th>마켓</th><th>건수</th><th>권장 조치</th></tr></thead>
         <tbody>
           <tr>
@@ -556,6 +629,7 @@
 
       <div class="voc-group">⚠️ 정책 오해 & UX 혼란</div>
       <table class="voc-table">
+        <colgroup><col style="width:10%"><col style="width:40%"><col style="width:15%"><col style="width:10%"><col style="width:25%"></colgroup>
         <thead><tr><th>심각도</th><th>이슈</th><th>마켓</th><th>건수</th><th>권장 조치</th></tr></thead>
         <tbody>
           <tr>
@@ -577,6 +651,7 @@
 
       <div class="voc-group">🌍 마켓별 특이 동향</div>
       <table class="voc-table">
+        <colgroup><col style="width:10%"><col style="width:40%"><col style="width:15%"><col style="width:10%"><col style="width:25%"></colgroup>
         <thead><tr><th>심각도</th><th>이슈</th><th>마켓</th><th>건수</th><th>권장 조치</th></tr></thead>
         <tbody>
           <tr>
@@ -676,8 +751,8 @@
 
   <!-- ════════ FOOTER ════════ -->
   <div class="footer">
-    <p><strong>EXECUTIVE SUMMARY</strong> — TOOMICS Global BizOps CS Weekly Analysis | 작성자: 유종선 | 작성일: 2026-02-23</p>
-    <p>데이터 소스: Zendesk Solved Tickets 829건 (KST 02.09~02.20) + Chargeback 150건(시트) + 팀원 보고(김지호·이동원·왕시베이·박선주)</p>
+    <p><strong>BIZOPS WEEKLY REPORT</strong> — TOOMICS Global BizOps팀 주간 보고서 | 작성자: 유종선 | 작성일: 2026-02-23</p>
+    <p>데이터 소스: Zendesk CS 829건 + Chargeback 150건(시트) + AI Chatbot Phase 2 현황 + 팀원 보고(김지호·이동원·왕시베이·박선주)</p>
     <p style="font-size:11px; margin-top:4px; color:#94A3B8;">전체 분석 보고서: cs_weekly_analysis_20260223_w2w3.html 참조</p>
     <p class="no-print" style="margin-top:8px;">Ctrl+P → PDF 저장 가능</p>
   </div>
