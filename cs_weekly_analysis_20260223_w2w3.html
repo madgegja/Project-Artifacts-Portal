@@ -449,7 +449,7 @@
       <li><span class="tag tag-down">IMPROVE</span> 전주(JAN W3) 대비 평균 첫 응답 시간 <strong>-5.7h 개선</strong> (27.8h → 22.1h), 해결 시간 <strong>-8.4h 개선</strong> (70.9h → 62.5h).</li>
       <li><span class="tag tag-info">INSIGHT</span> VIP 결제 후 미적용 이슈 <strong>35건(4.2%)</strong> — IAP-웹 동기화 실패가 구조적으로 존재하며, CS 유입 이외 이탈 고객 포함 시 실제 규모가 더 클 수 있습니다.</li>
       <li><span class="tag tag-info">GROWTH</span> PT(남미) 마켓 점유율이 전주 대비 <strong>+1.3%p 상승</strong> (W2 11.2% → W3 13.9%). 유럽·남미권 합산 53.2%로 마켓 다변화가 진행 중입니다.</li>
-      <li><span class="tag tag-warn">WATCH</span> VIP vs Coin 구분 혼란 <strong>8건</strong>, 자동갱신 미인지 <strong>30건</strong> — 과금 구조 UX 개선이 환불 감소에 직결될 수 있습니다.</li>
+      <li><span class="tag tag-warn">WATCH</span> VIP vs Coin 구분 혼란 <strong>8건</strong>, 자동갱신 미인지 <strong>30건</strong> — 과금 정책 이해 부족으로 인한 환불 클레임이 지속 발생 중입니다.</li>
       <li><span class="tag tag-up">CB</span> 차지백 <strong>150건</strong>(시트 기준 주 평균 75건, 전주 대비 10건 감소). 2월 누적 <strong>189건</strong>(~02.19). <strong>JPY 유입만 증가</strong> 특이. 6M·Coin 소폭 감소.</li>
       <li><span class="tag tag-info">AI PROJECT</span> CS AI Chatbot <strong>Phase 2 구현 완료</strong> — FastAPI 서버 + 5 Core AI Skills + 114/114 테스트 통과. 시뮬레이션 정확도 48%→<strong>100% 예측</strong> (버그 수정 완료). API 크레딧 충전 후 최종 검증 대기.</li>
     </ul>
@@ -1032,7 +1032,7 @@
           <span class="translation">→ 작년 11~12월에 취소했는데 시스템이 자동으로 회원 상태를 복구하고 자동갱신했습니다 (CN)</span>
         </div>
         <div class="voice-impact"><strong>비즈니스 임팩트:</strong> CN 마켓 집중. 취소 후 재결제 시스템 이슈가 실재한다면 결제 시스템 버그이며, 단순 미인지라면 구독 갱신 전 사전 알림 부재가 원인.</div>
-        <span class="voice-action">→ 구독 갱신 전 사전 알림(7일/3일 전) 도입 검토</span>
+        <span class="voice-action">→ 자동갱신 미인지로 인한 환불 클레임 지속 발생 (CN 마켓 집중)</span>
       </div>
       <div class="voice-card severity-high">
         <div class="voice-header">
@@ -1067,10 +1067,10 @@
           <span class="voice-title">구독제로 무삭제(Uncensored) 작품 감상 불가 문의</span>
         </div>
         <div class="voice-quote">박선주 보고: VIP 구독으로 무검열 콘텐츠 이용 불가 문의 5건 (#120036, #119856, #121126, #121215, #121448)
-          <span class="translation">→ VIP/Coin 구분 혼란의 연장선. 구독 범위 안내 부재가 환불 사유로 직결</span>
+          <span class="translation">→ VIP/Coin 구분 혼란의 연장선. 구독 범위 이해 부족으로 인한 환불 클레임 지속</span>
         </div>
-        <div class="voice-impact"><strong>비즈니스 임팩트:</strong> VIP 구독 범위에 대한 사전 안내 부재로 결제 후 불만 반복. VIP vs Coin 8건과 합산 시 과금 구조 혼란 총 <strong>13건+</strong>.</div>
-        <span class="voice-action">→ 가입 전 VIP 포함/미포함 콘텐츠 명시 강화</span>
+        <div class="voice-impact"><strong>비즈니스 임팩트:</strong> VIP 구독 범위 이해 부족으로 결제 후 환불 클레임 반복. VIP vs Coin 8건과 합산 시 과금 구조 혼란 총 <strong>13건+</strong>.</div>
+        <span class="voice-action">→ VIP 포함/미포함 콘텐츠 구분 혼란으로 인한 클레임 패턴 지속 확인</span>
       </div>
       <div class="voice-card severity-medium">
         <div class="voice-header">
@@ -1369,8 +1369,8 @@
         <p>VIP 결제 후 미적용 <span class="highlight">35건(4.2%)</span>. App → Web 간 구독 상태 동기화 실패가 전 마켓에서 발생. CS 유입 건 외 이탈 고객까지 감안 시 사업 임팩트 큼.</p>
       </div>
       <div class="insight-card yellow">
-        <h4>과금 구조 UX 혼란 → 환불 직결</h4>
-        <p>VIP vs Coin 구분 혼란 <span class="highlight">8건</span>, 자동갱신 미인지 <span class="highlight">30건</span>, 3+3 가격 혼란 <span class="highlight">4건</span>. 가입 전 과금 구조 안내 강화 시 환불 건수 감소 기대.</p>
+        <h4>과금 정책 이해 부족 → 환불 클레임 지속</h4>
+        <p>VIP vs Coin 구분 혼란 <span class="highlight">8건</span>, 자동갱신 미인지 <span class="highlight">30건</span>, 3+3 가격 혼란 <span class="highlight">4건</span>. 과금 정책 이해 부족으로 인한 환불 클레임이 지속 발생 중입니다.</p>
       </div>
       <div class="insight-card blue">
         <h4>PT 마켓 급성장 + 법적 리스크</h4>
@@ -1450,16 +1450,16 @@
       <div class="action-item">
         <div class="action-priority priority-mid">P2</div>
         <div class="action-content">
-          <div class="action-title">VIP vs Coin 구분 가입 페이지/온보딩 UX 개선</div>
-          <div class="action-desc">구독 범위 vs 코인 전용 콘텐츠 차이가 가입 전 전달 안 됨 — 환불 사유의 직접 원인 (8건+)</div>
+          <div class="action-title">VIP vs Coin 구분 혼란 기반 환불 클레임 현황</div>
+          <div class="action-desc">구독 범위 vs 코인 전용 콘텐츠 차이 이해 부족으로 인한 환불 클레임 8건+ 지속 발생</div>
           <div class="action-owner">담당: 프로덕트팀 / 기한: 2주 내</div>
         </div>
       </div>
       <div class="action-item">
         <div class="action-priority priority-mid">P2</div>
         <div class="action-content">
-          <div class="action-title">구독 갱신 전 사전 알림(7일/3일 전) 도입 검토</div>
-          <div class="action-desc">자동갱신 미인지/취소 후 재결제 클레임 30건. CN 마켓 집중. 사전 알림으로 클레임 예방</div>
+          <div class="action-title">자동갱신 미인지 기반 환불 클레임 현황</div>
+          <div class="action-desc">자동갱신 미인지/취소 후 재결제 클레임 30건. CN 마켓 집중. 자동갱신 정책 이해 부족으로 인한 클레임 패턴 지속</div>
           <div class="action-owner">담당: 프로덕트팀 · 결제팀 / 기한: 월말</div>
         </div>
       </div>
