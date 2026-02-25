@@ -142,6 +142,19 @@
   .footer { text-align:center; padding:32px 24px 16px; font-size:12px; color:#64748B; }
   .table-responsive { overflow-x:auto; -webkit-overflow-scrolling:touch; margin-bottom:1em; }
 
+  .demo-link {
+    margin-left:auto; display:inline-flex; align-items:center; gap:4px;
+    background:linear-gradient(135deg,#7c3aed 0%,#6d28d9 100%); color:#fff;
+    font-size:11px; font-weight:700; text-decoration:none;
+    padding:4px 14px; border-radius:20px;
+    transition:transform 0.2s, box-shadow 0.2s;
+    white-space:nowrap; flex-shrink:0;
+  }
+  .demo-link:hover {
+    transform:scale(1.06);
+    box-shadow:0 4px 14px rgba(124,58,237,0.35);
+  }
+
   @media (max-width: 900px) {
     .kpi-strip { grid-template-columns: repeat(3, 1fr); }
     .chart-grid-2 { grid-template-columns: 1fr; }
@@ -508,6 +521,7 @@
           <span style="font-size:22px;">🤖</span>
           <div style="font-size:13px; font-weight:800; color:#5b21b6;">CS AI Chatbot</div>
           <span style="background:#ecfdf5; color:#047857; padding:3px 10px; border-radius:20px; font-size:10px; font-weight:700;">PROTOTYPE READY</span>
+          <a href="https://bizops.duckdns.org/chat/demo" target="_blank" rel="noopener" class="demo-link">💬 Live Demo →</a>
         </div>
         <div style="font-size:11px; color:var(--text-secondary); line-height:1.6;">
           5 Core AI Skills · 시뮬레이션 <strong style="color:#5b21b6;">100%</strong> 정확도 · 114/114 테스트
@@ -518,6 +532,7 @@
           <span style="font-size:22px;">📊</span>
           <div style="font-size:13px; font-weight:800; color:#5b21b6;">CS Ticket Dashboard</div>
           <span style="background:#f3e8ff; color:#6d28d9; padding:3px 10px; border-radius:20px; font-size:10px; font-weight:700;">PROTOTYPE READY</span>
+          <a href="https://bizops.duckdns.org/dashboard/" target="_blank" rel="noopener" class="demo-link">📊 Open →</a>
         </div>
         <div style="font-size:11px; color:var(--text-secondary); line-height:1.6;">
           실시간 티켓 모니터링 · 마켓별·카테고리별 분석 뷰
