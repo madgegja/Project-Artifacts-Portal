@@ -122,6 +122,61 @@
   .chart-card .chart-desc { font-size: 12px; color: #64748B; margin-bottom: 16px; }
   .chart-wrap { position: relative; width: 100%; }
 
+  /* ── Category Layout (donut + table side by side) ── */
+  .category-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+  .category-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .category-table th {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 2px solid #CBD5E1;
+    color: #64748B;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .category-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #E2E8F0;
+  }
+  .category-table tr:hover td {
+    background: #F1F5F9;
+  }
+  .cat-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .cat-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .cat-badge.auto { background: rgba(5,150,105,0.12); color: #047857; }
+  .cat-badge.partial { background: rgba(180,83,9,0.10); color: #b45309; }
+  .cat-badge.manual { background: rgba(185,28,28,0.10); color: #b91c1c; }
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .table-wrap table { margin-bottom: 0; }
+
   /* ── Bar Legend Table (replaces doughnut) ── */
   .bar-legend { width: 100%; }
   .bar-legend-item { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #E2E8F0; }
@@ -258,6 +313,7 @@
   @media (max-width: 900px) {
     .kpi-strip { grid-template-columns: repeat(3, 1fr); }
     .chart-grid-2 { grid-template-columns: 1fr; }
+    .category-layout { grid-template-columns: 1fr; }
     .insight-grid { grid-template-columns: 1fr; }
     .hero { padding: 32px 24px; }
     .hero h1 { font-size: 24px; }
@@ -410,16 +466,134 @@
   <!-- ════════ CHARTS: Category & Market (Pie) ════════ -->
   <div class="section">
     <div class="section-title"><span class="dot"></span>카테고리 & 마켓 분포</div>
-    <div class="chart-grid-2">
+
+    <!-- 카테고리별 -->
+    <h3 style="font-size:14px;font-weight:700;color:#1E293B;margin-bottom:4px;">카테고리별 티켓 비중</h3>
+    <p style="font-size:12px;color:#64748B;margin-bottom:16px;">Subscription + Refund + Account = 80.0%</p>
+    <div class="category-layout" style="margin-bottom:28px;">
       <div class="chart-card">
-        <h3>카테고리별 티켓 비중</h3>
-        <p class="chart-desc">Subscription + Refund + Account = 80.0%</p>
-        <div class="chart-wrap"><canvas id="chartCategory"></canvas></div>
+        <div class="chart-container"><canvas id="chartCategory"></canvas></div>
       </div>
       <div class="chart-card">
-        <h3>마켓(언어)별 티켓 비중</h3>
-        <p class="chart-desc">EN 35.2% 최대, 유럽권 합산 53.2%</p>
-        <div class="chart-wrap"><canvas id="chartMarket"></canvas></div>
+        <div class="table-wrap"><table class="category-table">
+          <thead>
+            <tr>
+              <th>카테고리</th>
+              <th>비중</th>
+              <th>건수</th>
+              <th>핵심 설명</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="cat-dot" style="background:#0ea5e9"></span>Subscription</td>
+              <td>38.7%</td>
+              <td>321건</td>
+              <td><span class="cat-badge auto">자동 + 에스컬</span></td>
+            </tr>
+            <tr>
+              <td><span class="cat-dot" style="background:#6366f1"></span>Refund</td>
+              <td>27.5%</td>
+              <td>228건</td>
+              <td><span class="cat-badge partial">부분 자동</span></td>
+            </tr>
+            <tr>
+              <td><span class="cat-dot" style="background:#f97316"></span>Account</td>
+              <td>13.8%</td>
+              <td>114건</td>
+              <td><span class="cat-badge partial">부분 자동</span></td>
+            </tr>
+            <tr>
+              <td><span class="cat-dot" style="background:#22c55e"></span>Payment</td>
+              <td>6.9%</td>
+              <td>57건</td>
+              <td><span class="cat-badge partial">부분 자동</span></td>
+            </tr>
+            <tr>
+              <td><span class="cat-dot" style="background:#eab308"></span>Content</td>
+              <td>5.3%</td>
+              <td>44건</td>
+              <td><span class="cat-badge manual">전체 에스컬</span></td>
+            </tr>
+            <tr>
+              <td><span class="cat-dot" style="background:#ec4899"></span>Technical</td>
+              <td>3.7%</td>
+              <td>31건</td>
+              <td><span class="cat-badge partial">부분 자동</span></td>
+            </tr>
+            <tr>
+              <td><span class="cat-dot" style="background:#8b5cf6"></span>IP/Other</td>
+              <td>4.1%</td>
+              <td>34건</td>
+              <td><span class="cat-badge manual">전체 에스컬</span></td>
+            </tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+
+    <!-- 마켓(언어)별 -->
+    <h3 style="font-size:14px;font-weight:700;color:#1E293B;margin-bottom:4px;">마켓(언어)별 티켓 비중</h3>
+    <p style="font-size:12px;color:#64748B;margin-bottom:16px;">EN 35.2% 최대, 유럽권 합산 53.2%</p>
+    <div class="category-layout">
+      <div class="chart-card">
+        <div class="chart-container"><canvas id="chartMarket"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="table-wrap"><table class="category-table">
+          <thead>
+            <tr>
+              <th>마켓</th>
+              <th>비중</th>
+              <th>건수</th>
+              <th>핵심 설명</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="cat-dot" style="background:#0ea5e9"></span>EN</td>
+              <td>35.2%</td>
+              <td>292건</td>
+              <td><span class="cat-badge manual">최다 마켓</span></td>
+            </tr>
+            <tr>
+              <td><span class="cat-dot" style="background:#6366f1"></span>FR</td>
+              <td>16.0%</td>
+              <td>133건</td>
+              <td><span class="cat-badge partial">유럽권</span></td>
+            </tr>
+            <tr>
+              <td><span class="cat-dot" style="background:#f97316"></span>ES</td>
+              <td>12.9%</td>
+              <td>107건</td>
+              <td><span class="cat-badge partial">유럽권</span></td>
+            </tr>
+            <tr>
+              <td><span class="cat-dot" style="background:#22c55e"></span>PT</td>
+              <td>12.5%</td>
+              <td>104건</td>
+              <td><span class="cat-badge partial">유럽권</span></td>
+            </tr>
+            <tr>
+              <td><span class="cat-dot" style="background:#eab308"></span>DE</td>
+              <td>8.1%</td>
+              <td>67건</td>
+              <td><span class="cat-badge partial">유럽권</span></td>
+            </tr>
+            <tr>
+              <td><span class="cat-dot" style="background:#ec4899"></span>TH</td>
+              <td>5.2%</td>
+              <td>43건</td>
+              <td><span class="cat-badge auto">아시아</span></td>
+            </tr>
+            <tr>
+              <td><span class="cat-dot" style="background:#8b5cf6"></span>IT/JP/CN</td>
+              <td>10.0%</td>
+              <td>83건</td>
+              <td><span class="cat-badge auto">기타 합산</span></td>
+            </tr>
+          </tbody>
+        </table></div>
       </div>
     </div>
   </div>
@@ -1233,20 +1407,20 @@ Chart.defaults.color = '#94a3b8';
 new Chart(document.getElementById('chartCategory'), {
   type: 'doughnut',
   data: {
-    labels: ['Subscription 321건 (38.7%)','Refund 228건 (27.5%)','Account 114건 (13.8%)','Payment 57건 (6.9%)','Content 44건 (5.3%)','Technical 31건 (3.7%)','IP/Other 34건 (4.1%)'],
+    labels: ['Subscription','Refund','Account','Payment','Content','Technical','IP/Other'],
     datasets: [{ data: [321,228,114,57,44,31,34], backgroundColor: ['#0ea5e9','#6366f1','#f97316','#22c55e','#eab308','#ec4899','#8b5cf6'], borderWidth: 0 }]
   },
-  options: { responsive:true, maintainAspectRatio:true, aspectRatio:1.2, cutout:'60%', plugins:{ legend:{ position:'bottom', labels:{ padding:12, color:'#475569', font:{size:13, weight:'600'}, boxWidth:14, usePointStyle:true, pointStyle:'circle' } } } }
+  options: { responsive:true, maintainAspectRatio:true, aspectRatio:1, cutout:'60%', plugins:{ legend:{ display:false } } }
 });
 
 // ── Market Pie ──
 new Chart(document.getElementById('chartMarket'), {
   type: 'doughnut',
   data: {
-    labels: ['🇬🇧 EN 292건 (35.2%)','🇫🇷 FR 133건 (16.0%)','🇪🇸 ES 107건 (12.9%)','🇧🇷 PT 104건 (12.5%)','🇩🇪 DE 67건 (8.1%)','🇹🇭 TH 43건 (5.2%)','🇮🇹🇯🇵🇨🇳 83건 (10.0%)'],
+    labels: ['EN','FR','ES','PT','DE','TH','IT/JP/CN'],
     datasets: [{ data: [292,133,107,104,67,43,83], backgroundColor: ['#0ea5e9','#6366f1','#f97316','#22c55e','#eab308','#ec4899','#8b5cf6'], borderWidth: 0 }]
   },
-  options: { responsive:true, maintainAspectRatio:true, aspectRatio:1.2, cutout:'60%', plugins:{ legend:{ position:'bottom', labels:{ padding:12, color:'#475569', font:{size:13, weight:'600'}, boxWidth:14, usePointStyle:true, pointStyle:'circle' } } } }
+  options: { responsive:true, maintainAspectRatio:true, aspectRatio:1, cutout:'60%', plugins:{ legend:{ display:false } } }
 });
 
 // ── Weekly Trend (4 weeks) ──
