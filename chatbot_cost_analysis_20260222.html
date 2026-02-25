@@ -6,6 +6,31 @@
 <title>TOOMICS CS AI 챗봇 비용 분석 | 2026-02-22</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
+  :root {
+    --max-w: 960px;
+    --max-w-wide: 1280px;
+    --radius: 12px;
+    --gap: 16px;
+    --bg-base: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --bg-muted: #F1F5F9;
+    --text-primary: #1E293B;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --border: #E2E8F0;
+    --accent-brand: #2563EB;
+    --accent-info: #0EA5E9;
+    --accent-success: #10B981;
+    --accent-warn: #F59E0B;
+    --accent-danger: #EF4444;
+    --accent-purple: #7C3AED;
+    --font-base: 14px;
+    --font-sm: 12px;
+    --font-lg: 18px;
+    --font-xl: 28px;
+    --line-height: 1.7;
+    --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
+  }
   html { scroll-behavior: smooth; }
   @page { size: A3 portrait; margin: 10mm; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -651,36 +676,36 @@
     <h1>TOOMICS CS AI 챗봇 비용 분석</h1>
     <p class="subtitle">실제 CS 데이터 기반 AI 챗봇 도입 비용 및 효과 분석</p>
     <div class="meta">
-      <span>&#128202; 데이터: 11,621건 (7개월 &times; 10개 마켓)</span>
-      <span>&#128197; 분석 기간: 2025.07 ~ 2026.01</span>
-      <span>&#9997;&#65039; 작성: 유종선 (Chongsun Yu)</span>
-      <span>&#128198; 2026-02-22</span>
+      <span>📊 데이터: 11,621건 (7개월 &times; 10개 마켓)</span>
+      <span>📅 분석 기간: 2025.07 ~ 2026.01</span>
+      <span>✍️ 작성: 유종선 (Chongsun Yu)</span>
+      <span>📆 2026-02-22</span>
     </div>
   </header>
 
   <!-- ══════════════ KPI CARDS ══════════════ -->
   <div class="kpi-grid">
     <div class="kpi-card">
-      <div class="kpi-icon">&#128233;</div>
+      <div class="kpi-icon">📩</div>
       <div class="kpi-value">963건/월</div>
       <div class="kpi-label">월 처리 대상</div>
       <div class="kpi-sub">비이메일 채널 (Web 47% + API 11%)</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-icon">&#9889;</div>
+      <div class="kpi-icon">⚡</div>
       <div class="kpi-value">&lt;3초</div>
       <div class="kpi-label">AI 응답 속도</div>
       <div class="kpi-sub">기존 7~29일 &rarr; 즉시 안내</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-icon">&#129302;</div>
+      <div class="kpi-icon">🤖</div>
       <div class="kpi-value">38%</div>
       <div class="kpi-label">AI 자동 처리율</div>
       <div class="kpi-sub">~366건/월 L3 셀프서비스</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-icon">&#128200;</div>
-      <div class="kpi-value">~&#8361;260K</div>
+      <div class="kpi-icon">📈</div>
+      <div class="kpi-value">~₩260K</div>
       <div class="kpi-label">AI 월 운영비</div>
       <div class="kpi-sub">Pro Max + API 토큰 + 서버</div>
     </div>
@@ -696,7 +721,7 @@
 
     <!-- Channel Split -->
     <div class="channel-box">
-      <h4>&#128233; 접수 채널 분석 (실제 데이터 기반)</h4>
+      <h4>📩 접수 채널 분석 (실제 데이터 기반)</h4>
       <div style="display:flex; gap:24px; flex-wrap:wrap; margin-bottom:10px;">
         <div style="font-size:13px; color:#475569;">
           <strong>전체 월평균:</strong> 1,662건 &nbsp;|&nbsp;
@@ -715,7 +740,7 @@
         <span><span class="dot" style="background:#0ea5e9;"></span> <strong>Web+API 963건/월</strong> &rarr; <strong style="color:#0369a1;">AI 챗봇 대상</strong></span>
       </div>
       <div style="font-size: 12px; color: #64748B; margin-top:10px;">
-        &#128204; API 토큰 비용은 챗봇이 실제 처리하는 비이메일 <strong style="color:#64748B;">963건/월</strong> 기준으로만 산출합니다.
+        📌 API 토큰 비용은 챗봇이 실제 처리하는 비이메일 <strong style="color:#64748B;">963건/월</strong> 기준으로만 산출합니다.
       </div>
     </div>
 
@@ -727,7 +752,7 @@
         <div style="position:absolute;top:-12px;left:20px;background:#F8FAFC;padding:0 12px;">
           <span style="background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;padding:4px 14px;border-radius:12px;font-size:12px;font-weight:700;">시나리오 A</span>
         </div>
-        <h3 style="margin-top:8px;">&#128640; Claude API 종량제 + Max $100</h3>
+        <h3 style="margin-top:8px;">🚀 Claude API 종량제 + Max $100</h3>
         <p style="font-size:12px;color:#64748B;margin-bottom:12px;">API 토큰 과금 + Claude Max $100 구독 병행</p>
         <div class="table-wrap" style="border:none; margin-bottom:0;">
           <table>
@@ -737,23 +762,23 @@
             <tbody>
               <tr style="background:rgba(139,92,246,0.06);">
                 <td><strong>Claude Max 구독</strong></td>
-                <td class="num"><strong style="color:#6d28d9;">&#8361;140,000</strong></td>
+                <td class="num"><strong style="color:#6d28d9;">₩140,000</strong></td>
                 <td style="color:#64748B;font-size:12px;">$100/월 정액 (개발·테스트·프롬프트 튜닝용)</td>
               </tr>
-              <tr><td>Claude API 토큰 (분류)</td><td class="num">~&#8361;57,000</td><td style="color:#64748B;font-size:12px;">963건 &times; &#8361;59/건</td></tr>
-              <tr><td>Claude API 토큰 (L2 Draft)</td><td class="num">~&#8361;14,000</td><td style="color:#64748B;font-size:12px;">472건 &times; &#8361;29 추가</td></tr>
-              <tr><td>클라우드 서버 (Linux)</td><td class="num">&#8361;42,000</td><td style="color:#64748B;font-size:12px;">$30/월 (VPS)</td></tr>
-              <tr><td>ChromaDB / RAG</td><td class="num">&#8361;0</td><td style="color:#64748B;font-size:12px;">로컬 벡터 DB (무료)</td></tr>
+              <tr><td>Claude API 토큰 (분류)</td><td class="num">~₩57,000</td><td style="color:#64748B;font-size:12px;">963건 &times; ₩59/건</td></tr>
+              <tr><td>Claude API 토큰 (L2 Draft)</td><td class="num">~₩14,000</td><td style="color:#64748B;font-size:12px;">472건 &times; ₩29 추가</td></tr>
+              <tr><td>클라우드 서버 (Linux)</td><td class="num">₩42,000</td><td style="color:#64748B;font-size:12px;">$30/월 (VPS)</td></tr>
+              <tr><td>ChromaDB / RAG</td><td class="num">₩0</td><td style="color:#64748B;font-size:12px;">로컬 벡터 DB (무료)</td></tr>
               <tr class="highlight-row">
                 <td><strong>합계</strong></td>
-                <td class="num"><strong style="color:#6d28d9;">~&#8361;253,000/월</strong></td>
+                <td class="num"><strong style="color:#6d28d9;">~₩253,000/월</strong></td>
                 <td style="font-size:12px;">~$181</td>
               </tr>
             </tbody>
           </table>
         </div>
         <div style="margin-top:12px;padding:10px 14px;background:rgba(139,92,246,0.06);border-radius:8px;font-size:12px;color:#475569;line-height:1.7;">
-          <strong style="color:#6d28d9;">&#9654; 특징:</strong> 건당 비용이 명확하고 사용량 기반 과금. Max $100 구독은 프롬프트 개발·테스트·분석 등 내부 업무용으로 활용. 트래픽 증가 시 API 비용이 비례 상승.
+          <strong style="color:#6d28d9;">▶ 특징:</strong> 건당 비용이 명확하고 사용량 기반 과금. Max $100 구독은 프롬프트 개발·테스트·분석 등 내부 업무용으로 활용. 트래픽 증가 시 API 비용이 비례 상승.
         </div>
       </div>
 
@@ -762,7 +787,7 @@
         <div style="position:absolute;top:-12px;left:20px;background:#F8FAFC;padding:0 12px;">
           <span style="background:linear-gradient(135deg,#059669,#047857);color:#fff;padding:4px 14px;border-radius:12px;font-size:12px;font-weight:700;">시나리오 B</span>
         </div>
-        <h3 style="margin-top:8px;">&#128273; Max $200 구독 + API Proxy</h3>
+        <h3 style="margin-top:8px;">🔑 Max $200 구독 + API Proxy</h3>
         <p style="font-size:12px;color:#64748B;margin-bottom:12px;">Max 구독만으로 API Proxy 경유 전량 처리 (토큰 과금 없음)</p>
         <div class="table-wrap" style="border:none; margin-bottom:0;">
           <table>
@@ -772,30 +797,30 @@
             <tbody>
               <tr style="background:rgba(5,150,105,0.06);">
                 <td><strong>Claude Max 구독</strong></td>
-                <td class="num"><strong style="color:#059669;">&#8361;280,000</strong></td>
+                <td class="num"><strong style="color:#059669;">₩280,000</strong></td>
                 <td style="color:#64748B;font-size:12px;">$200/월 정액 (API Proxy 포함)</td>
               </tr>
-              <tr><td>API Proxy 서버</td><td class="num">&#8361;0</td><td style="color:#64748B;font-size:12px;">클라우드 서버에 함께 운영</td></tr>
-              <tr><td>Claude API 토큰</td><td class="num" style="color:#059669;font-weight:700;">&#8361;0</td><td style="color:#64748B;font-size:12px;">Proxy 경유 → 토큰 과금 없음</td></tr>
-              <tr><td>클라우드 서버 (Linux)</td><td class="num">&#8361;42,000</td><td style="color:#64748B;font-size:12px;">$30/월 (VPS, Proxy 포함)</td></tr>
-              <tr><td>ChromaDB / RAG</td><td class="num">&#8361;0</td><td style="color:#64748B;font-size:12px;">로컬 벡터 DB (무료)</td></tr>
+              <tr><td>API Proxy 서버</td><td class="num">₩0</td><td style="color:#64748B;font-size:12px;">클라우드 서버에 함께 운영</td></tr>
+              <tr><td>Claude API 토큰</td><td class="num" style="color:#059669;font-weight:700;">₩0</td><td style="color:#64748B;font-size:12px;">Proxy 경유 → 토큰 과금 없음</td></tr>
+              <tr><td>클라우드 서버 (Linux)</td><td class="num">₩42,000</td><td style="color:#64748B;font-size:12px;">$30/월 (VPS, Proxy 포함)</td></tr>
+              <tr><td>ChromaDB / RAG</td><td class="num">₩0</td><td style="color:#64748B;font-size:12px;">로컬 벡터 DB (무료)</td></tr>
               <tr class="highlight-row">
                 <td><strong>합계</strong></td>
-                <td class="num"><strong style="color:#059669;">~&#8361;322,000/월</strong></td>
+                <td class="num"><strong style="color:#059669;">~₩322,000/월</strong></td>
                 <td style="font-size:12px;">~$230</td>
               </tr>
             </tbody>
           </table>
         </div>
         <div style="margin-top:12px;padding:10px 14px;background:rgba(5,150,105,0.06);border-radius:8px;font-size:12px;color:#475569;line-height:1.7;">
-          <strong style="color:#059669;">&#9654; 특징:</strong> 월 정액 고정 비용. 트래픽이 증가해도 추가 토큰 비용 없음. 현재 프로토타입 환경에서 이 방식으로 운영 중. 단, Anthropic 정책 변경 리스크 존재.
+          <strong style="color:#059669;">▶ 특징:</strong> 월 정액 고정 비용. 트래픽이 증가해도 추가 토큰 비용 없음. 현재 프로토타입 환경에서 이 방식으로 운영 중. 단, Anthropic 정책 변경 리스크 존재.
         </div>
       </div>
     </div>
 
     <!-- ═══ 시나리오 비교 요약 ═══ -->
     <div style="background:linear-gradient(135deg,rgba(30,58,95,0.04),rgba(14,165,233,0.04));border:1px solid #E2E8F0;border-radius:12px;padding:20px 24px;margin-bottom:24px;">
-      <h4 style="font-size:14px;font-weight:700;color:#1E293B;margin-bottom:14px;">&#128200; 시나리오 비교 요약</h4>
+      <h4 style="font-size:14px;font-weight:700;color:#1E293B;margin-bottom:14px;">📈 시나리오 비교 요약</h4>
       <table style="width:100%;font-size:13px;">
         <thead>
           <tr style="border-bottom:2px solid #E2E8F0;">
@@ -805,31 +830,31 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td style="padding:6px 8px;font-weight:600;">월 비용</td><td style="text-align:center;padding:6px 8px;"><strong>~&#8361;253,000</strong> (~$181)</td><td style="text-align:center;padding:6px 8px;"><strong>~&#8361;322,000</strong> (~$230)</td></tr>
-          <tr style="background:rgba(248,250,252,0.5);"><td style="padding:6px 8px;font-weight:600;">건당 한계비용</td><td style="text-align:center;padding:6px 8px;">~&#8361;59/건 (변동)</td><td style="text-align:center;padding:6px 8px;">&#8361;0/건 (고정)</td></tr>
-          <tr><td style="padding:6px 8px;font-weight:600;">트래픽 증가 시</td><td style="text-align:center;padding:6px 8px;">비용 비례 증가 &#9650;</td><td style="text-align:center;padding:6px 8px;">비용 변동 없음 &#9632;</td></tr>
+          <tr><td style="padding:6px 8px;font-weight:600;">월 비용</td><td style="text-align:center;padding:6px 8px;"><strong>~₩253,000</strong> (~$181)</td><td style="text-align:center;padding:6px 8px;"><strong>~₩322,000</strong> (~$230)</td></tr>
+          <tr style="background:rgba(248,250,252,0.5);"><td style="padding:6px 8px;font-weight:600;">건당 한계비용</td><td style="text-align:center;padding:6px 8px;">~₩59/건 (변동)</td><td style="text-align:center;padding:6px 8px;">₩0/건 (고정)</td></tr>
+          <tr><td style="padding:6px 8px;font-weight:600;">트래픽 증가 시</td><td style="text-align:center;padding:6px 8px;">비용 비례 증가 ▲</td><td style="text-align:center;padding:6px 8px;">비용 변동 없음 ■</td></tr>
           <tr style="background:rgba(248,250,252,0.5);"><td style="padding:6px 8px;font-weight:600;">손익분기 (BEP)</td><td style="text-align:center;padding:6px 8px;" colspan="2">월 ~1,900건 이상 시 <strong style="color:#059669;">시나리오 B</strong>가 유리</td></tr>
           <tr><td style="padding:6px 8px;font-weight:600;">정책 리스크</td><td style="text-align:center;padding:6px 8px;color:#059669;">낮음 (공식 API)</td><td style="text-align:center;padding:6px 8px;color:#b45309;">중간 (Proxy 정책 변경 가능)</td></tr>
-          <tr style="background:rgba(248,250,252,0.5);"><td style="padding:6px 8px;font-weight:600;">현재 프로토타입</td><td style="text-align:center;padding:6px 8px;">—</td><td style="text-align:center;padding:6px 8px;">&#9989; 현재 운영 중</td></tr>
+          <tr style="background:rgba(248,250,252,0.5);"><td style="padding:6px 8px;font-weight:600;">현재 프로토타입</td><td style="text-align:center;padding:6px 8px;">—</td><td style="text-align:center;padding:6px 8px;">✅ 현재 운영 중</td></tr>
         </tbody>
       </table>
       <div style="margin-top:12px;font-size:12px;color:#64748B;line-height:1.7;">
-        <strong>&#128161; 참고:</strong> 현재 비이메일 963건/월 기준에서는 <strong style="color:#6d28d9;">시나리오 A가 ~&#8361;69,000 저렴</strong>합니다. 
+        <strong>💡 참고:</strong> 현재 비이메일 963건/월 기준에서는 <strong style="color:#6d28d9;">시나리오 A가 ~₩69,000 저렴</strong>합니다. 
         다만 트래픽이 월 ~1,900건을 넘으면 시나리오 B가 유리해지며, 프로토타입 단계에서는 Proxy 방식(B)으로 토큰 비용 부담 없이 자유롭게 테스트할 수 있는 장점이 있습니다.
       </div>
     </div>
 
     <!-- Token Cost Detail (시나리오 A 상세) -->
     <div class="token-detail">
-      <h4>&#129518; 시나리오 A — API 토큰 비용 상세 산출 <span class="token-price-badge">Claude 3.5 Sonnet</span> <span class="token-price-badge">평균 기준</span></h4>
+      <h4>🧮 시나리오 A — API 토큰 비용 상세 산출 <span class="token-price-badge">Claude 3.5 Sonnet</span> <span class="token-price-badge">평균 기준</span></h4>
       <div style="margin-bottom:12px;">
         <span class="token-price-badge">Input: $3.00 / 1M tokens</span>
         <span class="token-price-badge">Output: $15.00 / 1M tokens</span>
-        <span class="token-price-badge">환율: &#8361;1,400 / $1</span>
+        <span class="token-price-badge">환율: ₩1,400 / $1</span>
       </div>
       <div class="token-grid">
         <div>
-          <div style="font-size:13px; font-weight:700; color:#475569; margin-bottom:8px;">&#128300; 건당 토큰 사용량 (평균 기준)</div>
+          <div style="font-size:13px; font-weight:700; color:#475569; margin-bottom:8px;">🔬 건당 토큰 사용량 (평균 기준)</div>
           <table class="mini-table">
             <tr><td>시스템 프롬프트 + 규칙</td><td>2,500 tok (input)</td></tr>
             <tr><td>RAG 컨텍스트 (knowledge)</td><td>2,000 tok (input)</td></tr>
@@ -841,25 +866,25 @@
           </table>
         </div>
         <div>
-          <div style="font-size:13px; font-weight:700; color:#475569; margin-bottom:8px;">&#128178; 건당 비용 산출</div>
+          <div style="font-size:13px; font-weight:700; color:#475569; margin-bottom:8px;">💲 건당 비용 산출</div>
           <table class="mini-table">
             <tr><td>Input 비용</td><td>8,500 / 1M &times; $3.00 = <strong>$0.026</strong></td></tr>
             <tr><td>Output 비용</td><td>1,100 / 1M &times; $15.00 = <strong>$0.017</strong></td></tr>
             <tr><td>건당 합계 (USD)</td><td><strong>~$0.042</strong></td></tr>
-            <tr><td>건당 합계 (KRW)</td><td><strong style="color:#b45309;">~&#8361;59/건</strong></td></tr>
+            <tr><td>건당 합계 (KRW)</td><td><strong style="color:#b45309;">~₩59/건</strong></td></tr>
           </table>
-          <div style="margin-top:14px; font-size:13px; font-weight:700; color:#475569; margin-bottom:8px;">&#128202; 월간 합계 (비이메일 963건 기준)</div>
+          <div style="margin-top:14px; font-size:13px; font-weight:700; color:#475569; margin-bottom:8px;">📊 월간 합계 (비이메일 963건 기준)</div>
           <table class="mini-table">
-            <tr><td>전체 분류 (963건)</td><td>&#8361;56,817</td></tr>
-            <tr><td>L2 Draft 추가 (472건)</td><td>&#8361;13,688</td></tr>
-            <tr><td>Claude Max $100</td><td>&#8361;140,000</td></tr>
-            <tr><td>클라우드 서버</td><td>&#8361;42,000</td></tr>
-            <tr><td><strong>시나리오 A 합계</strong></td><td><strong>~&#8361;253,000/월</strong></td></tr>
+            <tr><td>전체 분류 (963건)</td><td>₩56,817</td></tr>
+            <tr><td>L2 Draft 추가 (472건)</td><td>₩13,688</td></tr>
+            <tr><td>Claude Max $100</td><td>₩140,000</td></tr>
+            <tr><td>클라우드 서버</td><td>₩42,000</td></tr>
+            <tr><td><strong>시나리오 A 합계</strong></td><td><strong>~₩253,000/월</strong></td></tr>
           </table>
         </div>
       </div>
       <div class="token-calc">
-        <strong>&#9888;&#65039; 산출 기준:</strong> 2회 API 호출/건 (STEP A 분류 + STEP B 자연어 글루), 버퍼 미포함 평균 기준.
+        <strong>⚠️ 산출 기준:</strong> 2회 API 호출/건 (STEP A 분류 + STEP B 자연어 글루), 버퍼 미포함 평균 기준.
         이메일 접수 699건(42%)은 상담원이 전담 처리하므로 API 비용에서 제외.
         챗봇이 실제 처리하는 비이메일 <strong>963건/월만</strong> 토큰 비용에 반영합니다.
         <strong>시나리오 B</strong>의 경우 Max $200 구독에 API Proxy가 포함되어 별도 토큰 과금이 없습니다.
@@ -899,7 +924,7 @@
     </div>
 
     <div class="insight-box">
-      <h4>&#128269; 핵심 인사이트</h4>
+      <h4>🔍 핵심 인사이트</h4>
       <p><strong>Subscription(48%)</strong>의 95%가 동일 템플릿 → 자동화 최적 대상. 상담원 응답의 <strong>45%가 동일한 결제 정보 요청</strong>(계정 미식별 병목)이며, 이를 AI가 티켓 전 양식 안내로 해결하면 처리 효율 3~4배 향상. <strong>Content/Other(6%)</strong>는 자동화 배제 → 전체 L1~L2 에스컬레이션.</p>
     </div>
   </section>
@@ -951,19 +976,19 @@
         <div class="cx-badge">Before &mdash; 반복 왕복 3~5회</div>
         <h4>기존 CS: 운영자가 매번 같은 정보 반복 요청</h4>
         <div class="cx-item">
-          <span class="cx-icon">&#9203;</span>
+          <span class="cx-icon">⏳</span>
           <div><strong>왕복 3~5회, 7~29일 소요</strong><br>문의 → 정보 요청 → 회신 대기 → 정보 부족 → 추가 요청 → 반복</div>
         </div>
         <div class="cx-item">
-          <span class="cx-icon">&#128337;</span>
+          <span class="cx-icon">🕑</span>
           <div><strong>운영 시간 제한</strong><br>KST 업무 시간 기반 &mdash; 글로벌 10개 마켓 시간대 커버 불가</div>
         </div>
         <div class="cx-item">
-          <span class="cx-icon">&#128200;</span>
+          <span class="cx-icon">📈</span>
           <div><strong>83%가 동일 정보 반복 요청</strong><br>결제 정보 요청(45%), 구독 취소 확인(18%) 등 &mdash; 첫 응답 해결율 낮음</div>
         </div>
         <div class="cx-item">
-          <span class="cx-icon">&#128101;</span>
+          <span class="cx-icon">👥</span>
           <div><strong>피크타임 병목</strong><br>월요일/결제일 집중으로 대기 시간 급증, 고객 불만 발생</div>
         </div>
       </div>
@@ -971,19 +996,19 @@
         <div class="cx-badge">After &mdash; 스마트 레이어링</div>
         <h4>티켓 전 AI가 양식 안내 + 정보 확보</h4>
         <div class="cx-item">
-          <span class="cx-icon">&#9889;</span>
+          <span class="cx-icon">⚡</span>
           <div><strong>CS 처리 효율 3~4배</strong><br>고객이 티켓 전 양식 확인 + 정보 제공 &rarr; 운영자가 필요 정보 미리 확보</div>
         </div>
         <div class="cx-item">
-          <span class="cx-icon">&#127760;</span>
+          <span class="cx-icon">🌐</span>
           <div><strong>24/7/365 가용성</strong><br>시간대/공휴일 무관 &mdash; 언제든 AI 양식 안내 + 티켓 생성 가능</div>
         </div>
         <div class="cx-item">
-          <span class="cx-icon">&#128202;</span>
+          <span class="cx-icon">📊</span>
           <div><strong>티켓 자연 감소 38%</strong><br>셀프 해결 시 티켓 불필요 &rarr; 미해결 건은 필요 정보 포함된 티켓 전달</div>
         </div>
         <div class="cx-item">
-          <span class="cx-icon">&#11088;</span>
+          <span class="cx-icon">⭐</span>
           <div><strong>고객 CX 극대화</strong><br>확실한 양식 안내 &rarr; 정확한 정보 제공 &rarr; 더 빠르고 확실한 CS 경험</div>
         </div>
       </div>
@@ -991,7 +1016,7 @@
 
     <!-- ═══ DUAL VALUE: CX × OPERATIONS ═══ -->
     <div style="margin-top:24px;">
-      <h4 style="font-size:16px;font-weight:700;color:#1E293B;margin-bottom:16px;padding-left:4px;">&#128161; 스마트 레이어링 — Dual Value</h4>
+      <h4 style="font-size:16px;font-weight:700;color:#1E293B;margin-bottom:16px;padding-left:4px;">💡 스마트 레이어링 — Dual Value</h4>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
         <!-- Pillar 1: CX → Customer Satisfaction -->
         <div style="background:linear-gradient(135deg,rgba(14,165,233,0.06),rgba(99,102,241,0.04));border:2px solid rgba(14,165,233,0.18);border-radius:14px;padding:18px 16px 14px;position:relative;overflow:hidden;">
@@ -1045,7 +1070,7 @@
 
   <!-- ══════════════ CONCLUSION ══════════════ -->
   <div class="conclusion">
-    <h2>&#127942; 핵심 결론</h2>
+    <h2>🏆 핵심 결론</h2>
     <div class="conclusion-grid">
       <div class="conclusion-item">
         <div class="val">38%</div>
@@ -1056,7 +1081,7 @@
         <div class="lbl">AI 응답 속도</div>
       </div>
       <div class="conclusion-item">
-        <div class="val">~&#8361;260K</div>
+        <div class="val">~₩260K</div>
         <div class="lbl">AI 월 운영비</div>
       </div>
       <div class="conclusion-item">
@@ -1068,12 +1093,12 @@
       <p style="font-size:15px; color:#475569; line-height:1.8; max-width:720px; margin:0 auto;">
         AI 챗봇 도입으로 비이메일 채널 <strong style="color:#b45309;">963건/월</strong> 중 <strong style="color:#b45309;">38%</strong>(366건)를 셀프서비스로 자동 안내하며,<br>
         기존 7~29일 걸리던 초기 안내를 <strong style="color:#0369a1;">&lt;3초</strong>로 단축합니다.<br>
-        AI 전체 운영비는 월 <strong style="color:#b45309;">~&#8361;253,000~322,000</strong> (시나리오에 따라 상이)이며,<br>
+        AI 전체 운영비는 월 <strong style="color:#b45309;">~₩253,000~322,000</strong> (시나리오에 따라 상이)이며,<br>
         <strong style="color:#047857;">24시간 365일</strong> 글로벌 10개 마켓을 커버하여 CS 품질을 근본적으로 개선합니다.
       </p>
     </div>
     <div class="note" style="margin-top:20px;">
-      &#9888;&#65039; 본 분석은 실제 CS 데이터(11,621건) 기반이며, 이메일 42%는 상담원 전담, 비이메일 58%를 챗봇 처리 기준으로 산출합니다.
+      ⚠️ 본 분석은 실제 CS 데이터(11,621건) 기반이며, 이메일 42%는 상담원 전담, 비이메일 58%를 챗봇 처리 기준으로 산출합니다.
     </div>
   </div>
 

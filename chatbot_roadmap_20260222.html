@@ -5,6 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TOOMICS CS AI 챗봇 프로젝트 로드맵 | 2026-02-22</title>
 <style>
+  :root {
+    --max-w: 960px;
+    --max-w-wide: 1280px;
+    --radius: 12px;
+    --gap: 16px;
+    --bg-base: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --bg-muted: #F1F5F9;
+    --text-primary: #1E293B;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --border: #E2E8F0;
+    --accent-brand: #2563EB;
+    --accent-info: #0EA5E9;
+    --accent-success: #10B981;
+    --accent-warn: #F59E0B;
+    --accent-danger: #EF4444;
+    --accent-purple: #7C3AED;
+    --font-base: 14px;
+    --font-sm: 12px;
+    --font-lg: 18px;
+    --font-xl: 28px;
+    --line-height: 1.7;
+    --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
+  }
   html { scroll-behavior: smooth; }
   @page { size: A3 portrait; margin: 12mm; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -886,14 +911,14 @@
           </div>
           <div class="card-body">
             <ul class="checklist">
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">프로젝트 폴더 구조 설계 + 레퍼런스 데이터 배치</span></li>
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">CLAUDE.md &mdash; 프로젝트 설정 파일 작성</span></li>
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">.agent/AGENT.md &mdash; 챗봇 페르소나, 톤, 행동 규칙, Fraud 탐지 정의</span></li>
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">.agent/SKILLS.md &mdash; 5가지 핵심 기능 정의</span></li>
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">README.md &mdash; 프로젝트 소개, 아키텍처, 실행 방법</span></li>
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">prompts/ 5개 모듈 작성 (intent, self-service, escalation, fraud, multilingual)</span></li>
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">knowledge/ 6개 JSON + templates 작성</span></li>
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">config/ 3개 설정 작성 (languages, targets, settings)</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">프로젝트 폴더 구조 설계 + 레퍼런스 데이터 배치</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">CLAUDE.md &mdash; 프로젝트 설정 파일 작성</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">.agent/AGENT.md &mdash; 챗봇 페르소나, 톤, 행동 규칙, Fraud 탐지 정의</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">.agent/SKILLS.md &mdash; 5가지 핵심 기능 정의</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">README.md &mdash; 프로젝트 소개, 아키텍처, 실행 방법</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">prompts/ 5개 모듈 작성 (intent, self-service, escalation, fraud, multilingual)</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">knowledge/ 6개 JSON + templates 작성</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">config/ 3개 설정 작성 (languages, targets, settings)</span></li>
             </ul>
             <div class="deliverables">
               <div class="deliverables-label">Deliverables</div>
@@ -929,22 +954,22 @@
           </div>
           <div class="card-body">
             <ul class="checklist">
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">FastAPI 서버 + Claude API 연동 (app/main.py, app/config.py)</span></li>
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">Pydantic v2 데이터 모델 &mdash; Chat, Intent, Fraud, Escalation, Session</span></li>
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">Claude API 클라이언트 (claude_service.py)</span></li>
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">RAG 파이프라인 &mdash; ChromaDB 벡터 검색 + 지능형 청크 분할</span></li>
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">의도 분류기 &mdash; 7 카테고리 &times; 23 Sub-Intent</span></li>
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">Fraud 탐지기 &mdash; 9 Red Flag (Critical 5 + Supporting 4)</span></li>
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">다국어 감지 + Phase 1/2 마켓 라우팅</span></li>
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">셀프서비스 응답 생성 &mdash; 12 플로우</span></li>
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">에스컬레이션 핸들러 + Zendesk 티켓</span></li>
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">메인 파이프라인 오케스트레이터 (pipeline.py)</span></li>
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">API 라우터 &mdash; Chat, Health, Webhook</span></li>
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">유틸리티 &mdash; Loguru 로깅, 프롬프트 로더</span></li>
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">RAG 인제스트 스크립트 (scripts/ingest.py)</span></li>
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">단위/통합 테스트 (tests/)</span></li>
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">시뮬레이션 진단 100% 달성 (48% &rarr; 100%)</span></li>
-              <li class="done"><span class="check-icon done">&#10003;</span><span class="item-text">프로토타입 서버 배포 완료</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">FastAPI 서버 + Claude API 연동 (app/main.py, app/config.py)</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">Pydantic v2 데이터 모델 &mdash; Chat, Intent, Fraud, Escalation, Session</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">Claude API 클라이언트 (claude_service.py)</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">RAG 파이프라인 &mdash; ChromaDB 벡터 검색 + 지능형 청크 분할</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">의도 분류기 &mdash; 7 카테고리 &times; 23 Sub-Intent</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">Fraud 탐지기 &mdash; 9 Red Flag (Critical 5 + Supporting 4)</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">다국어 감지 + Phase 1/2 마켓 라우팅</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">셀프서비스 응답 생성 &mdash; 12 플로우</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">에스컬레이션 핸들러 + Zendesk 티켓</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">메인 파이프라인 오케스트레이터 (pipeline.py)</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">API 라우터 &mdash; Chat, Health, Webhook</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">유틸리티 &mdash; Loguru 로깅, 프롬프트 로더</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">RAG 인제스트 스크립트 (scripts/ingest.py)</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">단위/통합 테스트 (tests/)</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">시뮬레이션 진단 100% 달성 (48% &rarr; 100%)</span></li>
+              <li class="done"><span class="check-icon done">✓</span><span class="item-text">프로토타입 서버 배포 완료</span></li>
             </ul>
             <div class="deliverables">
               <div class="deliverables-label">Deliverables</div>
@@ -1048,21 +1073,21 @@
     <h2 class="section-title">데이터 기반 목표</h2>
     <div class="goals-grid">
       <div class="goal-card phase1">
-        <div class="goal-icon">&#127919;</div>
+        <div class="goal-icon">🎯</div>
         <div class="goal-label">Phase 1~2 목표</div>
         <div class="goal-value">38%</div>
         <div class="goal-desc">셀프서비스 자동화</div>
         <div class="goal-detail">~630건/월 자동 처리</div>
       </div>
       <div class="goal-card phase3">
-        <div class="goal-icon">&#127919;</div>
+        <div class="goal-icon">🎯</div>
         <div class="goal-label">Phase 3 목표</div>
         <div class="goal-value">50%</div>
         <div class="goal-desc">셀프서비스 자동화</div>
         <div class="goal-detail">~830건/월 자동 처리</div>
       </div>
       <div class="goal-card phase4">
-        <div class="goal-icon">&#129309;</div>
+        <div class="goal-icon">🤝</div>
         <div class="goal-label">Phase 4 협의</div>
         <div class="goal-value">도입 합의</div>
         <div class="goal-desc">사내 협의 (예정)</div>
@@ -1088,25 +1113,25 @@
           <div class="node-name">고객 메시지</div>
           <div class="node-file">Customer Input</div>
         </div>
-        <div class="pipeline-arrow">&#10142;</div>
+        <div class="pipeline-arrow">➞</div>
         <div class="pipeline-node">
           <div class="node-step">STEP 2</div>
           <div class="node-name">언어 감지</div>
           <div class="node-file">multilingual.py</div>
         </div>
-        <div class="pipeline-arrow">&#10142;</div>
+        <div class="pipeline-arrow">➞</div>
         <div class="pipeline-node">
           <div class="node-step">STEP 3</div>
           <div class="node-name">Fraud + 의도 분류</div>
           <div class="node-file">병렬 처리</div>
         </div>
-        <div class="pipeline-arrow">&#10142;</div>
+        <div class="pipeline-arrow">➞</div>
         <div class="pipeline-node">
           <div class="node-step">STEP 4</div>
           <div class="node-name">에스컬레이션 판단</div>
           <div class="node-file">escalation.py</div>
         </div>
-        <div class="pipeline-arrow">&#10142;</div>
+        <div class="pipeline-arrow">➞</div>
         <div class="pipeline-branch">
           <div class="pipeline-branch-item">
             <span class="branch-level l1">L1</span>

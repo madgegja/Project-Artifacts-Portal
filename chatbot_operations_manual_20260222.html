@@ -692,16 +692,16 @@
     <h1>Toomics CS AI Chatbot 운영 매뉴얼</h1>
     <p class="subtitle">투믹스 글로벌 CS AI 챗봇 시스템 운영 가이드 — CS 운영팀 전용</p>
     <div class="hero-meta">
-      <span>&#128100; 작성자: 유종선 (Chongsun Yu)</span>
-      <span>&#128197; 작성일: 2026-02-22</span>
-      <span>&#128202; 데이터: 11,621건 (7개월 x 10개 마켓)</span>
-      <span>&#127760; Phase 1: EN, FR, ES, PT, DE</span>
+      <span>👤 작성자: 유종선 (Chongsun Yu)</span>
+      <span>📅 작성일: 2026-02-22</span>
+      <span>📊 데이터: 11,621건 (7개월 x 10개 마켓)</span>
+      <span>🌐 Phase 1: EN, FR, ES, PT, DE</span>
     </div>
   </header>
 
   <!-- ============================== TOC ============================== -->
   <nav class="toc" id="toc">
-    <h3>&#128203; 목차 (Table of Contents)</h3>
+    <h3>📋 목차 (Table of Contents)</h3>
     <div class="toc-grid">
       <a href="#sec-core"><span class="toc-num">★</span> 스마트 레이어링 — 핵심 가치</a>
       <a href="#sec-1"><span class="toc-num">1</span> 문서 개요</a>
@@ -848,7 +848,7 @@
     </div>
 
     <div class="card">
-      <h3>&#128214; 목적</h3>
+      <h3>📖 목적</h3>
       <p>본 문서는 <strong style="color:var(--accent-cyan)">투믹스(Toomics) 글로벌 CS AI 챗봇</strong> 시스템의 운영 매뉴얼입니다.
         고객이 웹사이트/앱에서 AI와 직접 대화하여 CS 문의를 해결하는 서비스의 전체 운영 절차, 기술 구조, 에스컬레이션 규칙,
         Fraud 탐지 방침, 다국어 처리 가이드를 포괄합니다.</p>
@@ -898,7 +898,7 @@
     </div>
 
     <div class="card">
-      <h3>&#9881;&#65039; 기술 스택</h3>
+      <h3>⚙️ 기술 스택</h3>
       <p style="margin-bottom:16px;">
         <span class="badge-tech badge-tech-green">Python 3.11+</span>
         <span class="badge-tech badge-tech-green">FastAPI</span>
@@ -911,13 +911,13 @@
       </p>
 
       <div class="info-box info-box-blue">
-        <span class="info-icon">&#9432;</span>
+        <span class="info-icon">ⓘ</span>
         <div><strong>프로토타입 단계:</strong> 서버 인프라 세부사항은 개발팀 협의 후 확정 예정입니다. 현재는 프로토타입 환경에서 운영 중입니다.</div>
       </div>
     </div>
 
     <div class="card">
-      <h3>&#128193; 프로젝트 구조 요약</h3>
+      <h3>📁 프로젝트 구조 요약</h3>
       <div class="code-block"><span class="comment"># 핵심 디렉토리 구조</span>
 Ai-Chat-bot-project/
   <span class="cmd">app/</span>                   <span class="comment"># FastAPI 애플리케이션</span>
@@ -950,41 +950,41 @@ Ai-Chat-bot-project/
     </div>
 
     <div class="card">
-      <h3>&#128260; 전체 처리 흐름</h3>
+      <h3>🔄 전체 처리 흐름</h3>
       <div class="pipeline-flow">
         <div class="pipeline-step">
-          <div class="step-icon">&#128172;</div>
+          <div class="step-icon">💬</div>
           <div class="step-title">Customer Message</div>
           <div class="step-desc">고객 메시지 수신</div>
         </div>
-        <div class="pipeline-arrow">&#10132;</div>
+        <div class="pipeline-arrow">➔</div>
         <div class="pipeline-step">
-          <div class="step-icon">&#127760;</div>
+          <div class="step-icon">🌐</div>
           <div class="step-title">Language Detection</div>
           <div class="step-desc">multilingual.py</div>
         </div>
-        <div class="pipeline-arrow">&#10132;</div>
+        <div class="pipeline-arrow">➔</div>
         <div class="pipeline-parallel">
           <div class="pipeline-step" style="border-color:rgba(239,68,68,0.3);">
-            <div class="step-icon">&#128681;</div>
+            <div class="step-icon">🚩</div>
             <div class="step-title">Fraud Detection</div>
             <div class="step-desc">fraud_detector.py</div>
           </div>
           <div class="pipeline-step" style="border-color:rgba(14,165,233,0.3);">
-            <div class="step-icon">&#128300;</div>
+            <div class="step-icon">🔬</div>
             <div class="step-title">Intent Classification</div>
             <div class="step-desc">intent_classifier.py</div>
           </div>
         </div>
-        <div class="pipeline-arrow">&#10132;</div>
+        <div class="pipeline-arrow">➔</div>
         <div class="pipeline-step">
-          <div class="step-icon">&#128268;</div>
+          <div class="step-icon">🔌</div>
           <div class="step-title">Routing Decision</div>
           <div class="step-desc">escalation_handler.py</div>
         </div>
-        <div class="pipeline-arrow">&#10132;</div>
+        <div class="pipeline-arrow">➔</div>
         <div class="pipeline-step">
-          <div class="step-icon">&#128172;</div>
+          <div class="step-icon">💬</div>
           <div class="step-title">Response</div>
           <div class="step-desc">ChatResponse</div>
         </div>
@@ -992,10 +992,10 @@ Ai-Chat-bot-project/
     </div>
 
     <div class="card">
-      <h3>&#128268; 라우팅 결정 (L1 / L2 / L3)</h3>
+      <h3>🔌 라우팅 결정 (L1 / L2 / L3)</h3>
       <div class="routing-grid">
         <div class="routing-card routing-card-l1">
-          <h4>&#128308; L1 -- Immediate Escalation</h4>
+          <h4>🔴 L1 -- Immediate Escalation</h4>
           <p style="font-size: 12px; color: #b91c1c; margin-bottom:10px;">AI 응답 없음. 즉시 티켓 제출.</p>
           <ul>
             <li>Fraud HIGH (50점 이상)</li>
@@ -1010,7 +1010,7 @@ Ai-Chat-bot-project/
           </ul>
         </div>
         <div class="routing-card routing-card-l2">
-          <h4>&#128992; L2 -- AI Draft + Agent Review</h4>
+          <h4>🟠 L2 -- AI Draft + Agent Review</h4>
           <p style="font-size: 12px; color: #92400e; margin-bottom:10px;">AI 초안 생성, 상담원 검토 후 발송.</p>
           <ul>
             <li>환불 적격성 판단 필요</li>
@@ -1024,7 +1024,7 @@ Ai-Chat-bot-project/
           </ul>
         </div>
         <div class="routing-card routing-card-l3">
-          <h4>&#128994; L3 -- Self-Service Auto Response</h4>
+          <h4>🟢 L3 -- Self-Service Auto Response</h4>
           <p style="font-size: 12px; color:#047857; margin-bottom:10px;">검증된 안내 자동 발송. 티켓 옵션 포함.</p>
           <ul>
             <li>구독 해지 안내</li>
@@ -1042,7 +1042,7 @@ Ai-Chat-bot-project/
       </div>
 
       <div class="info-box info-box-amber">
-        <span class="info-icon">&#9888;&#65039;</span>
+        <span class="info-icon">⚠️</span>
         <div><strong>우선순위 규칙:</strong> L1 > L2 > L3. L1 트리거가 하나라도 있으면 다른 레벨 무시. Fraud HIGH는 무조건 L1. 복합 의도 3개 이상 또는 의도 분류 불가(confidence &lt; 0.50)도 L1.</div>
       </div>
     </div>
@@ -1056,7 +1056,7 @@ Ai-Chat-bot-project/
     </div>
 
     <div class="card">
-      <h3>&#128202; 카테고리별 처리 현황 (11,621건 분석 기반)</h3>
+      <h3>📊 카테고리별 처리 현황 (11,621건 분석 기반)</h3>
       <table>
         <thead>
           <tr>
@@ -1129,7 +1129,7 @@ Ai-Chat-bot-project/
       </table>
 
       <div class="info-box info-box-red">
-        <span class="info-icon">&#128683;</span>
+        <span class="info-icon">🚫</span>
         <div><strong>Content</strong> 카테고리는 AI가 정보 수집 후 L2 에스컬레이션합니다. <strong>Other</strong> 카테고리는 전체 L1 에스컬레이션 (자동화 영구 배제).</div>
       </div>
     </div>
@@ -1259,7 +1259,7 @@ Ai-Chat-bot-project/
           </tbody>
         </table>
         <div class="info-box info-box-amber">
-          <span class="info-icon">&#9888;&#65039;</span>
+          <span class="info-icon">⚠️</span>
           <div>
             <strong>환불 핵심 규칙:</strong><br>
             &bull; VIP 환불: 14일 이내 + VIP 콘텐츠 미열람 + 코인 미사용 (3개 ALL 충족)<br>
@@ -1290,8 +1290,8 @@ Ai-Chat-bot-project/
             <tr>
               <td><code>account_deletion</code></td>
               <td>계정 삭제 요청</td>
-              <td><span class="badge badge-l3">L3</span><span style="font-size: 12px;color:var(--text-muted);"> &#8594; L2</span></td>
-              <td>5항목 체크리스트 제시(L3) &#8594; 고객 확인 후 상담원 최종 처리(L2). 하이브리드 플로우.</td>
+              <td><span class="badge badge-l3">L3</span><span style="font-size: 12px;color:var(--text-muted);"> → L2</span></td>
+              <td>5항목 체크리스트 제시(L3) → 고객 확인 후 상담원 최종 처리(L2). 하이브리드 플로우.</td>
               <td><span class="keyword-tag">delete account</span><span class="keyword-tag">GDPR</span><span class="keyword-tag">erase data</span><span class="keyword-tag">close account</span></td>
             </tr>
             <tr>
@@ -1374,7 +1374,7 @@ Ai-Chat-bot-project/
       <summary><span class="badge badge-l2" style="margin-right:4px">전체 L2</span> Content (콘텐츠) -- 4개 Sub-Intent | 월 57건 | 4% | 정보 수집 → 에스컬레이션</summary>
       <div class="details-content">
         <div class="info-box" style="background:rgba(251,191,36,0.06);border-left:4px solid #fbbf24;">
-          <span class="info-icon">&#128221;</span>
+          <span class="info-icon">📝</span>
           <div><strong>정보 수집 후 에스컬레이션:</strong> AI가 작품명·챕터·기기 등 필요 정보를 먼저 수집한 뒤, 상담원에게 전달합니다. 셀프서비스 자동 처리는 없습니다.</div>
         </div>
         <table>
@@ -1452,10 +1452,10 @@ Ai-Chat-bot-project/
 
     <!-- Other -->
     <details>
-      <summary><span class="badge badge-l1" style="margin-right:4px">전체 L1</span> Other (기타) -- 3개 Sub-Intent | 월 30건 | 2% | &#128683; 자동화 배제</summary>
+      <summary><span class="badge badge-l1" style="margin-right:4px">전체 L1</span> Other (기타) -- 3개 Sub-Intent | 월 30건 | 2% | 🚫 자동화 배제</summary>
       <div class="details-content">
         <div class="info-box info-box-red">
-          <span class="info-icon">&#128683;</span>
+          <span class="info-icon">🚫</span>
           <div><strong>자동화 영구 배제:</strong> Other 카테고리 전체는 CS 대상이 아닌 문의로 적절한 부서 배정이 필요합니다.</div>
         </div>
         <table>
@@ -1498,13 +1498,13 @@ Ai-Chat-bot-project/
     </div>
 
     <div class="card">
-      <h3>&#128681; Fraud 점수 체계</h3>
+      <h3>🚩 Fraud 점수 체계</h3>
       <p>모든 고객 메시지에 대해 실시간으로 Fraud 탐지를 수행합니다. <strong>9개 Red Flag</strong> 지표(Critical 5 + Supporting 4)로 구성됩니다.</p>
 
       <div class="score-bar">
         <div class="score-bar-low" style="width:20%;">LOW (0~19)</div>
         <div class="score-bar-med" style="width:30%;">MEDIUM (20~49)</div>
-        <div class="score-bar-high" style="width:50%;">HIGH (50~100) &#8594; 강제 L1</div>
+        <div class="score-bar-high" style="width:50%;">HIGH (50~100) → 강제 L1</div>
       </div>
 
       <table>
@@ -1514,17 +1514,17 @@ Ai-Chat-bot-project/
         <tbody>
           <tr>
             <td><strong>0 ~ 19</strong></td>
-            <td><span style="color:#047857;">&#9899; LOW</span></td>
+            <td><span style="color:#047857;">⚫ LOW</span></td>
             <td>정상 진행. 스킬 2(셀프서비스) 또는 3(에스컬레이션)으로 라우팅.</td>
           </tr>
           <tr>
             <td><strong>20 ~ 49</strong></td>
-            <td><span style="color:#b45309;">&#9899; MEDIUM</span></td>
+            <td><span style="color:#b45309;">⚫ MEDIUM</span></td>
             <td>주의 플래그 기록. 정상 처리하되 메타데이터에 플래그 기록.</td>
           </tr>
           <tr>
             <td><strong>50 ~ 100</strong></td>
-            <td><span style="color:#b91c1c;">&#9899; HIGH</span></td>
+            <td><span style="color:#b91c1c;">⚫ HIGH</span></td>
             <td><strong>강제 L1 에스컬레이션.</strong> Fraud 플래그 + 맥락 요약 상담원 전달.</td>
           </tr>
         </tbody>
@@ -1532,7 +1532,7 @@ Ai-Chat-bot-project/
     </div>
 
     <div class="card">
-      <h3>&#128308; Critical 지표 (5개) -- 1개라도 감지 시 주의</h3>
+      <h3>🔴 Critical 지표 (5개) -- 1개라도 감지 시 주의</h3>
       <p style="margin-bottom:16px; color:var(--accent-red);">Critical 지표 1개 단독 감지 시 해당 점수 반영. 점수 합계 50+ 시 L1 에스컬레이션.</p>
       <table>
         <thead>
@@ -1572,14 +1572,14 @@ Ai-Chat-bot-project/
             <td><code>strategic_escalation</code></td>
             <td>전략적 에스컬레이션 패턴</td>
             <td><strong>+30</strong></td>
-            <td>정중한 요청 &#8594; 권리 주장 &#8594; 법적 위협 &#8594; 대리인 동원으로 단계적 위협 수위 상승.</td>
+            <td>정중한 요청 → 권리 주장 → 법적 위협 → 대리인 동원으로 단계적 위협 수위 상승.</td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <div class="card">
-      <h3>&#128992; Supporting 지표 (4개) -- 2개 이상 조합 시 주의</h3>
+      <h3>🟠 Supporting 지표 (4개) -- 2개 이상 조합 시 주의</h3>
       <p style="margin-bottom:16px; color:var(--accent-amber);">Supporting 지표 단독으로는 에스컬레이션하지 않음. 2개+ 조합 시 합산 점수 반영.</p>
       <table>
         <thead>
@@ -1619,7 +1619,7 @@ Ai-Chat-bot-project/
     </div>
 
     <div class="card">
-      <h3>&#128220; Fraud 탐지 핵심 원칙</h3>
+      <h3>📜 Fraud 탐지 핵심 원칙</h3>
       <table>
         <thead>
           <tr><th>원칙</th><th>설명</th></tr>
@@ -1627,7 +1627,7 @@ Ai-Chat-bot-project/
         <tbody>
           <tr><td><strong>탐지만 수행</strong></td><td>어떤 경우에도 자동 차단/거부하지 않음. 플래그 기록 + 상담원 전달만.</td></tr>
           <tr><td><strong>고객 비노출</strong></td><td>Fraud 점수, Red Flag 정보를 고객에게 절대 보여주지 않음.</td></tr>
-          <tr><td><strong>의심 &#8800; 확정</strong></td><td>"의심된다"로 표현. "사기다"라고 단정하지 않음.</td></tr>
+          <tr><td><strong>의심 ≠ 확정</strong></td><td>"의심된다"로 표현. "사기다"라고 단정하지 않음.</td></tr>
           <tr><td><strong>대화 맥락 누적</strong></td><td>단일 메시지가 아닌 대화 전체에서 패턴 감지.</td></tr>
           <tr><td><strong>선의 추정</strong></td><td>동일 증거에 합리적 해석이 가능하면 고객에게 유리하게 판단.</td></tr>
         </tbody>
@@ -1643,12 +1643,12 @@ Ai-Chat-bot-project/
     </div>
 
     <div class="card">
-      <h3>&#127760; Phase 1 마켓 (5개 -- 전체 84%)</h3>
+      <h3>🌐 Phase 1 마켓 (5개 -- 전체 84%)</h3>
       <div class="market-grid">
         <!-- EN -->
         <div class="market-card">
           <div class="market-card-header">
-            <span class="market-flag">&#127482;&#127480;</span>
+            <span class="market-flag">🇺🇸</span>
             <div>
               <h4>EN -- English</h4>
               <div style="font-size:12px; color:var(--text-muted);">toomics.com/en</div>
@@ -1667,9 +1667,9 @@ Ai-Chat-bot-project/
         <!-- FR -->
         <div class="market-card">
           <div class="market-card-header">
-            <span class="market-flag">&#127467;&#127479;</span>
+            <span class="market-flag">🇫🇷</span>
             <div>
-              <h4>FR -- Fran&#231;ais</h4>
+              <h4>FR -- Français</h4>
               <div style="font-size:12px; color:var(--text-muted);">toomics.com/fr</div>
             </div>
             <span class="market-pct">17%</span>
@@ -1680,15 +1680,15 @@ Ai-Chat-bot-project/
             <strong>경칭:</strong> Vouvoiement (vous) -- tu 절대 사용 금지<br>
             <strong>결제:</strong> PayPal, Checkout(card)<br>
             <strong>특이사항:</strong> Content 비중 높음(5%). 번역 에러 문의 다수. 비밀번호 평문 발송 보안 이슈 발견.<br>
-            <strong>법적 규정:</strong> EU 14일 철회권(Droit de r&#233;tractation), RGPD(GDPR)
+            <strong>법적 규정:</strong> EU 14일 철회권(Droit de rétractation), RGPD(GDPR)
           </div>
         </div>
         <!-- ES -->
         <div class="market-card">
           <div class="market-card-header">
-            <span class="market-flag">&#127466;&#127480;</span>
+            <span class="market-flag">🇪🇸</span>
             <div>
-              <h4>ES -- Espa&#241;ol</h4>
+              <h4>ES -- Español</h4>
               <div style="font-size:12px; color:var(--text-muted);">toomics.com/es</div>
             </div>
             <span class="market-pct">13%</span>
@@ -1705,9 +1705,9 @@ Ai-Chat-bot-project/
         <!-- PT -->
         <div class="market-card">
           <div class="market-card-header">
-            <span class="market-flag">&#127463;&#127479;</span>
+            <span class="market-flag">🇧🇷</span>
             <div>
-              <h4>PT -- Portugu&#234;s</h4>
+              <h4>PT -- Português</h4>
               <div style="font-size:12px; color:var(--text-muted);">toomics.com/pt</div>
             </div>
             <span class="market-pct">9%</span>
@@ -1717,14 +1717,14 @@ Ai-Chat-bot-project/
             <strong>톤:</strong> Formal, warm. 브라질 포르투갈어. Senhor/Senhora 사용.<br>
             <strong>경칭:</strong> Senhor/Senhora (경칭)<br>
             <strong>결제:</strong> PayPal, PIX (대기 2~10일), Checkout(card)<br>
-            <strong>특이사항:</strong> <strong style="color:var(--accent-amber);">7개월간 2배 성장 (103건&#8594;253건) -- 가장 빠른 성장 마켓.</strong> Refund > Subscription 유일한 마켓. PIX 결제 대기 혼란 집중.<br>
-            <strong>법적 규정:</strong> <strong>CDC (C&#243;digo de Defesa do Consumidor)</strong> -- 온라인 구매 7일 내 무조건 철회 (콘텐츠 유형 무관)
+            <strong>특이사항:</strong> <strong style="color:var(--accent-amber);">7개월간 2배 성장 (103건→253건) -- 가장 빠른 성장 마켓.</strong> Refund > Subscription 유일한 마켓. PIX 결제 대기 혼란 집중.<br>
+            <strong>법적 규정:</strong> <strong>CDC (Código de Defesa do Consumidor)</strong> -- 온라인 구매 7일 내 무조건 철회 (콘텐츠 유형 무관)
           </div>
         </div>
         <!-- DE -->
         <div class="market-card">
           <div class="market-card-header">
-            <span class="market-flag">&#127465;&#127466;</span>
+            <span class="market-flag">🇩🇪</span>
             <div>
               <h4>DE -- Deutsch</h4>
               <div style="font-size:12px; color:var(--text-muted);">toomics.com/de</div>
@@ -1744,7 +1744,7 @@ Ai-Chat-bot-project/
     </div>
 
     <div class="card">
-      <h3>&#128338; Phase 2 마켓 (5개 -- 현재 미지원)</h3>
+      <h3>🕒 Phase 2 마켓 (5개 -- 현재 미지원)</h3>
       <p style="margin-bottom:16px;">Phase 2 마켓에서 메시지 수신 시: <strong>인사말 + L1 에스컬레이션</strong> (언어 메타데이터 포함 티켓 생성)</p>
       <table>
         <thead>
@@ -1757,7 +1757,7 @@ Ai-Chat-bot-project/
             <td>toomics.com/th</td>
             <td>5%</td>
             <td>80건</td>
-            <td>앱/웹 도메인 혼동 집중, EN VIP &#8594; TH 미적용 빈번</td>
+            <td>앱/웹 도메인 혼동 집중, EN VIP → TH 미적용 빈번</td>
           </tr>
           <tr>
             <td><span class="badge badge-phase2">JP</span></td>
@@ -1765,7 +1765,7 @@ Ai-Chat-bot-project/
             <td>toomics.jp/ja</td>
             <td>5%</td>
             <td>79건</td>
-            <td>Account 비중 높음(22%), 경어(&#25964;&#35486;) 필수, 특정상거래법</td>
+            <td>Account 비중 높음(22%), 경어(敬語) 필수, 특정상거래법</td>
           </tr>
           <tr>
             <td><span class="badge badge-phase2">CN</span></td>
@@ -1796,7 +1796,7 @@ Ai-Chat-bot-project/
     </div>
 
     <div class="card">
-      <h3>&#128231; 마켓별 지원 채널</h3>
+      <h3>📧 마켓별 지원 채널</h3>
       <table>
         <thead>
           <tr><th>마켓</th><th>지원 채널</th></tr>
@@ -1811,7 +1811,7 @@ Ai-Chat-bot-project/
         </tbody>
       </table>
       <div class="info-box info-box-blue">
-        <span class="info-icon">&#128233;</span>
+        <span class="info-icon">📩</span>
         <div>각 마켓별 Zendesk 티켓 시스템을 통해 접수됩니다.</div>
       </div>
     </div>
@@ -1825,47 +1825,47 @@ Ai-Chat-bot-project/
     </div>
 
     <div class="card">
-      <h3>&#128683; 어떤 Phase에서도 자동 응답을 하지 않는 영역</h3>
+      <h3>🚫 어떤 Phase에서도 자동 응답을 하지 않는 영역</h3>
       <p>아래 항목은 시스템 고도화와 무관하게 <strong>영구적으로</strong> 자동 처리에서 배제됩니다.</p>
 
       <ul class="exclusion-list">
         <li>
-          <span class="exclusion-icon">&#128221;</span>
+          <span class="exclusion-icon">📝</span>
           <div>
             <strong style="color:var(--text-primary);">Content 카테고리 → L2 (정보 수집 후 에스컬레이션)</strong><br>
             작품 에러, 번역 오류, 이미지 깨짐 등 → AI가 작품명·챕터·기기 정보를 먼저 수집 후 상담원에게 전달. 셀프서비스 자동 처리는 없음.
           </div>
         </li>
         <li>
-          <span class="exclusion-icon">&#10006;</span>
+          <span class="exclusion-icon">✖</span>
           <div>
             <strong style="color:var(--text-primary);">Other 카테고리 전체</strong><br>
             구직, 파트너십, 비즈니스 문의, CS 대상 아닌 문의. 적절한 부서 배정 필요.
           </div>
         </li>
         <li>
-          <span class="exclusion-icon">&#10006;</span>
+          <span class="exclusion-icon">✖</span>
           <div>
             <strong style="color:var(--text-primary);">기술 버그 리포트 (기기+OS)</strong><br>
             기기명 + OS 버전이 포함된 상세 버그 리포트. 팀 리더에게 전달 필요. (예: "iPhone 15 Pro, iOS 17.2에서 크래시 발생")
           </div>
         </li>
         <li>
-          <span class="exclusion-icon">&#10006;</span>
+          <span class="exclusion-icon">✖</span>
           <div>
             <strong style="color:var(--text-primary);">법적/컴플라이언스 문의</strong><br>
-            EU 철회권(Widerrufsrecht, Droit de r&#233;tractation), GDPR(DSGVO, RGPD), CDC 등 법적 규정 인용. 법적 판단 불가.
+            EU 철회권(Widerrufsrecht, Droit de rétractation), GDPR(DSGVO, RGPD), CDC 등 법적 규정 인용. 법적 판단 불가.
           </div>
         </li>
         <li>
-          <span class="exclusion-icon">&#10006;</span>
+          <span class="exclusion-icon">✖</span>
           <div>
             <strong style="color:var(--text-primary);">Fraud HIGH (50점 이상)</strong><br>
             Red Flag Critical 1개 이상 또는 Supporting 2개 이상 조합으로 fraud_score 50+ 달성. 인간 검토 필수.
           </div>
         </li>
         <li>
-          <span class="exclusion-icon">&#10006;</span>
+          <span class="exclusion-icon">✖</span>
           <div>
             <strong style="color:var(--text-primary);">제3자 해지 요청 (Minna Technologies / Ethoca)</strong><br>
             <code>@cancel.us.minnatechnologies.com</code> 도메인 발신 자동 요청. <strong style="color:var(--accent-red);">절대 응답 금지 (DO NOT RESPOND).</strong>
@@ -1883,7 +1883,7 @@ Ai-Chat-bot-project/
     </div>
     <div class="card">
       <div class="info-box info-box-amber">
-        <span class="info-icon">&#9888;&#65039;</span>
+        <span class="info-icon">⚠️</span>
         <div>
           <strong>프로토타입 단계</strong><br>
           서버 운영 가이드(인프라 구성, API 엔드포인트, 배포 절차)는 개발팀 협의 후 확정 예정입니다.<br>
@@ -1901,7 +1901,7 @@ Ai-Chat-bot-project/
     </div>
 
     <div class="card">
-      <h3>&#128208; 응대 품질 필수 규칙</h3>
+      <h3>📐 응대 품질 필수 규칙</h3>
       <table>
         <thead>
           <tr><th>항목</th><th>규칙</th><th>상세</th></tr>
@@ -1953,14 +1953,14 @@ Ai-Chat-bot-project/
     </div>
 
     <div class="card">
-      <h3>&#128203; 분류 신뢰도 기준</h3>
+      <h3>📋 분류 신뢰도 기준</h3>
       <table>
         <thead>
           <tr><th>신뢰도</th><th>판정</th><th>다음 단계</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong style="color:#047857;">&#8805; 90%</strong></td>
+            <td><strong style="color:#047857;">≥ 90%</strong></td>
             <td>확정 분류</td>
             <td>해당 스킬로 즉시 라우팅</td>
           </tr>
@@ -1979,7 +1979,7 @@ Ai-Chat-bot-project/
     </div>
 
     <div class="card">
-      <h3>&#128295; 복합 의도 처리 규칙</h3>
+      <h3>🔧 복합 의도 처리 규칙</h3>
       <p>하나의 메시지에 2개 이상의 의도가 포함된 경우:</p>
       <table>
         <thead>
@@ -2007,7 +2007,7 @@ Ai-Chat-bot-project/
     </div>
 
     <div class="card">
-      <h3>&#128202; 환불 소요 기간 참조표</h3>
+      <h3>📊 환불 소요 기간 참조표</h3>
       <table>
         <thead>
           <tr><th>PG사</th><th>소요 기간</th><th>비고</th></tr>
@@ -2016,7 +2016,7 @@ Ai-Chat-bot-project/
           <tr><td>PayPal</td><td>3~5 영업일</td><td></td></tr>
           <tr><td>Credit/Debit Card</td><td><strong>2주~1개월</strong></td><td>카드 발급 은행에 따라 상이. "typically 2 weeks to 1 month" 표현 사용.</td></tr>
           <tr><td>Google Play</td><td>3~5 영업일</td><td></td></tr>
-          <tr><td>Apple</td><td>2~5 영업일</td><td>직접 환불 불가 &#8594; reportaproblem.apple.com 리디렉트</td></tr>
+          <tr><td>Apple</td><td>2~5 영업일</td><td>직접 환불 불가 → reportaproblem.apple.com 리디렉트</td></tr>
           <tr><td>PIX (PT 마켓)</td><td><strong>최대 10 영업일</strong></td><td>브라질 전용 결제수단</td></tr>
           <tr><td>MyCard (CN 마켓)</td><td>3 영업일</td><td>대만 전용 결제수단</td></tr>
         </tbody>
@@ -2027,13 +2027,13 @@ Ai-Chat-bot-project/
   <!-- ============================== Footer ============================== -->
   <div class="footer">
     <p><strong>Toomics CS AI Chatbot Operations Manual v1.0</strong></p>
-    <p>&#169; 2026 Toomics Global. 작성자: 유종선 (Chongsun Yu) | 작성일: 2026-02-22</p>
+    <p>© 2026 Toomics Global. 작성자: 유종선 (Chongsun Yu) | 작성일: 2026-02-22</p>
     <p style="margin-top:8px;">본 문서는 CS 운영팀 내부 전용입니다. (프로토타입) 외부 배포를 금합니다.</p>
   </div>
 </div>
 
 <!-- ============================== Back to Top Button ============================== -->
-<button class="back-to-top no-print" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="맨 위로 이동">&#8593;</button>
+<button class="back-to-top no-print" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="맨 위로 이동">↑</button>
 
 <script>
   // Back to top button visibility
