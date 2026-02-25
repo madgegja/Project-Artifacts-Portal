@@ -84,6 +84,13 @@ HTML 리포트 파일(`.html`)을 생성·수정·삭제한 작업이 완료되�
 
 예외: 사용자가 "푸시하지 마", "커밋만" 등 명시적으로 제외 지시한 경우
 
+### BizOPS 인덱스 자동 동기화 규칙
+`/root/Claude/toomics-ai-agent/`에서 HTML 리포트를 생성·수정·삭제한 경우, toomics-ai-agent 커밋·푸시 후 추가로:
+1. 해당 HTML 파일을 `/root/Claude/BizOPS/`로 복사 (파일명 유지, 플랫하게)
+2. `cd /root/Claude/BizOPS && python3 scripts/generate_index.py` 실행하여 인덱스 재생성
+3. 변경된 HTML + index.html을 커밋·푸시 (`TG-BizOps/BizOPS` 리포)
+4. 신규 파일의 prefix가 `generate_index.py`의 PREFIX_RULES에 없으면 규칙 추가 후 재생성
+
 ### Google Sheets
 - 차지백 데이터, CS 처리 현황 시트
 
