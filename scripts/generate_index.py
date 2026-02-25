@@ -53,6 +53,7 @@ PREFIX_RULES = [
     ("cs_manual",               "cs_manual",    "M",  "bg-blue"),
     ("cs_repeat",               "cs_manual",    "R",  "bg-blue"),
     # CS 분석
+    ("cs_l1_l2_l3",             "cs_analysis",  "L",  "bg-cyan"),
     ("cs_weekly_analysis",      "cs_analysis",  "W",  "bg-cyan"),
     ("cs_weekly",               "cs_analysis",  "W",  "bg-cyan"),
     ("cs_infographic",          "cs_analysis",  "I",  "bg-cyan"),
@@ -241,8 +242,8 @@ CSS = """\
   .stat-card .num { font-size: 28px; font-weight: 800; font-variant-numeric: tabular-nums; }
   .stat-card .lbl { font-size: 12px; color: #475569; margin-top: 4px; }
   .stat-card:nth-child(2) { border-top-color: #0EA5E9; }
-  .stat-card:nth-child(3) { border-top-color: #F59E0B; }
-  .stat-card:nth-child(4) { border-top-color: #10B981; }
+  .stat-card:nth-child(3) { border-top-color: #10B981; }
+  .stat-card:nth-child(4) { border-top-color: #F59E0B; }
   .stat-card:nth-child(5) { border-top-color: #7C3AED; }
   .section { margin-bottom: 36px; }
   .section-title {
@@ -318,15 +319,7 @@ CSS = """\
     .stats { grid-template-columns: repeat(2, 1fr); }
     .hero h1 { font-size: 24px; }
   }
-  @media (prefers-color-scheme: dark) {
-    body { background: #0F172A; color: #F1F5F9; }
-    .stat-card, .link-card { background: #1E293B; border-color: #334155; }
-    .link-card:hover { border-color: #60A5FA; }
-    .section-title { border-bottom-color: #334155; }
-    .section-title .count { background: #334155; color: #94A3B8; }
-    .link-card .lc-desc { color: #CBD5E1; }
-    .footer { border-top-color: #334155; }
-  }"""
+"""
 
 
 def escape(text):

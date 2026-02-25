@@ -45,8 +45,8 @@
   .stat-card .num { font-size: 28px; font-weight: 800; font-variant-numeric: tabular-nums; }
   .stat-card .lbl { font-size: 12px; color: #475569; margin-top: 4px; }
   .stat-card:nth-child(2) { border-top-color: #0EA5E9; }
-  .stat-card:nth-child(3) { border-top-color: #F59E0B; }
-  .stat-card:nth-child(4) { border-top-color: #10B981; }
+  .stat-card:nth-child(3) { border-top-color: #10B981; }
+  .stat-card:nth-child(4) { border-top-color: #F59E0B; }
   .stat-card:nth-child(5) { border-top-color: #7C3AED; }
   .section { margin-bottom: 36px; }
   .section-title {
@@ -122,15 +122,7 @@
     .stats { grid-template-columns: repeat(2, 1fr); }
     .hero h1 { font-size: 24px; }
   }
-  @media (prefers-color-scheme: dark) {
-    body { background: #0F172A; color: #F1F5F9; }
-    .stat-card, .link-card { background: #1E293B; border-color: #334155; }
-    .link-card:hover { border-color: #60A5FA; }
-    .section-title { border-bottom-color: #334155; }
-    .section-title .count { background: #334155; color: #94A3B8; }
-    .link-card .lc-desc { color: #CBD5E1; }
-    .footer { border-top-color: #334155; }
-  }
+
 </style>
 </head>
 <body>
@@ -195,7 +187,7 @@
   <div class="section">
     <h2 class="section-title">
       <span class="icon ic-cyan">A</span> CS 분석 · 시각화
-      <span class="count">4건</span>
+      <span class="count">5건</span>
     </h2>
     <div class="link-grid">
       <a class="link-card" href="cs_fraud_analysis_20260219_refund_dispute.html">
@@ -209,6 +201,13 @@
         <span class="lc-icon bg-cyan">I</span>
         <span class="lc-body">
           <span class="lc-title">TOOMICS Global CS Infographic | 2025.07 ~ 2026.01</span>
+        </span>
+        <span class="lc-badge bg-cyan">1280px</span>
+      </a>
+      <a class="link-card" href="cs_l1_l2_l3_analysis_20260225.html">
+        <span class="lc-icon bg-cyan">L</span>
+        <span class="lc-body">
+          <span class="lc-title">CS 티켓 레벨 분석 (L1/L2/L3) | 2025.07 ~ 2026.02</span>
         </span>
         <span class="lc-badge bg-cyan">1280px</span>
       </a>
@@ -472,22 +471,6 @@
           <span class="lc-desc">Toomics CS Ticket Dashboard 운영 매뉴얼 — 대시보드 사용법, 기능 안내, 운영 가이드</span>
         </span>
         <span class="lc-badge bg-blue">1280px</span>
-      </a>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2 class="section-title">
-      <span class="icon ic-blue">?</span> 기타
-      <span class="count">1건</span>
-    </h2>
-    <div class="link-grid">
-      <a class="link-card" href="cs_l1_l2_l3_analysis_20260225.html">
-        <span class="lc-icon bg-slate">?</span>
-        <span class="lc-body">
-          <span class="lc-title">CS 티켓 레벨 분석 (L1/L2/L3) | 2025.07 ~ 2026.02</span>
-        </span>
-        <span class="lc-badge bg-slate">1280px</span>
       </a>
     </div>
   </div>
