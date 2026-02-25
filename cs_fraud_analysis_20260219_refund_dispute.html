@@ -5,6 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>악의성 환불 요청 CS 티켓 분석 리포트 | 2026-02-19</title>
 <style>
+:root {
+  --max-w: 960px;
+  --max-w-wide: 1280px;
+  --radius: 12px;
+  --gap: 16px;
+  --bg-base: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --bg-muted: #F1F5F9;
+  --text-primary: #1E293B;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --border: #E2E8F0;
+  --accent-brand: #2563EB;
+  --accent-info: #0EA5E9;
+  --accent-success: #10B981;
+  --accent-warn: #F59E0B;
+  --accent-danger: #EF4444;
+  --accent-purple: #7C3AED;
+  --font-base: 14px;
+  --font-sm: 12px;
+  --font-lg: 18px;
+  --font-xl: 28px;
+  --line-height: 1.7;
+  --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
+}
+
   html { scroll-behavior: smooth; }
   @page {
     size: A4;
@@ -13,8 +39,8 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
-    color: #1E293B;
-    background: #F8FAFC;
+    color: var(--text-primary);
+    background: var(--bg-base);
     font-size: 13px;
     line-height: 1.7;
     -webkit-print-color-adjust: exact !important;
@@ -32,7 +58,7 @@
   /* ── Header ── */
   .report-header {
     background: linear-gradient(135deg, #F8FAFC 0%, #F0F4F8 50%, #E8F0FE 100%);
-    color: #1E293B;
+    color: var(--text-primary);
     padding: 36px 40px 28px;
     position: relative;
     overflow: hidden;
@@ -42,7 +68,7 @@
     position: absolute;
     top: -50px; right: -50px;
     width: 200px; height: 200px;
-    background: #F1F5F9;
+    background: var(--bg-muted);
     border-radius: 50%;
   }
   .report-header .badge {
@@ -91,7 +117,7 @@
     gap: 8px;
     font-size: 15px;
     font-weight: 800;
-    color: #1E293B;
+    color: var(--text-primary);
     margin-bottom: 14px;
     padding-bottom: 8px;
     border-bottom: 2px solid #e94560;
@@ -99,7 +125,7 @@
   .section-title .icon {
     width: 28px; height: 28px;
     background: #e94560;
-    color: #1E293B;
+    color: var(--text-primary);
     border-radius: 6px;
     display: flex;
     align-items: center;
@@ -149,8 +175,8 @@
     font-size: 10.5px;
   }
   table th {
-    background: #F8FAFC;
-    color: #1E293B;
+    background: var(--bg-base);
+    color: var(--text-primary);
     padding: 8px 12px;
     text-align: left;
     font-weight: 600;
@@ -199,7 +225,7 @@
     border: 2px solid #6b7280;
   }
   .timeline-item.alert::before { border-color: #e94560; background: #e94560; }
-  .timeline-item.response::before { border-color: #10b981; background: #10b981; }
+  .timeline-item.response::before { border-color: var(--accent-success); background: var(--accent-success); }
   .timeline-item .time {
     font-weight: 700;
     color: #6b7280;
@@ -246,15 +272,15 @@
     font-weight: 800;
     flex-shrink: 0;
   }
-  .flag-card.critical .flag-num { background: #e94560; color: #1E293B; }
-  .flag-card.warning .flag-num { background: #f59e0b; color: #1E293B; }
-  .flag-card .flag-title { font-weight: 700; font-size: 12px; color: #1E293B; }
+  .flag-card.critical .flag-num { background: #e94560; color: var(--text-primary); }
+  .flag-card.warning .flag-num { background: var(--accent-warn); color: var(--text-primary); }
+  .flag-card .flag-title { font-weight: 700; font-size: 12px; color: var(--text-primary); }
   .flag-card .flag-desc { font-size: 12px; color: #6b7280; margin-top: 2px; line-height: 1.5; }
 
   /* ── Verdict Box ── */
   .verdict-box {
     background: linear-gradient(135deg, #F8FAFC, #E8F0FE);
-    color: #1E293B;
+    color: var(--text-primary);
     border-radius: 10px;
     padding: 22px 28px;
     margin: 18px 0;
@@ -311,7 +337,7 @@
   }
   .eval-check.pass { background: #d1fae5; color: #059669; }
   .eval-check.warn { background: #fef3c7; color: #d97706; }
-  .eval-label { font-weight: 600; color: #1E293B; min-width: 120px; }
+  .eval-label { font-weight: 600; color: var(--text-primary); min-width: 120px; }
   .eval-comment { color: #6b7280; }
 
   /* ── Response Template ── */
@@ -328,7 +354,7 @@
   .response-template h4 {
     font-size: 12px;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
     margin: 14px 0 6px;
     padding-top: 10px;
     border-top: 1px solid #e5e7eb;
@@ -386,11 +412,11 @@
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
-  .action-item.urgent .action-priority { background: #e94560; color: #1E293B; }
-  .action-item.medium .action-priority { background: #f59e0b; color: #1E293B; }
-  .action-item.low .action-priority { background: #10b981; color: #1E293B; }
+  .action-item.urgent .action-priority { background: #e94560; color: var(--text-primary); }
+  .action-item.medium .action-priority { background: var(--accent-warn); color: var(--text-primary); }
+  .action-item.low .action-priority { background: var(--accent-success); color: var(--text-primary); }
   .action-content { flex: 1; }
-  .action-title { font-weight: 700; font-size: 12px; color: #1E293B; }
+  .action-title { font-weight: 700; font-size: 12px; color: var(--text-primary); }
   .action-meta { font-size: 9.5px; color: #9ca3af; margin-top: 2px; }
 
   /* ── Insight Box ── */
@@ -433,7 +459,7 @@
   .flow-num {
     width: 22px; height: 22px;
     background: #6366f1;
-    color: #1E293B;
+    color: var(--text-primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -477,7 +503,7 @@
     top: 20px;
     right: 20px;
     background: #e94560;
-    color: #1E293B;
+    color: var(--text-primary);
     border: none;
     padding: 12px 24px;
     border-radius: 8px;
@@ -497,7 +523,7 @@
     right: 32px;
     width: 44px;
     height: 44px;
-    background: #2563eb;
+    background: var(--accent-brand);
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -631,7 +657,7 @@
       </table></div>
 
       <!-- Timeline -->
-      <div style="margin-top: 16px; font-weight: 700; font-size: 12px; color: #1E293B; margin-bottom: 8px;">📅 타임라인</div>
+      <div style="margin-top: 16px; font-weight: 700; font-size: 12px; color: var(--text-primary); margin-bottom: 8px;">📅 타임라인</div>
       <div class="timeline">
         <div class="timeline-item alert">
           <div class="time">02/12</div>
@@ -1010,8 +1036,8 @@
 })();
 </script>
 
-<footer style="text-align:center; padding:24px 40px 32px; font-size:12px; color:#94A3B8; border-top:1px solid #E2E8F0; margin-top:48px;">
-  <strong style="color:#1E293B;">Toomics Global BizOps</strong> · 작성: 유종선 · Confidential
+<footer style="text-align:center; padding:24px 40px 32px; font-size:12px; color:var(--text-muted); border-top:1px solid var(--border); margin-top:48px;">
+  <strong style="color:var(--text-primary);">Toomics Global BizOps</strong> · 작성: 유종선 · Confidential
 </footer>
 </body>
 </html>

@@ -8,13 +8,39 @@
 <title>TOOMICS BizOps팀 주간 보고서 | 2026년 2월 2~3주차 (02.07 ~ 02.20) v2</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
+:root {
+  --max-w: 960px;
+  --max-w-wide: 1280px;
+  --radius: 12px;
+  --gap: 16px;
+  --bg-base: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --bg-muted: #F1F5F9;
+  --text-primary: #1E293B;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --border: #E2E8F0;
+  --accent-brand: #2563EB;
+  --accent-info: #0EA5E9;
+  --accent-success: #10B981;
+  --accent-warn: #F59E0B;
+  --accent-danger: #EF4444;
+  --accent-purple: #7C3AED;
+  --font-base: 14px;
+  --font-sm: 12px;
+  --font-lg: 18px;
+  --font-xl: 28px;
+  --line-height: 1.7;
+  --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
+}
+
   html { scroll-behavior: smooth; }
   @page { size: A3 portrait; margin: 10mm; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', -apple-system, sans-serif;
-    color: #1E293B;
-    background: #F8FAFC;
+    color: var(--text-primary);
+    background: var(--bg-base);
     line-height: 1.7;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
@@ -78,13 +104,13 @@
   }
   .exec-summary h2 { font-size: 16px; font-weight: 700; margin-bottom: 16px; color: #0369a1; }
   .exec-summary ul { list-style: none; padding: 0; }
-  .exec-summary li { padding: 8px 0; border-bottom: 1px solid #E2E8F0; font-size: 13px; line-height: 1.7; color: #1E293B; }
+  .exec-summary li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; line-height: 1.7; color: var(--text-primary); }
   .exec-summary li:last-child { border-bottom: none; }
   .exec-summary .tag { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 10.5px; font-weight: 700; margin-right: 6px; }
   .tag-up { background: #fef2f2; color: #dc2626; }
   .tag-down { background: #f0fdf4; color: #16a34a; }
   .tag-warn { background: #fefce8; color: #854d0e; }
-  .tag-info { background: #eff6ff; color: #2563eb; }
+  .tag-info { background: #eff6ff; color: var(--accent-brand); }
 
   /* ── KPI Strip ── */
   .kpi-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; padding: 0 24px; margin-bottom: 32px; }
@@ -99,15 +125,15 @@
   }
   .kpi-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
   .kpi-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 22px; }
-  .kpi-number { font-size: 32px; font-weight: 800; color: #1E293B; line-height: 1.1; }
+  .kpi-number { font-size: 32px; font-weight: 800; color: var(--text-primary); line-height: 1.1; }
   .kpi-number .small { font-size: 16px; font-weight: 600; }
   .kpi-label { font-size: 12px; color: #64748B; margin-top: 4px; font-weight: 500; }
   .kpi-sub { font-size: 12px; color: #64748B; margin-top: 2px; }
 
   /* ── Section ── */
   .section { padding: 0 24px; margin-bottom: 32px; }
-  .section-title { font-size: 18px; font-weight: 700; color: #1E293B; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-  .section-title .dot { width: 8px; height: 8px; border-radius: 50%; background: #0ea5e9; display: inline-block; }
+  .section-title { font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .section-title .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-info); display: inline-block; }
 
   /* ── Chart Grid ── */
   .chart-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -118,7 +144,7 @@
     box-shadow: 0 2px 12px rgba(0,0,0,0.1);
     border: 1px solid #CBD5E1;
   }
-  .chart-card h3 { font-size: 14px; font-weight: 700; color: #1E293B; margin-bottom: 4px; }
+  .chart-card h3 { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
   .chart-card .chart-desc { font-size: 12px; color: #64748B; margin-bottom: 16px; }
   .chart-wrap { position: relative; width: 100%; }
 
@@ -151,10 +177,10 @@
   }
   .category-table td {
     padding: 10px 12px;
-    border-bottom: 1px solid #E2E8F0;
+    border-bottom: 1px solid var(--border);
   }
   .category-table tr:hover td {
-    background: #F1F5F9;
+    background: var(--bg-muted);
   }
   .cat-dot {
     display: inline-block;
@@ -179,18 +205,18 @@
 
   /* ── Bar Legend Table (replaces doughnut) ── */
   .bar-legend { width: 100%; }
-  .bar-legend-item { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #E2E8F0; }
+  .bar-legend-item { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--border); }
   .bar-legend-item:last-child { border-bottom: none; }
-  .bar-legend-label { min-width: 100px; font-size: 12px; font-weight: 600; color: #1E293B; }
-  .bar-legend-bar-wrap { flex: 1; height: 20px; background: #F8FAFC; border-radius: 4px; overflow: hidden; position: relative; }
+  .bar-legend-label { min-width: 100px; font-size: 12px; font-weight: 600; color: var(--text-primary); }
+  .bar-legend-bar-wrap { flex: 1; height: 20px; background: var(--bg-base); border-radius: 4px; overflow: hidden; position: relative; }
   .bar-legend-bar { height: 100%; border-radius: 4px; transition: width 0.8s ease; display: flex; align-items: center; padding-left: 8px; }
-  .bar-legend-bar span { font-size: 12px; font-weight: 700; color: #1E293B; white-space: nowrap; }
+  .bar-legend-bar span { font-size: 12px; font-weight: 700; color: var(--text-primary); white-space: nowrap; }
   .bar-legend-val { min-width: 72px; text-align: right; font-size: 12px; font-weight: 700; color: #64748B; font-variant-numeric: tabular-nums; }
 
   /* ── WoW Table ── */
   .wow-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; }
   .wow-table thead th {
-    background: #F8FAFC;
+    background: var(--bg-base);
     color: #64748B;
     padding: 12px 16px;
     text-align: left;
@@ -201,11 +227,11 @@
   }
   .wow-table thead th:first-child { border-radius: 10px 0 0 0; }
   .wow-table thead th:last-child { border-radius: 0 10px 0 0; }
-  .wow-table tbody td { padding: 12px 16px; border-bottom: 1px solid #E2E8F0; color: #1E293B; }
-  .wow-table tbody tr:hover { background: #F1F5F9; }
+  .wow-table tbody td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-primary); }
+  .wow-table tbody tr:hover { background: var(--bg-muted); }
   .wow-table tbody tr:last-child td { border-bottom: none; }
   .wow-table .num { text-align: right; font-variant-numeric: tabular-nums; }
-  .trend-up { color: #ef4444; font-weight: 700; font-size: 12px; }
+  .trend-up { color: var(--accent-danger); font-weight: 700; font-size: 12px; }
   .trend-down { color: #22c55e; font-weight: 700; font-size: 12px; }
   .trend-flat { color: #64748B; font-weight: 600; font-size: 12px; }
 
@@ -218,13 +244,13 @@
     border-left: 4px solid;
     box-shadow: 0 2px 12px rgba(0,0,0,0.1);
   }
-  .insight-card.red { border-left-color: #ef4444; }
-  .insight-card.blue { border-left-color: #0ea5e9; }
+  .insight-card.red { border-left-color: var(--accent-danger); }
+  .insight-card.blue { border-left-color: var(--accent-info); }
   .insight-card.green { border-left-color: #22c55e; }
   .insight-card.yellow { border-left-color: #eab308; }
   .insight-card.purple { border-left-color: #8b5cf6; }
   .insight-card.orange { border-left-color: #f97316; }
-  .insight-card h4 { font-size: 13px; font-weight: 700; color: #1E293B; margin-bottom: 6px; }
+  .insight-card h4 { font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
   .insight-card p { font-size: 12px; color: #64748B; line-height: 1.7; }
   .insight-card .highlight { font-weight: 700; color: #0369a1; }
 
@@ -233,12 +259,12 @@
   .voice-category {
     font-size: 15px;
     font-weight: 800;
-    color: #1E293B;
+    color: var(--text-primary);
     margin-bottom: 14px;
     padding: 10px 16px;
     background: linear-gradient(90deg, #DBEAFE 0%, #F8FAFC 100%);
     border-radius: 10px;
-    border-left: 4px solid #0ea5e9;
+    border-left: 4px solid var(--accent-info);
   }
   .voice-card {
     background: #FFFFFF;
@@ -249,10 +275,10 @@
     border: 1px solid #CBD5E1;
     border-left: 4px solid;
   }
-  .voice-card.severity-high { border-left-color: #ef4444; }
+  .voice-card.severity-high { border-left-color: var(--accent-danger); }
   .voice-card.severity-medium { border-left-color: #92400e; }
   .voice-card.severity-low { border-left-color: #22c55e; }
-  .voice-card.severity-critical { border-left-color: #7c3aed; }
+  .voice-card.severity-critical { border-left-color: var(--accent-purple); }
   .voice-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
   .voice-badge { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; }
   .badge-market { background: #FFFFFF; color: #0369a1; }
@@ -261,21 +287,21 @@
   .badge-severity-medium { background: #fefce8; color: #b45309; }
   .badge-severity-low { background: #dcfce7; color: #166534; }
   .badge-severity-critical { background: #f3e8ff; color: #6d28d9; }
-  .voice-title { font-size: 13px; font-weight: 700; color: #1E293B; }
+  .voice-title { font-size: 13px; font-weight: 700; color: var(--text-primary); }
   .voice-quote {
-    background: #F8FAFC;
+    background: var(--bg-base);
     border-radius: 8px;
     padding: 12px 16px;
     margin: 8px 0;
     font-size: 12px;
     font-style: italic;
-    color: #475569;
+    color: var(--text-secondary);
     line-height: 1.7;
     border-left: 3px solid #CBD5E1;
   }
   .voice-quote .translation { display: block; margin-top: 4px; font-style: normal; color: #64748B; font-size: 12px; }
   .voice-impact { font-size: 12px; color: #64748B; line-height: 1.6; margin-top: 8px; }
-  .voice-impact strong { color: #1E293B; }
+  .voice-impact strong { color: var(--text-primary); }
   .voice-action {
     display: inline-block;
     margin-top: 8px;
@@ -295,15 +321,15 @@
     box-shadow: 0 2px 12px rgba(0,0,0,0.1);
     border: 1px solid #CBD5E1;
   }
-  .action-list h3 { font-size: 15px; font-weight: 700; color: #1E293B; margin-bottom: 16px; }
-  .action-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #E2E8F0; }
+  .action-list h3 { font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 16px; }
+  .action-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
   .action-item:last-child { border-bottom: none; }
-  .action-priority { min-width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #1E293B; }
-  .priority-high { background: #ef4444; }
-  .priority-mid { background: #f59e0b; }
+  .action-priority { min-width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: var(--text-primary); }
+  .priority-high { background: var(--accent-danger); }
+  .priority-mid { background: var(--accent-warn); }
   .priority-low { background: #22c55e; }
   .action-content { flex: 1; }
-  .action-content .action-title { font-size: 13px; font-weight: 700; color: #1E293B; }
+  .action-content .action-title { font-size: 13px; font-weight: 700; color: var(--text-primary); }
   .action-content .action-desc { font-size: 12px; color: #64748B; margin-top: 2px; }
   .action-content .action-owner { font-size: 12px; color: #64748B; margin-top: 4px; }
 
@@ -329,7 +355,7 @@
     .hero h1 { font-size: 20px; }
   }
   @media print {
-    body { background: #F8FAFC; color: #1E293B; }
+    body { background: var(--bg-base); color: var(--text-primary); }
     .container { box-shadow: none; }
     .chart-card, .insight-card, .voice-card, .action-item { page-break-inside: avoid; }
     .section { page-break-before: auto; }
@@ -358,7 +384,7 @@
     right: 32px;
     width: 44px;
     height: 44px;
-    background: #2563eb;
+    background: var(--accent-brand);
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -468,7 +494,7 @@
     <div class="section-title"><span class="dot"></span>카테고리 & 마켓 분포</div>
 
     <!-- 카테고리별 -->
-    <h3 style="font-size:14px;font-weight:700;color:#1E293B;margin-bottom:4px;">카테고리별 티켓 비중</h3>
+    <h3 style="font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:4px;">카테고리별 티켓 비중</h3>
     <p style="font-size:12px;color:#64748B;margin-bottom:16px;">Subscription + Refund + Account = 80.0%</p>
     <div class="category-layout" style="margin-bottom:28px;">
       <div class="chart-card">
@@ -486,7 +512,7 @@
           </thead>
           <tbody>
             <tr>
-              <td><span class="cat-dot" style="background:#0ea5e9"></span>Subscription</td>
+              <td><span class="cat-dot" style="background:var(--accent-info)"></span>Subscription</td>
               <td>38.7%</td>
               <td>321건</td>
               <td>구독 해지·갱신·자동결제 변경</td>
@@ -533,7 +559,7 @@
     </div>
 
     <!-- 마켓(언어)별 -->
-    <h3 style="font-size:14px;font-weight:700;color:#1E293B;margin-bottom:4px;">마켓(언어)별 티켓 비중</h3>
+    <h3 style="font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:4px;">마켓(언어)별 티켓 비중</h3>
     <p style="font-size:12px;color:#64748B;margin-bottom:16px;">EN 35.2% 최대, 유럽권 합산 53.2%</p>
     <div class="category-layout">
       <div class="chart-card">
@@ -551,7 +577,7 @@
           </thead>
           <tbody>
             <tr>
-              <td><span class="cat-dot" style="background:#0ea5e9"></span>EN</td>
+              <td><span class="cat-dot" style="background:var(--accent-info)"></span>EN</td>
               <td>35.2%</td>
               <td>292건</td>
               <td><span class="cat-badge manual">최다 마켓</span></td>
@@ -702,11 +728,11 @@
 
   <!-- ════════ CHARGEBACK WEEKLY REPORT ════════ -->
   <div class="section">
-    <div class="section-title"><span class="dot" style="background:#ef4444;"></span>Chargeback Weekly Report</div>
+    <div class="section-title"><span class="dot" style="background:var(--accent-danger);"></span>Chargeback Weekly Report</div>
     <p style="font-size: 12px; color:#64748b; margin:-12px 0 20px 18px;">데이터: ★차지백 접수 건수 Google Sheet (시트 기준 150건 / 토~금 126건) · 2월 누적 189건(~02.19) · JPY 유입 증가 특이</p>
 
     <!-- ──── W2 SECTION ──── -->
-    <div class="chart-card" style="border-top:3px solid #ef4444; margin-bottom:20px;">
+    <div class="chart-card" style="border-top:3px solid var(--accent-danger); margin-bottom:20px;">
       <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
         <h3 style="font-size:16px; margin:0;">📅 W2 — 2월 2주차 (02.07 토 ~ 02.13 금)</h3>
         <span style="background:#fef2f2; color:#b91c1c; padding:3px 10px; border-radius:6px; font-size: 12px; font-weight:700;">86건</span>
@@ -715,23 +741,23 @@
 
       <!-- W2 KPI -->
       <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:18px;" class="cb-kpi-strip">
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
-          <div style="font-size:22px; font-weight:800; color:#1E293B;">86</div>
+        <div style="background:var(--bg-base); border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:var(--text-primary);">86</div>
           <div style="font-size: 12px; color:#64748b;">총 건수 (7일)</div>
         </div>
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
+        <div style="background:var(--bg-base); border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#92400e;">12.3</div>
           <div style="font-size: 12px; color:#64748b;">일 평균</div>
         </div>
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
-          <div style="font-size:22px; font-weight:800; color:#ef4444;">22</div>
+        <div style="background:var(--bg-base); border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:var(--accent-danger);">22</div>
           <div style="font-size: 12px; color:#64748b;">피크일 (02.11 수)</div>
         </div>
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
-          <div style="font-size:22px; font-weight:800; color:#0ea5e9;">51.2%</div>
+        <div style="background:var(--bg-base); border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:var(--accent-info);">51.2%</div>
           <div style="font-size: 12px; color:#64748b;">PayPal 비중</div>
         </div>
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
+        <div style="background:var(--bg-base); border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#22c55e;">$1,659</div>
           <div style="font-size: 12px; color:#64748b;">추정 피해액</div>
         </div>
@@ -740,37 +766,37 @@
       <!-- W2 PG / Reason / Product -->
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;" class="cb-breakdown-grid">
         <div>
-          <p class="chart-desc" style="font-weight:700; color: #1E293B; margin-bottom:8px;">PG사별</p>
+          <p class="chart-desc" style="font-weight:700; color: var(--text-primary); margin-bottom:8px;">PG사별</p>
           <div class="bar-legend">
-            <div class="bar-legend-item"><span class="bar-legend-label">PayPal</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:#0ea5e9;"><span>44</span></div></div><span class="bar-legend-val">51.2%</span></div>
+            <div class="bar-legend-item"><span class="bar-legend-label">PayPal</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:var(--accent-info);"><span>44</span></div></div><span class="bar-legend-val">51.2%</span></div>
             <div class="bar-legend-item"><span class="bar-legend-label">CKO</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:77.3%;background:#6366f1;"><span>34</span></div></div><span class="bar-legend-val">39.5%</span></div>
             <div class="bar-legend-item"><span class="bar-legend-label">AWX</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:15.9%;background:#f97316;"><span>7</span></div></div><span class="bar-legend-val">8.1%</span></div>
           </div>
         </div>
         <div>
-          <p class="chart-desc" style="font-weight:700; color: #1E293B; margin-bottom:8px;">사유별</p>
+          <p class="chart-desc" style="font-weight:700; color: var(--text-primary); margin-bottom:8px;">사유별</p>
           <div class="bar-legend">
-            <div class="bar-legend-item"><span class="bar-legend-label">Unauthorized</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:#ef4444;"><span>39</span></div></div><span class="bar-legend-val">45.3%</span></div>
+            <div class="bar-legend-item"><span class="bar-legend-label">Unauthorized</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:var(--accent-danger);"><span>39</span></div></div><span class="bar-legend-val">45.3%</span></div>
             <div class="bar-legend-item"><span class="bar-legend-label">Fraudulent</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:69.2%;background:#f97316;"><span>27</span></div></div><span class="bar-legend-val">31.4%</span></div>
-            <div class="bar-legend-item"><span class="bar-legend-label">기타</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:51.3%;background:#475569;"><span>20</span></div></div><span class="bar-legend-val">23.3%</span></div>
+            <div class="bar-legend-item"><span class="bar-legend-label">기타</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:51.3%;background:var(--text-secondary);"><span>20</span></div></div><span class="bar-legend-val">23.3%</span></div>
           </div>
         </div>
         <div>
-          <p class="chart-desc" style="font-weight:700; color: #1E293B; margin-bottom:8px;">상품별</p>
+          <p class="chart-desc" style="font-weight:700; color: var(--text-primary); margin-bottom:8px;">상품별</p>
           <div class="bar-legend">
-            <div class="bar-legend-item"><span class="bar-legend-label">1M</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:#0ea5e9;"><span>41</span></div></div><span class="bar-legend-val">47.7%</span></div>
+            <div class="bar-legend-item"><span class="bar-legend-label">1M</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:var(--accent-info);"><span>41</span></div></div><span class="bar-legend-val">47.7%</span></div>
             <div class="bar-legend-item"><span class="bar-legend-label">6M</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:48.8%;background:#f97316;"><span>20</span></div></div><span class="bar-legend-val">23.3%</span></div>
             <div class="bar-legend-item"><span class="bar-legend-label">3M</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:46.3%;background:#6366f1;"><span>19</span></div></div><span class="bar-legend-val">22.1%</span></div>
           </div>
         </div>
       </div>
-      <div style="margin-top:12px; padding:10px 14px; background:#F8FAFC; border-radius:8px; border-left:3px solid #f59e0b; font-size: 12px; color: #64748B; line-height:1.7;">
+      <div style="margin-top:12px; padding:10px 14px; background:var(--bg-base); border-radius:8px; border-left:3px solid var(--accent-warn); font-size: 12px; color: #64748B; line-height:1.7;">
         <strong style="color:#92400e;">⚠ 핵심:</strong> 수·목(02.11~12) <strong style="color:#b91c1c;">43건(50%)</strong> 집중 · Unauthorized+Fraudulent <strong style="color:#b91c1c;">76.7%</strong> · 피해액 ~$1,659
       </div>
     </div>
 
     <!-- ──── W3 SECTION ──── -->
-    <div class="chart-card" style="border-top:3px solid #0ea5e9; margin-bottom:20px;">
+    <div class="chart-card" style="border-top:3px solid var(--accent-info); margin-bottom:20px;">
       <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
         <h3 style="font-size:16px; margin:0;">📅 W3 — 2월 3주차 (02.14 토 ~ 02.20 금)</h3>
         <span style="background:#FFFFFF; color:#0369a1; padding:3px 10px; border-radius:6px; font-size: 12px; font-weight:700;">40건*</span>
@@ -780,23 +806,23 @@
 
       <!-- W3 KPI -->
       <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:18px;" class="cb-kpi-strip">
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
-          <div style="font-size:22px; font-weight:800; color:#1E293B;">40<span style="font-size:12px; color:#64748b;">*</span></div>
+        <div style="background:var(--bg-base); border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:var(--text-primary);">40<span style="font-size:12px; color:#64748b;">*</span></div>
           <div style="font-size: 12px; color:#64748b;">총 건수 (6일)</div>
         </div>
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
+        <div style="background:var(--bg-base); border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#22c55e;">6.7</div>
           <div style="font-size: 12px; color:#64748b;">일 평균 <span style="color:#22c55e;">▼</span></div>
         </div>
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
+        <div style="background:var(--bg-base); border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#92400e;">14</div>
           <div style="font-size: 12px; color:#64748b;">피크일 (02.18 수)</div>
         </div>
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
-          <div style="font-size:22px; font-weight:800; color:#0ea5e9;">62.5%</div>
-          <div style="font-size: 12px; color:#64748b;">PayPal 비중 <span style="color:#ef4444;">▲</span></div>
+        <div style="background:var(--bg-base); border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:var(--accent-info);">62.5%</div>
+          <div style="font-size: 12px; color:#64748b;">PayPal 비중 <span style="color:var(--accent-danger);">▲</span></div>
         </div>
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
+        <div style="background:var(--bg-base); border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#22c55e;">$706</div>
           <div style="font-size: 12px; color:#64748b;">추정 피해액</div>
         </div>
@@ -805,32 +831,32 @@
       <!-- W3 PG / Reason / Product -->
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;" class="cb-breakdown-grid">
         <div>
-          <p class="chart-desc" style="font-weight:700; color: #1E293B; margin-bottom:8px;">PG사별</p>
+          <p class="chart-desc" style="font-weight:700; color: var(--text-primary); margin-bottom:8px;">PG사별</p>
           <div class="bar-legend">
-            <div class="bar-legend-item"><span class="bar-legend-label">PayPal</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:#0ea5e9;"><span>25</span></div></div><span class="bar-legend-val">62.5%</span></div>
+            <div class="bar-legend-item"><span class="bar-legend-label">PayPal</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:var(--accent-info);"><span>25</span></div></div><span class="bar-legend-val">62.5%</span></div>
             <div class="bar-legend-item"><span class="bar-legend-label">CKO</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:32%;background:#6366f1;"><span>8</span></div></div><span class="bar-legend-val">20.0%</span></div>
             <div class="bar-legend-item"><span class="bar-legend-label">AWX</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:28%;background:#f97316;"><span>7</span></div></div><span class="bar-legend-val">17.5%</span></div>
           </div>
         </div>
         <div>
-          <p class="chart-desc" style="font-weight:700; color: #1E293B; margin-bottom:8px;">사유별</p>
+          <p class="chart-desc" style="font-weight:700; color: var(--text-primary); margin-bottom:8px;">사유별</p>
           <div class="bar-legend">
-            <div class="bar-legend-item"><span class="bar-legend-label">Unauthorized</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:#ef4444;"><span>18</span></div></div><span class="bar-legend-val">45.0%</span></div>
+            <div class="bar-legend-item"><span class="bar-legend-label">Unauthorized</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:var(--accent-danger);"><span>18</span></div></div><span class="bar-legend-val">45.0%</span></div>
             <div class="bar-legend-item"><span class="bar-legend-label">Fraudulent</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:55.6%;background:#f97316;"><span>10</span></div></div><span class="bar-legend-val">25.0%</span></div>
-            <div class="bar-legend-item"><span class="bar-legend-label">기타</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:66.7%;background:#475569;"><span>12</span></div></div><span class="bar-legend-val">30.0%</span></div>
+            <div class="bar-legend-item"><span class="bar-legend-label">기타</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:66.7%;background:var(--text-secondary);"><span>12</span></div></div><span class="bar-legend-val">30.0%</span></div>
           </div>
         </div>
         <div>
-          <p class="chart-desc" style="font-weight:700; color: #1E293B; margin-bottom:8px;">상품별</p>
+          <p class="chart-desc" style="font-weight:700; color: var(--text-primary); margin-bottom:8px;">상품별</p>
           <div class="bar-legend">
-            <div class="bar-legend-item"><span class="bar-legend-label">1M</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:#0ea5e9;"><span>23</span></div></div><span class="bar-legend-val">57.5%</span></div>
+            <div class="bar-legend-item"><span class="bar-legend-label">1M</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:100%;background:var(--accent-info);"><span>23</span></div></div><span class="bar-legend-val">57.5%</span></div>
             <div class="bar-legend-item"><span class="bar-legend-label">3M/6M</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:60.9%;background:#6366f1;"><span>14</span></div></div><span class="bar-legend-val">35.0%</span></div>
             <div class="bar-legend-item"><span class="bar-legend-label">Coin</span><div class="bar-legend-bar-wrap"><div class="bar-legend-bar" style="width:13%;background:#22c55e;"><span>3</span></div></div><span class="bar-legend-val">7.5%</span></div>
           </div>
         </div>
       </div>
-      <div style="margin-top:12px; padding:10px 14px; background:#F8FAFC; border-radius:8px; border-left:3px solid #0ea5e9; font-size: 12px; color: #64748B; line-height:1.7;">
-        <strong style="color:#0ea5e9;">ℹ 핵심:</strong> 건수 <strong style="color:#22c55e;">-53.5%↓</strong>(86→40*) · AWX <strong style="color:#f97316;">17.5%</strong>(+9.4%p) 급증 · Canceled 15.0%(+5.7%p) · 피해액 ~$706
+      <div style="margin-top:12px; padding:10px 14px; background:var(--bg-base); border-radius:8px; border-left:3px solid var(--accent-info); font-size: 12px; color: #64748B; line-height:1.7;">
+        <strong style="color:var(--accent-info);">ℹ 핵심:</strong> 건수 <strong style="color:#22c55e;">-53.5%↓</strong>(86→40*) · AWX <strong style="color:#f97316;">17.5%</strong>(+9.4%p) 급증 · Canceled 15.0%(+5.7%p) · 피해액 ~$706
       </div>
     </div>
 
@@ -859,8 +885,8 @@
     </div>
 
     <!-- ──── 소명 현황 요약 ──── -->
-    <div style="background:#F8FAFC; border-radius:10px; padding:14px 18px; font-size: 12px; color: #64748B; line-height:1.8;">
-      <strong style="color:#0ea5e9;">📋 소명:</strong> PayPal W2:44+W3:25건 · CKO W2:34+W3:8건 · AWX 14건 — <strong style="color:#b91c1c;">Fraudulent 즉시 이용 제한</strong> · PG별 기한 초과 시 자동 패소
+    <div style="background:var(--bg-base); border-radius:10px; padding:14px 18px; font-size: 12px; color: #64748B; line-height:1.8;">
+      <strong style="color:var(--accent-info);">📋 소명:</strong> PayPal W2:44+W3:25건 · CKO W2:34+W3:8건 · AWX 14건 — <strong style="color:#b91c1c;">Fraudulent 즉시 이용 제한</strong> · PG별 기한 초과 시 자동 패소
     </div>
   </div>
 
@@ -1152,22 +1178,22 @@
             <span style="background:#8b5cf6; color:#fff; padding:2px 8px; border-radius:6px; font-size:10px; font-weight:700;">PROTOTYPE READY</span>
           </div>
         </div>
-        <div style="font-size:12px; color:#475569; line-height:1.7;">
+        <div style="font-size:12px; color:var(--text-secondary); line-height:1.7;">
           FastAPI + 5 Core AI Skills 구현 완료<br>
           23개 시나리오 시뮬레이션 <strong style="color:#5b21b6;">100% 예측 정확도</strong><br>
           114/114 테스트 통과 · 운영 문서 9건 완비
         </div>
       </div>
-      <div style="background:linear-gradient(135deg,#eff6ff 0%,#dbeafe 100%); border:2px solid #2563eb; border-radius:14px; padding:22px; position:relative; overflow:hidden;">
+      <div style="background:linear-gradient(135deg,#eff6ff 0%,#dbeafe 100%); border:2px solid var(--accent-brand); border-radius:14px; padding:22px; position:relative; overflow:hidden;">
         <div style="position:absolute; top:-15px; right:-15px; width:80px; height:80px; background:radial-gradient(circle,rgba(37,99,235,0.1),transparent 70%); border-radius:50%;"></div>
         <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
           <span style="font-size:28px;">📊</span>
           <div>
             <div style="font-size:14px; font-weight:800; color:#1e40af;">CS Ticket Dashboard</div>
-            <span style="background:#2563eb; color:#fff; padding:2px 8px; border-radius:6px; font-size:10px; font-weight:700;">PROTOTYPE READY</span>
+            <span style="background:var(--accent-brand); color:#fff; padding:2px 8px; border-radius:6px; font-size:10px; font-weight:700;">PROTOTYPE READY</span>
           </div>
         </div>
-        <div style="font-size:12px; color:#475569; line-height:1.7;">
+        <div style="font-size:12px; color:var(--text-secondary); line-height:1.7;">
           실시간 CS 티켓 현황 모니터링 대시보드<br>
           마켓별·카테고리별·상담원별 분석 뷰<br>
           티켓 상세 조회 · 필터링 · 검색 기능
@@ -1187,27 +1213,27 @@
           <div style="font-size:32px; margin-bottom:6px;">🟢</div>
           <div style="font-size:16px; font-weight:800; color:#166534; margin-bottom:4px;">L3 · Self-Service</div>
           <div style="font-size:11px; color:#166534; font-weight:600; margin-bottom:10px;">AI가 직접 완결 처리</div>
-          <div style="background:#fff; border-radius:8px; padding:10px; font-size:11px; color:#475569; line-height:1.7; text-align:left;">
+          <div style="background:#fff; border-radius:8px; padding:10px; font-size:11px; color:var(--text-secondary); line-height:1.7; text-align:left;">
             구독 해지 안내 · FAQ 자동 응답<br>
             결제 상태 조회 · 계정 복구 가이드<br>
             <strong style="color:#047857;">→ 즉시 응답, 24/7 가용</strong>
           </div>
         </div>
-        <div style="background:linear-gradient(180deg,#eff6ff 0%,#dbeafe 100%); border-radius:12px; padding:18px; border-top:4px solid #2563eb; text-align:center;">
+        <div style="background:linear-gradient(180deg,#eff6ff 0%,#dbeafe 100%); border-radius:12px; padding:18px; border-top:4px solid var(--accent-brand); text-align:center;">
           <div style="font-size:32px; margin-bottom:6px;">🔵</div>
           <div style="font-size:16px; font-weight:800; color:#1e40af; margin-bottom:4px;">L2 · AI + Agent</div>
           <div style="font-size:11px; color:#1e40af; font-weight:600; margin-bottom:10px;">AI 초안 → 상담원 검토·발송</div>
-          <div style="background:#fff; border-radius:8px; padding:10px; font-size:11px; color:#475569; line-height:1.7; text-align:left;">
+          <div style="background:#fff; border-radius:8px; padding:10px; font-size:11px; color:var(--text-secondary); line-height:1.7; text-align:left;">
             환불 심사 응대 · 복합 결제 문의<br>
             다국어 번역 초안 자동 생성<br>
             <strong style="color:#1d4ed8;">→ 응답 시간 50%↓, 품질 균일화</strong>
           </div>
         </div>
-        <div style="background:linear-gradient(180deg,#fef2f2 0%,#fecaca 100%); border-radius:12px; padding:18px; border-top:4px solid #ef4444; text-align:center;">
+        <div style="background:linear-gradient(180deg,#fef2f2 0%,#fecaca 100%); border-radius:12px; padding:18px; border-top:4px solid var(--accent-danger); text-align:center;">
           <div style="font-size:32px; margin-bottom:6px;">🔴</div>
           <div style="font-size:16px; font-weight:800; color:#991b1b; margin-bottom:4px;">L1 · Agent Direct</div>
           <div style="font-size:11px; color:#991b1b; font-weight:600; margin-bottom:10px;">상담원 직접 전문 응대</div>
-          <div style="background:#fff; border-radius:8px; padding:10px; font-size:11px; color:#475569; line-height:1.7; text-align:left;">
+          <div style="background:#fff; border-radius:8px; padding:10px; font-size:11px; color:var(--text-secondary); line-height:1.7; text-align:left;">
             Fraud 의심 건 · 법적 분쟁<br>
             VIP 고객 불만 · 차지백 소명<br>
             <strong style="color:#b91c1c;">→ 즉시 에스컬, 전문 인력 집중</strong>
@@ -1217,40 +1243,40 @@
 
       <!-- Benefits Strip -->
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:18px;" class="cb-kpi-strip">
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center; border-left:3px solid #22c55e;">
+        <div style="background:var(--bg-base); border-radius:10px; padding:14px; text-align:center; border-left:3px solid #22c55e;">
           <div style="font-size:11px; font-weight:700; color:#047857; margin-bottom:4px;">고객 경험</div>
-          <div style="font-size:11px; color:#475569; line-height:1.6;">L3 즉시 응답으로 대기시간 0<br>L2 AI 초안으로 응답 품질 향상</div>
+          <div style="font-size:11px; color:var(--text-secondary); line-height:1.6;">L3 즉시 응답으로 대기시간 0<br>L2 AI 초안으로 응답 품질 향상</div>
         </div>
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center; border-left:3px solid #2563eb;">
+        <div style="background:var(--bg-base); border-radius:10px; padding:14px; text-align:center; border-left:3px solid var(--accent-brand);">
           <div style="font-size:11px; font-weight:700; color:#1d4ed8; margin-bottom:4px;">상담원 경험</div>
-          <div style="font-size:11px; color:#475569; line-height:1.6;">반복 문의 자동 처리 해방<br>복잡·고가치 건에 집중 가능</div>
+          <div style="font-size:11px; color:var(--text-secondary); line-height:1.6;">반복 문의 자동 처리 해방<br>복잡·고가치 건에 집중 가능</div>
         </div>
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center; border-left:3px solid #8b5cf6;">
+        <div style="background:var(--bg-base); border-radius:10px; padding:14px; text-align:center; border-left:3px solid #8b5cf6;">
           <div style="font-size:11px; font-weight:700; color:#6d28d9; margin-bottom:4px;">운영 효율</div>
-          <div style="font-size:11px; color:#475569; line-height:1.6;">월 ~630건(38%) 셀프서비스 전환<br>상담원 부담 3~4배 절감</div>
+          <div style="font-size:11px; color:var(--text-secondary); line-height:1.6;">월 ~630건(38%) 셀프서비스 전환<br>상담원 부담 3~4배 절감</div>
         </div>
       </div>
 
       <!-- AI KPI Strip -->
       <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:18px;" class="cb-kpi-strip">
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
+        <div style="background:var(--bg-base); border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#8b5cf6;">5</div>
           <div style="font-size: 12px; color:#64748b;">Core AI Skills</div>
         </div>
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
+        <div style="background:var(--bg-base); border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#22c55e;">114/114</div>
           <div style="font-size: 12px; color:#64748b;">테스트 통과</div>
         </div>
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
-          <div style="font-size:22px; font-weight:800; color:#0ea5e9;">100%</div>
+        <div style="background:var(--bg-base); border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:var(--accent-info);">100%</div>
           <div style="font-size: 12px; color:#64748b;">예측 정확도</div>
         </div>
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
+        <div style="background:var(--bg-base); border-radius:10px; padding:14px; text-align:center;">
           <div style="font-size:22px; font-weight:800; color:#92400e;">9</div>
           <div style="font-size: 12px; color:#64748b;">운영 문서</div>
         </div>
-        <div style="background:#F8FAFC; border-radius:10px; padding:14px; text-align:center;">
-          <div style="font-size:22px; font-weight:800; color:#ef4444;">38%</div>
+        <div style="background:var(--bg-base); border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:22px; font-weight:800; color:var(--accent-danger);">38%</div>
           <div style="font-size: 12px; color:#64748b;">Phase 1 자동화 목표</div>
         </div>
       </div>
@@ -1296,7 +1322,7 @@
 
       <!-- Phase Roadmap -->
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;" class="cb-breakdown-grid">
-        <div style="background:#F8FAFC; border-radius:10px; padding:16px;">
+        <div style="background:var(--bg-base); border-radius:10px; padding:16px;">
           <p class="chart-desc" style="font-weight:700; color:#22c55e; margin-bottom:8px;">✅ Phase 1-2 (현재)</p>
           <div style="font-size: 12px; color: #64748B; line-height:1.8;">
             • Intent 분류 (7카테고리 × 23 sub-intent)<br>
@@ -1306,7 +1332,7 @@
             • Multilingual 5개 마켓 (EN/FR/ES/PT/DE)
           </div>
         </div>
-        <div style="background:#F8FAFC; border-radius:10px; padding:16px;">
+        <div style="background:var(--bg-base); border-radius:10px; padding:16px;">
           <p class="chart-desc" style="font-weight:700; color:#92400e; margin-bottom:8px;">🔜 Phase 3 (3~5개월)</p>
           <div style="font-size: 12px; color: #64748B; line-height:1.8;">
             • 고위험 Fraud ML 모델<br>
@@ -1316,7 +1342,7 @@
             • 응답 품질 + CSAT 피드백 루프
           </div>
         </div>
-        <div style="background:#F8FAFC; border-radius:10px; padding:16px;">
+        <div style="background:var(--bg-base); border-radius:10px; padding:16px;">
           <p class="chart-desc" style="font-weight:700; color:#64748b; margin-bottom:8px;">📋 Phase 4-5 (H2 2026)</p>
           <div style="font-size: 12px; color: #64748B; line-height:1.8;">
             • Production Ops 협업 체계<br>
@@ -1328,7 +1354,7 @@
         </div>
       </div>
 
-      <div style="margin-top:12px; padding:10px 14px; background:#F8FAFC; border-radius:8px; border-left:3px solid #8b5cf6; font-size: 12px; color: #64748B; line-height:1.7;">
+      <div style="margin-top:12px; padding:10px 14px; background:var(--bg-base); border-radius:8px; border-left:3px solid #8b5cf6; font-size: 12px; color: #64748B; line-height:1.7;">
         <strong style="color:#8b5cf6;">📊 자동화 기대효과:</strong> Phase 1 완료 시 월 ~<strong style="color:#6d28d9;">630건(38%)</strong> 셀프서비스 전환 · 상담원 부담 <strong style="color:#6d28d9;">3~4배 절감</strong> · Pro Max 모델 기준 월 <strong style="color:#6d28d9;">$100</strong> 운영비
       </div>
     </div>
@@ -1485,14 +1511,14 @@
 const fontFamily = "'Malgun Gothic','Noto Sans KR',sans-serif";
 Chart.defaults.font.family = fontFamily;
 Chart.defaults.font.size = 12;
-Chart.defaults.color = '#94a3b8';
+Chart.defaults.color = 'var(--text-muted)';
 
 // ── Category Pie ──
 new Chart(document.getElementById('chartCategory'), {
   type: 'doughnut',
   data: {
     labels: ['Subscription','Refund','Account','Payment','Content','Technical','IP/Other'],
-    datasets: [{ data: [321,228,114,57,44,31,34], backgroundColor: ['#0ea5e9','#6366f1','#f97316','#22c55e','#eab308','#ec4899','#8b5cf6'], borderWidth: 0 }]
+    datasets: [{ data: [321,228,114,57,44,31,34], backgroundColor: ['var(--accent-info)','#6366f1','#f97316','#22c55e','#eab308','#ec4899','#8b5cf6'], borderWidth: 0 }]
   },
   options: { responsive:true, maintainAspectRatio:true, aspectRatio:1, cutout:'60%', plugins:{ legend:{ display:false } } }
 });
@@ -1502,7 +1528,7 @@ new Chart(document.getElementById('chartMarket'), {
   type: 'doughnut',
   data: {
     labels: ['EN','FR','ES','PT','DE','TH','IT/JP/CN'],
-    datasets: [{ data: [292,133,107,104,67,43,83], backgroundColor: ['#0ea5e9','#6366f1','#f97316','#22c55e','#eab308','#ec4899','#8b5cf6'], borderWidth: 0 }]
+    datasets: [{ data: [292,133,107,104,67,43,83], backgroundColor: ['var(--accent-info)','#6366f1','#f97316','#22c55e','#eab308','#ec4899','#8b5cf6'], borderWidth: 0 }]
   },
   options: { responsive:true, maintainAspectRatio:true, aspectRatio:1, cutout:'60%', plugins:{ legend:{ display:false } } }
 });
@@ -1515,7 +1541,7 @@ new Chart(document.getElementById('chartWeeklyTrend'), {
     datasets: [{
       label: '주간 티켓',
       data: [474, 439, 433, 396],
-      backgroundColor: ['#475569','#475569','#0ea5e9','#0ea5e9'],
+      backgroundColor: ['var(--text-secondary)','var(--text-secondary)','var(--accent-info)','var(--accent-info)'],
       borderRadius: 8,
       borderSkipped: false,
       barThickness: 60
@@ -1526,11 +1552,11 @@ new Chart(document.getElementById('chartWeeklyTrend'), {
     aspectRatio: 2.4,
     plugins: {
       legend: { display: false },
-      tooltip: { backgroundColor: '#FFFFFF', titleColor: '#1E293B', bodyColor: '#1E293B', borderColor: '#E2E8F0', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.raw + '건' } }
+      tooltip: { backgroundColor: '#FFFFFF', titleColor: 'var(--text-primary)', bodyColor: 'var(--text-primary)', borderColor: 'var(--border)', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.raw + '건' } }
     },
     scales: {
-      y: { beginAtZero: false, min: 350, max: 520, grid: { color: '#E2E8F0' }, ticks: { color: '#64748B' } },
-      x: { grid: { display: false }, ticks: { color: '#475569', font: { size: 13, weight: '600' } } }
+      y: { beginAtZero: false, min: 350, max: 520, grid: { color: 'var(--border)' }, ticks: { color: '#64748B' } },
+      x: { grid: { display: false }, ticks: { color: 'var(--text-secondary)', font: { size: 13, weight: '600' } } }
     }
   }
 });
@@ -1543,7 +1569,7 @@ new Chart(document.getElementById('chartCBTrend'), {
     datasets: [{
       label: '주간 차지백 (토~금)',
       data: [57, 71, 85, 86, 40],
-      backgroundColor: ['#475569','#475569','#475569','#ef4444','#ef4444'],
+      backgroundColor: ['var(--text-secondary)','var(--text-secondary)','var(--text-secondary)','var(--accent-danger)','var(--accent-danger)'],
       borderRadius: 8,
       borderSkipped: false,
       barThickness: 52
@@ -1553,11 +1579,11 @@ new Chart(document.getElementById('chartCBTrend'), {
     responsive: true,
     plugins: {
       legend: { display: false },
-      tooltip: { backgroundColor: '#FFFFFF', titleColor: '#1E293B', bodyColor: '#1E293B', borderColor: '#E2E8F0', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.raw + '건' } }
+      tooltip: { backgroundColor: '#FFFFFF', titleColor: 'var(--text-primary)', bodyColor: 'var(--text-primary)', borderColor: 'var(--border)', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.raw + '건' } }
     },
     scales: {
-      y: { beginAtZero: true, grid: { color: '#E2E8F0' }, ticks: { color: '#64748B' } },
-      x: { grid: { display: false }, ticks: { color: '#475569', font: { size: 13, weight: '600' } } }
+      y: { beginAtZero: true, grid: { color: 'var(--border)' }, ticks: { color: '#64748B' } },
+      x: { grid: { display: false }, ticks: { color: 'var(--text-secondary)', font: { size: 13, weight: '600' } } }
     }
   }
 });
@@ -1569,7 +1595,7 @@ new Chart(document.getElementById('chartChannel'), {
     labels: ['Web 48.5%','Email 39.0%','API 12.5%'],
     datasets: [{
       data: [402, 323, 104],
-      backgroundColor: ['#0ea5e9','#6366f1','#f97316'],
+      backgroundColor: ['var(--accent-info)','#6366f1','#f97316'],
       borderWidth: 0
     }]
   },
@@ -1578,8 +1604,8 @@ new Chart(document.getElementById('chartChannel'), {
     aspectRatio: 1.2,
     cutout: '65%',
     plugins: {
-      legend: { position: 'bottom', labels: { padding: 12, color: '#475569', font: { size: 13, weight: '600' }, boxWidth: 14, usePointStyle: true, pointStyle: 'circle' } },
-      tooltip: { backgroundColor: '#FFFFFF', titleColor: '#1E293B', bodyColor: '#1E293B', borderColor: '#E2E8F0', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.raw + '건' } }
+      legend: { position: 'bottom', labels: { padding: 12, color: 'var(--text-secondary)', font: { size: 13, weight: '600' }, boxWidth: 14, usePointStyle: true, pointStyle: 'circle' } },
+      tooltip: { backgroundColor: '#FFFFFF', titleColor: 'var(--text-primary)', bodyColor: 'var(--text-primary)', borderColor: 'var(--border)', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.raw + '건' } }
     }
   }
 });
@@ -1591,7 +1617,7 @@ new Chart(document.getElementById('chartSentiment'), {
     labels: ['Neutral 60.0%','Negative 36.9%','V.Negative 2.5%','Positive 0.6%'],
     datasets: [{
       data: [497, 306, 21, 5],
-      backgroundColor: ['#475569','#f97316','#ef4444','#22c55e'],
+      backgroundColor: ['var(--text-secondary)','#f97316','var(--accent-danger)','#22c55e'],
       borderWidth: 0
     }]
   },
@@ -1600,8 +1626,8 @@ new Chart(document.getElementById('chartSentiment'), {
     aspectRatio: 1.2,
     cutout: '65%',
     plugins: {
-      legend: { position: 'bottom', labels: { padding: 12, color: '#475569', font: { size: 13, weight: '600' }, boxWidth: 14, usePointStyle: true, pointStyle: 'circle' } },
-      tooltip: { backgroundColor: '#FFFFFF', titleColor: '#1E293B', bodyColor: '#1E293B', borderColor: '#E2E8F0', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.raw + '건' } }
+      legend: { position: 'bottom', labels: { padding: 12, color: 'var(--text-secondary)', font: { size: 13, weight: '600' }, boxWidth: 14, usePointStyle: true, pointStyle: 'circle' } },
+      tooltip: { backgroundColor: '#FFFFFF', titleColor: 'var(--text-primary)', bodyColor: 'var(--text-primary)', borderColor: 'var(--border)', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.raw + '건' } }
     }
   }
 });

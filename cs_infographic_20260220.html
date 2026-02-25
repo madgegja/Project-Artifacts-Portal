@@ -6,13 +6,39 @@
 <title>TOOMICS Global CS Infographic | 2025.07 ~ 2026.01</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
+:root {
+  --max-w: 960px;
+  --max-w-wide: 1280px;
+  --radius: 12px;
+  --gap: 16px;
+  --bg-base: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --bg-muted: #F1F5F9;
+  --text-primary: #1E293B;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --border: #E2E8F0;
+  --accent-brand: #2563EB;
+  --accent-info: #0EA5E9;
+  --accent-success: #10B981;
+  --accent-warn: #F59E0B;
+  --accent-danger: #EF4444;
+  --accent-purple: #7C3AED;
+  --font-base: 14px;
+  --font-sm: 12px;
+  --font-lg: 18px;
+  --font-xl: 28px;
+  --line-height: 1.7;
+  --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
+}
+
   html { scroll-behavior: smooth; }
   @page { size: A3 landscape; margin: 10mm; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', -apple-system, sans-serif;
-    color: #1E293B;
-    background: #F8FAFC;
+    color: var(--text-primary);
+    background: var(--bg-base);
     line-height: 1.7;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
@@ -127,7 +153,7 @@
     padding: 24px 20px;
     text-align: center;
     box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    border: 1px solid #E2E8F0;
+    border: 1px solid var(--border);
     transition: transform 0.2s;
   }
   .kpi-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
@@ -143,7 +169,7 @@
   .kpi-number {
     font-size: 32px;
     font-weight: 800;
-    color: #1E293B;
+    color: var(--text-primary);
     line-height: 1.1;
   }
   .kpi-number .small { font-size: 16px; font-weight: 600; }
@@ -167,7 +193,7 @@
   .section-title {
     font-size: 18px;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
     margin-bottom: 20px;
     display: flex;
     align-items: center;
@@ -176,7 +202,7 @@
   .section-title .dot {
     width: 8px; height: 8px;
     border-radius: 50%;
-    background: #0ea5e9;
+    background: var(--accent-info);
     display: inline-block;
   }
 
@@ -196,12 +222,12 @@
     border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     padding: 28px 24px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    border: 1px solid #E2E8F0;
+    border: 1px solid var(--border);
   }
   .chart-card h3 {
     font-size: 14px;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
     margin-bottom: 4px;
   }
   .chart-card .chart-desc {
@@ -223,8 +249,8 @@
     font-size: 12.5px;
   }
   .market-table thead th {
-    background: #F8FAFC;
-    color: #1E293B;
+    background: var(--bg-base);
+    color: var(--text-primary);
     padding: 10px 14px;
     text-align: left;
     font-weight: 600;
@@ -236,9 +262,9 @@
   .market-table thead th:last-child { border-radius: 0 10px 0 0; }
   .market-table tbody td {
     padding: 10px 14px;
-    border-bottom: 1px solid #E2E8F0;
+    border-bottom: 1px solid var(--border);
   }
-  .market-table tbody tr:hover { background: #F8FAFC; }
+  .market-table tbody tr:hover { background: var(--bg-base); }
   .market-table tbody tr:last-child td { border-bottom: none; }
   .market-table .bar-cell {
     position: relative;
@@ -246,7 +272,7 @@
   }
   .bar-bg {
     height: 8px;
-    background: #F1F5F9;
+    background: var(--bg-muted);
     border-radius: 4px;
     overflow: hidden;
   }
@@ -262,10 +288,10 @@
     transform: translateY(-50%);
     font-weight: 700;
     font-size: 12px;
-    color: #1E293B;
+    color: var(--text-primary);
   }
   .flag { margin-right: 6px; }
-  .trend-up { color: #ef4444; font-weight: 700; font-size: 12px; }
+  .trend-up { color: var(--accent-danger); font-weight: 700; font-size: 12px; }
   .trend-down { color: #22c55e; font-weight: 700; font-size: 12px; }
   .trend-flat { color: #64748B; font-weight: 600; font-size: 12px; }
   .top-cat-badge {
@@ -289,13 +315,13 @@
     border-left: 4px solid;
     box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   }
-  .insight-card.red { border-left-color: #ef4444; }
-  .insight-card.blue { border-left-color: #0ea5e9; }
+  .insight-card.red { border-left-color: var(--accent-danger); }
+  .insight-card.blue { border-left-color: var(--accent-info); }
   .insight-card.green { border-left-color: #22c55e; }
   .insight-card .insight-icon { font-size: 28px; margin-bottom: 10px; }
-  .insight-card h4 { font-size: 13px; font-weight: 700; color: #1E293B; margin-bottom: 6px; }
+  .insight-card h4 { font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
   .insight-card p { font-size: 12px; color: #64748B; line-height: 1.6; }
-  .insight-card .highlight { font-weight: 700; color: #1E293B; }
+  .insight-card .highlight { font-weight: 700; color: var(--text-primary); }
 
   /* ── Automation Roadmap ── */
   .roadmap-strip {
@@ -306,13 +332,13 @@
     border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     overflow: hidden;
     box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    border: 1px solid #E2E8F0;
+    border: 1px solid var(--border);
   }
   .roadmap-phase {
     padding: 24px 20px;
     text-align: center;
     position: relative;
-    border-right: 1px solid #E2E8F0;
+    border-right: 1px solid var(--border);
   }
   .roadmap-phase:last-child { border-right: none; }
   .roadmap-phase .phase-label {
@@ -325,7 +351,7 @@
   .roadmap-phase .phase-title {
     font-size: 14px;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
     margin-bottom: 4px;
   }
   .roadmap-phase .phase-effect {
@@ -340,16 +366,16 @@
   }
   .roadmap-phase:nth-child(1) { background: #eff6ff; }
   .roadmap-phase:nth-child(1) .phase-label { color: #3b82f6; }
-  .roadmap-phase:nth-child(1) .phase-effect { color: #2563eb; }
+  .roadmap-phase:nth-child(1) .phase-effect { color: var(--accent-brand); }
   .roadmap-phase:nth-child(2) { background: #f0fdf4; }
   .roadmap-phase:nth-child(2) .phase-label { color: #16a34a; }
   .roadmap-phase:nth-child(2) .phase-effect { color: #16a34a; }
   .roadmap-phase:nth-child(3) { background: #fefce8; }
   .roadmap-phase:nth-child(3) .phase-label { color: #854d0e; }
   .roadmap-phase:nth-child(3) .phase-effect { color: #854d0e; }
-  .roadmap-phase:nth-child(4) { background: linear-gradient(135deg, #EFF6FF, #DBEAFE); color: #1E293B; }
+  .roadmap-phase:nth-child(4) { background: linear-gradient(135deg, #EFF6FF, #DBEAFE); color: var(--text-primary); }
   .roadmap-phase:nth-child(4) .phase-label { color: #0369a1; }
-  .roadmap-phase:nth-child(4) .phase-title { color: #1E293B; }
+  .roadmap-phase:nth-child(4) .phase-title { color: var(--text-primary); }
   .roadmap-phase:nth-child(4) .phase-effect { color: #0369a1; }
   .roadmap-phase:nth-child(4) .phase-desc { color: #64748B; }
 
@@ -358,9 +384,9 @@
     text-align: center;
     padding: 32px 24px 16px;
     font-size: 12px;
-    color: #475569;
+    color: var(--text-secondary);
   }
-  .footer a { color: #0ea5e9; text-decoration: none; }
+  .footer a { color: var(--accent-info); text-decoration: none; }
 
   /* ── Responsive ── */
   @media (max-width: 900px) {
@@ -379,7 +405,7 @@
     right: 32px;
     width: 44px;
     height: 44px;
-    background: #2563eb;
+    background: var(--accent-brand);
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -726,10 +752,10 @@
   Chart.defaults.plugins.legend.labels.pointStyle = 'circle';
 
   const colors = {
-    blue:    '#3b82f6', purple: '#8b5cf6', amber:  '#f59e0b',
-    red:     '#ef4444', teal:   '#14b8a6', pink:   '#ec4899',
+    blue:    '#3b82f6', purple: '#8b5cf6', amber:  'var(--accent-warn)',
+    red:     'var(--accent-danger)', teal:   '#14b8a6', pink:   '#ec4899',
     indigo:  '#6366f1', orange: '#f97316', lime:   '#84cc16',
-    sky:     '#0ea5e9', green:  '#22c55e', slate:  '#94A3B8'
+    sky:     'var(--accent-info)', green:  '#22c55e', slate:  'var(--text-muted)'
   };
 
   // ── 카테고리 파이 차트 ──
@@ -741,7 +767,7 @@
         data: [48, 25, 13, 5, 4, 3, 2],
         backgroundColor: [colors.blue, colors.red, colors.purple, colors.amber, colors.teal, colors.pink, colors.slate],
         borderWidth: 3,
-        borderColor: '#F8FAFC',
+        borderColor: 'var(--bg-base)',
         hoverOffset: 8
       }]
     },
@@ -763,7 +789,7 @@
         data: [4285, 1941, 1552, 982, 957, 559, 550, 478, 316],
         backgroundColor: [colors.blue, colors.purple, colors.amber, colors.red, colors.teal, colors.pink, colors.indigo, colors.orange, colors.lime],
         borderWidth: 3,
-        borderColor: '#F8FAFC',
+        borderColor: 'var(--bg-base)',
         hoverOffset: 8
       }]
     },
@@ -801,12 +827,12 @@
     options: {
       responsive: true,
       scales: {
-        y: { beginAtZero: false, min: 1200, grid: { color: '#E2E8F0' } },
+        y: { beginAtZero: false, min: 1200, grid: { color: 'var(--border)' } },
         x: { grid: { display: false } }
       },
       plugins: {
         legend: { display: false },
-        tooltip: { backgroundColor: '#FFFFFF', titleColor: '#1E293B', bodyColor: '#1E293B', borderColor: '#E2E8F0', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.parsed.y.toLocaleString() + '건' } }
+        tooltip: { backgroundColor: '#FFFFFF', titleColor: 'var(--text-primary)', bodyColor: 'var(--text-primary)', borderColor: 'var(--border)', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.parsed.y.toLocaleString() + '건' } }
       }
     }
   });
@@ -840,12 +866,12 @@
     options: {
       responsive: true,
       scales: {
-        y: { beginAtZero: false, grid: { color: '#E2E8F0' } },
+        y: { beginAtZero: false, grid: { color: 'var(--border)' } },
         x: { grid: { display: false } }
       },
       plugins: {
         legend: { position: 'bottom', labels: { padding: 14 } },
-        tooltip: { backgroundColor: '#FFFFFF', titleColor: '#1E293B', bodyColor: '#1E293B', borderColor: '#E2E8F0', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y + '건' } }
+        tooltip: { backgroundColor: '#FFFFFF', titleColor: 'var(--text-primary)', bodyColor: 'var(--text-primary)', borderColor: 'var(--border)', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y + '건' } }
       }
     }
   });
@@ -878,7 +904,7 @@
       responsive: true,
       scales: {
         x: { stacked: true, grid: { display: false } },
-        y: { stacked: true, grid: { color: '#E2E8F0' } }
+        y: { stacked: true, grid: { color: 'var(--border)' } }
       },
       plugins: {
         legend: { position: 'bottom', labels: { padding: 14 } },
@@ -907,12 +933,12 @@
     options: {
       responsive: true,
       scales: {
-        y: { beginAtZero: true, grid: { color: '#E2E8F0' } },
+        y: { beginAtZero: true, grid: { color: 'var(--border)' } },
         x: { grid: { display: false } }
       },
       plugins: {
         legend: { display: false },
-        tooltip: { backgroundColor: '#FFFFFF', titleColor: '#1E293B', bodyColor: '#1E293B', borderColor: '#E2E8F0', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.parsed.y + '건' } }
+        tooltip: { backgroundColor: '#FFFFFF', titleColor: 'var(--text-primary)', bodyColor: 'var(--text-primary)', borderColor: 'var(--border)', borderWidth: 1, cornerRadius: 8, padding: 12, callbacks: { label: ctx => ctx.parsed.y + '건' } }
       }
     }
   });

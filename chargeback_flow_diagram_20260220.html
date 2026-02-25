@@ -9,12 +9,38 @@
 <meta name="date" content="2026-02-20">
 <title>TOOMICS 차지백 프로세스 플로우 다이어그램 | 유종선</title>
 <style>
+:root {
+  --max-w: 960px;
+  --max-w-wide: 1280px;
+  --radius: 12px;
+  --gap: 16px;
+  --bg-base: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --bg-muted: #F1F5F9;
+  --text-primary: #1E293B;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --border: #E2E8F0;
+  --accent-brand: #2563EB;
+  --accent-info: #0EA5E9;
+  --accent-success: #10B981;
+  --accent-warn: #F59E0B;
+  --accent-danger: #EF4444;
+  --accent-purple: #7C3AED;
+  --font-base: 14px;
+  --font-sm: 12px;
+  --font-lg: 18px;
+  --font-xl: 28px;
+  --line-height: 1.7;
+  --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
+}
+
   html { scroll-behavior: smooth; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
-    background: #F8FAFC;
-    color: #1E293B;
+    background: var(--bg-base);
+    color: var(--text-primary);
     min-height: 100vh;
     padding: 32px;
     -webkit-print-color-adjust: exact !important;
@@ -27,7 +53,7 @@
     word-break: keep-all; overflow-wrap: break-word;
   }
   @media print {
-    body { background: #F8FAFC; padding: 16px; }
+    body { background: var(--bg-base); padding: 16px; }
     .no-print { display: none !important; }
   }
 
@@ -68,7 +94,7 @@
     flex-wrap: wrap;
   }
   .kpi-item {
-    background: #E2E8F0;
+    background: var(--border);
     border: 1px solid rgba(0,0,0,0.04);
     border-radius: 12px;
     padding: 14px 24px;
@@ -160,14 +186,14 @@
     width: 28px;
     height: 28px;
     background: #dc2626;
-    color: #1E293B;
+    color: var(--text-primary);
     border-radius: 50%;
     font-size: 13px;
     font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #F8FAFC;
+    border: 2px solid var(--bg-base);
     box-shadow: 0 2px 8px rgba(220,38,38,0.4);
   }
 
@@ -233,7 +259,7 @@
     margin-bottom: 8px;
   }
   .branch-yes { background: #dcfce7; color: #15803d; border: 1px solid #22c55e; }
-  .branch-no { background: #fef2f2; color: #b91c1c; border: 1px solid #ef4444; }
+  .branch-no { background: #fef2f2; color: #b91c1c; border: 1px solid var(--accent-danger); }
 
   /* ===== PG GRID ===== */
   .pg-grid {
@@ -273,12 +299,12 @@
   .pg-cko { background: linear-gradient(135deg, #0a0a0a, #F8FAFC); border: 1px solid #00d632; }
   .pg-cko .title { color: #00d632; }
   .pg-airwallex { background: linear-gradient(135deg, #4338ca, #6366f1); border: 1px solid #818cf8; }
-  .pg-pwl { background: linear-gradient(135deg, #FEF3C7, #FDE68A); border: 1px solid #fbbf24; color: #1E293B; }
+  .pg-pwl { background: linear-gradient(135deg, #FEF3C7, #FDE68A); border: 1px solid #fbbf24; color: var(--text-primary); }
   .pg-pwl .desc { color: #292524; }
   .pg-worldpay { background: linear-gradient(135deg, #9f1239, #e11d48); border: 1px solid #fb7185; }
   .pg-payletter { background: linear-gradient(135deg, #115e59, #0d9488); border: 1px solid #2dd4bf; }
   .pg-mycard { background: linear-gradient(135deg, #3730a3, #4f46e5); border: 1px solid #818cf8; }
-  .pg-opn { background: linear-gradient(135deg, #64748b, #94a3b8); border: 1px solid #94a3b8; }
+  .pg-opn { background: linear-gradient(135deg, #64748b, #94a3b8); border: 1px solid var(--text-muted); }
 
   /* ===== MYCARD FLOW ===== */
   .mycard-flow-box {
@@ -295,7 +321,7 @@
     position: absolute;
     top: -12px;
     left: 24px;
-    background: #F8FAFC;
+    background: var(--bg-base);
     padding: 2px 12px;
     font-size: 12px;
     font-weight: 700;
@@ -347,18 +373,18 @@
     width: 22px;
     height: 22px;
     background: #d97706;
-    color: #1E293B;
+    color: var(--text-primary);
     border-radius: 50%;
     font-size: 12px;
     font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #F8FAFC;
+    border: 2px solid var(--bg-base);
   }
   .mc-step .mc-icon { font-size: 20px; margin-bottom: 6px; display: block; }
   .mc-step .mc-title { font-size: 12px; font-weight: 700; color: #b45309; margin-bottom: 4px; }
-  .mc-step .mc-desc { font-size: 12px; color: #475569; line-height: 1.5; }
+  .mc-step .mc-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
   .mc-arrow {
     position: absolute;
     right: -14px;
@@ -389,7 +415,7 @@
     margin: 0 auto;
   }
   .tmpl-card {
-    background: #E2E8F0;
+    background: var(--border);
     border: 1px solid rgba(0,0,0,0.06);
     border-radius: 10px;
     padding: 14px 16px;
@@ -436,7 +462,7 @@
     margin: 0 auto;
   }
   .sanction-card {
-    background: #E2E8F0;
+    background: var(--border);
     border: 1px solid rgba(0,0,0,0.06);
     border-radius: 10px;
     padding: 14px 16px;
@@ -456,7 +482,7 @@
   }
   .sanction-card li {
     padding: 3px 0;
-    color: #475569;
+    color: var(--text-secondary);
     font-size: 12px;
   }
   .sanction-card li::before {
@@ -489,7 +515,7 @@
   .reason-fraud { background: linear-gradient(135deg, #FEF3C7, #FDE68A); border: 1px solid #fbbf24; }
   .reason-cancel { background: linear-gradient(135deg, #1e40af, #2563eb); border: 1px solid #60a5fa; }
   .reason-notdesc { background: linear-gradient(135deg, #581c87, #7c3aed); border: 1px solid #c084fc; }
-  .reason-other { background: linear-gradient(135deg, #64748b, #94a3b8); border: 1px solid #94a3b8; }
+  .reason-other { background: linear-gradient(135deg, #64748b, #94a3b8); border: 1px solid var(--text-muted); }
 
   /* ===== FOOTER ===== */
   .footer {
@@ -498,7 +524,7 @@
     padding: 20px;
     color: #64748B;
     font-size: 12px;
-    border-top: 1px solid #E2E8F0;
+    border-top: 1px solid var(--border);
   }
   .footer a { color: #1d4ed8; text-decoration: none; }
 
@@ -514,7 +540,7 @@
     height: 10px;
     background: #64748b;
     border-radius: 50%;
-    border: 2px solid #94a3b8;
+    border: 2px solid var(--text-muted);
   }
 
   /* ===== PARALLEL ===== */
@@ -552,12 +578,12 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: #E2E8F0;
+    background: var(--border);
     border: 1px solid #CBD5E1;
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 12px;
-    color: #475569;
+    color: var(--text-secondary);
     text-decoration: none;
     transition: all 0.2s;
   }
@@ -588,7 +614,7 @@
     right: 32px;
     width: 44px;
     height: 44px;
-    background: #2563eb;
+    background: var(--accent-brand);
     color: #fff;
     border: none;
     border-radius: 50%;
