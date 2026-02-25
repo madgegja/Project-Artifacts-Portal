@@ -5,13 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOOMICS CS AI 챗봇 파이프라인 플로우 다이어그램</title>
     <style>
+  :root {
+    --max-w: 960px;
+    --max-w-wide: 1280px;
+    --radius: 12px;
+    --gap: 16px;
+    --bg-base: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --bg-muted: #F1F5F9;
+    --text-primary: #1E293B;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --border: #E2E8F0;
+    --accent-brand: #2563EB;
+    --accent-info: #0EA5E9;
+    --accent-success: #10B981;
+    --accent-warn: #F59E0B;
+    --accent-danger: #EF4444;
+    --accent-purple: #7C3AED;
+    --font-base: 14px;
+    --font-sm: 12px;
+    --font-lg: 18px;
+    --font-xl: 28px;
+    --line-height: 1.7;
+    --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
+  }
   html { scroll-behavior: smooth; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Segoe UI', 'Malgun Gothic', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #F8FAFC;
-            color: #1E293B;
+            background: var(--bg-base);
+            color: var(--text-primary);
             min-height: 100vh;
             padding: 32px 16px;
             line-height: 1.7;
@@ -74,7 +99,7 @@
         .section-title {
             font-size: 20px;
             font-weight: 700;
-            color: #1E293B;
+            color: var(--text-primary);
             margin-bottom: 24px;
             padding-left: 12px;
             border-left: 3px solid #60a5fa;
@@ -160,7 +185,7 @@
         .node-gray {
             background: linear-gradient(135deg, rgba(100, 116, 139, 0.2), rgba(100, 116, 139, 0.08));
             border: 1.5px solid rgba(100, 116, 139, 0.4);
-            color: #475569;
+            color: var(--text-secondary);
         }
 
         /* ===== DIAMOND (Decision) ===== */
@@ -353,7 +378,7 @@
         }
         .decision-condition {
             flex: 1;
-            color: #475569;
+            color: var(--text-secondary);
         }
         .decision-condition code {
             background: rgba(0,0,0,0.06));
@@ -361,11 +386,11 @@
             border-radius: 4px;
             font-family: 'Consolas', 'Courier New', monospace;
             font-size: 12px;
-            color: #1E293B;
+            color: var(--text-primary);
         }
         .decision-arrow {
             margin: 0 12px;
-            color: #475569;
+            color: var(--text-secondary);
             font-size: 14px;
         }
         .decision-result {
@@ -417,7 +442,7 @@
         .sub-diagram-title {
             font-size: 17px;
             font-weight: 700;
-            color: #1E293B;
+            color: var(--text-primary);
             margin-bottom: 20px;
             padding-bottom: 8px;
             border-bottom: 1px solid rgba(0,0,0,0.08);
@@ -468,7 +493,7 @@
         }
         .fraud-item .flag-name {
             flex: 1;
-            color: #475569;
+            color: var(--text-secondary);
         }
         .fraud-item .flag-score {
             font-weight: 700;
@@ -566,7 +591,7 @@
         .l3-cat-ref { background: rgba(245, 158, 11, 0.25); color: #92400e; }
         .l3-cat-acc { background: rgba(139, 92, 246, 0.25); color: #6d28d9; }
         .l3-cat-pay { background: rgba(6, 182, 212, 0.25); color: #0e7490; }
-        .l3-cat-tech { background: rgba(100, 116, 139, 0.25); color: #475569; }
+        .l3-cat-tech { background: rgba(100, 116, 139, 0.25); color: var(--text-secondary); }
 
         /* ===== LEGEND ===== */
         .legend {
@@ -583,7 +608,7 @@
             width: 100%;
             font-size: 14px;
             font-weight: 700;
-            color: #1E293B;
+            color: var(--text-primary);
             margin-bottom: 4px;
         }
         .legend-item {
@@ -669,15 +694,15 @@
             margin-top: 48px;
             padding-top: 24px;
             border-top: 1px solid rgba(0,0,0,0.06));
-            color: #475569;
+            color: var(--text-secondary);
             font-size: 12px;
         }
 
         /* ===== PRINT ===== */
         @media print {
             body {
-                background: #F8FAFC;
-                color: #1E293B;
+                background: var(--bg-base);
+                color: var(--text-primary);
                 padding: 16px;
             }
             .header h1 {
@@ -685,23 +710,23 @@
                 -webkit-text-fill-color: #1e3a5f;
                 color: #1e3a5f;
             }
-            .header .subtitle, .header .badge { color: #475569; }
+            .header .subtitle, .header .badge { color: var(--text-secondary); }
             .node { border-width: 2px; }
             .node-blue { background: #eff6ff; border-color: #3b82f6; color: #1e40af; }
             .node-purple { background: #f5f3ff; border-color: #8b5cf6; color: #5b21b6; }
-            .node-red { background: #fef2f2; border-color: #ef4444; color: #991b1b; }
+            .node-red { background: #fef2f2; border-color: var(--accent-danger); color: #991b1b; }
             .node-orange { background: #fffbeb; border-color: #92400e; color: #92400e; }
-            .node-green { background: #ecfdf5; border-color: #10b981; color: #065f46; }
+            .node-green { background: #ecfdf5; border-color: var(--accent-success); color: #065f46; }
             .node-cyan { background: #ecfeff; border-color: #06b6d4; color: #155e75; }
-            .node-gray { background: #F8FAFC; border-color: #64748B; color: #334155; }
-            .sub-diagram, .parallel-wrapper { background: #F8FAFC; border-color: #E2E8F0; }
-            .decision-tree { background: #F8FAFC; border-color: #E2E8F0; }
-            .legend { background: #F8FAFC; border-color: #E2E8F0; }
-            .footer { color: #64748B; border-color: #E2E8F0; }
+            .node-gray { background: var(--bg-base); border-color: #64748B; color: #334155; }
+            .sub-diagram, .parallel-wrapper { background: var(--bg-base); border-color: var(--border); }
+            .decision-tree { background: var(--bg-base); border-color: var(--border); }
+            .legend { background: var(--bg-base); border-color: var(--border); }
+            .footer { color: #64748B; border-color: var(--border); }
             .arrow-down .arrow-line { background: #64748B !important; }
             .arrow-down .arrow-head { border-top-color: #64748B !important; }
-            .fraud-item { background: #F8FAFC; }
-            .l3-item { background: #ecfdf5; border-color: #10b981; color: #065f46; }
+            .fraud-item { background: var(--bg-base); }
+            .l3-item { background: #ecfdf5; border-color: var(--accent-success); color: #065f46; }
         }
 
         /* ===== RESPONSIVE ===== */
@@ -721,7 +746,7 @@
     right: 32px;
     width: 44px;
     height: 44px;
-    background: #2563eb;
+    background: var(--accent-brand);
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -1377,7 +1402,7 @@
                         <td style="text-align: center; padding: 8px;"><span class="decision-result result-l1" style="font-size: 12px;">L1</span></td>
                     </tr>
                     <tr style="border-bottom: 1px solid rgba(0,0,0,0.08);">
-                        <td style="padding: 8px; font-weight: 600; color: #475569;">Technical</td>
+                        <td style="padding: 8px; font-weight: 600; color: var(--text-secondary);">Technical</td>
                         <td style="text-align: center; padding: 8px;">32건</td>
                         <td style="text-align: center; padding: 8px;">3%</td>
                         <td style="text-align: center; padding: 8px; color: #047857;">캐시 삭제, 앱 업데이트</td>

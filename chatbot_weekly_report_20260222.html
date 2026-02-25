@@ -10,6 +10,31 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
+    /* Design tokens */
+    --max-w: 960px;
+    --max-w-wide: 1280px;
+    --radius: 12px;
+    --gap: 16px;
+    --bg-base: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --bg-muted: #F1F5F9;
+    --text-primary: #1E293B;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --border: #E2E8F0;
+    --accent-brand: #2563EB;
+    --accent-info: #0EA5E9;
+    --accent-success: #10B981;
+    --accent-warn: #F59E0B;
+    --accent-danger: #EF4444;
+    --accent-purple: #7C3AED;
+    --font-base: 14px;
+    --font-sm: 12px;
+    --font-lg: 18px;
+    --font-xl: 28px;
+    --line-height: 1.7;
+    --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
+    /* Legacy vars */
     --bg: #F8FAFC;
     --bg2: #FFFFFF;
     --text: #1E293B;
@@ -21,7 +46,6 @@
     --amber: #f59e0b;
     --red: #ef4444;
     --purple: #a78bfa;
-    --border: #E2E8F0;
   }
 
   body {
@@ -217,7 +241,7 @@
   }
   tbody td {
     padding: 8px 12px;
-    border-bottom: 1px solid #E2E8F0;
+    border-bottom: 1px solid var(--border);
     color: var(--text2); font-size: 13px;
   }
   tbody tr:hover { background: rgba(14,165,233,0.04); }
@@ -246,13 +270,13 @@
   }
   .cat-bar-label { width: 90px; text-align: right; color: var(--text2); flex-shrink: 0; }
   .cat-bar-track {
-    flex: 1; height: 18px; background: #E2E8F0;
+    flex: 1; height: 18px; background: var(--border);
     border-radius: 4px; overflow: hidden; position: relative;
   }
   .cat-bar-fill {
     height: 100%; border-radius: 4px;
     display: flex; align-items: center; padding-left: 6px;
-    font-size: 12px; font-weight: 700; color: #1E293B;
+    font-size: 12px; font-weight: 700; color: var(--text-primary);
     min-width: 30px;
   }
   .cat-bar-pct { width: 40px; text-align: right; color: var(--muted); font-size: 12px; flex-shrink: 0; }
@@ -281,7 +305,7 @@
     right: 32px;
     width: 44px;
     height: 44px;
-    background: #2563eb;
+    background: var(--accent-brand);
     color: #fff;
     border: none;
     border-radius: 50%;

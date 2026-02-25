@@ -5,13 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOOMICS Global CS Flow Diagram</title>
     <style>
+  :root {
+    --max-w: 960px;
+    --max-w-wide: 1280px;
+    --radius: 12px;
+    --gap: 16px;
+    --bg-base: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --bg-muted: #F1F5F9;
+    --text-primary: #1E293B;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --border: #E2E8F0;
+    --accent-brand: #2563EB;
+    --accent-info: #0EA5E9;
+    --accent-success: #10B981;
+    --accent-warn: #F59E0B;
+    --accent-danger: #EF4444;
+    --accent-purple: #7C3AED;
+    --font-base: 14px;
+    --font-sm: 12px;
+    --font-lg: 18px;
+    --font-xl: 28px;
+    --line-height: 1.7;
+    --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
+  }
   html { scroll-behavior: smooth; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #F8FAFC;
-            color: #1E293B;
+            background: var(--bg-base);
+            color: var(--text-primary);
             min-height: 100vh;
             padding: 32px;
         
@@ -192,7 +217,7 @@
         /* Escalation */
         .node-escalation {
             background: linear-gradient(135deg, #FEE2E2, #FECACA);
-            border: 2px solid #ef4444;
+            border: 2px solid var(--accent-danger);
             min-width: 300px;
             box-shadow: 0 0 15px rgba(239,68,68,0.2);
         }
@@ -225,7 +250,7 @@
             margin-bottom: 8px;
         }
         .branch-yes { background: #166534; color: #FFFFFF; border: 1px solid #22c55e; }
-        .branch-no { background: #7f1d1d; color: #FFFFFF; border: 1px solid #ef4444; }
+        .branch-no { background: #7f1d1d; color: #FFFFFF; border: 1px solid var(--accent-danger); }
 
         /* ===== MARKET STRIP ===== */
         .market-strip {
@@ -239,12 +264,12 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            background: #E2E8F0;
+            background: var(--border);
             border: 1px solid rgba(0,0,0,0.06);
             padding: 4px 10px;
             border-radius: 20px;
             font-size: 12px;
-            color: #475569;
+            color: var(--text-secondary);
         }
         .market-chip .flag { font-size: 14px; }
         .market-chip .vol { color: #64748B; margin-left: 2px; }
@@ -275,7 +300,7 @@
             margin: 0 auto;
         }
         .esc-card {
-            background: #E2E8F0;
+            background: var(--border);
             border: 1px solid rgba(0,0,0,0.06);
             border-radius: 10px;
             padding: 14px 16px;
@@ -295,7 +320,7 @@
         }
         .esc-card li {
             padding: 2px 0;
-            color: #475569;
+            color: var(--text-secondary);
         }
         .esc-card li::before {
             content: "⚠️ ";
@@ -358,8 +383,8 @@
             text-align: center;
             margin-top: 40px;
             padding-top: 20px;
-            border-top: 1px solid #E2E8F0;
-            color: #475569;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
             font-size: 12px;
         }
 
@@ -378,7 +403,7 @@
     right: 32px;
     width: 44px;
     height: 44px;
-    background: #2563eb;
+    background: var(--accent-brand);
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -523,7 +548,7 @@
         <div class="section-label"><span>STEP 3 &mdash; 비공식 요청 필터</span></div>
 
         <div class="flow-row">
-            <div class="node node-decision" style="background: linear-gradient(135deg, #FEE2E2, #FECACA); border-color: #ef4444;">
+            <div class="node node-decision" style="background: linear-gradient(135deg, #FEE2E2, #FECACA); border-color: var(--accent-danger);">
                 <span class="emoji">🚫</span>
                 <div class="title">비공식 제3자 요청인가?</div>
                 <div class="desc">Minna Technologies / Ethoca 등 자동화 해지 요청</div>
@@ -535,7 +560,7 @@
         <div class="branch-row">
             <div class="branch">
                 <div class="branch-label branch-no" style="background:#7f1d1d; color: #FFFFFF;">🔴 YES &mdash; 비공식</div>
-                <div style="background:rgba(239,68,68,0.1); border:1px dashed #ef4444; border-radius:10px; padding:12px 18px; text-align:center;">
+                <div style="background:rgba(239,68,68,0.1); border:1px dashed var(--accent-danger); border-radius:10px; padding:12px 18px; text-align:center;">
                     <div style="font-size:20px; margin-bottom:4px;">🗑️</div>
                     <div style="font-size:13px; font-weight:700; color: #b91c1c;">답변하지 않음</div>
                     <div style="font-size: 12px; color: #64748B;">티켓 무시 처리</div>
@@ -741,7 +766,7 @@
             <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
                 <div style="background:rgba(185,28,28,0.10); border:1px solid rgba(239,68,68,0.3); padding:8px 16px; border-radius:8px; text-align:center;">
                     <div style="font-size: 12px; color: #b91c1c;">🔴 P1 구독/결제</div>
-                    <div style="font-size:18px; font-weight:800; color:#ef4444;">2h</div>
+                    <div style="font-size:18px; font-weight:800; color:var(--accent-danger);">2h</div>
                 </div>
                 <div style="background:rgba(249,115,22,0.15); border:1px solid rgba(249,115,22,0.3); padding:8px 16px; border-radius:8px; text-align:center;">
                     <div style="font-size: 12px; color: #c2410c;">🟠 P2 환불</div>
@@ -757,7 +782,7 @@
                 </div>
                 <div style="background:rgba(0,0,0,0.03); border:1px solid rgba(0,0,0,0.06); padding:8px 16px; border-radius:8px; text-align:center;">
                     <div style="font-size: 12px; color: #64748B;">⚪ P5 콘텐츠/기술</div>
-                    <div style="font-size:18px; font-weight:800; color: #475569;">12h</div>
+                    <div style="font-size:18px; font-weight:800; color: var(--text-secondary);">12h</div>
                 </div>
             </div>
         </div>

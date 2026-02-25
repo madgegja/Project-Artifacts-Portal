@@ -5,11 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Toomics CS AI Chatbot — One Pager</title>
 <style>
+  :root {
+    --max-w: 960px;
+    --max-w-wide: 1280px;
+    --radius: 12px;
+    --gap: 16px;
+    --bg-base: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --bg-muted: #F1F5F9;
+    --text-primary: #1E293B;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --border: #E2E8F0;
+    --accent-brand: #2563EB;
+    --accent-info: #0EA5E9;
+    --accent-success: #10B981;
+    --accent-warn: #F59E0B;
+    --accent-danger: #EF4444;
+    --accent-purple: #7C3AED;
+    --font-base: 14px;
+    --font-sm: 12px;
+    --font-lg: 18px;
+    --font-xl: 28px;
+    --line-height: 1.7;
+    --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
+  }
   html { scroll-behavior: smooth; }
   * { margin:0; padding:0; box-sizing:border-box; }
   body {
     font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
-    background: #F8FAFC; color: #1E293B; line-height: 1.7;
+    background: var(--bg-base); color: var(--text-primary); line-height: 1.7;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   
@@ -17,7 +42,7 @@
   
     word-break: keep-all; overflow-wrap: break-word;
   }
-  @media print { @page { size: A4 portrait; margin: 8mm; } body { background: #F8FAFC; } }
+  @media print { @page { size: A4 portrait; margin: 8mm; } body { background: var(--bg-base); } }
 
   .page { max-width: 900px; margin: 0 auto; padding: 0 0 40px; }
 
@@ -58,19 +83,19 @@
     padding:18px 14px; text-align:center; position:relative; overflow:hidden;
   }
   .big::after { content:''; position:absolute; top:0; left:0; right:0; height:3px; border-radius:14px 14px 0 0; }
-  .big.b1::after { background:#0ea5e9; }
-  .big.b2::after { background:#10b981; }
-  .big.b3::after { background:#f59e0b; }
+  .big.b1::after { background:var(--accent-info); }
+  .big.b2::after { background:var(--accent-success); }
+  .big.b3::after { background:var(--accent-warn); }
   .big.b4::after { background:#a78bfa; }
   .big .num { font-size:34px; font-weight:900; margin:4px 0; }
-  .big.b1 .num { color:#0ea5e9; }
-  .big.b2 .num { color:#10b981; }
+  .big.b1 .num { color:var(--accent-info); }
+  .big.b2 .num { color:var(--accent-success); }
   .big.b3 .num { color:#92400e; }
   .big.b4 .num { color:#6d28d9; }
   .big .label { font-size: 12px; color:#64748b; text-transform:uppercase; letter-spacing:0.5px; }
   .big .detail { font-size: 12px; color: #64748B; margin-top:2px; }
 
-  .divider { height:1px; background:#E2E8F0; margin:20px 36px; }
+  .divider { height:1px; background:var(--border); margin:20px 36px; }
 
   /* ── Problem/Solution ── */
   .ps-grid { display:grid; grid-template-columns:1fr 40px 1fr; gap:0; align-items:stretch; }
@@ -129,11 +154,11 @@
   .cost-card {
     background:#FFFFFF; border:1px solid #CBD5E1; border-radius:14px; padding:20px 22px;
   }
-  .cost-card h3 { font-size:13px; font-weight:700; margin-bottom:12px; color: #1E293B; }
+  .cost-card h3 { font-size:13px; font-weight:700; margin-bottom:12px; color: var(--text-primary); }
   .cost-table { width:100%; font-size:12px; }
   .cost-table td { padding:5px 0; color: #64748B; }
   .cost-table td:last-child { text-align:right; font-weight:600; }
-  .cost-table .total td { border-top:1px solid #CBD5E1; padding-top:8px; font-size:13px; font-weight:800; color: #1E293B; }
+  .cost-table .total td { border-top:1px solid #CBD5E1; padding-top:8px; font-size:13px; font-weight:800; color: var(--text-primary); }
   .cost-table .strike { text-decoration:line-through; color:#64748b; }
   .cost-table .green { color:#047857; }
   .cost-table .saving { color:#047857; font-weight:700; }
@@ -232,7 +257,7 @@
 
   <!-- Problem → Solution -->
   <div class="sec">
-    <div class="sec-title"><span class="dot" style="background:#f59e0b;"></span>문제 → 해결</div>
+    <div class="sec-title"><span class="dot" style="background:var(--accent-warn);"></span>문제 → 해결</div>
     <div class="ps-grid">
       <div class="ps-card problem">
         <h3 style="color:#b91c1c;">😤 현재 (AS-IS)</h3>
@@ -262,7 +287,7 @@
 
   <!-- How it Works -->
   <div class="sec">
-    <div class="sec-title"><span class="dot" style="background:#0ea5e9;"></span>작동 방식</div>
+    <div class="sec-title"><span class="dot" style="background:var(--accent-info);"></span>작동 방식</div>
     <div class="flow-row">
       <div class="flow-step">
         <div class="step-badge" style="background:rgba(14,165,233,0.15);color:#0369a1;">STEP 1</div>
@@ -333,7 +358,7 @@
 
   <!-- Cost -->
   <div class="sec">
-    <div class="sec-title"><span class="dot" style="background:#10b981;"></span>운영 비용</div>
+    <div class="sec-title"><span class="dot" style="background:var(--accent-success);"></span>운영 비용</div>
     <div class="cost-row">
       <div class="cost-card">
         <h3>💰 월간 운영비</h3>

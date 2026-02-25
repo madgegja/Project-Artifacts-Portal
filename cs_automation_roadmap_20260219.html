@@ -5,6 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Toomics CS 자동화 시스템 고도화 로드맵 | 2026-02-19</title>
 <style>
+  :root {
+    --max-w: 960px;
+    --max-w-wide: 1280px;
+    --radius: 12px;
+    --gap: 16px;
+    --bg-base: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --bg-muted: #F1F5F9;
+    --text-primary: #1E293B;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --border: #E2E8F0;
+    --accent-brand: #2563EB;
+    --accent-info: #0EA5E9;
+    --accent-success: #10B981;
+    --accent-warn: #F59E0B;
+    --accent-danger: #EF4444;
+    --accent-purple: #7C3AED;
+    --font-base: 14px;
+    --font-sm: 12px;
+    --font-lg: 18px;
+    --font-xl: 28px;
+    --line-height: 1.7;
+    --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
+  }
   html { scroll-behavior: smooth; }
   @page {
     size: A4;
@@ -13,8 +38,8 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
-    color: #1E293B;
-    background: #F8FAFC;
+    color: var(--text-primary);
+    background: var(--bg-base);
     font-size: 13px;
     line-height: 1.7;
     -webkit-print-color-adjust: exact !important;
@@ -64,7 +89,7 @@
   .header-badge {
     display: inline-block;
     background: linear-gradient(135deg, #0ea5e9, #38bdf8);
-    color: #1E293B;
+    color: var(--text-primary);
     padding: 4px 16px;
     border-radius: 20px;
     font-size: 12px;
@@ -107,15 +132,15 @@
     gap: 10px;
     font-size: 15px;
     font-weight: 800;
-    color: #1E293B;
+    color: var(--text-primary);
     margin-bottom: 16px;
     padding-bottom: 8px;
-    border-bottom: 2px solid #0ea5e9;
+    border-bottom: 2px solid var(--accent-info);
   }
   .section-title .icon {
     width: 30px; height: 30px;
     background: linear-gradient(135deg, #0ea5e9, #0284c7);
-    color: #1E293B;
+    color: var(--text-primary);
     border-radius: 7px;
     display: flex;
     align-items: center;
@@ -133,7 +158,7 @@
   }
   .kpi-card {
     background: linear-gradient(135deg, #F8FAFC, #EFF6FF);
-    border: 1px solid #E2E8F0;
+    border: 1px solid var(--border);
     border-radius: 10px;
     padding: 16px 18px;
     text-align: center;
@@ -153,14 +178,14 @@
   .kpi-value {
     font-size: 26px;
     font-weight: 900;
-    color: #1E293B;
+    color: var(--text-primary);
     line-height: 1;
     margin-bottom: 4px;
   }
-  .kpi-card:nth-child(1) .kpi-value { color: #ef4444; }
-  .kpi-card:nth-child(2) .kpi-value { color: #0ea5e9; }
+  .kpi-card:nth-child(1) .kpi-value { color: var(--accent-danger); }
+  .kpi-card:nth-child(2) .kpi-value { color: var(--accent-info); }
   .kpi-card:nth-child(3) .kpi-value { color: #8b5cf6; }
-  .kpi-card:nth-child(4) .kpi-value { color: #10b981; }
+  .kpi-card:nth-child(4) .kpi-value { color: var(--accent-success); }
   .kpi-unit { font-size: 13px; font-weight: 700; }
   .kpi-label { font-size: 12px; color: #64748B; margin-top: 4px; font-weight: 500; }
   .kpi-sub { font-size: 12px; color: #64748B; margin-top: 2px; }
@@ -169,7 +194,7 @@
   .asis-box {
     background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%);
     border: 1px solid #fde68a;
-    border-left: 4px solid #f59e0b;
+    border-left: 4px solid var(--accent-warn);
     border-radius: 8px;
     padding: 18px 22px;
     margin-bottom: 24px;
@@ -195,7 +220,7 @@
   .asis-dot {
     width: 6px; height: 6px;
     border-radius: 50%;
-    background: #f59e0b;
+    background: var(--accent-warn);
     flex-shrink: 0;
   }
 
@@ -220,13 +245,13 @@
     justify-content: center;
     font-size: 20px;
     font-weight: 900;
-    color: #1E293B;
+    color: var(--text-primary);
     flex-shrink: 0;
   }
   .phase1 .phase-number { background: linear-gradient(135deg, #ef4444, #dc2626); }
   .phase2 .phase-number { background: linear-gradient(135deg, #f59e0b, #d97706); }
   .phase3 .phase-number { background: linear-gradient(135deg, #10b981, #059669); }
-  .phase-info h2 { font-size: 16px; font-weight: 800; color: #1E293B; }
+  .phase-info h2 { font-size: 16px; font-weight: 800; color: var(--text-primary); }
   .phase-info .phase-desc { font-size: 10.5px; color: #64748B; margin-top: 2px; }
   .phase-timeline {
     position: absolute;
@@ -239,7 +264,7 @@
     font-size: 12px;
     font-weight: 700;
     color: #64748B;
-    border: 1px solid #E2E8F0;
+    border: 1px solid var(--border);
   }
 
   /* ── Task Cards ── */
@@ -254,7 +279,7 @@
     gap: 14px;
     padding: 14px 18px;
     border-radius: 8px;
-    border: 1px solid #E2E8F0;
+    border: 1px solid var(--border);
     background: white;
     transition: all 0.2s;
   }
@@ -267,13 +292,13 @@
     justify-content: center;
     font-size: 18px;
     flex-shrink: 0;
-    background: #F1F5F9;
+    background: var(--bg-muted);
   }
   .task-content { flex: 1; }
   .task-title {
     font-size: 12px;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
     margin-bottom: 3px;
   }
   .task-desc {
@@ -298,7 +323,7 @@
   /* ── Effect Banner ── */
   .effect-banner {
     background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
-    color: #1E293B;
+    color: var(--text-primary);
     border-radius: 10px;
     padding: 18px 24px;
     display: flex;
@@ -314,8 +339,8 @@
   .matrix-table { margin: 12px 0; }
   .matrix-table table { width: 100%; border-collapse: collapse; font-size: 12px; }
   .matrix-table th {
-    background: #F8FAFC;
-    color: #1E293B;
+    background: var(--bg-base);
+    color: var(--text-primary);
     padding: 8px 10px;
     text-align: left;
     font-weight: 600;
@@ -329,7 +354,7 @@
     border-bottom: 1px solid #e5e7eb;
     vertical-align: middle;
   }
-  .matrix-table tr:nth-child(even) td { background: #F8FAFC; }
+  .matrix-table tr:nth-child(even) td { background: var(--bg-base); }
   .priority-badge {
     display: inline-block;
     padding: 2px 10px;
@@ -337,10 +362,10 @@
     font-size: 12px;
     font-weight: 700;
   }
-  .p0 { background: #ef4444; color: #1E293B; }
-  .p1 { background: #f59e0b; color: #1E293B; }
-  .p2 { background: #0ea5e9; color: #1E293B; }
-  .p3 { background: #6b7280; color: #1E293B; }
+  .p0 { background: var(--accent-danger); color: var(--text-primary); }
+  .p1 { background: var(--accent-warn); color: var(--text-primary); }
+  .p2 { background: var(--accent-info); color: var(--text-primary); }
+  .p3 { background: #6b7280; color: var(--text-primary); }
   .star { color: #92400e; letter-spacing: -1px; }
 
   /* ── Insight Cards ── */
@@ -362,7 +387,7 @@
   }
   .insight-card.urgent {
     background: linear-gradient(135deg, #fef2f2, #fee2e2);
-    border-color: #ef4444;
+    border-color: var(--accent-danger);
   }
   .insight-card.trend {
     background: linear-gradient(135deg, #f5f3ff, #ede9fe);
@@ -375,17 +400,17 @@
   .insight-title {
     font-size: 12px;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
     margin-bottom: 4px;
   }
   .insight-desc {
     font-size: 10.5px;
-    color: #475569;
+    color: var(--text-secondary);
     line-height: 1.6;
   }
   .insight-highlight {
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
   }
 
   /* ── Flow Diagram ── */
@@ -453,13 +478,13 @@
     transform: translate(-50%, -50%);
     text-align: center;
   }
-  .donut-center .big { font-size: 24px; font-weight: 900; color: #1E293B; line-height: 1.5 }
+  .donut-center .big { font-size: 24px; font-weight: 900; color: var(--text-primary); line-height: 1.5 }
   .donut-center .small { font-size: 12px; color: #64748B; }
   .chart-legend { font-size: 12px; }
   .legend-item { display: flex; align-items: center; gap: 8px; padding: 4px 0; }
   .legend-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
-  .legend-label { color: #475569; }
-  .legend-value { font-weight: 700; color: #1E293B; margin-left: auto; }
+  .legend-label { color: var(--text-secondary); }
+  .legend-value { font-weight: 700; color: var(--text-primary); margin-left: auto; }
 
   /* ── Bar Chart ── */
   .bar-chart { margin: 12px 0; }
@@ -473,14 +498,14 @@
     width: 120px;
     text-align: right;
     font-size: 12px;
-    color: #475569;
+    color: var(--text-secondary);
     font-weight: 600;
     flex-shrink: 0;
   }
   .bar-track {
     flex: 1;
     height: 20px;
-    background: #F1F5F9;
+    background: var(--bg-muted);
     border-radius: 4px;
     overflow: hidden;
     position: relative;
@@ -493,7 +518,7 @@
     padding-left: 8px;
     font-size: 12px;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
     transition: width 0.5s ease;
   }
   .bar-fill.sub { background: linear-gradient(90deg, #ef4444, #f97316); }
@@ -505,7 +530,7 @@
   .bar-count {
     font-size: 12px;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
     width: 50px;
     flex-shrink: 0;
   }
@@ -532,8 +557,8 @@
   }
   .compare-label { font-size: 12px; color: #64748B; font-weight: 600; margin-bottom: 6px; }
   .compare-value { font-size: 28px; font-weight: 900; line-height: 1; }
-  .compare-box.before .compare-value { color: #ef4444; }
-  .compare-box.after .compare-value { color: #10b981; }
+  .compare-box.before .compare-value { color: var(--accent-danger); }
+  .compare-box.after .compare-value { color: var(--accent-success); }
   .compare-desc { font-size: 9.5px; color: #64748B; margin-top: 4px; }
 
   /* ── Market Trend ── */
@@ -543,13 +568,13 @@
     gap: 12px;
     padding: 10px 14px;
     border-radius: 8px;
-    background: #F8FAFC;
-    border: 1px solid #E2E8F0;
+    background: var(--bg-base);
+    border: 1px solid var(--border);
     margin-bottom: 6px;
   }
   .market-flag { font-size: 20px; flex-shrink: 0; }
   .market-info { flex: 1; }
-  .market-name { font-size: 12px; font-weight: 700; color: #1E293B; }
+  .market-name { font-size: 12px; font-weight: 700; color: var(--text-primary); }
   .market-stat { font-size: 9.5px; color: #64748B; }
   .market-trend {
     font-size: 12px;
@@ -558,13 +583,13 @@
     border-radius: 12px;
   }
   .trend-up { background: #d1fae5; color: #059669; }
-  .trend-stable { background: #F1F5F9; color: #64748B; }
+  .trend-stable { background: var(--bg-muted); color: #64748B; }
   .trend-alert { background: #fee2e2; color: #dc2626; }
 
   /* ── Footer ── */
   .report-footer {
-    background: #F8FAFC;
-    border-top: 1px solid #E2E8F0;
+    background: var(--bg-base);
+    border-top: 1px solid var(--border);
     padding: 20px 44px;
     display: flex;
     justify-content: space-between;
@@ -572,7 +597,7 @@
     font-size: 9.5px;
     color: #64748B;
   }
-  .footer-logo { font-weight: 800; color: #0ea5e9; font-size: 12px; }
+  .footer-logo { font-weight: 800; color: var(--accent-info); font-size: 12px; }
 
   /* ── Print Button ── */
   .print-btn {
@@ -580,7 +605,7 @@
     bottom: 30px;
     right: 30px;
     background: linear-gradient(135deg, #0ea5e9, #0284c7);
-    color: #1E293B;
+    color: var(--text-primary);
     border: none;
     padding: 14px 28px;
     border-radius: 30px;
@@ -611,7 +636,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: #F1F5F9;
+    background: var(--bg-muted);
     border-radius: 2px;
   }
   .roadmap-phase {
@@ -631,11 +656,11 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     z-index: 1;
   }
-  .roadmap-phase:nth-child(1) .roadmap-dot { background: #ef4444; }
-  .roadmap-phase:nth-child(2) .roadmap-dot { background: #f59e0b; }
-  .roadmap-phase:nth-child(3) .roadmap-dot { background: #10b981; }
-  .roadmap-phase:nth-child(4) .roadmap-dot { background: #0ea5e9; }
-  .roadmap-title { font-size: 12px; font-weight: 700; color: #1E293B; margin-bottom: 2px; }
+  .roadmap-phase:nth-child(1) .roadmap-dot { background: var(--accent-danger); }
+  .roadmap-phase:nth-child(2) .roadmap-dot { background: var(--accent-warn); }
+  .roadmap-phase:nth-child(3) .roadmap-dot { background: var(--accent-success); }
+  .roadmap-phase:nth-child(4) .roadmap-dot { background: var(--accent-info); }
+  .roadmap-title { font-size: 12px; font-weight: 700; color: var(--text-primary); margin-bottom: 2px; }
   .roadmap-period { font-size: 12px; color: #64748B; }
   .roadmap-items { font-size: 12px; color: #64748B; margin-top: 6px; line-height: 1.5; }
 
@@ -646,7 +671,7 @@
     right: 32px;
     width: 44px;
     height: 44px;
-    background: #2563eb;
+    background: var(--accent-brand);
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -981,7 +1006,7 @@
       </div>
 
       <!-- Before/After Comparison -->
-      <div style="margin-top:14px; margin-bottom:8px; font-size: 12px; font-weight:700; color: #1E293B;">📋 템플릿 매칭 Before / After</div>
+      <div style="margin-top:14px; margin-bottom:8px; font-size: 12px; font-weight:700; color: var(--text-primary);">📋 템플릿 매칭 Before / After</div>
       <div class="flow-container">
         <div class="flow-step current">
           티켓 접수<br><span class="flow-label">고객 문의</span>
@@ -995,7 +1020,7 @@
           고객 재문의<br><span class="flow-label">불만 증가</span>
         </div>
       </div>
-      <div style="text-align:center; font-size:16px; color:#0ea5e9; margin: 6px 0;">⬇ 개선 후</div>
+      <div style="text-align:center; font-size:16px; color:var(--accent-info); margin: 6px 0;">⬇ 개선 후</div>
       <div class="flow-container">
         <div class="flow-step improved">
           티켓 접수<br><span class="flow-label">+ DB 자동 조회</span>
@@ -1134,12 +1159,12 @@
       </div>
 
       <!-- Donut Chart -->
-      <div style="margin-top: 18px; font-size: 12px; font-weight:700; color: #1E293B; margin-bottom:8px;">📉 티켓 처리 구조 변화</div>
+      <div style="margin-top: 18px; font-size: 12px; font-weight:700; color: var(--text-primary); margin-bottom:8px;">📉 티켓 처리 구조 변화</div>
       <div class="chart-area">
         <div class="donut-chart">
           <svg viewBox="0 0 120 120">
-            <circle cx="60" cy="60" r="50" fill="none" stroke="#1E293B" stroke-width="16"/>
-            <circle cx="60" cy="60" r="50" fill="none" stroke="#ef4444" stroke-width="16"
+            <circle cx="60" cy="60" r="50" fill="none" stroke="var(--text-primary)" stroke-width="16"/>
+            <circle cx="60" cy="60" r="50" fill="none" stroke="var(--accent-danger)" stroke-width="16"
                     stroke-dasharray="314" stroke-dashoffset="0" stroke-linecap="round"/>
           </svg>
           <div class="donut-center">
@@ -1150,12 +1175,12 @@
         <div style="font-size:28px; color:#64748B;">→</div>
         <div class="donut-chart">
           <svg viewBox="0 0 120 120">
-            <circle cx="60" cy="60" r="50" fill="none" stroke="#1E293B" stroke-width="16"/>
+            <circle cx="60" cy="60" r="50" fill="none" stroke="var(--text-primary)" stroke-width="16"/>
             <!-- Self-service 38% = green -->
-            <circle cx="60" cy="60" r="50" fill="none" stroke="#10b981" stroke-width="16"
+            <circle cx="60" cy="60" r="50" fill="none" stroke="var(--accent-success)" stroke-width="16"
                     stroke-dasharray="119.4 194.6" stroke-dashoffset="0" stroke-linecap="round"/>
             <!-- Auto 22% = blue -->
-            <circle cx="60" cy="60" r="50" fill="none" stroke="#0ea5e9" stroke-width="16"
+            <circle cx="60" cy="60" r="50" fill="none" stroke="var(--accent-info)" stroke-width="16"
                     stroke-dasharray="69.1 244.9" stroke-dashoffset="-119.4" stroke-linecap="round"/>
             <!-- AI Draft 10% = purple -->
             <circle cx="60" cy="60" r="50" fill="none" stroke="#8b5cf6" stroke-width="16"
@@ -1165,18 +1190,18 @@
                     stroke-dasharray="94.2 219.8" stroke-dashoffset="-219.9" stroke-linecap="round"/>
           </svg>
           <div class="donut-center">
-            <div class="big" style="color:#10b981;">70%</div>
+            <div class="big" style="color:var(--accent-success);">70%</div>
             <div class="small">TO-BE<br>자동화율</div>
           </div>
         </div>
         <div class="chart-legend">
           <div class="legend-item">
-            <div class="legend-dot" style="background:#10b981;"></div>
+            <div class="legend-dot" style="background:var(--accent-success);"></div>
             <span class="legend-label">셀프서비스</span>
             <span class="legend-value">38%</span>
           </div>
           <div class="legend-item">
-            <div class="legend-dot" style="background:#0ea5e9;"></div>
+            <div class="legend-dot" style="background:var(--accent-info);"></div>
             <span class="legend-label">자동 응답</span>
             <span class="legend-value">22%</span>
           </div>
@@ -1385,7 +1410,7 @@
       </div>
 
       <div class="task-grid">
-        <div class="task-card" style="border-left: 3px solid #ef4444;">
+        <div class="task-card" style="border-left: 3px solid var(--accent-danger);">
           <div class="task-icon" style="background:#fef2f2;">📌</div>
           <div class="task-content">
             <div class="task-title">즉시 실행 (이번 주)</div>
@@ -1396,7 +1421,7 @@
             </div>
           </div>
         </div>
-        <div class="task-card" style="border-left: 3px solid #f59e0b;">
+        <div class="task-card" style="border-left: 3px solid var(--accent-warn);">
           <div class="task-icon" style="background:#fffbeb;">📋</div>
           <div class="task-content">
             <div class="task-title">2주 내 착수</div>
@@ -1407,7 +1432,7 @@
             </div>
           </div>
         </div>
-        <div class="task-card" style="border-left: 3px solid #10b981;">
+        <div class="task-card" style="border-left: 3px solid var(--accent-success);">
           <div class="task-icon" style="background:#ecfdf5;">📊</div>
           <div class="task-content">
             <div class="task-title">월간 리뷰</div>

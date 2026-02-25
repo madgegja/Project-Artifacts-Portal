@@ -36,8 +36,8 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: 'Malgun Gothic', 'Noto Sans KR', -apple-system, sans-serif;
-    color: #1E293B;
-    background: #F8FAFC;
+    color: var(--text-primary);
+    background: var(--bg-base);
     line-height: 1.7;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
@@ -47,7 +47,7 @@
     font-size: 14px;
   }
   @media print {
-    body { background: #F8FAFC; }
+    body { background: var(--bg-base); }
     .container { box-shadow: none; }
     .chart-box canvas { max-height: 320px; }
     section { break-inside: avoid; }
@@ -154,7 +154,7 @@
   .section-header h2 {
     font-size: 22px;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
   }
   .section-header .desc {
     font-size: 13px;
@@ -233,7 +233,7 @@
     font-size: 14px;
   }
   thead th {
-    background: #F1F5F9;
+    background: var(--bg-muted);
     color: #334155;
     font-weight: 700;
     font-size: 12px;
@@ -246,7 +246,7 @@
   tbody td {
     padding: 12px 18px;
     border-bottom: 1px solid rgba(226,232,240,0.4);
-    color: #475569;
+    color: var(--text-secondary);
   }
   tbody tr:last-child td { border-bottom: none; }
   tbody tr:hover { background: rgba(14,165,233,0.04); }
@@ -286,7 +286,7 @@
   .chart-box h3 {
     font-size: 15px;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
     margin-bottom: 18px;
     display: flex;
     align-items: center;
@@ -309,10 +309,10 @@
   .sub-title {
     font-size: 16px;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
     margin-bottom: 16px;
     padding-left: 12px;
-    border-left: 3px solid #0ea5e9;
+    border-left: 3px solid var(--accent-info);
   }
 
   /* ── Summary / Insight boxes ── */
@@ -373,7 +373,7 @@
   .token-grid .mini-table td:last-child {
     text-align: right;
     font-weight: 600;
-    color: #475569;
+    color: var(--text-secondary);
     font-variant-numeric: tabular-nums;
   }
   .token-grid .mini-table tr:last-child td {
@@ -431,7 +431,7 @@
     justify-content: center;
     font-size: 12px;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
   }
   .channel-bar .web-seg {
     background: linear-gradient(90deg, #0ea5e9, #0284c7);
@@ -440,7 +440,7 @@
     justify-content: center;
     font-size: 12px;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
   }
   .channel-bar .api-seg {
     background: linear-gradient(90deg, #8b5cf6, #7c3aed);
@@ -449,7 +449,7 @@
     justify-content: center;
     font-size: 12px;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
   }
   .channel-legend {
     display: flex;
@@ -512,7 +512,7 @@
   .cx-card h4 {
     font-size: 16px;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
     margin-bottom: 16px;
   }
   .cx-item {
@@ -530,7 +530,7 @@
     margin-top: 1px;
   }
   .cx-item strong {
-    color: #475569;
+    color: var(--text-secondary);
   }
 
   /* ── Conclusion Card ── */
@@ -554,7 +554,7 @@
   .conclusion h2 {
     font-size: 24px;
     font-weight: 800;
-    color: #1E293B;
+    color: var(--text-primary);
     margin-bottom: 20px;
     position: relative;
   }
@@ -591,7 +591,7 @@
   .footer {
     text-align: center;
     padding: 40px 28px 20px;
-    color: #475569;
+    color: var(--text-secondary);
     font-size: 12px;
     line-height: 1.8;
     border-top: 1px solid rgba(226,232,240,0.4);
@@ -638,7 +638,7 @@
     right: 32px;
     width: 44px;
     height: 44px;
-    background: #2563eb;
+    background: var(--accent-brand);
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -723,7 +723,7 @@
     <div class="channel-box">
       <h4>📩 접수 채널 분석 (실제 데이터 기반)</h4>
       <div style="display:flex; gap:24px; flex-wrap:wrap; margin-bottom:10px;">
-        <div style="font-size:13px; color:#475569;">
+        <div style="font-size:13px; color:var(--text-secondary);">
           <strong>전체 월평균:</strong> 1,662건 &nbsp;|&nbsp;
           <strong style="color:#b45309;">이메일:</strong> 699건 (42%) &nbsp;|&nbsp;
           <strong style="color:#0369a1;">Web:</strong> 789건 (47%) &nbsp;|&nbsp;
@@ -736,8 +736,8 @@
         <div class="api-seg" style="width:11%;">API 11%</div>
       </div>
       <div class="channel-legend">
-        <span><span class="dot" style="background:#f59e0b;"></span> <strong>이메일 699건/월</strong> &rarr; 상담원 전담 처리</span>
-        <span><span class="dot" style="background:#0ea5e9;"></span> <strong>Web+API 963건/월</strong> &rarr; <strong style="color:#0369a1;">AI 챗봇 대상</strong></span>
+        <span><span class="dot" style="background:var(--accent-warn);"></span> <strong>이메일 699건/월</strong> &rarr; 상담원 전담 처리</span>
+        <span><span class="dot" style="background:var(--accent-info);"></span> <strong>Web+API 963건/월</strong> &rarr; <strong style="color:#0369a1;">AI 챗봇 대상</strong></span>
       </div>
       <div style="font-size: 12px; color: #64748B; margin-top:10px;">
         📌 API 토큰 비용은 챗봇이 실제 처리하는 비이메일 <strong style="color:#64748B;">963건/월</strong> 기준으로만 산출합니다.
@@ -749,7 +749,7 @@
 
       <!-- ── 시나리오 A: Claude API 종량제 + Max $100 ── -->
       <div class="chart-box" style="border:2px solid rgba(139,92,246,0.3); position:relative;">
-        <div style="position:absolute;top:-12px;left:20px;background:#F8FAFC;padding:0 12px;">
+        <div style="position:absolute;top:-12px;left:20px;background:var(--bg-base);padding:0 12px;">
           <span style="background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;padding:4px 14px;border-radius:12px;font-size:12px;font-weight:700;">시나리오 A</span>
         </div>
         <h3 style="margin-top:8px;">🚀 Claude API 종량제 + Max $100</h3>
@@ -777,14 +777,14 @@
             </tbody>
           </table>
         </div>
-        <div style="margin-top:12px;padding:10px 14px;background:rgba(139,92,246,0.06);border-radius:8px;font-size:12px;color:#475569;line-height:1.7;">
+        <div style="margin-top:12px;padding:10px 14px;background:rgba(139,92,246,0.06);border-radius:8px;font-size:12px;color:var(--text-secondary);line-height:1.7;">
           <strong style="color:#6d28d9;">▶ 특징:</strong> 건당 비용이 명확하고 사용량 기반 과금. Max $100 구독은 프롬프트 개발·테스트·분석 등 내부 업무용으로 활용. 트래픽 증가 시 API 비용이 비례 상승.
         </div>
       </div>
 
       <!-- ── 시나리오 B: Max $200 구독 + Proxy 우회 ── -->
       <div class="chart-box" style="border:2px solid rgba(5,150,105,0.3); position:relative;">
-        <div style="position:absolute;top:-12px;left:20px;background:#F8FAFC;padding:0 12px;">
+        <div style="position:absolute;top:-12px;left:20px;background:var(--bg-base);padding:0 12px;">
           <span style="background:linear-gradient(135deg,#059669,#047857);color:#fff;padding:4px 14px;border-radius:12px;font-size:12px;font-weight:700;">시나리오 B</span>
         </div>
         <h3 style="margin-top:8px;">🔑 Max $200 구독 + API Proxy</h3>
@@ -812,18 +812,18 @@
             </tbody>
           </table>
         </div>
-        <div style="margin-top:12px;padding:10px 14px;background:rgba(5,150,105,0.06);border-radius:8px;font-size:12px;color:#475569;line-height:1.7;">
+        <div style="margin-top:12px;padding:10px 14px;background:rgba(5,150,105,0.06);border-radius:8px;font-size:12px;color:var(--text-secondary);line-height:1.7;">
           <strong style="color:#059669;">▶ 특징:</strong> 월 정액 고정 비용. 트래픽이 증가해도 추가 토큰 비용 없음. 현재 프로토타입 환경에서 이 방식으로 운영 중. 단, Anthropic 정책 변경 리스크 존재.
         </div>
       </div>
     </div>
 
     <!-- ═══ 시나리오 비교 요약 ═══ -->
-    <div style="background:linear-gradient(135deg,rgba(30,58,95,0.04),rgba(14,165,233,0.04));border:1px solid #E2E8F0;border-radius:12px;padding:20px 24px;margin-bottom:24px;">
-      <h4 style="font-size:14px;font-weight:700;color:#1E293B;margin-bottom:14px;">📈 시나리오 비교 요약</h4>
+    <div style="background:linear-gradient(135deg,rgba(30,58,95,0.04),rgba(14,165,233,0.04));border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:24px;">
+      <h4 style="font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:14px;">📈 시나리오 비교 요약</h4>
       <table style="width:100%;font-size:13px;">
         <thead>
-          <tr style="border-bottom:2px solid #E2E8F0;">
+          <tr style="border-bottom:2px solid var(--border);">
             <th style="text-align:left;padding:8px;width:30%;">비교 항목</th>
             <th style="text-align:center;padding:8px;width:35%;color:#6d28d9;">시나리오 A (API 종량제)</th>
             <th style="text-align:center;padding:8px;width:35%;color:#059669;">시나리오 B (Max Proxy)</th>
@@ -854,7 +854,7 @@
       </div>
       <div class="token-grid">
         <div>
-          <div style="font-size:13px; font-weight:700; color:#475569; margin-bottom:8px;">🔬 건당 토큰 사용량 (평균 기준)</div>
+          <div style="font-size:13px; font-weight:700; color:var(--text-secondary); margin-bottom:8px;">🔬 건당 토큰 사용량 (평균 기준)</div>
           <table class="mini-table">
             <tr><td>시스템 프롬프트 + 규칙</td><td>2,500 tok (input)</td></tr>
             <tr><td>RAG 컨텍스트 (knowledge)</td><td>2,000 tok (input)</td></tr>
@@ -866,14 +866,14 @@
           </table>
         </div>
         <div>
-          <div style="font-size:13px; font-weight:700; color:#475569; margin-bottom:8px;">💲 건당 비용 산출</div>
+          <div style="font-size:13px; font-weight:700; color:var(--text-secondary); margin-bottom:8px;">💲 건당 비용 산출</div>
           <table class="mini-table">
             <tr><td>Input 비용</td><td>8,500 / 1M &times; $3.00 = <strong>$0.026</strong></td></tr>
             <tr><td>Output 비용</td><td>1,100 / 1M &times; $15.00 = <strong>$0.017</strong></td></tr>
             <tr><td>건당 합계 (USD)</td><td><strong>~$0.042</strong></td></tr>
             <tr><td>건당 합계 (KRW)</td><td><strong style="color:#b45309;">~₩59/건</strong></td></tr>
           </table>
-          <div style="margin-top:14px; font-size:13px; font-weight:700; color:#475569; margin-bottom:8px;">📊 월간 합계 (비이메일 963건 기준)</div>
+          <div style="margin-top:14px; font-size:13px; font-weight:700; color:var(--text-secondary); margin-bottom:8px;">📊 월간 합계 (비이메일 963건 기준)</div>
           <table class="mini-table">
             <tr><td>전체 분류 (963건)</td><td>₩56,817</td></tr>
             <tr><td>L2 Draft 추가 (472건)</td><td>₩13,688</td></tr>
@@ -904,22 +904,22 @@
       <div style="background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.15);border-radius:12px;padding:16px;text-align:center;">
         <div style="font-size:28px;font-weight:800;color:#0369a1;">38%</div>
         <div style="font-size:12px;color:#64748B;margin-top:4px;">전체 자동화율</div>
-        <div style="font-size:11px;color:#94A3B8;">963건 중 366건 자동</div>
+        <div style="font-size:11px;color:var(--text-muted);">963건 중 366건 자동</div>
       </div>
       <div style="background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.15);border-radius:12px;padding:16px;text-align:center;">
         <div style="font-size:28px;font-weight:800;color:#047857;">95%</div>
         <div style="font-size:12px;color:#64748B;margin-top:4px;">Subscription 자동화</div>
-        <div style="font-size:11px;color:#94A3B8;">700건/월 (48%)</div>
+        <div style="font-size:11px;color:var(--text-muted);">700건/월 (48%)</div>
       </div>
       <div style="background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.15);border-radius:12px;padding:16px;text-align:center;">
         <div style="font-size:28px;font-weight:800;color:#6d28d9;">83%</div>
         <div style="font-size:12px;color:#64748B;margin-top:4px;">템플릿 자동화 가능</div>
-        <div style="font-size:11px;color:#94A3B8;">상담원 응답 기준</div>
+        <div style="font-size:11px;color:var(--text-muted);">상담원 응답 기준</div>
       </div>
       <div style="background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.15);border-radius:12px;padding:16px;text-align:center;">
         <div style="font-size:28px;font-weight:800;color:#b45309;">45%</div>
         <div style="font-size:12px;color:#64748B;margin-top:4px;">결제정보 요청 (병목)</div>
-        <div style="font-size:11px;color:#94A3B8;">계정 미식별 문제</div>
+        <div style="font-size:11px;color:var(--text-muted);">계정 미식별 문제</div>
       </div>
     </div>
 
@@ -941,7 +941,7 @@
     <div style="background:linear-gradient(135deg,rgba(14,165,233,0.08),rgba(16,185,129,0.06));border:2px solid rgba(14,165,233,0.12);border-radius:16px;padding:28px 32px;margin-bottom:24px;">
       <div style="text-align:center;margin-bottom:20px;">
         <div style="font-size:12px;color:#0369a1;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;">CORE INSIGHT — 상담원 템플릿 자동화 분석 연계</div>
-        <div style="font-size:24px;font-weight:800;color:#1E293B;line-height:1.4;">
+        <div style="font-size:24px;font-weight:800;color:var(--text-primary);line-height:1.4;">
           상담원 응답의 <span style="color:#0369a1;font-size:32px;">83%</span>가<br>
           <span style="color:#b45309;">반복적이지만 반드시 거쳐야 하는</span> 정보 확인 단계
         </div>
@@ -1016,7 +1016,7 @@
 
     <!-- ═══ DUAL VALUE: CX × OPERATIONS ═══ -->
     <div style="margin-top:24px;">
-      <h4 style="font-size:16px;font-weight:700;color:#1E293B;margin-bottom:16px;padding-left:4px;">💡 스마트 레이어링 — Dual Value</h4>
+      <h4 style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:16px;padding-left:4px;">💡 스마트 레이어링 — Dual Value</h4>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
         <!-- Pillar 1: CX → Customer Satisfaction -->
         <div style="background:linear-gradient(135deg,rgba(14,165,233,0.06),rgba(99,102,241,0.04));border:2px solid rgba(14,165,233,0.18);border-radius:14px;padding:18px 16px 14px;position:relative;overflow:hidden;">
@@ -1062,8 +1062,8 @@
         </div>
       </div>
       <!-- 선순환 결론 -->
-      <div style="text-align:center;padding:12px 16px;background:rgba(245,158,11,0.04);border:1px solid rgba(245,158,11,0.08);border-radius:10px;font-size:13px;color:#475569;line-height:1.7;">
-        <strong style="color:#b45309;">CX ↑ 고객 만족도</strong> × <strong style="color:#047857;">Operations ↑ 3~4배 효율</strong> = <span style="color:#1E293B;font-weight:700;">CS 조직의 선순환 구조</span>
+      <div style="text-align:center;padding:12px 16px;background:rgba(245,158,11,0.04);border:1px solid rgba(245,158,11,0.08);border-radius:10px;font-size:13px;color:var(--text-secondary);line-height:1.7;">
+        <strong style="color:#b45309;">CX ↑ 고객 만족도</strong> × <strong style="color:#047857;">Operations ↑ 3~4배 효율</strong> = <span style="color:var(--text-primary);font-weight:700;">CS 조직의 선순환 구조</span>
       </div>
     </div>
   </section>
@@ -1090,7 +1090,7 @@
       </div>
     </div>
     <div style="text-align:center; position:relative;">
-      <p style="font-size:15px; color:#475569; line-height:1.8; max-width:720px; margin:0 auto;">
+      <p style="font-size:15px; color:var(--text-secondary); line-height:1.8; max-width:720px; margin:0 auto;">
         AI 챗봇 도입으로 비이메일 채널 <strong style="color:#b45309;">963건/월</strong> 중 <strong style="color:#b45309;">38%</strong>(366건)를 셀프서비스로 자동 안내하며,<br>
         기존 7~29일 걸리던 초기 안내를 <strong style="color:#0369a1;">&lt;3초</strong>로 단축합니다.<br>
         AI 전체 운영비는 월 <strong style="color:#b45309;">~₩253,000~322,000</strong> (시나리오에 따라 상이)이며,<br>
@@ -1122,16 +1122,16 @@ Chart.defaults.font.size = 12;
 Chart.defaults.plugins.legend.labels.usePointStyle = true;
 Chart.defaults.plugins.legend.labels.padding = 16;
 Chart.defaults.plugins.tooltip.backgroundColor = '#FFFFFF';
-Chart.defaults.plugins.tooltip.borderColor = '#E2E8F0';
+Chart.defaults.plugins.tooltip.borderColor = 'var(--border)';
 Chart.defaults.plugins.tooltip.borderWidth = 1;
-Chart.defaults.plugins.tooltip.titleColor = '#1E293B';
-Chart.defaults.plugins.tooltip.bodyColor = '#1E293B';
+Chart.defaults.plugins.tooltip.titleColor = 'var(--text-primary)';
+Chart.defaults.plugins.tooltip.bodyColor = 'var(--text-primary)';
 Chart.defaults.plugins.tooltip.cornerRadius = 8;
-Chart.defaults.color = '#475569';
+Chart.defaults.color = 'var(--text-secondary)';
 Chart.defaults.plugins.tooltip.titleFont = { weight: '700' };
 Chart.defaults.plugins.tooltip.padding = 12;
 Chart.defaults.plugins.tooltip.cornerRadius = 8;
-Chart.defaults.color = '#475569';
+Chart.defaults.color = 'var(--text-secondary)';
 Chart.defaults.animation.duration = 1200;
 Chart.defaults.animation.easing = 'easeOutQuart';
 
@@ -1158,9 +1158,9 @@ Chart.defaults.animation.easing = 'easeOutQuart';
             'rgba(239,68,68,0.4)'
           ),
           borderColor: automationRates.map(v =>
-            v >= 50 ? '#10b981' :
-            v > 0 ? '#0ea5e9' :
-            '#ef4444'
+            v >= 50 ? 'var(--accent-success)' :
+            v > 0 ? 'var(--accent-info)' :
+            'var(--accent-danger)'
           ),
           borderWidth: 1,
           borderRadius: 4,
@@ -1186,7 +1186,7 @@ Chart.defaults.animation.easing = 'easeOutQuart';
         x: {
           max: 100,
           ticks: { callback: (v) => v + '%' },
-          grid: { color: '#E2E8F0' }
+          grid: { color: 'var(--border)' }
         },
         y: { grid: { display: false } }
       }
@@ -1222,12 +1222,12 @@ Chart.defaults.animation.easing = 'easeOutQuart';
     data: {
       labels: ['\uC0C1\uB2F4\uC6D0 \uC751\uB2F5 \uD15C\uD50C\uB9BF'],
       datasets: [
-        { label: '\uACB0\uC81C \uC815\uBCF4 \uC694\uCCAD (45%)', data: [45], backgroundColor: '#10b981', borderRadius: 0 },
+        { label: '\uACB0\uC81C \uC815\uBCF4 \uC694\uCCAD (45%)', data: [45], backgroundColor: 'var(--accent-success)', borderRadius: 0 },
         { label: '\uAD6C\uB3C5 \uCDE8\uC18C \uD655\uC778 (18%)', data: [18], backgroundColor: '#06b6d4', borderRadius: 0 },
-        { label: '\uD658\uBD88 \uCC98\uB9AC \uC644\uB8CC (10%)', data: [10], backgroundColor: '#0ea5e9', borderRadius: 0 },
+        { label: '\uD658\uBD88 \uCC98\uB9AC \uC644\uB8CC (10%)', data: [10], backgroundColor: 'var(--accent-info)', borderRadius: 0 },
         { label: '\uD658\uBD88 \uAC70\uC808 (7%)', data: [7], backgroundColor: '#6366f1', borderRadius: 0 },
         { label: '\uACC4\uC815 \uC0AD\uC81C \uCCB4\uD06C\uB9AC\uC2A4\uD2B8 (3%)', data: [3], backgroundColor: '#8b5cf6', borderRadius: 0 },
-        { label: '\uAE30\uD0C0 \uCEE4\uC2A4\uD140 \uC751\uB2F5 (17%)', data: [17], backgroundColor: '#475569', borderRadius: 0 }
+        { label: '\uAE30\uD0C0 \uCEE4\uC2A4\uD140 \uC751\uB2F5 (17%)', data: [17], backgroundColor: 'var(--text-secondary)', borderRadius: 0 }
       ]
     },
     options: {
@@ -1239,7 +1239,7 @@ Chart.defaults.animation.easing = 'easeOutQuart';
         tooltip: { callbacks: { label: (ctx) => ctx.dataset.label } }
       },
       scales: {
-        x: { stacked: true, max: 100, ticks: { callback: (v) => v + '%' }, grid: { color: '#E2E8F0' } },
+        x: { stacked: true, max: 100, ticks: { callback: (v) => v + '%' }, grid: { color: 'var(--border)' } },
         y: { stacked: true, grid: { display: false }, display: false }
       }
     },

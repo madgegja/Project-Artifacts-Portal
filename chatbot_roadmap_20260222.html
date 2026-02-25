@@ -35,8 +35,8 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', -apple-system, sans-serif;
-    color: #1E293B;
-    background: #F8FAFC;
+    color: var(--text-primary);
+    background: var(--bg-base);
     line-height: 1.7;
     font-size: 14px;
     -webkit-print-color-adjust: exact !important;
@@ -45,7 +45,7 @@
     word-break: keep-all; overflow-wrap: break-word;
   }
   @media print {
-    body { background: #F8FAFC; }
+    body { background: var(--bg-base); }
     .container { box-shadow: none; }
     .no-print { display: none !important; }
     .phase-card { page-break-inside: avoid; }
@@ -155,17 +155,17 @@
   .progress-header h3 {
     font-size: 15px;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
   }
   .progress-percentage {
     font-size: 28px;
     font-weight: 800;
-    color: #0ea5e9;
+    color: var(--accent-info);
   }
   .progress-bar-track {
     width: 100%;
     height: 12px;
-    background: #F8FAFC;
+    background: var(--bg-base);
     border-radius: 6px;
     overflow: hidden;
     margin-bottom: 16px;
@@ -196,8 +196,8 @@
     font-weight: 700;
   }
   .progress-phase.completed .phase-pct { color: #22c55e; }
-  .progress-phase.in-progress .phase-pct { color: #0ea5e9; }
-  .progress-phase.planned .phase-pct { color: #475569; }
+  .progress-phase.in-progress .phase-pct { color: var(--accent-info); }
+  .progress-phase.planned .phase-pct { color: var(--text-secondary); }
 
   /* ── Horizontal Overview Timeline ── */
   .overview-section {
@@ -207,10 +207,10 @@
   .section-title {
     font-size: 20px;
     font-weight: 800;
-    color: #1E293B;
+    color: var(--text-primary);
     margin-bottom: 24px;
     padding-left: 14px;
-    border-left: 4px solid #0ea5e9;
+    border-left: 4px solid var(--accent-info);
   }
   .h-timeline {
     display: flex;
@@ -225,7 +225,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: #94a3b8;
+    background: var(--text-muted);
     transform: translateY(-50%);
     border-radius: 2px;
     z-index: 0;
@@ -242,19 +242,19 @@
     border-radius: 50%;
     margin: 0 auto 12px;
     position: relative;
-    border: 3px solid #F8FAFC;
+    border: 3px solid var(--bg-base);
   }
   .h-timeline-dot.completed {
     background: #22c55e;
     box-shadow: 0 0 0 4px rgba(34,197,94,0.25);
   }
   .h-timeline-dot.in-progress {
-    background: #0ea5e9;
+    background: var(--accent-info);
     box-shadow: 0 0 0 4px rgba(14,165,233,0.25);
     animation: pulse-dot 2s ease-in-out infinite;
   }
   .h-timeline-dot.planned {
-    background: #475569;
+    background: var(--text-secondary);
     box-shadow: 0 0 0 4px rgba(71,85,105,0.2);
   }
   @keyframes pulse-dot {
@@ -271,7 +271,7 @@
   }
   .h-timeline-card:hover {
     transform: translateY(-4px);
-    border-color: #0ea5e9;
+    border-color: var(--accent-info);
   }
   .h-timeline-card .phase-name {
     font-size: 13px;
@@ -297,7 +297,7 @@
     margin-top: 8px;
   }
   .status-badge.completed { background: rgba(34,197,94,0.15); color: #22c55e; }
-  .status-badge.in-progress { background: rgba(3,105,161,0.10); color: #0ea5e9; }
+  .status-badge.in-progress { background: rgba(3,105,161,0.10); color: var(--accent-info); }
   .status-badge.planned { background: rgba(71,85,105,0.2); color: #64748B; }
 
   /* ── Vertical Phase Timeline ── */
@@ -332,15 +332,15 @@
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    border: 3px solid #F8FAFC;
+    border: 3px solid var(--bg-base);
     z-index: 2;
   }
   .phase-card .timeline-dot.completed { background: #22c55e; }
   .phase-card .timeline-dot.in-progress {
-    background: #0ea5e9;
+    background: var(--accent-info);
     animation: pulse-dot 2s ease-in-out infinite;
   }
-  .phase-card .timeline-dot.planned { background: #475569; }
+  .phase-card .timeline-dot.planned { background: var(--text-secondary); }
 
   .phase-card .card-inner {
     background: #FFFFFF;
@@ -372,13 +372,13 @@
     margin-bottom: 2px;
   }
   .phase-tag.green { color: #22c55e; }
-  .phase-tag.blue { color: #0ea5e9; }
+  .phase-tag.blue { color: var(--accent-info); }
   .phase-tag.gray { color: #64748B; }
 
   .phase-card .card-title {
     font-size: 20px;
     font-weight: 800;
-    color: #1E293B;
+    color: var(--text-primary);
     line-height: 1.3;
   }
   .phase-card .card-date {
@@ -402,7 +402,7 @@
     font-weight: 700;
   }
   .status-pill.completed { background: rgba(34,197,94,0.12); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
-  .status-pill.in-progress { background: rgba(14,165,233,0.12); color: #0ea5e9; border: 1px solid rgba(14,165,233,0.2); }
+  .status-pill.in-progress { background: rgba(14,165,233,0.12); color: var(--accent-info); border: 1px solid rgba(14,165,233,0.2); }
   .status-pill.planned { background: rgba(71,85,105,0.15); color: #64748B; border: 1px solid rgba(71,85,105,0.3); }
 
   .completion-ring {
@@ -451,9 +451,9 @@
     margin-top: 1px;
   }
   .check-icon.done { background: rgba(34,197,94,0.15); color: #22c55e; }
-  .check-icon.pending { background: rgba(71,85,105,0.2); color: #475569; border: 1px solid #CBD5E1; }
+  .check-icon.pending { background: rgba(71,85,105,0.2); color: var(--text-secondary); border: 1px solid #CBD5E1; }
 
-  .checklist li .item-text { color: #475569; }
+  .checklist li .item-text { color: var(--text-secondary); }
   .checklist li.done .item-text { color: #64748B; }
 
   .phase-card .deliverables {
@@ -461,12 +461,12 @@
     padding: 12px 16px;
     background: rgba(14,165,233,0.06);
     border-radius: 10px;
-    border-left: 3px solid #0ea5e9;
+    border-left: 3px solid var(--accent-info);
   }
   .deliverables .deliverables-label {
     font-size: 12px;
     font-weight: 700;
-    color: #0ea5e9;
+    color: var(--accent-info);
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 4px;
@@ -529,7 +529,7 @@
     margin-bottom: 4px;
   }
   .goal-card.phase1 .goal-value { color: #22c55e; }
-  .goal-card.phase3 .goal-value { color: #0ea5e9; }
+  .goal-card.phase3 .goal-value { color: var(--accent-info); }
   .goal-card.phase4 .goal-value { color: #8b5cf6; }
   .goal-card.savings .goal-value { color: #92400e; }
   .goal-card .goal-desc {
@@ -570,13 +570,13 @@
   }
   .tech-card.p1 .tech-phase { color: #22c55e; }
   .tech-card.p2 .tech-phase { color: #22c55e; }
-  .tech-card.p3 .tech-phase { color: #0ea5e9; }
+  .tech-card.p3 .tech-phase { color: var(--accent-info); }
   .tech-card.p4 .tech-phase { color: #64748B; }
 
   .tech-card .tech-title {
     font-size: 14px;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
     margin-bottom: 12px;
   }
   .tech-list {
@@ -599,8 +599,8 @@
   }
   .tech-card.p1 .tech-list li::before { background: #22c55e; }
   .tech-card.p2 .tech-list li::before { background: #22c55e; }
-  .tech-card.p3 .tech-list li::before { background: #0ea5e9; }
-  .tech-card.p4 .tech-list li::before { background: #475569; }
+  .tech-card.p3 .tech-list li::before { background: var(--accent-info); }
+  .tech-card.p4 .tech-list li::before { background: var(--text-secondary); }
 
   /* ── Pipeline Diagram ── */
   .pipeline-section {
@@ -623,7 +623,7 @@
     padding: 8px 0;
   }
   .pipeline-node {
-    background: #F8FAFC;
+    background: var(--bg-base);
     border-radius: 10px;
     padding: 14px 18px;
     text-align: center;
@@ -632,18 +632,18 @@
     transition: border-color 0.2s;
     flex-shrink: 0;
   }
-  .pipeline-node:hover { border-color: #0ea5e9; }
+  .pipeline-node:hover { border-color: var(--accent-info); }
   .pipeline-node .node-step {
     font-size: 12px;
     font-weight: 700;
-    color: #0ea5e9;
+    color: var(--accent-info);
     letter-spacing: 1px;
     margin-bottom: 4px;
   }
   .pipeline-node .node-name {
     font-size: 12px;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
     margin-bottom: 2px;
   }
   .pipeline-node .node-file {
@@ -652,7 +652,7 @@
     font-family: 'Consolas', 'Courier New', monospace;
   }
   .pipeline-arrow {
-    color: #475569;
+    color: var(--text-secondary);
     font-size: 18px;
     padding: 0 6px;
     flex-shrink: 0;
@@ -671,7 +671,7 @@
     font-size: 12px;
     padding: 6px 12px;
     border-radius: 8px;
-    background: #F8FAFC;
+    background: var(--bg-base);
     border: 1px solid #CBD5E1;
   }
   .pipeline-branch-item .branch-level {
@@ -680,7 +680,7 @@
     border-radius: 4px;
     font-size: 12px;
   }
-  .branch-level.l1 { background: rgba(185,28,28,0.10); color: #ef4444; }
+  .branch-level.l1 { background: rgba(185,28,28,0.10); color: var(--accent-danger); }
   .branch-level.l2 { background: rgba(180,83,9,0.10); color: #92400e; }
   .branch-level.l3 { background: rgba(34,197,94,0.15); color: #22c55e; }
   .pipeline-branch-item .branch-desc {
@@ -696,11 +696,11 @@
   }
   .footer p {
     font-size: 12px;
-    color: #475569;
+    color: var(--text-secondary);
     line-height: 1.6;
   }
   .footer .footer-highlight {
-    color: #0ea5e9;
+    color: var(--accent-info);
     font-weight: 600;
   }
 
@@ -748,7 +748,7 @@
     right: 32px;
     width: 44px;
     height: 44px;
-    background: #2563eb;
+    background: var(--accent-brand);
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -997,9 +997,9 @@
               <div class="completion-ring">
                 <svg width="48" height="48" viewBox="0 0 48 48">
                   <circle cx="24" cy="24" r="20" fill="none" stroke="#FFFFFF" stroke-width="4"/>
-                  <circle cx="24" cy="24" r="20" fill="none" stroke="#0ea5e9" stroke-width="4" stroke-dasharray="125.66" stroke-dashoffset="125.66" stroke-linecap="round"/>
+                  <circle cx="24" cy="24" r="20" fill="none" stroke="var(--accent-info)" stroke-width="4" stroke-dasharray="125.66" stroke-dashoffset="125.66" stroke-linecap="round"/>
                 </svg>
-                <span class="ring-text" style="color:#0ea5e9;">0%</span>
+                <span class="ring-text" style="color:var(--accent-info);">0%</span>
               </div>
             </div>
           </div>
@@ -1040,9 +1040,9 @@
               <div class="completion-ring">
                 <svg width="48" height="48" viewBox="0 0 48 48">
                   <circle cx="24" cy="24" r="20" fill="none" stroke="#FFFFFF" stroke-width="4"/>
-                  <circle cx="24" cy="24" r="20" fill="none" stroke="#475569" stroke-width="4" stroke-dasharray="125.66" stroke-dashoffset="125.66" stroke-linecap="round"/>
+                  <circle cx="24" cy="24" r="20" fill="none" stroke="var(--text-secondary)" stroke-width="4" stroke-dasharray="125.66" stroke-dashoffset="125.66" stroke-linecap="round"/>
                 </svg>
-                <span class="ring-text" style="color:#475569;">0%</span>
+                <span class="ring-text" style="color:var(--text-secondary);">0%</span>
               </div>
             </div>
           </div>
@@ -1054,7 +1054,7 @@
               <li><span class="check-icon pending"></span><span class="item-text">프로덕션 도입 범위 · 일정 · 인프라 요구사항 확정</span></li>
               <li><span class="check-icon pending"></span><span class="item-text">운영 역할 분담 합의 (BizOps / 기획 / 개발)</span></li>
             </ul>
-            <div style="margin-top:12px;padding:10px 14px;background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.12);border-radius:8px;font-size:12px;color:#475569;line-height:1.7;">
+            <div style="margin-top:12px;padding:10px 14px;background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.12);border-radius:8px;font-size:12px;color:var(--text-secondary);line-height:1.7;">
               <strong style="color:#6d28d9;">4월 말~</strong> 기획팀·개발팀 확정 일정에 따라 프로덕션 구현 착수
             </div>
             <div class="deliverables">
@@ -1210,7 +1210,7 @@
       <!-- 핵심 인사이트: 83% -->
       <div style="text-align:center;margin-bottom:16px;padding:16px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.12);border-radius:12px;">
         <div style="font-size: 12px;color:#0369a1;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;">CORE INSIGHT — 실데이터 11,621건 분석</div>
-        <div style="font-size:17px;font-weight:800;color:#1E293B;line-height:1.4;margin-bottom:10px;">
+        <div style="font-size:17px;font-weight:800;color:var(--text-primary);line-height:1.4;margin-bottom:10px;">
           상담원 응답의 <span style="color:#0369a1;font-size:24px;">83%</span>가 <span style="color:#b45309;">반복 정보 확인 단계</span>
         </div>
         <div style="display:flex;justify-content:center;gap:6px;flex-wrap:wrap;">
@@ -1235,12 +1235,12 @@
             </div>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
-            <div style="background:#F1F5F9;border:1px solid rgba(14,165,233,0.08);border-radius:10px;padding:10px;text-align:center;">
+            <div style="background:var(--bg-muted);border:1px solid rgba(14,165,233,0.08);border-radius:10px;padding:10px;text-align:center;">
               <div style="font-size:18px;margin-bottom:2px;">🛡️</div>
               <div style="font-size: 12px;font-weight:700;color:#0369a1;">CS 만족도</div>
               <div style="font-size: 12px;color: #64748B;margin-top:1px;">빠른 CS → 긍정적 경험</div>
             </div>
-            <div style="background:#F1F5F9;border:1px solid rgba(14,165,233,0.08);border-radius:10px;padding:10px;text-align:center;">
+            <div style="background:var(--bg-muted);border:1px solid rgba(14,165,233,0.08);border-radius:10px;padding:10px;text-align:center;">
               <div style="font-size:18px;margin-bottom:2px;">🌐</div>
               <div style="font-size: 12px;font-weight:700;color:#0369a1;">24/7 글로벌</div>
               <div style="font-size: 12px;color: #64748B;margin-top:1px;">10개 언어 감지 · 시간대 무관</div>
@@ -1259,12 +1259,12 @@
             </div>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
-            <div style="background:#F1F5F9;border:1px solid rgba(16,185,129,0.1);border-radius:10px;padding:10px;text-align:center;">
+            <div style="background:var(--bg-muted);border:1px solid rgba(16,185,129,0.1);border-radius:10px;padding:10px;text-align:center;">
               <div style="font-size:18px;margin-bottom:2px;">⚡</div>
               <div style="font-size: 12px;font-weight:700;color:#047857;">효율 3~4배</div>
               <div style="font-size: 12px;color: #64748B;margin-top:1px;">정보 확보 → 즉시 처리</div>
             </div>
-            <div style="background:#F1F5F9;border:1px solid rgba(16,185,129,0.1);border-radius:10px;padding:10px;text-align:center;">
+            <div style="background:var(--bg-muted);border:1px solid rgba(16,185,129,0.1);border-radius:10px;padding:10px;text-align:center;">
               <div style="font-size:18px;margin-bottom:2px;">🎯</div>
               <div style="font-size: 12px;font-weight:700;color:#047857;">38% 티켓 감소</div>
               <div style="font-size: 12px;color: #64748B;margin-top:1px;">셀프 해결 630건/월</div>
@@ -1275,7 +1275,7 @@
       </div>
       <!-- 선순환 결론 -->
       <div style="text-align:center;font-size:12px;color:#64748B;line-height:1.7;padding:10px 16px;background:rgba(245,158,11,0.04);border:1px solid rgba(245,158,11,0.08);border-radius:8px;">
-        <strong style="color:#b45309;">CX ↑ 고객 만족도</strong> × <strong style="color:#047857;">Operations ↑ 3~4배 효율</strong> = <span style="color:#1E293B;font-weight:700;">CS 조직의 선순환 구조</span>
+        <strong style="color:#b45309;">CX ↑ 고객 만족도</strong> × <strong style="color:#047857;">Operations ↑ 3~4배 효율</strong> = <span style="color:var(--text-primary);font-weight:700;">CS 조직의 선순환 구조</span>
       </div>
     </div>
   </div>

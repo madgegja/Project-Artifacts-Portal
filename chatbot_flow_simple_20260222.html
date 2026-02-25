@@ -5,14 +5,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Toomics CS AI 챗봇 — 처리 흐름도</title>
 <style>
+  :root {
+    --max-w: 960px;
+    --max-w-wide: 1280px;
+    --radius: 12px;
+    --gap: 16px;
+    --bg-base: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --bg-muted: #F1F5F9;
+    --text-primary: #1E293B;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --border: #E2E8F0;
+    --accent-brand: #2563EB;
+    --accent-info: #0EA5E9;
+    --accent-success: #10B981;
+    --accent-warn: #F59E0B;
+    --accent-danger: #EF4444;
+    --accent-purple: #7C3AED;
+    --font-base: 14px;
+    --font-sm: 12px;
+    --font-lg: 18px;
+    --font-xl: 28px;
+    --line-height: 1.7;
+    --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
+  }
   html { scroll-behavior: smooth; }
   @page { size: A3 portrait; margin: 10mm; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', -apple-system, sans-serif;
-    background: #F8FAFC;
-    color: #1E293B;
+    background: var(--bg-base);
+    color: var(--text-primary);
     min-height: 100vh;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
@@ -25,7 +50,7 @@
   }
 
   @media print {
-    body { background: #F8FAFC; }
+    body { background: var(--bg-base); }
     section { break-inside: avoid; }
   }
 
@@ -149,8 +174,8 @@
     background: linear-gradient(135deg, rgba(168,85,247,0.1), rgba(192,132,252,0.05));
     border: 1px solid rgba(168,85,247,0.2);
   }
-  .node-fraud .node-step { background: rgba(168,85,247,0.2); color: #7c3aed; }
-  .node-fraud h2 { color: #7c3aed; }
+  .node-fraud .node-step { background: rgba(168,85,247,0.2); color: var(--accent-purple); }
+  .node-fraud h2 { color: var(--accent-purple); }
 
   .node-decide {
     background: linear-gradient(135deg, rgba(245,158,11,0.1), rgba(251,191,36,0.05));
@@ -286,14 +311,14 @@
     margin-top: 14px;
   }
   .detail-item {
-    background: #F1F5F9;
-    border: 1px solid #E2E8F0;
+    background: var(--bg-muted);
+    border: 1px solid var(--border);
     border-radius: 10px;
     padding: 10px 14px;
     text-align: center;
   }
   .detail-item .di-icon { font-size: 20px; margin-bottom: 4px; }
-  .detail-item .di-title { font-size: 12px; font-weight: 700; color: var(--text, #1E293B); }
+  .detail-item .di-title { font-size: 12px; font-weight: 700; color: var(--text, var(--text-primary)); }
   .detail-item .di-desc { font-size: 12px; color: #64748B; margin-top: 2px; }
 
   /* Parallel indicator */
@@ -304,7 +329,7 @@
     border-radius: 10px;
     padding: 5px 14px;
     font-size: 12px; font-weight: 700;
-    color: #7c3aed;
+    color: var(--accent-purple);
     margin-bottom: 12px;
   }
   .parallel-badge::before {
@@ -326,7 +351,7 @@
   .cat-chip-sub { background: rgba(14,165,233,0.12); color: #0369a1; border: 1px solid rgba(14,165,233,0.12); }
   .cat-chip-ref { background: rgba(245,158,11,0.12); color: #b45309; border: 1px solid rgba(245,158,11,0.2); }
   .cat-chip-acc { background: rgba(16,185,129,0.12); color: #047857; border: 1px solid rgba(16,185,129,0.2); }
-  .cat-chip-pay { background: rgba(168,85,247,0.12); color: #7c3aed; border: 1px solid rgba(168,85,247,0.2); }
+  .cat-chip-pay { background: rgba(168,85,247,0.12); color: var(--accent-purple); border: 1px solid rgba(168,85,247,0.2); }
   .cat-chip-con { background: rgba(239,68,68,0.12); color: #b91c1c; border: 1px solid rgba(239,68,68,0.2); }
   .cat-chip-tec { background: rgba(6,182,212,0.12); color: #0e7490; border: 1px solid rgba(6,182,212,0.2); }
   .cat-chip-oth { background: rgba(100,116,139,0.15); color: #64748B; border: 1px solid rgba(100,116,139,0.2); }
@@ -399,7 +424,7 @@
   .compare-old .journey-num { background: rgba(239,68,68,0.12); color: #b91c1c; }
   .compare-new .journey-num { background: rgba(16,185,129,0.12); color: #047857; }
   .journey-step .js-text { font-size: 13px; color: #64748B; line-height: 1.6; }
-  .journey-step .js-text strong { color: #1E293B; }
+  .journey-step .js-text strong { color: var(--text-primary); }
 
   .cx-benefits {
     display: grid;
@@ -407,8 +432,8 @@
     gap: 12px;
   }
   .cx-card {
-    background: #F1F5F9;
-    border: 1px solid #E2E8F0;
+    background: var(--bg-muted);
+    border: 1px solid var(--border);
     border-radius: 14px;
     padding: 20px 16px;
     text-align: center;
@@ -419,12 +444,12 @@
     content: '';
     position: absolute; top: 0; left: 0; right: 0; height: 2px;
   }
-  .cx-card:nth-child(1)::after { background: var(--green, #10b981); }
+  .cx-card:nth-child(1)::after { background: var(--green, var(--accent-success)); }
   .cx-card:nth-child(2)::after { background: #38bdf8; }
   .cx-card:nth-child(3)::after { background: #a78bfa; }
   .cx-card:nth-child(4)::after { background: #fbbf24; }
   .cx-card .cx-icon { font-size: 28px; margin-bottom: 8px; }
-  .cx-card .cx-title { font-size: 13px; font-weight: 800; color: #1E293B; margin-bottom: 4px; }
+  .cx-card .cx-title { font-size: 13px; font-weight: 800; color: var(--text-primary); margin-bottom: 4px; }
   .cx-card .cx-desc { font-size: 11.5px; color: #64748B; line-height: 1.5; }
 
   .value-callout {
@@ -436,7 +461,7 @@
     text-align: center;
   }
   .value-callout p {
-    font-size: 15px; color: #475569; line-height: 1.8;
+    font-size: 15px; color: var(--text-secondary); line-height: 1.8;
   }
   .value-callout strong { color: #047857; }
   .value-callout em { color: #0369a1; font-style: normal; font-weight: 700; }
@@ -466,7 +491,7 @@
     border-radius: 10px;
     padding: 10px 14px;
     font-size: 12px;
-    color: #475569;
+    color: var(--text-secondary);
   }
   .exclusion-item strong { color: #b91c1c; font-size: 12px; display: block; margin-bottom: 2px; }
 
@@ -475,9 +500,9 @@
     text-align: center;
     margin-top: 48px;
     padding: 24px 40px;
-    border-top: 1px solid #E2E8F0;
+    border-top: 1px solid var(--border);
     font-size: 12px;
-    color: #475569;
+    color: var(--text-secondary);
   }
 
   /* ══════ RESULT SECTION ══════ */
@@ -489,15 +514,15 @@
     margin: 0 auto;
   }
   .result-card {
-    background: #F1F5F9;
-    border: 1px solid #E2E8F0;
+    background: var(--bg-muted);
+    border: 1px solid var(--border);
     border-radius: 14px;
     padding: 16px 20px;
     text-align: center;
   }
   .result-card .rc-label { font-size: 12px; color: #64748B; margin-bottom: 4px; }
   .result-card .rc-value { font-size: 22px; font-weight: 800; }
-  .result-card .rc-desc { font-size: 12px; color: #475569; margin-top: 2px; }
+  .result-card .rc-desc { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
 
   /* ── Back to Top ── */
   .back-to-top {
@@ -506,7 +531,7 @@
     right: 32px;
     width: 44px;
     height: 44px;
-    background: #2563eb;
+    background: var(--accent-brand);
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -769,7 +794,7 @@
     <div style="background:linear-gradient(135deg,rgba(14,165,233,0.08),rgba(16,185,129,0.06));border:2px solid rgba(14,165,233,0.12);border-radius:16px;padding:24px 28px;margin-bottom:20px;">
       <div style="text-align:center;margin-bottom:16px;">
         <div style="font-size: 12px;color:#0369a1;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;">CORE INSIGHT — 실데이터 11,621건 분석</div>
-        <div style="font-size:20px;font-weight:800;color:#1E293B;line-height:1.4;">
+        <div style="font-size:20px;font-weight:800;color:var(--text-primary);line-height:1.4;">
           상담원 응답의 <span style="color:#0369a1;font-size:28px;">83%</span>가 <span style="color:#b45309;">반복 정보 확인 단계</span>
         </div>
       </div>

@@ -6,14 +6,39 @@
 <title>TOOMICS CS AI 챗봇 운영 인포그래픽 | 2026-02-22</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
+  :root {
+    --max-w: 960px;
+    --max-w-wide: 1280px;
+    --radius: 12px;
+    --gap: 16px;
+    --bg-base: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --bg-muted: #F1F5F9;
+    --text-primary: #1E293B;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --border: #E2E8F0;
+    --accent-brand: #2563EB;
+    --accent-info: #0EA5E9;
+    --accent-success: #10B981;
+    --accent-warn: #F59E0B;
+    --accent-danger: #EF4444;
+    --accent-purple: #7C3AED;
+    --font-base: 14px;
+    --font-sm: 12px;
+    --font-lg: 18px;
+    --font-xl: 28px;
+    --line-height: 1.7;
+    --font-family: 'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;
+  }
   html { scroll-behavior: smooth; }
   @page { size: A3 portrait; margin: 10mm; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     font-family: 'Malgun Gothic', 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
-    color: #1E293B;
-    background: #F8FAFC;
+    color: var(--text-primary);
+    background: var(--bg-base);
     line-height: 1.7;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
@@ -24,7 +49,7 @@
   }
 
   @media print {
-    body { background: #F8FAFC; color: #1E293B; }
+    body { background: var(--bg-base); color: var(--text-primary); }
     .container { box-shadow: none; }
     .card:hover { transform: none; }
   }
@@ -149,19 +174,19 @@
     border-radius: 10px;
     font-size: 14px;
     font-weight: 800;
-    color: #1E293B;
+    color: var(--text-primary);
     flex-shrink: 0;
   }
   .section-title {
     font-size: 22px;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
   }
 
   /* ── Cards ── */
   .card {
     background: #FFFFFF;
-    border: 1px solid #E2E8F0;
+    border: 1px solid var(--border);
     border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     padding: 28px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -179,7 +204,7 @@
   }
   .kpi-card {
     background: #FFFFFF;
-    border: 1px solid #E2E8F0;
+    border: 1px solid var(--border);
     border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     padding: 28px 24px;
     text-align: center;
@@ -262,10 +287,10 @@
   }
   .category-table td {
     padding: 10px 12px;
-    border-bottom: 1px solid #E2E8F0;
+    border-bottom: 1px solid var(--border);
   }
   .category-table tr:hover td {
-    background: #F1F5F9;
+    background: var(--bg-muted);
   }
   .cat-dot {
     display: inline-block;
@@ -325,7 +350,7 @@
   .pipe-node .pipe-label {
     font-size: 13px;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--text-primary);
   }
   .pipe-node .pipe-sub {
     font-size: 12px;
@@ -334,7 +359,7 @@
   }
   .pipe-arrow {
     font-size: 24px;
-    color: #475569;
+    color: var(--text-secondary);
     margin: 0 8px;
     flex-shrink: 0;
   }
@@ -391,9 +416,9 @@
     margin-bottom: 3px;
     border-radius: 0 6px 6px 0;
     font-size: 12px;
-    background: #F1F5F9;
+    background: var(--bg-muted);
   }
-  .flag-list li.critical { border-color: #ef4444; }
+  .flag-list li.critical { border-color: var(--accent-danger); }
   .flag-list li.supporting { border-color: #92400e; }
   .flag-type {
     font-size: 10px;
@@ -460,8 +485,8 @@
     margin-right: 8px;
     vertical-align: middle;
   }
-  .scoring-rules li:nth-child(1)::before { background: #ef4444; }
-  .scoring-rules li:nth-child(2)::before { background: #f59e0b; }
+  .scoring-rules li:nth-child(1)::before { background: var(--accent-danger); }
+  .scoring-rules li:nth-child(2)::before { background: var(--accent-warn); }
   .scoring-rules li:nth-child(3)::before { background: #3b82f6; }
 
   /* ── Before/After ── */
@@ -473,15 +498,15 @@
   }
   .comparison-card {
     background: #FFFFFF;
-    border: 1px solid #E2E8F0;
+    border: 1px solid var(--border);
     border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     padding: 28px;
   }
   .comparison-card.before {
-    border-top: 3px solid #ef4444;
+    border-top: 3px solid var(--accent-danger);
   }
   .comparison-card.after {
-    border-top: 3px solid #10b981;
+    border-top: 3px solid var(--accent-success);
   }
   .comparison-title {
     font-size: 18px;
@@ -498,7 +523,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 12px 0;
-    border-bottom: 1px solid #E2E8F0;
+    border-bottom: 1px solid var(--border);
     font-size: 14px;
   }
   .comparison-item:last-child { border-bottom: none; }
@@ -541,7 +566,7 @@
   .footer {
     margin-top: 48px;
     padding: 28px 0;
-    border-top: 1px solid #E2E8F0;
+    border-top: 1px solid var(--border);
     text-align: center;
     color: #64748B;
     font-size: 13px;
@@ -573,7 +598,7 @@
     right: 32px;
     width: 44px;
     height: 44px;
-    background: #2563eb;
+    background: var(--accent-brand);
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -706,19 +731,19 @@
               <td><span class="cat-badge auto">자동 + 에스컬</span></td>
             </tr>
             <tr>
-              <td><span class="cat-dot" style="background:#ef4444"></span>Refund</td>
+              <td><span class="cat-dot" style="background:var(--accent-danger)"></span>Refund</td>
               <td>25%</td>
               <td>367건</td>
               <td><span class="cat-badge partial">부분 자동</span></td>
             </tr>
             <tr>
-              <td><span class="cat-dot" style="background:#10b981"></span>Account</td>
+              <td><span class="cat-dot" style="background:var(--accent-success)"></span>Account</td>
               <td>13%</td>
               <td>189건</td>
               <td><span class="cat-badge partial">부분 자동</span></td>
             </tr>
             <tr>
-              <td><span class="cat-dot" style="background:#f59e0b"></span>Payment</td>
+              <td><span class="cat-dot" style="background:var(--accent-warn)"></span>Payment</td>
               <td>5%</td>
               <td>86건</td>
               <td><span class="cat-badge partial">부분 자동</span></td>
@@ -759,15 +784,15 @@
       </div>
       <div style="display:flex; gap:24px; justify-content:center; margin-top:20px; flex-wrap:wrap; font-size:13px;">
         <div style="display:flex;align-items:center;gap:6px;">
-          <span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#ef4444;"></span>
+          <span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--accent-danger);"></span>
           <span><strong>L1</strong> &mdash; 즉시 에스컬레이션 (AI 응답 없음)</span>
         </div>
         <div style="display:flex;align-items:center;gap:6px;">
-          <span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#f59e0b;"></span>
+          <span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--accent-warn);"></span>
           <span><strong>L2</strong> &mdash; AI 초안 + 상담원 검토</span>
         </div>
         <div style="display:flex;align-items:center;gap:6px;">
-          <span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#10b981;"></span>
+          <span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--accent-success);"></span>
           <span><strong>L3</strong> &mdash; 셀프서비스 자동 처리</span>
         </div>
       </div>
@@ -833,7 +858,7 @@
           <span>Phase 1 마켓 (EN, FR, ES, PT, DE)</span>
         </div>
         <div style="display:flex;align-items:center;gap:6px;">
-          <span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#475569;"></span>
+          <span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--text-secondary);"></span>
           <span>Phase 2 마켓 (TH, JP, CN, IT, KR)</span>
         </div>
       </div>
@@ -848,7 +873,7 @@
     </div>
     <div class="fraud-layout">
       <div class="card">
-        <h3 style="font-size:16px;font-weight:700;margin-bottom:16px;color:#1E293B;">9 Red Flag 지표</h3>
+        <h3 style="font-size:16px;font-weight:700;margin-bottom:16px;color:var(--text-primary);">9 Red Flag 지표</h3>
         <ul class="flag-list">
           <li class="critical">
             <div class="flag-type critical">Critical</div>
@@ -889,7 +914,7 @@
         </ul>
       </div>
       <div class="card" style="display:flex;flex-direction:column;">
-        <h3 style="font-size:14px;font-weight:700;margin-bottom:8px;color:#1E293B;">리스크 스코어링</h3>
+        <h3 style="font-size:14px;font-weight:700;margin-bottom:8px;color:var(--text-primary);">리스크 스코어링</h3>
         <div class="gauge-container">
           <div class="gauge-bar">
             <div style="position:absolute;top:0;left:0;height:100%;width:29%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px;">LOW</div>
@@ -907,14 +932,14 @@
           <li><strong>Supporting 지표 2개+</strong>: +15점/개</li>
           <li><strong>HIGH 등급</strong>: 강제 L1 에스컬레이션 (AI 응답 없음)</li>
         </ul>
-        <p style="text-align:center;font-size:11px;color:#94A3B8;margin:6px 0 4px;">Red Flag 구성: 5 Critical + 4 Supporting</p>
+        <p style="text-align:center;font-size:11px;color:var(--text-muted);margin:6px 0 4px;">Red Flag 구성: 5 Critical + 4 Supporting</p>
         <div style="flex:1;display:flex;align-items:center;justify-content:center;">
           <canvas id="fraudDoughnut" width="200" height="200"></canvas>
         </div>
         <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;padding-top:8px;font-size:11px;color:#64748B;">
           <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#22c55e;margin-right:4px;vertical-align:middle;"></span>LOW (0-29)</span>
           <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#eab308;margin-right:4px;vertical-align:middle;"></span>MEDIUM (30-49)</span>
-          <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#ef4444;margin-right:4px;vertical-align:middle;"></span>HIGH (50-100)</span>
+          <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent-danger);margin-right:4px;vertical-align:middle;"></span>HIGH (50-100)</span>
         </div>
       </div>
     </div>
@@ -1001,14 +1026,14 @@
   <section style="margin-top:48px;">
     <div class="section-header" style="display:flex;align-items:center;gap:14px;margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid rgba(0,0,0,0.04);">
       <div style="width:36px;height:36px;background:linear-gradient(135deg,#10b981,#22d3ee);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#fff;flex-shrink:0;">★</div>
-      <h2 style="font-size:22px;font-weight:700;color:#1E293B;">스마트 레이어링 — 티켓 전 자동화 프로세스</h2>
+      <h2 style="font-size:22px;font-weight:700;color:var(--text-primary);">스마트 레이어링 — 티켓 전 자동화 프로세스</h2>
     </div>
 
     <!-- 핵심 인사이트: 83% -->
     <div style="background:linear-gradient(135deg,rgba(14,165,233,0.08),rgba(16,185,129,0.06));border:2px solid rgba(14,165,233,0.12);border-radius:16px;padding:24px 28px;margin-bottom:20px;">
       <div style="text-align:center;margin-bottom:14px;">
         <div style="font-size: 12px;color:#0369a1;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;">CORE INSIGHT — 실데이터 11,621건 분석</div>
-        <div style="font-size:20px;font-weight:800;color:#1E293B;line-height:1.4;">
+        <div style="font-size:20px;font-weight:800;color:var(--text-primary);line-height:1.4;">
           CS 상담의 <span style="color:#0369a1;font-size:28px;">83%</span>가 <span style="color:#b45309;">반복적이지만 반드시 거쳐야 하는</span> 정보 확인 단계
         </div>
       </div>
@@ -1085,8 +1110,8 @@
         </div>
       </div>
       <!-- 선순환 결론 -->
-      <div style="text-align:center;padding:12px 16px;margin-top:12px;background:rgba(245,158,11,0.04);border:1px solid rgba(245,158,11,0.1);border-radius:10px;font-size:12px;color:#475569;line-height:1.7;">
-        <strong style="color:#b45309;">CX ↑ 고객 만족도</strong> × <strong style="color:#047857;">Operations ↑ 3~4배 효율</strong> = <span style="color:#1E293B;font-weight:700;">CS 조직의 선순환 구조</span>
+      <div style="text-align:center;padding:12px 16px;margin-top:12px;background:rgba(245,158,11,0.04);border:1px solid rgba(245,158,11,0.1);border-radius:10px;font-size:12px;color:var(--text-secondary);line-height:1.7;">
+        <strong style="color:#b45309;">CX ↑ 고객 만족도</strong> × <strong style="color:#047857;">Operations ↑ 3~4배 효율</strong> = <span style="color:var(--text-primary);font-weight:700;">CS 조직의 선순환 구조</span>
       </div>
     </div>
   </section>
@@ -1096,7 +1121,7 @@
     <div class="footer-line"><strong>작성자</strong>: 유종선 (Chongsun Yu)</div>
     <div class="footer-line"><strong>데이터 기간</strong>: 2025.07 ~ 2026.01</div>
     <div class="footer-line"><strong>분석 건수</strong>: 11,621건 &times; 10개 마켓</div>
-    <div class="footer-line" style="margin-top:8px;color:#475569;">&copy; 2026 Toomics Global CS AI Chatbot Project</div>
+    <div class="footer-line" style="margin-top:8px;color:var(--text-secondary);">&copy; 2026 Toomics Global CS AI Chatbot Project</div>
   </footer>
 
 </div><!-- /.container -->
@@ -1104,7 +1129,7 @@
 <script>
 // ── Chart.js Global Defaults ──
 Chart.defaults.color = '#64748B';
-Chart.defaults.borderColor = '#E2E8F0';
+Chart.defaults.borderColor = 'var(--border)';
 Chart.defaults.font.family = "'Malgun Gothic', 'Noto Sans KR', sans-serif";
 
 // ── 1. Category Doughnut Chart ──
@@ -1114,9 +1139,9 @@ new Chart(document.getElementById('categoryDoughnut'), {
     labels: ['Subscription', 'Refund', 'Account', 'Payment', 'Content', 'Technical', 'Other'],
     datasets: [{
       data: [48, 25, 13, 5, 4, 3, 2],
-      backgroundColor: ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6', '#06b6d4', '#6b7280'],
+      backgroundColor: ['#3b82f6', 'var(--accent-danger)', 'var(--accent-success)', 'var(--accent-warn)', '#8b5cf6', '#06b6d4', '#6b7280'],
       borderWidth: 2,
-      borderColor: '#F8FAFC',
+      borderColor: 'var(--bg-base)',
       hoverBorderColor: '#fff',
       hoverBorderWidth: 3,
       hoverOffset: 8
@@ -1137,9 +1162,9 @@ new Chart(document.getElementById('categoryDoughnut'), {
       },
       tooltip: {
         backgroundColor: '#FFFFFF',
-        titleColor: '#1E293B',
-        bodyColor: '#1E293B',
-        borderColor: '#E2E8F0',
+        titleColor: 'var(--text-primary)',
+        bodyColor: 'var(--text-primary)',
+        borderColor: 'var(--border)',
         borderWidth: 1,
         cornerRadius: 8,
         padding: 12,
@@ -1161,7 +1186,7 @@ new Chart(document.getElementById('escalationBar'), {
     labels: ['L1 즉시 에스컬레이션', 'L2 AI 초안 + 상담원 검토', 'L3 셀프서비스 자동 처리'],
     datasets: [{
       data: [212, 820, 630],
-      backgroundColor: ['#ef4444', '#f59e0b', '#10b981'],
+      backgroundColor: ['var(--accent-danger)', 'var(--accent-warn)', 'var(--accent-success)'],
       borderRadius: 8,
       borderSkipped: false,
       barPercentage: 0.6
@@ -1174,9 +1199,9 @@ new Chart(document.getElementById('escalationBar'), {
       legend: { display: false },
       tooltip: {
         backgroundColor: '#FFFFFF',
-        titleColor: '#1E293B',
-        bodyColor: '#1E293B',
-        borderColor: '#E2E8F0',
+        titleColor: 'var(--text-primary)',
+        bodyColor: 'var(--text-primary)',
+        borderColor: 'var(--border)',
         borderWidth: 1,
         cornerRadius: 8,
         padding: 12,
@@ -1191,7 +1216,7 @@ new Chart(document.getElementById('escalationBar'), {
     },
     scales: {
       x: {
-        grid: { color: '#E2E8F0' },
+        grid: { color: 'var(--border)' },
         ticks: { font: { size: 12 } },
         title: { display: true, text: '월평균 건수', font: { size: 12 } }
       },
@@ -1209,7 +1234,7 @@ new Chart(document.getElementById('escalationBar'), {
   var data = [4285, 1941, 1552, 982, 965, 647, 494, 373, 282, 100];
   var phase1 = ['EN', 'FR', 'ES', 'PT', 'DE'];
   var colors = labels.map(function(l) {
-    return phase1.indexOf(l) !== -1 ? '#3b82f6' : '#475569';
+    return phase1.indexOf(l) !== -1 ? '#3b82f6' : 'var(--text-secondary)';
   });
 
   new Chart(document.getElementById('marketBar'), {
@@ -1230,9 +1255,9 @@ new Chart(document.getElementById('escalationBar'), {
         legend: { display: false },
         tooltip: {
           backgroundColor: '#FFFFFF',
-          titleColor: '#1E293B',
-          bodyColor: '#1E293B',
-          borderColor: '#E2E8F0',
+          titleColor: 'var(--text-primary)',
+          bodyColor: 'var(--text-primary)',
+          borderColor: 'var(--border)',
           borderWidth: 1,
           cornerRadius: 8,
           padding: 12,
@@ -1251,7 +1276,7 @@ new Chart(document.getElementById('escalationBar'), {
           ticks: { font: { size: 13, weight: '700' } }
         },
         y: {
-          grid: { color: '#E2E8F0' },
+          grid: { color: 'var(--border)' },
           ticks: { font: { size: 12 } },
           title: { display: true, text: '총 건수 (7개월)', font: { size: 12 } }
         }
@@ -1267,7 +1292,7 @@ new Chart(document.getElementById('fraudDoughnut'), {
     labels: ['LOW (0-29)', 'MEDIUM (30-49)', 'HIGH (50-100)'],
     datasets: [{
       data: [5, 3, 1],
-      backgroundColor: ['#22c55e', '#eab308', '#ef4444'],
+      backgroundColor: ['#22c55e', '#eab308', 'var(--accent-danger)'],
       borderWidth: 2,
       borderColor: '#FFFFFF',
       hoverOffset: 6
@@ -1282,9 +1307,9 @@ new Chart(document.getElementById('fraudDoughnut'), {
       },
       tooltip: {
         backgroundColor: '#FFFFFF',
-        titleColor: '#1E293B',
-        bodyColor: '#1E293B',
-        borderColor: '#E2E8F0',
+        titleColor: 'var(--text-primary)',
+        bodyColor: 'var(--text-primary)',
+        borderColor: 'var(--border)',
         borderWidth: 1,
         cornerRadius: 8,
         padding: 12
