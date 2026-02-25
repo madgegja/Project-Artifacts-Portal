@@ -478,7 +478,7 @@
 <div class="table-responsive"><table class="wow-table">
           <thead><tr><th>지표</th><th style="text-align:right;">W2</th><th style="text-align:right;">W3</th><th style="text-align:right;">변화</th></tr></thead>
           <tbody>
-            <tr><td><strong>총 건수</strong></td><td class="num">86</td><td class="num">40</td><td class="num"><span class="trend-down">-53.5%</span></td></tr>
+            <tr><td><strong>총 건수</strong></td><td class="num">86</td><td class="num">64</td><td class="num"><span class="trend-down">-25.6%</span></td></tr>
             <tr><td>PayPal</td><td class="num">51.2%</td><td class="num">62.5%</td><td class="num"><span class="trend-up">+11.3%p</span></td></tr>
             <tr><td>Unauthorized</td><td class="num">45.3%</td><td class="num">45.0%</td><td class="num"><span class="trend-flat">FLAT</span></td></tr>
             <tr><td><strong>피해액</strong></td><td class="num">~$1,659</td><td class="num">~$706</td><td class="num"><span class="trend-down">-57.4%</span></td></tr>
@@ -489,7 +489,7 @@
       <!-- CB Trend Chart -->
       <div class="chart-card" style="padding:20px;">
         <h3>주별 차지백 트렌드 (최근 5주)</h3>
-        <p class="chart-desc">FEB W1~W2 85~86건 고원 · W3 40건</p>
+        <p class="chart-desc">FEB W1~W2 85~86건 고원 · W3 64건</p>
         <div class="chart-wrap">
           <canvas id="chartCBTrend"></canvas>
         </div>
@@ -831,7 +831,7 @@ new Chart(document.getElementById('chartCBTrend'), {
     labels: ['JAN W3\n(01/17~23)','JAN W4\n(01/24~30)','FEB W1\n(01/31~02/06)','FEB W2\n(02/07~13)','FEB W3\n(02/14~20)'],
     datasets: [{
       label: '주간 차지백 (토~금)',
-      data: [57, 71, 85, 86, 40],
+      data: [57, 71, 85, 86, 64],
       backgroundColor: ['#94a3b8','#94a3b8','#94a3b8','#64748b','#2563EB'],
       borderRadius: 8,
       borderSkipped: false,
