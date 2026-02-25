@@ -224,7 +224,8 @@
         }
         tr:last-child td { border-bottom: none; }
         tr:hover td { background: #F8FBFF; }
-        td.num { font-variant-numeric: tabular-nums; text-align: right; }
+        .num { font-variant-numeric: tabular-nums; text-align: right; }
+        td:empty::after { content: '-'; color: var(--text-muted); }
 
         /* ===== Alerts ===== */
         .alert {
@@ -455,7 +456,8 @@
             <div class="section" id="s1-2">
                 <h3>1.2 담당 조직 및 역할</h3>
                 <table>
-                    <thead><tr><th style="width:140px">구분</th><th>내용</th></tr></thead>
+                    <colgroup><col style="width:28%"><col style="width:auto"></colgroup>
+                    <thead><tr><th>구분</th><th>내용</th></tr></thead>
                     <tbody>
                         <tr><td><strong>담당자</strong></td><td>왕시베이</td></tr>
                         <tr><td><strong>협업자</strong></td><td>Allaine (알레인) — 데일리 모니터링, DMCA 신고, 보안마크 검사, 도메인 검토</td></tr>
@@ -507,37 +509,38 @@
 
                 <h4>모니터링 대상 사이트 (29개, 주 3회: 월/수/금)</h4>
                 <table>
-                    <thead><tr><th>#</th><th>사이트</th><th>URL</th><th>언어</th></tr></thead>
+                    <colgroup><col style="width:40px"><col style="width:24%"><col style="width:auto"><col style="width:70px"></colgroup>
+                    <thead><tr><th class="num">#</th><th>사이트</th><th>URL</th><th>언어</th></tr></thead>
                     <tbody>
-                        <tr><td>1</td><td>Toonily</td><td>toonily.com</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
-                        <tr><td>2</td><td>Hiperdex</td><td>hiperdex.top</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
-                        <tr><td>3</td><td>Manhwa18</td><td>manhwa18.net</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
-                        <tr><td>4</td><td>Manytoon</td><td>manytoon.com</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
-                        <tr><td>5</td><td>Manhwa Hentai</td><td>manhwahentai.me</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
-                        <tr><td>6</td><td>Hentai20</td><td>hentai20.io</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
-                        <tr><td>7</td><td>ManyComic</td><td>manycomic.com</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
-                        <tr><td>8</td><td>MangaForFree</td><td>mangaforfree.com</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
-                        <tr><td>9</td><td>Webtoon XYZ</td><td>webtoon.xyz</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
-                        <tr><td>10</td><td>Ero18x</td><td>ero18x.com</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
-                        <tr><td>11</td><td>18toon</td><td>18toon.com</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
-                        <tr><td>12</td><td>Manga District</td><td>mangadistrict.com</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
-                        <tr><td>13</td><td>Webtoonscan</td><td>webtoonscan.com</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
-                        <tr><td>14</td><td>Toongod</td><td>toongod.org</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
-                        <tr><td>15</td><td>Manhwabuddy</td><td>manhwabuddy.com</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
-                        <tr><td>16</td><td>Manga Go</td><td>mangago.me</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
-                        <tr><td>17</td><td>Manhwaread</td><td>manhwaread.com</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
-                        <tr><td>18</td><td>Mangabuddy</td><td>mangabuddy.com</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
-                        <tr><td>19</td><td>Blackoutcomics</td><td>blackoutcomics.com</td><td><span class="badge-sm badge-purple">EN/PT</span></td></tr>
-                        <tr><td>20</td><td>Mangaworld Adult</td><td>mangaworldadult.net</td><td><span class="badge-sm badge-green">IT</span></td></tr>
-                        <tr><td>21</td><td>Manhwa-latino</td><td>manhwa-latino.com</td><td><span class="badge-sm badge-yellow">ES</span></td></tr>
-                        <tr><td>22</td><td>Toonfr</td><td>toonfr.com</td><td><span class="badge-sm badge-yellow">FR</span></td></tr>
-                        <tr><td>23</td><td>Dokiraw</td><td>dokiraw.blog</td><td><span class="badge-sm badge-red">JP</span></td></tr>
-                        <tr><td>24</td><td>Kuronavi</td><td>kuronavi.blog</td><td><span class="badge-sm badge-red">JP</span></td></tr>
-                        <tr><td>25</td><td>Gomuraw</td><td>gomuraw.blog</td><td><span class="badge-sm badge-red">JP</span></td></tr>
-                        <tr><td>26</td><td>Toranavi</td><td>toranavi.blog</td><td><span class="badge-sm badge-red">JP</span></td></tr>
-                        <tr><td>27</td><td>MFKHM</td><td>mfkhm.com</td><td><span class="badge-sm badge-gray">-</span></td></tr>
-                        <tr><td>28</td><td>Hanmanjia</td><td>hanmanjia.com</td><td><span class="badge-sm badge-gray">-</span></td></tr>
-                        <tr><td>29</td><td>Heaven Manga</td><td>heavenmanga.vip</td><td><span class="badge-sm badge-gray">-</span></td></tr>
+                        <tr><td class="num">1</td><td>Toonily</td><td>toonily.com</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
+                        <tr><td class="num">2</td><td>Hiperdex</td><td>hiperdex.top</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
+                        <tr><td class="num">3</td><td>Manhwa18</td><td>manhwa18.net</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
+                        <tr><td class="num">4</td><td>Manytoon</td><td>manytoon.com</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
+                        <tr><td class="num">5</td><td>Manhwa Hentai</td><td>manhwahentai.me</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
+                        <tr><td class="num">6</td><td>Hentai20</td><td>hentai20.io</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
+                        <tr><td class="num">7</td><td>ManyComic</td><td>manycomic.com</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
+                        <tr><td class="num">8</td><td>MangaForFree</td><td>mangaforfree.com</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
+                        <tr><td class="num">9</td><td>Webtoon XYZ</td><td>webtoon.xyz</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
+                        <tr><td class="num">10</td><td>Ero18x</td><td>ero18x.com</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
+                        <tr><td class="num">11</td><td>18toon</td><td>18toon.com</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
+                        <tr><td class="num">12</td><td>Manga District</td><td>mangadistrict.com</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
+                        <tr><td class="num">13</td><td>Webtoonscan</td><td>webtoonscan.com</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
+                        <tr><td class="num">14</td><td>Toongod</td><td>toongod.org</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
+                        <tr><td class="num">15</td><td>Manhwabuddy</td><td>manhwabuddy.com</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
+                        <tr><td class="num">16</td><td>Manga Go</td><td>mangago.me</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
+                        <tr><td class="num">17</td><td>Manhwaread</td><td>manhwaread.com</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
+                        <tr><td class="num">18</td><td>Mangabuddy</td><td>mangabuddy.com</td><td><span class="badge-sm badge-blue">EN</span></td></tr>
+                        <tr><td class="num">19</td><td>Blackoutcomics</td><td>blackoutcomics.com</td><td><span class="badge-sm badge-purple">EN/PT</span></td></tr>
+                        <tr><td class="num">20</td><td>Mangaworld Adult</td><td>mangaworldadult.net</td><td><span class="badge-sm badge-green">IT</span></td></tr>
+                        <tr><td class="num">21</td><td>Manhwa-latino</td><td>manhwa-latino.com</td><td><span class="badge-sm badge-yellow">ES</span></td></tr>
+                        <tr><td class="num">22</td><td>Toonfr</td><td>toonfr.com</td><td><span class="badge-sm badge-yellow">FR</span></td></tr>
+                        <tr><td class="num">23</td><td>Dokiraw</td><td>dokiraw.blog</td><td><span class="badge-sm badge-red">JP</span></td></tr>
+                        <tr><td class="num">24</td><td>Kuronavi</td><td>kuronavi.blog</td><td><span class="badge-sm badge-red">JP</span></td></tr>
+                        <tr><td class="num">25</td><td>Gomuraw</td><td>gomuraw.blog</td><td><span class="badge-sm badge-red">JP</span></td></tr>
+                        <tr><td class="num">26</td><td>Toranavi</td><td>toranavi.blog</td><td><span class="badge-sm badge-red">JP</span></td></tr>
+                        <tr><td class="num">27</td><td>MFKHM</td><td>mfkhm.com</td><td><span class="badge-sm badge-gray">-</span></td></tr>
+                        <tr><td class="num">28</td><td>Hanmanjia</td><td>hanmanjia.com</td><td><span class="badge-sm badge-gray">-</span></td></tr>
+                        <tr><td class="num">29</td><td>Heaven Manga</td><td>heavenmanga.vip</td><td><span class="badge-sm badge-gray">-</span></td></tr>
                     </tbody>
                 </table>
                 <div class="alert alert-info">불법 사이트 도메인 리스트는 총 <strong>1,137건</strong>이 기록되어 있으며, 언어별: 중국어 457, 영어 300, 한국어 147, 베트남어 27, 일본어 27건 등입니다.</div>
@@ -775,6 +778,7 @@ Best regards,</div>
                     <div class="step-item">5단계 UDRP</div>
                 </div>
                 <table>
+                    <colgroup><col style="width:10%"><col style="width:18%"><col style="width:38%"><col style="width:auto"></colgroup>
                     <thead><tr><th>단계</th><th>대상</th><th>조치 내용</th><th>비고</th></tr></thead>
                     <tbody>
                         <tr><td><strong>1단계</strong></td><td>사이트 운영자</td><td>직접 이메일 → 침해 통보 및 제거 요청</td><td>연락처 확인 불가 시 2단계로</td></tr>
@@ -853,6 +857,7 @@ Best regards,</div>
             <div class="section" id="s3-2">
                 <h3>3.2 부정 사용자 판단 기준</h3>
                 <table>
+                    <colgroup><col style="width:20%"><col style="width:40%"><col style="width:auto"></colgroup>
                     <thead><tr><th>기준</th><th>설명</th><th>의심 패턴</th></tr></thead>
                     <tbody>
                         <tr><td><strong>다중 IP 사용</strong></td><td>여러 개 IP로 같은 회차를 읽음</td><td>VPN/프록시 사용 의심</td></tr>
@@ -882,6 +887,7 @@ Best regards,</div>
             <div class="section" id="s3-4">
                 <h3>3.4 PG별 결제 차단</h3>
                 <table>
+                    <colgroup><col style="width:18%"><col style="width:44%"><col style="width:auto"></colgroup>
                     <thead><tr><th>PG사</th><th>차단 방법</th><th>비고</th></tr></thead>
                     <tbody>
                         <tr><td><strong>PayPal (일반)</strong></td><td>관리자 페이지 → email 확인 → '페이팔 차단관리'에서 등록</td><td><span class="badge-sm badge-red">Credit Card 제외 (처리 불가)</span></td></tr>
@@ -912,33 +918,34 @@ Best regards,</div>
             <div class="section" id="s4-2">
                 <h3>4.2 현재 모니터링 작품 리스트 (TOP 25)</h3>
                 <table>
-                    <thead><tr><th style="width:36px">#</th><th>English Title</th><th>한국어 원제</th></tr></thead>
+                    <colgroup><col style="width:40px"><col style="width:50%"><col style="width:auto"></colgroup>
+                    <thead><tr><th class="num">#</th><th>English Title</th><th>한국어 원제</th></tr></thead>
                     <tbody>
-                        <tr><td>1</td><td>Knock Knock</td><td>이모</td></tr>
-                        <tr><td>2</td><td>Fatal Lessons in this Pandemic</td><td>이 시국에 개인교습</td></tr>
-                        <tr><td>3</td><td>What do I do now...?</td><td>이제부터 어쩌냐</td></tr>
-                        <tr><td>4</td><td>The Carry</td><td>그거 그렇게 하는거 아닌데</td></tr>
-                        <tr><td>5</td><td>Snapping into Love</td><td>하란다고 진짜 하냐</td></tr>
-                        <tr><td>6</td><td>Boss! I'm Taking Your Girl!</td><td>보스! 따님을 제게 주십쇼!</td></tr>
-                        <tr><td>7</td><td>Dating After Work</td><td>퇴근 후 연애사정</td></tr>
-                        <tr><td>8</td><td>Someone Stop Her!</td><td>담배피지 마세요!</td></tr>
-                        <tr><td>9</td><td>From Weakling to Nemesis</td><td>분신술로 매일 두 배씩 강해짐</td></tr>
-                        <tr><td>10</td><td>Hypnotist Security Guard</td><td>최면경비원</td></tr>
-                        <tr><td>11</td><td>What's Wrong With This Family?</td><td>가족끼리 왜 그래</td></tr>
-                        <tr><td>12</td><td>Now I'm the Boss</td><td>이 좋소는 이제 제껍니다</td></tr>
-                        <tr><td>13</td><td>Honey Sweet Part-Time Job</td><td>꿀 떨어지는 알바</td></tr>
-                        <tr><td>14</td><td>Wait, I'm a Married Woman!</td><td>유부녀의 일탈</td></tr>
-                        <tr><td>15</td><td>A Game With My Boss</td><td>가슴 큰 과장님과 게임을</td></tr>
-                        <tr><td>16</td><td>In Her Place</td><td>아내대신 장모님</td></tr>
-                        <tr><td>17</td><td>Troublesome Employee Warning</td><td>사내 폐급 주의보</td></tr>
-                        <tr><td>18</td><td>Man of The House</td><td>오! 나의 서방님</td></tr>
-                        <tr><td>19</td><td>Office Romance is a No-No</td><td>회사에선 안돼요</td></tr>
-                        <tr><td>20</td><td>The Late-Bloomers</td><td>자취방 누나들</td></tr>
-                        <tr><td>21</td><td>An Outsider's Way In</td><td>대학생활은 동아리부터</td></tr>
-                        <tr><td>22</td><td>My High School Bully</td><td>일진동창녀</td></tr>
-                        <tr><td>23</td><td>Like No Other</td><td>여동생이 최고야!</td></tr>
-                        <tr><td>24</td><td>Draco-Knight Commander</td><td>이세계 용근 기사단장</td></tr>
-                        <tr><td>25</td><td>Family Again</td><td>새엄마가 돌아왔다</td></tr>
+                        <tr><td class="num">1</td><td>Knock Knock</td><td>이모</td></tr>
+                        <tr><td class="num">2</td><td>Fatal Lessons in this Pandemic</td><td>이 시국에 개인교습</td></tr>
+                        <tr><td class="num">3</td><td>What do I do now...?</td><td>이제부터 어쩌냐</td></tr>
+                        <tr><td class="num">4</td><td>The Carry</td><td>그거 그렇게 하는거 아닌데</td></tr>
+                        <tr><td class="num">5</td><td>Snapping into Love</td><td>하란다고 진짜 하냐</td></tr>
+                        <tr><td class="num">6</td><td>Boss! I'm Taking Your Girl!</td><td>보스! 따님을 제게 주십쇼!</td></tr>
+                        <tr><td class="num">7</td><td>Dating After Work</td><td>퇴근 후 연애사정</td></tr>
+                        <tr><td class="num">8</td><td>Someone Stop Her!</td><td>담배피지 마세요!</td></tr>
+                        <tr><td class="num">9</td><td>From Weakling to Nemesis</td><td>분신술로 매일 두 배씩 강해짐</td></tr>
+                        <tr><td class="num">10</td><td>Hypnotist Security Guard</td><td>최면경비원</td></tr>
+                        <tr><td class="num">11</td><td>What's Wrong With This Family?</td><td>가족끼리 왜 그래</td></tr>
+                        <tr><td class="num">12</td><td>Now I'm the Boss</td><td>이 좋소는 이제 제껍니다</td></tr>
+                        <tr><td class="num">13</td><td>Honey Sweet Part-Time Job</td><td>꿀 떨어지는 알바</td></tr>
+                        <tr><td class="num">14</td><td>Wait, I'm a Married Woman!</td><td>유부녀의 일탈</td></tr>
+                        <tr><td class="num">15</td><td>A Game With My Boss</td><td>가슴 큰 과장님과 게임을</td></tr>
+                        <tr><td class="num">16</td><td>In Her Place</td><td>아내대신 장모님</td></tr>
+                        <tr><td class="num">17</td><td>Troublesome Employee Warning</td><td>사내 폐급 주의보</td></tr>
+                        <tr><td class="num">18</td><td>Man of The House</td><td>오! 나의 서방님</td></tr>
+                        <tr><td class="num">19</td><td>Office Romance is a No-No</td><td>회사에선 안돼요</td></tr>
+                        <tr><td class="num">20</td><td>The Late-Bloomers</td><td>자취방 누나들</td></tr>
+                        <tr><td class="num">21</td><td>An Outsider's Way In</td><td>대학생활은 동아리부터</td></tr>
+                        <tr><td class="num">22</td><td>My High School Bully</td><td>일진동창녀</td></tr>
+                        <tr><td class="num">23</td><td>Like No Other</td><td>여동생이 최고야!</td></tr>
+                        <tr><td class="num">24</td><td>Draco-Knight Commander</td><td>이세계 용근 기사단장</td></tr>
+                        <tr><td class="num">25</td><td>Family Again</td><td>새엄마가 돌아왔다</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -1010,6 +1017,7 @@ Best regards,</div>
                 <h3>6.1 리포트 구조</h3>
                 <p>월별 IP 보호 리포트는 <strong>4개 섹션</strong>으로 구성됩니다.</p>
                 <table>
+                    <colgroup><col style="width:28%"><col style="width:38%"><col style="width:auto"></colgroup>
                     <thead><tr><th>섹션</th><th>내용</th><th>데이터 소스</th></tr></thead>
                     <tbody>
                         <tr><td><strong>1. 모니터링 Assets TOP 25</strong></td><td>현재 모니터링 중인 상위 25개 작품 (영문+한국어)</td><td>G관리자, 작품 관리</td></tr>
@@ -1021,6 +1029,7 @@ Best regards,</div>
 
                 <h4>Search Engine 통계 표 형식</h4>
                 <table>
+                    <colgroup><col style="width:30%"><col style="width:20%"><col style="width:20%"><col style="width:20%"></colgroup>
                     <thead><tr><th>구분</th><th class="num">탐지</th><th class="num">신고</th><th class="num">제거</th></tr></thead>
                     <tbody>
                         <tr><td>@Allaine (수동)</td><td class="num">-</td><td class="num">건수</td><td class="num">-</td></tr>
@@ -1034,6 +1043,7 @@ Best regards,</div>
             <div class="section" id="s6-2">
                 <h3>6.2 데이터 수집 방법</h3>
                 <table>
+                    <colgroup><col style="width:14%"><col style="width:38%"><col style="width:12%"><col style="width:auto"></colgroup>
                     <thead><tr><th>소스</th><th>수집 경로</th><th>주기</th><th>포함 데이터</th></tr></thead>
                     <tbody>
                         <tr><td><strong>MARQ</strong></td><td>MARQ Performance Reports 포털 / Google Drive</td><td>월 1회</td><td>탐지, 신고, 제거</td></tr>
@@ -1058,6 +1068,7 @@ Best regards,</div>
 
                 <h4>2025년 (251건)</h4>
                 <table>
+                    <colgroup><col style="width:22%"><col style="width:9%"><col style="width:25%"><col style="width:9%"><col style="width:12%"><col style="width:9%"></colgroup>
                     <thead><tr><th>불법 사이트</th><th class="num">건수</th><th>주요 결제수단</th><th class="num">건수</th><th>언어</th><th class="num">건수</th></tr></thead>
                     <tbody>
                         <tr><td>Hiperdex</td><td class="num">112</td><td>PayPal Credit Card</td><td class="num">58</td><td>EN</td><td class="num">104</td></tr>
@@ -1071,13 +1082,14 @@ Best regards,</div>
 
                 <h4>2026년 1~2월 (25건)</h4>
                 <table>
+                    <colgroup><col style="width:22%"><col style="width:9%"><col style="width:25%"><col style="width:9%"><col style="width:12%"><col style="width:9%"></colgroup>
                     <thead><tr><th>불법 사이트</th><th class="num">건수</th><th>주요 결제수단</th><th class="num">건수</th><th>언어</th><th class="num">건수</th></tr></thead>
                     <tbody>
                         <tr><td>Hiperdex</td><td class="num">5</td><td>PayPal Credit Card</td><td class="num">10</td><td>EN</td><td class="num">18</td></tr>
                         <tr><td>18toon</td><td class="num">5</td><td>PayPal(JP)</td><td class="num">8</td><td>FR</td><td class="num">3</td></tr>
                         <tr><td>Manhwa18</td><td class="num">4</td><td>Checkout(3D CC)</td><td class="num">2</td><td>IT</td><td class="num">3</td></tr>
                         <tr><td>Toonfr</td><td class="num">3</td><td>Checkout(Apple Pay)</td><td class="num">2</td><td>PT</td><td class="num">1</td></tr>
-                        <tr><td>Mangaworldadult</td><td class="num">3</td><td>AIRWALLEX(Apple Pay)</td><td class="num">1</td><td></td><td></td></tr>
+                        <tr><td>Mangaworldadult</td><td class="num">3</td><td>AIRWALLEX(Apple Pay)</td><td class="num">1</td><td>-</td><td class="num">-</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -1085,18 +1097,19 @@ Best regards,</div>
             <div class="section">
                 <h3>불법 사이트 도메인 리스트 분포</h3>
                 <table>
-                    <thead><tr><th>언어</th><th class="num">도메인 수</th><th>비율</th></tr></thead>
+                    <colgroup><col style="width:45%"><col style="width:25%"><col style="width:25%"></colgroup>
+                    <thead><tr><th>언어</th><th class="num">도메인 수</th><th class="num">비율</th></tr></thead>
                     <tbody>
-                        <tr><td>Chinese (중국어)</td><td class="num">457</td><td>40.2%</td></tr>
-                        <tr><td>English (영어)</td><td class="num">300</td><td>26.4%</td></tr>
-                        <tr><td>Korean (한국어)</td><td class="num">147</td><td>12.9%</td></tr>
-                        <tr><td>기타/미분류</td><td class="num">84</td><td>7.4%</td></tr>
-                        <tr><td>Vietnamese</td><td class="num">27</td><td>2.4%</td></tr>
-                        <tr><td>Japanese</td><td class="num">27</td><td>2.4%</td></tr>
-                        <tr><td>Indonesian</td><td class="num">17</td><td>1.5%</td></tr>
-                        <tr><td>Spanish</td><td class="num">13</td><td>1.1%</td></tr>
-                        <tr><td>Russian</td><td class="num">10</td><td>0.9%</td></tr>
-                        <tr><td><strong>합계</strong></td><td class="num"><strong>1,137</strong></td><td><strong>100%</strong></td></tr>
+                        <tr><td>Chinese (중국어)</td><td class="num">457</td><td class="num">40.2%</td></tr>
+                        <tr><td>English (영어)</td><td class="num">300</td><td class="num">26.4%</td></tr>
+                        <tr><td>Korean (한국어)</td><td class="num">147</td><td class="num">12.9%</td></tr>
+                        <tr><td>기타/미분류</td><td class="num">139</td><td class="num">12.2%</td></tr>
+                        <tr><td>Vietnamese</td><td class="num">27</td><td class="num">2.4%</td></tr>
+                        <tr><td>Japanese</td><td class="num">27</td><td class="num">2.4%</td></tr>
+                        <tr><td>Indonesian</td><td class="num">17</td><td class="num">1.5%</td></tr>
+                        <tr><td>Spanish</td><td class="num">13</td><td class="num">1.1%</td></tr>
+                        <tr><td>Russian</td><td class="num">10</td><td class="num">0.9%</td></tr>
+                        <tr><td><strong>합계</strong></td><td class="num"><strong>1,137</strong></td><td class="num"><strong>100%</strong></td></tr>
                     </tbody>
                 </table>
             </div>
@@ -1104,6 +1117,7 @@ Best regards,</div>
             <div class="section">
                 <h3>월별 Search Engine 실적 (참고)</h3>
                 <table>
+                    <colgroup><col style="width:14%"><col style="width:22%"><col style="width:20%"><col style="width:20%"><col style="width:20%"></colgroup>
                     <thead><tr><th>월</th><th>구분</th><th class="num">탐지</th><th class="num">신고</th><th class="num">제거</th></tr></thead>
                     <tbody>
                         <tr><td rowspan="4"><strong>2025.08</strong></td><td>@Allaine</td><td class="num">-</td><td class="num">32,100</td><td class="num">-</td></tr>
@@ -1121,6 +1135,7 @@ Best regards,</div>
             <div class="section">
                 <h3>기타 운영 시트 참조</h3>
                 <table>
+                    <colgroup><col style="width:35%"><col style="width:12%"><col style="width:auto"></colgroup>
                     <thead><tr><th>시트명</th><th class="num">건수</th><th>설명</th></tr></thead>
                     <tbody>
                         <tr><td>(A) Security Mark Update</td><td class="num">1,916</td><td>불법 유출 사이트별 보안마크 기반 유저 추적</td></tr>
