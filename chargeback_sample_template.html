@@ -213,7 +213,7 @@
 <div class="guide no-print">
   <strong>Chargeback Explanation Template — 사용법</strong><br>
   <span class="tag">STEP 1</span> 관리자에서 다운로드한 소명자료 엑셀 전체를 데이터 영역에 한 번에 붙여넣기<br>
-  <span class="tag">STEP 2</span> Proof of Delivery — 해당 Case(A~D) 1개만 남기고 나머지 삭제 → [대괄호] 부분 입력<br>
+  <span class="tag">STEP 2</span> Proof of Delivery — 해당 Case(A~E) 1개만 남기고 나머지 삭제 → [대괄호] 부분 입력<br>
   <span class="tag">STEP 3</span> Invoice — VIP / Coin 중 해당 답변만 남기고 삭제 → [대괄호] 부분 입력<br>
   <span class="tag">STEP 4</span> Receipt 스크린샷 삽입 (Cancellation & Refund Policy 이미지는 아래 고정 삽입됨 ✅)<br>
   <span class="tag">STEP 5</span> PDF 변환 후 PG사 사이트에 업로드<br>
@@ -245,7 +245,7 @@ Toomics is an online webtoon platform for reading digital comics. Toomics users 
 <div class="sec green">Proof of delivery or services</div>
 
 <div class="guide no-print" style="margin-top:0; border-radius:0;">
-  아래 4가지 중 해당 케이스 <strong>1개만</strong> 남기고 나머지는 삭제합니다.
+  아래 5가지 중 해당 케이스 <strong>1개만</strong> 남기고 나머지는 삭제합니다.
 </div>
 
 <!-- Case A: VIP 자동결제 (Recurring) -->
@@ -256,25 +256,33 @@ Dear <span class="blank narrow">PG사명</span> Team, we would like to state tha
   </div>
 </div>
 
-<!-- Case B: VIP 첫 결제 -->
+<!-- Case B: VIP 해지 후 무료 이용 기간 중 자동결제 (Free Month Offer → Auto-Renewal) -->
 <div class="select-box">
-  <div class="select-hd"><span class="check"></span> <strong>Case B</strong> — VIP 첫 결제 (1회 구매)</div>
+  <div class="select-hd"><span class="check"></span> <strong>Case B</strong> — VIP 해지 후 무료 이용 기간 중 자동결제</div>
+  <div class="select-body">
+Dear <span class="blank narrow">PG사명</span> Team, we would like to clarify that when the user attempted to cancel their VIP subscription, they were presented with an offer for a free 1-month extension. The offer page during the cancellation process clearly displayed that the subscription would automatically renew at the end of the free period unless canceled. The user accepted this offer on <span class="blank">구독 해지 일</span>. (free 1-month Trial: <span class="blank">무료 이용 시작일</span> ~ <span class="blank">무료 이용 종료일</span>) Upon checking our records, the user did not cancel the subscription during the free month, and as a result, a renewal payment was processed on <span class="blank">갱신 결제일 (분쟁 대상)</span>. The original subscription was first purchased on <span class="blank">첫 결제일</span>. Since the user was clearly notified of the auto-renewal condition at the point of accepting the free offer and did not take action to cancel, this charge is valid.
+  </div>
+</div>
+
+<!-- Case C: VIP 첫 결제 -->
+<div class="select-box">
+  <div class="select-hd"><span class="check"></span> <strong>Case C</strong> — VIP 첫 결제 (1회 구매)</div>
   <div class="select-body">
 Dear <span class="blank narrow">PG사명</span> Team, we would like to state that this user has only made 1 purchase of a VIP membership on <span class="blank">결제일</span>, and has been granted since that same day at <span class="blank narrow">시간</span> KST. As the user has only purchased our membership once, there is no way the system could charge him a non-existing recurring membership. The user status is stated as "VIP Member" and the user has been reading content for several days since the first purchase. Please refer to the screenshot for further information.
   </div>
 </div>
 
-<!-- Case C: Coin 결제 -->
+<!-- Case D: Coin 결제 -->
 <div class="select-box">
-  <div class="select-hd"><span class="check"></span> <strong>Case C</strong> — Coin 결제</div>
+  <div class="select-hd"><span class="check"></span> <strong>Case D</strong> — Coin 결제</div>
   <div class="select-body">
 Dear <span class="blank narrow">PG사명</span> Team, we would like to state that the <span class="blank narrow">코인 수</span> coins that the user purchased on <span class="blank">결제일</span>, has been granted since that same day at <span class="blank narrow">시간</span> KST. The user status is also stated as "Coin Member". We would like to let you know that this user has read VIP content and used <span class="blank narrow">사용 수</span> of the <span class="blank narrow">코인 수</span> coins he/she purchased.
   </div>
 </div>
 
-<!-- Case D: 타 PG 해지 후 재구매 -->
+<!-- Case E: 타 PG 해지 후 재구매 -->
 <div class="select-box">
-  <div class="select-hd"><span class="check"></span> <strong>Case D</strong> — 다른 결제수단 해지 후 재구매</div>
+  <div class="select-hd"><span class="check"></span> <strong>Case E</strong> — 다른 결제수단 해지 후 재구매</div>
   <div class="select-body">
 Dear <span class="blank narrow">PG사명</span> Team, we would like to state that the VIP membership that the user purchased on <span class="blank">현 PG 결제일</span>, is a whole new transaction that has nothing to do with the transaction that the user actually canceled that was made through <span class="blank">이전 PG사명</span>. Therefore, we can prove that the user actually made the last purchase by himself/herself. We would like to highlight that we have proceeded to cancel the VIP membership by ourselves, that's why the system has registered it at the end as "Admin".
   </div>
