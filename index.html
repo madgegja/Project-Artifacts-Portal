@@ -125,6 +125,44 @@
   .ic-amber  { background: #F59E0B; }
   .ic-red    { background: #EF4444; }
   .ic-purple { background: #7C3AED; }
+  /* ── Changelog ── */
+  .cl-wrap { display: flex; flex-direction: column; gap: 0; }
+  .cl-day { display: grid; grid-template-columns: 120px 1fr; gap: 0 16px; margin-bottom: 4px; }
+  .cl-date {
+    font-size: 11px; font-weight: 700; color: #64748b;
+    padding-top: 10px; text-align: right; letter-spacing: .5px;
+    white-space: nowrap;
+  }
+  .cl-entries { border-left: 2px solid #E2E8F0; padding-left: 16px; display: flex; flex-direction: column; gap: 0; }
+  .cl-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 8px 0; border-bottom: 1px dashed #F1F5F9; font-size: 12.5px;
+  }
+  .cl-item:last-child { border-bottom: none; }
+  .cl-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 5px;
+    margin-left: -20px;
+  }
+  .cl-dot.fix  { background: #F59E0B; }
+  .cl-dot.docs { background: #2563EB; }
+  .cl-dot.feat { background: #10B981; }
+  .cl-dot.del  { background: #EF4444; }
+  .cl-dot.chore{ background: #94A3B8; }
+  .cl-tag {
+    display: inline-block; font-size: 10px; font-weight: 700;
+    padding: 1px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;
+  }
+  .cl-tag.fix   { background: #FEF3C7; color: #92400E; }
+  .cl-tag.docs  { background: #DBEAFE; color: #1D4ED8; }
+  .cl-tag.feat  { background: #D1FAE5; color: #065F46; }
+  .cl-tag.del   { background: #FEE2E2; color: #991B1B; }
+  .cl-tag.chore { background: #F1F5F9; color: #64748B; }
+  .cl-file {
+    font-family: 'Consolas','Menlo',monospace; font-size: 11px;
+    background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 4px;
+    padding: 0 5px; color: #475569; white-space: nowrap; flex-shrink: 0;
+  }
+  .cl-desc { color: #334155; line-height: 1.5; }
   .footer {
     text-align: center; padding: 24px; font-size: 12px;
     color: #94A3B8; border-top: 1px solid #E2E8F0; margin-top: 40px;
@@ -479,6 +517,125 @@
     </div>
   </div>
 
+</div>
+
+<!-- ── CHANGELOG ── -->
+<div class="section">
+  <h2 class="section-title">
+    <span class="icon" style="background:#475569;">📋</span>
+    변경 이력 (Changelog)
+  </h2>
+  <div class="cl-wrap">
+
+    <!-- 2026-02-26 -->
+    <div class="cl-day">
+      <div class="cl-date">2026-02-26</div>
+      <div class="cl-entries">
+
+        <div class="cl-item">
+          <span class="cl-dot del"></span>
+          <span class="cl-tag del">DELETE</span>
+          <span class="cl-file">cs_manual_enhanced_20260219.html</span>
+          <span class="cl-desc">EN 매뉴얼 v2.1 통합으로 인한 중복 파일 완전 삭제</span>
+        </div>
+
+        <div class="cl-item">
+          <span class="cl-dot docs"></span>
+          <span class="cl-tag docs">DOCS</span>
+          <span class="cl-file">cs_manual_EN_20260219.html</span>
+          <span class="cl-desc">v2.0 → v2.1 — 운영 피드백 13개 반영 (KO 매뉴얼 동기화): 2.2.1 무료체험 문구 삭제 · 2.3.2 삭제 · 4.6.1 개인정보 요청 삭제 · 6.4.1 toomics.site 문구 삭제 외</span>
+        </div>
+
+        <div class="cl-item">
+          <span class="cl-dot docs"></span>
+          <span class="cl-tag docs">DOCS</span>
+          <span class="cl-file">cs_manual_KO_20260219.html</span>
+          <span class="cl-desc">v2.0 → v2.1 — 운영 피드백 13개 반영: 2.2.1 · 2.3.2 · 2.4.1 · 4.4.3 · 4.5.1 · 4.5.2 · 4.6.1 · 5.1.1 · 5.6.1 · 6.1.1 · 6.3.1 · 6.4.1 · 6.5.1</span>
+        </div>
+
+        <div class="cl-item">
+          <span class="cl-dot fix"></span>
+          <span class="cl-tag fix">FIX</span>
+          <span class="cl-file">index.html</span>
+          <span class="cl-desc">CS 운영 매뉴얼 중복 카드 제거 (cs_manual_enhanced) · 대시보드 중복 카드 제거 (ticket_dashboard_20260222) · 차지백 카운트 4→3 수정</span>
+        </div>
+
+        <div class="cl-item">
+          <span class="cl-dot fix"></span>
+          <span class="cl-tag fix">FIX</span>
+          <span class="cl-file">cs_l1_l2_l3_analysis_20260225.html</span>
+          <span class="cl-desc">헤더 좌쏠림 수정 — hero-inner max-width 래퍼 추가 (1280px+ 화면 정렬 불일치 해결)</span>
+        </div>
+
+        <div class="cl-item">
+          <span class="cl-dot docs"></span>
+          <span class="cl-tag docs">DOCS</span>
+          <span class="cl-file">chargeback_operation_manual_20260220.html</span>
+          <span class="cl-desc">v1.2 → v1.3 — 섹션 6-1 신설: Cancellation &amp; Refund Policy v2.0 원문 (VIP 3조건 · Coin 7일 · Limitations)</span>
+        </div>
+
+        <div class="cl-item">
+          <span class="cl-dot docs"></span>
+          <span class="cl-tag docs">DOCS</span>
+          <span class="cl-file">chargeback_operation_manual_20260220.html</span>
+          <span class="cl-desc">v1.1 → v1.2 — 템플릿 링크 최신화: Explanation Form v5 · chargeback_sample_template_v2</span>
+        </div>
+
+        <div class="cl-item">
+          <span class="cl-dot fix"></span>
+          <span class="cl-tag fix">FIX</span>
+          <span class="cl-file">index.html</span>
+          <span class="cl-desc">카드 텍스트 오버플로우 수정 — 제목 nowrap ellipsis · 설명 2줄 clamp</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 2026-02-24 -->
+    <div class="cl-day">
+      <div class="cl-date">2026-02-24</div>
+      <div class="cl-entries">
+
+        <div class="cl-item">
+          <span class="cl-dot feat"></span>
+          <span class="cl-tag feat">FEAT</span>
+          <span class="cl-file">chargeback_sample_template_v2.html</span>
+          <span class="cl-desc">환불 정책 v2.0 업데이트 — VIP 3조건 명시 · Coin 7일 조건 · Limitations 섹션 신설</span>
+        </div>
+
+        <div class="cl-item">
+          <span class="cl-dot feat"></span>
+          <span class="cl-tag feat">FEAT</span>
+          <span class="cl-file">Chargeback_Explanation_Form_v5.xlsx</span>
+          <span class="cl-desc">Data Paste 섹션 추가 · 가이드 텍스트 개선 · 서식 전면 정비</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 2026-02-22 ~ 23 -->
+    <div class="cl-day">
+      <div class="cl-date">2026-02-22~23</div>
+      <div class="cl-entries">
+
+        <div class="cl-item">
+          <span class="cl-dot feat"></span>
+          <span class="cl-tag feat">FEAT</span>
+          <span class="cl-file">ticket_dashboard_20260223.html</span>
+          <span class="cl-desc">CS 티켓 대시보드 v2 — 라이브 필터링, KPI 카드, 마켓별 분석 (1,660건 기준)</span>
+        </div>
+
+        <div class="cl-item">
+          <span class="cl-dot feat"></span>
+          <span class="cl-tag feat">FEAT</span>
+          <span class="cl-file">chatbot_cost_analysis_20260222.html</span>
+          <span class="cl-desc">챗봇 도입 비용 분석 — Phase별 ROI, 자동화율 목표 대비 절감액 산출</span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <footer class="footer">
