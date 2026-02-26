@@ -143,20 +143,31 @@
     width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 5px;
     margin-left: -20px;
   }
-  .cl-dot.fix  { background: #F59E0B; }
-  .cl-dot.docs { background: #2563EB; }
-  .cl-dot.feat { background: #10B981; }
-  .cl-dot.del  { background: #EF4444; }
-  .cl-dot.chore{ background: #94A3B8; }
+  .cl-dot.docs  { background: #2563EB; }
+  .cl-dot.feat  { background: #10B981; }
+  .cl-dot.del   { background: #EF4444; }
   .cl-tag {
     display: inline-block; font-size: 10px; font-weight: 700;
     padding: 1px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;
   }
-  .cl-tag.fix   { background: #FEF3C7; color: #92400E; }
   .cl-tag.docs  { background: #DBEAFE; color: #1D4ED8; }
   .cl-tag.feat  { background: #D1FAE5; color: #065F46; }
   .cl-tag.del   { background: #FEE2E2; color: #991B1B; }
-  .cl-tag.chore { background: #F1F5F9; color: #64748B; }
+  /* details/summary toggle */
+  .cl-details summary {
+    cursor: pointer; list-style: none; display: flex; align-items: center;
+    gap: 8px; padding: 10px 0; font-size: 14px; font-weight: 700;
+    color: #334155; user-select: none;
+  }
+  .cl-details summary::-webkit-details-marker { display: none; }
+  .cl-details summary::before {
+    content: '▶'; font-size: 10px; color: #94A3B8;
+    transition: transform .2s; display: inline-block;
+  }
+  .cl-details[open] summary::before { transform: rotate(90deg); }
+  .cl-details summary .cl-summary-count {
+    font-size: 11px; color: #94A3B8; font-weight: 400; margin-left: 4px;
+  }
   .cl-file {
     font-family: 'Consolas','Menlo',monospace; font-size: 11px;
     background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 4px;
@@ -525,6 +536,8 @@
     <span class="icon" style="background:#475569;">📋</span>
     변경 이력 (Changelog)
   </h2>
+  <details class="cl-details">
+    <summary>변경 이력 보기 <span class="cl-summary-count">— 2026-02-22 ~ 26 · 11건</span></summary>
   <div class="cl-wrap">
 
     <!-- 2026-02-26 -->
@@ -554,15 +567,15 @@
         </div>
 
         <div class="cl-item">
-          <span class="cl-dot fix"></span>
-          <span class="cl-tag fix">FIX</span>
+          <span class="cl-dot docs"></span>
+          <span class="cl-tag docs">FIX</span>
           <span class="cl-file">index.html</span>
           <span class="cl-desc">CS 운영 매뉴얼 중복 카드 제거 (cs_manual_enhanced) · 대시보드 중복 카드 제거 (ticket_dashboard_20260222) · 차지백 카운트 4→3 수정</span>
         </div>
 
         <div class="cl-item">
-          <span class="cl-dot fix"></span>
-          <span class="cl-tag fix">FIX</span>
+          <span class="cl-dot docs"></span>
+          <span class="cl-tag docs">FIX</span>
           <span class="cl-file">cs_l1_l2_l3_analysis_20260225.html</span>
           <span class="cl-desc">헤더 좌쏠림 수정 — hero-inner max-width 래퍼 추가 (1280px+ 화면 정렬 불일치 해결)</span>
         </div>
@@ -582,8 +595,8 @@
         </div>
 
         <div class="cl-item">
-          <span class="cl-dot fix"></span>
-          <span class="cl-tag fix">FIX</span>
+          <span class="cl-dot docs"></span>
+          <span class="cl-tag docs">FIX</span>
           <span class="cl-file">index.html</span>
           <span class="cl-desc">카드 텍스트 오버플로우 수정 — 제목 nowrap ellipsis · 설명 2줄 clamp</span>
         </div>
@@ -636,6 +649,7 @@
     </div>
 
   </div>
+  </details>
 </div>
 
 <footer class="footer">
