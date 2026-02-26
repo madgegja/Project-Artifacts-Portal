@@ -70,11 +70,15 @@
   .hero {
     background: linear-gradient(135deg, #1E3A5F 0%, #2563EB 50%, #0EA5E9 100%);
     color: #fff;
-    padding: 48px 56px 40px;
+    padding: 48px 24px 40px;
     position: relative;
     overflow: hidden;
     border-radius: 0 0 24px 24px;
     margin-bottom: 32px;
+  }
+  .hero-inner {
+    max-width: var(--max-w-wide);
+    margin: 0 auto;
   }
   .hero::before {
     content: '';
@@ -406,29 +410,31 @@
 
 <!-- ── Hero Header ── -->
 <div class="hero">
-  <div class="hero-badge">CS Analytics Report</div>
-  <h1>CS 티켓 레벨 분석 (L1 / L2 / L3)</h1>
-  <p class="subtitle">셀프서비스 해결율 및 상담 심도 분류 리포트</p>
-  <div class="hero-meta">
-    <div class="hero-meta-item">
-      <span class="label">Period</span>
-      <span class="value">2025.07 ~ 2026.02</span>
-    </div>
-    <div class="hero-meta-item">
-      <span class="label">Total Tickets</span>
-      <span class="value">12,464<span class="unit">건</span></span>
-    </div>
-    <div class="hero-meta-item">
-      <span class="label">Markets</span>
-      <span class="value">10<span class="unit">개</span></span>
-    </div>
-    <div class="hero-meta-item">
-      <span class="label">Author</span>
-      <span class="value">BizOps</span>
-    </div>
-    <div class="hero-meta-item">
-      <span class="label">Date</span>
-      <span class="value">2026-02-25</span>
+  <div class="hero-inner">
+    <div class="hero-badge">CS Analytics Report</div>
+    <h1>CS 티켓 레벨 분석 (L1 / L2 / L3)</h1>
+    <p class="subtitle">셀프서비스 해결율 및 상담 심도 분류 리포트</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="label">Period</span>
+        <span class="value">2025.07 ~ 2026.02</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Total Tickets</span>
+        <span class="value">12,464<span class="unit">건</span></span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Markets</span>
+        <span class="value">10<span class="unit">개</span></span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Author</span>
+        <span class="value">BizOps</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Date</span>
+        <span class="value">2026-02-25</span>
+      </div>
     </div>
   </div>
 </div>
